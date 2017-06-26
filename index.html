@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="revealjs/css/reveal.css">
+<link rel="stylesheet" href="revealjs/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
+        link.href = 'revealjs/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
+<script src="revealjs/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -12014,7 +12014,7 @@ $$<p>this is the 'short range' force exerted on the tip apex.</p>
 <h2 id="Experiment:-fast-AFM">Experiment: fast AFM<a class="anchor-link" href="#Experiment:-fast-AFM">&#182;</a></h2><p>$\textbf{3D AFM technique}$ and $\textbf{pattern matching}$ routines for massive speed up in image collection efficiency.</p>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td><img src='images/hi-speed_afm.jpg' width=600></td>
+<td><img src='images/hi-speed_AFM.jpg' width=600></td>
 </tr>
 <tr>
 <td><img src='images/fast_afm_image_proc2.png' width=600></td>
@@ -12230,8 +12230,8 @@ require(
       waitSeconds: 15
     },
     [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
+      "revealjs/lib/js/head.min.js",
+      "revealjs/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -12247,9 +12247,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
+                { src: "revealjs/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
+                { src: "revealjs/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
