@@ -12204,6 +12204,92 @@ $$<p>We can add in a long range correction, to replace the exchange energy lost 
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1>$$
+E[\rho] = T_S[\rho] + J[\rho] + E_{XC}[\rho, P] + \int v(\mathbf{r})\rho(\mathbf{r})\text{d}\mathbf{r}
+$$$$
+E_{XC} = \alpha E_X^{HFX}[P] + (1 - \alpha ) E_X^{DFT}[\rho] + E_C^{DFT}[\rho]
+$$$$
+E_X^{HFX} [P] = -\frac{1}{2} \sum_{\lambda \sigma \mu \nu} P^{\mu \sigma} P^{\nu \sigma} (\mu \nu | \lambda \sigma) 
+$$<p>introduce auxiliary density matrix $\hat{P}\approx P$</p>
+\begin{align}
+E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
+              & \approx E_X^{HFX}[\hat{P}] + E_X^{DFT}[P] - E_X^{DFT}[\hat{P}]
+\end{align}<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>total energy functional of both $P$ and $\hat{P}$</li>
+</ul>
+$$
+E_{total} = E[P] + \hat{E}[\hat{P}]
+$$<ul>
+<li>still Kohn-Sham theory with ADMM</li>
+</ul>
+\begin{align}
+K_{total} & = \frac{\partial E[P]}{ \partial P} + \frac{\partial \hat{E}[\hat{P}]}{ \partial P} \\
+          & = K + \frac{\partial \hat{E}[\hat{P}]}{ \partial \hat{P}}\frac{\partial \hat{P}}{ \partial P}
+\end{align}<p>using a chain rule and</p>
+$$
+K_{total} C = SC\epsilon
+$$<p>as the equation to be solved self-consistently.</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><h2 id="Construction-of-auxiliary-density-matrix">Construction of auxiliary density matrix<a class="anchor-link" href="#Construction-of-auxiliary-density-matrix">&#182;</a></h2>$$
+\hat{\psi}_i (\mathbf{r}) = \sum_\mu \hat{C}^{\mu i}\hat{\phi}_\mu (\mathbf{r})
+$$$$
+\hat{P}^{\mu \nu} = \sum_i \hat{C}^{\mu i} \hat{C}^{\nu i} = \hat{C}\hat{C}^T
+$$<ul>
+<li>we the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets:</li>
+</ul>
+$$
+\sum_i \int \big(\psi_j(\mathbf{r}) - \hat{\psi}_j(\mathbf{r})\big)^2 \text{d}\mathbf{r}
+$$<p>(see ADMM_PURIFICATION_METHOD=NONE keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><h2 id="Construction-of-auxiliary-density-matrix-enforcing-indempotent-auxiliary-density-matrix">Construction of auxiliary density matrix enforcing indempotent auxiliary density matrix<a class="anchor-link" href="#Construction-of-auxiliary-density-matrix-enforcing-indempotent-auxiliary-density-matrix">&#182;</a></h2>$$
+\hat{\psi}_i (\mathbf{r}) = \sum_\mu \hat{C}^{\mu i}\hat{\phi}_\mu (\mathbf{r})
+$$$$
+\hat{P}^{\mu \nu} = \sum_i \hat{C}^{\mu i} \hat{C}^{\nu i} = \hat{C}\hat{C}^T
+$$<ul>
+<li>we the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets:</li>
+</ul>
+$$
+\sum_i \int  \big(\psi_j(\mathbf{r}) - \hat{\psi}_j(\mathbf{r})\big)^2 \text{d}\mathbf{r} +
+\sum_{k,l} \Lambda_{kl} \big( \int \hat{\psi}_k(\mathbf{r}) \hat{\psi}_l(\mathbf{r}) \text{d}\mathbf{r} - \delta_{kl}\big)
+$$<p>(see ADMM_PURIFICATION_METHOD=MO_DIAG keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
