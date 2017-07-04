@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="../revealjs//css/reveal.css">
-<link rel="stylesheet" href="../revealjs//css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="../revealjs/css/reveal.css">
+<link rel="stylesheet" href="../revealjs/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../revealjs//css/print/pdf.css';
+        link.href = '../revealjs/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="../revealjs//lib/js/html5shiv.js"></script>
+<script src="../revealjs/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -12255,12 +12255,15 @@ $$<p>as the equation to be solved self-consistently.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><h2 id="Construction-of-auxiliary-density-matrix">Construction of auxiliary density matrix<a class="anchor-link" href="#Construction-of-auxiliary-density-matrix">&#182;</a></h2>$$
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>Construction of auxiliary density matrix</li>
+</ul>
+$$
 \hat{\psi}_i (\mathbf{r}) = \sum_\mu \hat{C}^{\mu i}\hat{\phi}_\mu (\mathbf{r})
 $$$$
 \hat{P}^{\mu \nu} = \sum_i \hat{C}^{\mu i} \hat{C}^{\nu i} = \hat{C}\hat{C}^T
 $$<ul>
-<li>we the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets:</li>
+<li>we find the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets:</li>
 </ul>
 $$
 \sum_i \int \big(\psi_j(\mathbf{r}) - \hat{\psi}_j(\mathbf{r})\big)^2 \text{d}\mathbf{r}
@@ -12275,22 +12278,101 @@ $$<p>(see ADMM_PURIFICATION_METHOD=NONE keyword in &amp;AUXILIARY_DENSITY_MATRIX
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><h2 id="Construction-of-auxiliary-density-matrix-enforcing-indempotent-auxiliary-density-matrix">Construction of auxiliary density matrix enforcing indempotent auxiliary density matrix<a class="anchor-link" href="#Construction-of-auxiliary-density-matrix-enforcing-indempotent-auxiliary-density-matrix">&#182;</a></h2>$$
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>Construction of auxiliary density matrix enforcing indempotent auxiliary density matrix</li>
+</ul>
+$$
 \hat{\psi}_i (\mathbf{r}) = \sum_\mu \hat{C}^{\mu i}\hat{\phi}_\mu (\mathbf{r})
 $$$$
 \hat{P}^{\mu \nu} = \sum_i \hat{C}^{\mu i} \hat{C}^{\nu i} = \hat{C}\hat{C}^T
 $$<ul>
-<li>we the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets:</li>
+<li>we find the $\hat{C}$ that minimises the difference between occupied wavefunctions in the primary and secondary basis sets subject to the constraint that the auxiliary wavefunctions are orthonormal:</li>
 </ul>
 $$
 \sum_i \int  \big(\psi_j(\mathbf{r}) - \hat{\psi}_j(\mathbf{r})\big)^2 \text{d}\mathbf{r} +
 \sum_{k,l} \Lambda_{kl} \big( \int \hat{\psi}_k(\mathbf{r}) \hat{\psi}_l(\mathbf{r}) \text{d}\mathbf{r} - \delta_{kl}\big)
-$$<p>(see ADMM_PURIFICATION_METHOD=MO_DIAG keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
+$$<p>The $\Lambda$ matrix contains the Lagrangian multipliers enforcing orthonormality.</p>
+<p>(see ADMM_PURIFICATION_METHOD=MO_DIAG keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
 <p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>Construction of auxiliary density matrix constraint on total charge</li>
+</ul>
+$$
+W_Q = \sum_i^{\text{occ}}<(i-\tilde{i})^2> + \lambda \Bigg(\frac{N}{2} - \sum_i^{\text{occ}}<\tilde{i^2}>\Bigg)
+$$<p>(see EXCH_SCALING_MODEL keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
+<p>Merlot et al., J. Chem. Phys., 141, 094101 (2014)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>several GGA exchange corrections using different functionals</li>
+</ul>
+\begin{align}
+E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
+              & \approx E_X^{HFX}[\hat{P}] + E_X^{DFT}[P] - E_X^{DFT}[\hat{P}]
+\end{align}<p>DFT can be B88, PBE, OPTX, KT3X</p>
+<p>(see EXCH_CORRECTION_FUNC keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD subsection)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ADMM-basis-sets">ADMM basis sets<a class="anchor-link" href="#ADMM-basis-sets">&#182;</a></h1><p>Initially available from H to Cl optimized against atomic calculations</p>
+<p>Choice of auxiliary basis set for ADMM</p>
+<ul>
+<li>FIT3: three Gaussian exponents for each valence orbital</li>
+<li>cFIT3: a contraction of FIT3</li>
+<li>pFIT3: FIT3 + polarization functions</li>
+<li>cpFIT3: cFIT3 + polarization functions</li>
+<li>aug-FIT3, aug-cFIT3, aug-pFIT3, aug-cpFIT3: augmented with a “diffuse” function</li>
+</ul>
+<p>(see $CP2K/cp2k/data/BASIS_ADMM)</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ADMM-basis-sets">ADMM basis sets<a class="anchor-link" href="#ADMM-basis-sets">&#182;</a></h1><p>Uncontracted basis sets for transition metals:</p>
+<ul>
+<li>FIT10: 4s + 3p + 3d</li>
+<li>FIT11: 4s + 3p + 3d + 1f</li>
+<li>FIT12: 4s + 3p + 4d + 1f</li>
+<li>FIT13: 4s + 4p + 4d + 1f</li>
+</ul>
+<p>Contracted basis sets (double-$\zeta$ quality)</p>
+<ul>
+<li>cFIT10 / cFIT11 / cFIT12 / cFIT13</li>
+</ul>
+<p>Names of the ADMM basis sets for main group elements will differ slightly, and usually the first ADMM basis set will not contain polarisation function.</p>
+<p>(see $CP2K/cp2k/data/BASIS_ADMM_MOLOPT)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -12316,8 +12398,8 @@ require(
       waitSeconds: 15
     },
     [
-      "../revealjs//lib/js/head.min.js",
-      "../revealjs//js/reveal.js"
+      "../revealjs/lib/js/head.min.js",
+      "../revealjs/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -12333,9 +12415,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "../revealjs//lib/js/classList.js",
+                { src: "../revealjs/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "../revealjs//plugin/notes/notes.js",
+                { src: "../revealjs/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
