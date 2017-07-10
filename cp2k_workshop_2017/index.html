@@ -11992,7 +11992,7 @@ $$<h2 id="Hybrid-functions">Hybrid functions<a class="anchor-link" href="#Hybrid
     <td>-2.66</td> 
     <td>-0.72</td> 
   </tr>
-</table><p>Mean Absolute errors for atomization energies (eV)</p>
+</table><p>Mean Absolute errors for Band Gaps (eV)</p>
 <p>Scuseria et al., J. Chem. Phys., 123, 174101 (2005)</p>
 
 </div>
@@ -12073,7 +12073,6 @@ $$<p>$\frac{1}{8}O(N^4) \to O(N^2)$</p>
 <p>Ahlrichs et al., J. Comput. Chem., 10, 104 (1989)</p>
 <p>(see <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/SCREENING.html#list_EPS_SCHWARZ">EPS_SCHWARZ</a> keyword in <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/SCREENING.html">&amp;SCREENING</a> subsection)</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
-<p>There is a limit for the largest possible contribution to the Fock matrix; one can avoid calculating interactions whose contributions are smaller than a given threshold; pre-compute all the two-index quantities; Schwarz inequality equation takes advantage of the exponential decay of the charge distributions $uv$ with respect to the distance between Gaussian centres $u$ and $v$</p>
 
 </div>
 </div>
@@ -12141,7 +12140,8 @@ g(r) = \frac{\text{erfc}(\omega r)}{r} + \frac{\text{erf}(\omega r)}{r}
 $$<p>used in HSE06 etc.</p>
 <p>(see <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/INTERACTION_POTENTIAL.html#POTENTIAL_TYPE">POTENTIAL_TYPE</a> keyword in <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/INTERACTION_POTENTIAL.html">&amp;INTERACTION_POTENTIAL</a> subsection)</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
-<p>If omega is not large enough very large cells might be needed for HSE calculations at the $\Gamma$ point. Cost are very different from plane-wave implementions - HSE is not typically cheaper than PBE0 - see next slide.</p>
+<p>If omega is not large enough very large cells might be needed for HSE calculations at the $\Gamma$ point.</p>
+<p>Costs are very different from plane-wave implementions - HSE is not typically cheaper than PBE0 - see next slide.</p>
 
 </div>
 </div>
@@ -12388,6 +12388,7 @@ E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
 </ul>
 <p>Names of the ADMM basis sets for main group elements will differ slightly, and usually the first ADMM basis set will not contain polarisation function.</p>
 <p>(see $CP2K/cp2k/data/BASIS_ADMM_MOLOPT)</p>
+<p>Ling &amp; Slater, unpublished</p>
 
 </div>
 </div>
@@ -12542,6 +12543,42 @@ E_{XC}^{HSE} = aE_{X}^{HF,SR}(\omega)+ (1-a)E_{X}^{PBE,SR}(\omega) + E_{X}^{PBE,
 $$<p>Scuceria et al., J. Chem. Phys., 125, 224106 (2006)</p>
 <p>"Empirical" parameters: $a, R_c,$ and $\omega$</p>
 <p>(note the 0 in PBE0 stands for 0 empirical parameters...)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Input-structure">Input structure<a class="anchor-link" href="#Input-structure">&#182;</a></h1><p><code>
+&amp;DFT
+    …
+    BASIS_SET_FILE_NAME ./BASIS_MOLOPT
+    BASIS_SET_FILE_NAME ./BASIS_ADMM
+    WFN_RESTART_FILE_NAME ${project}-RESTART.wfn
+    &amp;SCF
+        SCF_GUESS RESTART
+        …
+    &amp;END SCF
+    &amp;AUXILIARY_DENSITY_MATRIX_METHOD
+            METHOD BASIS_PROJECTION
+            ADMM_PURIFICATION_METHOD MO_DIAG
+        &amp;END AUXILIARY_DENSITY_MATRIX_METHOD
+    …
+    &amp;XC
+    …
+    &amp;END XC
+&amp;END DFT
+&amp;SUBSYS
+    &amp;KIND Si
+        BASIS_SET DZVP-MOLOPT-SR-GTH
+        AUX_FIT_BASIS_SET FIT3
+        POTENTIAL GTH-PBE-q4
+    &amp;END KIND
+&amp;END SUBSYS</p>
+<p>&lt;/code&gt;</p>
 
 </div>
 </div>
@@ -12756,6 +12793,22 @@ $$<p>Scuceria et al., J. Chem. Phys., 125, 224106 (2006)</p>
 <li><p>For extremely large hybrid DFT calculations, try hybrid MPI/OpenMP binary (i.e. cp2k.psmp)</p>
 </li>
 </ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h1><p>TiO$_2$ is everyone's favourite material - hybrid calculations with ~1000 atoms and good basis sets using CP2K</p>
+<table cellspacing="0" cellpadding="0">
+<tr><td><img src='../images/prl_fig3.png' width=350>
+</td><td><img src='images/STM_multimers.png' width=350></td>
+</td><td><img src='images/struc_multimers.png' width=350></td>
+</tr>
+</table><p>Yim et al, Phys. Rev. Lett. 117, 116402 (2016)</p>
 
 </div>
 </div>
