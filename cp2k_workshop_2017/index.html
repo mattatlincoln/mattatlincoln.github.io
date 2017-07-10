@@ -11874,10 +11874,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-are-hybrid-functionals">What are hybrid functionals<a class="anchor-link" href="#What-are-hybrid-functionals">&#182;</a></h1>$$
+<h1 id="What-are-hybrid-functionals">What are hybrid functionals<a class="anchor-link" href="#What-are-hybrid-functionals">&#182;</a></h1><h3 id="Global-Hybrid-functions">Global Hybrid functions<a class="anchor-link" href="#Global-Hybrid-functions">&#182;</a></h3><p>mixing non-local Hartree-Fock exchange with semi-local DFT exchange</p>
+$$
 E_{XC} = \alpha E_X^{HFX}[\psi_i] + (1 - \alpha ) E_X^{DFT}[\rho] + E_C^{DFT}[\rho]
-$$<h2 id="Hybrid-functions">Hybrid functions<a class="anchor-link" href="#Hybrid-functions">&#182;</a></h2><p>mixing non-local Hartree-Fock exchange with semi-local DFT exchange</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
@@ -12171,7 +12171,7 @@ $$<p>used in the snappily titles PBE0-TC family of functionals.</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
 <p>Truncation is mainly for solid-state environments and avoids numerical problems with $\Gamma$ point global hybrid calculations.</p>
 <p>$R_C$ must be smaller than half the smallest cell dimension.</p>
-<p>Requires a <code>T_C_G_DATA</code> file - by default in /cp2k/data and a modern installation should just find it.</p>
+<p>Requires a <code>T_C_G_DATA</code> file - by default in <code>/cp2k/data</code> and a modern installation should just find it.</p>
 
 </div>
 </div>
@@ -12553,32 +12553,32 @@ $$<p>Scuceria et al., J. Chem. Phys., 125, 224106 (2006)</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Input-structure">Input structure<a class="anchor-link" href="#Input-structure">&#182;</a></h1><p><code>
-&amp;DFT
+  &DFT
     …
     BASIS_SET_FILE_NAME ./BASIS_MOLOPT
     BASIS_SET_FILE_NAME ./BASIS_ADMM
     WFN_RESTART_FILE_NAME ${project}-RESTART.wfn
-    &amp;SCF
+    &SCF
         SCF_GUESS RESTART
         …
-    &amp;END SCF
-    &amp;AUXILIARY_DENSITY_MATRIX_METHOD
+    &END SCF
+    &AUXILIARY_DENSITY_MATRIX_METHOD
             METHOD BASIS_PROJECTION
             ADMM_PURIFICATION_METHOD MO_DIAG
-        &amp;END AUXILIARY_DENSITY_MATRIX_METHOD
+        &END AUXILIARY_DENSITY_MATRIX_METHOD
     …
-    &amp;XC
+    &XC
     …
-    &amp;END XC
-&amp;END DFT
-&amp;SUBSYS
-    &amp;KIND Si
+    &END XC
+  &END DFT
+  &SUBSYS
+    &KIND Si
         BASIS_SET DZVP-MOLOPT-SR-GTH
         AUX_FIT_BASIS_SET FIT3
         POTENTIAL GTH-PBE-q4
-    &amp;END KIND
-&amp;END SUBSYS</p>
-<p>&lt;/code&gt;</p>
+    &END KIND
+  &END SUBSYS
+</code></p>
 
 </div>
 </div>
@@ -12848,6 +12848,8 @@ $$<p>Scuceria et al., J. Chem. Phys., 125, 224106 (2006)</p>
 <li>Sanliang Ling, University College London (these slides are basically his reformatted)</li>
 <li>CP2K developers</li>
 </ul>
+<hr>
+<p>Exercises <a href="https://www.cp2k.org/exercises:2017_uzh_cp2k-tutorial:hybrid">here</a></p>
 
 </div>
 </div>
