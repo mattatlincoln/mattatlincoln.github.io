@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="../revealjs/css/reveal.css">
-<link rel="stylesheet" href="../revealjs/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="../revealjs//css/reveal.css">
+<link rel="stylesheet" href="../revealjs//css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../revealjs/css/print/pdf.css';
+        link.href = '../revealjs//css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="../revealjs/lib/js/html5shiv.js"></script>
+<script src="../revealjs//lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -11770,14 +11770,6 @@ ul.typeahead-list > li > a {
 .ansi-bold { font-weight: bold; }
 
     </style>
-<style type="text/css">
-    <style type="text/css">
-.input_prompt, .input_area, .output_prompt {
-    display:none !important;
-}
-</style>
-
-    </style>
 
 
 <style type="text/css">
@@ -11867,7 +11859,13 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Hybrid-functionals-and-ADMM">Hybrid functionals and ADMM<a class="anchor-link" href="#Hybrid-functionals-and-ADMM">&#182;</a></h1><h2 id="Matt-Watkins">Matt Watkins<a class="anchor-link" href="#Matt-Watkins">&#182;</a></h2><h2 id="University-of-Lincoln">University of Lincoln<a class="anchor-link" href="#University-of-Lincoln">&#182;</a></h2>
+<h1 id="Hybrid-functionals-and-ADMM">Hybrid functionals and ADMM<a class="anchor-link" href="#Hybrid-functionals-and-ADMM">&#182;</a></h1><table cellspacing="0" cellpadding="0">
+<tr>
+<td><img src='../images/MgO-Ag_island.png' width=400></td>
+<td><img src='../images/cp2k_logo_500.png' width=200></td>
+<td><img src='../images/lincoln_crest.png' width=200></td>
+</tr>
+</table><h2 id="Matt-Watkins">Matt Watkins<a class="anchor-link" href="#Matt-Watkins">&#182;</a></h2><h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11876,10 +11874,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-are-hybrid-functionals">What are hybrid functionals<a class="anchor-link" href="#What-are-hybrid-functionals">&#182;</a></h1>$$
+<h1 id="What-are-hybrid-functionals">What are hybrid functionals<a class="anchor-link" href="#What-are-hybrid-functionals">&#182;</a></h1><h3 id="Global-Hybrid-functions">Global Hybrid functions<a class="anchor-link" href="#Global-Hybrid-functions">&#182;</a></h3><p>mixing non-local Hartree-Fock exchange with semi-local DFT exchange</p>
+$$
 E_{XC} = \alpha E_X^{HFX}[\psi_i] + (1 - \alpha ) E_X^{DFT}[\rho] + E_C^{DFT}[\rho]
-$$<h2 id="Hybrid-functions">Hybrid functions<a class="anchor-link" href="#Hybrid-functions">&#182;</a></h2><p>mixing non-local Hartree-Fock exchange with semi-local DFT exchange</p>
-
+$$
 </div>
 </div>
 </div></section></section><section><section>
@@ -11994,7 +11992,7 @@ $$<h2 id="Hybrid-functions">Hybrid functions<a class="anchor-link" href="#Hybrid
     <td>-2.66</td> 
     <td>-0.72</td> 
   </tr>
-</table><p>Mean Absolute errors for atomization energies (eV)</p>
+</table><p>Mean Absolute errors for Band Gaps (eV)</p>
 <p>Scuseria et al., J. Chem. Phys., 123, 174101 (2005)</p>
 
 </div>
@@ -12075,7 +12073,6 @@ $$<p>$\frac{1}{8}O(N^4) \to O(N^2)$</p>
 <p>Ahlrichs et al., J. Comput. Chem., 10, 104 (1989)</p>
 <p>(see <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/SCREENING.html#list_EPS_SCHWARZ">EPS_SCHWARZ</a> keyword in <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/SCREENING.html">&amp;SCREENING</a> subsection)</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
-<p>There is a limit for the largest possible contribution to the Fock matrix; one can avoid calculating interactions whose contributions are smaller than a given threshold; pre-compute all the two-index quantities; Schwarz inequality equation takes advantage of the exponential decay of the charge distributions $uv$ with respect to the distance between Gaussian centres $u$ and $v$</p>
 
 </div>
 </div>
@@ -12143,7 +12140,8 @@ g(r) = \frac{\text{erfc}(\omega r)}{r} + \frac{\text{erf}(\omega r)}{r}
 $$<p>used in HSE06 etc.</p>
 <p>(see <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/INTERACTION_POTENTIAL.html#POTENTIAL_TYPE">POTENTIAL_TYPE</a> keyword in <a href="https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/DFT/XC/HF/INTERACTION_POTENTIAL.html">&amp;INTERACTION_POTENTIAL</a> subsection)</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
-<p>If omega is not large enough very large cells might be needed for HSE calculations at the $\Gamma$ point. Cost are very different from plane-wave implementions - HSE is not typically cheaper than PBE0 - see next slide.</p>
+<p>If omega is not large enough very large cells might be needed for HSE calculations at the $\Gamma$ point.</p>
+<p>Costs are very different from plane-wave implementions - HSE is not typically cheaper than PBE0 - see next slide.</p>
 
 </div>
 </div>
@@ -12173,7 +12171,7 @@ $$<p>used in the snappily titles PBE0-TC family of functionals.</p>
 <p>Guidon et al., J. Chem. Phys., 128, 214104 (2008)</p>
 <p>Truncation is mainly for solid-state environments and avoids numerical problems with $\Gamma$ point global hybrid calculations.</p>
 <p>$R_C$ must be smaller than half the smallest cell dimension.</p>
-<p>Requires a <code>T_C_G_DATA</code> file - by default in /cp2k/data and a modern installation should just find it.</p>
+<p>Requires a <code>T_C_G_DATA</code> file - by default in <code>/cp2k/data</code> and a modern installation should just find it.</p>
 
 </div>
 </div>
@@ -12244,7 +12242,7 @@ K_{total} & = \frac{\partial E[P]}{ \partial P} + \frac{\partial \hat{E}[\hat{P}
 \end{align}<p>using a chain rule and</p>
 $$
 K_{total} C = SC\epsilon
-$$<p>as the equation to be solved self-consistently.</p>
+$$<p>as the equation to be solved self-consistently. (Simplest case given here, ADMM1)</p>
 <p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
 
 </div>
@@ -12319,6 +12317,27 @@ $$<p>(see EXCH_SCALING_MODEL keyword in &amp;AUXILIARY_DENSITY_MATRIX_METHOD sub
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ADMM-forces">ADMM forces<a class="anchor-link" href="#ADMM-forces">&#182;</a></h1>$$
+\frac{dE}{d \mathbf{R}} = \frac{dE[P]}{d \mathbf{R}} + \frac{d\hat{E}[\hat{P}]}{d \mathbf{R}}
+$$<p>where $\hat{P}$ is defined via $\hat{C} = AC$. Then various chain rules ...</p>
+$$
+ \frac{d\hat{E}[\hat{P}]}{d \mathbf{R}} +  \frac{d\hat{E}[\hat{P}]}{d \hat{C}}\frac{\hat{C}}{d \mathbf{R}} = \hat{U} \frac{\hat{C}}{d \mathbf{R}}
+$$$$
+ \hat{U} = \frac{d\hat{E}[\hat{P}]}{d \hat{C}} = \frac{d\hat{E}[\hat{P}]}{d \hat{P}}\frac{d\hat{P}}{d \hat{C}} = \hat{K} \hat{C}
+$$<p>finally</p>
+$$
+ \frac{d\hat{E}[\hat{P}]}{d \mathbf{R}} = \hat{U}_{ab}\Big[ \frac{dA}{d \mathbf{R}} C \Lambda^{-1/2} \Big]_{ab} + \hat{U}_{ab} \Big[ AC \frac{d \Lambda^{-1/2}}{d \mathbf{R}}
+\Big]_{ab}
+$$<p>Forces for MO_Diag and non-purified ADMM implemented. Linear algebra can get expensive for larger systems (reason for contracted auxiliary basis sets)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
 <li>several GGA exchange corrections using different functionals</li>
 </ul>
@@ -12369,22 +12388,509 @@ E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
 </ul>
 <p>Names of the ADMM basis sets for main group elements will differ slightly, and usually the first ADMM basis set will not contain polarisation function.</p>
 <p>(see $CP2K/cp2k/data/BASIS_ADMM_MOLOPT)</p>
+<p>Ling &amp; Slater, unpublished</p>
 
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="General-remarks">General remarks<a class="anchor-link" href="#General-remarks">&#182;</a></h1><ul>
+<li>Always check the convergence of CUTOFF</li>
+<li>Always check the convergence of properties (e.g. lattice parameters, band gaps) with respect to supercell sizes</li>
+<li>Always start from pre-converged GGA (e.g. PBE) wavefunction and geometry</li>
+<li>Always check the convergence of primary and ADMM basis sets <ul>
+<li>start from a small basis and gradually increase the size</li>
+</ul>
+</li>
+<li>ADMM has only been implemented for use with GPW</li>
+<li>Only ADMM1 will work with some other functionality (smearing, TDDFPT)</li>
+</ul>
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example:-Diamond-band-gap">Example: Diamond band-gap<a class="anchor-link" href="#Example:-Diamond-band-gap">&#182;</a></h1><table style="width:100%">
+  <tr>
+    <th>method</th>
+    <th>number of integrals</th> 
+    <th>gap [eV]</th> 
+  </tr>
+  <tr>
+    <td>PBE (PBS)</td>
+    <td> </td> 
+    <td>4.17</td> 
+  </tr>
+  <tr>
+    <td>PBE (ABS)</td>
+    <td> </td> 
+    <td>4.37</td> 
+  </tr>
+  <tr>
+    <td>PBE0 (PBS)</td>
+    <td>40, 787, 850, 778, 591 </td> 
+    <td>6.07</td> 
+  </tr>
+  <tr>
+    <td>PBE0 (ABS)</td>
+    <td> 23, 561, 509, 497</td> 
+    <td>6.25</td> 
+  </tr>
+  <tr>
+    <td>PBE0 ADMM1</td>
+    <td>24, 816, 897, 009 </td> 
+    <td>6.03</td> 
+  </tr>
+  <tr>
+    <td>PBE0 ADMM2</td>
+    <td> 24, 795, 460, 638</td> 
+    <td>6.02</td> 
+  </tr>
+</table><p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example:-Silicon-band-gap">Example: Silicon band-gap<a class="anchor-link" href="#Example:-Silicon-band-gap">&#182;</a></h1><table style="width:100%">
+  <tr>
+    <th>Cutoff Radius [nm]</th>
+    <th>Band gap [eV]</th> 
+    <th># Integrals</th> 
+  </tr>
+  <tr>
+    <td>0.2 </td>
+    <td>1.16 $^a$</td> 
+    <td>77799946176 $^a$</td> 
+  </tr>
+  <tr>
+    <td>0.4 </td>
+    <td>1.54 $^a$</td> 
+    <td>154325979000 $^a$</td> 
+  </tr>
+  <tr>
+    <td>0.6 </td>
+    <td>1.71 $^a$</td> 
+    <td>265868148312 $^a$</td> 
+  </tr>
+  <tr>
+    <td>0.8 </td>
+    <td>1.78 $^a$</td> 
+    <td>422457823080 $^a$</td> 
+  </tr>
+</table><p>PBE0-TC-LRC with cFIT3 ADMM basis, 3x3x3 supercell, 216 atoms</p>
+<table style="width:100%">
+  <tr>
+    <th>ADMM basis</th>
+    <th>Band gap [eV]</th> 
+    <th># Integrals</th> 
+  </tr>
+  <tr>
+    <td>cFIT3 </td>
+    <td>1.16 $^a$ </td> 
+    <td>422457823080 $^a$</td> 
+  </tr>
+  <tr>
+    <td>FIT3 </td>
+    <td>1.80 $^a$ </td> 
+    <td>424426850352 $^a$</td> 
+  </tr>
+  <tr>
+    <td>pFIT3 </td>
+    <td>1.98 $^a$ </td> 
+    <td>1447428361680 $^a$</td> 
+  </tr>
+  <tr>
+    <td>Ref. (VASP) </td>
+    <td>1.93 $^b$</td> 
+    <td></td> 
+  </tr>
+</table><p>PBE0-TC-LRC with 8 Å cutoff radius, 3x3x3 supercell, 216 atoms</p>
+<p>$^a$ Ling &amp; Slater, unpublished; $^b$ Paier et al., J. Chem. Phys. 124, 154709 (2006)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Functionals">Functionals<a class="anchor-link" href="#Functionals">&#182;</a></h1><ul>
+<li>PBE0-TC-LRC, Long Range Corrected truncated global hybrid</li>
+</ul>
+$$
+E_{XC}^{PBE0-TC-LRC} = aE_{X}^{HF,TC}(R_c) + aE_{X}^{PBE,LRC}(R_c) + (1-a)E_{X}^{PBE} + E_C^{PBE}
+$$<p>Guidon et al., J. Chem. Theory Comput., 5, 3010 (2008)
+Spencer &amp; Alavi, Phys. Rev. B, 77, 193110 (2008)</p>
+<ul>
+<li>HSE, Range separated hybrid</li>
+</ul>
+$$
+E_{XC}^{HSE} = aE_{X}^{HF,SR}(\omega)+ (1-a)E_{X}^{PBE,SR}(\omega) + E_{X}^{PBE,LR}(\omega) + E_C^{PBE}
+$$<p>Scuceria et al., J. Chem. Phys., 125, 224106 (2006)</p>
+<p>"Empirical" parameters: $a, R_c,$ and $\omega$</p>
+<p>(note the 0 in PBE0 stands for 0 empirical parameters...)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Input-structure">Input structure<a class="anchor-link" href="#Input-structure">&#182;</a></h1><p><code>
+  &DFT
+    …
+    BASIS_SET_FILE_NAME ./BASIS_MOLOPT
+    BASIS_SET_FILE_NAME ./BASIS_ADMM
+    WFN_RESTART_FILE_NAME ${project}-RESTART.wfn
+    &SCF
+        SCF_GUESS RESTART
+        …
+    &END SCF
+    &AUXILIARY_DENSITY_MATRIX_METHOD
+            METHOD BASIS_PROJECTION
+            ADMM_PURIFICATION_METHOD MO_DIAG
+        &END AUXILIARY_DENSITY_MATRIX_METHOD
+    …
+    &XC
+    …
+    &END XC
+  &END DFT
+  &SUBSYS
+    &KIND Si
+        BASIS_SET DZVP-MOLOPT-SR-GTH
+        AUX_FIT_BASIS_SET FIT3
+        POTENTIAL GTH-PBE-q4
+    &END KIND
+  &END SUBSYS
+</code></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<style>
+* {
+    box-sizing: border-box;
+}
+.column {
+    float: left;
+    padding: 10px;
+    font-size: small;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.content {
+    width: 50%;
+}
+</style><h1 id="PBE0-vs-HSE">PBE0 vs HSE<a class="anchor-link" href="#PBE0-vs-HSE">&#182;</a></h1><p>Input structure</p>
+<div class="clearfix">
+  <div class="column content">
+    <code>
+    <font size=2>
+    &XC
+      &XC_FUNCTIONAL
+        &PBE
+          SCALE_X 0.75
+          SCALE_C 1.0
+        &END PBE
+        &PBE_HOLE_T_C_LR
+          CUTOFF_RADIUS 2.0
+          SCALE_X 0.25
+        &END PBE_HOLE_T_C_LR
+      &END XC_FUNCTIONAL
+      &HF
+        &SCREENING
+          EPS_SCHWARZ 1.0E-6
+          SCREEN_ON_INITIAL_P FALSE
+        &END SCREENING
+        &INTERACTION_POTENTIAL
+          POTENTIAL_TYPE TRUNCATED
+          CUTOFF_RADIUS 2.0
+          T_C_G_DATA ./t_c_g.dat
+        &END INTERACTION_POTENTIAL
+        &MEMORY
+          MAX_MEMORY 2400
+          EPS_STORAGE_SCALING 0.1
+        &END MEMORY
+        FRACTION 0.25
+      &END HF
+    &END XC
+    </font>
+    </code>  
+    </div><div class="column content">
+    <code>
+    <font size=2>
+ &XC
+      &XC_FUNCTIONAL
+       &PBE
+        SCALE_X 0.0
+        SCALE_C 1.0
+       &END PBE
+       &XWPBE
+        SCALE_X -0.25
+        SCALE_X0 1.0
+        OMEGA 0.11
+       &END XWPBE
+      &END XC_FUNCTIONAL
+      &HF
+        &SCREENING
+          EPS_SCHWARZ 1.0E-6
+          SCREEN_ON_INITIAL_P FALSE
+        &END SCREENING
+        &INTERACTION_POTENTIAL
+          POTENTIAL_TYPE SHORTRANGE
+          OMEGA 0.11
+        &END INTERACTION_POTENTIAL
+        &MEMORY
+          MAX_MEMORY  2400
+          EPS_STORAGE_SCALING 0.1
+        &END MEMORY
+        FRACTION 0.25
+      &END HF
+    &END XC
+    </font>
+    </code>
+    </div><p>(see examples in $CP2K/cp2k/tests/QS/regtest-admm-1/2/3/4)</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="clearfix">
+  <div class="column content">
+    <code>
+    &XC
+      &XC_FUNCTIONAL
+        &PBE
+          SCALE_X 0.75
+          SCALE_C 1.0
+        &END PBE
+        &PBE_HOLE_T_C_LR
+          CUTOFF_RADIUS 2.0
+          SCALE_X 0.25
+        &END PBE_HOLE_T_C_LR
+      &END XC_FUNCTIONAL
+      ...
+    &END XC
+    </font>
+    </code>  
+    </div><div class="column content">
+    <code>
+    &XC
+      &XC_FUNCTIONAL
+       &PBE
+        SCALE_X 0.0
+        SCALE_C 1.0
+       &END PBE
+       &XWPBE
+        SCALE_X -0.25
+        SCALE_X0 1.0
+        OMEGA 0.11
+       &END XWPBE
+      &END XC_FUNCTIONAL
+      ...
+    &END XC
+    </font>
+    </code>
+    </div>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="clearfix">
+  <div class="column content">
+    <code>    
+    <font size=3>
+    &XC
+      ...
+      &HF
+        &SCREENING
+          EPS_SCHWARZ 1.0E-6
+          SCREEN_ON_INITIAL_P FALSE
+        &END SCREENING
+        &INTERACTION_POTENTIAL
+          POTENTIAL_TYPE TRUNCATED
+          CUTOFF_RADIUS 2.0
+          T_C_G_DATA ./t_c_g.dat
+        &END INTERACTION_POTENTIAL
+        &MEMORY
+          MAX_MEMORY 2400
+          EPS_STORAGE_SCALING 0.1
+        &END MEMORY
+        FRACTION 0.25
+      &END HF
+    &END XC
+    </font>
+    </code>  
+    </div><div class="column content">
+    <code>
+    <font size=3>
+    &XC
+      ...
+      &HF
+        &SCREENING
+          EPS_SCHWARZ 1.0E-6
+          SCREEN_ON_INITIAL_P FALSE
+        &END SCREENING
+        &INTERACTION_POTENTIAL
+          POTENTIAL_TYPE SHORTRANGE
+          OMEGA 0.11
+        &END INTERACTION_POTENTIAL
+        &MEMORY
+          MAX_MEMORY  2400
+          EPS_STORAGE_SCALING 0.1
+        &END MEMORY
+        FRACTION 0.25
+      &END HF
+    &END XC
+    </font>
+    </code>
+    </div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Output">Output<a class="anchor-link" href="#Output">&#182;</a></h1><p><font size=3></p>
+
+<pre><code>  Step     Update method      Time    Convergence         Total energy    Change
+
+  HFX_MEM_INFO| Est. max. program size before HFX [MiB]:                     563
+
+  *** WARNING in hfx_energy_potential.F:600 :: The Kohn Sham matrix is not  ***
+  *** 100% occupied. This may result in incorrect Hartree-Fock results. Try ***
+  *** to decrease EPS_PGF_ORB and EPS_FILTER_MATRIX in the QS section. For  ***
+  *** more information see FAQ: https://www.cp2k.org/faq:hfx_eps_warning    ***
+
+  HFX_MEM_INFO| Number of cart. primitive ERI's calculated:         218851035670
+  HFX_MEM_INFO| Number of sph. ERI's calculated:                    152193561473
+  HFX_MEM_INFO| Number of sph. ERI's stored in-core:                 22711518963
+  HFX_MEM_INFO| Number of sph. ERI's stored on disk:                           0
+  HFX_MEM_INFO| Number of sph. ERI's calculated on the fly:                    0
+  HFX_MEM_INFO| Total memory consumption ERI's RAM [MiB]:                  21290
+  HFX_MEM_INFO| Whereof max-vals [MiB]:                                     1516
+  HFX_MEM_INFO| Total compression factor ERI's RAM:                         8.14
+  HFX_MEM_INFO| Total memory consumption ERI's disk [MiB]:                     0
+  HFX_MEM_INFO| Total compression factor ERI's disk:                        0.00
+  HFX_MEM_INFO| Size of density/Fock matrix [MiB]:                           764
+  HFX_MEM_INFO| Size of buffers [MiB]:                                       118
+  HFX_MEM_INFO| Number of periodic image cells considered:                     7
+  HFX_MEM_INFO| Est. max. program size after HFX  [MiB]:                    1549
+
+     1 OT DIIS     0.80E-01   82.1     0.00000107    -17361.4683416734 -1.74E+04
+     2 OT DIIS     0.80E-01   43.3     0.00000085    -17361.4683473031 -5.63E-06</code></pre>
+<p><code>Number of sph. ERI's calculated on the fly:</code> should be zero - keep in memory.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Extra-remarks">Extra remarks<a class="anchor-link" href="#Extra-remarks">&#182;</a></h1><ul>
+<li><p>Libint library is used to calculate ERIs and their analytic derivatives, see $CP2K/cp2k/INSTALL for more details on installation and linking with CP2K</p>
+</li>
+<li><p>Hybrid DFT calculations of large systems are memory demanding, try to increase MAX_MEMORY or run the job with more MPI processes</p>
+</li>
+<li><p>For extremely large hybrid DFT calculations, try hybrid MPI/OpenMP binary (i.e. cp2k.psmp)</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h1><p>TiO$_2$ is everyone's favourite material - hybrid calculations with ~1000 atoms and good basis sets using CP2K</p>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td><img src='../images/prl_fig3.png' width=300></td>
+<td><img src='images/struc_multimers.png' width=300></td>
+</tr>
+<tr>
+<td><img src='../images/prl_fig4.png' width=300></td>
+<td><img src='images/STM_multimers.png' width=300></td>
+</tr>
+</table><p>Yim et al, Phys. Rev. Lett. 117, 116402 (2016)</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Fun-and-games">Fun and games<a class="anchor-link" href="#Fun-and-games">&#182;</a></h1><p>ADMM is not just an approximation to full hybrid DFT, but can be used in other ways</p>
+<ul>
+<li>embedding: smaller basis sets / no basis sets on some atoms</li>
+</ul>
+<table cellspacing="0" cellpadding="0">
+<tr><td><img src='../images/MgO-Ag_island.png' width=350>
+</td><td><img src='images/admm_metals.png' width=250></td>
+</td><td><img src='images/MgO-Ag_bandgap.png' width=350></td>
+</tr>
+</table><p>Ling et al. "Effects of oxide roughness at metal oxide interface: MgO on Ag (001)."  J.  Phys. Chem. C 117.10 (2013): 5075-5083.</p>
+<ul>
+<li>flexible +U: only have ADMM basis sets of certain angular momentum, e.g. just set of d-orbitals on Ti atoms.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thanks">Thanks<a class="anchor-link" href="#Thanks">&#182;</a></h1><ul>
+<li>Sanliang Ling, University College London (these slides are basically his reformatted)</li>
+<li>CP2K developers</li>
+</ul>
+<hr>
+<p>Exercises <a href="https://www.cp2k.org/exercises:2017_uzh_cp2k-tutorial:hybrid">here</a></p>
+
+</div>
+</div>
 </div></section></section>
 </div>
 </div>
@@ -12398,8 +12904,8 @@ require(
       waitSeconds: 15
     },
     [
-      "../revealjs/lib/js/head.min.js",
-      "../revealjs/js/reveal.js"
+      "../revealjs//lib/js/head.min.js",
+      "../revealjs//js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -12415,9 +12921,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "../revealjs/lib/js/classList.js",
+                { src: "../revealjs//lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "../revealjs/plugin/notes/notes.js",
+                { src: "../revealjs//plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
