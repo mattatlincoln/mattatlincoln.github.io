@@ -3,124 +3,138 @@
 <title>Matt at Lincoln</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
+}
+</style>
+
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
-    <a href="#home" class="w3-bar-item w3-button"><b>Matt Watkins</b> Computational Chemistry / Chemical Physics</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="#projects" class="w3-bar-item w3-button">Projects</a>
-      <a href="#about" class="w3-bar-item w3-button">About</a>
-      <a href="#talks" class="w3-bar-item w3-button">Talks</a>
+<div class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#home" class="btn"><b>Matt Watkins</b> Computational Chemistry / Chemical Physics</a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="text-right">
+      <a href="#projects" class="btn">Projects</a>
+      <a href="#about" class="btn">About</a>
+      <a href="#people" class="btn">People</a>
+      <a href="#Talks" class="btn">Talks</a>
     </div>
   </div>
 </div>
 
 <!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-  <img class="w3-image" src="images/sta_old.png" alt="Architecture" width="1500" height="1200">
-  <div class="w3-display-middle w3-margin-top w3-center">
-    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Matt Watkins</b></span> <span class="w3-hide-small w3-text-light-grey">Research</span></h1>
-  </div>
-</header>
+<div class="jumbotron" style="width:80% center" id="home">
+  <img class="image-responsive center-block" src="images/sta_old.png" alt="Simple model" >
+  <h1 class="text-center"> Matt Watkins - Research</h1>
+</div>
 
 <!-- Page content -->
-<div class="w3-content w3-padding" style="max-width:1564px">
+<div class="" style="">
 
   <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
-  </div>
+  <div class="container-fluid" id="projects">
+    <h2 class="text-left">Projects</h2>
 
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">AFM in solution</div>
-        <img src="images/sta1.png" alt="afm" style="width:100%">
+    <div class="row row-eq-height">
+      <div class="col-md-3">
+        <h3 class="">AFM in solution</h3>
+        <img src="images/sta1.png" class="img-responsive" alt="afm" >
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Excited states</div>
-        <img src="images/structure-HOMO.jpg" alt="excited" style="width:100%">
+    
+      <div class="col-md-3">
+        <h3 class="">Excited states</h3>
+        <img src="images/structure-HOMO.jpg" class="img-responsive" alt="excited" >
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Interfaces</div>
-        <img src="images/qmmm_sandwich.png" alt="afm" style="width:100%">
+    
+      <div class="col-md-3">
+        <h3 class="">Interfaces</h3>
+        <img src="images/qmmm_sandwich.png" class="img-responsive" alt="afm" >
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Transport</div>
-        <img src="images/dos_rep.gif" alt="afm" style="width:100%">
+    
+      <div class="col-md-3">
+        <h3 class="">Transport</h3>
+        <img src="images/dos_rep.gif" class="img-responsive" alt="afm" >
       </div>
     </div>
   </div>
-
 
   <!-- About Section -->
-  <div class="w3-container w3-padding-32" id="about">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+  <div class="container-fluid" id="about">
+    <h2 class="text-left">About</h2>
     <p>
 Matt Watkins is a Senior Lecturer in the new School of Mathematics and Physics since April 2015 at the University of Lincoln UK.
     </p>
-
     <p>
 Our group works closely with leading experimental and computational groups to develop simulation tools to understand and stimulate chemical physics at the nanoscale. Current interests are characterisation of solid-liquid interfaces. We are developing methods to simulate Atomic Force Microscopy in Liquids; Electron transport across interfaces; Electrochemistry; excited state processes.
     </p>
   </div>
 
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="http://www.gravatar.com/avatar/39b27c213f23cd2f568143477a983030?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" alt="Matt" style="width:100%">
+  <div class="container-fluid" id="people">
+  <h2 class="text-left"> People </h2>
+  <div class="row row-eq-height">
+
+    <div class="col-md-3">
+      <img src="http://www.gravatar.com/avatar/39b27c213f23cd2f568143477a983030?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" class="img-responsive"alt="Matt" >
       <h3>Matt Watkins</h3>
-      <p class="w3-opacity">PI</p>
+      <p class="">PI</p>
       <p>Lincoln website is <a href="http://staff.lincoln.ac.uk/mwatkins"> here</a></p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" alt="Sergey" style="width:100%">
+
+    <div class="col-md-3">
+      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" class="img-responsive" alt="Sergey">
       <h3>Segery Chulkov</h3>
-      <p class="w3-opacity">Postdoctoral researcher</p>
+      <p class="">Postdoctoral researcher</p>
       <p>Sergey is coding non-equilibrium transport methods into <a href="https://www.cp2k.org/about"> CP2K</a> </p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" alt="Chris" style="width:100%">
+
+    <div class="col-md-3">
+      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" class="img-responsive" alt="Chris">
       <h3>Chris Dickens</h3>
-      <p class="w3-opacity">UROS student</p>
+      <p class="">UROS student</p>
       <p>Undergraduate Research Opportunities Scheme</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" alt="Anon" style="width:100%">
+    <div class="col-md-3">
+      <img src="http://www.gravatar.com/avatar/c17369f902b93d224c7b9cf8b6a6e02d?r=g&s=200&d=http%3A%2F%2Fblogs.lincoln.ac.uk%2Fwp-content%2Fplugins%2Fbuddypress%2Fbp-core%2Fimages%2Fmystery-man.jpg" class="img-responsive" alt="Anon" >
       <h3>Anon</h3>
-      <p class="w3-opacity">PhD student</p>
+      <p class="">PhD student</p>
       <p>Please get in touch if you are interested in pursuing a PhD with us.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
     </div>
+  </div>
   </div>
 
   <!-- Talks Section -->
-  <div class="w3-container w3-padding-32" id="talks">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Talks</h3>
-    <div class="w3-row-padding w3-grayscale">
-      <div class="w3-col l3 m6 w3-margin-bottom">
-	<img src="images/cp2k_logo_500.png" alt="York2017" style="width:100%">
+  <div class="container-fluid" id="Talks">
+    <h3 class="text-left">Recent Talks</h3>
+    <div class="row row-eq-height">
+
+      <div class="col-md-3">
+	<img src="images/cp2k_logo_500.png" class="img-responsive" alt="York2017">
 	<p><a href="https://mattatlincoln.github.io/cp2k_workshop_2017"> Talk at the CP2K User Tutorial 2017: "Advanced ab-initio MD methods"</a>
       </p>
       </div>
-      <div class="w3-col l3 m6 w3-margin-bottom">
-	<img src="images/sta_tip_models.png" alt="York2017" style="width:100%">
+
+      <div class="col-md-3">
+	<img src="images/sta_tip_models.png" class="img-responsive" alt="York2017">
 	<p><a href="https://mattatlincoln.github.io/york2017">Talk at Psi-k workshop: Atomic scale materials microscopy: theory meets experiment</a> 26-28 Jun 2017 York (United Kingdom)
       </p>
       </div>
-
 
     </div>
   </div>
@@ -155,10 +169,6 @@ function myMap()
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDisLbYnh8O1JcOobWOfk5ljn5xyOr0-Hw&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 </body>
 </html>
