@@ -24,14 +24,12 @@
 <body>
 
 <!-- Navbar (sit on top) -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
       <a class="navbar-brand" href="#home"><b>Matt Watkins</b> Computational Chemistry / Chemical Physics</a>
     </div>
@@ -39,19 +37,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#projects">Projects <span class="sr-only">(current)</span></a></li>
-        <li><a href="#Talks">Talks</a></li>
-        <li><a href="#about">About</a></li>
+        <li class="active"><a href="#projects"><span class="glyphicon glyphicon-info-sign"></span> Projects <span class="sr-only">(current)</span></a></li>
+        <li><a href="#Talks"><span class="glyphicon glyphicon-blackboard"></span> Talks</a></li>
+        <li><a href="#about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#people">People</a></li>
+            <li><a href="#projects"><span class="glyphicon glyphicon-stats"></span> Projects</a></li>
+            <li><a href="#about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+            <li><a href="#people"><span class="glyphicon glyphicon-user"></span> People</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#Talks">Talks</a></li>
+            <li><a href="#Talks"><span class="glyphicon glyphicon-blackboard"></span> Talks</a></li>
           </ul>
         </li>
       </ul>
@@ -62,15 +60,30 @@
 <!-- Header -->
 <div class="jumbotron" id="home">
   <img class="img-responsive center-block" src="images/sta_old.png" alt="Simple model" >
-  <h1 class="text-center"> Matt Watkins - Research</h1>
+  <h1 class="text-center"> Matt Watkins</h1>
+  <h2 class="text-center text-muted"> School of Mathematics and Physics, University of Lincoln, UK</h1>
 </div>
 
 <!-- Page content -->
 <div class="" style="">
 
+  <!-- About Section -->
+  <div class="container-fluid" id="about">
+    <h2 class="text-left"><span class="glyphicon glyphicon-info-sign"> About</h2>
+    <p>
+Matt Watkins is a Senior Lecturer in the School of Mathematics and Physics at the University of Lincoln UK.
+    </p>
+    <p>
+Our group works closely with leading experimental and computational groups to develop simulation tools to understand chemical physics processes at the nanoscale.    
+    </p>
+    <p>
+Current interests are characterisation of solid-liquid interfaces: We are developing methods to simulate Atomic Force Microscopy in Liquids; Electron transport across interfaces; Electrochemistry; excited state processes.
+    </p>
+  </div>
+
   <!-- Project Section -->
   <div class="container-fluid" id="projects">
-    <h2 class="text-left">Projects</h2>
+    <h2 class="text-left"><span class="glyphicon glyphicon-stats"></span> Projects</h2>
 
     <div class="row row-eq-height">
       <div class="col-md-3">
@@ -95,20 +108,9 @@
     </div>
   </div>
 
-  <!-- About Section -->
-  <div class="container-fluid" id="about">
-    <h2 class="text-left">About</h2>
-    <p>
-Matt Watkins is a Senior Lecturer in the School of Mathematics and Physics at the University of Lincoln UK.
-Our group works closely with leading experimental and computational groups to develop simulation tools to understand chemical physics processes at the nanoscale.    
-    </p>
-    <p>
-Current interests are characterisation of solid-liquid interfaces. We are developing methods to simulate Atomic Force Microscopy in Liquids; Electron transport across interfaces; Electrochemistry; excited state processes.
-    </p>
-  </div>
 
   <div class="container-fluid" id="people">
-  <h2 class="text-left"> People </h2>
+  <h2 class="text-left"><span class="glyphicon glyphicon-user"></span> People </h2>
   <div class="row row-eq-height">
 
     <div class="col-md-3">
@@ -142,7 +144,7 @@ Current interests are characterisation of solid-liquid interfaces. We are develo
 
   <!-- Talks Section -->
   <div class="container-fluid" id="Talks">
-    <h3 class="text-left">Recent Talks</h3>
+    <h3 class="text-left"><span class="glyphicon glyphicon-blackboard"></span> Recent Talks</h3>
     <div class="row row-eq-height">
 
       <div class="col-md-3">
@@ -167,8 +169,10 @@ Current interests are characterisation of solid-liquid interfaces. We are develo
 <div id="googleMap" class="w3-grayscale" style="width:100%;height:450px;"></div>
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p><a href="http://www.lincoln.ac.uk/home/smp/" title="Matt Watkins" target="_blank" class="w3-hover-text-green">School of Mathematics and Physics</a>, University of Lincoln, UK</p>
+<footer class="footer">
+  <div class="container">
+    <h3 class="text-muted text-center"><a href="http://www.lincoln.ac.uk/home/smp/" title="Matt Watkins">School of Mathematics and Physics</a>, University of Lincoln, UK</h3>
+  </div>
 </footer>
 
 <!-- Add Google Maps -->
