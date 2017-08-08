@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-
 <style>
 .row-eq-height {
   display: -webkit-box;
@@ -25,19 +24,40 @@
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="navbar">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#home" class="btn"><b>Matt Watkins</b> Computational Chemistry / Chemical Physics</a>
-      <!-- Float links to the right. Hide them on small screens -->
-      <div class="text-right">
-      <a href="#projects" class="btn">Projects</a>
-      <a href="#about" class="btn">About</a>
-      <a href="#people" class="btn">People</a>
-      <a href="#Talks" class="btn">Talks</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#home"><b>Matt Watkins</b> Computational Chemistry / Chemical Physics</a>
     </div>
-  </div>
-</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#projects">Projects <span class="sr-only">(current)</span></a></li>
+        <li><a href="#Talks">Talks</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#people">People</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#Talks">Talks</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 <!-- Header -->
 <div class="jumbotron" style="width:80% center" id="home">
@@ -79,10 +99,11 @@
   <div class="container-fluid" id="about">
     <h2 class="text-left">About</h2>
     <p>
-Matt Watkins is a Senior Lecturer in the new School of Mathematics and Physics since April 2015 at the University of Lincoln UK.
+Matt Watkins is a Senior Lecturer in the School of Mathematics and Physics at the University of Lincoln UK.
+Our group works closely with leading experimental and computational groups to develop simulation tools to understand chemical physics processes at the nanoscale.    
     </p>
     <p>
-Our group works closely with leading experimental and computational groups to develop simulation tools to understand and stimulate chemical physics at the nanoscale. Current interests are characterisation of solid-liquid interfaces. We are developing methods to simulate Atomic Force Microscopy in Liquids; Electron transport across interfaces; Electrochemistry; excited state processes.
+Current interests are characterisation of solid-liquid interfaces. We are developing methods to simulate Atomic Force Microscopy in Liquids; Electron transport across interfaces; Electrochemistry; excited state processes.
     </p>
   </div>
 
@@ -169,6 +190,8 @@ function myMap()
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDisLbYnh8O1JcOobWOfk5ljn5xyOr0-Hw&callback=myMap"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
