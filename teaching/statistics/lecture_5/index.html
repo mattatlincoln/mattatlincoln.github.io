@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>05 - Covariance and Correlation part 1 slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+<link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../revealjs//css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Covariance-and-Correlation">Covariance and Correlation<a class="anchor-link" href="#Covariance-and-Correlation">&#182;</a></h1><p>last week we looked at the properties of expectations of random variables.</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+By the end of this lecture you should know:
+<br><br>
+<li> how to calculate the expectation value of a jointly distributed discrete random variable  </li>
+<li> how to calculate the covariance and correlation of jointly distributed random variables.</li>
+<li> how to calculate expectation values and variances of sums of independent random variables</li>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Expectation-and-Variance-revisited">Expectation and Variance revisited<a class="anchor-link" href="#Expectation-and-Variance-revisited">&#182;</a></h1><ul>
+<li>The expectation value gives the weighted average of the possible values of the random variable. The weighting is the likelihood that that value turns up. This is the <strong>mean</strong> of the random variable, often written as $\mu$.</li>
+</ul>
+<p>Given a random variable $X$ with a probability mass function $p(x)$  we define the expectation of $X$, written as $\text{E}[X]$ as</p>
+$$
+\text{E}[X] = \sum_{\text{all $x$}} x\cdot p(x)
+$$<p>The expectation of a discrete random variable $X$ is just the arithmetic mean of the values it takes on.</p>
+<p>The equivalent for a continuous random variable $Z$ is</p>
+$$
+\text{E}[Z] = \int_{\text{all $z$}} z\cdot f(z) \mathrm{d}z
+$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong><br>
+let $X$ be the random variable 'number of heads' when two coins are flipped, what is the expectation of $X$?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets write down the probability mass function of $X$.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$p(0)=\frac{1}{4}, p(1)= \frac{1}{2}, p(2)= \frac{1}{4}$, then the expectation of $X$ is given by</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \text{E}[X] = \sum_{\text{all $x$}} x\cdot p(x) = \\
+0 \cdot p(0) + 1 \cdot p(1) + 2 \cdot p(2) = \\
+0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 2 \cdot \frac{1}{4} = 1 = \mu_X
+$$<p>this is the expected number of heads between two coins. From our initial discussions this should be the long-term average number of heads if the experiment was repeated many, many times.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong><br>
+In a game the player wins back a sum that is the 'square of the number of heads' on two coins.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have a new random variable $Y$ with probability mass function</p>
+<p>$p(0)=\frac{1}{4}, p(1)= \frac{1}{2}, p(4)= \frac{1}{4}$, then the expectation of $Y$ is given by</p>
+$$ \text{E}[Y] = \sum_{\text{all $y$}} y\cdot p(y) = \\
+0 \cdot p(0) + 1 \cdot p(1) + 4 \cdot p(4) = \\
+0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_Y
+$$<p>note that $Y$ = $X^2$.</p>
+$$ \text{E}[X^2] = \sum_{\text{all $x$}} x^2\cdot p(2) = \\
+0 \cdot p(0) + 1 \cdot p(1) + 2^2 \cdot p(2) = \\
+0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_{X^2}
+$$<p>This is the square of number of heads between two coins. From our initial discussions this should be the long-term average if the experiment was repeated many, many times. It may not be a possible value of $Y$</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Definition</strong></p>
+<p>Let $g(X)$ be any function of a random variable $X$. Then</p>
+$$
+\text{E}[g(X)] = \sum_{\text{all $x$}}g(x) \cdot p(x)
+$$<p>or for the continuous random variable $Z$</p>
+$$
+\text{E}[g(Z)] = \int_{\text{all $z$}} g(z)\cdot f(z) \mathrm{d}z
+$$<hr>
+<p>if $X$ is a random variable, then</p>
+<ul>
+<li>$\text{E}[a] = a$</li>
+<li>$\text{E}[aX] = a\text{E}[X]$</li>
+<li>$\text{E}[g_1(X) + g_2(X)] = \text{E}[g_1(X)] + \text{E}[g_2(X)]$, where $g_1(X)$ and $g_2(X)$ are any functions of X. </li>
+</ul>
+<p>these define the properties of a linear operator.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Definition</strong></p>
+<p>If $X$ is a random variable with mean $\mu$, then the variance of $X$, denoted by $\text{Var}(X)$, is defined by</p>
+$$
+\text{Var}(X) = \text{E}[(X-\mu)^2]
+$$<p>this can also be written</p>
+$$
+\text{Var}(X) = \text{E}[X^2] - (\text{E}[X])^2 
+$$<hr>
+<p>we saw in the problem class that</p>
+$$
+\text{Var}(aX + b) = a^2 \text{Var}(X)
+$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong>
+the variance of $X$ - we know that it is given by</p>
+$$
+\text{Var}(X) = \text{E}[X^2] - \text{E}[X]^2 = \frac{3}{2} - 1^2 = \frac{1}{2}
+$$<p>and we have a standard deviation of $\sqrt{\text{Var}(X)} = \frac{1}{4}$.</p>
+<p>It is easier to see the meaning of the variance from the alternative form:</p>
+$$
+\text{Var}(X) = \text{E}[(X-\mu_X)^2] =  \sum_{\text{all $x$}} (x - \mu_X) ^2 \cdot p(x) = \\
+(0 - 1)^2 \cdot p(0) + (1 - 1)^2 \cdot p(1) + (2 - 1)^2 \cdot p(2) = \frac{1}{2}
+$$<p>In agreement with the previous value.</p>
+<p><strong>It is the expected value of the square of the distance of $X$ to $\mu_X$.</strong></p>
+<ul>
+<li>If $X$ only took on its average value, the variance would be 0. </li>
+<li>The closer the values of $x$ are to $\mu$ the smaller the value of $\text{var}(X)$. </li>
+<li>The less likely values of $x$ far from $\mu$ are, the smaller the variance.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Joint-random-variables.">Joint random variables.<a class="anchor-link" href="#Joint-random-variables.">&#182;</a></h1><p>We defined two random variables - $X$ and $Y$. What about if it was important to consider the <em>joint</em> probability mass function of $X$ and $Y$. This is written as</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$$P\{X=x,Y=y\} = p(x,y)$$
+
+for discrete random variables, or
+
+$$P\{X=x,Y=y\} = f(x,y)dx dy$$
+
+for continuous ones.
+</div><p>Remember the capitalised $X$ is the random variable, $x$ is a value it can take on.</p>
+<p>How many values can this function take in the discrete case?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Short-example">Short example<a class="anchor-link" href="#Short-example">&#182;</a></h4><p>Lets look at some data from last year, and set up two random variables:</p>
+<ul>
+<li>$X=0$ if a student was doing straight maths, and $X=1$ if a student was doing any other course code.  </li>
+<li>$Y=0$ if a student's surname did not begin with M, $Y=1$ if a students surname began with M.</li>
+</ul>
+<p>There are 4 joint probabilities - $X$ is 0 or 1 and $Y$ is 0 or 1.</p>
+<p>So we need to define $p(0,0), p(0,1),p(1,0),p(1,1)$</p>
+<p>These are the probabilities that both of the variables have specific values.</p>
+<table>
+<thead><tr>
+<th></th>
+<th>$X=0$</th>
+<th>$X=1$</th>
+<th>sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Y=0$</td>
+<td>$\frac{22}{41}$</td>
+<td>$\frac{16}{41}$</td>
+<td>$\frac{38}{41}$</td>
+</tr>
+<tr>
+<td>$Y=1$</td>
+<td>$\frac{3}{41}$</td>
+<td>$\frac{0}{41}$</td>
+<td>$\frac{3}{41}$</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>$\frac{25}{41}$</td>
+<td>$\frac{16}{41}$</td>
+<td>$\frac{41}{41}$</td>
+</tr>
+</tbody>
+</table>
+<p>We found these values by looking through the spreadsheet of student information similar to the one we aggregated a few computational classes ago.</p>
+<p>The marginal values give us the individual probability mass functions of $X$, $p_X(x)$ and $Y$, $p_Y(y)$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Marginal-distributions">Marginal distributions<a class="anchor-link" href="#Marginal-distributions">&#182;</a></h3><p>We can see this property of the marginal values (column or row sums) as each entry in the table is</p>
+$$
+P\{X=x,Y=y\} = p(x,y) = P(X=x \cap Y=y).
+$$<p>We then have using the law of total probability</p>
+$$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$<p>we can immediately see, specialising to our case where the $E_i$ are the values of $y$</p>
+$$
+P\{X=x\} = \sum_{\text{all $y$}} P(X=x \cap Y=y) = \sum_{\text{all $y$}}P(X=x \mid Y=y) P(Y=y).
+$$<p>and equally</p>
+$$
+P\{Y=y\} = \sum_{\text{all $x$}} P(Y=y \cap X=x) = \sum_{\text{all $x$}}P(Y=y \mid X=x) P(X=x).
+$$<p>.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Continuous-random-variables">Continuous random variables<a class="anchor-link" href="#Continuous-random-variables">&#182;</a></h4><p>as normal, we replace the sums with integrals:</p>
+$$
+\begin{align}
+P\{ x - \Delta x /2 \leq X \leq x + \Delta x /2\}\Delta x &amp; = \int_{-\infty}^{\infty} f(x,y) dy \Delta x  \\
+                 &amp; = f_X(x) \Delta x 
+\end{align}
+$$<p>and equally</p>
+$$
+\begin{align}
+P\{ y - \Delta y /2 \leq Y \leq y + \Delta y /2\}\Delta y &amp; =\int_{-\infty}^{\infty} f(x,y) dx \Delta y \\
+                 &amp; = f_Y(y) \Delta y 
+\end{align}
+$$<p>.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Expectation-of-Sums-of-Random-Variables">Expectation of Sums of Random Variables<a class="anchor-link" href="#Expectation-of-Sums-of-Random-Variables">&#182;</a></h2><p>We now come to a very important general result that will be the basis of a lot of the development we do later.</p>
+<p>What we will seek to show is that</p>
+$$
+\text{E}[X_1 + \cdots + X_n] = \text{E}[X_1] + \cdots + \text{E}[X_n],
+$$<p>the expectation of the sum of the random variables $X_1 \ldots X_n$ is just the sum of their individual expectations.</p>
+<p>Lets start with just two variables, $X$ and $Y$. We can use the general expression for the expectation of a function of two random variables</p>
+$$
+\begin{align}
+\text{E}[X+Y] &amp; = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x+y)f(x,y) \mathrm{d}x \mathrm{d}y \\
+              &amp; = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f(x,y) \mathrm{d}x \mathrm{d}y + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f(x,y) \mathrm{d}x \mathrm{d}y \\
+              &amp; = \int_{-\infty}^{\infty} x f_{X}(x) \mathrm{d}x + \int_{-\infty}^{\infty} y f_{Y}(y) \mathrm{d}y \\
+              &amp; = \text{E}[X] + \text{E}[Y]
+\end{align}
+$$<p>At this point we can use proof by induction to show what we were after:</p>
+$$
+\text{E}[X_1 + \cdots + X_n] = \text{E}[X_1] + \cdots + \text{E}[X_n],
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong>
+In fact we have already seen this result:</p>
+<p>We gave $X$ as the 'number of heads' when two coins were flipped.</p>
+<p>Let us define three new random variables, $X_1$ the number of heads on the first coin, $X_2$ the number of heads on the second coin, and then $X = X_1 + X_2$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want the expectation value of $X_1 + X_2$. The expectation value of each is given by</p>
+$$ 
+\begin{align}
+\text{E}[X_1] &amp; = \text{E}[X_2] = \sum_{\text{all $x_1$}} x_1\cdot p(x_1) \\
+              &amp; = 0 \cdot p(0) + 1 \cdot p(1) \\
+              &amp; = 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2} \\ 
+              &amp; = \frac{1}{2} = \mu_{X_1} \\ 
+              &amp; = \mu_{X_2}
+\end{align}
+$$<p>we can see that as expected</p>
+$$
+\text{E}[X] = \text{E}[X_1] + \text{E}[X_2] = 1
+$$<p>what about the variance of the variables?</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ 
+\begin{align}
+\text{E}[X_1^2] &amp; = \text{E}[X_2^2] = \sum_{\text{all $x_1$}} x_1^2\cdot p(x_1) \\
+&amp; = 0 \cdot p(0) + 1 \cdot p(1)  \\
+&amp; = 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}  \\
+&amp; = \frac{1}{2}
+\end{align}
+$$<p>so</p>
+$$
+\text{Var}(X_1) = \text{Var}(X_2) = \frac{1}{2} - (\frac{1}{2})^2 =  \frac{1}{4}
+$$<p>and we get <strong>in this case</strong> (because $X_1$ and $X_2$ are independent)</p>
+$$
+\text{Var}(X) = \text{Var}(X_1) + \text{Var}(X_2)
+$$<p>It should be clear that this would hold for tossing three coins, four coins $\ldots$ $n$ coins, which again could be proved by induction.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Expectation-of-Joint-random-variables.">Expectation of Joint random variables.<a class="anchor-link" href="#Expectation-of-Joint-random-variables.">&#182;</a></h2><p>The joint probability mass/density function contains all the information about the variables it describes.</p>
+<p>We've just seen that we can retrieve the individual probability mass/density functions by integrating/summing over the other variables.</p>
+<p>If we have a general function of the variables, $g(X,Y)$, say, then we can obtain the expectation value of that function as</p>
+$$
+\text{E}[g(X,Y)] = \sum_{y} \sum_{x} g(x,y)p(x,y)
+$$<p>for discrete random variables and</p>
+$$
+\text{E}[g(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f(x,y) \mathrm{d}x \mathrm{d}y
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variances-of-Sums-of-Random-variables.">Variances of Sums of Random variables.<a class="anchor-link" href="#Variances-of-Sums-of-Random-variables.">&#182;</a></h2>$$
+\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)
+$$<p><strong>if and only if the two variables are independent.</strong></p>
+<p>Or in general if $n$ variables are mututally independent.</p>
+$$
+\text{Var}(X_1 + X_2 + .. + X_n) = \text{Var}(X_1) + \text{Var}(X_2) + .. + \text{Var}(X_n)
+$$<p>This formula is actually a special case of something called the <strong>covariance</strong> between two random variables.</p>
+<hr>
+<p><strong>Definition</strong><br>
+the covariance between $X$ and $Y$, denoted by $\text{Cov}(X,Y)$, is defined by
+$$
+\text{Cov}(X,Y) = \text{E}\Big[ (X - \text{E}[X])\cdot(Y - \text{E}[Y]) \Big]
+$$</p>
+<hr>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong>
+back to our coins,</p>
+$$
+\begin{align}
+\text{Cov}(X_1,X_2) &amp; = \text{E}\Big[ (X_1 - \text{E}[X_1]) \cdot (X_2 - \text{E}[X_2]) \Big] \\
+                    &amp;=  \sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2)
+\end{align}
+$$<p>were the second line comes from the general expression</p>
+$$
+\text{E}[g(X,Y)] = \sum_{y} \sum_{x} g(x,y)p(x,y)
+$$<p>adjusted to our particular case.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So,</p>
+$$
+\begin{align}
+\text{Cov}(X_1,X_2) &amp; = \text{E} \Big[ (X_1 - \text{E}[X_1])\cdot(X_2 - \text{E}[X_2]) \Big] \\
+                    &amp;=  \sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2)
+\end{align}
+$$<p>In this case we can very reasonably expect that $p(x_1,x_2) = p(x_1)p(x_2)$ (remember the definition of independent probabilities). We can now write out all the terms in the double sum:</p>
+$$
+\begin{align}
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2) = \\
+(0-\frac{1}{2})\times(0-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1-\frac{1}{2})\times(0-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(0-\frac{1}{2})\times(1-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1-\frac{1}{2})\times(1-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} = \\
+\frac{1}{16} - \frac{1}{16} -\frac{1}{16} + \frac{1}{16} = 0
+\end{align}
+$$<p>this will be the case whenever the two variables are independent.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Independent-variables-have-0-covariance">Independent variables have 0 covariance<a class="anchor-link" href="#Independent-variables-have-0-covariance">&#182;</a></h4><p>We can also see that the independence of $X$ and $Y$ guarantees that $\text{Cov}(X,Y)=0$ from this expression by using the result that</p>
+$$
+\text{E}[XY] = \text{E}[X]\text{E}[Y]
+$$<p>for independent variables.</p>
+$$
+\implies \text{Cov}(X,Y) = \text{E}[XY] - \text{E}[X]\text{E}[Y] = 0
+$$<p>for independent variables.</p>
+<p>Again we can check that this holds for our $X_1$ and $X_2$.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Useful-formula">Useful formula<a class="anchor-link" href="#Useful-formula">&#182;</a></h3><p>In a similar way to the variance the covariance can more easily be caluclated using an alternative expression</p>
+$$
+\begin{align}
+\text{Cov}(X,Y) &amp; = \text{E}\Big[(X - \text{E}[X])\cdot(Y - \text{E}[Y])\Big] \\
+                &amp; = \text{E}\Big[XY - \text{E}[X]Y - X\text{E}[Y] + \text{E}[X]\text{E}[Y]\Big] \\
+                &amp; = \text{E}\Big[XY] - \text{E}[X]\text{E}[Y] - \text{E}[X]\text{E}[Y] + \text{E}[X]\text{E}[Y]\Big]\\ 
+                &amp; = \text{E}[XY] - \text{E}[X]\text{E}[Y]
+\end{align}
+$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong></p>
+<p>calculate $\text{E}[X_1 X_2]$ and $\text{Cov}(X_1,X_2)$ for our two coin example.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+\begin{align}
+\text{E}[X_1 X_2] = \sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 ) \cdot (x_2 )\cdot p(x_1, x_2) = \\
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 ) \cdot (x_2 )\cdot p(x_1) \cdot p(x_2) = \\
+(0)\times(0) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1)\times(0) \times \frac{1}{2}\times\frac{1}{2} + \\
+(0)\times(1) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1)\times(1) \times \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}
+\end{align}
+$$<p>looking back we see that this is indeed equal to $\text{E}[X_1]\text{E}[X_2]$, so again</p>
+$$
+\begin{align}
+\text{Cov}(X_1,X_1) &amp; = \text{E}\Big[(X_1 - \text{E}[X_1])\cdot(X_2 - \text{E}[X_2])\Big] \\
+                    &amp; = \text{E}[X_1 X_2] - \text{E}[X_1]\text{E}[X_2] = 0
+\end{align}
+$$
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variance-is-a-special-case-of-covariance">Variance is a special case of covariance<a class="anchor-link" href="#Variance-is-a-special-case-of-covariance">&#182;</a></h2><p>remember</p>
+$$
+\text{Cov}(X,Y) = \text{E} \Big[(X - \text{E}[X]) \cdot (Y - \text{E}[Y]) \Big]
+$$<p>in the special case that $X=Y$,</p>
+$$
+\begin{align}
+\text{Cov}(X,X) &amp; = \text{E} \Big[(X - \text{E}[X])(X - \text{E}[X]) \Big] \\
+                &amp; = \text{E}\Big[(X - \text{E}[X])^2\Big] \\
+                &amp; = \text{Var}(X)
+\end{align}
+$$<p>so the covariance can have either sign, but the variance is the square of a value, so must be positive semi-definite ($\geq 0$).</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>We have</p>
+<ul>
+<li>defined the covariance of two random variables $X$ and $Y$</li>
+<li>examined the meaning of the covariance</li>
+<li>shown that $\text{Cov}(X,Y) = 0$ for independent random variables.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Covariance-and-Correlation">Covariance and Correlation<a class="anchor-link" href="#Covariance-and-Correlation">&#182;</a></h1><p>Learning objectives:</p>
+<ul>
+<li>covariance between two variables</li>
+<li>correlation between random variables</li>
+<li>expectation and variance of sums of independent random variables</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Joint-random-variables.">Joint random variables.<a class="anchor-link" href="#Joint-random-variables.">&#182;</a></h1><p>The joint probability mass/density function contains all the information about the variables it describes.</p>
+<p>We've just seen that we can retrieve the individual probability mass/density functions by integrating/summing over the other variables.</p>
+<p>If we have a general function of the variables, $g(X,Y)$, say, then we can obtain the expectation value of that function as</p>
+$$
+\text{E}[g(X,Y)] = \sum_{y} \sum_{x} g(x,y)p(x,y)
+$$<p>for discrete random variables and</p>
+$$
+\text{E}[g(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f(x,y) \mathrm{d}x \mathrm{d}y
+$$<p>there are proofs of this in Ross.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Variances-of-Sums-of-Random-variables.">Variances of Sums of Random variables.<a class="anchor-link" href="#Variances-of-Sums-of-Random-variables.">&#182;</a></h1>$$
+\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)
+$$<p><strong>if and only if the two variables are independent.</strong></p>
+<p>Or in general if $n$ variables are mututally independent. This formula is actually a special case of something called the <strong>covariance</strong> between two random variables.</p>
+<hr>
+<p><strong>Definition</strong><br>
+the covariance between $X$ and $Y$, denoted by $\text{Cov}(X,Y)$, is defined by
+$$
+\text{Cov}(X,Y) = \text{E}[(X - \text{E}[X])(Y - \text{E}[Y])]
+$$</p>
+<hr>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>example</strong>
+back to our coins,</p>
+$$
+\text{Cov}(X_1,X_2) = \text{E}[(X_1 - \text{E}[X_1])(X_2 - \text{E}[X_2])] = \\
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2) = \\
+$$<p>were the second line comes from the general expression</p>
+$$
+\text{E}[g(X,Y)] = \sum_{y} \sum_{x} g(x,y)p(x,y)
+$$<p>adjusted to our particular case.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So,</p>
+$$
+\begin{align}
+\text{Cov}(X_1,X_2) = \text{E}[(X_1 - \text{E}[X_1])(X_2 - \text{E}[X_2])] = \\
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2) = \\
+\end{align}
+$$<p>In this case we can very reasonably expect that $p(x_1,x_2) = p(x_1)p(x_2)$ (remember the definition of independent probabilities). We can now write out all the terms in the double sum:</p>
+$$
+\begin{align}
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 - \mu_{X_1} ) \cdot (x_2 - \mu_{X_2} )\cdot p(x_1, x_2) = \\
+(0-\frac{1}{2})\times(0-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1-\frac{1}{2})\times(0-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(0-\frac{1}{2})\times(1-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1-\frac{1}{2})\times(1-\frac{1}{2}) \times \frac{1}{2}\times\frac{1}{2} = \\
+\frac{1}{16} - \frac{1}{16} -\frac{1}{16} + \frac{1}{16} = 0
+\end{align}
+$$<p>this will be the case whenever the two variables are independent.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Useful-formula">Useful formula<a class="anchor-link" href="#Useful-formula">&#182;</a></h3><p>In a similar way to the variance the covariance can more easily be caluclated using an alternative expression</p>
+$$
+\begin{align}
+\text{Cov}(X,Y) = \text{E}[(X - \text{E}[X])(Y - \text{E}[Y])] = \\
+\text{E}[XY - \text{E}[X]Y - X\text{E}[Y] + \text{E}[X]\text{E}[Y]] = \\
+\text{E}[XY] - \text{E}[X]\text{E}[Y] - \text{E}[X]\text{E}[Y] + \text{E}[X]\text{E}[Y] = \\
+\text{E}[XY] - \text{E}[X]\text{E}[Y]
+\end{align}
+$$<p>We can also see that the independence of $X$ and $Y$ guarantees that $\text{Cov}(X,Y)=0$ from this expression by using the result that</p>
+$$
+\text{E}[XY] = \text{E}[X]\text{E}[Y]
+$$<p>for independent variables. Again we can check that this holds for our $X_1$ and $X_2$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong></p>
+<p>calculate $\text{E}[X_1 X_2]$ and $\text{Cov}(X_1,X_2)$ for our two coin example.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+\begin{align}
+\text{E}[X_1 X_2] = \sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 ) \cdot (x_2 )\cdot p(x_1, x_2) = \\
+\sum_{\text{all $x_1$}}\sum_{\text{all $x_2$}} (x_1 ) \cdot (x_2 )\cdot p(x_1) \cdot p(x_2) = \\
+(0)\times(0) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1)\times(0) \times \frac{1}{2}\times\frac{1}{2} + \\
+(0)\times(1) \times \frac{1}{2}\times\frac{1}{2} + \\
+(1)\times(1) \times \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}
+\end{align}
+$$<p>looking back we see that this is indeed equal to $\text{E}[X_1]\text{E}[X_2]$, so again</p>
+$$
+\text{Cov}(X_1,X_1) = \text{E}[(X_1 - \text{E}[X_1])(X_2 - \text{E}[X_2])] = \\
+\text{E}[X_1 X_2] - \text{E}[X_1]\text{E}[X_2] = 0
+$$
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Correlation">Correlation<a class="anchor-link" href="#Correlation">&#182;</a></h2><p>In general it can be shown that a positive $\text{Cov}(X,Y)$ is an indication that $Y$ increases when $X$ does.</p>
+<p>A negative $\text{Cov}(X,Y)$ is an indication that $Y$ decreases when $X$ increases.</p>
+<p>What we want is a better indicator than the covariance.</p>
+<p>The difficulty with the covariance is that it has dimensions, and its size is dependent on the definition of the variables. Instead, or in addition, we can use the correlation.</p>
+<hr>
+<p><strong>definition</strong></p>
+$$
+\text{Corr}(X,Y) = \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X)\text{Var}(Y)}}
+$$<hr>
+<p>It can be shown that the correlation will always have a value betwen $-1$ and $+1$.</p>
+<p>The significance of the correlation is similar to just discussed for the covariance:</p>
+<ul>
+<li>Positive correlation between two variables means that $X$ increases as $Y$ increases. </li>
+<li>Negative correlation means that $X$ decreases as $Y$ increases.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Meaning-of-covariance">Meaning of covariance<a class="anchor-link" href="#Meaning-of-covariance">&#182;</a></h2><p>It indicates whether there is a relationship between two random variables.</p>
+<p>We just saw that in the case of two independent random variables the covariance will be zero.</p>
+<p>Lets define two special random variables, $X$ and $Y$.</p>
+<p>They indicate whether or not events $A$ and $B$ occur. The are sometimes called indicator variables.</p>
+<p>In our language of random variables</p>
+$$
+X = \Bigg \{ \begin{array}{ll}
+1 &amp; \mbox{if $A$ occurs}\\
+0 &amp; \mbox{0 otherwise}
+\end{array} 
+$$$$
+Y = \Bigg \{ \begin{array}{ll}
+1 &amp; \mbox{if $B$ occurs}\\
+0 &amp; \mbox{0 otherwise}
+\end{array} 
+$$<p>and we can then see that</p>
+$$
+XY = \Bigg \{ \begin{array}{ll}
+1 &amp; \mbox{if $X=1$, $Y=1$}\\
+0 &amp; \mbox{0 otherwise}
+\end{array} 
+$$<p>So if we look at the covariance of $X$ and $Y$ we get</p>
+$$
+\begin{align}
+\text{Cov}(X,Y) &amp; = \text{E}[XY] - \text{E}[X]\text{E}[Y]\\
+                &amp; = P(\{X=1, Y=1\}) - P(\{X=1\})P(\{Y=1\})
+\end{align}
+$$<p>the last line comes from the definition of the variables, it is the proportion that the variable is in the 1 state.</p>
+<p>What if the covariance was greater than 0, what would that imply about the variables (and therefore the events $A$ and $B$)?</p>
+$$
+\begin{align}
+\text{Cov}(X,Y) \gt 0 \implies P(\{X=1, Y=1\}) \gt P(\{X=1\})P(\{Y=1\})\\
+\implies \frac{P(\{X=1, Y=1\})}{P(\{X=1\})} \gt P(\{Y=1\})\\
+\implies P(\{Y=1 \mid X=1\}) \gt P(\{Y=1\})
+\end{align}
+$$<p>Using the definition of a conditional probability in the last line.</p>
+<p>This means that if the event $A$ has happened (so $X=1$), it becomes more likely that event $B$ will also happen.</p>
+<p>Note that we could swap $X$ and $Y$ above, and it would imply that $B$ became more likely when $A$ has occured too.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It might be that the covariance is negative. Then we get</p>
+$$
+\begin{align}
+\text{Cov}(X,Y) \lt 0 &amp; \implies P(\{X=1, Y=1\}) \gt P(\{X=1\})P(\{Y=1\})\\
+                      &amp; \implies \frac{P(\{X=1, Y=1\})}{P(\{X=1\})} \lt P(\{Y=1\})\\
+                      &amp; \implies P(\{Y=1 \mid X=1\}) \lt P(\{Y=1\})
+\end{align}
+$$<p>So in this case event $A$ happening makes $B$ less likely.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variance-is-a-special-case-of-covariance">Variance is a special case of covariance<a class="anchor-link" href="#Variance-is-a-special-case-of-covariance">&#182;</a></h2><p>we also note that</p>
+$$
+\begin{align}
+\text{Cov}(X,X) &amp; = \text{E}\Big[(X - \text{E}[X])\cdot (X - \text{E}[X])\Big] \\
+                &amp; = \text{E}\Big[(X - \text{E}[X])^2\Big] \\ 
+                &amp; = \text{Var}(X)
+\end{align}
+$$<p>actually, the covariance is a matrix when there are many variables.</p>
+<p>The diagonal elements are the variance.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>We have</p>
+<ul>
+<li>defined the covariance of two random variables $X$ and $Y$</li>
+<li>shown that $\text{Cov}(X,Y) = 0$ for independent random variables.</li>
+<li>defined the correlation between two random variables $X$ and $Y$.</li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
+
+
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../../revealjs//lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../../revealjs//plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
+
+        Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+);
+</script>
+
+</body>
+
+
+</html>

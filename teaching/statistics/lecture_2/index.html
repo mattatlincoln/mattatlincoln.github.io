@@ -1,0 +1,1004 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>02 - Conditional Probability and Independence - part 1 slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+<link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../revealjs//css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conditional-probability-and-independence">Conditional probability and independence<a class="anchor-link" href="#Conditional-probability-and-independence">&#182;</a></h1><p>Learning outcomes:</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+<li> conditional probability</li>
+<li> definition of independence of events </li>
+<li> Bayes' Theorem</li>
+<li> Tree and Venn diagrams</li>
+<li> Law of total probability</li>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Probability-function">Probability function<a class="anchor-link" href="#Probability-function">&#182;</a></h2><p>In the first lecture we defined the probability function (sometimes also called a distribution function) for a sample space, $S$.</p>
+<p>The sample space lists all possible outcomes of an experiment. For instance, for a single role of a 6-sided die, a possible sample space is $S = \{1,2,3,4,5,6\}$.</p>
+<p>It is a function that, if you feed it an outcome of an experiment, regurgitates a probability $x$,</p>
+<p>$p(i \in S) = P(\{i\}) = 0 \leq x \leq 1$</p>
+<p>From this function we could calculate the probability of an event, $E$</p>
+<p>$P(E) = \sum_{i \in E} p(i)$</p>
+<p>I.e. we add together the probabilities of all the outcomes that are in the event, $E$.</p>
+<p>For instance, the 'getting an even number larger than 3 when rolling a single dice' = $A = \{2,4,6\} \cap \{4,5,6\} =\{4,6\}$ is</p>
+$$
+P(A) = \sum_{i \in A} p(i) = p(4) + p(6) = 2/6
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conditional-probability">Conditional probability<a class="anchor-link" href="#Conditional-probability">&#182;</a></h2><p>The idea of conditional probability allows us to calculate probabilities when we have partial information about the system, or to reassess likelihoods when we receive new information.</p>
+<p>A conditional probability is the probability of some event $E$, given that another event $F$ has occurred.</p>
+<p>The probability of $E$, given that $F$ has occurred is written</p>
+$$
+P \left(E \mid F \right)
+$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong> Consider rolling two dice.</p>
+<p>We have a sample space</p>
+$$
+S = \{(i,j), i=1,2,3,4,5,6, j=1,2,3,4,5,6\}
+$$<p>where say the outcome $(i,j)$ is the first die lands with $i$ dots up and the second die with $j$.</p>
+<p>We assume the dice are fair - we assign a probability (distribution) function of $P(\{(i,j)\}) = p(i,j) = \frac{1}{36}$ to all outcomes.</p>
+<p>Suppose the first die comes down a three, what is the probability that the sum of the two dice equals eight?</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define $F = \text{'the first die comes down showing a 3'} =\{(3,1),(3,2),(3,3),(3,4),(3,5),(3,6)\}$.</p>
+<p>This extra information, allows us to cut down the number of possibile outcomes. Effectively only 6 possible outcomes can now occur.</p>
+<p>Each of these remaining outcomes is still equally likely (what do you think?).</p>
+<p>So to get the probability we are after we need to find the proportion of the remaining 6 outcomes that are in</p>
+<p>$E = \text{'the sum of the dice = 8'} = \{(2,6),(3,5),(4,2),(5,3),(6,2)\}$.</p>
+<p>The only outcome that satisfies the criteria is $\{(3,5)\}$ and once we know that $F$ has occurred, it has a one in 6 chance that $\{(3,5)\}$ will occur.</p>
+$$
+P(E \mid F ) = \frac{1}{6}
+$$<p>Note also that $\{(3,5)\} = E \cap F$</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The probability of the outcome (3,5) before the first die was rolled was $\frac{1}{36}$. After the first die comes up a 3, we've argued that the probability should be $\frac{1}{6}$. Lets look at this as a Venn diagram:</p>
+<p><img src="../Images/conditional_prob_venn_I.jpg" alt=""></p>
+<p>where $S$ is the sample space, and we have labelled two events $E$ and $F$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the probability of $E$ occuring is the probability of the outcomes in $E$.</p>
+<p><img src="../Images/conditional_prob_venn_II.jpg" alt=""></p>
+<p>If we are dealing with finite sets with equal likelihood, this probability is</p>
+$$\frac{n(E)}{n(S)}$$<p>.</p>
+<p>where $n(E)$ is the number of ways that the event $E$ can occur, and $n(S)$ the same for $S$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If instead we are looking for $P(E \mid F)$ then it is not the ratio $n(E)$ to $n(S)$ that matters</p>
+<p><img src="../Images/conditional_prob_venn_III.jpg" alt=""></p>
+<p>we know that event $F$ has occured - so now we want the number of ways that both $E$ and $F$ can occur, but now our effective sample space is just $F$. This gives</p>
+$$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$<p>For discrete equal likelihood sample spaces this is:</p>
+$$
+P(E \mid F) = \frac{n(E \cap F)}{n(S)}\frac{n(S)}{n(F)}= \frac{n(E \cap F)}{n(F)}
+$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we look back to our dice example, this is exactly what we did.</p>
+<p><strong>Example revisited</strong> we started from</p>
+$$
+S = \{(i,j), i=1,2,3,4,5,6, j=1,2,3,4,5,6\},
+$$<p>and asked,</p>
+<blockquote><p>"Suppose the first die comes down with a three, what is the probability that the sum of the two dice equals eight"?</p>
+</blockquote>
+<p>In the language we've just used, our event $E$ is $\{(2,6),(6,2),(3,5),(5,3),(4,4)\}$, the event $F = \{(3,1),(3,2),(3,3),(3,4),(3,5),(3,6)\}$.</p>
+<p>So $E \cap F = \{(3,5)\}$.</p>
+<p>Loking at the size of these events (all individual outcomes are equally likely), we have</p>
+$$
+P(E \mid F) = \frac{n(E \cap F)}{n(S)}\frac{n(S)}{n(F)}= \frac{n(E \cap F)}{n(F)} = \frac{1}{6}
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+**Definition**
+the conditional probability of $E$ given $F$ is 
+
+$$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$
+</div><p>combined with the standard properties of probabilities this implies</p>
+<ul>
+<li>$P(\bar{E} \mid F) = 1 - \frac{P(E \cap F)}{P(F)}$</li>
+<li>if $E$ and $F$ are mutually exclusive, then $P(E \mid F) = 0$ because $E \cap F = \emptyset$</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Multiplicative-rule-of-probabilities">Multiplicative rule of probabilities<a class="anchor-link" href="#Multiplicative-rule-of-probabilities">&#182;</a></h3><p>the expression for conditional probabilities implies that</p>
+$$
+P(E \cap F) = P(E \mid F)P(F).
+$$<p>the probability that $E$ and $F$ occur is the probability that $F$ occurs multiplied by the probability that $E$ occurs given that $F$ has occurred.</p>
+<p>This can be generalised to the case of many events $E_i$</p>
+$$
+P(E_1 \cap E_2 \cap E_3 \cap \dots \cap E_n)= P(E_1) \cdot P(E_2 \mid E_1) \cdot P(E_3 \mid E_1 \cap E_2) \cdots P(E_n \mid E_1 \cap \cdots \cap E_{n-1})
+$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we can see that this is the case by using the definition of conditional probability in the right hand side of the equation, giving</p>
+$$
+P(E_1) \frac{P(E_1 \cap E_2)}{P(E_1)} \cdot \frac{P(E_1 \cap E_2 \cap E_3)}{P(E_1 \cap E_2)} \cdots \frac{P(E_1 \cap E_2 \cdots \cap E_n)}{P(E_1 \cap E_2 \cdots \cap E_{n-1})}
+$$<p>each internal term of the numerator cancels with the next term in the denominator.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>If you remember the examples of taking  balls out of a bowl in lecture 1 - there were 6 black and 5 white ones.</p>
+<p>How many ways are there to select all the balls from the bowl?</p>
+<p>In this case there are $11⋅10⋅9 \cdots 3⋅2⋅1  = 11!$</p>
+<p>We could calculate this as follows: Each permutation is equally likely, so we can calculate the probability of getting a particular selection, which would be $1/N$, so we find $N$ by the inverse of the probability.</p>
+<p>If we look for the particular selection $\{(1,2,3,4,5,6,7,8,9,10,11)\}$, where we've numbered the balls, then</p>
+<p>We define $E_n = '\text{the nth ball is ball n}'$</p>
+$$
+P(E_1 \cap E_2 \cap E_3 \cap \dots \cap E_n) = P(E_1) \cdot P(E_2 \mid E_1) \cdot P(E_3 \mid E_1 \cap E_2) \cdots P(E_n \mid E_1 \cap \cdots \cap E_{n-1})
+$$<p>And we'd get $P(E_1 \cap E_2 \cap E_3 \cap \dots \cap E_n) = 1 / 11 \cdot 1/10 \cdot 1/9 \cdots 1/3 \cdot 1/2 \cdot 1/1) = 1/11! = |E_1 \cap E_2 \cap E_3 \cap \dots \cap E_n|/N = 1/N \implies N = 11!$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tree-diagrams">Tree diagrams<a class="anchor-link" href="#Tree-diagrams">&#182;</a></h2><p>Tree diagrams are a useful way of keeping track of the progress of compound experiments.</p>
+<p>They can also be seen to work using the multiplicative rule of probabilities.</p>
+<p>Let's analyse throwing 3 coins sequentially.</p>
+<p><img src="../Images/tree_3_coins.png" alt=""></p>
+<p>The overall probabilities are arrived at by multiplying the probabilities at each stage of the experiment. This works because at each stage in the compound experiment, the result doesn't depend on the result further down the chain. So to get</p>
+<p>$P(\omega_1) = P(\{(H,H,H)\}) = P(\{H\}) \cdot P(\{(H,H)\} \mid \{H\}) \cdot P(\{(H,H,H)\} \mid \{(H,H)\}) = P(\{\{H\}\}) \cdot P(\{\{H\}\}) \cdot P(\{\{H\}\}) = p^3$</p>
+<p>because each probability $P(\{(H,H,H)\} \mid \{(H,H)\})$ only depends on the current coin flip, not anything else.</p>
+<p>In other words the individual parts of the compound experiment are independent.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>We have two urns, I and II.</p>
+<p>Urn I contains 2 black balls and 3 white balls.</p>
+<p>Urn II contains 1 black ball and 1 white ball.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An urn is selected at random and a ball is chosen at random from it.</p>
+<p>We can represent the sample space of this experiment as the paths through a tree as shown.</p>
+<p><img src="../Images/tree_urns.png" alt=""></p>
+<p>The probabilities assigned to the paths are also shown.</p>
+<p>Let $B = \text{“a black ball is drawn,”}$ and $I = \text{“urn I is chosen.”}$.</p>
+<p>Then the branch weight $\frac{2}{5}$, which is shown on one branch in the figure, can now be interpreted as the conditional probability $P(B \mid I)$.</p>
+<p>If there were more branchings, we would have to use the multiplicative rule of probability.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example---back-to-the-Urns-and-balls">Example - back to the Urns and balls<a class="anchor-link" href="#Example---back-to-the-Urns-and-balls">&#182;</a></h3><p>Suppose that we wanted to work out $P(I \mid B)$?</p>
+<p>In words "What is the probability that the ball came from urn I, given that the ball is black."</p>
+<p>We can do this as follows</p>
+$$
+P(I \mid B) = \frac{P(I \cap B)}{P(B)} = \frac{P(I \cap B)}{P(B \cap I ) + P(B \cap II)} = \frac{\frac{1}{5}}{\frac{1}{5}+\frac{1}{4}} = \frac{4}{9}
+$$<p>We can repeat this for other conditional probabilities and use it to construct a reverse tree diagram.</p>
+<p><img src="../Images/tree_urns_reverse.png" alt=""></p>
+<p>These 'reversed' conditional probabilities are often associated with the name Bayes.</p>
+<p>We'll look at a formula that bears his name shortly that can be used to systematically calculate these reversed probabilities.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Law-of-total-probability">Law of total probability<a class="anchor-link" href="#Law-of-total-probability">&#182;</a></h3><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+We can split $S$ up into an exhaustive collection of mutually exclusive events $E_i$ such that
+
+$$
+\bigcup_{i=1}^n E_i = S
+$$
+
+remembering that mutually exclusive means that $E_ i \cap E_j = \emptyset, i \neq j$.
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Venn diagram form this collection of events could look like this</p>
+<p><img src="../Images/Bayes_proof_I.png" alt=""></p>
+<p>Where $A \subset S$.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we can then use the $E_i$ (a bit like basis vectors in linear algebra) to decompose an event $A$ into its intersections with the $E_i$.</p>
+$$
+A =\bigcup_{i=1}^n A \cap E_i
+$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../Images/Bayes_proof_II.png" alt=""></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+The law of total probability
+$$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$
+</div>
+<br></p>
+<p>This is the general form of the <a href="https://en.wikipedia.org/wiki/Law_of_total_probability">law of total probability</a> (the name is not so firmly established that it will be called this by all authors, though).</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bayes'-Formula">Bayes' Formula<a class="anchor-link" href="#Bayes'-Formula">&#182;</a></h2><p><br></p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$$
+P(E_i \mid A) = \frac{P(A \cap E_i)}{P(A)} = \frac{P(A \mid E_i) P(E_i)}{\sum_{i=j}^n P(A \mid E_j) P(E_j)}
+$$
+</div><p>Where we have used the law of total probability, $P(A) = \sum_{i=j}^n P(A \mid E_j) P(E_j)$, to expand the denominator.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Thomas_Bayes.gif/225px-Thomas_Bayes.gif" alt=""></p>
+<p>no known picture of Bayes exists, apparently. But this didn't stop people illustrating him in a 1936 book! This is probably just some bloke.</p>
+<p>Bayes' solution to a problem of inverse probability was presented in "An Essay towards solving a Problem in the Doctrine of Chances" which was read to the Royal Society in 1763 after Bayes' death.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we look at the formula, we see that the two types of conditional probabilities have swapped events on the left and right hand sides.</p>
+$$
+P(E_i \mid A) = \frac{P(A \mid E_i) P(E_i)}{P(A)}
+$$<p>Bayes' Formula can be looked at as a way updating our opinion on a problem when new data arrives:</p>
+<p>in this point of view the $E_i$ represent our prior opinion about the likelihood of events - the probabilities associated with these hypotheses are then updated when we find out that $A$ has occurred.</p>
+<p>It is possible to use this sort of process for data fitting.</p>
+<p>Bayesian is the other main 'ideology' in probability theory / interpretation.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>A town has three bus routes, A,B and C.</p>
+<p>During rush hour there are twice as many buses on the A route as on B or C.</p>
+<p>Over a period of time it has been observed that at a crossroads, where the routes converge, the buses run more than 5 minutes late $\frac{1}{2}, \frac{1}{5},\frac{1}{10}$ of the time.</p>
+<p>If an inspector at the crossroads finds that the first bus he sees is more than five minutes late, what it the chance that it is a route B bus?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We don't have complete information about this problem (like all possible outcomes etc).</p>
+<p>We can form an exhaustive partition of the experiment into the mutually exhaustive events $A,B,C$ that the inspector sees a bus on that route first.</p>
+<p>And we have the event $L$ that the bus is late.</p>
+<p>We see that the problem looks like our Bayes' Formula situation: we know the probabilities $P(L \mid A), P(L \mid B), P(L \mid C)$, but we want to know $P(B \mid L)$.</p>
+<p><img src="../Images/Bayes_bus_prob.png" alt=""></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We require $P(B \mid L)$. Using Bayes' Formula we get that</p>
+$$
+P(B \mid L) = \frac{P(B)\cdot P(L \mid B)}{P(A)\cdot P(L \mid A) + P(B)\cdot P(L \mid B) + P(C)\cdot P(L \mid C)}
+$$<p>From the information we have we can work out that $P(A)=\frac{1}{2}$ and $P(B) = P(C) = \frac{1}{4}$.</p>
+<p>Also we are given that $P(L \mid A) = \frac{1}{2}, P(L \mid B) = \frac{1}{5}, P(L \mid C) = \frac{1}{10}$</p>
+<p>Plugging these numbers in gives $P(B \mid L) = \frac{2}{13}$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conditional-probabilities-are-probabilities">Conditional probabilities are probabilities<a class="anchor-link" href="#Conditional-probabilities-are-probabilities">&#182;</a></h2><p>It is good to note that conditional probabilities obey all the axioms we established to call $P(E)$ a probability.</p>
+<p>For the statement above to be true our conditional probabilities must satisfy the axioms of probabilities:</p>
+<ul>
+<li>$0 \leq P(E \mid F) \leq 1$</li>
+<li>$P(S) = 1$</li>
+<li>if $E_i, i =1 \ldots n $ are mutually exclusive events then$$P \left( \bigcup_{i-1}^n E_i \mid F \right) = \sum_{i=1}^n P(E_i \mid F) $$</li>
+</ul>
+<p>I won't prove these results here, but they are in textbooks and online.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary-of-conditional-probabilities">Summary of conditional probabilities<a class="anchor-link" href="#Summary-of-conditional-probabilities">&#182;</a></h2><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+- Definition of conditional probabilities $$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$
+- Multiplicative rule $$
+P(E_1 E_2 E_3 \dots E_n) = P(E_1) \frac{P(E_1 \cap E_2)}{P(E_1)} \frac{P(E_1 \cap E_2 \cap E_3)}{P(E_1 \cap P(E_2)} \cdots \frac{P(E_1 \cap E_2 \cdots \cap E_n)}{P(E_1 \cap E_2 \cdots \cap E_{n-1})}
+$$
+- Law of total probability $$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$
+
+- Bayes' Formula $$
+P(E_i \mid A) = \frac{P(A \cap E_i)}{P(A)} = \frac{P(A \mid E_i) P(E_i)}{\sum_{j=1}^n P(A \mid E_j) P(E_j)}
+$$
+</div>
+</div>
+</div>
+</div></section></section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary-of-conditional-probabilities">Summary of conditional probabilities<a class="anchor-link" href="#Summary-of-conditional-probabilities">&#182;</a></h2><ul>
+<li>Definition of conditional probabilities $$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$</li>
+<li>Multiplicative rule $$
+P(E_1 E_2 E_3 \dots E_n) = P(E_1) \frac{P(E_1 \cap E_2)}{P(E_1)} \frac{P(E_1 \cap E_2 \cap E_3)}{P(E_1 \cap P(E_2)} \cdots \frac{P(E_1 \cap E_2 \cdots \cap E_n)}{P(E_1 \cap E_2 \cdots \cap E_{n-1})}
+$$</li>
+<li><p>Law of total probability $$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$</p>
+</li>
+<li><p>Bayes' Formula $$
+P(E_i \mid A) = \frac{P(A \cap E_i)}{P(A)} = \frac{P(A \mid E_i) P(E_i)}{\sum_{j=1}^n P(A \mid E_j) P(E_j)}
+$$</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Independent-events">Independent events<a class="anchor-link" href="#Independent-events">&#182;</a></h1><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$\textbf{Definition}$ Two experiments are *independent* if the result of one can not in any way affect the possible results of the other.<br><br>
+
+$\textbf{Definition}$ Two events ($E, F$) are *independent* if the probability that one of them occurs is in no way influenced by whether or not the other has occurred. 
+<br>
+So  
+
+\begin{align}
+P(E) = P(E \mid F) = P(E \mid \bar{F}), \\
+P(F) = P(F \mid E) = P(F \mid \bar{E}).
+\end{align}
+
+put in a different way this means that
+
+$$
+P(E \cap F) = P(E)P(F)
+$$
+
+the probability of $E$ and $F$ occurring is just the product of the probability of $E$ occuring and the probability of $F$ occurring.
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../Images/probmean3.jpg" alt=""></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+**Theorem** Two events ($E, F$) are *independent* if and only if
+
+$$
+P(E \cap F) = P(E)P(F)
+$$
+</div><br>
+For more than two events things become a bit more restrictive.
+<br><br>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+**Theorem** The events $E_1, E_2, E_3, \cdots E_n$ are said to be mutually independent if for every subset $E_1', E_2', E_3', \cdots E_r', r \leq n$ of the events
+
+$$
+P(E_1'\cap E_2' \cap E_3' \cap \cdots \cap E_r') = P(E_1') \cdot P(E_2') \cdot P(E_3') \cdots P( E_r')
+$$
+</div><p>The idea of independent processes will be extremely important as we move forward.</p>
+<p>We will use the idea that repetitions of experiments constitute independent processes very often. Note that this is more or less an assumption of the frequentist definition of probability.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>consider the compound experiment of throwing two fair coins.</p>
+<p>The sample space is $S = \{(H,H),(H,T),(T,H),(T,T)\}$.</p>
+<p>Define two events</p>
+<p>$A = \textrm{'the first coin is a head'} = \{(H,H),(H,T)\}$</p>
+<p>$B = \textrm{'the second coin is a tail'} = \{(H,T),(T,T)\}$</p>
+<p>And $P(A) = |A|/|S| = 2 /4  = 1/2$ and $P(B) = |B|/|S| = 2/4 = 1/2$.</p>
+<p>Now $P(A \cap B) = P({H,T}) = |A \cap B|/|S| = 1/4 = P(A) * P(B)$ so $A$ and $B$ are independent.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But consider</p>
+<p>$C = \textrm{'both coins are heads'} = \{(H,H)\}$</p>
+<p>$P(C) = |C| / |S| = 1/4$</p>
+<p>now $P(B \cap C) = P(\emptyset) = |B \cap C|/|S| = 0/4 \neq P(A) * P(B)$, so $B$ and $C$ are not independent.</p>
+<p>$A$ is also not independent of $C$.</p>
+<p>In general, it is possible for all pairs of events to be independent, but the complete set of events not to be.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Tabular-presentation-of-conditional-probabilities">Tabular presentation of conditional probabilities<a class="anchor-link" href="#Tabular-presentation-of-conditional-probabilities">&#182;</a></h1><p>It can sometimes be handy to view conditional probabilities using a tabular representation of relative frequencies - this can also be how real data arrives to us.</p>
+<p><strong>Example</strong> If we go back to the bus problem we did before the break, but instead we consider what we'd expect if 1000 buses in total ran through the town, we'd end up with something like</p>
+<table>
+<thead><tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Late</td>
+<td>250</td>
+<td>50</td>
+<td>25</td>
+<td>325</td>
+</tr>
+<tr>
+<td>Not late</td>
+<td>250</td>
+<td>200</td>
+<td>225</td>
+<td>675</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>500</td>
+<td>250</td>
+<td>250</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Let $L = \textrm{'a bus is late'}$</p>
+<p>The conditional probabilities can easily be read off, for instance $P(B \mid L) = P(B \cap L)/ P(L) = \frac{50}{325} = \frac{2}{13}$.</p>
+<p>This is of course exactly equivalent to our pen and paper solution.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The values along the margins are called the marginal probabilities. They give the straight forward probabilities.</p>
+<p>This is because of the law of total probability.</p>
+$$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$<p>In this case</p>
+$$P(L) = P(L \cap A) + P(L \cap B) + P(L \cap C) = 250 + 50 +25 = 325$$<p>or vertically we have</p>
+$$P(A) = P(A \cap L) + P(A \cap \bar{L})$$<p>note that that last relationship is a useful and general one. It is a special case of the law of total probability.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tabular-Bayes'-Theorem-example">Tabular Bayes' Theorem example<a class="anchor-link" href="#Tabular-Bayes'-Theorem-example">&#182;</a></h3><p>A doctor is trying to decide if a patient has one of three diseases d1, d2, or d3.</p>
+<p>Two tests are to be carried out, each of which results in a positive (+) or a negative (−) outcome.</p>
+<p>There are four possible test patterns ++, +−, −+, and −−.</p>
+<p>National records have indicated that, for 10,000 people having one of these three diseases, the distribution of diseases and test results are as in the table below.</p>
+<table>
+<thead><tr>
+<th>Disease</th>
+<th>number</th>
+<th>+ +</th>
+<th>+ –</th>
+<th>– +</th>
+<th>– –</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d1</td>
+<td>3215</td>
+<td>2110</td>
+<td>301</td>
+<td>704</td>
+<td>100</td>
+</tr>
+<tr>
+<td>d2</td>
+<td>2125</td>
+<td>396</td>
+<td>132</td>
+<td>1187</td>
+<td>410</td>
+</tr>
+<tr>
+<td>d3</td>
+<td>4660</td>
+<td>510</td>
+<td>3568</td>
+<td>73</td>
+<td>509</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>10000</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>We can use this data to estimate $P(d_1),P(d_2),P(d_3)$ - these are called prior probabilities, and the conditional probabilities like $P(+- \mid d_1) = \frac{301}{3215}=0.094$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What the doctor wants though is the probability a patient has disease $d_i$ given the results of the tests. These are the Bayes' or inverse, or posterior probabilities.</p>
+<p>We can compute them using Bayes' formula and we'll get results like</p>
+<table>
+<thead><tr>
+<th></th>
+<th>$d_1$</th>
+<th>$d_2$</th>
+<th>$d_3$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ +</td>
+<td>.700</td>
+<td>.131</td>
+<td>.169</td>
+</tr>
+<tr>
+<td>+ –</td>
+<td>.075</td>
+<td>.033</td>
+<td>.892</td>
+</tr>
+<tr>
+<td>– +</td>
+<td>.358</td>
+<td>.604</td>
+<td>.038</td>
+</tr>
+<tr>
+<td>– –</td>
+<td>.098</td>
+<td>.403</td>
+<td>.499</td>
+</tr>
+</tbody>
+</table>
+<p>these are $P(d_i \mid ++)$ etc. Judicious use of these posterior probabilities can be used to inform decision making:</p>
+<p>In this case the prior probability of a patient having disease $d_1$ was $\frac{3215}{10000} = 0.3215$.</p>
+<p>If the test result came back ++ then the posterior probability $P(d_1 \mid ++) = 0.700$ and we'd suspect that $d_1$ was the culprit.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Updating-information-sequentially">Updating information sequentially<a class="anchor-link" href="#Updating-information-sequentially">&#182;</a></h3><p>In the last example we updated the likelihood of a patient having a particular disease based on extra information in the form of the test results.</p>
+<p>The previous example with the medical data should give a hint how we can update our ideas about a system as new information comes in - this is why the original probabilities are call priors, and the reversed conditional probabilities are called posterior probabilities.</p>
+<p>We'll use this type of method in the computing lab later as a simple form of machine learning.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Continuous-Conditional-Probability">Continuous Conditional Probability<a class="anchor-link" href="#Continuous-Conditional-Probability">&#182;</a></h1><p>we've stayed focussed upon discrete probability distributions.</p>
+<p>However similar observations also apply to the case of continuous probabilities.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Continous-probability-spaces">Continous probability spaces<a class="anchor-link" href="#Continous-probability-spaces">&#182;</a></h3><p>Consider a spinner - schematically a circle <em>of unit circumference</em> and a pointer</p>
+<p><img src="../Images/spinner.jpg" alt=""></p>
+<p>this could end up being a model for a <a href="https://en.wikipedia.org/wiki/Roulette">Roulette wheel</a>, for instance.</p>
+<p>If we give the spinner a whirl, the pointer will be pointing somewhere a distance $x$ along the circumference.</p>
+<p>It seems reasonable that every value $0 \leq x \lt 1$ of the distance between the pointer and the mark on the spinner is equally likely to occur. This means that the sample space is the interval  $S = [0,1)$.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can satisfy</p>
+$$
+P\left( a\leq X \lt b \right) = b - a
+$$<p>for every $a$ and $b$ for the event $E = [a,b]$ by a formula of the form</p>
+$$
+P(E) = \int_{E} f(x) \mathrm{d}x,
+$$<p>and $f(x)$ is the constant function with value 1.</p>
+<p>We call $f(x)$ the <em>density function</em> of $X$.</p>
+<p>This is the generalisation of the discrete case we saw earlier:</p>
+$$
+P(E) = \sum_{i \in E} P(i).
+$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want a probability model where every value of the sample space is equally likely (we'll call the result of a spin $X$ for now, later we'll see that this is a <em>continuous random variable</em>).</p>
+<p>In a similar way to the discrete case we must have</p>
+$$
+P\left( 0\leq X \lt 1 \right) = 1.
+$$<p>It is also the case that we expect the probability of a reading in the top half of the spinner is equal in likelihood to one in the lower half,</p>
+$$
+P\left( 0\leq X \lt \frac{1}{2} \right) = P\left( \frac{1}{2} \leq X \lt 1 \right) = \frac{1}{2}.
+$$<p>More generally, if we consider an event, $E = \{[a,b]\} $, we'd like</p>
+$$
+P\left( a\leq X \lt b \right) = b - a
+$$<p>for every $a$ and $b$.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conditional-continuous-probabilities">Conditional continuous probabilities<a class="anchor-link" href="#Conditional-continuous-probabilities">&#182;</a></h2><p>If we look at a process that has a density function $f(x)$, and if $E$ is an event. We define a conditional density function by</p>
+$$
+f(x \mid E) = \Bigg \{ \begin{array}{ll}
+f(x)/P(E) &amp; \mbox{if  $x \in E$},\\
+0 &amp; \mbox{if  $x \notin E$}
+\end{array} 
+$$<p>Then for any event $F$, we have</p>
+$$
+P(F \mid E) = \int_F f(x \mid E)\ \mathrm{d}x.
+$$<p>We call this the conditional probability of $F$ given $E$. A little manipulation makes the connection to the discrete case:</p>
+$$
+P(F \mid E) = \int_F f(x \mid E)\ \mathrm{d}x = \int_{E \cap F} \frac{f(x)}{P(E)}\mathrm{d}x = \frac{P(E \cap F)}{P(E)}$$<p>Definition of conditional probabilities $$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-of-conditional-continuous-probability-distribution">Example of conditional continuous probability distribution<a class="anchor-link" href="#Example-of-conditional-continuous-probability-distribution">&#182;</a></h3><p>In the spinner experiment, suppose we know that the spinner has stopped with head in the upper half of the circle, $0 \leq x \leq 1/2$. What is the probability that $1/6 \leq x \leq 1/3$?</p>
+<p>Here $E = \{[0, 1/2]\}, F = \{[1/6, 1/3]\}$</p>
+<p>Also we note that $F \cap E = F$.</p>
+<p>Hence$$
+P(F \mid E) = P(F \cap E)P(E)=\frac{\frac{1}{6}}{\frac{1}{2}}=\frac{1}{3}
+$$, which is reasonable, since $F$ is $1/3$ the size of $E$.</p>
+<p>The conditional density function here is given by 
+$$f(x \mid E) = \Bigg \{ \begin{array}{ll}
+2, &amp; \mbox{if  0 ≤ x &lt; 1/2},\\
+0, &amp; \mbox{if 1/2 ≤ x &lt; 1}.
+\end{array}
+$$</p>
+<p>Thus the conditional density function is nonzero only on $[0, 1/2]$, and is uniform there.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
+<li>Definition of conditional probabilities $$
+P(E \mid F) = \frac{P(E \cap F)}{P(F)}
+$$</li>
+<li><p>Law of total probability $$
+P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+$$</p>
+</li>
+<li><p>Bayes' Formula $$
+P(E_i \mid A) = \frac{P(A \cap E_i)}{P(A)} = \frac{P(A \mid E_i) P(E_i)}{\sum_{j=1}^n P(A \mid E_j) P(E_j)}
+$$</p>
+</li>
+<li><p>Two events ($E, F$) are <em>independent</em> if and only if</p>
+</li>
+</ul>
+$$
+P(E \cap F) = P(E)P(F)
+$$<ul>
+<li>The events $E_1, E_2, E_3, \cdots E_n$ are said to be mutually independent if for every subset $E_1', E_2', E_3', \cdots E_r', r \leq n$ of the events</li>
+</ul>
+$$
+P(E_1'\cap E_2' \cap E_3' \cap \cdots \cap E_r') = P(E_1') \cdot P(E_2') \cdot P(E_3') \cdots P( E_r')
+$$
+</div>
+</div>
+</div></section></section>
+
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../../revealjs//lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../../revealjs//plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
+
+        Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+);
+</script>
+
+</body>
+
+
+</html>

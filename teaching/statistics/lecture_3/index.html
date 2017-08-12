@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>03 - Random Variables part 1 slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+<link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../revealjs//css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+
+
+<body>
+
+
+<div class="reveal">
+<div class="slides">
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Random-Variables">Random Variables<a class="anchor-link" href="#Random-Variables">&#182;</a></h1><p>In the next few sessions we will define, discuss and begin to use random variables.</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+Understand the elements of a random variable. Be able to define and use
+<li> Discrete vs continuous variables </li>
+<li> Range and domain of the variables </li>
+<li> Probability (Mass/Density) Function </li>
+<li> Cumulative Distribution Function </li>
+<li> Improper integrals </li>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Random variables are a tool that let us work with slightly messy situations, but still use a lot of our ideas of algebra and numerical methods.</p>
+<p>Unlike a normal variable, it doesn't make sense to say '$x$ = some value'.</p>
+<ul>
+<li>How many miles to a gallon does my car do?</li>
+<li>How quickly do I run a mile</li>
+<li>How long will it take for a website to load</li>
+<li>Temperature</li>
+</ul>
+<p>Random variables inherently can take on a variety of values, and only discussing a statistic distribution of their values makes sense. Every time we tried something (took a measurement) we would get a slightly different answer.</p>
+<p>Most idealisations of real things would correspond to random variables!</p>
+<p>We'll see</p>
+<ul>
+<li>what random variables are</li>
+<li>how they can link abstract probability distributions to <em>messy</em> 'reality'</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="String-of-logic">String of logic<a class="anchor-link" href="#String-of-logic">&#182;</a></h3><p>the random variable is a series of 'mappings', from events to probabilities to numerical values.</p>
+<p>We</p>
+<ul>
+<li>split the sample space into events</li>
+<li>we assign each event a probability</li>
+<li>we assign each event a unique numerical value. </li>
+</ul>
+<p>the random variable is the whole of that package.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lets consider rolling a normal fair six sided die.</p>
+<p>We want to quantify the number of spots on the topmost face of die after a single roll.</p>
+<p>If we had an infinite amount of information we could determine which face will come up before the roll was made. But as we don't we can only work out the probabilities of the different faces coming up.</p>
+<p>With those different faces coming up, and their probabilities we associate numbers.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These steps can be done in any order, but often it makes sense to assign the values we want to the random variable.</p>
+<p>We'll call our random variable $Z$.</p>
+<p>We'll mix up some mathematical notation and common sense</p>
+$$
+Z = 
+  \begin{cases} 
+      \hfill 1   \hfill &amp; \text{if 'the die lands with 1 spot on the top face'} \\
+      \hfill 2   \hfill &amp; \text{if 'the die lands with 2 spots on the top face'} \\
+      \hfill 3   \hfill &amp; \text{if 'the die lands with 3 spots on the top face'} \\
+      \hfill 4   \hfill &amp; \text{if 'the die lands with 4 spots on the top face'} \\
+      \hfill 5   \hfill &amp; \text{if 'the die lands with 5 spots on the top face'} \\
+      \hfill 6   \hfill &amp; \text{if 'the die lands with 6 spots on the top face'}
+  \end{cases}
+$$<p></p>
+<p>the statements if 'the die lands with 1 spot on the top face' hopefully sound a lot like events to you.</p>
+<p>Lets define our sample space as normal</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$S = \{1,2,3,4,5,6\}$, where {1} is the outcome that the die lands with 1 spot on the top face, {2} is the outcome that the die lands with 2 spots up etc.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So looking again at $Z$</p>
+$$
+Z = 
+  \begin{cases} 
+      \hfill 1   \hfill &amp; \text{if 'the die lands with 1 spot on the top face'} \\
+      \hfill 2   \hfill &amp; \text{if 'the die lands with 2 spots on the top face'} \\
+      \hfill 3   \hfill &amp; \text{if 'the die lands with 3 spots on the top face'} \\
+      \hfill 4   \hfill &amp; \text{if 'the die lands with 4 spots on the top face'} \\
+      \hfill 5   \hfill &amp; \text{if 'the die lands with 5 spots on the top face'} \\
+      \hfill 6   \hfill &amp; \text{if 'the die lands with 6 spots on the top face'}
+  \end{cases}
+$$<p></p>
+<p>we could replace the text 'the die lands with 1 spot on the top face' with {1}, the event that the die lands with 1 spot upwards, and get</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So looking again at $Z$</p>
+$$
+Z = 
+  \begin{cases} 
+      \hfill 1   \hfill &amp; \text{if {1}} \\
+      \hfill 2   \hfill &amp; \text{if {2}} \\
+      \hfill 3   \hfill &amp; \text{if {3}} \\
+      \hfill 4   \hfill &amp; \text{if {4}} \\
+      \hfill 5   \hfill &amp; \text{if {5}} \\
+      \hfill 6   \hfill &amp; \text{if {6}}
+  \end{cases}
+$$<p></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now what is the probability that we get those different values of $Z$?</p>
+<p>We get $Z = 1$ if the event {1}, or 'the die lands with 1 spot on the top face' occurs.</p>
+<p>You should know how to associate a probability to an event occuring.</p>
+<p>In this case where all the outcomes $\{1,2,3,4,5,6\}$ can be argued to be equally likely, the probability of any one of them occuring must be $1 / |S|$, one over the number of elements in the sample space, in this case $\frac{1}{6}$.</p>
+<p>So the probability that $Z = 1$, which is that {1} occured is $\frac{1}{6}$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we'll define another function, the probability (mass) function of $Z$.</p>
+$$
+p_Z(z) = P(Z=z) = 
+  \begin{cases} 
+      \hfill 1/6   \hfill &amp; \text{if {1}} \\
+      \hfill 1/6   \hfill &amp; \text{if {2}} \\
+      \hfill 1/6   \hfill &amp; \text{if {3}} \\
+      \hfill 1/6   \hfill &amp; \text{if {4}} \\
+      \hfill 1/6   \hfill &amp; \text{if {5}} \\
+      \hfill 1/6   \hfill &amp; \text{if {6}}
+  \end{cases}
+$$<p></p>
+<p>and our random variable $Z$ is fully defined.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ingredients">Ingredients<a class="anchor-link" href="#Ingredients">&#182;</a></h3><p>we have our sample space $S = \{1,2,3,4,5,6\}$</p>
+<p>the values of our random variable, and their associated probabilities</p>
+$$
+Z = 
+  \begin{cases} 
+      \hfill 1   \hfill &amp; \text{if {1}} \\
+      \hfill 2   \hfill &amp; \text{if {2}} \\
+      \hfill 3   \hfill &amp; \text{if {3}} \\
+      \hfill 4   \hfill &amp; \text{if {4}} \\
+      \hfill 5   \hfill &amp; \text{if {5}} \\
+      \hfill 6   \hfill &amp; \text{if {6}}
+  \end{cases},
+p_Z(z) = P(Z=z) = 
+  \begin{cases} 
+      \hfill 1/6   \hfill &amp; \text{if {1}} \\
+      \hfill 1/6   \hfill &amp; \text{if {2}} \\
+      \hfill 1/6   \hfill &amp; \text{if {3}} \\
+      \hfill 1/6   \hfill &amp; \text{if {4}} \\
+      \hfill 1/6   \hfill &amp; \text{if {5}} \\
+      \hfill 1/6   \hfill &amp; \text{if {6}}
+  \end{cases}
+$$<p></p>
+<p>we must have that each possible value of the random variable is unambiguously associated with an event and a probability.</p>
+<p>It should be clear that this is the case above.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A more compact definition of a discrete random variable is</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$\textbf{Definition}$  
+Let $X$ be a discrete random variable that can take on only the values $x_1,x_2,x_3,\ldots,x_n$ with respective probabilities $p_X(x_1),p_X(x_2),p_X(x_3),\ldots,p(x_n)$.  
+<br>
+Then, if 
+$$
+\sum_{x \in X} p_X(x) = 1,
+$$
+<br>
+$X$ is a *discrete random variable*.  
+<br>
+The function $p(x) = P\{X = x\}$ is called the probability (mass) function of the variable $X$.
+</div><p>Other notations are sometimes used for the probability (mass) function, $m(i)$ or $p_i$.</p>
+<p>(Aside: it is conventional that random variables are given a capital letter, and normally are chosen from the end of the alphabet).</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Discrete-random-variables">Discrete random variables<a class="anchor-link" href="#Discrete-random-variables">&#182;</a></h2><p><strong>Definition</strong>
+Consider an experiment, with outcome set $S$, split into $n$ mutually exclusive and exhaustive events $E_1,E_2,E_3,\ldots,E_n$. A variable, $X$ say, which can assume exactly $n$ numerical values each of which corresponds to one and only one of the given events is called a random variable.</p>
+<p>Schematically the mutually exclusive and exhaustive events look like</p>
+<p><img src="Images/Exclusive_and_exhaustive.jpg" alt="Exhaustive" height="200" width="200"></p>
+<p>Remember we did something similar when we looked at Bayes' formula.</p>
+<p>Here our outcome set is split into 4 mutually exclusive events (no overlap) and exhaustive (all of $S$ is covered by them). So to associate a random variable (call it $X$) with this sample space we could have something like
+\begin{align}
+\text{$X = 1$, corresponding to event $E_1$}  \ 
+\text{$X = 2$, corresponding to event $E_2$}  \
+\text{$X = 3$, corresponding to event $E_3$}  \
+\text{$X = 4$, corresponding to event $E_4$}  \
+\end{align}</p>
+<p>and we know how to calculate the probability of events.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="String-of-logic">String of logic<a class="anchor-link" href="#String-of-logic">&#182;</a></h3><p>the random variable is a series of 'mappings', from events to probabilities to numerical values.</p>
+<p>We</p>
+<ul>
+<li>split the sample space into mutually exclusive events</li>
+<li>we assign each event a probability</li>
+<li>we assign each event a unique numerical value. </li>
+</ul>
+<p>the random variable is the whole of that package.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\textbf{Check list}$</p>
+<ul>
+<li>is the sample space well defined?</li>
+<li>are the events mutually exclusive?</li>
+<li>do the events cover all the sample space?</li>
+<li>are the probabilities of the events defined</li>
+<li>are values of the variable clearly assigned one-to-one to the possible events?</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\textbf{Example}$</p>
+<p>Define a valid random variable to describe the number of girls in families with 2 children, assuming that the likelihoods of boys or girls is equal and independent.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, we define our sample space 
+$$
+S = \{(B,B),(B,G),(G,B),(G,G)\}
+$$</p>
+<p>We define our variable $G$ using the number of girls in the family:</p>
+$$
+G = 
+  \begin{cases} 
+      \hfill 0   \hfill &amp; \text{if } \{(B,B)\} \\
+      \hfill 1 \hfill &amp; \text{if } \{(B,G),(G,B)\} \\
+      \hfill 2   \hfill &amp; \text{if } \{(G,G)\}
+  \end{cases}
+$$<p></p>
+<p>and associate our probability (mass) function</p>
+$$
+p_G(x) = 
+  \begin{cases} 
+      \hfill p_G(0) = P(G=0) = P(\{(B,B)\}) = \hfill &amp; \frac{1}{4} \\
+      \hfill p_G(1) = P(G=1) = P(\{(B,G),(G,B)\}) = \hfill &amp; \frac{1}{2} \\
+      \hfill p_G(2) = P(G=2) = P(\{(G,G)\}) = \hfill &amp; \frac{1}{4} \\
+  \end{cases}
+$$<p></p>
+<p>We check that $\sum_{g \in G} p_G(g) = 1$.</p>
+<p>Here $g$ indicates the possible values of $G$, so
+$$
+\sum_{g \in G} p_G(g) = p_G(0) + p_G(1) + p_G(2) = 1/4 + 1/2 + 1/4 = 1
+$$</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>Construct a random variable that count the total number of spots upwards when two fair 6 sided dice are thrown.</p>
+<p>Our sample space can be the 36 elements of
+$$
+S = \{(i,j): i,j = 1,2,3,4,5,6\}
+$$
+where $i$ is the number of spots on the first die, and $j$ the second die.</p>
+<p>now we need to think of a set of mutually exclusive and exhaustive events that would correspond to the sum of the spots. We could write this in set builder notation
+$$
+E_k = \{(i,j): i+j=k; i,j=1,2,3,4,5,6 \}
+$$
+and we can write these out in full
+$$
+\begin{align}
+E_2 &amp;= \{(1,1)\} \\
+E_3 &amp;= \{(1,2),(2,1)\} \\
+E_4 &amp;= \{(1,3),(2,2),(3,1)\} \\
+E_5 &amp;= \{(1,4),(2,3),(3,2),(4,1)\} \\
+E_6 &amp;= \{(1,5),(2,4),(3,3),(4,2),(5,1)\} \\
+E_7 &amp;= \{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\} \\
+E_8 &amp;= \{(2,6),(3,5),(4,4),(5,3),(6,2)\} \\
+E_9 &amp;= \{(3,6),(4,5),(5,4),(6,3)\} \\
+E_{10} &amp;= \{(4,6),(5,5),(6,4)\} \\
+E_{11} &amp;= \{(5,6),(6,5)\} \\
+E_{12} &amp;= \{(6,6)\}
+\end{align}
+$$
+and we assign the value $i+j$ to the random variable $X$ if the event $E_k$ occurs.
+$$
+\begin{align}
+X = 
+  \begin{cases} 
+      \hfill 2  \hfill &amp; \text{if } E_2 \\
+      \hfill 3  \hfill &amp; \text{if } E_3 \\
+      \vdots \\
+      \hfill 11  \hfill &amp; \text{if } E_{11} \\
+      \hfill 12  \hfill &amp; \text{if } E_{12} \\
+  \end{cases}
+\end{align}
+$$
+and the probability distribution associated with $X$ is similarly defined
+$$
+\begin{align}
+p_X(x) = P (X=x) = P(E_x)=
+  \begin{cases} 
+      \hfill 1/36  \hfill &amp; \text{ if } X=2 \\
+      \hfill 2/36  \hfill &amp; \text{ if } X=3 \\
+      \hfill 3/36  \hfill &amp; \text{ if } X=4 \\
+      \hfill 4/36  \hfill &amp; \text{ if } X=5 \\
+      \hfill 5/36  \hfill &amp; \text{ if } X=6 \\
+      \hfill 6/36  \hfill &amp; \text{ if } X=7 \\
+      \hfill 5/36  \hfill &amp; \text{ if } X=8 \\
+      \hfill 4/36  \hfill &amp; \text{ if } X=9 \\
+      \hfill 3/36  \hfill &amp; \text{ if } X=10 \\
+      \hfill 2/36  \hfill &amp; \text{ if } X=11 \\
+      \hfill 1/36  \hfill &amp; \text{ if } X=12 \\
+  \end{cases}
+\end{align}
+$$
+The lower case $x$ gives particular values of $X$, and that collection is the range of $X$ - the values that $X$ can take on: 
+$$
+R_X = {2,3,4,...,10,11,12}
+$$</p>
+<p>in that language the domain of the variable $X$ is the sample set $S$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\textbf{Check list}$</p>
+<ul>
+<li>is the sample space well defined?</li>
+<li>are the events mutually exclusive?</li>
+<li>do the events cover all the sample space?</li>
+<li>are the probabilities of the events defined</li>
+<li>are values of the variable clearly assigned one-to-one to the possible events?</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="(Cumulative)-distribution-function">(Cumulative) distribution function<a class="anchor-link" href="#(Cumulative)-distribution-function">&#182;</a></h3><p>The cumulative distribution function of a discrete random variable, $X$,  is</p>
+$$
+F_X(a) = P\{X \leq a\} = \sum_{x \leq a} p_X(x)
+$$<p>it is an alternative way of describing the probabilities of different events.</p>
+<p>Sometimes it is more conventient to use $F_X$ than the probability function $p_X$.</p>
+<p>It provided a convenient way of describing continuous random variables.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="example">example<a class="anchor-link" href="#example">&#182;</a></h3><p>Let us imagine we have a 4 sided die.</p>
+<p>What is the cumulative distribution function for the random variable $X = \textrm{'what result appears when a 4 sided die is thrown once'}$?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First we build our random variable.</p>
+<p>All the probabilities can be assumed equally likely, and we will assign a value of the number of spots to our variable $X$.</p>
+<p>We have a sample space $S = \{1,2,3,4\}$, and</p>
+$$
+X = 
+  \begin{cases} 
+      \hfill 1  \hfill &amp; \text{if } \{1\} \\
+      \hfill 2  \hfill &amp; \text{if } \{2\} \\
+      \hfill 3  \hfill &amp; \text{if } \{3\} \\
+      \hfill 4  \hfill &amp; \text{if } \{4\} \\
+  \end{cases}
+$$<p>We define our probability function
+$$
+\begin{align} 
+      \hfill p_X(1) = P(X=1) = P(\{1\}) = \hfill &amp; \frac{1}{4} \\
+      \hfill p_X(2) = P(X=2) = P(\{2\}) =\hfill &amp; \frac{1}{4} \\
+      \hfill p_X(3) = P(X=3) = P(\{3\}) =\hfill &amp; \frac{1}{4} \\
+      \hfill p_X(4) = P(X=4) = P(\{4\}) =\hfill &amp; \frac{1}{4} \\
+\end{align}
+$$
+or more sensibly $p_X(x) =\frac{1}{4}: x = 1,2,3,4$.</p>
+<p>We see that $\sum_{x \in X} p_X(x) = 1$.</p>
+<p>The events that define $X$ are exhaustive and mutually exclusive.</p>
+<p>There is a one-to-one map between the values of the probability (mass) function.</p>
+<p>So $X$ is a random variable, with $p_X(x)$ its probability mass function.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using our definition of the cumulative distribution function
+$$
+F(a) = P\{X \leq a\} = \sum_{x \leq a} p(x)
+$$
+we have 
+$$
+F_X(a) = 
+  \begin{cases} 
+      \hfill 0  \hfill &amp; a &lt; 1 \\
+      \hfill 1/4 =  \hfill &amp; 1 \leq a &lt; 2 \\
+      \hfill 2/4 = \hfill &amp; 2 \leq a &lt;3 \\
+      \hfill 3/4 =  \hfill &amp; 3 \leq a &lt; 4 \\
+      \hfill 1 = \hfill &amp; a &gt;= 4
+  \end{cases}
+$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$\textbf{Definition}$
+$$
+F_X(a) = P\{X \leq a\} = \sum_{x \leq a} p_X(x) \text{ for} -\infty < a < \infty 
+$$
+</div><p>if this is true, then because $p_X(x)$ obeys the axioms of probability, the following will hold:</p>
+<p>$F_X(a)$ must be 0 as $a \to -\infty$ and 1 as $a \to \infty$</p>
+<p>$F_X(a)$ must be monotonically increasing</p>
+<p>$F_X(a)$ must be <a href="https://www.youtube.com/watch?v=fm07adZ_WHo">right continuous</a></p>
+
+</div>
+</div>
+</div></section></section>
+
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cumulative-distribution-function-for-continuous-random-variables">Cumulative distribution function for continuous random variables<a class="anchor-link" href="#Cumulative-distribution-function-for-continuous-random-variables">&#182;</a></h3><p>Cumulative distributions provide a good way of describing continuous random variables.</p>
+<p>The cumulative distribution function of a discrete random variable, $X$,  is</p>
+$$
+F_X(a) = P\{X \leq a\} = \sum_{x \leq a} p_X(x)
+$$<p>The definition for a continuous random variable is very similar to the discrete case, but the sum is replaced by the integral, and the thing being integrated (summed in the discrete case) is called the (probability) density function.</p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+$\textbf{Cumulative distribution function for a continuous random variable, $X$}$
+$$
+F_X(a) = P\{X \leq a\} = \int_{-\infty}^{a}f(x) \mathrm{d}x,
+$$
+
+note that [conversely the fundamental theorem of calculus](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus) implies that
+$$
+\frac{d}{da}F(a) = f(a)
+$$
+</div>
+<br>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+The following will hold, exactly as for the discrete case: 
+
+<li>$F_X(a)$ must be 0 as $a \to -\infty$ and 1 as $a \to \infty$.</li>  
+<li>$F_X(a)$ must be monotonically increasing.</li>
+<li>$F_X(a)$ must be [right continuous](https://www.youtube.com/watch?v=fm07adZ_WHo).</li>
+</div><p>when these conditions hold, $F_X$ defines a random variable $X$.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\textbf{Example}$</p>
+$$
+F_Y(y) = 
+  \begin{cases} 
+      \hfill 0   \hfill &amp; \text{if } y &lt; 0\\
+      \hfill  1/4 (y^2 + 3y) \hfill &amp; \text{if } 0 \leq  y \leq 1\\
+      \hfill 1   \hfill &amp; \text{if } y &gt; 1
+  \end{cases}
+$$<p></p>
+<p>this function fulfils all our requirements:</p>
+<ul>
+<li>as $y \to -\infty$ we see that $F_Y(y) \to 0$</li>
+<li>as $y \to \infty$ we see that $F_Y(y) \to 1$ </li>
+<li>our function is right continuous - the central section is continuous (polyomial), and $F_y(0)$ and $F_y(1)$ are the same when approached from either side.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Probability-density-function">Probability density function<a class="anchor-link" href="#Probability-density-function">&#182;</a></h2><p>We can show that the function</p>
+$$
+f_Y(y) = \frac{\text{d} F_Y(y)}{\text{d}y}
+$$<p>is consistent with our previous short discussions of continuous density functions.</p>
+<p>Instead of our probability mass function we have a probability density function $f(x)$ which when integrated over a valid range of $x$ values gives the probability that the random variable $X$ lies in that range:
+$$
+P\{a \leq X \leq b\} = \int_{a}^{b}f_X(x) \mathrm{d}x = F_X(b) - F_X(a)
+$$
+the last follow from the fundamental theorem of calculus.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By definition</p>
+$$
+f_Y(y) = \frac{\text{d} F_Y(y)}{\text{d}y} = \lim\limits_{\Delta y \to 0} \frac{F_Y(y+\Delta y) - F_Y(y)}{\Delta y}
+$$<p>being a little loose with what should be done with such limits we have</p>
+$$
+\begin{align}
+F_Y(y+\Delta y) - F_Y(y) &amp; = f_Y(y) \Delta y \\
+                         &amp; = P\{y \leq Y \leq y + \Delta y \}
+\end{align}
+$$<p>so $f_Y(y)\Delta y$ is the probability that $y$ is in the small range $y$ to $y + \Delta y$.</p>
+<p>Because we multiply $f_Y(y)$ by a value $\Delta y$ to get something sensible is once explanation of why it is referred to as a density function.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong></p>
+<p>Let the probability density function of a random variable $X$ be 
+$$
+f(x) =
+  \begin{cases} 
+      \hfill 0   \hfill &amp; \text{if } x &lt; 1\\
+      \hfill  \frac{2}{5}(4-x) \hfill &amp; \text{if } 1 \leq  x \leq 2\\
+      \hfill 0   \hfill &amp; \text{if } x &gt; 2
+  \end{cases}
+$$
+Suppose we want the probability that $X$ is in the interval $\frac{5}{4}$ to $\frac{7}{4}$. From our definition we have
+$$
+P\{\frac{5}{4} \leq X \leq \frac{7}{4}\} = \int_{\frac{5}{4}}^{\frac{7}{4}} \frac{2}{5}(4-x) \text{d}x = \frac{1}{2}.
+$$</p>
+<p>We also note that the total probability, integrating over the non-zero part of $f(x)$, is unity</p>
+$$
+P\{- \infty \leq X \leq \infty\} =  \int_{1}^{2} \frac{2}{5}(4-x) \text{d}x= 1.
+$$<p>This means that our probabilities make sense and obey the axioms of probability.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Technical-aside:-Improper-integrals">Technical aside: Improper integrals<a class="anchor-link" href="#Technical-aside:-Improper-integrals">&#182;</a></h4><p>In the last example we had a strange integral</p>
+$$
+P\{- \infty \leq X \leq \infty\} =  \int_{-\infty}^{\infty} f(x)\text{d}x 
+$$<p>which I quietly claimed was OK because $f(x)$ was only non-zero over a finite domain.</p>
+$$
+f(x) =
+  \begin{cases} 
+      \hfill 0   \hfill &amp; \text{if } x &lt; 1\\
+      \hfill  \frac{2}{5}(4-x) \hfill &amp; \text{if } 1 \leq  x \leq 2\\
+      \hfill 0   \hfill &amp; \text{if } x &gt; 2
+  \end{cases}
+$$<p>So called improper integrals that we will encounter typically have infinite integration limits. Similarly to in calculus we should interpret these as a limiting process.</p>
+<p>Typically we will split up the integrals into a proper integral, and an improper integral. Then show that the improper integral has a well defined limit - which we take as its value.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+\int_{-\infty}^{\infty} f(x)\text{d}x  =  \int_{-\infty}^{1} 0 \text{d}x + \int_{1}^{2} \frac{2}{5}(4-x) \text{d}x + \int_{2}^{\infty} 0 \text{d}x 
+$$<p>and we should take $\int_{-\infty}^{1} 0 \text{d}x$ to mean $\lim\limits_{a \to -\infty} \int_{a}^{1} 0 \text{d}x$. As we take $a$ to be a larger and larger negative number, the value of the integral remains 0, so this is its value.</p>
+<p>For most/all functions we will encounter, e.g. $\int_{-\infty}^{\infty}e^{-x^2}$ a similar procedure yields sensible results.</p>
+<p>If the function were not to decay towards zero at either end of the real line, then there can be complications.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\textbf{Example - uniform random variables}$</p>
+<p>Let $X$ be a random variable whose (cumulative) distribution function is</p>
+$$
+F_X(t) = 
+\begin{cases}
+\hfill 0   \hfill &amp; t &lt; 0 \\
+\hfill t   \hfill &amp; 0 \leq t \leq 1 \\
+\hfill 0   \hfill &amp; t &gt; 1 \\
+\end{cases}
+$$<p>our (probability) density function is the derivative with respect to $t$ of $F_X(t)$</p>
+$$
+f_X(t) =  \frac{\text{d} F_X(t)}{\text{d}t} =
+\begin{cases}
+\hfill 0   \hfill &amp; t &lt; 0 \\
+\hfill 1   \hfill &amp; 0 \leq t \leq 1 \\
+\hfill 0   \hfill &amp; t &gt; 1 \\
+\end{cases}
+$$
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since the density function of $X$ is equal to 1, the area under the density over any interval between $0$ and $1$ is equal to the length of the interval.</p>
+<p>Because we have that</p>
+$$
+P\{a \leq X \leq b\} = \int_{a}^{b}f_X(x) \mathrm{d}x
+$$<p>this means that the probability that the observed value for $X$ lies in an interval contained in $(0,1)$ is proportional to the length of the interval.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+To be a valid probability density function of a random variable, we must have
+
+$$
+f(t) \geq 0 \mbox{,      for all $t$}
+$$
+
+$$
+\int_{-\infty}^{\infty}f(t) \text{d}t = 1
+$$
+
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h3><p><br></p>
+<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+Understand the elements of a random variable. Be able to define and use
+<li> Discrete vs continuous variables </li>
+<li> Range and domain of the variables </li>
+<li> Probability (Mass/Density) Function </li>
+<li> Cumulative Distribution Function </li>
+<li> Improper integrals </li>
+</div>
+</div>
+</div>
+</div></section></section>
+
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../../revealjs//lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../../revealjs//plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
+
+        Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+);
+</script>
+
+</body>
+
+
+</html>
