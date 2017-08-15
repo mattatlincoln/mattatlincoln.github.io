@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Matt at Lincoln</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matt at Lincoln</title>
+
+  <!-- CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
   <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <style>
@@ -14,7 +15,8 @@
 
 <body>
   <nav class="white" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#home" class="brand-logo">Matt Watkins</a>
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#home" class="brand-logo">Matt Watkins</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#Projects">Projects</a></li>
         <li><a href="#People">People</a></li>
@@ -35,19 +37,18 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Matt Watkins</h1>
         <div class="row center">
-	  <h5 class="header center teal-text text-lighten-2">School of Mathematics and Physics, University of Lincoln, UK</h5>
+	  <h5 class="header col s12 teal-text text-lighten-2">School of Mathematics and Physics, University of Lincoln, UK</h5>
         </div>
         <div class="row center">
-          <a href="http://staff.lincoln.ac.uk/mwatkins" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">University website</a>
+          <a href="https://staff.lincoln.ac.uk/mwatkins" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">University website</a>
         </div>
         <br><br>
 
       </div>
     </div>
-    <div class="parallax"><img src="background1.jpg" alt="Simple model"></div>
+    <div class="parallax"><img src="sta_old.png" alt="Simple model"></div>
   </div>
 
-<!-- Header -->
 
   <!-- About Section -->
   <div class="container" id="about">
@@ -99,6 +100,7 @@ Current interests are characterisation of solid-liquid interfaces: We are develo
     <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 2"></div>
   </div>
 
+  <!-- People Section -->
   <div class="container" id="People">
     <h2 class="text-left"><span class="glyphicon glyphicon-user"></span> People </h2>
     <div class="row">
@@ -158,9 +160,9 @@ Current interests are characterisation of solid-liquid interfaces: We are develo
 <div id="googleMap" class="container-fluid center" style="width:95%;height:450px;center"></div>
 
 <!-- Footer -->
-<footer class="footer">
+<footer class="page-footer teal">
   <div class="container">
-    <h3 class="text-muted text-center"><a href="http://www.lincoln.ac.uk/home/smp/" title="Matt Watkins">School of Mathematics and Physics</a>, University of Lincoln, UK</h3>
+    <h5 class="white-text center"><a  class="white-text" href="http://www.lincoln.ac.uk/home/smp/" title="School Website">School of Mathematics and Physics</a>, University of Lincoln, UK</h5>
   </div>
 </footer>
 
@@ -182,6 +184,7 @@ function myMap()
   marker.setMap(map);
 }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDisLbYnh8O1JcOobWOfk5ljn5xyOr0-Hw&callback=myMap"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
