@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matt at Lincoln</title>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="../../materialize/css/materialize.min.css"  media="screen,projection"/>
+  <link href="../../style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+  </style>
+</head>
+
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#home" class="brand-logo"> Matt Watkins </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#Polls">Polls</a></li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#Polls">Polls</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h3 class="header center white-text text-lighten-2">Matt Watkins</h3>
+        <div class="row center">
+      	  <h5 class="header col s12 white-text text-lighten-2">School of Mathematics and Physics, University of Lincoln, UK</h5>
+        </div>
+        <div class="row center">
+          <a href="https://staff.lincoln.ac.uk/mwatkins" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">University website</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="../../images/CaF2_zoom.jpg" alt="Simple model"></div>
+  </div>
+  <br>
+
+  <!-- Polls Section -->
+  <div class="container" id="Polls">
+    <iframe src="https://embed.polleverywhere.com/free_text_polls/MbFjFLJoO9AyD6Y?controls=none&short_poll=true" width="100%" height="500 px" frameBorder="0"></iframe>
+  </div>
+
+  <br>
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Tip models for AFM in liquid</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="../../images/CaF2_zoom3.jpg" alt="tip models"></div>
+  </div>
+
+  <br>
+
+
+  <div class="container" id="Polls">
+    <iframe src="https://embed.polleverywhere.com/ranking_polls/2qMKRrGaoqxqlqV?controls=none&short_poll=true" width="100%" height="500 px" frameBorder="0"></iframe>
+  </div>
+
+  <br>
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Brayford Pool</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="../../images/brayfordPool.jpg" alt="Brayford Pool, Image courtesy of University of Lincoln - www.lincoln.ac.uk"></div>
+  </div>
+<br>
+  <div class="container" id="Polls">
+    <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/N4j5lJdGi8ylQRW?controls=none&short_poll=true" width="100%" height="500 px" frameBorder="0"></iframe>
+  </div>
+
+<br>
+
+<!-- End page content -->
+
+<!-- Google Map -->
+<div id="googleMap" class="container center" style="height:450px"></div>
+
+<br>
+
+<!-- Footer -->
+<footer class="page-footer teal">
+  <div class="container valign-wrapper">
+    <div class="row">
+      <div class="col s10">
+        <h5 class="white-text center"><a  class="white-text" href="https://www.lincoln.ac.uk/home/smp/" title="School Website">School of Mathematics and Physics</a>, </h5>
+        <h5 class="white-text center">University of Lincoln, UK</h5>
+      </div>
+      <div class="col s2">
+        <img src="../../images/UoL-logo-general-use-white-background.jpg" class="" width="100%" alt="Lincoln Logo">
+      </div>
+  </div>
+</footer>
+
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(53.227054,-0.547184);
+  var mapOptions= {
+    center:myCenter,
+    zoom:16, scrollwheel: true, draggable: true,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDisLbYnh8O1JcOobWOfk5ljn5xyOr0-Hw&callback=myMap"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../materialize/js/materialize.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('.parallax').parallax();
+  $(".button-collapse").sideNav();
+});
+</script>
+
+</body>
+</html>
