@@ -73,16 +73,27 @@
 <div class="reveal">
   <div class="slides">
 
-    <section>
-      <h1 id="Numerical Methods Week 2">Numerical Methods Week 2<a class="anchor-link" href="#Numerical Methods Week 2">&#182;</a></h1>
-      <h2 id="Curve Fitting 1">Curve Fitting 1<a class="anchor-link" href="#Curve Fitting 1">&#182;</a></h2>
-      <p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
-      <p>Learning outcomes:</p>
+    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/2/20/Coloured_Voronoi_2D.svg">
+      <h1 style="color:white;" id="Numerical Methods Week 2">Numerical Methods Week 2<a class="anchor-link" href="#Numerical Methods Week 2">&#182;</a></h1>
+      <h2 style="color:white;" id="Curve Fitting 1">Curve Fitting 1<a class="anchor-link" href="#Curve Fitting 1">&#182;</a></h2>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	
+	<p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
+	<p>Learning outcomes:</p>
+      </div>
+      <br>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <li> Understand the mathematics of the simplest version of linear regression.</li>
         <li> Code a working version of linear regression using C++.</li>
         <li> Check your code works correctly, via an external reference.</li>	
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ 
+       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
       </div>
     </section>
 
@@ -114,15 +125,26 @@
 	  as our error criterion.
 	</p>
       </section>
+
+      <section>
+	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+	  $$
+	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	  $$
+	  as our error criterion.
+	</p>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" style="height:300px;">
+      </section>
+      
       <section>
 	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
 	<p>If we look at our model
 	  $$
 	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
 	  $$
-	  we see that there are 2 parameters, $a_0$ and $a_1$ that control the slop and intercept of our model. It is a model, we are assuming that there is a linear relationship between $x$ and $y$.	  
-	</p>
-	<p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
+	  we see that there are 2 parameters, $a_0$ and $a_1$ that control the slope and intercept of our model.</p>
+	<p class="fragment">It is a model, we are assuming that there is a linear relationship between $x$ and $y$.</p>  
+	<p  class="fragment">We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
 	  $$
 	  \begin{align}
 	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
@@ -131,8 +153,8 @@
 	  $$
 	  where the summations go from $0$ to $n-1$ (this is to agree with C style arrays).
 	</p>
-	<p>Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
-	<p>For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
+	<p  class="fragment">Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
+	<p  class="fragment">For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
       </section>
       <section>
 	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
