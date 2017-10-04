@@ -1380,10 +1380,11 @@ pre code {
   white-space: pre-wrap;
   background-color: transparent;
   border-radius: 0;
+  overflow-y: auto!important;
 }
 .pre-scrollable {
-  max-height: 340px;
-  overflow-y: scroll;
+  /*max-height: 75%!important;
+  overflow-y: scroll;*/
 }
 .container {
   margin-right: auto;
@@ -8257,15 +8258,15 @@ label {
 
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -11039,7 +11040,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -11480,7 +11481,7 @@ ul.typeahead-list > li > a {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -11588,4 +11589,11 @@ a.anchor-link {
 }
 .rendered_html p {
   text-align: inherit;
+}
+
+pre code[class]:after {
+  content: 'highlight: ' attr(class);
+  display: block; text-align: right;
+  font-size: smaller;
+  padding-top: 5px;
 }
