@@ -39,6 +39,11 @@
   <![endif]-->
 
   <!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
   <!-- Load mathjax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
   <!-- MathJax configuration -->
@@ -50,7 +55,6 @@
       processEscapes: true,
       processEnvironments: true
     },
-    TeX: { equationNumbers: { autoNumber: "AMS" } },
     // Center justify equations in code and markdown cells. Elsewhere
     // we use CSS to left justify single line equations in code cells.
     displayAlign: 'center',
@@ -102,7 +106,7 @@
       <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
       <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
       $$
-      y_i = a_0 + a_1 x_i + e \tag{*}
+      y_i = a_0 + a_1 x_i + e
       $$
       <p>where $e$ is the error, or residual, between the model and the observations.</p>
       <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
@@ -113,7 +117,7 @@
 	<h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
 	<p> given our assumption of a straightline</p>
 	$$
-	y_i = a_0 + a_1 x_i + e_i \tag{*}
+	y_i = a_0 + a_1 x_i + e_i
 	$$
 	<p>the error at each point is given by</p>
 	$$
