@@ -238,6 +238,99 @@ int main()
       
     </section>
 
+    <section>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/jvbgsuMqd91tsTg?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/oF57qo4dXVI3kn5?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/YPCLA9NHwShIxj0?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+    </section>
+    <section>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ESd57XyWZvru1fm?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/QyCxpOYenyTHz5F?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/dj16xfIH99rRTi4?controls=none&short_poll=true" width="75%" height="200px" frameBorder="0"></iframe>
+    </section>
+
+    <section>
+      <h3 id="Quantifying the error">Quantifying the error<a class="anchor-link" href="#Quantifying the error">&#182;</a></h3>
+      <p>To quantify the error in our model we can look at the correlation coefficient of our data, conventionally called $r$.</p>
+      <p>This is the covariance of the data $(x,y)$ divided by the square roots of the variance of $x$ and $y$.
+	$$
+	r = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{\sqrt{n \sum x_i^2 - (\sum x_i)^2}\sqrt{n \sum y_i^2 - (\sum y_i)^2}}
+	$$
+	The measures the difference between the scatter of the data from the mean and the scatter of the data from the ideal straight line.
+      </p>      
+    </section>
+
+    <section>
+      <h3 id="Some data">Some data<a class="anchor-link" href="#Some data">&#182;</a></h3>
+      <p>Here is some data with $n=100$ that you should be able to cut and paste:</p>
+      <pre data-lang="c++">
+	<code class='c++'>
+    double xi[] = { 
+        0.        ,   0.1010101 ,   0.2020202 ,   0.3030303 ,
+        0.4040404 ,   0.50505051,   0.60606061,   0.70707071,
+        0.80808081,   0.90909091,   1.01010101,   1.11111111,
+        1.21212121,   1.31313131,   1.41414141,   1.51515152,
+        1.61616162,   1.71717172,   1.81818182,   1.91919192,
+        2.02020202,   2.12121212,   2.22222222,   2.32323232,
+        2.42424242,   2.52525253,   2.62626263,   2.72727273,
+        2.82828283,   2.92929293,   3.03030303,   3.13131313,
+        3.23232323,   3.33333333,   3.43434343,   3.53535354,
+        3.63636364,   3.73737374,   3.83838384,   3.93939394,
+        4.04040404,   4.14141414,   4.24242424,   4.34343434,
+        4.44444444,   4.54545455,   4.64646465,   4.74747475,
+        4.84848485,   4.94949495,   5.05050505,   5.15151515,
+        5.25252525,   5.35353535,   5.45454545,   5.55555556,
+        5.65656566,   5.75757576,   5.85858586,   5.95959596,
+        6.06060606,   6.16161616,   6.26262626,   6.36363636,
+        6.46464646,   6.56565657,   6.66666667,   6.76767677,
+        6.86868687,   6.96969697,   7.07070707,   7.17171717,
+        7.27272727,   7.37373737,   7.47474747,   7.57575758,
+        7.67676768,   7.77777778,   7.87878788,   7.97979798,
+        8.08080808,   8.18181818,   8.28282828,   8.38383838,
+        8.48484848,   8.58585859,   8.68686869,   8.78787879,
+        8.88888889,   8.98989899,   9.09090909,   9.19191919,
+        9.29292929,   9.39393939,   9.49494949,   9.5959596 ,
+        9.6969697 ,   9.7979798 ,   9.8989899 ,  10. 
+    };
+
+    double yi[] = { 
+        6.01469413,   14.09996968,    9.12100078,    3.73282861,
+        3.78942871,   -0.80602985,  -11.66859711,   -5.47649636,
+        1.42688043,  -19.21550529,  -11.36675823,  -11.52035088,
+        -12.78108715,  -24.7444492 ,  -18.21072249,  -10.25901618,
+        -25.25658938,  -26.50312596,  -27.38329998,  -25.98510757,
+        -24.77780539,  -43.26902796,  -33.07165188,  -35.15315958,
+        -42.5563826 ,  -37.38939826,  -47.14096056,  -40.15575937,
+        -44.73475717,  -38.15779936,  -51.05774419,  -54.79376375,
+        -55.63165111,  -61.28604873,  -50.62652442,  -61.91830736,
+        -64.26923379,  -62.67497829,  -74.49810931,  -71.67737897,
+        -74.08110435,  -69.21877935,  -86.65971022,  -81.76601778,
+        -74.87565634,  -86.05172849,  -84.97568593,  -75.23147413,
+        -74.81314469,  -84.11032466,  -88.12612336,  -88.66430364,
+        -89.16641119,  -98.31572601,  -99.5877934 , -100.23988776,
+        -101.25789035, -109.75819414, -105.84140181, -105.23523665,
+        -122.60927949, -106.39523463, -123.02075393, -118.53726793,
+        -118.13475666, -120.17611906, -129.80198049, -125.23872405,
+        -120.29937702, -127.53296514, -128.38744678, -135.58414852,
+        -134.56512625, -129.73246677, -138.44263851, -134.84290239,
+        -144.86399101, -142.08490521, -133.26692841, -154.74419441,
+        -147.37756306, -144.86988039, -169.78056679, -163.14984653,
+        -163.37503186, -155.46348415, -154.93317035, -178.65683429,
+        -168.08804204, -174.41498129, -170.71034792, -181.28027204,
+        -181.75735231, -172.88715969, -180.25148771, -180.53352578,
+        -187.12812126, -186.3930225 , -179.49747799, -184.85728151 
+    };
+	</code>
+      </pre>
+
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Find $a_0$, $a_1$ and $r$ for the data set above.</li>	
+        <li> Do you think it is a good model of the data?</li>	
+      </div>
+      
+    </section>
+    
     </div> <!-- slides -->
   </div> <!-- reveal -->
 
