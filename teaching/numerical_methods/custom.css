@@ -1340,11 +1340,11 @@ samp {
   font-family: monospace;
 }
 code {
-  padding: 2px 4px;
+  padding: 0px 0px;
   font-size: 90%;
   color: #c7254e;
   background-color: #f9f2f4;
-  border-radius: 2px;
+  border-radius: 0px;
 }
 kbd {
   padding: 2px 4px;
@@ -11597,3 +11597,14 @@ pre code[class]:after {
   font-size: smaller;
   padding-top: 5px;
 }
+
+body {
+  background: #ffe4e1;
+  background: -moz-radial-gradient(center, circle cover, white 0%, #ffe4e1 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, white), color-stop(100%, #ffe4e1));
+  background: -webkit-radial-gradient(center, circle cover, white 0%, #ffe4e1 100%);
+  background: -o-radial-gradient(center, circle cover, white 0%, #ffe4e1 100%);
+  background: -ms-radial-gradient(center, circle cover, white 0%, #ffe4e1 100%);
+  background: radial-gradient(center, circle cover, white 0%, #ffe4e1 100%);
+  background-color: #ffe4e1; }
+

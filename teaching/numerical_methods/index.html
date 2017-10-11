@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <title>01 - Curve Fitting</title>
+  <title>C++ FAQs</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -19,24 +19,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
   <!-- General and theme style sheets -->
-  <link rel="stylesheet" href="../../revealjs/css/reveal.css">
-  <link rel="stylesheet" href="../../revealjs/css/theme/beige.css" id="theme">
-
-  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-  <script>
-  if( window.location.search.match( /print-pdf/gi ) ) {
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../revealjs//css/print/pdf.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  }
-
-  </script>
-
-  <!--[if lt IE 9]>
-  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
 
   <!-- Loading the mathjax macro -->
   <!-- Load mathjax -->
@@ -69,203 +53,52 @@
 
 </head>
 <body>
+  <div>
+    <h1 id="C++ FAQs">C++ FAQs<a class="anchor-link" href="#C++ FAQs">&#182;</a></h1>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	
+      <p>A list of the most common gotchas when using C++</p>
+      <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+    </div>
+  </div>
 
-<div class="reveal">
-  <div class="slides">
+  <div>
+    <h2 id="Array bounds">Array bounds<a class="anchor-link" href="#Array bounds">&#182;</a></h2>
+    <p> This code example goes wrong because it tries to access x[10]</p>
+    <p> C arrays start from element [0] and go up to [n-1].</p>
+    <p> So in the code below x[0], x[1], ... x[9] are assigned. </p>
+    <p> But in the loop, x[10] just prints whatever happens to exist in that memory location, which could be anything! </p>
+    <pre data-lang="c++">
+      <code class='c++'>
+// Be careful of array bounds
 
-    <section>
-      <h1 id="Probability-spaces">Probability spaces<a class="anchor-link" href="#Probability-spaces">&#182;</a></h1>
-      <p>This introduces the axioms of probability and connects them to counting problems - including combinatorials and permutations.</p>
-      <p>Learning outcomes:</p>
-      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li>sample spaces</li>
-        <li>outcomes</li>
-        <li> events</li>
-        <li> frequentist paradigm of probability (but be aware there are others)</li>
-        <li> the axioms of probability</li>
-        <li> calculate the probabilities of events occuring in simple sample spaces with equally likely outcomes.</li>
-      </div>
-    </section>
+#include "stdafx.h"
+#include&ltiostream>
 
-    <section>
-      <pre data-lang="c++">
-	<code class='c++'>
-#include &lt stdio.h>
-#include &lt gsl/gsl_fit.h>
-
-int main (void)
+int main()
 {
-  int i, n = 4;
-  double x[4] = { 1970, 1980, 1990, 2000 };
-  double y[4] = {   12,   11,   14,   13 };
-  double w[4] = {  0.1,  0.2,  0.3,  0.4 };
+    // assign an array of length 10
+    double x[10] = {0,1,2,3,4,5,6,7,8,9};
 
-  double c0, c1, cov00, cov01, cov11, chisq;
-
-  gsl_fit_wlinear (x, 1, w, 1, y, 1, n, &c0, &c1, &cov00, &cov01, &cov11, &chisq);
-
-  printf ("# best fit: Y = %g + %g X\n", c0, c1);
-  printf ("# covariance matrix:\n");
-  printf ("# [ %g, %g\n#   %g, %g]\n", cov00, cov01, cov01, cov11);
-  printf ("# chisq = %g\n", chisq);
-
-  for (i = 0; i < n; i++)
-  printf ("data: %g %g %g\n",x[i], y[i], 1/sqrt(w[i]));
-
-  printf ("\n");
-
-  for (i = -30; i < 130; i++)
-  {
-    double xf = x[0] + (i/100.0) * (x[n-1] - x[0]);
-    double yf, yf_err;
-
-    gsl_fit_linear_est (xf, c0, c1, cov00, cov01, cov11, &yf, &yf_err);
-    printf ("fit: %g %g\n", xf, yf);
-    printf ("hi : %g %g\n", xf, yf + yf_err);
-    printf ("lo : %g %g\n", xf, yf - yf_err);
-  }
-  return 0;
-}
-        </code>
-      </pre>
-    </section>
-
-    <section>
-      <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
-      <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
-      $$
-      y_i = a_0 + a_1 x_i + e
-      $$
-      <p>where $e$ is the error, or residual, between the model and the observations.</p>
-      <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
-	<p> given our assumption of a straightline</p>
-	$$
-	y_i = a_0 + a_1 x_i + e_i
-	$$
-	<p>the error at each point is given by</p>
-	$$
-	e_i  = y_i - a_0 - a_1 x_i
-	$$
-	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
-	  $$
-	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-	  $$
-	  as our error criterion.
-	</p>
-      </section>
-      <section>
-	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
-	<p>If we look at our model
-	  $$
-	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-	  $$
-	  we see that there are 2 parameters, $a_0$ and $a_1$ that control the slop and intercept of our model. It is a model, we are assuming that there is a linear relationship between $x$ and $y$.	  
-	</p>
-	<p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
-	  $$
-	  \begin{align}
-	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
-	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i]
-	  \end{align}
-	  $$
-	  where the summations go from $0$ to $n-1$ (this is to agree with C style arrays).
-	</p>
-	<p>Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
-	<p>For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
-      </section>
-      <section>
-	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
-	<p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
-	  $$
-	  \begin{align}
-	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) = 0 \\	  
-	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i] = 0
-	  \end{align}
-	  $$
-	  This gives us a pair of simultaneous linear equations, sometimes called the normal equations.</p>
-	<p> We can solve these for $a_1$ and $a_0$.
-	  $$
-	  a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
-	  $$
-	  and plug this into the first equation to get
-	  $$
-	  a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
-	  $$
-	  where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
-	</p>
-      </section>
-    </section>
-    
-    
-    </div> <!-- slides -->
-  </div> <!-- reveal -->
-
-  <script>
-
-  require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "../../revealjs//lib/js/head.min.js",
-      "../../revealjs//js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        mouseWheel: false,
-        center: false,
-        scroll: true,
-
-        // Parallax background image
-        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
-        // Parallax background size
-        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
-
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: "../../revealjs//lib/js/classList.js",
-          condition: function() { return !document.body.classList; } },
-          { src: "../../revealjs//plugin/notes/notes.js",
-          async: true,
-          condition: function() { return !!document.body.classList; } }
-        ]
-      });
-
-      var update = function(event){
-        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-        }
-      };
-
-      Reveal.addEventListener('slidechanged', update);
-
-      var update_scroll = function(event){
-        $(".reveal").scrollTop(0);
-      };
-
-      Reveal.addEventListener('slidechanged', update_scroll);
-
+    // loop over array elements, be very careful!
+    // array elements not assigned will contain random data
+    // visual studio may complain (depends on version, it seems)
+    for (int i = 0; i < 11; i++) {
+        std::cout << "i = " << i << ", x[" << i << "] = " << x[i] << "\n";
     }
-  );
-  </script>
+}	  
+								     </code>
+    </pre>
+  </div>
 
+  <div>
+    <h2 id="Use radians not degrees">Use radians not degrees<a class="anchor-link" href="#Use radians not degrees">&#182;</a></h2>
+    <p>Always use radians rather than degrees when calling trigonometric functions.</p>
+    <p>Write yourself a small function to do the conversion for you.</p>
+    
+  </div>
+  
 </body>
 
 </html>
