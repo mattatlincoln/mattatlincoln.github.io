@@ -193,45 +193,62 @@ int main()
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <li> Derive the above equations</li>	
-        <li> Write the equations in matrix form</li>
-	<p>using the data on the next slide</p>
+        <li> Write the equations in matrix form $Ax = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
+	<p>using the data you can find on Blackboard for today's session called "Curve Fitting 2"</p>
 	<li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-	<li> Plot your fitted parabola against the data</li>
+	<li> Plot your fitted parabola against the data to check the fit</li>
       </div>                 
     </section>
 
     <section>
-      <pre data-lang="c++">
-	<code class='c++'>
-    double xi[] = { -10., -9.375, -8.75, -8.125, -7.5, -6.875, -6.25,
-        -5.625, -5., -4.375, -3.75, -3.125, -2.5, -1.875,
-        -1.25, -0.625, 0., 0.625, 1.25, 1.875, 2.5,
-        3.125, 3.75, 4.375, 5., 5.625, 6.25, 6.875,
-        7.5, 8.125, 8.75, 9.375, 10.0
-    };
-    double yi[] = { -1754.65220643, -1545.35336206, -1371.53439127, -1179.21120976,
-        -1010.37498513,  -868.79675609,  -762.03703053,  -614.41904949,
-        -500.17467229,  -436.18120868,  -297.04920352,  -264.59831243,
-        -151.60259672,  -149.56075038,   -69.11767014,   -97.02167759,
-        -45.02944712,   -68.37282773,   -37.77510981,   -12.65843768,
-        -109.23684367,  -139.33915095,  -227.82069115,  -270.83734742,
-        -392.98871361,  -406.53807683,  -493.86675145,  -671.78895522,
-        -783.5957334 ,  -911.19550493, -1026.2077706 , -1215.10973286,
-    -1418.16527415 };
-    </code></pre>
+      <h2 id="Multiple Linear Regression">Multiple Linear Regression<a class="anchor-link" href="#Multiple Linear Regression">&#182;</a></h2>
+      <p>Instead of powers of a single variable, our model for $y_i$ could be that it is a function of several independent variables:
+	$$
+	y_i = a_0 + a_1 x_{1i} + a_2 x_{2i} + a_3 x_{3i} + \ldots + a_n x_{ni}
+	$$
+      </p>
+      
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Derive the a set of equations for the case of two independent variables</li>	
+        <li> Write the equations in matrix form $Ax = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
+	<p>Using the following data
+	  $$
+	  \begin{array} {ccc}
+	  x_1 & x_2 & y \\
+	  \hline
+	  0 & 0 & 5 \\
+	  2 & 1 & 10 \\
+	  2.5 & 2 & 9 \\
+	  1 & 3 & 0 \\
+	  4 & 6 & 3 \\
+	  7 & 2 & 27 \\
+	  \hline
+	  \end{array}
+	  $$
+	</p>
+
+	<li> Solve for $a_0$, $a_1$  and  $a_2$</li>
+	<li> Plot your fitted function against the data to check the fit</li>
+      </div>                 
+
     </section>
 
+    <section>
+      <h3 id="Linearization of data sets">Linearization of data sets<a class="anchor-link" href="#Linearization of data sets">&#182;</a></h3>
+      <p>Multiple Linear Regression is not just limited to obviously linear data.</p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> How would you apply multiple linear regression to data that you thought was related by $y = a_0 x_1 ^ {a_1} x_2 ^ {a_2} \cdots x_n ^ {a_n}$ ?</li>	
+      </div>
+    </section>
+
+    
     <section>
       <h2 id="Statistical interpretation of least squares">Statistical interpretation of least squares<a class="anchor-link" href="#Statistical interpretation of least squares">&#182;</a></h2>
       
     </section>
     
-    <section>
-      <h2 id="Interpolation">Interpolation<a class="anchor-link" href="#Interpolation">&#182;</a></h2>
-      
-    </section>
-
-
   </div> <!-- slides -->
 </div> <!-- reveal -->
 
