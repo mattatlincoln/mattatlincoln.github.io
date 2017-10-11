@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Numerical Methods - Curve Fitting 2</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../revealjs/css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+    }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
+
+  <!-- Get Font-awesome from cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="../custom.css">
+
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/2/20/Coloured_Voronoi_2D.svg">
+      <h2 style="color:white;" id="Numerical Methods Week 3">Numerical Methods Week 3<a class="anchor-link" href="#Numerical Methods Week 3">&#182;</a></h2>
+      <h1 style="color:white;" id="Curve Fitting 2">Curve Fitting 2<a class="anchor-link" href="#Curve Fitting 2">&#182;</a></h1>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	
+	<p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
+	<p>Learning outcomes:</p>
+      </div>
+      <br>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Understand the mathematics of the simplest version of linear regression.</li>
+        <li> Code a working version of linear regression using C++.</li>
+        <li> Check your code works correctly, via an external reference.</li>	
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ 
+       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="Least-squares Regression - summary">Least Squares Regression  - summary<a class="anchor-link" href="#Least Squares Regression - summary">&#182;</a></h2>
+      <p> given our assumption of a straightline
+	$$
+	y_i = a_0 + a_1 x_i + e_i
+	$$
+	the error at each point is given by
+	$$
+	e_i  = y_i - a_0 - a_1 x_i
+	$$
+      </p>
+      <p> We take the sum of the squares of the errors
+	$$
+	S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	$$
+	as our error criterion.
+      </p>
+      <p> We can find an optimal $a_1$ and $a_0$.
+	$$
+	a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+	$$
+	and 
+	$$
+	a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
+	$$
+	where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.</p>
+      <p> Correlation of the data: covariance of the data $(x,y)$ divided by the std of $x$ and $y$.
+	$$
+	r = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{\sqrt{n \sum x_i^2 - (\sum x_i)^2}\sqrt{n \sum y_i^2 - (\sum y_i)^2}}
+	$$
+      </p>      
+    </section>
+
+    <section>
+      <h2 id="Array bounds">Array bounds<a class="anchor-link" href="#Array bounds">&#182;</a></h2>
+      <p> This code example goes wrong because it tries to access x[10]</p>
+      <p> C arrays start from element [0] and go up to [n-1].</p>
+      <p> So in the code below x[0], x[1], ... x[9] are assigned. </p>
+      <p> But in the loop, x[10] just prints whatever happens to exist in that memory location. </p>
+      <pre data-lang="c++">
+	<code class='c++'>
+// Be careful of array bounds
+	  
+#include "stdafx.h"
+#include&ltiostream>
+
+int main()
+{
+    // assign an array of length 10
+    double x[10] = {0,1,2,3,4,5,6,7,8,9};
+
+    // loop over array elements, be very careful!
+    // array elements not assigned will contain random data
+    // visual studio may complain (depends on version, it seems)
+    for (int i = 0; i < 11; i++) {
+        std::cout << "i = " << i << ", x[" << i << "] = " << x[i] << "\n";
+    }
+}	  
+         </code>
+      </pre>
+    </section>
+
+    <section>
+      <h2 id="Polynomial Regression">Polynomial Least-squares Regression<a class="anchor-link" href="#Polynomial Regression">&#182;</a></h2>
+      <p>We can easily extend our method to deal with polynomicals:
+	$$
+	y_i = a_0 + a_1 x_i + a_2 x_i^2 + \ldots + a_n x_i^n  + e_i
+	$$
+      </p>
+      <p>We then take the derivatives wrt to the parameters ($a_0 \ldots a_n$) to get a set of equations.</p>
+      <p>Setting these equations equal to zero then solving gives us the optimal set of parameters.</p>      
+    </section>
+
+    <section>
+      <h2 id="Fitting a Quadratic function">Fitting a Quadratic function<a class="anchor-link" href="#Fitting a Quadratic function">&#182;</a></h2>
+      <p>In the case that the largest power of $x$ is $x^2$ we have
+      	$$
+	y_i = a_0 + a_1 x_i + a_2 x_i^2 + e_i
+	$$
+      </p>
+      <p>This leads to a set of equations
+	\begin{align}
+	(n)a_0 + (\sum x_i) a_1 + (\sum x_i^2) a_2 & = \sum y_i \\
+	(\sum x_i) a_0 + (\sum x_i^2) a_1 + (\sum x_i^3) a_2 & = \sum x_i y_i \\
+	(\sum x_i^2) a_0  + (\sum x_i^3) a_1 + (\sum x_i^4) a_2 & = \sum x_i^2 y_i \\
+	\end{align}
+      </p>
+
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Derive the above equations</li>	
+        <li> Write the equations in matrix form</li>
+	<p>using the data on the next slide</p>
+	<li> Solve for $a_0$, $a_1$  and  $a_2$</li>
+	<li> Plot your fitted parabola against the data</li>
+      </div>                 
+    </section>
+
+    <section>
+      <pre data-lang="c++">
+	<code class='c++'>
+    double xi[] = { -10., -9.375, -8.75, -8.125, -7.5, -6.875, -6.25,
+        -5.625, -5., -4.375, -3.75, -3.125, -2.5, -1.875,
+        -1.25, -0.625, 0., 0.625, 1.25, 1.875, 2.5,
+        3.125, 3.75, 4.375, 5., 5.625, 6.25, 6.875,
+        7.5, 8.125, 8.75, 9.375, 10.0
+    };
+    double yi[] = { -1754.65220643, -1545.35336206, -1371.53439127, -1179.21120976,
+        -1010.37498513,  -868.79675609,  -762.03703053,  -614.41904949,
+        -500.17467229,  -436.18120868,  -297.04920352,  -264.59831243,
+        -151.60259672,  -149.56075038,   -69.11767014,   -97.02167759,
+        -45.02944712,   -68.37282773,   -37.77510981,   -12.65843768,
+        -109.23684367,  -139.33915095,  -227.82069115,  -270.83734742,
+        -392.98871361,  -406.53807683,  -493.86675145,  -671.78895522,
+        -783.5957334 ,  -911.19550493, -1026.2077706 , -1215.10973286,
+    -1418.16527415 };
+    </code></pre>
+    </section>
+
+    <section>
+      <h2 id="Statistical interpretation of least squares">Statistical interpretation of least squares<a class="anchor-link" href="#Statistical interpretation of least squares">&#182;</a></h2>
+      
+    </section>
+    
+    <section>
+      <h2 id="Interpolation">Interpolation<a class="anchor-link" href="#Interpolation">&#182;</a></h2>
+      
+    </section>
+
+
+  </div> <!-- slides -->
+</div> <!-- reveal -->
+
+  <script>
+
+  require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        mouseWheel: false,
+        center: false,
+        scroll: true,
+
+        // Parallax background image
+        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+        // Parallax background size
+        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: "../../../revealjs//lib/js/classList.js",
+          condition: function() { return !document.body.classList; } },
+          { src: "../../../revealjs//plugin/notes/notes.js",
+          async: true,
+          condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      var update = function(event){
+        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+        $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+  );
+  </script>
+
+</body>
+
+</html>
