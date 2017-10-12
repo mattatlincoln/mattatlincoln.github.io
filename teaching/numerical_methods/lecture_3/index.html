@@ -183,17 +183,17 @@ int main()
 	$$
       </p>
       <p>This leads to a set of equations
-	\begin{align}
-	(n)a_0 + (\sum x_i) a_1 + (\sum x_i^2) a_2 & = \sum y_i \\
-	(\sum x_i) a_0 + (\sum x_i^2) a_1 + (\sum x_i^3) a_2 & = \sum x_i y_i \\
-	(\sum x_i^2) a_0  + (\sum x_i^3) a_1 + (\sum x_i^4) a_2 & = \sum x_i^2 y_i \\
-	\end{align}
+	\begin{align*}
+	\left(n\right)a_0 + \left(\sum x_i\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum y_i \\
+	\left(\sum x_i\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i y_i \\
+	\left(\sum x_i^2\right) a_0  + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
+	\end{align*}
       </p>
 
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <li> Derive the above equations</li>	
-        <li> Write the equations in matrix form $Ax = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
+        <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
 	<p>using the data you can find on Blackboard for today's session called "Curve Fitting 2"</p>
 	<li> Solve for $a_0$, $a_1$  and  $a_2$</li>
 	<li> Plot your fitted parabola against the data to check the fit</li>
@@ -243,10 +243,103 @@ int main()
       </div>
     </section>
 
+    <section>
+      <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
+      <p>Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
+	$$
+	y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+	$$
+	where $z_0, z_1, \ldots , z_m$ are $m+1$ $\textit{basis functions}$.
+      </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>What would $z_0, z_1, \ldots , z_m$ be for</p>
+        <li>Simple linear least squares regression?</li> 
+        <li>Polynomial least squares regression?</li> 
+        <li>Multiple linear least squares regression?</li> 
+      </div>
+
+      <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
+      <p>For instance.
+	$$
+	y = a_0 + a_1 \cos (\omega t) + a_2 \sin (\omega t)
+	$$
+	fits this model.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
+      <p>We can rewrite
+	$$
+	y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+	$$
+	in matrix notation as
+	$$
+	\{Y\} = [Z]\{A\} + \{E\}
+	$$
+	where $\{\}$ indicates a column vector, for clarity, and $[]$ indicates a matrix.
+      </p>
+      <p>
+	$[Z]$ contains the calculated values of the $m+1$ basis functions at the $n$ measured values of the independent variables:
+	$$
+	[Z] =
+	\left[
+	\begin{matrix}
+	z_{01} & z_{11} & \cdots & z_{m1} \\
+	z_{02} & z_{12} & \cdots & z_{m2} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	z_{0n} & z_{1n} & \cdots & z_{mn} \\
+	\end{matrix}
+	\right]
+	$$
+      </p>
+
+      <p>
+	The column vector $\{Y\}$ contains the $n$ observed values of the dependent variable
+	$$
+	\{Y\}^T = \left[y_1, y_2, y_3, \ldots, y_n  \right]
+	$$
+	The column vector $\{A\}$ contains the $m+1$ unknown parameters of the model
+	$$
+	\{A\}^T = \left[a_0, a_1, a_2, \ldots, a_{m}  \right]
+	$$
+	The column vector $\{E\}$ contains the $n$ observed residuals (errors)
+	$$
+	\{E\}^T = \left[e_1, e_2, e_3, \ldots, e_n  \right]
+	$$
+	
+      </p>
+    </section>
+
+    <section>
+      <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
+      <p>We can also express the sum of the squares using the same form
+	$$
+	S_r = \sum_{i=1}^{n}\left(y_i - \sum_{j=0}^{m} a_j z_{ji}  \right)^2
+	$$
+	Again, $S_r$ is minimised by taking partial derivatives wrt $a_i$, and yeilds
+	$$
+	[[Z]^T[Z]]\{A\} = \{[Z^T]\{Y\}\}
+	$$
+	which is equivalent to the normal equations (set of simultaneous equations for $a_i$ we found previously).
+      </p>
+      <p>
+	This set of equations can be solved using the methods of solving linear equations we will develop in a couple of weeks time.
+      </p><p>
+	For now, it can be done brute force by calculating the matrix inverse of $[[Z]^T[Z]]$.
+      </p>
+    </section>
     
     <section>
       <h2 id="Statistical interpretation of least squares">Statistical interpretation of least squares<a class="anchor-link" href="#Statistical interpretation of least squares">&#182;</a></h2>
-      
+      <p>The matrix $[[Z]^T[Z]]^{-1}$ actually contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
+    </section>
+
+    <section>
+      <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+      <p>You should be reading additional material to provide a solid background to what we do in class</p>
+      <p>All the textbooks contain sections on least-squares fitting,<br> for instance chapters 14 and 15 of <a href="http://apps.nrbook.com/c/index.html">Numerical Recipes</a>.</p>
     </section>
     
   </div> <!-- slides -->
