@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>Talk MM 2017 slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../revealjs/css/reveal.css">
+<link rel="stylesheet" href="../../revealjs/css/theme/sky.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'revealjs/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="revealjs/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+  },
+  // Center justify equations in code and markdown cells. Elsewhere
+  // we use CSS to left justify single line equations in code cells.
+  displayAlign: 'center',
+  "HTML-CSS": {
+  styles: {'.MathJax_Display': {"margin": 0}},
+  linebreaks: { automatic: true }
+  }
+  });
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh3u" crossorigin="anonymous">
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+</head>
+
+<body>
+
+<div class="reveal">
+  <div class="slides">
+    <section data-background="../images/CaF2_zoom3.jpg">
+      <section>
+	<div class="container" id="title">
+	  <h3  id="Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment">Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment<a class="anchor-link" href="#Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment">&#182;</a></h3>
+	</div>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td><img src='images/caco3.png' width=400></td>
+	    <td><img src='images/lincoln_crest.png' width=250></td>
+	  </tr>
+	</table>
+	<div class="container" id="title">
+	  <h3 id="Matt-Watkins,">Matt Watkins,<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
+	  <h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
+	</div>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="3D-Solvation-Structures-on-CaF$_2$">3D Solvation Structures on CaF$_2$<a class="anchor-link" href="#3D-Solvation-Structures-on-CaF$_2$">&#182;</a></h3>
+	<p>UHV measurements at 4K are all very well, but some applications require a more <em>fluid</em> environment</p>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td>
+	      <p>solar cells</p>
+	      <img src='https://upload.wikimedia.org/wikipedia/commons/f/fd/Dye_Sensitized_Solar_Cell_Scheme.png' height=200>
+	    </td>
+	    <td>
+	      <p>batteries</p>
+	      <img src='https://upload.wikimedia.org/wikipedia/commons/3/35/Zinc_anode_2.svg' height=200>
+	    </td>
+	    <td>
+	      <p>photocathode / anodes</p>
+	      <img src='http://ars.els-cdn.com/content/image/1-s2.0-S0378775314013731-gr1.jpg' height=200>
+	    </td>
+	  </tr>
+	</table>
+
+	<p>and of course study of material processes like weathering, corrosion, catalysis</p>
+	<h3 id="How-do-we-see-water-density-above-a-surface?">How do we see water density above a surface?<a class="anchor-link" href="#How-do-we-see-water-density-above-a-surface?">&#182;</a></h3>
+      </section>
+    </section>
+    
+    <section>
+      <section>
+	<h3 id="How-do-we-see-water-density-above-a-surface?">How do we see water density above a surface?<a class="anchor-link" href="#How-do-we-see-water-density-above-a-surface?">&#182;</a></h3>
+	<img class="img-rounded" src="images/caco3.png" style="align:center" width="400">
+	<p>AFM - we'll see that this allows 3D mapping of the interface structure.</p>
+      </section>
+    </section>
+    
+    <section>
+      <section>
+	<h3 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h3>
+	<table>
+	  <tr>
+	    <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
+	    <td width='300' style="vertical-align:middle">
+	      <p>Atomic force microscopy (left) </p>
+	      <p> and Scanning Tunnelling microscopy (right)</p>
+	    </td>
+	    <td><img src='images/ani_stm.gif' style='height:100%;width:100%'></td>
+	  </tr>
+	</table>
+	<ul style="text-align=center">
+	  <li>Local measurements.</li>
+	  <li>Invasive?</li>
+	  <li>Ambient or liquid conditions?</li>
+	</ul>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<!--<h3 id="2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">2 sided strategy: manipulate both experiment and simulation data for comparison<a class="anchor-link" href="#2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">&#182;</a></h3>-->
+	<table>
+	  <tr>
+	    <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
+	    <td width=300 style="vertical-align:middle">
+	      <h3>2 sided strategy:</h3>
+	      <p> manipulate both experiment and simulation data for comparison</p>
+	      <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+	    </td>
+	    <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
+	  </tr>
+	</table>	
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Theory:-Solvent-tip-model">Theory: Solvent tip model<a class="anchor-link" href="#Theory:-Solvent-tip-model">&#182;</a></h3>
+	<p>We don't know the actual tip apex - historical problem with AFM.</p>
+	<p>Hypothesize that there are likely strongly bound water molecules at the tip apex - and take them as the tip</p>
+	<p>They feed force back onto the cantilever.</p>
+	<p><img src="images/sta1.png" alt=""></p>
+	<p><font size="2">M Watkins, B Reischl, The Journal of chemical physics 138, 154703 (2013)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Theory:-Solvent-tip-model">Theory: Solvent tip model<a class="anchor-link" href="#Theory:-Solvent-tip-model">&#182;</a></h3>
+	<p>We don't know the actual tip apex - historical problem with AFM.</p>
+	<p>Hypothesize that there are likely strongly bound water molecules at the tip apex - and take them as the tip</p>
+	<p><img src="../images/sta_tip_models.png" alt=""></p>
+      </section>
+    </section>
+            
+    <section>
+      <section>
+	<h3 id="Statistical-mechanical-model">Statistical mechanical model<a class="anchor-link" href="#Statistical-mechanical-model">&#182;</a></h3>
+	<p>pure water model leads to</p>
+	$$
+	\Delta\Delta G(\mathbf{r}) = -k_BT \ln \frac{\rho(\mathbf{r})}{\rho_{\rm{bulk}}}
+	$$
+	<p>for the free energy change of bringing the tip model (water molecule) from the bulk liquid to $\mathbf{r}$</p>
+	$$
+	F(\mathbf{r}) = \frac{\partial \Delta\Delta G(\mathbf{r})}{\partial z} = \frac{k_bT}{\rho(\mathbf{r})}\frac{ \partial \rho(\mathbf{r})}{\partial z}
+	$$
+	<p>this is the 'short range' force exerted on the tip apex.</p>
+	<p><font size="2">M Watkins, B Reischl, The Journal of chemical physics 138, 154703 (2013)</font></p>
+      </section>
+    </section>
+
+    <section><section>
+	<h3 id="Macro-vs-Nano">Macro vs Nano<a class="anchor-link" href="#Macro-vs-Nano">&#182;</a></h3>
+	<table>
+	  <tr>
+	    <td>
+	      <img src='images/dyn_an16.gif'>
+	    </td>
+	    <td>
+	      <img src="images/caco3.png"  width="300">
+	    </td>
+	  </tr>
+	</table>
+	<p>cantilever is macroscopic, tip apex is nanoscopic</p>
+	<p>experiment measures frequency change due to all interactions - macro + nano</p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Experiment:-Macroscopic-effects">Experiment: Macroscopic effects<a class="anchor-link" href="#Experiment:-Macroscopic-effects">&#182;</a></h3>
+	<p>removed empirically by subtracting force from averaged long range scan data over several surface locations</p>
+	<table cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td>
+	      <img src='images/long_range.png' width=600>
+	    </td>
+	  </tr>
+	</table>
+	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Experiment:-fast-AFM">Experiment: fast AFM<a class="anchor-link" href="#Experiment:-fast-AFM">&#182;</a></h3>
+	<p>3D AFM technique and pattern matching routines for massive speed up in image collection efficiency.</p>
+	<table cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td><img src='images/hi-speed_AFM.jpg' width=600></td>
+	  </tr>
+	  <tr>
+	    <td><img src='images/fast_afm_image_proc2.png' width=600></td>
+	  </tr>
+	</table>
+      </section>
+      <section>
+	<ul>
+	  <li>
+	    <p>Allows image collection within few minutes of exposure of surface to liquid</p>
+	    <ul>
+	      <li>(We also use it on the simulation data)</li>
+	    </ul>
+	  </li>
+	  <li>
+	    <p>Enables data collection in pure water.</p>
+	  </li>
+	  <li>
+	    <p>No longer true atomic resolution</p>
+	  </li>
+	</ul>
+	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Qualitative-comparison-of-data">Qualitative comparison of data<a class="anchor-link" href="#Qualitative-comparison-of-data">&#182;</a></h3>
+	<table cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td>
+	      <img src='images/nanoscale1.gif' width=200>
+	    </td>
+	    <td>#<img src='images/nanoscale3.gif' width=600>
+	    </td>
+	  </tr>
+	</table>
+	<p>
+	  <font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)
+	  </font>
+	</p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Can-also-compare-to-MD-free-energy-calculation-with-explicit-tips">Can also compare to MD free energy calculation with explicit tips<a class="anchor-link" href="#Can-also-compare-to-MD-free-energy-calculation-with-explicit-tips">&#182;</a></h3>
+	<p>
+	  <img src="images/nanoscale4.gif" alt="caf2_md" height="400" >
+	</p>
+	<p>STA does better than an incorrect tip model</p>
+	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Realistic-environment">Realistic environment<a class="anchor-link" href="#Realistic-environment">&#182;</a></h3>
+	<p>The above were all obtained in pure water.</p>
+	<ul>
+	  <li><p>requires complicated experimental protocols</p>
+	  </li>
+	  <li><p>not a realistic environment for many of the motivations</p>
+	  </li>
+	</ul>
+	<div class="fragment">
+	  <h3 id="What-changes-in-electrolyte-solution?">What changes in electrolyte solution?<a class="anchor-link" href="#What-changes-in-electrolyte-solution?">&#182;</a></h3>
+	</div>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Comparison-to-supersaturated-solution">Comparison to supersaturated solution<a class="anchor-link" href="#Comparison-to-supersaturated-solution">&#182;</a></h3>
+	<p><img src="images/large_scale_nanotech.png" alt="caf2_large" height="400"></p>
+	<ul>
+	  <li>The supersaturated solution ( s = 100 ) was prepared by mixing the same amounts of 38 mM CaCl$_2$ and 76 mM KF solutions</li>
+	</ul>
+	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Adsorbed-ions?">Adsorbed ions?<a class="anchor-link" href="#Adsorbed-ions?">&#182;</a></h3><ul>
+	  <li>we use the same protocol as before</li>
+	</ul>
+	<p><img src="images/protocol_nanotech.png" alt="caf2_large" height=300 ></p>
+	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Adsorbed-ions?">Adsorbed ions?<a class="anchor-link" href="#Adsorbed-ions?">&#182;</a></h3>
+	<p><img src="images/force_comp_nanotech.png" alt="caf2_large" height="400" ></p>
+	<p>Possible specific cation adorption.</p>
+	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Challenge-for-simulation">Challenge for simulation<a class="anchor-link" href="#Challenge-for-simulation">&#182;</a></h3><p>here is a ~20 ns simulation of the supersaturated solution</p>
+	<ul>
+	  <li>of the order of 1 CaF$_2$ ion complex per 50 nm$^2$</li>
+	</ul>
+
+	<div class="fragment">
+	  <div class="cell border-box-sizing code_cell rendered">
+	    <div class="output_wrapper">
+	      <div class="output">
+		<div class="output_area">
+		  <div class="output_html rendered_html output_subarea ">
+		    <video width="520" height="400" controls>
+		      <source src="images/F2.mp4" type="video/mp4">
+		    </video>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </section>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
+	<ul>
+	  <li>Evidence suggests here that stable tips are not very invasive – measurement of equilibrium water density</li>
+	  <li>Theory vs experiment: short range forces above Ca. </li>
+	  <li>Better agreement between implicit tip model and experiment than explicit MD
+	    <ul>
+	      <li>better tip models are needed!</li>
+	    </ul>
+	  </li>
+	  <li>Towards mapping specific ion adsorption sites and exploring electrolyte solutions<ul>
+	      <li>need to be cleverer than brute force to simulate</li>
+	    </ul>
+	  </li>
+	</ul>
+      </section>
+    </section>
+    
+    <section>
+      <section>
+	<h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
+	<ul>
+	  <li>Leverhulme Trust for initial funding</li>
+	  <li>Alex Shluger, University College London</li>
+	  <li>Takeshi Fukuma, Kanazawa University</li>
+	  <li>Adam Foster, Aalto</li>
+	  <li>Bernhard Reischl, Curtin University</li>
+	</ul>
+	<h3 id="Lincoln-is-here">Lincoln is here<a class="anchor-link" href="#Lincoln-is-here">&#182;</a></h3><table>
+	  <tr>
+	    <td><img src='images/lincoln_loc.png' width=200></td>
+	    <td><img src='images/brayford.png' width=200></td>
+	    <td><img src='images/lincoln_dep.png' width=200></td>
+	  </tr>
+	</table>
+      </section>
+    </section>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../revealjs/lib/js/head.min.js",
+      "../../revealjs/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../revealjs/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../revealjs/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
+
+        Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+);
+</script>
+
+</body>
+
+
+</html>
