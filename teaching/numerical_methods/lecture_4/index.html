@@ -202,6 +202,29 @@ MathJax.Hub.Config({
 	var d2 = linint.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(func)), 1, 8], {dash:2});
       </script>
     </section>    
+
+    <section>
+      <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
+      <p>Geometrically, the slopes should be the same:.<br>
+      $$
+      {\frac {y-y_{0}}{x-x_{0}}}={\frac {y_{1}-y_{0}}{x_{1}-x_{0}}},
+      $$
+      </p>
+    
+      <p>
+      Or rearranged:
+      $$
+        y=y_{0}+(x-x_{0}){\frac {y_{1}-y_{0}}{x_{1}-x_{0}}}={\frac {y_{0}(x_{1}-x)+y_{1}(x-x_{0})}{x_{1}-x_{0}}},
+      $$
+      </p>
+      <p>
+      This should remind you of the first term in a Taylor series.
+      </p>
+      <p>
+      Linear interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.
+      <img src='https://upload.wikimedia.org/wikipedia/commons/6/67/Interpolation_example_linear.svg' height='200'>
+      </p>
+    </section>
     
     <section>
       <h2 id="Polynomial Interpolation">Polynomial Interpolation<a class="anchor-link" href="#Polynomial Interpolation">&#182;</a></h2>
@@ -230,12 +253,13 @@ MathJax.Hub.Config({
 
     <section>
       <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
-      <p>Interpolating polynomials can overshoot / display to much structure between points </p>
+      <p>One form of the Interpolating polynomials is named after Lagrange. </p>
+      <p>Notice fit is excellent in the centre of the data points, but degrades at the edges</p>
       <p>Should not be used for extrapolation - zoom out to see! </p>
       <form>
 	<input type="button" value="Add point" onclick="addPoint()">
       </form>
-      <div id="lip" class="jxgbox" style="width:900px; height:450px;"></div>
+      <div id="lip" class="jxgbox" style="width:800px; height:400px;"></div>
       <p>Thin line is $y = \frac{\sin x}{x}$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
       <script>
 	var lip = JXG.JSXGraph.initBoard('lip', {boundingbox: [-10, 2, 10, -2], axis: true});
@@ -258,6 +282,23 @@ MathJax.Hub.Config({
 	var f = JXG.Math.Numerics.lagrangePolynomial(p3);
 	var graph = lip.create('functiongraph', [f,-20, 20], {strokeWidth:3});
       </script>
+    </section>
+   
+    <section>
+      <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
+      <p>Examine the formula below closely - see that at each data point location $x_i$, all terms will vanish except the $i^{th}$<br> 
+ \begin{align*}
+p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_0 + \frac{(x-x_0)(x-x_2)\cdots(x-x_n)}{(x_1-x_0)(x_1-x_2)\cdots(x_1-x_n)}y_1 +\ldots+\frac{(x-x_0)(x-x_1)\cdots(x-x_{n-1})}{(x_n-x_0)(x_n-x_1)\cdots(x_n-x_{n-1})}y_n \\
+&=\sum_{i=0}^{n}\left ( \prod_{\stackrel{\!0\leq j\leq n}{j\neq i}}\frac{x-x_j}{x_i-x_j}\right ) y_i
+\end{align*}
+      <br>The denominator then just ensures the correct value $y_i$ is given.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="Splines">Splines<a class="anchor-link" href="#Splines">&#182;</a></h2>
+      <p>Instead of fitting a complex high-order polynomial through many points - join many simple functions together</p>
+      <p>Splines typically require that the functions go through the points and the gradient and curvature are smoothly interpolated</p>
     </section>
 
     <section>
@@ -300,10 +341,21 @@ MathJax.Hub.Config({
 
     <section>
       <h2 id="Bilinear interpolation">Bilinear interpolation<a class="anchor-link" href="#Bilinear interpolation">&#182;</a></h2>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='200'>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='200'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
+      <p>First, linearly interpolate in $x$ direction
+\begin{aligned}f(x,y_{1})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21}),\\f(x,y_{2})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22}).\end{aligned}
+      </p>
+      <p>Then interpolate in $y$ direction
+\begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\end{aligned}
+      </p>
+    </section>
+
+    <section>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
       <p>
-	
+\begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\\&={\frac {y_{2}-y}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21})\right)+{\frac {y-y_{1}}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22})\right)\\&={\frac {1}{(x_{2}-x_{1})(y_{2}-y_{1})}}{\big (}f(Q_{11})(x_{2}-x)(y_{2}-y)+f(Q_{21})(x-x_{1})(y_{2}-y)+f(Q_{12})(x_{2}-x)(y-y_{1})+f(Q_{22})(x-x_{1})(y-y_{1}){\big )}\\&={\frac {1}{(x_{2}-x_{1})(y_{2}-y_{1})}}{\begin{bmatrix}x_{2}-x&x-x_{1}\end{bmatrix}}{\begin{bmatrix}f(Q_{11})&f(Q_{12})\\f(Q_{21})&f(Q_{22})\end{bmatrix}}{\begin{bmatrix}y_{2}-y\\y-y_{1}\end{bmatrix}}.\end{aligned}
       </p>
     </section>
 
