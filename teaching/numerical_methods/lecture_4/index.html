@@ -95,7 +95,7 @@ MathJax.Hub.Config({
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <li> Understand when you would use interpolation and when you would use regression.</li>
         <li> Be aware of most common interpolation methods.</li>
-        <li> Implement and use Newton and Lagrange polynomials for interpolation.</li>	
+        <li> Implement and use Newton Divided Difference and Lagrange polynomials for interpolation.</li>	
       </div>
       <br>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
@@ -218,7 +218,7 @@ MathJax.Hub.Config({
       $$
       </p>
       <p>
-      This should remind you of the first term in a Taylor series. It is sometimes referr`ed to as a 'lerp'.
+      This should remind you of the first term in a Taylor series. It is sometimes referred to as a 'lerp'.
       </p>
       <p>
       Linear interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.
@@ -229,15 +229,23 @@ MathJax.Hub.Config({
     <section>
       <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
       <p>The first divided difference is just the linear interpolation
-      \begin{align}
+      \begin{align*}
       f[x_0, x_1] = \frac{f(x_1)-f(x_0)}{x_1 - x_0} \\
       f[x_1, x_2] = \frac{f(x_2)-f(x_1)}{x_2 - x_1} \\
-      \end{align}
-      These are the first divided differences. Higher divided differences can be built up from the lower divided differences:
-      \begin{align}
+      \end{align*}
+      Where we have written $y_i$ as $f(x_i)$ to make the next formulae look more similar to those above.<br>
+      These are the first divided differences. <br> Higher divided differences can be built up from the lower divided differences:
+      \begin{align*}
       f[x_0, x_1, x_2] = \frac{f[x_1, x_2]-f[x_0, x_1)}{x_2 - x_0} \\
       f[x_1, x_2, x_3] = \frac{f[x_2, x_3]-f[x_1, x_2]}{x_3 - x_1} \\
-      \end{align}
+      \end{align*}
+      These terms can be related to higher order terms of Taylor's series.
+      </p>
+      <p>The divided difference interpolation polynomial can be written as
+      $$
+      P(x) = f(x_0) + (x-x_0)f[x_0, x_1] + (x-x_0)(x-x_1)f[x_0,x_1,x_2] + \cdots + (x-x_0) \cdots (x-x_{n-1}f[x_0,x_1,\ldots,x_n])
+      $$
+      It is possible to truncate the polynomial at any term, and estimate the error, from the next term in the series.
       </p>
     </section>
  
@@ -308,6 +316,16 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
 \end{align*}
       <br>The denominator then just ensures the correct value $y_i$ is given.
       </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+        <p> - Find p(1) given the data $(-1,5), (0,2), (2,0), (3,1)$</p>
+        <!--1/3-->
+        <p> - Determine the interpolating polynomial for the data $(0,1), (1,3), (3,55)$</p>
+        <!--8x^2 - 6x + 1-->
+        <p>Is the polynomial the same as you would get using Newton's Divided Difference interpolation?</p>
+        <p>Write a code to perform interpolation using Lagrange Interpolating Polynomials.</p>
+      </div>
     </section>
 
     <section>
@@ -321,7 +339,12 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
       <p>provide sufficient conditions to determine the conditions - another linear system of equations to solve.</p>
     </section>
 
-    <section>
+    <section>      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+        <p>We continue with Curve Fitting. This week <a href='https://en.wikipedia.org/wiki/Interpolation'>interpolation</a>.</p>
+        <p>Learning outcomes:</p>
+      </div>
       <h2 id="Multidimensional interpolation">Multidimensional interpolation<a class="anchor-link" href="#Multidimensional interpolation">&#182;</a></h2>
       <p>Maybe our function is in 2 or more dimensions<br>
 	$$
