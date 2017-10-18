@@ -218,14 +218,29 @@ MathJax.Hub.Config({
       $$
       </p>
       <p>
-      This should remind you of the first term in a Taylor series.
+      This should remind you of the first term in a Taylor series. It is sometimes referr`ed to as a 'lerp'.
       </p>
       <p>
       Linear interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.
       <img src='https://upload.wikimedia.org/wikipedia/commons/6/67/Interpolation_example_linear.svg' height='200'>
       </p>
     </section>
-    
+
+    <section>
+      <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
+      <p>The first divided difference is just the linear interpolation
+      \begin{align}
+      f[x_0, x_1] = \frac{f(x_1)-f(x_0)}{x_1 - x_0} \\
+      f[x_1, x_2] = \frac{f(x_2)-f(x_1)}{x_2 - x_1} \\
+      \end{align}
+      These are the first divided differences. Higher divided differences can be built up from the lower divided differences:
+      \begin{align}
+      f[x_0, x_1, x_2] = \frac{f[x_1, x_2]-f[x_0, x_1)}{x_2 - x_0} \\
+      f[x_1, x_2, x_3] = \frac{f[x_2, x_3]-f[x_1, x_2]}{x_3 - x_1} \\
+      \end{align}
+      </p>
+    </section>
+ 
     <section>
       <h2 id="Polynomial Interpolation">Polynomial Interpolation<a class="anchor-link" href="#Polynomial Interpolation">&#182;</a></h2>
       <p>Approximation can be improved by using a polynomial.<br>
@@ -299,6 +314,11 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
       <h2 id="Splines">Splines<a class="anchor-link" href="#Splines">&#182;</a></h2>
       <p>Instead of fitting a complex high-order polynomial through many points - join many simple functions together</p>
       <p>Splines typically require that the functions go through the points and the gradient and curvature are smoothly interpolated</p>
+      <p>Requirements that the polynomials (or generally functions of finite support)
+      <li>Pass throught the $n$ data points</li>
+      <li>Neighbouring polynomials have the same gradients at the points they overlap</li>
+      <li>For cubic functions, neighbouring polynomials have the same curvature at the points that they overlap</li></p>
+      <p>provide sufficient conditions to determine the conditions - another linear system of equations to solve.</p>
     </section>
 
     <section>
