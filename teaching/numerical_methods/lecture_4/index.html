@@ -119,15 +119,8 @@ MathJax.Hub.Config({
 	\left(\sum x_i^2\right) a_0  + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
 	\end{align*}
       </p>
-
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> Derive the above equations</li>	
-        <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
-	<p>using the data you can find on Blackboard for today's session called "Curve Fitting 2"</p>
-	<li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-	<li> Plot your fitted parabola against the data to check the fit</li>
-      </div>                 
+      <p>We found those equations by taking the derivative wrt to the coefficients of the sum of the squared differences.</p>
+      <p>We assume that there is noise in our measurements.</p>
     </section>
     
     <section>
@@ -399,8 +392,8 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
 
     <section>
       <h2 id="Bilinear interpolation - question">Bilinear interpolation - question<a class="anchor-link" href="#Bilinear interpolation - question">&#182;</a></h2>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='200'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='200'>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <p>Suppose you have measured temperatures at a number of positions of a rectangular heated plate:
@@ -432,8 +425,9 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
 	    <td>70</td>
 	  </tr>	    
 	</table>
-	<p>Use bilinear interpolation to find the temperature at $(5.25, 4.8)$</p>
+	<p>- Use bilinear interpolation to find the temperature at $(5.25, 4.8)$</p>
 	<!--T(5.25, 4.8) = 61.2143 -->
+	<p> - Write a code to perform a general bilinear interpolation. Test it on a simple functions, such as $f(x,y) = xy$, being careful of the domain you work in.</p>
       </div>
     </section>
 
