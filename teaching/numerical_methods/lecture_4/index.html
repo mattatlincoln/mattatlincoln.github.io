@@ -227,29 +227,6 @@ MathJax.Hub.Config({
     </section>
 
     <section>
-      <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
-      <p>The first divided difference is just the linear interpolation
-      \begin{align*}
-      f[x_0, x_1] = \frac{f(x_1)-f(x_0)}{x_1 - x_0} \\
-      f[x_1, x_2] = \frac{f(x_2)-f(x_1)}{x_2 - x_1} \\
-      \end{align*}
-      Where we have written $y_i$ as $f(x_i)$ to make the next formulae look more similar to those above.<br>
-      These are the first divided differences. <br> Higher divided differences can be built up from the lower divided differences:
-      \begin{align*}
-      f[x_0, x_1, x_2] = \frac{f[x_1, x_2]-f[x_0, x_1)}{x_2 - x_0} \\
-      f[x_1, x_2, x_3] = \frac{f[x_2, x_3]-f[x_1, x_2]}{x_3 - x_1} \\
-      \end{align*}
-      These terms can be related to higher order terms of Taylor's series.
-      </p>
-      <p>The divided difference interpolation polynomial can be written as
-      $$
-      P(x) = f(x_0) + (x-x_0)f[x_0, x_1] + (x-x_0)(x-x_1)f[x_0,x_1,x_2] + \cdots + (x-x_0) \cdots (x-x_{n-1}f[x_0,x_1,\ldots,x_n])
-      $$
-      It is possible to truncate the polynomial at any term, and estimate the error, from the next term in the series.
-      </p>
-    </section>
- 
-    <section>
       <h2 id="Polynomial Interpolation">Polynomial Interpolation<a class="anchor-link" href="#Polynomial Interpolation">&#182;</a></h2>
       <p>Approximation can be improved by using a polynomial.<br>
       We can fit a polynomial of order $n-1$ through $N$ points.</p>
@@ -274,6 +251,29 @@ MathJax.Hub.Config({
       </script>
     </section>
 
+    <section>
+      <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
+      <p>The first divided difference is just the linear interpolation
+      \begin{align*}
+      f[x_0, x_1] = \frac{f(x_1)-f(x_0)}{x_1 - x_0} \\
+      f[x_1, x_2] = \frac{f(x_2)-f(x_1)}{x_2 - x_1} \\
+      \end{align*}
+      Where we have written $y_i$ as $f(x_i)$ to make the next formulae look more similar to those above.<br>
+      These are the first divided differences. <br> Higher divided differences can be built up from the lower divided differences:
+      \begin{align*}
+      f[x_0, x_1, x_2] = \frac{f[x_1, x_2]-f[x_0, x_1)}{x_2 - x_0} \\
+      f[x_1, x_2, x_3] = \frac{f[x_2, x_3]-f[x_1, x_2]}{x_3 - x_1} \\
+      \end{align*}
+      These terms can be related to higher order terms of Taylor's series.
+      </p>
+      <p>The divided difference interpolation polynomial can be written as
+      $$
+      P(x) = f(x_0) + (x-x_0)f[x_0, x_1] + (x-x_0)(x-x_1)f[x_0,x_1,x_2] + \cdots + (x-x_0) \cdots (x-x_{n-1}f[x_0,x_1,\ldots,x_n])
+      $$
+      It is possible to truncate the polynomial at any term, and estimate the error, from the next term in the series.
+      </p>
+    </section>
+ 
     <section>
       <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
       <p>One form of the Interpolating polynomials is named after Lagrange. </p>
@@ -339,12 +339,7 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
       <p>provide sufficient conditions to determine the conditions - another linear system of equations to solve.</p>
     </section>
 
-    <section>      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-
-        <p>We continue with Curve Fitting. This week <a href='https://en.wikipedia.org/wiki/Interpolation'>interpolation</a>.</p>
-        <p>Learning outcomes:</p>
-      </div>
+    <section>    
       <h2 id="Multidimensional interpolation">Multidimensional interpolation<a class="anchor-link" href="#Multidimensional interpolation">&#182;</a></h2>
       <p>Maybe our function is in 2 or more dimensions<br>
 	$$
