@@ -398,6 +398,104 @@ p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_
     </section>
 
     <section>
+      <h2 id="Bilinear interpolation - question">Bilinear interpolation - question<a class="anchor-link" href="#Bilinear interpolation - question">&#182;</a></h2>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <p>Suppose you have measured temperatures at a number of positions of a rectangular heated plate:
+	</p>
+	<table>
+	  <tr>
+	    <th>$x_i$</th>
+	    <th>$y_i$</th>
+	    <th>$T(x_i, y_i)$</th>
+	  </tr>
+	  <tr>
+	    <td>2</td>
+	    <td>2</td>
+	    <td>60</td>
+	  </tr>
+	  <tr>
+	    <td>2</td>
+	    <td>6</td>
+	    <td>55</td>
+	  </tr>
+	  <tr>
+	    <td>9</td>
+	    <td>1</td>
+	    <td>57.5</td>
+	  </tr>
+	  <tr>
+	    <td>9</td>
+	    <td>6</td>
+	    <td>70</td>
+	  </tr>	    
+	</table>
+	<p>Use bilinear interpolation to find the temperature at $(5.25, 4.8)$</p>
+	<!--T(5.25, 4.8) = 61.2143 -->
+      </div>
+    </section>
+
+    <section>
+      <h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2>
+      <p>It is not so obvious how to conveniently plot you data in C++, here is one way</p>
+      <pre>
+	<code>
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+
+int main() {
+    std::ofstream fout("mytex.tex");
+    fout << "\\documentclass[11pt]{article}\n\n"
+        << "% graphics\n"
+        << "\\usepackage{tikz}\n"
+        << "\\usepackage{pgfplots}\n"
+        << "\\pgfplotsset{compat=1.12}\n"
+        << "\\usepgfplotslibrary{fillbetween}\n\n\n"
+        << "\\begin{document}\n"
+        << "\\begin{tikzpicture}\n\n"
+        << "\\pgfplotsset{\n"
+        << "scale only axis,\n"
+        << "}\n\n"
+        << "\\begin{axis}[\n"
+        << "xlabel = $x$,\n"
+        << "ylabel = $y$,\n"
+        << "samples = 100,\n"
+        << "]\n"
+        << "\\addplot[only marks] table{\n";         
+
+    // write data points
+    fout << "0.0 1.0\n 1.0 2.0\n";
+
+    fout << "};\n"
+         << "\\addplot[][domain =-1.5:10]{\n";
+    // write function
+    fout << "1.5*x + 2*x^2";
+		    
+    fout << "};\n"
+        << "\\end{axis}\n"
+        << "\\end{tikzpicture}\n"
+        << "\\end{document}\n";
+
+    std::cout << "wrote " << "mytex.tex\n\n";
+}
+			     </code></pre>
+      <p>This writes a file "mytex.tex" that you can compile in TeXnicCenter. The pdf can be exported to Word or an image if wanted.</p>
+      <p>You can add points and define curves (and many more things) using <a href="http://pgfplots.sourceforge.net/">PGFPlots</a>.</p>
+    </section>
+
+    <section>
+      <h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Modify the LaTeX output code so you can flexibly add points and define polynomial curves.</p>
+	<p>Plot your Lagrangian polynomial fits and the data points the came from.</p>
+      </div>
+    </section>
+    
+    <section>
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
       <p>All the textbooks contain sections on interpolation,<br> for instance chapters 3 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
