@@ -452,13 +452,79 @@ int main() {
     
     <section>
       <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
-      <p> The advantage over Gauss elimination is that having $\text{L}$ and $\text{U}$ we can very easily find new solutions, $x$, for a different set of constants, $b$. 
+      <p>The major advantage of LU decompostion is we calculate $\textbf{L}$ and $\textbf{U}$ once, then we can easily find $\textbf{x}$ for any $\textbf{b}$</p>
+      <p>Having $\textbf{L}$ we can solve $\textbf{Ld} = \textbf{b}$ for $\textbf{d}$ by forward substitution
+	\[ \left( \begin{array}{cccc}
+	1 & 0 & 0 & 0\\ 
+	\frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+	\frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+	\frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+	\end{array} \right)
+	\left( \begin{array}{c}
+	d_0 \\ d_1 \\ d_2 \\ d_3 \\
+	\end{array} \right)
+	=
+	\left( \begin{array}{c}
+	b_0 \\ b_1 \\ b_2 \\ b_3 \\
+	\end{array} \right)\]
+	i.e. multiplying out the equations starting from the top row.
       </p>
-      <p class='fragment'>
-	This property can also be used to find the inverse of a matrix, by setting $b$ to the columns of the identity matrix, $I$.
+      <p> Then, having constructed $\textbf{d}$ for the given $\textbf{b}$ we continue exactly like in Gauss Elimination using back substitution to find $\textbf{x}$
+	\[\left( \begin{array}{cccc}
+	a_{00} & a_{01} & a_{02} & a_{30}\\ 
+	0      & a'_{11} & a'_{12} & a'_{31}\\ 
+	0      & 0       & a''_{22} & a''_{32}\\ 
+	0      & 0       & 0        & a'''_{33}\\ 
+	\end{array} \right)
+	\left( \begin{array}{c}
+	x_0 \\ x_1 \\ x_2 \\ x_3 \\
+	\end{array} \right)
+	=
+	\left( \begin{array}{c}
+	d_0 \\ d_1 \\ d_2 \\ d_3 \\
+	\end{array} \right)\]
+
       </p>
     </section>
-    
+
+    <section>
+      <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
+      <p> We can use LU decomposition to find the inverse of a matrix, by setting $b$ to the columns of the identity matrix, $I$.
+      </p>
+      <p>For example we get the first column of $\textbf{A}^{-1}$ by using $\textbf{b}^T = (1,0,0,0)$
+	\[ \left( \begin{array}{cccc}
+	1 & 0 & 0 & 0\\ 
+	\frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+	\frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+	\frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+	\end{array} \right)
+	\left( \begin{array}{c}
+	d_0 \\ d_1 \\ d_2 \\ d_3 \\
+	\end{array} \right)
+	=
+	\left( \begin{array}{c}
+	1 \\ 0 \\ 0 \\ 0 \\
+	\end{array} \right)\]
+	i.e. multiplying out the equations starting from the top row.
+      </p>
+      <p> Then, having constructed $\textbf{d}$ for the given $\textbf{b}$ we continue exactly like in Gauss Elimination using back substitution to find $\textbf{x}$
+	\[\left( \begin{array}{cccc}
+	a_{00} & a_{01} & a_{02} & a_{30}\\ 
+	0      & a'_{11} & a'_{12} & a'_{31}\\ 
+	0      & 0       & a''_{22} & a''_{32}\\ 
+	0      & 0       & 0        & a'''_{33}\\ 
+	\end{array} \right)
+	\left( \begin{array}{c}
+	A^{-1}_{00} \\ A^{-1}_{10} \\ A^{-1}_{20} \\ A^{-1}_{30} \\
+	\end{array} \right)
+	=
+	\left( \begin{array}{c}
+	d_0 \\ d_1 \\ d_2 \\ d_3 \\
+	\end{array} \right)\]
+	The we build the other columns of $\textbf{A}^{-1}$ from the other unit vectors.
+      </p>
+    </section>
+
     <section>
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
