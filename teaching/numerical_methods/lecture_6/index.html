@@ -527,6 +527,8 @@ int main() {
 
     <section>
       <h2 id="QR decomposition">QR decomposition<a class="anchor-link" href="#QR decomposition">&#182;</a></h2>
+      <h4>Why another decomposition???</h4>
+      <p>This decomposition is part of the 'QR' algorithm to find the eigenvalues and vectors of a matrix.</p>
       <p>Any real square matrix A may be decomposed as
 	$$
 	\textbf{A} = \textbf{QR},
@@ -658,6 +660,29 @@ int main() {
 	0&0&35
 	\end{pmatrix}.
 	$$
+      </p>
+    </section>
+
+    <section>
+      <h2 id="QR algorithm">QR algorithm<a class="anchor-link" href="#QR algorithm">&#182;</a></h2>
+      <p>It can be shown that the sequence
+	$$
+	\begin{align*}
+	\textbf{A}^{0} & = \textbf{A} \\
+	\textbf{A}^{k+1} & = \textbf{R}^{k} \textbf{Q}^{k}
+	\end{align*}
+	$$
+	converges to a diagonal matrix with the eigenvalues of $\textbf{A}$ as its diagonal entries.
+      </p>
+      <p>
+	In the sequence $\textbf{Q}^{k}$ and  $\textbf{R}^{k}$ are formed by the QR decompositiion of $\textbf{A}^{k}$
+	$$\textbf{A}^{k} = \textbf{Q}^{k} \textbf{R}^{k}$$
+      </p>
+      <p>
+	This algorithm needs modifications to be generally efficient, but gives the general shape of real eigenvalue finding routines.
+      </p>
+      <p>
+	If we have an eigenvalue we can find the corresponding eigenvector using Gauss Elimination.
       </p>
     </section>
     
