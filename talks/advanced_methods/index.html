@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Advanced Methods of Physics 2017/18 - Matt Watkins</title>
+<title>Advanced Methods of Mathematics 2017/18 - Matt Watkins</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -75,7 +75,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section data-background="../../images/CaF2_zoom3.jpg">
       <section>
 	<div class="container" id="title">
-	  <h3  id="Seeing surfaces: how scanning probe microscopes work.">Seeing surfaces: how scanning probe microscopes work.<a class="anchor-link" href="#Seeing surfaces: how scanning probe microscopes work.">&#182;</a></h3>
+	  <h3  id="Murky Materials Modelling">Murky Materials Modelling<a class="anchor-link" href="#Murky Materials Modelling">&#182;</a></h3>
 	</div>
 	<table cellspacing="0" cellpadding="0" border="0">
 	  <tr>
@@ -91,8 +91,19 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
 
     <section>
+	<h3 id="What is objective reality?">What is objective reality?<a class="anchor-link" href="#What is objective reality?">&#182;</a></h3>
+	<h4 id="Or What is a Scientific measurement?">Or What is a Scientific measurement?<a class="anchor-link" href="#Or What is a Scientific measurement?">&#182;</a></h4>
+	<p class='fragment'>Can we 'see' atoms?</p>
+	<img class='fragment' src='http://www.relatably.com/q/img/robert-anton-wilson-quotes/1ec1eeb053c66b19e8fa89a2cc8286fc.jpg' style='height:50%;width:50%'>
+	<p class='fragment'>Is mathematics produced by people, or found?</p>
+	<img class='fragment' src='https://butterflylanguagecom.files.wordpress.com/2016/08/quotation-robert-anton-wilson-theory-meetville-quotes-199333.jpg?w=640' style='height:50%;width:50%'>
+
+    </section>
+    
+    <section>
       <section>
-	<h3 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h3>
+	<h3 id="Can we see atoms?">Can we see atoms?<a class="anchor-link" href="#Can we see atoms?">&#182;</a></h3>
+	<h4 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h4>
 	<table>
 	  <tr>
 	    <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
@@ -105,8 +116,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	</table>
 	<ul style="text-align=center">
 	  <li>Local measurements.</li>
-	  <li>Invasive?</li>
-	  <li>Ambient or liquid conditions?</li>
+	  <li>Resolution of picometers ($10^{-12}$ m)</li>
+	  <li>Size of an atom is of the order 10 nanometers ($10^{-9}$ m)</li>
 	</ul>
       </section>
     </section>
@@ -114,6 +125,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section>
       <section data-transition="none">
 	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<h4>Start with a perfect crystal - use symmetry to build it...</h4>
 	<img src="images/unit_cell.png" height="450px">
       </section>
       <section data-transition="none">
@@ -146,34 +158,45 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       <section data-transition="none">
 	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
 	<img src="images/111_surf.png" height="450px">
-	<p class='fragment'>Energy of a surface depends on:</p>
-	<p class='fragment'> - the number of bonds cut</p>
-	<p class='fragment'> - is there a dipole moment</p>
+	<p class='fragment'>When a surface is cut, it is 'unhappy' and atoms move to find 'peace'.</p>
       </section>
     </section>
 
     <section>
       <section >
 	<h3 id="Aside: Crystal Shape?">Aside: Crystal Shape?<a class="anchor-link" href="#Aside: Crystal Shape?">&#182;</a></h3>
+	<p>This is why crystals have different shapes - the expose the most stable surfaces most often.</p>
 	<table cellspacing="0" cellpadding="0" border="0">
 	  <tr>
 	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Apatite-Rhodochrosite-Fluorite-169799.jpg" height="250px"></td>
 	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Monokristalines_Silizium_f%C3%BCr_die_Waferherstellung.jpg"</td>
+	    <td><img src="https://www.technobyte.org/wp-content/uploads/2016/11/Scanning-electron-microscope-applications-tb-e1479895383328.jpg"</td>		     
 	  </tr>
 	</table>
       </section>
     </section>
 
     <section>
+      <section >
+	<h3 id="Microscopes?">Microscopes?<a class="anchor-link" href="#Microscopes?">&#182;</a></h3>
+	<p>This is why crystals have different shapes - the expose the most stable surfaces most often.</p>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Burdock_in_Scanning_Electron_Microscope%2C_magnification_100x.GIF"><p>x100</p></td>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Misc_pollen.jpg"> <p>x500</p></td>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/00/AFM_%28used%29_cantilever_in_Scanning_Electron_Microscope%2C_magnification_3000x.JPG"><p>x3000</p></td>		     
+	  </tr>	  
+	</table>
+	<a href='./snowflake.html' target="_blank">Zoom in of a snowflake</a>
+      </section>
+    </section>
+
+    
+    <section>
       <div style="position:relative;height:0;padding-bottom:87.76%">
 	<iframe src="https://www.youtube.com/embed/8WmCn5xGebs?ecver=2" style="position:absolute;width:80%;height:80%;left:0" height="350px" frameborder="0" allowfullscreen>
 	</iframe>
       </div>
-    </section>
-
-    <section>
-      <h3 id="Atomic, molecular and cluster manipulation">Atomic, molecular and cluster manipulation<a class="anchor-link" href="#Atomic, molecular and cluster manipulation">&#182;</a></h3>
-      <img src="https://images.nature.com/m685/nature-assets/srep/2013/130214/srep01270/images/srep01270-f1.jpg">
     </section>
 
     <section>
@@ -230,21 +253,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
 
     <section>
-      <section>
-	<h3 id="Experiment:-Macroscopic-effects">Experiment: Macroscopic effects<a class="anchor-link" href="#Experiment:-Macroscopic-effects">&#182;</a></h3>
-	<p>removed empirically by subtracting force from averaged long range scan data over several surface locations</p>
-	<table cellspacing="0" cellpadding="0">
-	  <tr>
-	    <td>
-	      <img src='images/long_range.png' width=600>
-	    </td>
-	  </tr>
-	</table>
-	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
-      </section>
-    </section>
-
-    <section>
       <div style="position:relative;height:0;padding-bottom:56.21%">
 	<iframe src="https://www.youtube.com/embed/Ehw8PTA4QkE?ecver=2" style="position:absolute;width:80%;height:80%;left:0" width="641" height="360" frameborder="0" allowfullscreen>
 	</iframe>
@@ -252,42 +260,21 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       <p class='fragment'>Nottingham Nanoscience group's papers as <a href='http://bit.ly/NottinghamNano'> PDFs</a></p>
       <p class='fragment'>Phil is an extremely good guitarist;)</p>
     </section>
-    
-    <section>
-      <h3 id="STM">STM<a class="anchor-link" href="#STM">&#182;</a></h3>
-      <p>
-	$$
-	I(z) \propto \exp^{-k \sqrt{2 \phi}z}
-	$$
-	where, $k$ is a constant, $\phi$ is the work function of the surface and $z$ is the distance from the surface.
-      </p>
-      <p>
-	Using <a href='https://en.wikipedia.org/wiki/Ballistic_conduction'>Landau-Buttiker</a> formalism + a lot of simplifications, we can approximate the current through a tip as
-	$$
-	I(z,E) \propto \text{LDOS}(z, E)
-	$$
-	where $\text{LDOS}$ is a local density of states - the amplitude of electron states of the surface that have an energy within $dE$ of $E$ at the location $z$.<br>
-	Again this gives exponential decay.
-      </p>
-    </section>
 
     <section>
-      <section>
-	<!--<h3 id="2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">2 sided strategy: manipulate both experiment and simulation data for comparison<a class="anchor-link" href="#2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">&#182;</a></h3>-->
-	<table>
-	  <tr>
-	    <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
-	    <td width=300 style="vertical-align:middle">
-	      <h3>2 sided strategy:</h3>
-	      <p> manipulate both experiment and simulation data for comparison</p>
-	      <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
-	    </td>
-	    <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
-	  </tr>
-	</table>	
-      </section>
+      <table>
+	<tr>
+	  <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
+	  <td width=300 style="vertical-align:middle">
+	    <h3>2 sided strategy:</h3>
+	    <p> manipulate both experiment and simulation data for comparison</p>
+	    <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+	  </td>
+	  <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
+	</tr>
+      </table>	
     </section>
-    
+
    <section>
      <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
      <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
@@ -320,6 +307,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
      <h5>Gaberle, J., Gao, D. Z., Watkins, M. B., & Shluger, A. L. (2016). Calculating the entropy loss on adsorption of organic molecules at insulating surfaces. The Journal of Physical Chemistry C, 120(7), 3913-3921.</h5>
      </section>
    </section>
+
+    <section>
+	<h3 id="What is objective reality?">What is objective reality?<a class="anchor-link" href="#What is objective reality?">&#182;</a></h3>
+	<h4 id="Or What is a Scientific measurement?">Or What is a Scientific measurement?<a class="anchor-link" href="#Or What is a Scientific measurement?">&#182;</a></h4>
+	<p class='fragment'>Can we 'see' atoms?</p>
+	<img class='fragment' src='http://www.relatably.com/q/img/robert-anton-wilson-quotes/quote-Robert-Anton-Wilson-the-totally-convinced-and-the-totally-stupid-100166.png' style='height:80%;width:80%'>
+	<p class='fragment'>Is mathematics produced by people, or found?</p>
+    </section>
    
     <section>
       <section>
@@ -439,63 +434,6 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	  <font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)
 	  </font>
 	</p>
-      </section>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Can-also-compare-to-MD-free-energy-calculation-with-explicit-tips">Can also compare to MD free energy calculation with explicit tips<a class="anchor-link" href="#Can-also-compare-to-MD-free-energy-calculation-with-explicit-tips">&#182;</a></h3>
-	<p>
-	  <img src="images/nanoscale4.gif" alt="caf2_md" height="400" >
-	</p>
-	<p>STA does better than an incorrect tip model</p>
-	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
-      </section>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Realistic-environment">Realistic environment<a class="anchor-link" href="#Realistic-environment">&#182;</a></h3>
-	<p>The above were all obtained in pure water.</p>
-	<ul>
-	  <li><p>requires complicated experimental protocols</p>
-	  </li>
-	  <li><p>not a realistic environment for many of the motivations</p>
-	  </li>
-	</ul>
-	<div class="fragment">
-	  <h3 id="What-changes-in-electrolyte-solution?">What changes in electrolyte solution?<a class="anchor-link" href="#What-changes-in-electrolyte-solution?">&#182;</a></h3>
-	</div>
-      </section>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Comparison-to-supersaturated-solution">Comparison to supersaturated solution<a class="anchor-link" href="#Comparison-to-supersaturated-solution">&#182;</a></h3>
-	<p><img src="images/large_scale_nanotech.png" alt="caf2_large" height="400"></p>
-	<ul>
-	  <li>The supersaturated solution ( s = 100 ) was prepared by mixing the same amounts of 38 mM CaCl$_2$ and 76 mM KF solutions</li>
-	</ul>
-	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
-      </section>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Adsorbed-ions?">Adsorbed ions?<a class="anchor-link" href="#Adsorbed-ions?">&#182;</a></h3><ul>
-	  <li>we use the same protocol as before</li>
-	</ul>
-	<p><img src="images/protocol_nanotech.png" alt="caf2_large" height=300 ></p>
-	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
-      </section>
-    </section>
-
-    <section>
-      <section>
-	<h3 id="Adsorbed-ions?">Adsorbed ions?<a class="anchor-link" href="#Adsorbed-ions?">&#182;</a></h3>
-	<p><img src="images/force_comp_nanotech.png" alt="caf2_large" height="400" ></p>
-	<p>Possible specific cation adorption.</p>
-	<p><font size="2">K Miyazawa, MW, AL Shluger, T Fukuma, Nanotechnology 28, 245701 (2017)</font></p>
       </section>
     </section>
 
