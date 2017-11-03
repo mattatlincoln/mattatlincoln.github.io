@@ -771,14 +771,14 @@ int main() {
 	  \end{pmatrix}.
 	</p>
 	<p>
-	  Check that your eigenvalues are eigenvalues by running Gauss elimination on the equation $\textbf{A} - \lambda_i \textbf{I} = 0 $.
+	  Check that your eigenvalues are eigenvalues by running Gauss elimination on the equation $(\textbf{A} - \lambda_i \textbf{I}) \textbf{x} = 0 $.
 	  The augmented matrix should be of reduced rank, and you can deduce the eigenvectors from the output.
 	</p>
 	<p>
 	  Check that an eigenvector you found is an eigenvector with eigenvalue $\lambda_i$ by direct multiplication.
 	</p>
 	<p>
-	  Modify the code to output the condition number of a matrix. The condition number is the ration of the largest to smallest eigenvalue. This controls how numerically stable inversion of the matrix is.
+	  Modify the code to output the condition number of a matrix. The condition number is the ratio of the largest to smallest eigenvalue. This controls how numerically stable inversion of the matrix is.
 	</p>
     </section>
     
