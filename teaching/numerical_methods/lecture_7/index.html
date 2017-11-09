@@ -139,7 +139,6 @@ MathJax.Hub.Config({
 	  Check your solution is correct by comparison to Gauss-Jordan.
 	  Note you can also get the determinant from LU decomposition.
 	</p>	    
-	
       </div>
     </section>
     
@@ -178,9 +177,25 @@ MathJax.Hub.Config({
     <section>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Find the minimum of the quadratic form
+	  $$
+	  f(\textbf{x}) = \frac{1}{2}\textbf{x}^T \textbf{A x} - \textbf{b}^T\textbf{x}
+	  $$
+	</p>
+	<p>Pen and paper - by looking at the individual equations show that the minimum of $f(\textbf{x})$ is given by the solution of $\textbf{Ax} - \textbf{b}$ = 0</p>
+	<p>Find the minimum of $f(\textbf{x})$ where $\textbf{x}^T = (-2,-1,0,1,2)$, $A_{ij} = 2 \delta_{ij}$ and $b_i = 1$ where $\delta_{ij}$ is the <a href='https://en.wikipedia.org/wiki/Kronecker_delta'>Kronecker delta</a>.</p>
       </div>
     </section>
 
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Matrix functions
+	</p>
+      </div>
+    </section>
+
+    
     <section>
       	<p>Some differential equations can be solved numerically as follows (more details next term).</p>
 	<p>We can approximate a function $y = f(x)$ on a grid of $n$ points that are spaced by $\Delta x$.</p>
@@ -256,7 +271,10 @@ MathJax.Hub.Config({
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 	<p>Check you agree with the matrix form</p>
-	<p>Find a solution for $y$ in the interval [0,1] when:<br>$g(x) = x, y_L = 0.2, y_R=1.5$<br>$g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$<br>with $n=10, 100, 500$</p>
+	<p>Find a solution for $y$ in the interval [0,1] when:
+	  <br> - $g(x) = x, y_L = 0.2, y_R=1.5$
+	  <br> - $g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$<br>
+	  in each case try with $n=10, 100, 500$</p>
 	<p>Which method of solution is fastest?</p>
 	<p>Fit your (sections of your) data to a polynomial.</p>
       </div>
