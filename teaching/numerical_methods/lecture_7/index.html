@@ -175,18 +175,45 @@ MathJax.Hub.Config({
     </section>
 
     <section>
+      <h2>Power method</h2>
+      	<p>This is a way of finding the eigenvector with the largest eigenvector
+	</p>
+	<p>
+	  <li>Start with a guess $\textbf{x}_0$ at the eigenvector (it must not be orthogonal to the true eigenvector).</li>
+	  <li>Update the eigenvector $\textbf{x}_i = \frac{\textbf{A} \textbf{x}_{n-1}}{||\textbf{A} \textbf{x}_{n-1}||}$</li>
+	</p>
+
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>Find the minimum of the quadratic form
-	  $$
-	  f(\textbf{x}) = \frac{1}{2}\textbf{x}^T \textbf{A x} - \textbf{b}^T\textbf{x}
-	  $$
+	<p>
+	  Find the largest eigenvector of 
+	  $$ \textbf{A} = \begin{pmatrix}
+	   1 & -1 & -1 & -1\\
+	  -1 &  2 &  0 &  0\\
+	  -1 &  0 &  3 &  1\\
+	  -1 &  0 &  1 &  4
+	  \end{pmatrix}.$$
+	  using the power method.
 	</p>
-	<p>Pen and paper - by looking at the individual equations show that the minimum of $f(\textbf{x})$ is given by the solution of $\textbf{Ax} - \textbf{b}$ = 0</p>
-	<p>Find the minimum of $f(\textbf{x})$ where $\textbf{x}^T = (-2,-1,0,1,2)$, $A_{ij} = 2 \delta_{ij}$ and $b_i = 1$ where $\delta_{ij}$ is the <a href='https://en.wikipedia.org/wiki/Kronecker_delta'>Kronecker delta</a>.</p>
+      </div>
+      <p>
+	We basically used this when studying Markov Chains in year 1. What is the stationary state of a system described by a Markov chain with this transition matrix?
+	$$
+	P=\begin{bmatrix}0.9&0.075&0.025\\0.15&0.8&0.05\\0.25&0.25&0.5\end{bmatrix}
+	$$.
+      </p>
+
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Eigenfunctions
+	</p>
       </div>
     </section>
 
+    
     <section>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -267,16 +294,32 @@ MathJax.Hub.Config({
 	  $$
 	  where $y_L$ and $y_R$ are the values of $y$ at the left and right boundaries.
 	</p>
+    </section>
+    <section>
 	
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 	<p>Check you agree with the matrix form</p>
 	<p>Find a solution for $y$ in the interval [0,1] when:
-	  <br> - $g(x) = x, y_L = 0.2, y_R=1.5$
-	  <br> - $g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$<br>
-	  in each case try with $n=10, 100, 500$</p>
-	<p>Which method of solution is fastest?</p>
-	<p>Fit your (sections of your) data to a polynomial.</p>
+	  <br> - $g(x) = x, y_L = 0.2, y_R=1.5$ with $n=10, 100, 500$</p>
+	<p>Fit your data to a polynomial.</p>
+	<p> - Solve when $g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$</p>
+
+      </div>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>The minimum of the quadratic form
+	  $$
+	  f(\textbf{x}) = \frac{1}{2}\textbf{x}^T \textbf{A x} - \textbf{b}^T\textbf{x}
+	  $$
+	  is given by the solution of $\textbf{Ax} - \textbf{b}= 0$
+	</p>
+	<p>Find the minimum of $f(\textbf{x})$ where $\textbf{x}^T = (-2,-1,0,1,2)$, $A_{ij} = 2 \delta_{ij}$ and $b_i = 1$ where $\delta_{ij}$ is the <a href='https://en.wikipedia.org/wiki/Kronecker_delta'>Kronecker delta</a>.</p>
+	<p>Pen and paper - by looking at the result of differentiating  $f(\textbf{x})$ by $x_i$ derive the above formula for the minima of $f(\textbf{x})$.
+	</p>
       </div>
     </section>
     
