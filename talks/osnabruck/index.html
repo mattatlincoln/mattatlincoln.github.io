@@ -339,6 +339,25 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
 
     <section>
+      <section>
+	<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
+	<ul>
+	  <li>Evidence suggests here that stable tips are not very invasive – measurement of equilibrium water density</li>
+	  <li>Theory vs experiment: short range forces above Ca. </li>
+	  <li>Better agreement between implicit tip model and experiment than explicit MD
+	    <ul>
+	      <li>better tip models are needed!</li>
+	    </ul>
+	  </li>
+	  <li>Towards mapping specific ion adsorption sites and exploring electrolyte solutions<ul>
+	      <li>need to be cleverer than brute force to simulate</li>
+	    </ul>
+	  </li>
+	</ul>
+      </section>
+    </section>
+    
+    <section>
       <h2>Electron density of states (DOS)</h2>
       <p>Straightforward approach:
 	$$
@@ -393,44 +412,60 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	<img src='images/algorithm.png' height=500>
       </div>
     </section>
+
+    <section>
+      <h1 id="Integral-Equation-Theory---3D-RISM">Integral Equation Theory - 3D-RISM<a class="anchor-link" href="#Integral-Equation-Theory---3D-RISM">&#182;</a></h1>
+      <p>alternative to implicit solvation models. We'll be resubmitting a grant application for this soon.</p>
+      <p>3D-RISM: calculation requires the computation of several 3D correlation functions for each solute atom interacting with each solvent site. The distinct difference of 3D-RISM compared to implicit solvent models like PCM or COSMO is that a fully atomistically detailed solvent is included in the model, but statistically averaged rather than taking up an instantaneous configuration.</p>
+      <p>In particular we gain access to the solvent density distribution $\rho_\gamma(r) = \rho_{\gamma} g_\gamma(r)$ in terms of the bulk solvent density $\rho_\gamma$ and the 3D site distribution functions, $g_\gamma(r)$, for each solvent site $\gamma$.</p>
+    </section>
     
     <section>
-      <section>
-	<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
-	<ul>
-	  <li>Evidence suggests here that stable tips are not very invasive – measurement of equilibrium water density</li>
-	  <li>Theory vs experiment: short range forces above Ca. </li>
-	  <li>Better agreement between implicit tip model and experiment than explicit MD
-	    <ul>
-	      <li>better tip models are needed!</li>
-	    </ul>
-	  </li>
-	  <li>Towards mapping specific ion adsorption sites and exploring electrolyte solutions<ul>
-	      <li>need to be cleverer than brute force to simulate</li>
-	    </ul>
-	  </li>
-	</ul>
-      </section>
+      <h1 id="Confined-Water">Confined Water<a class="anchor-link" href="#Confined-Water">&#182;</a></h1><p>over step edges, we need better simulation methods:</p>
+      <p><img src='images/water_CaCO3.png' width=500></p>
+      <p>Miyata, Kazuki, et al. "Dissolution Processes at Step Edges of Calcite in Water Investigated by High-Speed Frequency Modulation Atomic Force Microscopy and Simulation." Nano Letters (2017).</p>
+      <p>MOFs, nanotubes, interfaces ...</p>
+      <h4 id="need-water-structure-for-accurate-description.">need water structure for accurate description.<a class="anchor-link" href="#need-water-structure-for-accurate-description.">&#182;</a></h4><p>3D-RISM should also give approximately accurate dielectric constant.</p>
+
     </section>
 
-<section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-are-we-interested-in-excited-states-and-optical-properties?">Why are we interested in excited states and optical properties?<a class="anchor-link" href="#Why-are-we-interested-in-excited-states-and-optical-properties?">&#182;</a></h2><ul>
-<li>Photochemistry / catalysis</li>
-<li>Energy conversion <ul>
-<li>Solar cells</li>
-</ul>
-</li>
-<li>Spectroscopy</li>
-</ul>
+    <section>
+      <h1 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h1>$$    
+      g_\gamma (r) − 1 = \sum_\alpha \int dr′  c_\alpha(r − r′) \chi_{\alpha \gamma}(r′)
+      $$<p>where the direct site correlation function $c_\gamma(r)$ and the site-site solvent susceptibility $\chi_{\alpha \gamma}(r′)$ have been introduced.</p>
+      <p>$\chi_{\alpha \gamma}(r′)$ carries the required information of the solvent geometry (relative positions of sites) and total site-site correlation functions for the pure solvent liquid, which are obtained from 1D-RISM calculations.</p>
+      <p>The Ornstein-Zernike type equations are complemented by closure relations:
+	$$
+	g_\gamma (r) = 
+	\begin{cases}
+	\exp(d_\gamma), & \text{for } d_\gamma \leq 0 \\
+	1 + d_\gamma, & \text{for } d > 0\\
+        \end{cases}
+        $$
+      </p>
+      <p>where:
+	$d_\gamma = −\beta u_\gamma(r) + g_\gamma(r) − 1 − c_\gamma(r)$</p>
+      <p>which includes the potential interaction, $u_\gamma(r)$ between a solvent site and all of the solute sites.</p>
+      <p>These are solved self-consistently to get the solvent distribution.</p>
+    </section>
 
-</div>
-</div>
-</div></section></section><section><section>
+    <section>
+      <h1 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h1><p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
+      <p>Similarly we can couple the DFT density to the 3D-RISM calculation by adding the electrostatic potential or other terms as an external potential the contributes to the solvent site potential energy at (r).</p>
+    </section>
+    
+    <section>
+      <h2 id="Why-are-we-interested-in-excited-states-and-optical-properties?">Why are we interested in excited states and optical properties?<a class="anchor-link" href="#Why-are-we-interested-in-excited-states-and-optical-properties?">&#182;</a></h2><ul>
+	<li>Photochemistry / catalysis</li>
+	<li>Energy conversion <ul>
+	    <li>Solar cells</li>
+	  </ul>
+	</li>
+	<li>Spectroscopy</li>
+      </ul>
+    </section>
+
+    <section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -731,70 +766,7 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 <li>cost will depend on system size, but increase linearly with the number of excited states that you want to calculate</li>
 <li>supports calculations using hybrid functionals and the ADMM approximation</li>
 <li>current implementation is very much in beta, but is being actively developed.</li>
-<li>nearly production ready, needs final testing and refining - is available in trunk via sourceforge or github</li>
 </ul>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Integral-Equation-Theory---3D-RISM">Integral Equation Theory - 3D-RISM<a class="anchor-link" href="#Integral-Equation-Theory---3D-RISM">&#182;</a></h1><p>alternative to implicit solvation models. We'll be resubmitting a grant application for this soon.</p>
-<p>3D-RISM: calculation requires the computation of several 3D correlation functions for each solute atom interacting with each solvent site. The distinct difference of 3D-RISM compared to implicit solvent models like PCM or COSMO is that a fully atomistically detailed solvent is included in the model, but statistically averaged rather than taking up an instantaneous configuration.</p>
-<p>In particular we gain access to the solvent density distribution $\rho_\gamma(r) = \rho_{\gamma} g_\gamma(r)$ in terms of the bulk solvent density $\rho_\gamma$ and the 3D site distribution functions, $g_\gamma(r)$, for each solvent site $\gamma$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Confined-Water">Confined Water<a class="anchor-link" href="#Confined-Water">&#182;</a></h1><p>over step edges, we need better simulation methods:</p>
-<p><img src='images/water_CaCO3.png' width=500></p>
-<p>Miyata, Kazuki, et al. "Dissolution Processes at Step Edges of Calcite in Water Investigated by High-Speed Frequency Modulation Atomic Force Microscopy and Simulation." Nano Letters (2017).</p>
-<p>MOFs, nanotubes, interfaces ...</p>
-<h4 id="need-water-structure-for-accurate-description.">need water structure for accurate description.<a class="anchor-link" href="#need-water-structure-for-accurate-description.">&#182;</a></h4><p>3D-RISM should also give approximately accurate dielectric constant.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h1>$$    
-g_\gamma (r) − 1 = \sum_\alpha \int dr′  c_\alpha(r − r′) \chi_{\alpha \gamma}(r′)
-$$<p>where the direct site correlation function $c_\gamma(r)$ and the site-site solvent susceptibility $\chi_{\alpha \gamma}(r′)$ have been introduced.</p>
-<p>$\chi_{\alpha \gamma}(r′)$ carries the required information of the solvent geometry (relative positions of sites) and total site-site correlation functions for the pure solvent liquid, which are obtained from 1D-RISM calculations.</p>
-<p>The Ornstein-Zernike type equations are complemented by closure relations:</p>
-$$
-$$$$
-g_\gamma (r) = 
-\begin{cases}
-    \exp(d_\gamma), & \text{for } d_\gamma \leq 0 \\
-     1 + d_\gamma, & \text{for } d > 0
-\end{cases}
-$$<p>where:</p>
-<p>$d_\gamma = −\beta u_\gamma(r) + g_\gamma(r) − 1 − c_\gamma(r)$</p>
-<p>which includes the potential interaction, $u_\gamma(r)$ between a solvent site and all of the solute sites.</p>
-<p>These are solved self-consistently to get the solvent distribution.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h1><p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
-<p>Similarly we can couple the DFT density to the 3D-RISM calculation by adding the electrostatic potential or other terms as an external potential the contributes to the solvent site potential energy at (r).</p>
-<h4 id="Complementary-to-SCCS-and-newer-developments.">Complementary to SCCS and newer developments.<a class="anchor-link" href="#Complementary-to-SCCS-and-newer-developments.">&#182;</a></h4>
 </div>
 </div>
 </div></section></section>
@@ -806,6 +778,7 @@ $$<p>where:</p>
 	  <li>EPSRC for funding two eCSE software development projects</li>
 	  <li>Alex Shluger, University College London</li>
 	  <li>Lev Kantorovitch, King's College London</li>
+	  <li>Iain Bethune, STFC, Daresbury</li>
 	  <li>Takeshi Fukuma, Kanazawa University</li>
 	  <li>Adam Foster, Aalto</li>
 	  <li>Andrew Rohl, Julian, Bernhard Reischl, Curtin University</li>
