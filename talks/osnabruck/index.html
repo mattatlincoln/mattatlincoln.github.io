@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Talk MM 2017 slides</title>
+<title>Talk Osnabruck slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -75,7 +75,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section data-background="../../images/CaF2_zoom3.jpg">
       <section>
 	<div class="container" id="title">
-	  <h3  id="Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment">Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment<a class="anchor-link" href="#Reconstructing the solvation structure of hydrated surfaces in 3D: theory and experiment">&#182;</a></h3>
+	  <h3  id="A light bulb moment: including optical excitation and current in simulations of surface processes.">A light bulb moment: including optical excitation and current in simulations of surface processes.<a class="anchor-link" href="#A light bulb moment: including optical excitation and current in simulations of surface processes.">&#182;</a></h3>
 	</div>
 	<table cellspacing="0" cellpadding="0" border="0">
 	  <tr>
@@ -92,8 +92,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
     <section>
       <section>
-	<h3 id="3D-Solvation-Structures-on-CaF$_2$">3D Solvation Structures on CaF$_2$<a class="anchor-link" href="#3D-Solvation-Structures-on-CaF$_2$">&#182;</a></h3>
-	<p>UHV measurements at 4K are all very well, but some applications require a more <em>fluid</em> environment</p>
+	<h3 id="3D-Solvation-Structures-on-CaF$_2$">Motivation<a class="anchor-link" href="#3D-Solvation-Structures-on-CaF$_2$">&#182;</a></h3>
+	<p>Many  applications require working in <em>fluid</em> environments, the inclusion of charge transport and interaction with light</p>
 	<table cellspacing="0" cellpadding="0" border="0">
 	  <tr>
 	    <td>
@@ -358,7 +358,59 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
     
     <section>
-      <h2>Electron density of states (DOS)</h2>
+      <h2 id="Confined-Water">Confined Water<a class="anchor-link" href="#Confined-Water">&#182;</a></h2><p>over step edges, we need better simulation methods:</p>
+      <p><img src='images/water_CaCO3.png' width=500></p>
+      <p>Miyata, Kazuki, et al. "Dissolution Processes at Step Edges of Calcite in Water Investigated by High-Speed Frequency Modulation Atomic Force Microscopy and Simulation." Nano Letters (2017).</p>
+      <p>MOFs, nanotubes, interfaces ...</p>
+      <h4 id="need-water-structure-for-accurate-description.">need water structure for accurate description.<a class="anchor-link" href="#need-water-structure-for-accurate-description.">&#182;</a></h4><p>3D-RISM should also give approximately accurate dielectric constant.</p>
+    </section>
+    
+    <section>
+      <h2 id="Integral-Equation-Theory---3D-RISM">Integral Equation Theory - 3D-RISM<a class="anchor-link" href="#Integral-Equation-Theory---3D-RISM">&#182;</a></h2>
+      <p>alternative to implicit solvation models. We'll be resubmitting a grant application for this soon.</p>
+      <p>3D-RISM: calculation requires the computation of several 3D correlation functions for each solute atom interacting with each solvent site. The distinct difference of 3D-RISM compared to implicit solvent models like PCM or COSMO is that a fully atomistically detailed solvent is included in the model, but statistically averaged rather than taking up an instantaneous configuration.</p>
+      <p>In particular we gain access to the solvent density distribution $\rho_\gamma(r) = \rho_{\gamma} g_\gamma(r)$ in terms of the bulk solvent density $\rho_\gamma$ and the 3D site distribution functions, $g_\gamma(r)$, for each solvent site $\gamma$.</p>
+    </section>
+    
+    <section>
+      <h1 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h1>$$    
+      g_\gamma (r) − 1 = \sum_\alpha \int dr′  c_\alpha(r − r′) \chi_{\alpha \gamma}(r′)
+      $$<p>where the direct site correlation function $c_\gamma(r)$ and the site-site solvent susceptibility $\chi_{\alpha \gamma}(r′)$ have been introduced.</p>
+      <p>$\chi_{\alpha \gamma}(r′)$ carries the required information of the solvent geometry (relative positions of sites) and total site-site correlation functions for the pure solvent liquid, which are obtained from 1D-RISM calculations.</p>
+      <p>The Ornstein-Zernike type equations are complemented by closure relations:
+	$$
+	g_\gamma (r) = 
+	\begin{cases}
+	\exp(d_\gamma), & \text{for } d_\gamma \leq 0 \\
+	1 + d_\gamma, & \text{for } d > 0\\
+        \end{cases}
+        $$
+      </p>
+      <p>where:
+	$d_\gamma = −\beta u_\gamma(r) + g_\gamma(r) − 1 − c_\gamma(r)$</p>
+      <p>which includes the potential interaction, $u_\gamma(r)$ between a solvent site and all of the solute sites.</p>
+      <p>These are solved self-consistently to get the solvent distribution.</p>
+    </section>
+
+    <section>
+      <h1 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h1><p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
+      <p>Similarly we can couple the DFT density to the 3D-RISM calculation by adding the electrostatic potential or other terms as an external potential the contributes to the solvent site potential energy at (r).</p>
+    </section>
+    
+    <section>
+      <h2 id="Why-are-we-interested-in-excited-states-and-optical-properties?">Why are we interested in excited states and optical properties?<a class="anchor-link" href="#Why-are-we-interested-in-excited-states-and-optical-properties?">&#182;</a></h2><ul>
+	<li>Photochemistry / catalysis</li>
+	<li>Energy conversion <ul>
+	    <li>Solar cells</li>
+	  </ul>
+	</li>
+	<li>Spectroscopy</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Electron Transport - NEGF</h2>
+      <h3>Electron density of states (DOS)</h3>
       <p>Straightforward approach:
 	$$
 	\textbf{H}\textbf{C} = \textbf{E}\textbf{S}\textbf{C} \\
@@ -412,59 +464,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	<img src='images/algorithm.png' height=500>
       </div>
     </section>
-
-    <section>
-      <h1 id="Integral-Equation-Theory---3D-RISM">Integral Equation Theory - 3D-RISM<a class="anchor-link" href="#Integral-Equation-Theory---3D-RISM">&#182;</a></h1>
-      <p>alternative to implicit solvation models. We'll be resubmitting a grant application for this soon.</p>
-      <p>3D-RISM: calculation requires the computation of several 3D correlation functions for each solute atom interacting with each solvent site. The distinct difference of 3D-RISM compared to implicit solvent models like PCM or COSMO is that a fully atomistically detailed solvent is included in the model, but statistically averaged rather than taking up an instantaneous configuration.</p>
-      <p>In particular we gain access to the solvent density distribution $\rho_\gamma(r) = \rho_{\gamma} g_\gamma(r)$ in terms of the bulk solvent density $\rho_\gamma$ and the 3D site distribution functions, $g_\gamma(r)$, for each solvent site $\gamma$.</p>
-    </section>
     
-    <section>
-      <h1 id="Confined-Water">Confined Water<a class="anchor-link" href="#Confined-Water">&#182;</a></h1><p>over step edges, we need better simulation methods:</p>
-      <p><img src='images/water_CaCO3.png' width=500></p>
-      <p>Miyata, Kazuki, et al. "Dissolution Processes at Step Edges of Calcite in Water Investigated by High-Speed Frequency Modulation Atomic Force Microscopy and Simulation." Nano Letters (2017).</p>
-      <p>MOFs, nanotubes, interfaces ...</p>
-      <h4 id="need-water-structure-for-accurate-description.">need water structure for accurate description.<a class="anchor-link" href="#need-water-structure-for-accurate-description.">&#182;</a></h4><p>3D-RISM should also give approximately accurate dielectric constant.</p>
-
-    </section>
-
-    <section>
-      <h1 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h1>$$    
-      g_\gamma (r) − 1 = \sum_\alpha \int dr′  c_\alpha(r − r′) \chi_{\alpha \gamma}(r′)
-      $$<p>where the direct site correlation function $c_\gamma(r)$ and the site-site solvent susceptibility $\chi_{\alpha \gamma}(r′)$ have been introduced.</p>
-      <p>$\chi_{\alpha \gamma}(r′)$ carries the required information of the solvent geometry (relative positions of sites) and total site-site correlation functions for the pure solvent liquid, which are obtained from 1D-RISM calculations.</p>
-      <p>The Ornstein-Zernike type equations are complemented by closure relations:
-	$$
-	g_\gamma (r) = 
-	\begin{cases}
-	\exp(d_\gamma), & \text{for } d_\gamma \leq 0 \\
-	1 + d_\gamma, & \text{for } d > 0\\
-        \end{cases}
-        $$
-      </p>
-      <p>where:
-	$d_\gamma = −\beta u_\gamma(r) + g_\gamma(r) − 1 − c_\gamma(r)$</p>
-      <p>which includes the potential interaction, $u_\gamma(r)$ between a solvent site and all of the solute sites.</p>
-      <p>These are solved self-consistently to get the solvent distribution.</p>
-    </section>
-
-    <section>
-      <h1 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h1><p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
-      <p>Similarly we can couple the DFT density to the 3D-RISM calculation by adding the electrostatic potential or other terms as an external potential the contributes to the solvent site potential energy at (r).</p>
-    </section>
-    
-    <section>
-      <h2 id="Why-are-we-interested-in-excited-states-and-optical-properties?">Why are we interested in excited states and optical properties?<a class="anchor-link" href="#Why-are-we-interested-in-excited-states-and-optical-properties?">&#182;</a></h2><ul>
-	<li>Photochemistry / catalysis</li>
-	<li>Energy conversion <ul>
-	    <li>Solar cells</li>
-	  </ul>
-	</li>
-	<li>Spectroscopy</li>
-      </ul>
-    </section>
-
     <section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -479,23 +479,9 @@ Christine Jamorski, Mark E. Casida and Dennis R. Salahub, J. Chem. Phys. 104, 51
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Two main methods to solve the TDKS equations</p>
-<ul>
-<li>Linear-response Time Dependent Density Functional Perturbation Theory</li>
-<li>Real time propagation, see <a href="https://goo.gl/m8DODn">Florian Schiffmann's PhD thesis</a></li>
-</ul>
-<p>both methods are available in CP2K.</p>
-<p>We have been working on the Linear Response implementation.</p>
+    </div></section>
 
-</div>
-</div>
-</div></section></section><section><section>
+    <section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -516,25 +502,9 @@ $$<p>$\color{blue}{\psi_{j,\sigma} (r) }$ contributes to the hole, $\color{red}{
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><p>We followed the original implementation of TDDFPT for semi-local functionals within CP2K (<a href="http://opac.nebis.ch/F/1V8XHFA2Q5FFGRIN5XIPD6HVDVLK7TU8GQNU8LXFQDRJU9S38H-00179?func=short-0&amp;set_number=016867">Thomas Chaissang's PhD thesis</a>). But, ended up with complete rewrite.</p>
-<p>Currently separate implementation (<code>TDDFPT2</code>). Original is probably deprecated - and will be removed in future?</p>
-<ul>
-<li><p>It is activated within the <code>&amp;PROPERTIES</code> section of <code>&amp;FORCE_EVAL</code> - so can be used within MD or MC or single point calcs etc.</p>
-</li>
-<li><p><code>XC</code> section is inherited from the ground state calc - needs weak smoothing <code>SPLINE2_SMOOTH</code> on the XC gradients.</p>
-</li>
-</ul>
-<p>Uses a standard block Davidson algorithm for iterative diagonalization of excited states.</p>
+    </div></section></section>
 
-</div>
-</div>
-</div></section></section><section><section>
+<section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -599,73 +569,6 @@ $$
 \big<\psi_{HOMOS} (r) \psi_{HOMOS} (r) \big| { \frac{1}{\mid r' - r\mid}} \big| \psi_{LUMOS} (r') \psi_{LUMOS} (r') \big>
 }
 $$<p><strong>Note this is like a coloumb interaction screened by an effective dielectric function equal to $\color{green}{c_{HF}^{-1}}$.</strong></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hybrid-terms---gaussians">Hybrid terms - gaussians<a class="anchor-link" href="#Hybrid-terms---gaussians">&#182;</a></h2><p>Because of the exchange, it is not possible for the added exact exchange term to be calculated on the grids with iterative diagonalisation:</p>
-<ul>
-<li>Hybrid term is calculated analytically using the existing hybrid functional routines in CP2K <ul>
-<li>access to fast ADMM approximation (x1000 speed up for some basis sets)</li>
-<li>works for ADMM with no purification at the moment</li>
-<li>works for <em>global</em> hybrids - tested for B3LYP and PBE0</li>
-<li>range separated functionals (HSE etc) not currently available</li>
-<li>long range correction for truncated functionals not available - is code available?</li>
-</ul>
-</li>
-</ul>
-<p>Still looks like standard KS build - no screening on initial $P$ though ...</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Parallelization-and-optimization">Parallelization and optimization<a class="anchor-link" href="#Parallelization-and-optimization">&#182;</a></h1><ul>
-<li>Each KS build for trial vector is independent - parallelize over groups.</li>
-<li>But - need to diagonalize approximate H, and orthogonalize guess vectors - limits to few groups.</li>
-<li>Reduced PW cutoff - excitations mainly around valence states, much smoother than semi-core</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Aside---Tamm-Dancoff-approximation">Aside - Tamm-Dancoff approximation<a class="anchor-link" href="#Aside---Tamm-Dancoff-approximation">&#182;</a></h2><p>only the Tamm-Dancoff approximation to TDDFT is implemented in CP2K at the moment.</p>
-<p>In this approximation $\phi^{(+)}_{j\sigma} (r) = 0$ and the equations simplify and become Hermitian.</p>
-<p>Hopefully fairly well separated - so full TDDFT can be implemented.</p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Oscillator-Strengths">Oscillator Strengths<a class="anchor-link" href="#Oscillator-Strengths">&#182;</a></h1><p>Oscillator strengths calculated using either</p>
-<ul>
-<li><p>the position operator form of the dipole interaction operator, which is valid for non-periodic systems</p>
-</li>
-<li><p>the velocity operator form of the dipole interaction operator</p>
-<ul>
-<li>I thought it might be valid in periodic systems </li>
-<li>BUT no, Berry Phase implementation is needed</li>
-</ul>
-</li>
-</ul>
 
 </div>
 </div>
