@@ -220,15 +220,93 @@ MathJax.Hub.Config({
 	<pre>
 	  <code>
 	    std::ofstream myout("HarmOsc.csv");
-
-	    //bunch of stuff
-
+	    /*
+	    bunch of stuff
+	    */
             for (int i = 0; i< n; i++) {
                myout << i / (n / 2.0) -1  << ", " << D[i][n] << "\n";
             }
 	  </code>
 	</pre>
       </div>
+    </section>
+
+    <section>
+      <section>
+	<h2>Reusing code</h2>
+	<p>You may dislike having lots of code / routines copied around everytime we reuse something</p>
+	<p>The solution is to $\textbf{include}$ other files or, generally, libraries.</p>
+	<p>We can make our own library file by copying functions other than <span style='font-family: monospace'>main</span> into a file called <span style='font-family: monospace'>'my_library.h'</span></p>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_0.png'>
+	    </td>
+	  </tr>
+	</table>
+      </section>
+      <section>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_1.png'>
+	    </td>
+	  </tr>
+	</table>
+	<p>This is my example project. Right click on the $\textbf{bolded}$ project name in the pane to right.</p>
+	<p>Then select  <span style='font-family: monospace'>properties</span>.</p>
+      </section>
+      <section>
+	<p>A new window should have appeared, like this:<p>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_2.png'>
+	    </td>
+	  </tr>
+	</table>
+	<p>Open the <span style='font-family: monospace'>C/C++</span> then the   <span style='font-family: monospace'>General</span> tab</p>
+      </section>
+      <section>
+	<p>Then click on drop down button in the second column of the the 'Additional Include Directories' row and select edit</p>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_3.png'>
+	    </td>
+	  </tr>
+	</table>
+      </section>
+      <section>
+	<p>You should see something like this:</p>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_4.png'>
+	    </td>
+	  </tr>
+	</table>
+      </section>
+      <section>
+	<p>Click on the folder icon, and select the directory where you saved your 'my_library.h' file in</p>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_5.png'>
+	    </td>
+	  </tr>
+	</table>
+      </section>
+      <section>
+	<table>
+	  <tr>
+	    <td>
+	    <img src='../images/include_dir_6.png'>
+	    </td>
+	  </tr>
+	</table>
+	<p>Now I can add a #include line in the file and use any functions in the library .</p>
+      </section>
     </section>
     
     <section>
