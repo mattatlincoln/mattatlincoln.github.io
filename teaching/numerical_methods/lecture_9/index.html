@@ -234,7 +234,26 @@ x_{n}=x_{n-1}-f(x_{n-1}){\frac {x_{n-1}-x_{n-2}}{f(x_{n-1})-f(x_{n-2})}}={\frac 
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 	<li>Repeat the previous questions using the Secant method. How do the number of iterations compare?</li>
       </div>
+    </section>
 
+    <section>
+      <h2>Optimization</h2>
+      <p>Newton's method for optimization is found by minimizing the quadratic approximation
+	$$
+	q(x) = f(x^{(k)}) + f'(x^{(k)})(x - x^{(k)}) + \frac{1}{2}f''(x^{(k)})(x - x^{(k)})^2 
+	$$
+	where $q(x)$ is the estimated value of $f(x)$ and we are currently at $x^{(k)}$.
+      </p>
+      
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<li>Derive Newton's Method for opimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
+	<li>Implement Newton's Method for optimization and use it to find the minima of the following functions.</li>
+	<li>$f(x) = x^2 - \cos{x}$, </li>	
+	<li>$f(x) = x^4 − 14 x^3 + 60x^2 − 70x$
+	</li>
+      </div>
+    </section>
       
     </section>
     
