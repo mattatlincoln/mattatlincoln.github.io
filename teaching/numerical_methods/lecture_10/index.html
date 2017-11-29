@@ -149,123 +149,47 @@ MathJax.Hub.Config({
 	This isn't actually true for all $x$, but it is good enough for now.
       </p>
     </section>
-
     <section>
-      <h2>Root finding Algoriths</h2>
-      <p>
-	There are many algorithms, often small modifications of each other.
+      <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$. For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
+        $$
+        \begin{align*}
+        \int_{-l}^{l}\phi_m(x) f(x) \text{d}x = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
+                                    = \frac{a_0}{2} \int_{-l}^{l}\phi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\phi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\phi_m(x) \psi_n(x)\text{d}x]
+        \end{align*}
+        $$
+        Using the orthogonality relations only the term containing $a_m$ survives, giving
+        $$
+        a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x
+        $$
       </p>
-      <p>
-	Most well known are
-	<li>Bisection</li>
-	<li>Newton-Raphson</li>
-	<li>Secant</li>
-      </p>
-      <p>	
-	Others are often combinations of the previous, aiming to keep their strengths but mitigate weaknesses. For instance the Brent algorithm is a combination of Bisection, Secant and interpolations.
-      </p>
-    </section>
-
-    <section>
-      <h2>Bisection</h2>
-      <p>Simplest possible algorithm.</p>
-      <p>Let $f$ be a continuous function.  Find an interval $[a, b]$ such that $f(a)$ and $f(b)$ have opposite signs (a bracket).</p>
-      <p>Let $c = (a +b)/2$ be the middle of the interval.</p>
-      <p>Then either $f(a)$ and $f(c)$, or $f(c)$ and $f(b)$ have opposite signs, and one has divided by two the size of the interval.</p>
-      <p>Rinse and repeat</p>
-      <p>Although the bisection method is robust, it gains one and only one bit of accuracy with each iteration. Other methods, under appropriate conditions, can gain accuracy faster.	
-      </p>
-    </section>
-
-    <section>
-      <section>
-	<h2>Newton's method</h2>
-	<p>This looks just like our <a href='https://mattatlincoln.github.io/teaching/numerical_methods/lecture_4/#/5'>linear interpolation</a>. If we have a continuous curve $y = f(x)$ the equation of the tangent to the curve at the point $x_n$ is:
-	  $$
-	  y=f'(x_{n})\,(x-x_{n})+f(x_{n}),
-	  $$
-	</p>
-	<p>
-	  If we want an estimate of the value where this cuts the $x$-axis we look for the value of $x = x_{n+1}$ that satisfies
-	  $$
-	  0 =f'(x_{n})\,(x_{n+1}-x_{n})+f(x_{n})	  
-	  $$
-	</p>
-	<p>Which implies that
-	  $$x_{n+1}=x_{n}-{\frac {f(x_{n})}{f'(x_{n})}}$$
-	</p>
-      </section>
-      <section>
-	<h2>Newton's method</h2>
-	<div>
-	  <img src='https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif'>
-	</div>
-      </section>
-    </section>
-
-    <section>
-      <h2>Root finding</h2>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<li>Implement Newton's Method and use it to find the following.</li>
-	<li>Find solutions of $x^2 = 612$</li>
-	<li>Find solutions of $x^3 = \cos{x}$</li>	
-	<li>Find all $x:f(x)=0$:
-	  $$
-	   f(x) = x^3 − 2x^2 − 11x + 12
-	  $$
-	</li>
-	<li>What happens if you start the last example from $x_0 = 4$?</li>
+	<li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
       </div>
     </section>
 
     <section>
-      <h2>Secant Method</h2>
-      <p>The Secant method is essentially the same as Newton's method - but instead of calculating $f'(x)$ analytically, it is approximated by finite difference.
-	$$
-x_{n}=x_{n-1}-f(x_{n-1}){\frac {x_{n-1}-x_{n-2}}{f(x_{n-1})-f(x_{n-2})}}={\frac {x_{n-2}f(x_{n-1})-x_{n-1}f(x_{n-2})}{f(x_{n-1})-f(x_{n-2})}}
-	$$
-	Note that you need to choose two (close) starting guesses, $x_0$ and $x_1$ before you can iterate the algorithm.
+      <h2>Numerical Fourier Series</h2>
+      <p>To calculate the terms in the fourier series we need to numerically intergrate our function.</p>
+      <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals as
+         $$
+         a_m = \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \text{d}x   
+         $$
       </p>
-      <h3>What is the point?</h3>
-      <p>Sometimes it is difficult or expensive to evaluate $f'(x)$</p>
-      <p>Related 'quasi-Newton' methods are very common for multidimensional optimization.</p>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<li>Repeat the previous questions using the Secant method. How do the number of iterations compare?</li>
+	<li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
+	<li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi]$, which then repeats itself every $2 \pi$</li>
       </div>
     </section>
 
-    <section>
-      <h2>Optimization</h2>
-      <p>Newton's method for optimization is found by minimizing the quadratic approximation
-	$$
-	q(x) = f(x^{(k)}) + f'(x^{(k)})(x - x^{(k)}) + \frac{1}{2}f''(x^{(k)})(x - x^{(k)})^2 
-	$$
-	where $q(x)$ is the estimated value of $f(x)$ and we are currently at $x^{(k)}$.
-      </p>
-      
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<li>Derive Newton's Method for opimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
-	<li>Implement Newton's Method for optimization and use it to find the minima of the following functions.</li>
-	<li>$f(x) = x^2 - \cos{x}$, </li>	
-	<li>$f(x) = x^4 − 14 x^3 + 60x^2 − 70x$
-	</li>
-      </div>
-    </section>
-
-    <section>
-      <h2>Optimization in higher dimensions</h2>
-      <p>Newton's method or modified Newton schemes for optimization can be readily extended to higher dimensions.</p>
-    </section>
-    
     <section>
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
-      <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapter 9 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+      <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapters 12 and 13 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
       <h3>Homework</h3>
-      <p>The next portfolio item is set today and due at 16:00 on 7th December.</p>
+      <p>Marks and feedback on the 2nd portfolio item are available on Bb.</p>
+      <p>The 3rd portfolio item is due at 16:00 on 7th December.</p>
     </section>
     
   </div> <!-- slides -->
