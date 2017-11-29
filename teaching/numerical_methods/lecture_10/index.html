@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Nonlinear Equations</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../revealjs/css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+    }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
+
+  <!-- Get Font-awesome from cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="../custom.css">
+
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/f/fa/Fourier_synthesis.svg" background-position='top'>
+      <h2 style="color:black;" id="Numerical Methods Week 10">Numerical Methods Week 10<a class="anchor-link" href="#Numerical Methods Week 10">&#182;</a></h2>
+      <h1 style="color:black;" id="Fourier Series and Transforms">Fourier Series and Transforms<a class="anchor-link" href="#Fourier Series and Transforms">&#182;</a></h1>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
+	<p>Learning outcomes:</p>
+      </div>
+      <br>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Numerically calculate Fourier series of functions.</li>
+        <li> Perform numerical Fourier transform of functions.</li>
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ 
+       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+      </div>
+    </section>
+
+    <section>
+      <h2>Fourier Series</h2>
+      <p>Expanding a function in a series of basis functions, particularly periodic sin and cosines can be very useful.
+	<li>May help analysing a function.</li>
+	<li>Can be used make a filter - removing high or low frequency noise.</li>
+      </p>
+      <p>Suppose we have a periodic function - this means that
+	$$
+	f(x+T) = f(x)
+	$$
+	where $T = 2l$ is the period.
+      </p>
+      <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
+	$$
+	\phi_n(x) = \cos(\frac{n \pi x}{l}) \text{ and } \phi_n(x) = \sin(\frac{n \pi x}{l})
+	$$
+      </p>
+
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</li>
+      </div>
+      
+    </section>
+    
+    <section>
+      <h2>Orthogonal Functions</h2>
+      <p>
+	$\phi_n(x)$ and $\psi_n(x)$ have the special properties that
+	$$
+	\int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
+	$$
+	where $\delta_{nm}$ is the Kronecker delta.</p>
+      <p>Also
+	$$
+	\int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
+	$$
+      </p>
+    </section>
+
+    
+    <section>
+      <h2>Fourier Series</h2>
+      <p>$\it{Assume}$ that we can expand our function as
+	$$
+	f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]
+	$$
+	This isn't actually true for all $x$, but it is good enough for now.
+      </p>
+    </section>
+
+    <section>
+      <h2>Root finding Algoriths</h2>
+      <p>
+	There are many algorithms, often small modifications of each other.
+      </p>
+      <p>
+	Most well known are
+	<li>Bisection</li>
+	<li>Newton-Raphson</li>
+	<li>Secant</li>
+      </p>
+      <p>	
+	Others are often combinations of the previous, aiming to keep their strengths but mitigate weaknesses. For instance the Brent algorithm is a combination of Bisection, Secant and interpolations.
+      </p>
+    </section>
+
+    <section>
+      <h2>Bisection</h2>
+      <p>Simplest possible algorithm.</p>
+      <p>Let $f$ be a continuous function.  Find an interval $[a, b]$ such that $f(a)$ and $f(b)$ have opposite signs (a bracket).</p>
+      <p>Let $c = (a +b)/2$ be the middle of the interval.</p>
+      <p>Then either $f(a)$ and $f(c)$, or $f(c)$ and $f(b)$ have opposite signs, and one has divided by two the size of the interval.</p>
+      <p>Rinse and repeat</p>
+      <p>Although the bisection method is robust, it gains one and only one bit of accuracy with each iteration. Other methods, under appropriate conditions, can gain accuracy faster.	
+      </p>
+    </section>
+
+    <section>
+      <section>
+	<h2>Newton's method</h2>
+	<p>This looks just like our <a href='https://mattatlincoln.github.io/teaching/numerical_methods/lecture_4/#/5'>linear interpolation</a>. If we have a continuous curve $y = f(x)$ the equation of the tangent to the curve at the point $x_n$ is:
+	  $$
+	  y=f'(x_{n})\,(x-x_{n})+f(x_{n}),
+	  $$
+	</p>
+	<p>
+	  If we want an estimate of the value where this cuts the $x$-axis we look for the value of $x = x_{n+1}$ that satisfies
+	  $$
+	  0 =f'(x_{n})\,(x_{n+1}-x_{n})+f(x_{n})	  
+	  $$
+	</p>
+	<p>Which implies that
+	  $$x_{n+1}=x_{n}-{\frac {f(x_{n})}{f'(x_{n})}}$$
+	</p>
+      </section>
+      <section>
+	<h2>Newton's method</h2>
+	<div>
+	  <img src='https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif'>
+	</div>
+      </section>
+    </section>
+
+    <section>
+      <h2>Root finding</h2>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<li>Implement Newton's Method and use it to find the following.</li>
+	<li>Find solutions of $x^2 = 612$</li>
+	<li>Find solutions of $x^3 = \cos{x}$</li>	
+	<li>Find all $x:f(x)=0$:
+	  $$
+	   f(x) = x^3 − 2x^2 − 11x + 12
+	  $$
+	</li>
+	<li>What happens if you start the last example from $x_0 = 4$?</li>
+      </div>
+    </section>
+
+    <section>
+      <h2>Secant Method</h2>
+      <p>The Secant method is essentially the same as Newton's method - but instead of calculating $f'(x)$ analytically, it is approximated by finite difference.
+	$$
+x_{n}=x_{n-1}-f(x_{n-1}){\frac {x_{n-1}-x_{n-2}}{f(x_{n-1})-f(x_{n-2})}}={\frac {x_{n-2}f(x_{n-1})-x_{n-1}f(x_{n-2})}{f(x_{n-1})-f(x_{n-2})}}
+	$$
+	Note that you need to choose two (close) starting guesses, $x_0$ and $x_1$ before you can iterate the algorithm.
+      </p>
+      <h3>What is the point?</h3>
+      <p>Sometimes it is difficult or expensive to evaluate $f'(x)$</p>
+      <p>Related 'quasi-Newton' methods are very common for multidimensional optimization.</p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<li>Repeat the previous questions using the Secant method. How do the number of iterations compare?</li>
+      </div>
+    </section>
+
+    <section>
+      <h2>Optimization</h2>
+      <p>Newton's method for optimization is found by minimizing the quadratic approximation
+	$$
+	q(x) = f(x^{(k)}) + f'(x^{(k)})(x - x^{(k)}) + \frac{1}{2}f''(x^{(k)})(x - x^{(k)})^2 
+	$$
+	where $q(x)$ is the estimated value of $f(x)$ and we are currently at $x^{(k)}$.
+      </p>
+      
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<li>Derive Newton's Method for opimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
+	<li>Implement Newton's Method for optimization and use it to find the minima of the following functions.</li>
+	<li>$f(x) = x^2 - \cos{x}$, </li>	
+	<li>$f(x) = x^4 − 14 x^3 + 60x^2 − 70x$
+	</li>
+      </div>
+    </section>
+
+    <section>
+      <h2>Optimization in higher dimensions</h2>
+      <p>Newton's method or modified Newton schemes for optimization can be readily extended to higher dimensions.</p>
+    </section>
+    
+    <section>
+      <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+      <p>You should be reading additional material to provide a solid background to what we do in class</p>
+      <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapter 9 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+      <h3>Homework</h3>
+      <p>The next portfolio item is set today and due at 16:00 on 7th December.</p>
+    </section>
+    
+  </div> <!-- slides -->
+</div> <!-- reveal -->
+
+  <script>
+
+  require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        mouseWheel: false,
+        center: false,
+        scroll: true,
+
+        // Parallax background image
+        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+        // Parallax background size
+        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: "../../../revealjs//lib/js/classList.js",
+          condition: function() { return !document.body.classList; } },
+          { src: "../../../revealjs//plugin/notes/notes.js",
+          async: true,
+          condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      var update = function(event){
+        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+        $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+  );
+  </script>
+
+</body>
+
+</html>
