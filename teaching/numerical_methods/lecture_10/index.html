@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <title>Nonlinear Equations</title>
+  <title>Fourier Series</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -220,17 +220,43 @@ MathJax.Hub.Config({
     <section>
       <h2>Solving Differential Equations</h2>
       <p>Differential equations can often be transformed into algebraic form using Fourier series. Often the exponential form is most easy to use.
-         $$
-         \frac{1}{l} \int_{-l}^{l} f(x) \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
-         $$
       </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
-        <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0]$.</li>
-      </div>
+      <p>Take an example of the from
+	$$
+	\ddot{y} + \omega_0^2 y = f(t)
+	$$
+	where the function $f(t)$ is a periodic function with the period $T = 2 \pi / \omega$. We can expand $f(t)$ as a Fourier series
+	$$
+	f(t)= \sum_{n = -\infty}^{\infty}f_n e^{in\pi t \omega / \pi} = \sum_{n = -\infty}^{\infty}f_n e^{in \omega t }
+	$$
+	with
+	$$
+	f_n = \frac{1}{T}\int_{-T/2}^{T/2}f(t)\exp(-in\omega t)\text{d}t
+	$$
     </section>
 
+    <section>
+      <p>
+	- but we can also expand $y$ as a fourier series with the same period, $T$.
+		$$
+	y(t)= \sum_{n = -\infty}^{\infty}y_n e^{in \omega t }
+	$$
+	substituting and performing the straightforward derivative of the exponential we get
+	$$
+	\sum_{n = -\infty}^{\infty} \left\{ \left[-(n \omega)^2 + \omega_0^2\right]y_n -f_n \right\}\exp(in\omega t) = 0
+	$$
+	which implies that
+	$$
+	y_n = \frac{f_n}{\omega_0^2 - (n \omega^2)}
+	$$
+	From which the full solution can be found.
+	$$
+	y(t) = \sum_{n = -\infty}^{\infty} \frac{f_n}{\omega_0^2 - (n \omega^2)} \exp(in\omega t)
+
+	$$
+      </p>
+    </section>
+    
     <section>
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
