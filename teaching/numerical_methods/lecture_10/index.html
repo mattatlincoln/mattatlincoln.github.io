@@ -179,7 +179,55 @@ MathJax.Hub.Config({
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 	<li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
-	<li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi]$, which then repeats itself every $2 \pi$</li>
+	<li>Calculate the Fourier series of the periodic function $f(x) = x^2$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+	<li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+	<li>What does the previous series converge to at $x =  -\pi$</li>
+      </div>
+    </section>
+
+    <section>
+      <h2>Parseval's Theorem</h2>
+      <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
+         $$
+         \frac{1}{l} \int_{-l}^{l} f(x) \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
+         $$
+      </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
+        <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0)$.</li>
+      </div>
+    </section>
+
+    <section>
+      <h2>Other forms of Fourier Series</h2>
+      <p>Odd or even functions can be expanded as just $\sin$ or $\cos$ series</p>
+      <p>The expansion can be written in terms of complex exponentials instead of $\sin$ and $\cos$ terms - instead of our functions $\phi$ and $\psi$ we use
+      $$
+      \chi_n(x) = \exp(\frac{inx\pi}{l})
+      $$
+      and expand $f(x)$ as
+      $$
+      f(x) = \sum_{n=-\infty}^{\infty}c_n \chi_n(x)
+      $$
+      </p>
+      <p>This is just rewriting the series, because $\chi_n$ are just linear combinations of $\phi_n$ and $\psi_n$. The $\chi_n$ also satisfy orthogonality relations, and the coefficients can be found in the same way - multiply by the complex conjugate of the function whose coefficient you want to find and then integrate over the period.
+      $$
+      c_n = \int_{-l}^{l} \chi^*_n(x) f(x) \text{d}x
+      $$
+    </section>
+
+    <section>
+      <h2>Solving Differential Equations</h2>
+      <p>Differential equations can often be transformed into algebraic form using Fourier series. Often the exponential form is most easy to use.
+         $$
+         \frac{1}{l} \int_{-l}^{l} f(x) \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
+         $$
+      </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
+        <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0]$.</li>
       </div>
     </section>
 
