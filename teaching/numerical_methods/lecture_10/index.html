@@ -113,7 +113,7 @@ MathJax.Hub.Config({
       </p>
       <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
 	$$
-	\phi_n(x) = \cos(\frac{n \pi x}{l}) \text{ and } \phi_n(x) = \sin(\frac{n \pi x}{l})
+	\phi_n(x) = \cos(\frac{n \pi x}{l}) \text{ and } \psi_n(x) = \sin(\frac{n \pi x}{l})
 	$$
       </p>
 
@@ -173,7 +173,7 @@ MathJax.Hub.Config({
       <p>To calculate the terms in the fourier series we need to numerically intergrate our function.</p>
       <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals as
          $$
-         a_m = \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \text{d}x   
+         a_m = \frac{1}{l} \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \Delta x   
          $$
       </p>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
@@ -189,7 +189,7 @@ MathJax.Hub.Config({
       <h2>Parseval's Theorem</h2>
       <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
          $$
-         \frac{1}{l} \int_{-l}^{l} f(x) \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
+         \frac{1}{l} \int_{-l}^{l} f(x)^2 \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
          $$
       </p>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
