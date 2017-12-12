@@ -225,6 +225,24 @@ MathJax.Hub.Config({
     </section>
 
     <section>
+      <h3>Power method, why does it work?</h3>
+      <p>If our matrix is diagonalizable it has a set of orthogonal eigenvectors $\nu_1, \nu_2, \ldots, \nu_n $with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ with  $|\lambda _{1}|>|\lambda _{j}|$ for $j>1$.</p>
+      <p>Any vector can be expanded as a linear combination the $\nu_i$:
+	$$
+	b_{0}=c_{{1}}v_{{1}}+c_{{2}}v_{{2}}+\cdots +c_{{m}}v_{{m}}.
+	$$
+      </p>
+      <p>
+	If we apply our matrix $\textbf{A}$ to $b_0$ $k$ times we get
+	$$
+	{\begin{array}{lcl}A^{{k}}b_{0}&=&c_{{1}}A^{{k}}v_{{1}}+c_{{2}}A^{{k}}v_{{2}}+\cdots +c_{{m}}A^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}v_{{1}}+c_{{2}}\lambda _{{2}}^{{k}}v_{{2}}+\cdots +c_{{m}}\lambda _{{m}}^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}\left(v_{{1}}+{\frac  {c_{{2}}}{c_{{1}}}}\left({\frac  {\lambda _{{2}}}{\lambda _{{1}}}}\right)^{{k}}v_{{2}}+\cdots +{\frac  {c_{{m}}}{c_{{1}}}}\left({\frac  {\lambda _{{m}}}{\lambda _{{1}}}}\right)^{{k}}v_{{m}}\right).\end{array}}
+	$$
+	using the fact that for the eigenvectors $\textbf{A} \nu_i = \lambda_i \nu_i$. 
+      </p>
+      <p>Because $\lambda_1$ is larger than any other $\lambda$, all the terms except the first in the bracket tend to zero as $k$ gets larger.</p>
+    </section>
+    
+    <section>
       <h2>All Eigenfunctions</h2>
       <p>We can find the eigenfunctions of a matrix from the QR algorithm.</p>
       <p>It can be shown that the sequence
