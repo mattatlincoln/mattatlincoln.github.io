@@ -77,7 +77,7 @@ MathJax.Hub.Config({
 
   <div class="reveal">
     <div class="slides">
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/15/Co_ellipse.png">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
 	    <div class="inner_cell">
@@ -93,13 +93,13 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
 	    <div class="inner_cell">
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px; background:rgba(255,255,255,0.6)">		  
 		  <p>We take as a given the time independent form of the Schroedinger wave equation
 		    $$
 		    \hat{H} \psi = E \psi
@@ -110,7 +110,7 @@ MathJax.Hub.Config({
 		    $$		    
 		    and for the linear momenta,
 		    $$
-		    p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		    p_x \to \hat{p_x} = i\hbar \frac{\partial}{\partial x}, p_y \to \hat{p_y} = i\hbar \frac{\partial}{\partial y}, p_z \to \hat{p_z} = i\hbar \frac{\partial}{\partial z}
 		    $$
 		    how do we find solutions to the equation?
 		</div>
@@ -118,13 +118,13 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<h1 id="General-matrix-formulation">General matrix formulation<a class="anchor-link" href="#General-matrix-formulation">&#182;</a></h1>
-		<p>We have  a Hamiltonian operator $\hat H$.</p>
+		<p>We have  a Hamiltonian operator $\hat{H}$.</p>
 		<p>We try to find solutions to the Schroedinger equation of the form</p>
 		<p>$$
 		  \psi = \sum_i c_i \phi_i
@@ -138,44 +138,44 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<p>We substitute our guess into the time-independent Schroedinger equation</p>
-		<p>\begin{align}
-		  H \psi  &amp; = E \psi \\
-		  H \sum_j c_j \phi_j  &amp; = E \sum_j c_j \phi_j 
-		  \end{align}</p>
+		<p>\begin{align*}
+		  \hat{H} \psi  &amp; = E \psi \\
+		  \hat{H} \sum_j c_j \phi_j  &amp; = E \sum_j c_j \phi_j 
+		  \end{align*}</p>
 		<p>now we multiply on the left by $\psi^*$ and integrate over all space</p>
-		<p>\begin{align}
-		  \int d^3x\sum_i c_i^* \phi_i^* H \sum_j c_j \phi_j &amp; = E \int d^3x \sum_i c_i^* \phi_i^* \sum_j c_j \phi_j \\
-		  \int d^3x\sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_j^* \phi_j
-		  \end{align}</p>
+		<p>\begin{align*}
+		  \int d^3x\sum_i c_i^* \phi_i^* \hat{H} \sum_j c_j \phi_j &amp; = E \int d^3x \sum_i c_i^* \phi_i^* \sum_j c_j \phi_j \\
+		  \int d^3x\sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_j^* \phi_j
+		  \end{align*}</p>
 		<p>now, because of orthogonality, we have $\int d^3x \phi_i^* \phi_j = \delta_{ij}$, so we can lose one of the sums and the integral on the right hand side</p>
-		<p>\begin{align}
-		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \phi_j \\
-		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \sum_k c_k^* c_k 
-		  \end{align}</p>
+		<p>\begin{align*}
+		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \phi_j \\
+		  &amp; = E \sum_k c_k^* c_k 
+		  \end{align*}</p>
 	      </div>
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<h3 id="Variation-of-parameters">Variation of parameters<a class="anchor-link" href="#Variation-of-parameters">&#182;</a></h3><p>now the trick - we differentiate with respect to $c_i^*$. The only thing that depends upon $c_i^*$ is $c_i^*$ and we dramatically simplify our equations.</p>
 		<p>\begin{align}
-		  \frac{\partial}{\partial c_i^* } \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = \frac{\partial}{\partial c_i^* } E  \sum_k c_k^* c_k  \\
-		  \int d^3x \sum_j c_j \phi_i^* H \phi_j &amp; = E c_i \\
-		  \sum_j \int d^3x \phi_i^* H \phi_j c_j &amp; = E c_i \\
+		  \frac{\partial}{\partial c_i^* } \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = \frac{\partial}{\partial c_i^* } E  \sum_k c_k^* c_k  \\
+		  \int d^3x \sum_j c_j \phi_i^* \hat{H} \phi_j &amp; = E c_i \\
+		  \sum_j \int d^3x \phi_i^* \hat{H} \phi_j c_j &amp; = E c_i \\
 		  \sum_j H_{ij} c_j &amp; = E c_i \\
 		  \implies H C &amp; = E C
 		  \end{align}</p>
-		<p>Now $H$ is a matrix with elements $H_{ij} = \int d^3x \phi_i^* H \phi_j $ and $C$ a column vector with elements $c_i$.</p>
+		<p>Now $H$ is a matrix with elements $H_{ij} = \int d^3x \phi_i^* \hat{H} \phi_j $ and $C$ a column vector with elements $c_i$.</p>
 		<p>Notice that this looks like the Schroedinger equation again - but now we are dealing with matrices and vectors rather than differential equations.</p>
 		<p>In fact it is quite clearly an eigenvalue problem now, and you can use the techniques you learnt last year to solve for $C$ and $E$.</p>
 		<p>The $E$ values give us the energy levels of the system - they are then filled according to Fermi-Dirac statistics.</p>
@@ -183,12 +183,12 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
-		<h1 id="Matrix-formulation-of-Quantum-Mechanics">Matrix formulation of Quantum Mechanics<a class="anchor-link" href="#Matrix-formulation-of-Quantum-Mechanics">&#182;</a></h1><p>what we have just done is the way most real quantum mechanical calculations are done. The Schroedinger wave equation itself is almost never used. Now the coeffiecients $C$ effectively describe our wavefunction.</p>
+		<h1 id="Matrix-formulation-of-Quantum-Mechanics">Matrix formulation of Quantum Mechanics<a class="anchor-link" href="#Matrix-formulation-of-Quantum-Mechanics">&#182;</a></h1><p>what we have just done is the way most real quantum mechanical calculations are done. The Schroedinger wave equation itself is almost never used. Now the coefficients $C$ effectively describe our wavefunction.</p>
 		<p>Instead we have a matrix fomulation of QM, which is associated with the names Heisenberg and Born.</p>
 		<p>The matrix form of the Hamiltonian has elements that have the elements of our trial wavefunction sandwiching the operator.</p>
 		<p>This form of the matrix equation is the same every time, and the full derivation doesn't need to be done, we can just write down the matrix elements in many cases.</p>
@@ -197,13 +197,14 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <h1>Summary</h1>
 		  We take as a given the time independent form of the Schroedinger equation		  
 		  $$
 		  \hat{H} \psi = E \psi
@@ -221,10 +222,10 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
@@ -260,10 +261,10 @@ MathJax.Hub.Config({
 	    </div>
       </div></section></section>
 
-      <section><section>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/15/Co_ellipse.png">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="inner_cell">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<h1 id="Electron-gas">Electron gas<a class="anchor-link" href="#Electron-gas">&#182;</a></h1>
 		<p>Let's look at the Sommerfeld model of an electron gas and use it to build an approximate quantum theory:) This is a bit long-winded, but it shows that this is just a special case of our standard QM method.</p>
@@ -632,10 +633,13 @@ MathJax.Hub.Config({
 	    <div class="inner_cell">
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<p>A popular approximate form for the shape of the bonding curve is the Morse potential</p>
-		<p>$$
+		<p>
+		  $$
 		  V(R_{ij}) = V_0 \left[ e^{-2 \kappa (R_{ij}-R_0)} - 2 e^{-\kappa (R_{ij}-R_0)} \right]
 		  $$
 		  <img src='binding_curve.png'>
+		</p>
+		<p>
 		  where $R_{ij}$ is the distance between nuclei $i$ and $j$
 		</p>
 	      </div>
@@ -731,7 +735,11 @@ MathJax.Hub.Config({
     mouseWheel: false,
     center: false,
     scroll: true,
-    
+    width: "90%",
+    height: "90%",
+    //margin: 0,
+    minScale: 0.2,
+    maxScale: 1.5,
     // Parallax background image
     //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
     // Parallax background size
