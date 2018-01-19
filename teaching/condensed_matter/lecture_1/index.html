@@ -74,27 +74,323 @@ MathJax.Hub.Config({
 
 </head>
 <body>
+
   <div class="reveal">
     <div class="slides">
-      <section>
-	<section>
+      <section><section>
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
 	    <div class="inner_cell">
 	      <div class="text_cell_render border-box-sizing rendered_html">
-		<h1 id="02---structure-of-matter">02 - structure of matter<a class="anchor-link" href="#02---structure-of-matter">&#182;</a></h1>
+		<h1 id="01---structure-of-matter">01 - structure of matter<a class="anchor-link" href="#01---structure-of-matter">&#182;</a></h1><br>
 		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 		  <li>We will derive the matrix form of Quantum Mechanics</li>
-		  <li>and use it to explain covalent and ionic bonding in the Molecular Orbital picture</li>
+		  <li>and use it to explain covalent bonding in the Molecular Orbital picture</li>
 		  <li>the same procedure will allow us to use the tight-binding model of crystals</li>
 		</div>
 	      </div>
 	    </div>
-	  </div>
-	</section>
-      </section>
-      
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <p>We take as a given the time independent form of the Schroedinger wave equation
+		    $$
+		    \hat{H} \psi = E \psi
+		    $$
+		    We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting
+		    $$
+		    x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		    $$		    
+		    and for the linear momenta,
+		    $$
+		    p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		    $$
+		    how do we find solutions to the equation?
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="General-matrix-formulation">General matrix formulation<a class="anchor-link" href="#General-matrix-formulation">&#182;</a></h1>
+		<p>We have  a Hamiltonian operator $\hat H$.</p>
+		<p>We try to find solutions to the Schroedinger equation of the form</p>
+		<p>$$
+		  \psi = \sum_i c_i \phi_i
+		  $$</p>
+		<p>where the $\phi_i$ are functions we know - maybe solutions to the atomic problem, for instance, and the $c_i$ are complex coefficients.</p>
+		<p>We assume the $\phi$ are orthonormal</p>
+		<p>$$
+		  \int d^3x \phi_i^* \phi_j = \delta_{ij}
+		  $$</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>We substitute our guess into the time-independent Schroedinger equation</p>
+		<p>\begin{align}
+		  H \psi  &amp; = E \psi \\
+		  H \sum_j c_j \phi_j  &amp; = E \sum_j c_j \phi_j 
+		  \end{align}</p>
+		<p>now we multiply on the left by $\psi^*$ and integrate over all space</p>
+		<p>\begin{align}
+		  \int d^3x\sum_i c_i^* \phi_i^* H \sum_j c_j \phi_j &amp; = E \int d^3x \sum_i c_i^* \phi_i^* \sum_j c_j \phi_j \\
+		  \int d^3x\sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_j^* \phi_j
+		  \end{align}</p>
+		<p>now, because of orthogonality, we have $\int d^3x \phi_i^* \phi_j = \delta_{ij}$, so we can lose one of the sums and the integral on the right hand side</p>
+		<p>\begin{align}
+		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \phi_j \\
+		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = E \sum_k c_k^* c_k 
+		  \end{align}</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3 id="Variation-of-parameters">Variation of parameters<a class="anchor-link" href="#Variation-of-parameters">&#182;</a></h3><p>now the trick - we differentiate with respect to $c_i^*$. The only thing that depends upon $c_i^*$ is $c_i^*$ and we dramatically simplify our equations.</p>
+		<p>\begin{align}
+		  \frac{\partial}{\partial c_i^* } \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* H \phi_j &amp; = \frac{\partial}{\partial c_i^* } E  \sum_k c_k^* c_k  \\
+		  \int d^3x \sum_j c_j \phi_i^* H \phi_j &amp; = E c_i \\
+		  \sum_j \int d^3x \phi_i^* H \phi_j c_j &amp; = E c_i \\
+		  \sum_j H_{ij} c_j &amp; = E c_i \\
+		  \implies H C &amp; = E C
+		  \end{align}</p>
+		<p>Now $H$ is a matrix with elements $H_{ij} = \int d^3x \phi_i^* H \phi_j $ and $C$ a column vector with elements $c_i$.</p>
+		<p>Notice that this looks like the Schroedinger equation again - but now we are dealing with matrices and vectors rather than differential equations.</p>
+		<p>In fact it is quite clearly an eigenvalue problem now, and you can use the techniques you learnt last year to solve for $C$ and $E$.</p>
+		<p>The $E$ values give us the energy levels of the system - they are then filled according to Fermi-Dirac statistics.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="Matrix-formulation-of-Quantum-Mechanics">Matrix formulation of Quantum Mechanics<a class="anchor-link" href="#Matrix-formulation-of-Quantum-Mechanics">&#182;</a></h1><p>what we have just done is the way most real quantum mechanical calculations are done. The Schroedinger wave equation itself is almost never used. Now the coeffiecients $C$ effectively describe our wavefunction.</p>
+		<p>Instead we have a matrix fomulation of QM, which is associated with the names Heisenberg and Born.</p>
+		<p>The matrix form of the Hamiltonian has elements that have the elements of our trial wavefunction sandwiching the operator.</p>
+		<p>This form of the matrix equation is the same every time, and the full derivation doesn't need to be done, we can just write down the matrix elements in many cases.</p>
+		<p>Actually, much theoretical work involves building models to explore by assuming forms of the Hamiltonian and values for matrix elements to describe the important physics of a problem.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  We take as a given the time independent form of the Schroedinger equation		  
+		  $$
+		  \hat{H} \psi = E \psi
+		  $$		  
+		  We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting		  
+		  $$
+		  x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		  $$		  
+		  and for the linear momenta,
+		  $$
+		  p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		  $$
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  We take a trial wavefunction
+		  $$
+		  \psi = \sum_i c_i \phi_i,
+		  $$
+		  operate on it with the Hamiltonian operator, then multiply on the left by the complex conjugate of $\psi$ and integrate over all space. Finally we differentiate with respect to each $c_i^*$ to get a series of equations that read
+		  $$
+		  \sum_j H_{ij} c_j = E c_i
+		  $$
+		  where
+		  $$
+		  H_{ij} = \int d^3x \phi_i \hat{H} \phi_j
+		  $$		  
+		  where $\phi_i, \phi_j$ are all the functions that make up our trial wavefunction. 
+		</div><p><br><br></p>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  In matrix notation this reads		  
+		  $$
+		  HC = EC
+		  $$		  
+		  This has solutions given by solving the characteristic equations (secular equations) given by		  
+		  $$
+		  | H_{ij} - \delta_{ij} E | = 0
+		  $$		  
+		  where $| H_{ij} - \delta_{ij} E |$ is short hand for the determinant of the matrix $H - EI$.
+		  <br><br>
+		  When we have the energy levels, we fill them according to Fermi-Dirac statistics.
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="Electron-gas">Electron gas<a class="anchor-link" href="#Electron-gas">&#182;</a></h1>
+		<p>Let's look at the Sommerfeld model of an electron gas and use it to build an approximate quantum theory:) This is a bit long-winded, but it shows that this is just a special case of our standard QM method.</p>
+		<p>In our case the classical Hamiltonian, the sum of kinetic and potential energy, $T + U$, is just $\frac{\mathbf{p}^2}{2m}$ (i.e. $U$ = 0) so we get</p>
+		<p>\begin{align}
+		  \hat{H} = \frac{\mathbf{p}^2}{2m} &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right).\left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right)\\
+		  &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} + \frac{\partial ^2}{\partial z^2} \right)\\
+		  &amp; = -\frac{\hbar^2}{2m} \nabla^2
+		  \end{align}</p>
+		<p>this only makes sense if it operates on something, which we'll call $\psi$, our trial wavefunction.</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>Lets operate on the trial wavefunction</p>
+		<p>$$
+		  \psi = \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k},\text{ where } \phi_\mathbf{k}(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
+		  $$</p>
+		<p>a sum of plane waves.</p>
+		<p>To make the waves fit nicely in our box of dimension $L^3$ we insist that</p>
+		<p>$$
+		  k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
+		  $$</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>What we get is</p>
+		<p>$$
+		  \hat{H} \psi =  -\frac{\hbar^2}{2m} \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
+		  $$</p>
+		<p>now the trick - we multiply both sides on the left by $\psi$ (complex conjugate), and integrate over all space. This gives us</p>
+		<p>$$
+		  -\frac{\hbar^2}{2m} \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
+		  $$</p>
+		<p>don't worry it gets better.</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>The reason is that our planewaves are orthogonal to each other</p>
+		<p>$$
+		  \int d^3x \phi_\mathbf{k'}^*  \phi_\mathbf{k} = 0, \text{ unless } \mathbf{k'} = \mathbf{k}
+		  $$</p>
+		<p>If  $\mathbf{k'} = \mathbf{k}$, then the integral is equal to 1, i.e. the functions are normalised within the box $L^3$.</p>
+		<p>(note that $0, \text{ unless } \mathbf{k'} = \mathbf{k}$, and 1 if they are equal, is normally written $\delta_{\mathbf{k'}\mathbf{k}}$, the Kronecker delta).</p>
+		<p>This means that we can kill off one of the summations and get</p>
+		<p>$$
+		  -\frac{\hbar^2}{2m} \sum_\mathbf{k}  -k^2 c_\mathbf{k}^* c_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k}^*  c_\mathbf{k}
+		  $$</p>
+		<p>Which at least looks better!</p>
+		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Variation-of-parameters">Variation of parameters<a class="anchor-link" href="#Variation-of-parameters">&#182;</a></h2><p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$. We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
+		<p>In our system we are left with a series of equations of the form, one for each value of $c_{\mathbf{k}}^*$ for each value of $c_{\mathbf{k}}^*$</p>
+		<p>\begin{align}
+		  -\frac{\hbar^2 k^2}{2m} c_\mathbf{k} = E c_\mathbf{k} \\
+		  \implies (\frac{\hbar^2 k^2}{2m} + E)c_\mathbf{k} = 0
+		  \end{align}</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>Lets say for arguments sake that we just have 4 plane waves, so $\mathbf{k} = 2 \pi / L \{(0,0,0), (1,0,0), (0,1,0), (0,0,1)\}$. This is a set of linear equations for $c_\mathbf{k}$ we can write them out in matrix form</p>
+		<p>$$ 
+		  \left( \begin{array}{cccx}
+		  E &amp; 0 &amp; 0 &amp; 0\\
+		  0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0 &amp; 0\\
+		  0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0\\
+		  0 &amp; 0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E
+		  \end{array} \right) 
+		  \left( \begin{array}{c}
+		  c_{0,0,0}  \\
+		  c_{1,0,0}  \\
+		  c_{0,1,0}  \\
+		  c_{0,0,1}
+		  \end{array} \right) 
+		  = 0
+		  $$</p>
+		<p>The standard solution to a set of linear equations like this is that the determinant of the matrix must be zero for a set of non-trivial solutions to exist.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section>
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>In this case, because the matrix is diagonal, we can just read the energies off that make the determinant equal to zero, in general they will be</p>
+		<p>$$
+		  E_\mathbf{k} = -\frac{\hbar^2 k^2}{2m}
+		  $$</p>
+		<p>We can see that adding in the extra values of $\mathbf{k}$ will just make the matrix bigger (infinite in fact, but we'll not worry about that).</p>
+		<p>We were lucky (;)) that our matrix was diagonal - this basically means that we guessed the exact wavefunctions!</p>
+		<p>This may seem very long winded, but it is general - and we will use it to explore bonding in molecules and solids.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
       <section>
 	<section>
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -408,6 +704,7 @@ MathJax.Hub.Config({
 	  </div>
 	</section>
       </section>
+
     </div>
   </div>
   
