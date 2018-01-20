@@ -1,1038 +1,1066 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <title>01 - Probability Spaces - part 1 slides</title>
+    <title>01 - Probability Spaces - part 1 slides</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-  <!-- General and theme style sheets -->
-  <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
-  <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
 
-  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-  <script>
-  if( window.location.search.match( /print-pdf/gi ) ) {
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../revealjs//css/print/pdf.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  }
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
 
-  </script>
+    </script>
 
-  <!--[if lt IE 9]>
-  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-  <![endif]-->
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
 
-  <!-- Loading the mathjax macro -->
-  <!-- Load mathjax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-  <!-- MathJax configuration -->
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
       processEscapes: true,
       processEnvironments: true
-    },
-    // Center justify equations in code and markdown cells. Elsewhere
-    // we use CSS to left justify single line equations in code cells.
-    displayAlign: 'center',
-    "HTML-CSS": {
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
       styles: {'.MathJax_Display': {"margin": 0}},
       linebreaks: { automatic: true }
-    }
-  });
-  </script>
-  <!-- End of mathjax configuration -->
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
 
-  <!-- Get Font-awesome from cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-  <!-- Custom stylesheet, it must be in the same directory as the html file -->
-  <link rel="stylesheet" href="../custom.css">
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
 
-</head>
-<body>
+  </head>
+  <body>
 
-  <div class="reveal">
-    <div class="slides">
-
-      <section>
-        <section>
-          <div class="cell border-box-sizing text_cell rendered">
-            <div class="inner_cell">
-              <div class="text_cell_render border-box-sizing rendered_html">
-                <h1 id="Probability-spaces">Probability spaces<a class="anchor-link" href="#Probability-spaces">&#182;</a></h1><p>This introduces the axioms of probability and connects them to counting problems - including combinatorials and permutations.</p>
-                <p>Learning outcomes:</p>
-                <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-                <li>sample spaces</li>
-                <li>outcomes</li>
-                <li> events</li>
-                <li> frequentist paradigm of probability (but be aware there are others)</li>
-                <li> the axioms of probability</li>
-                <li> calculate the probabilities of events occuring in simple sample spaces with equally likely outcomes.</li>
+    <div class="reveal">
+      <div class="slides">
+	
+	<section>
+          <section>
+            <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+                  <h1 id="Probability-spaces">Probability spaces<a class="anchor-link" href="#Probability-spaces">&#182;</a></h1><p>This introduces the axioms of probability and connects them to counting problems - including combinatorials and permutations.</p>
+                  <p>Learning outcomes:</p>
+                  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+                    <li>sample spaces</li>
+                    <li>outcomes</li>
+                    <li> events</li>
+                    <li> frequentist paradigm of probability (but be aware there are others)</li>
+                    <li> the axioms of probability</li>
+                    <li> calculate the probabilities of events occuring in simple sample spaces with equally likely outcomes.</li>
+		  </div>
+		</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </section>
+	  </section>
+	</section>
+	
+	<section>
+	  <section>
+            <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>What is a probability?</strong></p>
+		  <p>Two main points of view</p>
+		  
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 
-    <section>
-      <section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p><strong>What is a probability?</strong></p>
-              <p>Two main points of view</p>
+		    Frequentist
 
-              <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-              8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    repeated experiments ($N$ experiments) and counting the number of times something $A$ occurs ($N_A$)
 
-              Frequentist
-
-              repeated experiments ($N$ experiments) and counting the number of times something $A$ occurs ($N_A$)
-
-              $$
-              P(A)=p=\lim_{N \to \infty} \frac{N_A}{N}
-              $$
-
+		    $$
+		    P(A)=p=\lim_{N \to \infty} \frac{N_A}{N}
+		    $$
+		  </div>
+		</div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="fragment">
-          <div class="cell border-box-sizing text_cell rendered">
-            <div class="inner_cell">
-              <div class="text_cell_render border-box-sizing rendered_html">
-                <p>belief based (Bayseian)</p>
-                <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-            8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+            <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+                    <p>belief based (Bayseian)</p>
+                    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+				8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 
-                Many things can be described by a probablility, but it is not possible to repeat the process many times and sample how often the event occurs:
-                <br><br>
-                "I'm 90% sure that is a bad idea"
-                <br>
-                "I'm fairly confident the world won't end today"
+                      Many things can be described by a probablility, but it is not possible to repeat the process many times and sample how often the event occurs:
+                      <br><br>
+                      "I'm 90% sure that is a bad idea"
+                      <br>
+                      "I'm fairly confident the world won't end today"
+		    </div>
+		  </div>
+		</div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+	    </div>
+	  </section>
 
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><a href="http://mathwithbaddrawings.com/2015/09/23/what-does-probability-mean-in-your-profession/">Interpretation can vary</a>.</p>
-            <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00001.jpg?w=584&amp;h=327" alt=""></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00003.jpg?w=584&amp;h=398" alt=""></p>
-          </div>
-        </div>
-      </div>
-    </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><a href="http://mathwithbaddrawings.com/2015/09/23/what-does-probability-mean-in-your-profession/">Interpretation can vary</a>.</p>
+		  <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00001.jpg?w=584&amp;h=327" alt=""></p>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00003.jpg?w=584&amp;h=398" alt=""></p>
+		</div>
+              </div>
+	    </div>
+	  </section>
 
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00002.jpg?w=584&amp;h=370" alt=""></p>
-          </div>
-        </div>
-      </div>
-    </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00002.jpg?w=584&amp;h=370" alt=""></p>
+		</div>
+              </div>
+	    </div>
+	  </section>
 
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00008.jpg?w=584&amp;h=329" alt=""></p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>independence of outcomes, and conditional probabilities - next week</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="https://mathwithbaddrawings.files.wordpress.com/2015/09/20150921070718_00008.jpg?w=584&amp;h=329" alt=""></p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>independence of outcomes, and conditional probabilities - next week</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <h2 id="Properties-of-probabilities">Properties of probabilities<a class="anchor-link" href="#Properties-of-probabilities">&#182;</a>
-            </h2>
-            <p>Modern probability theory is based on an (<a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Kolmogorov</a>) axiomatic description of the properties of probability.</p>
-            <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Andrej_Nikolajewitsch_Kolmogorov.jpg/220px-Andrej_Nikolajewitsch_Kolmogorov.jpg"></p>
-            <p>Other definitions have been put forward, but for standard situations, they lead to the same behaviour that we'll discuss now.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Properties-of-probabilities">Properties of probabilities<a class="anchor-link" href="#Properties-of-probabilities">&#182;</a>
+		  </h2>
+		  <p>Modern probability theory is based on an (<a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Kolmogorov</a>) axiomatic description of the properties of probability.</p>
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Andrej_Nikolajewitsch_Kolmogorov.jpg/220px-Andrej_Nikolajewitsch_Kolmogorov.jpg"></p>
+		  <p>Other definitions have been put forward, but for standard situations, they lead to the same behaviour that we'll discuss now.</p>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <h3 id="Sample-spaces,-outcomes-and-events">Sample spaces, outcomes and events<a class="anchor-link" href="#Sample-spaces,-outcomes-and-events">&#182;</a></h3>
-            <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        Definition: the sample space is the set containing all possible outcomes of an experiment.
-            </div>
-            <p>Here an experiment is something that we can do in a (fairly) controlled way, doesn't have to be</p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhqepGNLS9Hm24ETilJ0LBZDw8a42ufarxkieNttpcnbytB5Iy"></p>
-              <p><strong>Example</strong> What is the sample space of tossing a coin?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>We'll express our sample space using set notation</p>
-              <p>$S=\{ H, T \}$</p>
-              <p>i.e. there are two possible outcomes - either a Head or a Tail.</p>
-              <p>Note that sample spaces are not unique, sometimes there will be more than one way to break down and list the possible outcomes.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Sample-spaces,-outcomes-and-events">Sample spaces, outcomes and events<a class="anchor-link" href="#Sample-spaces,-outcomes-and-events">&#182;</a></h3>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Definition: the sample space is the set containing all possible outcomes of an experiment.
+		  </div>
+		  <p>Here an experiment is something that we can do in a (fairly) controlled way, doesn't have to be</p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhqepGNLS9Hm24ETilJ0LBZDw8a42ufarxkieNttpcnbytB5Iy"></p>
+		    <p><strong>Example</strong> What is the sample space of tossing a coin?</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>We'll express our sample space using set notation</p>
+		    <p>$S=\{ H, T \}$</p>
+		    <p>i.e. there are two possible outcomes - either a Head or a Tail.</p>
+		    <p>Note that sample spaces are not unique, sometimes there will be more than one way to break down and list the possible outcomes.</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><strong>Example:</strong> An 'experiment' consists of flipping two coins? Give two possible sample spaces.</p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>Define a single coin flip $F = \{H, T\}$.</p>
-              <p>Then we have</p>
-              <p>$S=\{ F \times F  \} = \{(H,H),(H,T),(T,H),(H,H)\}$</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>Alternatively, we could have three outcomes - 0 heads come up between the two flips, 1 head or 2 heads</p>
-              $$
-              S = \{0,1,2\}
-              $$
-              <p>Now our element $\{0\}$ is identical to $\{T,T\}$ previously.</p>
-              <p>But $\{1\} = \{(H,T),(T,H)\}$</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example:</strong> An 'experiment' consists of flipping two coins? Give two possible sample spaces.</p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>Define a single coin flip $F = \{H, T\}$.</p>
+		    <p>Then we have</p>
+		    <p>$S=\{ F \times F  \} = \{(H,H),(H,T),(T,H),(H,H)\}$</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>Alternatively, we could have three outcomes - 0 heads come up between the two flips, 1 head or 2 heads</p>
+		    $$
+		    S = \{0,1,2\}
+		    $$
+		    <p>Now our element $\{0\}$ is identical to $\{T,T\}$ previously.</p>
+		    <p>But $\{1\} = \{(H,T),(T,H)\}$</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <h4 id="Outcomes">Outcomes<a class="anchor-link" href="#Outcomes">&#182;</a></h4>
-            <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-              Definition: Outcomes are the individual elementary elements of the sample space.
-            </div>
-            <p>(If the sample space is finite, or countably infinite, it will correspond to a <em>discrete</em> random variable.)</p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p><strong>Example</strong> A die is rolled once. We let $X$ be the outcome of the experiment. The sample space for the experiment is the 6-element set</p>
-              $$
-              S = \{1,2,3,4,5,6  \},
-              $$
-              <p>and each outcome $i$, for $i = 1 \ldots  6$, corresponds to the number of dots on the face that faces up.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Outcomes">Outcomes<a class="anchor-link" href="#Outcomes">&#182;</a></h4>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Definition: Outcomes are the individual elementary elements of the sample space.
+		  </div>
+		  <p>(If the sample space is finite, or countably infinite, it will correspond to a <em>discrete</em> random variable.)</p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><strong>Example</strong> A die is rolled once. We let $X$ be the outcome of the experiment. The sample space for the experiment is the 6-element set</p>
+		    $$
+		    S = \{1,2,3,4,5,6  \},
+		    $$
+		    <p>and each outcome $i$, for $i = 1 \ldots  6$, corresponds to the number of dots on the face that faces up.</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <h3 id="Events">Events<a class="anchor-link" href="#Events">&#182;</a></h3>
-            <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-              Definition: an event is any subset, $E$, of the sample space, $S$. $E \subset A$
-            </div>
-            <p>(Set $A$ is a subset of set $B$, $A \subseteq B$,  if all of the members of $A$ are also contained in $B$)</p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p><strong>Example</strong> what is the event, $E$, corresponding to a die coming up with an even number?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              $$
-              E = \{2,4,6\}
-              $$
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="cell border-box-sizing text_cell rendered">
-        <div class="inner_cell">
-          <div class="text_cell_render border-box-sizing rendered_html">
-            <p><strong>Example:</strong> Consider a road race with the runners labelled 1 to 4.</p>
-            <p>What is the event $A$ that runner 1 won the race?</p>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>$S = \{\text{all orderings of (1,2,3,4)} \} = \{(x_1,x_2,x_3,x_4:x_i = 1,2,3,4,x_i \neq x_j)\}$</p>
-              <p>$A = {1234, 1243, 1324, 1342, 1423, 1432} = {\text{all ordering of (1234) beginning with 1}} = \{(x_1,x_2,x_3,x_4:x_1 = 1, x_i = 2,3,4, x_i \neq x_j)\}$</p>
-              <p>note that $A \subset S$</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>What is the event $B$ that runner 2 lost the race?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="fragment">
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell">
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <p>$B = {1342,1432,3142,3412,4132,4312} = {\text{all ordering of (1234) ending with 2}} =\{(x_1,x_2,x_3,x_4:x_4 = 2, x_i = 2,3,4, x_i \neq x_j)\}$</p>
-              <p>note again that $B \subset S$</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Events">Events<a class="anchor-link" href="#Events">&#182;</a></h3>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Definition: an event is any subset, $E$, of the sample space, $S$. $E \subset A$
+		  </div>
+		  <p>(Set $A$ is a subset of set $B$, $A \subseteq B$,  if all of the members of $A$ are also contained in $B$)</p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><strong>Example</strong> what is the event, $E$, corresponding to a die coming up with an even number?</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    $$
+		    E = \{2,4,6\}
+		    $$
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example:</strong> Consider a road race with the runners labelled 1 to 4.</p>
+		  <p>What is the event $A$ that runner 1 won the race?</p>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>$S = \{\text{all orderings of (1,2,3,4)} \} = \{(x_1,x_2,x_3,x_4:x_i = 1,2,3,4,x_i \neq x_j)\}$</p>
+		    <p>$A = {1234, 1243, 1324, 1342, 1423, 1432} = {\text{all ordering of (1234) beginning with 1}} = \{(x_1,x_2,x_3,x_4:x_1 = 1, x_i = 2,3,4, x_i \neq x_j)\}$</p>
+		    <p>note that $A \subset S$</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>What is the event $B$ that runner 2 lost the race?</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	    <div class="fragment">
+              <div class="cell border-box-sizing text_cell rendered">
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>$B = {1342,1432,3142,3412,4132,4312} = {\text{all ordering of (1234) ending with 2}} =\{(x_1,x_2,x_3,x_4:x_4 = 2, x_i = 2,3,4, x_i \neq x_j)\}$</p>
+		    <p>note again that $B \subset S$</p>
+		  </div>
+		</div>
+              </div>
+	    </div>
+	  </section>
+	</section>
 
-  <section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h4 id="Set-theory">Set theory<a class="anchor-link" href="#Set-theory">&#182;</a></h4><p>Looking ahead.</p>
-      <p>Our events are sets.</p>
-      <p>We can apply results from set theory.
-        <br></p>
-        <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        The event $E_A$ or $E_B$ has occured is denoted $E_A \cup E_B$, called the union of $E_A$ and $E_B$, and is composed of the outcomes that are in either $E_A$ or $E_B$.
-        <br><br>
-        The event that $E_A$ and $E_B$ has occured is denoted $E_A \cap E_B$, called the intersection of $E_A$ and $E_B$, and is composed of the outcomes that are in both $E_A$ and $E_B$.
-      </div>
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p><strong>Example</strong> - Four runners are racing. What is the event, $A$, that runner 1 was first and runner 2 was last?</p>
-      <p>Define $E_1$ the event that the first runner won the race $E_1 = \{1234, 1243, 1324, 1342, 1423, 1432\}$ and
-        $E_2$ the event that the second runner lost the race $E_2 = \{1342,1432,3142,3412,4132,4312\}$</p>
-        <p>$A$ is given by the intersection of $E_A$ and $E_B$, so outcomes that are in $E_1$ <em>and</em> $E_2$</p>
-        \begin{align}
-        E_1 \cap E_2 = &amp; \{1234, 1243, 1324, 1342, 1423, 1432\} \cap \{1342,1432,3142,3412,4132,4312\} \\
-        = &amp;\ \{1342,1432\}
-        \end{align}
-      </div>
-    </div>
-  </div></div></section></section><section><section>
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <h3 id="Axioms-of-Probability">Axioms of Probability<a class="anchor-link" href="#Axioms-of-Probability">&#182;</a></h3><p>The axiomatic definitions of probabilities look like this:</p>
-        <p>We suppose that for each event $E$ of an experiment with sample space $S$ there is a number $P(E)$, which is in accord with the following three axioms:</p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Set-theory">Set theory<a class="anchor-link" href="#Set-theory">&#182;</a></h4><p>Looking ahead.</p>
+		  <p>Our events are sets.</p>
+		  <p>We can apply results from set theory.
+		    <br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    The event $E_A$ or $E_B$ has occured is denoted $E_A \cup E_B$, called the union of $E_A$ and $E_B$, and is composed of the outcomes that are in either $E_A$ or $E_B$.
+		    <br><br>
+		    The event that $E_A$ and $E_B$ has occured is denoted $E_A \cap E_B$, called the intersection of $E_A$ and $E_B$, and is composed of the outcomes that are in both $E_A$ and $E_B$.
+		  </div>
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><strong>Example</strong> - Four runners are racing. What is the event, $A$, that runner 1 was first and runner 2 was last?</p>
+		    <p>Define $E_1$ the event that the first runner won the race $E_1 = \{1234, 1243, 1324, 1342, 1423, 1432\}$ and
+		      $E_2$ the event that the second runner lost the race $E_2 = \{1342,1432,3142,3412,4132,4312\}$</p>
+		    <p>$A$ is given by the intersection of $E_A$ and $E_B$, so outcomes that are in $E_1$ <em>and</em> $E_2$</p>
+		    \begin{align}
+		    E_1 \cap E_2 = &amp; \{1234, 1243, 1324, 1342, 1423, 1432\} \cap \{1342,1432,3142,3412,4132,4312\} \\
+		    = &amp;\ \{1342,1432\}
+		    \end{align}
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	</section></section>
 
-      </div>
-    </div>
-  </div><div class="fragment">
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        Axiom 1 - The probability that an event will come from the sample space is unity
-        $$P(S)=1$$
-      </div>
-    </div>
-  </div>
-</div></div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      Axiom 2
-      $$P(A) \geq 1 \text{  for all  } A \subset S$$
-    </div>
-  </div>
-</div>
-</div></div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      Axiom 3
-      $$
-      P(A \cup B) = P(A) + P(B) \text{    if    } A \cap B = \emptyset
-      $$
-    </div>
-  </div>
-</div>
-</div></div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>We call a function $P(A)$ the probability of event $A$ if these axioms hold.</p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Axioms-of-Probability">Axioms of Probability<a class="anchor-link" href="#Axioms-of-Probability">&#182;</a></h3><p>The axiomatic definitions of probabilities look like this:</p>
+		  <p>We suppose that for each event $E$ of an experiment with sample space $S$ there is a number $P(E)$, which is in accord with the following three axioms:</p>
 
-    </div>
-  </div>
-</div></div></section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p><em>Note</em> we are using 'intuition' or 'physical insight' or some other magic to decide the probabilities of the individual outcomes! There is no general way to do it for a given problem. We use every piece of information available to us, then compare it to reality if we are aiming to represent the real world with the probability distribution.</p>
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+				8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		      Axiom 1 - The probability that an event will come from the sample space is unity
+		      $$P(S)=1$$
+		    </div>
+		  </div>
+		</div>
+	    </div></div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+				8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		      Axiom 2
+		      $$P(A) \geq 1 \text{  for all  } A \subset S$$
+		    </div>
+		  </div>
+		</div>
+	    </div></div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+				8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		      Axiom 3
+		      $$
+		      P(A \cup B) = P(A) + P(B) \text{    if    } A \cap B = \emptyset
+		      $$
+		    </div>
+		  </div>
+		</div>
+	    </div></div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>We call a function $P(A)$ the probability of event $A$ if these axioms hold.</p>
 
-    </div>
-  </div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h4 id="Sample-spaces-with-equally-likely-outcomes">Sample spaces with equally likely outcomes<a class="anchor-link" href="#Sample-spaces-with-equally-likely-outcomes">&#182;</a></h4><p>Often we can reasonably assume that each outcome of an experiment is equally likely - rolling a fair die, for instance. Or mathematically if the sample space $S$ is a finite set $S=\{1,2,...,N\}$ it is often natural to assume that</p>
-      $$P(\{1\})=P(\{2\})=⋯=P(\{N\})=p$$<p>Now it follows from axioms 2 and 3 that</p>
-      $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{N\})=Np$$<p>It then follows from axiom 3 that for any event $E \subset S$ its probability will be given by the number of elementary outcomes in $E$</p>
-      $$P(E)=\frac{\text{Number of outcomes in } E}{ N}$$<p>This means that to determine probabilities we need to count the number of ways in which a given event can occur.</p>
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><em>Note</em> we are using 'intuition' or 'physical insight' or some other magic to decide the probabilities of the individual outcomes! There is no general way to do it for a given problem. We use every piece of information available to us, then compare it to reality if we are aiming to represent the real world with the probability distribution.</p>
 
-    </div>
-  </div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h4 id="Sample-spaces-with-nonequally-likely-outcomes">Sample spaces with nonequally likely outcomes<a class="anchor-link" href="#Sample-spaces-with-nonequally-likely-outcomes">&#182;</a></h4><p>In the more general case, we need to assign specific probabilities to the elementary outcomes, $P(\omega)$, so that</p>
-      $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{N\})$$<p>in order to satify axiom 2.</p>
-      <p>It then follows from axiom 3 that for any event $E \subset S$ its probability will be given by</p>
-      $$P(E)= \sum \limits_{\omega \in E} P(\omega) $$<p>This means that to determine probabilities we need to count the number of ways in which a given event can occur.</p>
+		</div>
+	      </div>
+	</div></section></section>
 
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p><strong>Example</strong> Experiment consists of throwing a coin twice - as we saw we can assign the sample space in two ways:</p>
-      <p>either</p>
-      $$
-      S_1 = \{HH, HT, TH, TT  \}
-      $$<p>with</p>
-      $$
-      P(HH) = \frac{1}{4}, P(HT)=\frac{1}{4}, P(TH)=\frac{1}{4},P(TT)=\frac{1}{4}
-      $$<p>or</p>
-      $$
-      S_2 = \{0,1,2\}.
-      $$<p>In the later case we take the number of times a head appears as our outcomes.</p>
-      <p>In the case of $S_2$ the probabilities of the individual outcomes are <em>not</em> equal - there are twice as many ways of getting the outcome 1 head ($\{(H,T),(T,H)\}$) as there are of getting 0 $(\{(T,T)\})$ or 2 $(\{(H,H)\})$.</p>
-      <p>So, it makes sense to have</p>
-      $$
-      P(0) = \frac{1}{4}, P(1)=\frac{1}{2}, P(2)=\frac{1}{4}
-      $$
-    </div>
-  </div>
-</div></div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
-        <li><p>The probability of any event can be decided once we have the <em>probability function</em>, $P(\omega)$, for our experiment.</p>
-        </li>
-        <li><p>The probability function is the function $P(\omega)$, where the $\omega$ are the elementary outcomes of the experiment.</p>
-        </li>
-        <li><p>It has domain $S$.</p>
-        </li>
-        <li><p>It obeys the axioms of probability.</p>
-        </li>
-        <li><p>The actual probabilities are assigned based on some model, they are outside the idealised mathematical model.</p>
-        </li>
-        <li><p>We will demonstrate that the interpretation of $P(E)$ as the relative frequency of the event $E$ when the experiment is repeated many times is consistent with the axioms.</p>
-        </li>
-        <li><p>Belief based interpretations can also satisfy these requirements.</p>
-        </li>
-      </ul>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Sample-spaces-with-equally-likely-outcomes">Sample spaces with equally likely outcomes<a class="anchor-link" href="#Sample-spaces-with-equally-likely-outcomes">&#182;</a></h4><p>Often we can reasonably assume that each outcome of an experiment is equally likely - rolling a fair die, for instance. Or mathematically if the sample space $S$ is a finite set $S=\{1,2,...,N\}$ it is often natural to assume that</p>
+		  $$P(\{1\})=P(\{2\})=⋯=P(\{N\})=p$$<p>Now it follows from axioms 2 and 3 that</p>
+		  $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{N\})=Np$$<p>It then follows from axiom 3 that for any event $E \subset S$ its probability will be given by the number of elementary outcomes in $E$</p>
+		  $$P(E)=\frac{\text{Number of outcomes in } E}{ N}$$<p>This means that to determine probabilities we need to count the number of ways in which a given event can occur.</p>
 
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>Warning: notations are not totally standard in probability theory. I'll use what I think is the closest to standard, and should allow you to read most works on probability.</p>
-      <p><a href="https://math.dartmouth.edu/~prob/prob/prob.pdf">Grinstead and Snell</a> for instance, has some nice sections. But uses a slightly different notation. They call the sample space $\Omega$, the individual outcomes $\omega_i$ and call the probability function $m(\omega)$.</p>
+		</div>
+	      </div>
+	</div></section></section>
 
-    </div>
-  </div>
-</div></div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h1 id="Interlude">Interlude<a class="anchor-link" href="#Interlude">&#182;</a></h1><p>you can have a think about this:
-        <br></p>
-        <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        A die is rolled, and we imagine a sample space $S = \{1,2,3,4,5,6\}$.
-        <br><br>
-        For a fair die, each outcome can be argued to be equally likely. We can deduce the probability $p$ of the outcomes as
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Sample-spaces-with-nonequally-likely-outcomes">Sample spaces with nonequally likely outcomes<a class="anchor-link" href="#Sample-spaces-with-nonequally-likely-outcomes">&#182;</a></h4><p>In the more general case, we need to assign specific probabilities to the elementary outcomes, $P(\omega)$, so that</p>
+		  $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{N\})$$<p>in order to satify axiom 2.</p>
+		  <p>It then follows from axiom 3 that for any event $E \subset S$ its probability will be given by</p>
+		  $$P(E)= \sum \limits_{\omega \in E} P(\omega) $$<p>This means that to determine probabilities we need to count the number of ways in which a given event can occur.</p>
 
-        $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{6\})=6p$$
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><strong>Example</strong> Experiment consists of throwing a coin twice - as we saw we can assign the sample space in two ways:</p>
+		    <p>either</p>
+		    $$
+		    S_1 = \{HH, HT, TH, TT  \}
+		    $$<p>with</p>
+		    $$
+		    P(HH) = \frac{1}{4}, P(HT)=\frac{1}{4}, P(TH)=\frac{1}{4},P(TT)=\frac{1}{4}
+		    $$<p>or</p>
+		    $$
+		    S_2 = \{0,1,2\}.
+		    $$<p>In the later case we take the number of times a head appears as our outcomes.</p>
+		    <p>In the case of $S_2$ the probabilities of the individual outcomes are <em>not</em> equal - there are twice as many ways of getting the outcome 1 head ($\{(H,T),(T,H)\}$) as there are of getting 0 $(\{(T,T)\})$ or 2 $(\{(H,H)\})$.</p>
+		    <p>So, it makes sense to have</p>
+		    $$
+		    P(0) = \frac{1}{4}, P(1)=\frac{1}{2}, P(2)=\frac{1}{4}
+		    $$
+		  </div>
+		</div>
+	</div></div></section></section>
 
-        which implies that $p = \frac{1}{6}$, as you'd expect.
-        <br><br>
-        Define two events,
-        <li> $A$, "the roll is less than 5", so $A = \{1,2,3,4\} $</li>
-        <li> $B$, "the roll is more than 2", so $B = \{3,4,5,6\} $</li>
-        <br>
-        The number of elements in $A$ is $n(A)=n(b)=4$.
-        <br>
-        So $P(A) = n(A)*p = 4*1/6$ and $P(B) = n(B)*p = 4*1/6$
-        <br><br>
-        What is the probability of $A \cup B$. In words what is the probability that either "the dice roll is less than 5" or "the die roll is more than 2"?
-      </div>
-    </div>
-  </div>
-</div></section></section>
-<section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h1 id="Interlude">Interlude<a class="anchor-link" href="#Interlude">&#182;</a></h1><p><br></p>
-      <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      A die is rolled, and we imagine a sample space $S = \{1,2,3,4,5,6\}$.
-      <br><br>
-      For a fair die, each outcome can be argued to be equally likely. We can deduce the probability $p$ of the outcomes as
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
+		    <li><p>The probability of any event can be decided once we have the <em>probability function</em>, $P(\omega)$, for our experiment.</p>
+		    </li>
+		    <li><p>The probability function is the function $P(\omega)$, where the $\omega$ are the elementary outcomes of the experiment.</p>
+		    </li>
+		    <li><p>It has domain $S$.</p>
+		    </li>
+		    <li><p>It obeys the axioms of probability.</p>
+		    </li>
+		    <li><p>The actual probabilities are assigned based on some model, they are outside the idealised mathematical model.</p>
+		    </li>
+		    <li><p>We will demonstrate that the interpretation of $P(E)$ as the relative frequency of the event $E$ when the experiment is repeated many times is consistent with the axioms.</p>
+		    </li>
+		    <li><p>Belief based interpretations can also satisfy these requirements.</p>
+		    </li>
+		  </ul>
 
-      $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{6\})=6p$$
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>Warning: notations are not totally standard in probability theory. I'll use what I think is the closest to standard, and should allow you to read most works on probability.</p>
+		    <p><a href="https://math.dartmouth.edu/~prob/prob/prob.pdf">Grinstead and Snell</a> for instance, has some nice sections. But uses a slightly different notation. They call the sample space $\Omega$, the individual outcomes $\omega_i$ and call the probability function $m(\omega)$.</p>
 
-      which implies that $p = \frac{1}{6}$, as you'd expect.
-      <br><br>
-      Define two events,
-      <li> $A$, "the roll is less than 5", so $A = \{1,2,3,4\} $</li>
-      <li> $B$, "the roll is more than 2", so $B = \{3,4,5,6\} $</li>
-      <br>
-      The number of elements in $A$ is $n(A)=n(b)=4$.
-      <br>
-      So $P(A) = n(A)*p = 4*1/6$ and $P(B) = n(B)*p = 4*1/6$
-      <br><br>
-      What is the probability of $A \cup B$. In words what is the probability that either "the dice roll is less than 5" or "the die roll is more than 2"?
-    </div>
-  </div>
-</div>
-</div></section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>The answer is not $n(A) + n(B))$ because the two sets have an intersection</p>
-      <p>$A \cap B = \{1,2,3,4\} \cap  \{3,4,5,6\} = \{3,4\}$</p>
-      <p>so our third axiom <em>does not</em> apply.</p>
-      <p>One of the basic rules of sets is we don't need to keep duplicate members - so</p>
-      <p>$A \cup B = \{1,2,3,4\} \cup  \{3,4,5,6\} = \{1,2,3,4,3,4,5,6\} = \{1,2,3,4,5,6\} = S $</p>
-      <p>We see in this case that</p>
-      $$
-      n(A \cup B) = n(A) + n(B) - n(A \cap B)
-      $$<p>which for probabilities proportional to number of elements also gives</p>
-      $$
-      P(A \cup B) = P(A) + P(B) - P(A \cap B)
-      $$
-    </div>
-  </div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Extra-useful-relationships-and-definitions:">Extra useful relationships and definitions:<a class="anchor-link" href="#Extra-useful-relationships-and-definitions:">&#182;</a></h3><p><br></p>
-      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      **Definition** Complement of an event $E$ (with respect to the sample set $S$) is $P(\bar{E}) = 1 - P(E)$.
-      <br><br>
+		  </div>
+		</div>
+	</div></div></section></section>
 
-      **Definition:** $E_1$ and $E_2$ are mutually exclusive if $P(E_1 \cap E_2) = P\{\emptyset\} = 0$
-      <br><br>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Interlude">Interlude<a class="anchor-link" href="#Interlude">&#182;</a></h1><p>you can have a think about this:
+		    <br></p>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    A die is rolled, and we imagine a sample space $S = \{1,2,3,4,5,6\}$.
+		    <br><br>
+		    For a fair die, each outcome can be argued to be equally likely. We can deduce the probability $p$ of the outcomes as
 
-      **Definition** A set of events $E_1, E_2, \ldots, E_n$ of some experiment are said to be *exhaustive* if $E_1 \cup E_2 \cup E_3 \cup \ldots \cup E_n = S$.
-      <br><br>
+		    $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{6\})=6p$$
 
-      If $E_1$ and $E_2$ are events of the same experiment $P(E_1 \cup E_2) = P(E_1) + P(E_2) - P(E_1 \cap E_2)$
-    </div>
-  </div>
-</div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Principles-of-counting---combinatorials-and-permutations">Principles of counting - combinatorials and permutations<a class="anchor-link" href="#Principles-of-counting---combinatorials-and-permutations">&#182;</a></h3><p>Suppose two experiments are carried out</p>
-      <ul>
-        <li>experiment 1 can result in any of $m$ outcomes </li>
-        <li>for each outcome of experiment 1 experiment 2 can have $n$ outcomes </li>
-        <li>together there are $mn$ outcomes. </li>
-      </ul>
-      <p>We can write all possible outcomes as an ordered pair, $(m,n)$.</p>
-      <p>The $mn$ possible outcomes can be tabulated</p>
-      <table>
-        <thead><tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>(1,1)</td>
-          <td>(1,2)</td>
-          <td>$\cdots$</td>
-          <td>(1,n)</td>
-        </tr>
-        <tr>
-          <td>(2,1)</td>
-          <td>(2,2)</td>
-          <td>$\cdots$</td>
-          <td>(2,n)</td>
-        </tr>
-        <tr>
-          <td>$\vdots$</td>
-          <td>$\vdots$</td>
-          <td>$\vdots$</td>
-          <td>$\vdots$</td>
-        </tr>
-        <tr>
-          <td>(m,1)</td>
-          <td>(m,2)</td>
-          <td>$\cdots$</td>
-          <td>(m,n)</td>
-        </tr>
-      </tbody>
-    </table>
+		    which implies that $p = \frac{1}{6}$, as you'd expect.
+		    <br><br>
+		    Define two events,
+		    <li> $A$, "the roll is less than 5", so $A = \{1,2,3,4\} $</li>
+		    <li> $B$, "the roll is more than 2", so $B = \{3,4,5,6\} $</li>
+		    <br>
+		    The number of elements in $A$ is $n(A)=n(b)=4$.
+		    <br>
+		    So $P(A) = n(A)*p = 4*1/6$ and $P(B) = n(B)*p = 4*1/6$
+		    <br><br>
+		    What is the probability of $A \cup B$. In words what is the probability that either "the dice roll is less than 5" or "the die roll is more than 2"?
+		  </div>
+		</div>
+	      </div>
+	</div></section></section>
 
-  </div>
-</div>
-</div></section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p><strong>Example:</strong> 2 balls are randomly drawn from a bowl that contains 6 black and 5 white balls - what is the chance that we draw one black and one white ball?</p>
-      <p>We want to apply
-        $$P(E)=\frac{\text{Number of outcomes in } E}{N}$$</p>
-        <p>First calculate $N$ the total number of possible outcomes:</p>
-        <ul>
-          <li>experiment 1, the first ball can be picked in 11 different ways $m = 11$. </li>
-          <li>experiment 2, for each of the results of experiment 1, we can pick the next ball in one of 10 ways $n$ = 10.</li>
-          <li>so total number of outcomes possible is $mn$ = 110</li>
-        </ul>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Interlude">Interlude<a class="anchor-link" href="#Interlude">&#182;</a></h1><p><br></p>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    A die is rolled, and we imagine a sample space $S = \{1,2,3,4,5,6\}$.
+		    <br><br>
+		    For a fair die, each outcome can be argued to be equally likely. We can deduce the probability $p$ of the outcomes as
 
-      </div>
-    </div>
-  </div><div class="fragment">
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <p>In set builder notation</p>
-        <p>$B = \{(x_1,x_2):x_1=1,2...11,x_2=1,2...11,x_2 \neq x_1\}$</p>
-        <p>and so if we were to list all the ordered pairs in a table they would be $11*10$</p>
-        <p>$N = n(B) = |B| = 11*10 = 110$</p>
+		    $$1=P(S)=P(\{1\})+P(\{2\})+⋯+P(\{6\})=6p$$
 
-      </div>
-    </div>
-  </div></div></section><section>
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <p>Now we have the denominator we need to calculate the number of ways of getting one black and one white ball. Either</p>
-        <ul>
-          <li>the first ball is black, which can occur in 6 ways (m), for each way there are 5 ways the second ball can be white ($n$)</li>
-          <li>the first ball is white (5 ways,$m$) and the second ball is black (6 ways, $n$)</li>
-        </ul>
-        <p>Either of the two ways (or, union of the two events) leads to an event with one black and one white ball so by axiom 3 total number of ways to get one black and one white ball is $5*6 + 6*5 = 60$.</p>
+		    which implies that $p = \frac{1}{6}$, as you'd expect.
+		    <br><br>
+		    Define two events,
+		    <li> $A$, "the roll is less than 5", so $A = \{1,2,3,4\} $</li>
+		    <li> $B$, "the roll is more than 2", so $B = \{3,4,5,6\} $</li>
+		    <br>
+		    The number of elements in $A$ is $n(A)=n(b)=4$.
+		    <br>
+		    So $P(A) = n(A)*p = 4*1/6$ and $P(B) = n(B)*p = 4*1/6$
+		    <br><br>
+		    What is the probability of $A \cup B$. In words what is the probability that either "the dice roll is less than 5" or "the die roll is more than 2"?
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  </section>
 
-      </div>
-    </div>
-  </div><div class="fragment">
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <p>In set builder notation, we number the balls so that 1 to 6 are white and 7 to 11 are black. The first ball is $x_1$ and second $x_2$</p>
-        <p>$T = \{(x_1,x_2):x_1 = 1,2,3,4,5,6, x_2 = 7,8,9,10,11\} \cup \{(x_1,x_2):x_1 = 7,8,9,10,11, x_2 = 1,2,3,4,5,6\}$</p>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The answer is not $n(A) + n(B)$ because the two sets have an intersection</p>
+		  <p>$A \cap B = \{1,2,3,4\} \cap  \{3,4,5,6\} = \{3,4\}$</p>
+		  <p>so our third axiom <em>does not</em> apply.</p>
+		  <p>One of the basic rules of sets is we don't need to keep duplicate members - so</p>
+		  <p>$A \cup B = \{1,2,3,4\} \cup  \{3,4,5,6\} = \{1,2,3,4,3,4,5,6\} = \{1,2,3,4,5,6\} = S $</p>
+		  <p>We see in this case that
+		  $$
+		  n(A \cup B) = n(A) + n(B) - n(A \cap B)
+		  $$
+		  which for probabilities proportional to number of elements also gives
+		  $$
+		  P(A \cup B) = P(A) + P(B) - P(A \cap B)
+		  $$
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	</section>
 
-      </div>
-    </div>
-  </div></div></section><section>
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <p>Therefore</p>
-        $$P(E)=\frac{\text{Number of outcomes in } E}{N} = \frac{5∗6+6∗5}{110}=\frac{6}{11}$$
-      </div>
-    </div>
-  </div><div class="fragment">
-    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-    </div>
-    <div class="inner_cell">
-      <div class="text_cell_render border-box-sizing rendered_html">
-        <p><em>If there are more than two experiments to be performed then the above rule generalises to $n_1⋅n_2 \cdot \cdots \cdot  n_r$ possible outcomes of r experiments.</em></p>
-        <p>So continuing our previous example, how many ways are there to select all the balls from the bowl?</p>
-        <p>In this case there are $11⋅10⋅9 \cdots 3⋅2⋅1  = 11!$</p>
-        <p>this is known as the factorial function.</p>
-        <p>Lets calculate this just to see how big these numbers get!</p>
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Extra-useful-relationships-and-definitions:">Extra useful relationships and definitions:<a class="anchor-link" href="#Extra-useful-relationships-and-definitions:">&#182;</a></h3><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    **Definition** Complement of an event $E$ (with respect to the sample set $S$) is $P(\bar{E}) = 1 - P(E)$.
+		    <br><br>
 
-      </div>
-    </div>
-  </div></div><div class="fragment">
-    <div class="cell border-box-sizing code_cell rendered">
-      <div class="input">
-        <div class="prompt input_prompt">In&nbsp;[10]:</div>
-        <div class="inner_cell">
-          <div class="input_area">
-            <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-              <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;10}</span><span class="s2"> </span><span class="si">{:&gt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;total&quot;</span><span class="p">))</span>
+		    **Definition:** $E_1$ and $E_2$ are mutually exclusive if $P(E_1 \cap E_2) = P\{\emptyset\} = 0$
+		    <br><br>
 
-              <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
-              <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">i</span>
-              <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:10d}</span><span class="s2"> </span><span class="si">{:10d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">total</span><span class="p">))</span>
-            </pre></div>
+		    **Definition** A set of events $E_1, E_2, \ldots, E_n$ of some experiment are said to be *exhaustive* if $E_1 \cup E_2 \cup E_3 \cup \ldots \cup E_n = S$.
+		    <br><br>
 
-          </div>
-        </div>
-      </div>
+		    If $E_1$ and $E_2$ are events of the same experiment $P(E_1 \cup E_2) = P(E_1) + P(E_2) - P(E_1 \cap E_2)$
+		  </div>
+		</div>
+	      </div>
+	</div></section></section>
 
-      <div class="output_wrapper">
-        <div class="output">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Principles-of-counting---combinatorials-and-permutations">Principles of counting - combinatorials and permutations<a class="anchor-link" href="#Principles-of-counting---combinatorials-and-permutations">&#182;</a></h3><p>Suppose two experiments are carried out</p>
+		  <ul>
+		    <li>experiment 1 can result in any of $m$ outcomes </li>
+		    <li>for each outcome of experiment 1 experiment 2 can have $n$ outcomes </li>
+		    <li>together there are $mn$ outcomes. </li>
+		  </ul>
+		  <p>We can write all possible outcomes as an ordered pair, $(m,n)$.</p>
+		  <p>The $mn$ possible outcomes can be tabulated</p>
+		  <table>
+		    <thead><tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+			<td>(1,1)</td>
+			<td>(1,2)</td>
+			<td>$\cdots$</td>
+			<td>(1,n)</td>
+		      </tr>
+		      <tr>
+			<td>(2,1)</td>
+			<td>(2,2)</td>
+			<td>$\cdots$</td>
+			<td>(2,n)</td>
+		      </tr>
+		      <tr>
+			<td>$\vdots$</td>
+			<td>$\vdots$</td>
+			<td>$\vdots$</td>
+			<td>$\vdots$</td>
+		      </tr>
+		      <tr>
+			<td>(m,1)</td>
+			<td>(m,2)</td>
+			<td>$\cdots$</td>
+			<td>(m,n)</td>
+		      </tr>
+		    </tbody>
+		  </table>
 
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example:</strong> 2 balls are randomly drawn from a bowl that contains 6 black and 5 white balls - what is the chance that we draw one black and one white ball?</p>
+		  <p>We want to apply
+		    $$P(E)=\frac{\text{Number of outcomes in } E}{N}$$</p>
+		  <p>First calculate $N$ the total number of possible outcomes:</p>
+		  <ul>
+		    <li>experiment 1, the first ball can be picked in 11 different ways $m = 11$. </li>
+		    <li>experiment 2, for each of the results of experiment 1, we can pick the next ball in one of 10 ways $n$ = 10.</li>
+		    <li>so total number of outcomes possible is $mn$ = 110</li>
+		  </ul>
 
-          <div class="output_area">
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>In set builder notation</p>
+		    <p>$B = \{(x_1,x_2):x_1=1,2...11,x_2=1,2...11,x_2 \neq x_1\}$</p>
+		    <p>and so if we were to list all the ordered pairs in a table they would be $11*10$</p>
+		    <p>$N = n(B) = |B| = 11*10 = 110$</p>
 
-            <div class="prompt"></div>
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now we have the denominator we need to calculate the number of ways of getting one black and one white ball. Either</p>
+		  <ul>
+		    <li>the first ball is black, which can occur in 6 ways (m), for each way there are 5 ways the second ball can be white ($n$)</li>
+		    <li>the first ball is white (5 ways,$m$) and the second ball is black (6 ways, $n$)</li>
+		  </ul>
+		  <p>Either of the two ways (or, union of the two events) leads to an event with one black and one white ball so by axiom 3 total number of ways to get one black and one white ball is $5*6 + 6*5 = 60$.</p>
 
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>In set builder notation, we number the balls so that 1 to 6 are white and 7 to 11 are black. The first ball is $x_1$ and second $x_2$</p>
+		    <p>$T = \{(x_1,x_2):x_1 = 1,2,3,4,5,6, x_2 = 7,8,9,10,11\} \cup \{(x_1,x_2):x_1 = 7,8,9,10,11, x_2 = 1,2,3,4,5,6\}$</p>
 
-            <div class="output_subarea output_stream output_stdout output_text">
-              <pre>         i      total
-                1          1
-                2          2
-                3          6
-                4         24
-                5        120
-                6        720
-                7       5040
-                8      40320
-                9     362880
-                10    3628800
-                11   39916800
-              </pre>
-            </div>
-          </div>
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Therefore</p>
+		  $$P(E)=\frac{\text{Number of outcomes in } E}{N} = \frac{5∗6+6∗5}{110}=\frac{6}{11}$$
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><em>If there are more than two experiments to be performed then the above rule generalises to $n_1⋅n_2 \cdot \cdots \cdot  n_r$ possible outcomes of r experiments.</em></p>
+		    <p>So continuing our previous example, how many ways are there to select all the balls from the bowl?</p>
+		    <p>In this case there are $11⋅10⋅9 \cdots 3⋅2⋅1  = 11!$</p>
+		    <p>this is known as the factorial function.</p>
+		    <p>Lets calculate this just to see how big these numbers get!</p>
 
-        </div>
-      </div>
+		  </div>
+		</div>
+	    </div></div><div class="fragment">
+	      <div class="cell border-box-sizing code_cell rendered">
+		<div class="input">
+		  <div class="prompt input_prompt">In&nbsp;[10]:</div>
+		  <div class="inner_cell">
+		    <div class="input_area">
+		      <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+			  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;10}</span><span class="s2"> </span><span class="si">{:&gt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;total&quot;</span><span class="p">))</span>
 
-    </div></div></section></section><section><section>
-      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-      </div>
-      <div class="inner_cell">
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h4 id="Permutations">Permutations<a class="anchor-link" href="#Permutations">&#182;</a></h4><p><br></p>
-          <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-          8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-          **Fancy Definition:** A permutation is a one-to-one mapping of a set onto itself whilst changing the ordering of the elements. For instance if $A=\{a,b,c\}$ a possible permutation would be
+			  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+			  <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">i</span>
+			  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:10d}</span><span class="s2"> </span><span class="si">{:10d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">total</span><span class="p">))</span>
+		      </pre></div>
 
-          $$
-          σ=\left(
-          \begin{array}{ccc}
-          a & b & c \\
-          c & b & a
-          \end{array}
-          \right)
-          .$$
-          Where the permutation sends $a$ to $b$, $b$ to $c$, and $c$ to $a$.
+		    </div>
+		  </div>
+		</div>
+
+		<div class="output_wrapper">
+		  <div class="output">
 
 
-        </div><p><br></p>
-        <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        **Definition:** A full set of permutations is all the ways of arranging some distinguishable objects. Each permutation swaps between two of these ways of arranging them.
-      </div><p>The number of permutations of $n$ objects can be found from the counting rules to be $n!$, in much the same way as for the ball selection example above.</p>
+		    <div class="output_area">
 
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1><p>Find all permutations of $A = \{1,2,3\}$</p>
-      <p>$B = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$</p>
-      <p>and</p>
-      <p>$n(B) = 6!$</p>
+		      <div class="prompt"></div>
 
-    </div>
-  </div>
-</div></div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h4 id="Combinations">Combinations<a class="anchor-link" href="#Combinations">&#182;</a></h4><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      **Definition:** We define the number of combinations of $r$ objects taken from a set of size $n$, ${n \choose r}$, for $r≤n$, by
-      $$
-      {n \choose r}=\frac{n!}{(n−r)!r!}
-      $$
-    </div><p>${n \choose r}$ is the number of combinations of $n$ objects taken $r$ at a time, also referred to as the binomial coefficient.</p>
-    <p>Remember</p>
-    <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-    Binomial theorem
 
-    $$
-    (x+y)^n = \Sigma_{i=0}^{n} {n \choose i} x^iy^{n-i}
-    $$
-  </div><p>We'll encounter it again several times in the binomial and poisson distributions.</p>
+		      <div class="output_subarea output_stream output_stdout output_text">
+			<pre>         i      total
+			  1          1
+			  2          2
+			  3          6
+			  4         24
+			  5        120
+			  6        720
+			  7       5040
+			  8      40320
+			  9     362880
+			  10    3628800
+			  11   39916800
+			</pre>
+		      </div>
+		    </div>
 
-</div>
-</div>
-</div></section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h4 id="Example:">Example:<a class="anchor-link" href="#Example:">&#182;</a></h4><p>We need to select student representatives for the school - a commitee of 5 people is selected from 8 physicists and 30 mathematicians -</p>
-      <p>a) If we decide we need to have 2 physicists and 3 mathematicians on the commitee, how many possible sets of representatives are there?</p>
+		  </div>
+		</div>
 
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>we have two 'experiments' here</p>
-      <ul>
-        <li>first we choose 2 physicists out of 8 - i.e. ${8 \choose 2}$ = 28</li>
-        <li>secondly for each choice of the physicists we can select 3 mathematicians out of 30 - i.e. ${30 \choose 3}$ = 4060</li>
-        <li>So in total 28*4060 = 113680 possible commitees of this composition...!</li>
-      </ul>
+	</div></div></section></section>
 
-    </div>
-  </div>
-</div></div></section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>b) what is the probability of getting a commitee with 4 mathematicians and 1 physicist?</p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Permutations">Permutations<a class="anchor-link" href="#Permutations">&#182;</a></h4><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    **Fancy Definition:** A permutation is a one-to-one mapping of a set onto itself whilst changing the ordering of the elements. For instance if $A=\{a,b,c\}$ a possible permutation would be
 
-    </div>
-  </div>
-</div><div class="fragment">
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <ul>
-        <li>The total number of ways of selecting the commitee is ${38 \choose 5}$ = 501942 </li>
-        <li><p>the number of ways of getting 4 mathematicians and 1 physicist is basically the same as part a) above ${30 \choose 4}⋅{8 \choose 1}$</p>
-        </li>
-        <li><p>So the probability is ${30 \choose 4}⋅{8 \choose 1} / {38 \choose 5} =0.44$.</p>
-        </li>
-      </ul>
+		    $$
+		    σ=\left(
+		    \begin{array}{ccc}
+		    a & b & c \\
+		    c & b & a
+		    \end{array}
+		    \right)
+		    .$$
+		    Where the permutation sends $a$ to $b$, $b$ to $c$, and $c$ to $a$.
 
-    </div>
-  </div>
-</div></div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Infinite,-and-continous-probability-spaces">Infinite, and continous probability spaces<a class="anchor-link" href="#Infinite,-and-continous-probability-spaces">&#182;</a></h2><p>everything up to this point deals with probability spaces with a finite sample space. Here we just mention two other cases - when the sample space discrete points, but an infinite number of them (all integers for instance) - or the very common case when the sample space can take on a continous range of values.</p>
 
-    </div>
-  </div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="Continous-probability-spaces">Continous probability spaces<a class="anchor-link" href="#Continous-probability-spaces">&#182;</a></h3><p>Consider a spinner - schematically a circle <em>of unit circumference</em> and a pointer</p>
-      <p><img src="../Images/spinner.jpg" alt=""></p>
-      <p>this could end up being a model for a <a href="https://en.wikipedia.org/wiki/Roulette">Roulette wheel</a>, for instance. If we give the spinner a whirl, the pointer will be pointing somewhere a distance $x$ along the circumference. It seems reasonable that every value $0 \leq x \lt 1$ of the distance between the pointer and the mark on the spinner is equally likely to occur. This means that the sample space is the interval  $S = [0,1)$. We want a probability model where every value of the sample space is equally likely (we'll call the result of a spin $X$ for now, later we'll see that this is a <em>continuous random variable</em>).</p>
-      <p>In a similar way to before we must have</p>
-      $$
-      P\left( 0\leq X \lt 1 \right) = 1.
-      $$<p>It is also the case that we expect the probability of a reading in the top half of the spinner is equal in likelihood to one in the lower half,</p>
-      $$
-      P\left( 0\leq X \lt \frac{1}{2} \right) = P\left( \frac{1}{2} \leq X \lt 1 \right) = \frac{1}{2}.
-      $$<p>More generally, if we consider an event, $E = [a,b] $, we'd like</p>
-      $$
-      P\left( a\leq X \lt b \right) = b - a
-      $$<p>for every $a$ and $b$.</p>
+		  </div><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    **Definition:** A full set of permutations is all the ways of arranging some distinguishable objects. Each permutation swaps between two of these ways of arranging them.
+		  </div><p>The number of permutations of $n$ objects can be found from the counting rules to be $n!$, in much the same way as for the ball selection example above.</p>
 
-    </div>
-  </div>
-</div></section></section><section><section>
-  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-  </div>
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <p>We can satisfy</p>
-      $$
-      P\left( a\leq X \lt b \right) = b - a
-      $$<p>for every $a$ and $b$ for the event $E = [a,b]$ by a formula of the form</p>
-      $$
-      P(E) = \int_{E} f(x) \mathrm{d}x,
-      $$<p>and $f(x)$ is the constant function with value 1.</p>
-      <p>We call $f(x)$ the <em>density function</em> of $X$.</p>
-      <p>This is the generalisation of the discrete case we saw earlier:</p>
-      $$
-      P(E) = \sum_{i \in E} P(i).
-      $$
-    </div>
-  </div>
-</div>
-</section></section>
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1><p>Find all permutations of $A = \{1,2,3\}$</p>
+		    <p>$B = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$</p>
+		    <p>and</p>
+		    <p>$n(B) = 6!$</p>
 
-<section><section>
-  <div class="cell border-box-sizing text_cell rendered">
-  <div class="inner_cell">
-    <div class="text_cell_render border-box-sizing rendered_html">
-      <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1>
-      <ul>
-        <li>Sample space, outcomes, events and probability distribution.</li>
-        <li>Axiomatic definition of probability</li>
-        <li>Set operations for manipulating probabilities</li>
-        <li>Counting rules</li>
-        <li>Combinatorials</li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section></section>
+		  </div>
+		</div>
+	</div></div></section></section>
 
-</div> <!-- slides -->
-</div> <!-- reveal -->
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Combinations">Combinations<a class="anchor-link" href="#Combinations">&#182;</a></h4><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+														    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    **Definition:** We define the number of combinations of $r$ objects taken from a set of size $n$, ${n \choose r}$, for $r≤n$, by
+		    $$
+		    {n \choose r}=\frac{n!}{(n−r)!r!}
+		    $$
+		  </div><p>${n \choose r}$ is the number of combinations of $n$ objects taken $r$ at a time, also referred to as the binomial coefficient.</p>
+		  <p>Remember</p>
+		  <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Binomial theorem
 
-<script>
+		    $$
+		    (x+y)^n = \Sigma_{i=0}^{n} {n \choose i} x^iy^{n-i}
+		    $$
+		  </div><p>We'll encounter it again several times in the binomial and poisson distributions.</p>
 
-require(
-  {
-    // it makes sense to wait a little bit when you are loading
-    // reveal from a cdn in a slow connection environment
-    waitSeconds: 15
-  },
-  [
-    "../../../revealjs//lib/js/head.min.js",
-    "../../../revealjs//js/reveal.js"
-  ],
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Example:">Example:<a class="anchor-link" href="#Example:">&#182;</a></h4><p>We need to select student representatives for the school - a commitee of 5 people is selected from 8 physicists and 30 mathematicians -</p>
+		  <p>a) If we decide we need to have 2 physicists and 3 mathematicians on the commitee, how many possible sets of representatives are there?</p>
 
-  function(head, Reveal){
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>we have two 'experiments' here</p>
+		    <ul>
+		      <li>first we choose 2 physicists out of 8 - i.e. ${8 \choose 2}$ = 28</li>
+		      <li>secondly for each choice of the physicists we can select 3 mathematicians out of 30 - i.e. ${30 \choose 3}$ = 4060</li>
+		      <li>So in total 28*4060 = 113680 possible commitees of this composition...!</li>
+		    </ul>
 
-    // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>b) what is the probability of getting a commitee with 4 mathematicians and 1 physicist?</p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <ul>
+		      <li>The total number of ways of selecting the commitee is ${38 \choose 5}$ = 501942 </li>
+		      <li><p>the number of ways of getting 4 mathematicians and 1 physicist is basically the same as part a) above ${30 \choose 4}⋅{8 \choose 1}$</p>
+		      </li>
+		      <li><p>So the probability is ${30 \choose 4}⋅{8 \choose 1} / {38 \choose 5} =0.44$.</p>
+		      </li>
+		    </ul>
+
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Infinite,-and-continous-probability-spaces">Infinite, and continous probability spaces<a class="anchor-link" href="#Infinite,-and-continous-probability-spaces">&#182;</a></h2><p>everything up to this point deals with probability spaces with a finite sample space. Here we just mention two other cases - when the sample space discrete points, but an infinite number of them (all integers for instance) - or the very common case when the sample space can take on a continous range of values.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Continous-probability-spaces">Continous probability spaces<a class="anchor-link" href="#Continous-probability-spaces">&#182;</a></h3><p>Consider a spinner - schematically a circle <em>of unit circumference</em> and a pointer</p>
+		  <p><img src="../Images/spinner.jpg" alt=""></p>
+		  <p>this could end up being a model for a <a href="https://en.wikipedia.org/wiki/Roulette">Roulette wheel</a>, for instance. If we give the spinner a whirl, the pointer will be pointing somewhere a distance $x$ along the circumference. It seems reasonable that every value $0 \leq x \lt 1$ of the distance between the pointer and the mark on the spinner is equally likely to occur. This means that the sample space is the interval  $S = [0,1)$. We want a probability model where every value of the sample space is equally likely (we'll call the result of a spin $X$ for now, later we'll see that this is a <em>continuous random variable</em>).</p>
+		  <p>In a similar way to before we must have</p>
+		  $$
+		  P\left( 0\leq X \lt 1 \right) = 1.
+		  $$<p>It is also the case that we expect the probability of a reading in the top half of the spinner is equal in likelihood to one in the lower half,</p>
+		  $$
+		  P\left( 0\leq X \lt \frac{1}{2} \right) = P\left( \frac{1}{2} \leq X \lt 1 \right) = \frac{1}{2}.
+		  $$<p>More generally, if we consider an event, $E = [a,b] $, we'd like</p>
+		  $$
+		  P\left( a\leq X \lt b \right) = b - a
+		  $$<p>for every $a$ and $b$.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We can satisfy</p>
+		  $$
+		  P\left( a\leq X \lt b \right) = b - a
+		  $$<p>for every $a$ and $b$ for the event $E = [a,b]$ by a formula of the form</p>
+		  $$
+		  P(E) = \int_{E} f(x) \mathrm{d}x,
+		  $$<p>and $f(x)$ is the constant function with value 1.</p>
+		  <p>We call $f(x)$ the <em>density function</em> of $X$.</p>
+		  <p>This is the generalisation of the discrete case we saw earlier:</p>
+		  $$
+		  P(E) = \sum_{i \in E} P(i).
+		  $$
+		</div>
+	      </div>
+	    </div>
+	</section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1>
+		  <ul>
+		    <li>Sample space, outcomes, events and probability distribution.</li>
+		    <li>Axiomatic definition of probability</li>
+		    <li>Set operations for manipulating probabilities</li>
+		    <li>Counting rules</li>
+		    <li>Combinatorials</li>
+		  </ul>
+		</div>
+	      </div>
+	    </div>
+	</section></section>
+
+      </div> <!-- slides -->
+    </div> <!-- reveal -->
+
+    <script>
+
+      require(
+      {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+      },
+      [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+      ],
+
+      function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
       controls: true,
       progress: true,
       history: true,
@@ -1050,33 +1078,33 @@ require(
 
       // Optional libraries used to extend on reveal.js
       dependencies: [
-        { src: "../../../revealjs//lib/js/classList.js",
-        condition: function() { return !document.body.classList; } },
-        { src: "../../../revealjs//plugin/notes/notes.js",
-        async: true,
-        condition: function() { return !!document.body.classList; } }
+      { src: "../../../revealjs//lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../../revealjs//plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
       ]
-    });
+      });
 
-    var update = function(event){
+      var update = function(event){
       if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-        MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
       }
-    };
+      };
 
-    Reveal.addEventListener('slidechanged', update);
+      Reveal.addEventListener('slidechanged', update);
 
-    var update_scroll = function(event){
+      var update_scroll = function(event){
       $(".reveal").scrollTop(0);
-    };
+      };
 
-    Reveal.addEventListener('slidechanged', update_scroll);
+      Reveal.addEventListener('slidechanged', update_scroll);
 
-  }
-);
-</script>
+      }
+      );
+    </script>
 
-</body>
+  </body>
 
 
 </html>
