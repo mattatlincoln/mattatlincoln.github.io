@@ -207,7 +207,7 @@
 		  <h3 id="Sample-spaces,-outcomes-and-events">Sample spaces, outcomes and events<a class="anchor-link" href="#Sample-spaces,-outcomes-and-events">&#182;</a></h3>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    Definition: the sample space is the set containing all possible outcomes of an experiment.
+		    <em>Definition:</em> the sample space is the set containing all possible outcomes of an experiment.
 		  </div>
 		  <p>Here an experiment is something that we can do in a (fairly) controlled way, doesn't have to be</p>
 		</div>
@@ -218,11 +218,19 @@
 		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhqepGNLS9Hm24ETilJ0LBZDw8a42ufarxkieNttpcnbytB5Iy"></p>
-		    <p><strong>Example</strong> What is the sample space of tossing a coin?</p>
 		  </div>
 		</div>
               </div>
 	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+              <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example</strong> What is the sample space of tossing a coin?</p>
+		</div>
+	      </div>
+            </div>
 	    <div class="fragment">
               <div class="cell border-box-sizing text_cell rendered">
 		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
@@ -282,7 +290,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h4 id="Outcomes">Outcomes<a class="anchor-link" href="#Outcomes">&#182;</a></h4>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    Definition: Outcomes are the individual elementary elements of the sample space.
+		    <em>Definition:</em> Outcomes are the individual elementary elements of the sample space.
 		  </div>
 		  <p>(If the sample space is finite, or countably infinite, it will correspond to a <em>discrete</em> random variable.)</p>
 		</div>
@@ -311,7 +319,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Events">Events<a class="anchor-link" href="#Events">&#182;</a></h3>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    Definition: an event is any subset, $E$, of the sample space, $S$. $E \subset A$
+		    <em>Definition:</em> an event is any subset, $E$, of the sample space, $S$. $E \subset A$
 		  </div>
 		  <p>(Set $A$ is a subset of set $B$, $A \subseteq B$,  if all of the members of $A$ are also contained in $B$)</p>
 		</div>
@@ -510,30 +518,33 @@
 
 		</div>
 	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example</strong> Experiment consists of throwing a coin twice - as we saw we can assign the sample space in two ways:</p>
+		  <p>either</p>
+		  $$
+		  S_1 = \{HH, HT, TH, TT  \}
+		  $$<p>with</p>
+		  $$
+		  P(HH) = \frac{1}{4}, P(HT)=\frac{1}{4}, P(TH)=\frac{1}{4},P(TT)=\frac{1}{4}
+		  $$<p>or</p>
+		  $$
+		  S_2 = \{0,1,2\}.
+		  $$<p>In the later case we take the number of times a head appears as our outcomes.</p>
+		  <p>In the case of $S_2$ the probabilities of the individual outcomes are <em>not</em> equal - there are twice as many ways of getting the outcome 1 head ($\{(H,T),(T,H)\}$) as there are of getting 0 $(\{(T,T)\})$ or 2 $(\{(H,H)\})$.</p>
+		  <p>So, it makes sense to have</p>
+		  $$
+		  P(0) = \frac{1}{4}, P(1)=\frac{1}{2}, P(2)=\frac{1}{4}
+		  $$
 		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><strong>Example</strong> Experiment consists of throwing a coin twice - as we saw we can assign the sample space in two ways:</p>
-		    <p>either</p>
-		    $$
-		    S_1 = \{HH, HT, TH, TT  \}
-		    $$<p>with</p>
-		    $$
-		    P(HH) = \frac{1}{4}, P(HT)=\frac{1}{4}, P(TH)=\frac{1}{4},P(TT)=\frac{1}{4}
-		    $$<p>or</p>
-		    $$
-		    S_2 = \{0,1,2\}.
-		    $$<p>In the later case we take the number of times a head appears as our outcomes.</p>
-		    <p>In the case of $S_2$ the probabilities of the individual outcomes are <em>not</em> equal - there are twice as many ways of getting the outcome 1 head ($\{(H,T),(T,H)\}$) as there are of getting 0 $(\{(T,T)\})$ or 2 $(\{(H,H)\})$.</p>
-		    <p>So, it makes sense to have</p>
-		    $$
-		    P(0) = \frac{1}{4}, P(1)=\frac{1}{2}, P(2)=\frac{1}{4}
-		    $$
-		  </div>
-		</div>
-	</div></div></section></section>
+	      </div>
+	    </div>
+	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -559,8 +570,10 @@
 
 		</div>
 	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
 		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
@@ -569,7 +582,8 @@
 
 		  </div>
 		</div>
-	</div></div></section></section>
+	    </div>
+	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -667,13 +681,13 @@
 		  <h3 id="Extra-useful-relationships-and-definitions:">Extra useful relationships and definitions:<a class="anchor-link" href="#Extra-useful-relationships-and-definitions:">&#182;</a></h3><p><br></p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    **Definition** Complement of an event $E$ (with respect to the sample set $S$) is $P(\bar{E}) = 1 - P(E)$.
+		    <em>Definition</em> Complement of an event $E$ (with respect to the sample set $S$) is $P(\bar{E}) = 1 - P(E)$.
 		    <br><br>
 
-		    **Definition:** $E_1$ and $E_2$ are mutually exclusive if $P(E_1 \cap E_2) = P\{\emptyset\} = 0$
+		    <em>Definition:</em> $E_1$ and $E_2$ are mutually exclusive if $P(E_1 \cap E_2) = P\{\emptyset\} = 0$
 		    <br><br>
 
-		    **Definition** A set of events $E_1, E_2, \ldots, E_n$ of some experiment are said to be *exhaustive* if $E_1 \cup E_2 \cup E_3 \cup \ldots \cup E_n = S$.
+		    <em>Definition</em> A set of events $E_1, E_2, \ldots, E_n$ of some experiment are said to be *exhaustive* if $E_1 \cup E_2 \cup E_3 \cup \ldots \cup E_n = S$.
 		    <br><br>
 
 		    If $E_1$ and $E_2$ are events of the same experiment $P(E_1 \cup E_2) = P(E_1) + P(E_2) - P(E_1 \cap E_2)$
@@ -777,7 +791,8 @@
 
 		</div>
 	      </div>
-	    </div><div class="fragment">
+	    </div>
+	    <div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
 		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
@@ -787,76 +802,58 @@
 
 		  </div>
 		</div>
-	  </div></div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Therefore</p>
-		  $$P(E)=\frac{\text{Number of outcomes in } E}{N} = \frac{5∗6+6∗5}{110}=\frac{6}{11}$$
-		</div>
-	      </div>
-	    </div><div class="fragment">
+	    </div>
+	    <div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
 		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><em>If there are more than two experiments to be performed then the above rule generalises to $n_1⋅n_2 \cdot \cdots \cdot  n_r$ possible outcomes of r experiments.</em></p>
-		    <p>So continuing our previous example, how many ways are there to select all the balls from the bowl?</p>
-		    <p>In this case there are $11⋅10⋅9 \cdots 3⋅2⋅1  = 11!$</p>
-		    <p>this is known as the factorial function.</p>
-		    <p>Lets calculate this just to see how big these numbers get!</p>
-
+		    <p>Therefore</p>
+		    $$P(E)=\frac{\text{Number of outcomes in } E}{N} = \frac{5∗6+6∗5}{110}=\frac{6}{11}$$
 		  </div>
 		</div>
-	    </div></div><div class="fragment">
-	      <div class="cell border-box-sizing code_cell rendered">
-		<div class="input">
-		  <div class="prompt input_prompt">In&nbsp;[10]:</div>
-		  <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
-		    <div class="input_area">
-		      <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-			  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;10}</span><span class="s2"> </span><span class="si">{:&gt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;total&quot;</span><span class="p">))</span>
-
-			  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
-			  <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">i</span>
-			  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:10d}</span><span class="s2"> </span><span class="si">{:10d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">total</span><span class="p">))</span>
-		      </pre></div>
-
-		    </div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2>Factorials</h2>
+		  <p><em>If there are more than two experiments to be performed then the above rule generalises to $n_1⋅n_2 \cdot \cdots \cdot  n_r$ possible outcomes of r experiments.</em></p>
+		  <p>So continuing our previous example, how many ways are there to select all the balls from the bowl?</p>
+		  <p>In this case there are $11⋅10⋅9 \cdots 3⋅2⋅1  = 11!$</p>
+		  <p>this is known as the factorial function.</p>
+		  <p>Lets calculate this just to see how big these numbers get!</p>		  
+		</div>
+	      </div>
+	    </div>
+	    <div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <pre>
+		      i         i!
+		      1          1
+		      2          2
+		      3          6
+		      4         24
+		      5        120
+		      6        720
+		      7       5040
+		      8      40320
+		      9     362880
+		      10   3628800
+		      11  39916800
+		    </pre>
 		  </div>
 		</div>
-
-		<div class="output_wrapper">
-		  <div class="output">
-
-
-		    <div class="output_area">
-
-		      <div class="prompt"></div>
-
-
-		      <div class="output_subarea output_stream output_stdout output_text">
-			<pre>         i      total
-			  1          1
-			  2          2
-			  3          6
-			  4         24
-			  5        120
-			  6        720
-			  7       5040
-			  8      40320
-			  9     362880
-			  10    3628800
-			  11   39916800
-			</pre>
-		      </div>
-		    </div>
-
-		  </div>
-		</div>
-
-	</div></div></section></section>
+	      </div>
+	    </div>
+	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -866,7 +863,7 @@
 		  <h4 id="Permutations">Permutations<a class="anchor-link" href="#Permutations">&#182;</a></h4><p><br></p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    **Fancy Definition:** A permutation is a one-to-one mapping of a set onto itself whilst changing the ordering of the elements. For instance if $A=\{a,b,c\}$ a possible permutation would be
+		    <em>Fancy Definition:</em> A permutation is a one-to-one mapping of a set onto itself whilst changing the ordering of the elements. For instance if $A=\{a,b,c\}$ a possible permutation would be
 
 		    $$
 		    σ=\left(
@@ -882,24 +879,26 @@
 		  </div><p><br></p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    **Definition:** A full set of permutations is all the ways of arranging some distinguishable objects. Each permutation swaps between two of these ways of arranging them.
+		    <em>Definition:</em> A full set of permutations is all the ways of arranging some distinguishable objects. Each permutation swaps between two of these ways of arranging them.
 		  </div><p>The number of permutations of $n$ objects can be found from the counting rules to be $n!$, in much the same way as for the ball selection example above.</p>
 
 		</div>
 	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1><p>Find all permutations of $A = \{1,2,3\}$</p>
+		  <p>$B = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$</p>
+		  <p>and</p>
+		  <p>$n(B) = 3!$</p>
 		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1><p>Find all permutations of $A = \{1,2,3\}$</p>
-		    <p>$B = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$</p>
-		    <p>and</p>
-		    <p>$n(B) = 6!$</p>
-
-		  </div>
-		</div>
-	</div></div></section></section>
+	      </div>
+	    </div>
+	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -908,7 +907,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h4 id="Combinations">Combinations<a class="anchor-link" href="#Combinations">&#182;</a></h4><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 														    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    **Definition:** We define the number of combinations of $r$ objects taken from a set of size $n$, ${n \choose r}$, for $r≤n$, by
+		    <em>Definition:</em> We define the number of combinations of $r$ objects taken from a set of size $n$, ${n \choose r}$, for $r≤n$, by
 		    $$
 		    {n \choose r}=\frac{n!}{(n−r)!r!}
 		    $$
@@ -927,6 +926,7 @@
 	      </div>
 	    </div>
 	  </section>
+	  
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
@@ -1004,6 +1004,13 @@
 		  <h3 id="Continous-probability-spaces">Continous probability spaces<a class="anchor-link" href="#Continous-probability-spaces">&#182;</a></h3><p>Consider a spinner - schematically a circle <em>of unit circumference</em> and a pointer</p>
 		  <p><img src="../Images/spinner.jpg" alt=""></p>
 		  <p>this could end up being a model for a <a href="https://en.wikipedia.org/wiki/Roulette">Roulette wheel</a>, for instance. If we give the spinner a whirl, the pointer will be pointing somewhere a distance $x$ along the circumference. It seems reasonable that every value $0 \leq x \lt 1$ of the distance between the pointer and the mark on the spinner is equally likely to occur. This means that the sample space is the interval  $S = [0,1)$. We want a probability model where every value of the sample space is equally likely (we'll call the result of a spin $X$ for now, later we'll see that this is a <em>continuous random variable</em>).</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>In a similar way to before we must have</p>
 		  $$
 		  P\left( 0\leq X \lt 1 \right) = 1.
