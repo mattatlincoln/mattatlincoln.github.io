@@ -167,7 +167,10 @@ MathJax.Hub.Config({
 	    </div>
 	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
-		<h3 id="Variation-of-parameters">Variation of parameters<a class="anchor-link" href="#Variation-of-parameters">&#182;</a></h3><p>now the trick - we differentiate with respect to $c_i^*$. The only thing that depends upon $c_i^*$ is $c_i^*$ and we dramatically simplify our equations.</p>
+		<h3 id="Variation-of-parameters">Variation of parameters
+		  <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
+		</h3>
+		<p>now the trick - we differentiate with respect to $c_i^*$. The only thing that depends upon $c_i^*$ is $c_i^*$ and we dramatically simplify our equations.</p>
 		<p>\begin{align}
 		  \frac{\partial}{\partial c_i^* } \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = \frac{\partial}{\partial c_i^* } E  \sum_k c_k^* c_k  \\
 		  \int d^3x \sum_j c_j \phi_i^* \hat{H} \phi_j &amp; = E c_i \\
@@ -176,13 +179,46 @@ MathJax.Hub.Config({
 		  \implies H C &amp; = E C
 		  \end{align}</p>
 		<p>Now $H$ is a matrix with elements $H_{ij} = \int d^3x \phi_i^* \hat{H} \phi_j $ and $C$ a column vector with elements $c_i$.</p>
-		<p>Notice that this looks like the Schroedinger equation again - but now we are dealing with matrices and vectors rather than differential equations.</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+	<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3>Matrix Mechanics</h3>
+		<p>
+		  $$H C = E C$$
+		  Notice that this looks like the Schroedinger equation again - but now we are dealing with matrices and vectors rather than differential equations.</p>		
 		<p>In fact it is quite clearly an eigenvalue problem now, and you can use the techniques you learnt last year to solve for $C$ and $E$.</p>
-		<p>The $E$ values give us the energy levels of the system - they are then filled according to Fermi-Dirac statistics.</p>
+	      </div>
+	      <div class='fragment'>
+		<p>The $E$ values give us the energy levels of the system - they are then filled according to Fermi-Dirac statistics.<br>
+		  For simple systems, this means filling the levels, from lowest first, until the correct number of electrons are accommodated.
+		</p>
 	      </div>
 	    </div>
       </div></section></section>
 
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3 id="Independent electrons"> Independent electrons
+		  <a class="anchor-link" href="#Independent electrons">&#182;</a>
+		</h3>
+		<p>We are assuming that our electrons are independent.</p>
+		<p>Filling a level does not change the energy of the level or any other level.</p>
+		<p>The energy of the system is the sum of the energies of the occupied states.</p>
+	      </div>
+	    </div>
+	  </div>
+      </section></section>
+
+      
       <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
@@ -341,7 +377,12 @@ MathJax.Hub.Config({
 	    </div>
 	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
-		<h2 id="Variation-of-parameters">Variation of parameters<a class="anchor-link" href="#Variation-of-parameters">&#182;</a></h2><p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$. We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
+		<h2 id="Variation-of-parameters">
+		  Variation of parameters
+		  <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
+		</h2>
+		<p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$.
+		  We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
 		<p>In our system we are left with a series of equations of the form, one for each value of $c_{\mathbf{k}}^*$ for each value of $c_{\mathbf{k}}^*$</p>
 		<p>\begin{align}
 		  -\frac{\hbar^2 k^2}{2m} c_\mathbf{k} = E c_\mathbf{k} \\
@@ -349,7 +390,8 @@ MathJax.Hub.Config({
 		  \end{align}</p>		
 	      </div>
 	    </div>
-      </div></section></section>
+	  </div>
+      </section></section>
 
       <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
 	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
