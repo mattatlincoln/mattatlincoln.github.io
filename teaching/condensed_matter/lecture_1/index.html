@@ -324,7 +324,18 @@ MathJax.Hub.Config({
 		<p>$$
 		  \psi = \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k},\text{ where } \phi_\mathbf{k}(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
 		  $$</p>
-		<p>a sum of plane waves.</p>
+		<p>a sum of <a href='https://en.wikipedia.org/wiki/Plane_wave'>plane waves</a>.
+		  <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Linear_Polarization_Linearly_Polarized_Light_plane_wave.svg" style="max-width:50%">
+		  <a href='https://en.wikipedia.org/wiki/Dispersion_relation#Plane_waves_in_vacuum'>Also see</a>
+		</p>		  
+	      </div>
+	    </div>
+	</div></section>
+	<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
 		<p>To make the waves fit nicely in our box of dimension $L^3$ we insist that</p>
 		<p>$$
 		  k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
@@ -443,6 +454,7 @@ MathJax.Hub.Config({
 		<h2 id="Covalent-bonding">Covalent bonding<a class="anchor-link" href="#Covalent-bonding">&#182;</a></h2>
 		<p>is a quantum mechanical phenomenon, where atoms lower their energy by sharing electrons.
 		  We'll see below in a approximation called Molecule Orbital theory, that the reduction in energy primarily comes from a reduction in the kinetic energy of the electrons.</p>
+		<p>Lets consider a molecule made up of two nuclei and a single electron.</p>
 		<p><img src='https://chem.libretexts.org/@api/deki/files/38974/4aeb3f23f811474fd3aeddaa8db5a56c.jpg' width=600><p>
 	      </div>
 	    </div>
@@ -456,13 +468,19 @@ MathJax.Hub.Config({
 	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 	      <div class="text_cell_render border-box-sizing rendered_html">
 		<h2 id="Molecular-Orbital,-or-Tight-Binding-Theory">Molecular Orbital, or Tight Binding Theory<a class="anchor-link" href="#Molecular-Orbital,-or-Tight-Binding-Theory">&#182;</a></h2><p>see Simon section 6.2.2. This is the same, but the notation is a bit different.</p>
-		<p>Lets consider a molecule made up of two nuclei and a single electron.</p>
 		<p>To make life simple, lets assume the nuclei are stationary - after all they are &gt; 1000 times heavier than the electron, so they will move incredibly slowly compared to the electron.
 		  <br><br></p>
 		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 		  Fixing the nuclei is known as the Born-Oppenheimer approximation.
 		</div>
+		<p>
+		  Total energy is then the sum of the Electronic part and the nuclear part.
+		  $$
+		  E_{\rm{total}}(;\mathbf{R}_{i,j}) = E_{\rm{electronic}}(;\mathbf{R}_{i,j}) +  V_{\mathbf{R}_{ij}}
+		  $$
+		  The value of the electronic energy will depend parametrically on the distance the nuclei are apart.
+		</p>
 	      </div>
 	    </div>
 	  </div>
@@ -730,12 +748,78 @@ MathJax.Hub.Config({
 		<p>If the energy levels of the two atomic orbitals are very different, we get ionic bonding.
 		</p>
 		<img src='https://upload.wikimedia.org/wikipedia/commons/3/33/NaF_MO_energy_diagram.png' width='500'>
+		<p>Actual energetics is more complicated than independent electron picture - we should be penalised for putting two electrons into the same orbital (wavefunction).</p>
+		<p>Overall we lose energy from putting electrons together, but gain from lower initial energy of state and ionic interaction.</p>
 	      </div>
 	    </div>
 	  </div>
 	</section>
       </section>
 
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <h1>Summary</h1>
+		  We take as a given the time independent form of the Schroedinger equation		  
+		  $$
+		  \hat{H} \psi = E \psi
+		  $$		  
+		  We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting		  
+		  $$
+		  x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		  $$		  
+		  and for the linear momenta,
+		  $$
+		  p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		  $$
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  We take a trial wavefunction
+		  $$
+		  \psi = \sum_i c_i \phi_i,
+		  $$
+		  operate on it with the Hamiltonian operator, then multiply on the left by the complex conjugate of $\psi$ and integrate over all space. Finally we differentiate with respect to each $c_i^*$ to get a series of equations that read
+		  $$
+		  \sum_j H_{ij} c_j = E c_i
+		  $$
+		  where
+		  $$
+		  H_{ij} = \int d^3x \phi_i \hat{H} \phi_j
+		  $$		  
+		  where $\phi_i, \phi_j$ are all the functions that make up our trial wavefunction. 
+		</div><p><br><br></p>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  In matrix notation this reads		  
+		  $$
+		  HC = EC
+		  $$		  
+		  This has solutions given by solving the characteristic equations (secular equations) given by		  
+		  $$
+		  | H_{ij} - \delta_{ij} E | = 0
+		  $$		  
+		  where $| H_{ij} - \delta_{ij} E |$ is short hand for the determinant of the matrix $H - EI$.
+		  <br><br>
+		  When we have the energy levels, we fill them according to Fermi-Dirac statistics.
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+      
     </div>
   </div>
   
