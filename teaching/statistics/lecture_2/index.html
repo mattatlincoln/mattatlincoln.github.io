@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>02 - Conditional Probability and Independence - part 1 slides</title>
+    <title>02 - Conditional Probability and Independence</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -73,7 +73,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Conditional-probability-and-independence">Conditional probability and independence<a class="anchor-link" href="#Conditional-probability-and-independence">&#182;</a></h1><p>Learning outcomes:</p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
@@ -91,7 +91,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Probability-function">Probability function<a class="anchor-link" href="#Probability-function">&#182;</a></h2><p>In the first lecture we defined the probability function (sometimes also called a distribution function) for a sample space, $S$.</p>
 		  <p>The sample space lists all possible outcomes of an experiment. For instance, for a single role of a 6-sided die, a possible sample space is $S = \{1,2,3,4,5,6\}$.</p>
@@ -111,7 +111,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Conditional-probability">Conditional probability<a class="anchor-link" href="#Conditional-probability">&#182;</a></h2><p>The idea of conditional probability allows us to calculate probabilities when we have partial information about the system, or to reassess likelihoods when we receive new information.</p>
 		  <p>A conditional probability is the probability of some event $E$, given that another event $F$ has occurred.</p>
@@ -126,7 +126,7 @@
 	    <section>
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p><strong>Example</strong> Consider rolling two dice.</p>
 		    <p>We have a sample space</p>
@@ -143,7 +143,7 @@
 	    <section>
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>Define $F = \text{'the first die comes down showing a 3'} =\{(3,1),(3,2),(3,3),(3,4),(3,5),(3,6)\}$.</p>
 		    <p>This extra information, allows us to cut down the number of possibile outcomes. Effectively only 6 possible outcomes can now occur.</p>
@@ -164,7 +164,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>The probability of the outcome (3,5) before the first die was rolled was $\frac{1}{36}$. After the first die comes up a 3, we've argued that the probability should be $\frac{1}{6}$. Lets look at this as a Venn diagram:</p>
 		  <p><img src="../Images/conditional_prob_venn_I.jpg" alt=""></p>
@@ -177,7 +177,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Now the probability of $E$ occuring is the probability of the outcomes in $E$.</p>
 		  <p><img src="../Images/conditional_prob_venn_II.jpg" style='height:300px'></p>
@@ -191,7 +191,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>If instead we are looking for $P(E \mid F)$ then it is not the ratio $n(E)$ to $n(S)$ that matters</p>
 		  <p><img src="../Images/conditional_prob_venn_III.jpg" style='height:300px'></p>
@@ -209,7 +209,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>If we look back to our dice example, this is exactly what we did.</p>
 		  <p><strong>Example revisited</strong> we started from</p>
@@ -232,7 +232,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -256,7 +256,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Multiplicative-rule-of-probabilities">Multiplicative rule of probabilities<a class="anchor-link" href="#Multiplicative-rule-of-probabilities">&#182;</a></h3><p>the expression for conditional probabilities implies that</p>
 		  $$
@@ -271,7 +271,7 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>we can see that this is the case by using the definition of conditional probability in the right hand side of the equation, giving</p>
 		    $$
@@ -286,7 +286,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>If you remember the examples of taking  balls out of a bowl in lecture 1 - there were 6 black and 5 white ones.</p>
 		  <p>How many ways are there to select all the balls from the bowl?</p>
@@ -306,7 +306,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Tree-diagrams">Tree diagrams<a class="anchor-link" href="#Tree-diagrams">&#182;</a></h2><p>Tree diagrams are a useful way of keeping track of the progress of compound experiments.</p>
 		  <p>They can also be seen to work using the multiplicative rule of probabilities.</p>
@@ -318,7 +318,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p><img src="../Images/tree_3_coins.png" style='height:300px'></p>
 		  <p>The overall probabilities are arrived at by multiplying the probabilities at each stage of the experiment. This works because at each stage in the compound experiment, the result doesn't depend on the result further down the chain. So to get</p>
@@ -332,7 +332,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>We have two urns, I and II.</p>
 		  <p>Urn I contains 2 black balls and 3 white balls.</p>
@@ -343,7 +343,7 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>An urn is selected at random and a ball is chosen at random from it.</p>
 		  </div>
@@ -354,7 +354,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>We can represent the sample space of this experiment as the paths through a tree as shown.</p>
 		  <p><img src="../Images/tree_urns.png" style='height='300px'></p>
@@ -372,7 +372,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example---back-to-the-Urns-and-balls">Example - back to the Urns and balls<a class="anchor-link" href="#Example---back-to-the-Urns-and-balls">&#182;</a></h3><p>Suppose that we wanted to work out $P(I \mid B)$?</p>
 		  <p>In words "What is the probability that the ball came from urn I, given that the ball is black."</p>
@@ -388,7 +388,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html"
 		     <p>These 'reversed' conditional probabilities are often associated with the name Bayes.</p>
 		<p>We'll look at a formula that bears his name shortly that can be used to systematically calculate these reversed probabilities.</p>
@@ -401,7 +401,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Law-of-total-probability">Law of total probability<a class="anchor-link" href="#Law-of-total-probability">&#182;</a></h3><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 																			8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -418,10 +418,10 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>In Venn diagram form this collection of events could look like this</p>
-		    <p><img src="../Images/Bayes_proof_I.png" alt=""></p>
+		    <p><img src="../Images/Bayes_proof_I.png" style='height:300px'></p>
 		    <p>Where $A \subset S$.</p>
 
 		  </div>
@@ -432,7 +432,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>we can then use the $E_i$ (a bit like basis vectors in linear algebra) to decompose an event $A$ into its intersections with the $E_i$.</p>
 		  $$
@@ -443,29 +443,30 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p><img src="../Images/Bayes_proof_II.png" alt=""></p>
 
 		  </div>
 		</div>
-	    </div></div>
-	    <div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell">
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-			The law of total probability
-			$$
-			P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
-			$$
-		      </div>
-		      <br></p>
-		    <p>This is the general form of the <a href="https://en.wikipedia.org/wiki/Law_of_total_probability">law of total probability</a> (the name is not so firmly established that it will be called this by all authors, though).</p>
-
-		  </div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+				 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		      The law of total probability
+		      $$
+		      P(A) = \sum_{i=1}^n P(A \cap E_i) = \sum_{i=1}^n P(A \mid E_i) P(E_i)
+		      $$
+		    </div>
+		    <br></p>
+		  <p>This is the general form of the <a href="https://en.wikipedia.org/wiki/Law_of_total_probability">law of total probability</a> (the name is not so firmly established that it will be called this by all authors, though).</p>
+		  
 		</div>
 	      </div>
 	    </div>
@@ -474,7 +475,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Bayes'-Formula">Bayes' Formula<a class="anchor-link" href="#Bayes'-Formula">&#182;</a></h2><p><br></p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
@@ -492,7 +493,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Bayes' solution to a problem of inverse probability was presented in "An Essay towards solving a Problem in the Doctrine of Chances" which was read to the Royal Society in 1763 after Bayes' death.</p>
 
@@ -512,7 +513,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>A town has three bus routes, A,B and C.</p>
 		  <p>During rush hour there are twice as many buses on the A route as on B or C.</p>
@@ -525,7 +526,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>We don't have complete information about this problem (like all possible outcomes etc).</p>
 		  <p>We can form an exhaustive partition of the experiment into the mutually exhaustive events $A,B,C$ that the inspector sees a bus on that route first.</p>
@@ -538,7 +539,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>We require $P(B \mid L)$. Using Bayes' Formula we get that</p>
 		  $$
@@ -555,7 +556,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Conditional-probabilities-are-probabilities">Conditional probabilities are probabilities<a class="anchor-link" href="#Conditional-probabilities-are-probabilities">&#182;</a></h2>
 		  <p>It is good to note that conditional probabilities obey all the axioms we established to call $P(E)$ a probability.</p>
@@ -575,7 +576,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Summary-of-conditional-probabilities">Summary of conditional probabilities<a class="anchor-link" href="#Summary-of-conditional-probabilities">&#182;</a></h2><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 																							    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -601,7 +602,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Summary-of-conditional-probabilities">Summary of conditional probabilities<a class="anchor-link" href="#Summary-of-conditional-probabilities">&#182;</a></h2><ul>
 		    <li>Definition of conditional probabilities $$
@@ -628,7 +629,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Independent-events">Independent events<a class="anchor-link" href="#Independent-events">&#182;</a></h1>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 																	     8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -650,13 +651,13 @@
 		</div>
 	      </div>
 	    </div>
-	    <div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell">
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><img src="../Images/probmean3.jpg" alt=""></p>
-		  </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="../Images/probmean3.jpg" alt=""></p>
 		</div>
 	      </div>
 	    </div>
@@ -664,7 +665,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -691,7 +692,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3><p>consider the compound experiment of throwing two fair coins.</p>
 		  <p>The sample space is $S = \{(H,H),(H,T),(T,H),(T,T)\}$.</p>
@@ -707,7 +708,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>But consider</p>
 		  <p>$C = \textrm{'both coins are heads'} = \{(H,H)\}$</p>
@@ -724,7 +725,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Tabular-presentation-of-conditional-probabilities">Tabular presentation of conditional probabilities<a class="anchor-link" href="#Tabular-presentation-of-conditional-probabilities">&#182;</a></h1>
 		  <p>It can sometimes be handy to view conditional probabilities using a tabular representation of relative frequencies - this can also be how real data arrives to us.</p>
@@ -771,7 +772,7 @@
 	    <section>
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>The values along the margins are called the marginal probabilities. They give the straight forward probabilities.</p>
 		    <p>This is because of the law of total probability.</p>
@@ -789,7 +790,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Tabular-Bayes'-Theorem-example">Tabular Bayes' Theorem example<a class="anchor-link" href="#Tabular-Bayes'-Theorem-example">&#182;</a></h3><p>A doctor is trying to decide if a patient has one of three diseases d1, d2, or d3.</p>
 		  <p>Two tests are to be carried out, each of which results in a positive (+) or a negative (−) outcome.</p>
@@ -844,53 +845,53 @@
 		</div>
 	      </div>
 	    </div>
-	    <div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell">
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p>What the doctor wants though is the probability a patient has disease $d_i$ given the results of the tests. These are the Bayes' or inverse, or posterior probabilities.</p>
-		    <p>We can compute them using Bayes' formula and we'll get results like</p>
-		    <table>
-		      <thead><tr>
-			  <th></th>
-			  <th>$d_1$</th>
-			  <th>$d_2$</th>
-			  <th>$d_3$</th>
-			</tr>
-		      </thead>
-		      <tbody>
-			<tr>
-			  <td>+ +</td>
-			  <td>.700</td>
-			  <td>.131</td>
-			  <td>.169</td>
-			</tr>
-			<tr>
-			  <td>+ –</td>
-			  <td>.075</td>
-			  <td>.033</td>
-			  <td>.892</td>
-			</tr>
-			<tr>
-			  <td>– +</td>
-			  <td>.358</td>
-			  <td>.604</td>
-			  <td>.038</td>
-			</tr>
-			<tr>
-			  <td>– –</td>
-			  <td>.098</td>
-			  <td>.403</td>
-			  <td>.499</td>
-			</tr>
-		      </tbody>
-		    </table>
-		    <p>these are $P(d_i \mid ++)$ etc. Judicious use of these posterior probabilities can be used to inform decision making:</p>
-		    <p>In this case the prior probability of a patient having disease $d_1$ was $\frac{3215}{10000} = 0.3215$.</p>
-		    <p>If the test result came back ++ then the posterior probability $P(d_1 \mid ++) = 0.700$ and we'd suspect that $d_1$ was the culprit.</p>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>What the doctor wants though is the probability a patient has disease $d_i$ given the results of the tests. These are the Bayes' or inverse, or posterior probabilities.</p>
+		  <p>We can compute them using Bayes' formula and we'll get results like</p>
+		  <table>
+		    <thead><tr>
+			<th></th>
+			<th>$d_1$</th>
+			<th>$d_2$</th>
+			<th>$d_3$</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+			<td>+ +</td>
+			<td>.700</td>
+			<td>.131</td>
+			<td>.169</td>
+		      </tr>
+		      <tr>
+			<td>+ –</td>
+			<td>.075</td>
+			<td>.033</td>
+			<td>.892</td>
+		      </tr>
+		      <tr>
+			<td>– +</td>
+			<td>.358</td>
+			<td>.604</td>
+			<td>.038</td>
+		      </tr>
+		      <tr>
+			<td>– –</td>
+			<td>.098</td>
+			<td>.403</td>
+			<td>.499</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		  <p>these are $P(d_i \mid ++)$ etc. Judicious use of these posterior probabilities can be used to inform decision making:</p>
+		  <p>In this case the prior probability of a patient having disease $d_1$ was $\frac{3215}{10000} = 0.3215$.</p>
+		  <p>If the test result came back ++ then the posterior probability $P(d_1 \mid ++) = 0.700$ and we'd suspect that $d_1$ was the culprit.</p>
 
-		  </div>
 		</div>
 	      </div>
 	    </div>
@@ -899,7 +900,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Updating-information-sequentially">Updating information sequentially<a class="anchor-link" href="#Updating-information-sequentially">&#182;</a></h3><p>In the last example we updated the likelihood of a patient having a particular disease based on extra information in the form of the test results.</p>
 		  <p>The previous example with the medical data should give a hint how we can update our ideas about a system as new information comes in - this is why the original probabilities are call priors, and the reversed conditional probabilities are called posterior probabilities.</p>
@@ -913,7 +914,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Continuous-Conditional-Probability">Continuous Conditional Probability<a class="anchor-link" href="#Continuous-Conditional-Probability">&#182;</a></h1><p>we've stayed focussed upon discrete probability distributions.</p>
 		  <p>However similar observations also apply to the case of continuous probabilities.</p>
@@ -925,7 +926,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Continous-probability-spaces">Continous probability spaces<a class="anchor-link" href="#Continous-probability-spaces">&#182;</a></h3><p>Consider a spinner - schematically a circle <em>of unit circumference</em> and a pointer</p>
 		  <p><img src="../Images/spinner.jpg" alt=""></p>
@@ -940,7 +941,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>We can satisfy</p>
 		  $$
@@ -960,7 +961,7 @@
 	    <section>
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>We want a probability model where every value of the sample space is equally likely (we'll call the result of a spin $X$ for now, later we'll see that this is a <em>continuous random variable</em>).</p>
 		    <p>In a similar way to the discrete case we must have</p>
@@ -981,7 +982,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Conditional-continuous-probabilities">Conditional continuous probabilities<a class="anchor-link" href="#Conditional-continuous-probabilities">&#182;</a></h2><p>If we look at a process that has a density function $f(x)$, and if $E$ is an event. We define a conditional density function by</p>
 		  $$
@@ -1004,7 +1005,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example-of-conditional-continuous-probability-distribution">Example of conditional continuous probability distribution<a class="anchor-link" href="#Example-of-conditional-continuous-probability-distribution">&#182;</a></h3><p>In the spinner experiment, suppose we know that the spinner has stopped with head in the upper half of the circle, $0 \leq x \leq 1/2$. What is the probability that $1/6 \leq x \leq 1/3$?</p>
 		  <p>Here $E = \{[0, 1/2]\}, F = \{[1/6, 1/3]\}$</p>
@@ -1028,7 +1029,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.9)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
 		    <li>Definition of conditional probabilities $$
@@ -1081,6 +1082,10 @@
       controls: true,
       progress: true,
       history: true,
+      // Parallax background image
+      parallaxBackgroundImage: '../Images/dice.jpg',
+      //Parallax background size
+      parallaxBackgroundSize: '1920px 1280px', // CSS syntax, e.g. "2100px 900px
 
       theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
       transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
