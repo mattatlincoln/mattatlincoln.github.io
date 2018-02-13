@@ -174,8 +174,9 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Example---discrete-random-variable">Example - discrete random variable<a class="anchor-link" href="#Example---discrete-random-variable">&#182;</a></h3><p>In a game 3 dice are rolled. The player bets £1.  They get back £1 if they roll a single 5, £2 if 2 fives come up, and £3 if 3 fives come up. If no 5s come up they lose their £1 stake.</p>
-
+		  <h3 id="Example---discrete-random-variable">Example - discrete random variable<a class="anchor-link" href="#Example---discrete-random-variable">&#182;</a></h3>
+                  <p>In a game 3 dice are rolled. The player bets £1.  They get back £1 if they roll a single 5, £2 if 2 fives come up, and £3 if 3 fives com up (and their stake is returned).</p>
+                <p>If no 5s come up they lose their £1 stake.</p>
 		</div>
 	      </div>
 	</div></section></section><section><section>
@@ -186,7 +187,7 @@
 		  <p>Let us set up a random variable $W$ for the winnings of the player.</p>
 		  <p>The sample space is the cartesian product of rolling a die:</p>
 		  <p>$S = \{(x_1,x_2,x_3): x_i = 1,2, \ldots, 6; i = 1,2,3\}$</p>
-		  <p>Now, we'll define $W$ as the amount the player wins - this can be $-1,1,2,3$ corresponding to 0,1,2, or 3 fives showing:</p>
+		  <p>Now, we'll define $V$ as the amount the player wins - this can be $-1,1,2,3$ corresponding to 0,1,2, or 3 fives showing:</p>
 		  $$
 		  V = 
 		  \begin{cases} 
@@ -242,7 +243,7 @@
 		  $$
 		  \text{E} = \mu_V = \sum_{v \in R_V } v p_V(v) = (-1) \frac{125}{216} + (1) \frac{75}{216} + (2) \frac{15}{216} + (3) \frac{1}{216} = \frac{-17}{216} = -0.08
 		  $$<p>On average the player loses 8p every time they play.</p>
-		  <p>Note that the average in <em>not</em> in general a value the $V$ can take on.</p>
+		  <p>Note that the average is <em>not</em> in general a value the $V$ can take on.</p>
 
 		</div>
 	      </div>
