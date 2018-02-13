@@ -74,7 +74,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Expectation-and-Variance">Expectation and Variance<a class="anchor-link" href="#Expectation-and-Variance">&#182;</a></h1><p>In these lectures we will define the expectation and variance of a random variable.</p>
 		  <p>This is a further step in connecting abstract probability distribututions to statistical measures, and the real world, if required.</p>
@@ -90,13 +90,22 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Revision">Revision<a class="anchor-link" href="#Revision">&#182;</a></h1><h2 id="Discrete-random-variables">Discrete random variables<a class="anchor-link" href="#Discrete-random-variables">&#182;</a></h2><p><strong>Definition</strong>
 		    Consider an experiment, with outcome set $S$, split into $n$ mutually exclusive and exhaustive events $E_1,E_2,E_3,\ldots,E_n$. A variable, $X$ say, which can assume exactly $n$ numerical values each of which corresponds to one and only one of the given events is called a random variable.</p>
 		  <p>Schematically the mutually exclusive and exhaustive events look like</p>
 		  <p><img src="../Images/Exclusive_and_exhaustive.jpg" alt="Exhaustive" height="200" width="200"></p>
 		  <p>Here our outcome set is split into 4 mutually exclusive events (no overlap) and exhaustive (all of $S$ is covered by them).</p>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>So to associate a random variable (call it $X$) with this sample space we could have something like where to each mutually exclusive event we associate a value of $X = x$ and a probability $p_X(x)$.</p>
 		  <table>
 		    <thead><tr>
@@ -141,7 +150,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Expectation-of-a-Random-variable">Expectation of a Random variable<a class="anchor-link" href="#Expectation-of-a-Random-variable">&#182;</a></h3><p><strong>Definition</strong></p>
 		  <p>Given a random variable $X$ with a probability mass function $p(x)$  we define the expectation of $X$, written as $\text{E}[X]$ as</p>
@@ -163,7 +172,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example---discrete-random-variable">Example - discrete random variable<a class="anchor-link" href="#Example---discrete-random-variable">&#182;</a></h3><p>In a game 3 dice are rolled. The player bets £1.  They get back £1 if they roll a single 5, £2 if 2 fives come up, and £3 if 3 fives come up. If no 5s come up they lose their £1 stake.</p>
 
@@ -172,7 +181,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Let us set up a random variable $W$ for the winnings of the player.</p>
 		  <p>The sample space is the cartesian product of rolling a die:</p>
@@ -203,7 +212,7 @@
 	  </div></section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Now, suppose the player plays the game $n &gt;&gt; 1$ times.</p>
 		  <p>They win $v_1$ pounds the first time, $v_2$ the second time, $\ldots$ ,$v_n$ pounds the $n^{th}$ time. The average amount one would then be a standard average</p>
@@ -219,7 +228,7 @@
 	  </div></section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  $$
 		  \bar{v} = \frac{1}{n}\sum_{i=1}^{n} v_i = (-1) \frac{k_{-1}}{n} + (1) \frac{k_{1}}{n} + (2) \frac{k_{2}}{n} + (3) \frac{k_{3}}{n}  
@@ -240,7 +249,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Example---continuous-random-variable">Example - continuous random variable<a class="anchor-link" href="#Example---continuous-random-variable">&#182;</a></h3><p>Suppose you meet that friend of yours that is always late. You, of course, arrive on time ($T=0$), your friend shows up at a random time $T &gt; 0$ with probability density function</p>
 		  $$
@@ -253,7 +262,7 @@
 	  </div></section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>The probability of your friend arriving between at time $t_i$ is approximately $P( t_i - \Delta t/2 &lt; T &lt; t_i + \Delta t/2 ) \approx f_T(t_i) \Delta t$.</p>
 		  <p>We'd expect our average waiting time to be about $\sum_{i=1}^n t_i f_T(t_i) \Delta t$ - the sum of the product of length of wait, $t_i$, times the probability of waiting that long, $f_T(t_i) \Delta t$. The same as for the discrete random variable case.</p>
@@ -267,7 +276,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Expectation-of-a-function-of-a-random-variable">Expectation of a function of a random variable<a class="anchor-link" href="#Expectation-of-a-function-of-a-random-variable">&#182;</a></h3><p><strong>Definition</strong></p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -298,7 +307,7 @@
 	  </div></section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p><strong>Example</strong></p>
 		  <p>Find $\text{E}[X^2]$ for the continuous random variable $X$ with probability density function</p>
@@ -313,7 +322,7 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>taking our general formula</p>
 		    $$
@@ -328,17 +337,16 @@
 	    </div></div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p>$\text{E}[g(X)]$ can be interpreted as the 'average' (mean) value of the $g(X)$.</p>
-		    <p><strong>It is a number not a function.</strong></p>
+		    <p>$\text{E}[g(X)]$ can be interpreted as the 'average' (mean) value of the $g(X)$.<strong>  It is a number not a function.</strong></p>
 
 		  </div>
 		</div>
 	</div></div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h4 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h4><p>$\text{E}[a] = a$, where $a$ is a constant for any random variable.</p>
 
@@ -347,7 +355,7 @@
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell">
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>this is a special case of 
 		      $$
@@ -368,7 +376,7 @@
 	</div></div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Summary-of-part-1">Summary of part 1<a class="anchor-link" href="#Summary-of-part-1">&#182;</a></h1><p>we have given the definitions of</p>
 		  <ul>
@@ -382,7 +390,7 @@
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Summary-of-relations-given-in-part-1">Summary of relations given in part 1<a class="anchor-link" href="#Summary-of-relations-given-in-part-1">&#182;</a></h1><p><strong>Definition</strong></p>
 		  <p>Given a random variable $X$ with a probability mass function $p(x)$  we define the expectation of $X$, written as $\text{E}[X]$ as</p>
@@ -393,7 +401,15 @@
 		  $$
 		  \text{E}[Z] =  \int_{-\infty}^{\infty} z\cdot f(z) \mathrm{d}z
 		  $$<p>again we see that the relationship is very close between discrete and continuous cases.</p>
-		  <hr>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  
 		  <p><strong>Definition</strong></p>
 		  <p>Let $g(X)$ be any function of a random variable $X$. Then</p>
 		  $$
@@ -415,7 +431,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Variance-of-a-random-variable">Variance of a random variable<a class="anchor-link" href="#Variance-of-a-random-variable">&#182;</a></h3><p>The mean describes where a distribution is centred - expected value.</p>
 		  <p>The variance describes how widely the values of the distribution are spread around the mean.</p>
@@ -440,7 +456,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Standard-Deviation">Standard Deviation<a class="anchor-link" href="#Standard-Deviation">&#182;</a></h2><p>the standard deviation of a random variable $X$ is the square root of its variance.</p>
 		  $$
@@ -454,7 +470,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>show how the two formulae for the variance are equivalent</p>
 		  $$
@@ -480,7 +496,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Useful-identity-of-the-variance">Useful identity of the variance<a class="anchor-link" href="#Useful-identity-of-the-variance">&#182;</a></h3>$$
 		  \text{Var}(aX + b) = a^2 \text{Var}(X)
@@ -491,7 +507,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Moments-of-a-random-variable">Moments of a random variable<a class="anchor-link" href="#Moments-of-a-random-variable">&#182;</a></h2><p>The mean and variance describe a probability law for a random variable to some extent - the centre of the distribution $\mu_X = \text{E}[X]$ and how far points stray from the centre $\sigma_X^2$.</p>
 		  <p>The $k^{th}$ moment of a random variable $X$ is defined as</p>
@@ -502,7 +518,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>so 
 		    $$
@@ -520,7 +536,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Moment-generating-function">Moment generating function<a class="anchor-link" href="#Moment-generating-function">&#182;</a></h3><p>There are some short cuts to calculating the moments of a distribution</p>
 		  <p>The moment generating function of a random variable $X$ is</p>
@@ -536,7 +552,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Then</p>
 		  $$
@@ -556,7 +572,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>If we now take derivatives wrt (with respect to) $t$ we get</p>
 		  $$
@@ -575,7 +591,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>The length of time a transistor will work is a random variable $Y$ with density function</p>
 		  $$
@@ -606,7 +622,7 @@
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell">
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>we have given the definitions of</p>
 		  <ul>
