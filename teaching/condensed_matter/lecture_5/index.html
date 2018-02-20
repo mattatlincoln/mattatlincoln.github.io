@@ -214,59 +214,6 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Laue-Condition">Laue Condition<a class="anchor-link" href="#Laue-Condition">&#182;</a></h2><p>If 
-		    $$ \mathbf {G} =h\mathbf {A} +k\mathbf {B} +l\mathbf {C} $$ 
-		    is the reciprocal lattice vector, we know 
-		    $$ \mathbf {G} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$.</p>
-		  <p>The Laue equations specify 
-		    $$ \mathbf {\Delta k} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$</p>
-		  <p>Hence we have $ {\Delta k} =\mathbf {G} $ or $ \mathbf {k} _{o}-\mathbf {k} _{i}=\mathbf {G} $.</p>
-
-		</div>
-	      </div>
-	    </div>    
-	  </section>
-
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-
-		  <p>From this we get the diffraction condition:</p>
-		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
-		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
-		  <p>Since $(\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2} (\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2}$ (considering elastic scattering) and  $\mathbf {G} =-\mathbf {G}$ (a negative reciprocal lattice vector is still a reciprocal lattice vector):</p>
-		  <p>$$ 2\mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$$ .</p>
-		  <p>The diffraction condition 
-		    $ \mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$ can be reduced to the Bragg law $ 2d\sin \theta =n\lambda$ as follows.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Firstly we can write  $\mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} $, where  $\mathbf{\hat{k}} _{i}$ is the unit vector pointing in the direction of the incident ray. Then</p>
-		  <p>$$ 
-		    \begin{align*}
-		    2\mathbf {k} _{i} \cdot \mathbf {G} &amp; =G^{2} \\
-		    \frac{4 \pi }{ \lambda } \mathbf{\hat{k}} _{i} \cdot \mathbf {G} &amp; = G^{2} \\
-		    \frac{4 \pi }{ \lambda }  G \sin \theta &amp; = G^{2} \\
-		    \implies \frac{2 \pi }{ G } 2 \sin \theta &amp; = \lambda
-		    \end{align*}
-		    $$ .</p>
-		  <p>And comparing to Braggs' Law we see that $\frac{2 \pi}{G}$ must be equal to $d$.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Miller-Indices">Miller Indices<a class="anchor-link" href="#Miller-Indices">&#182;</a></h2><p>A family of lattice planes is determined by three integers h, k, and ℓ, the Miller indices. They are written $(hkl)$, and denote the family of planes orthogonal to $h \mathbf {b_{1}} +k\mathbf {b_{2}} + l \mathbf {b_{3}}  $, where $ \mathbf {b_{i}} $ are the basis of the reciprocal lattice vectors.</p>
 		  <p>By convention, negative integers are written with a bar, as in 3 for −3. The integers are usually written in lowest terms, i.e. their greatest common divisor should be 1.</p>
 		  <p>Miller indices were introduced in 1839 by the British mineralogist William Hallowes Miller. The method was also historically known as the Millerian system, and the indices as Millerian,[2] although this is now rare.</p>
@@ -362,7 +309,64 @@
 
 		</div>
 	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Laue-Condition">Laue Condition<a class="anchor-link" href="#Laue-Condition">&#182;</a></h2><p>If 
+		    $$ \mathbf {G} =h\mathbf {A} +k\mathbf {B} +l\mathbf {C} $$ 
+		    is the reciprocal lattice vector, we know 
+		    $$ \mathbf {G} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$.</p>
+		  <p>The Laue equations specify 
+		    $$ \mathbf {\Delta k} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$</p>
+		  <p>Hence we have $ {\Delta k} =\mathbf {G} $ or $ \mathbf {k} _{o}-\mathbf {k} _{i}=\mathbf {G} $.</p>
+
+		</div>
+	      </div>
+	    </div>    
+	  </section>
+
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  <p>From this we get the diffraction condition:</p>
+		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
+		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
+		  <p>Since $(\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2} (\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2}$ (considering elastic scattering) and  $\mathbf {G} =-\mathbf {G}$ (a negative reciprocal lattice vector is still a reciprocal lattice vector):</p>
+		  <p>$$ 2\mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$$ .</p>
+		  <p>The diffraction condition 
+		    $ \mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$ can be reduced to the Bragg law $ 2d\sin \theta =n\lambda$ as follows.</p>
+
+		</div>
+	      </div>
 	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Firstly we can write  $\mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} $, where  $\mathbf{\hat{k}} _{i}$ is the unit vector pointing in the direction of the incident ray. Then</p>
+		  <p>$$ 
+		    \begin{align*}
+		    2\mathbf {k} _{i} \cdot \mathbf {G} &amp; =G^{2} \\
+		    \frac{4 \pi }{ \lambda } \mathbf{\hat{k}} _{i} \cdot \mathbf {G} &amp; = G^{2} \\
+		    \frac{4 \pi }{ \lambda }  G \sin \theta &amp; = G^{2} \\
+		    \implies \frac{2 \pi }{ G } 2 \sin \theta &amp; = \lambda
+		    \end{align*}
+		    $$ .</p>
+		  <p>And comparing to Braggs' Law we see that $\frac{2 \pi}{G}$ must be equal to $d$.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+	
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
