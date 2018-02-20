@@ -164,16 +164,16 @@
 		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
 		    <p>We have a new random variable $Y$ with probability mass function
-		    $p(0)=\frac{1}{4}, p(1)= \frac{1}{2}, p(4)= \frac{1}{4}$, then the expectation of $Y$ is given by
-		    $$ \text{E}[Y] = \sum_{\text{all $y$}} y\cdot p(y) = \\
-		    0 \cdot p(0) + 1 \cdot p(1) + 4 \cdot p(4) = \\
-		    0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_Y
-		    $$</p>
+		      $p(0)=\frac{1}{4}, p(1)= \frac{1}{2}, p(4)= \frac{1}{4}$, then the expectation of $Y$ is given by
+		      $$ \text{E}[Y] = \sum_{\text{all $y$}} y\cdot p(y) = \\
+		      0 \cdot p(0) + 1 \cdot p(1) + 4 \cdot p(4) = \\
+		      0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_Y
+		      $$</p>
 		    <p>note that $Y$ = $X^2$.
-		    $$ \text{E}[X^2] = \sum_{\text{all $x$}} x^2\cdot p(2) = \\
-		    0 \cdot p(0) + 1 \cdot p(1) + 2^2 \cdot p(2) = \\
-		    0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_{X^2}
-		    $$
+		      $$ \text{E}[X^2] = \sum_{\text{all $x$}} x^2\cdot p(2) = \\
+		      0 \cdot p(0) + 1 \cdot p(1) + 2^2 \cdot p(2) = \\
+		      0 \cdot \frac{1}{4} + 1 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4} = \frac{3}{2} = \mu_{X^2}
+		      $$
 		  </div>
 		</div>
 	  </div></div></section><section>
@@ -366,7 +366,9 @@
 
 		</div>
 	      </div>
-	  </div></section><section>
+	    </div>
+	  </section>
+	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
@@ -386,9 +388,11 @@
 		  $$
 		</div>
 	      </div>
-	</div></section></section>
+	    </div>
+	</section></section>
 
-	<section><section>
+	<section>
+	  <section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
@@ -396,11 +400,11 @@
 		  <p><strong>example</strong>
 		    In fact we have already seen this result:</p>
 		  <p>We gave $X$ as the 'number of heads' when two coins were flipped.</p>
-		  <p>Let us define three new random variables, $X_1$ the number of heads on the first coin, $X_2$ the number of heads on the second coin, and then $X = X_1 + X_2$.</p>
-
+		  <p>Let us define three new random variables, $X_1$ the number of heads on the first coin, $X_2$ the number of heads on the second coin, and then $X = X_1 + X_2$.</p>		  
 		</div>
 	      </div>
-	    </div><div class="fragment">
+	    </div>
+	    <div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
 		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
@@ -421,29 +425,33 @@
 
 		  </div>
 		</div>
-	    </div></div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    $$ 
-		    \begin{align}
-		    \text{E}[X_1^2] &amp; = \text{E}[X_2^2] = \sum_{\text{all $x_1$}} x_1^2\cdot p(x_1) \\
-		    &amp; = 0 \cdot p(0) + 1 \cdot p(1)  \\
-		    &amp; = 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}  \\
-		    &amp; = \frac{1}{2}
-		    \end{align}
-		    $$<p>so</p>
-		    $$
-		    \text{Var}(X_1) = \text{Var}(X_2) = \frac{1}{2} - (\frac{1}{2})^2 =  \frac{1}{4}
-		    $$<p>and we get <strong>in this case</strong> (because $X_1$ and $X_2$ are independent)</p>
-		    $$
-		    \text{Var}(X) = \text{Var}(X_1) + \text{Var}(X_2)
-		    $$<p>It should be clear that this would hold for tossing three coins, four coins $\ldots$ $n$ coins, which again could be proved by induction.</p>
-
-		  </div>
-		</div>
-	</div></div></section></section>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  $$ 
+		  \begin{align}
+		  \text{E}[X_1^2] &amp; = \text{E}[X_2^2] = \sum_{\text{all $x_1$}} x_1^2\cdot p(x_1) \\
+		  &amp; = 0 \cdot p(0) + 1 \cdot p(1)  \\
+		  &amp; = 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}  \\
+		  &amp; = \frac{1}{2}
+		  \end{align}
+		  $$<p>so</p>
+		  $$
+		  \text{Var}(X_1) = \text{Var}(X_2) = \frac{1}{2} - (\frac{1}{2})^2 =  \frac{1}{4}
+		  $$<p>and we get <strong>in this case</strong> (because $X_1$ and $X_2$ are independent)</p>
+		  $$
+		  \text{Var}(X) = \text{Var}(X_1) + \text{Var}(X_2)
+		  $$<p>It should be clear that this would hold for tossing three coins, four coins $\ldots$ $n$ coins, which again could be proved by induction.</p>		  
+		</div>		
+	      </div>
+	    </div>
+	  </section>
+	</section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -927,6 +935,139 @@
 	    </div>
 	</section></section>
 
+	<section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+	  <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
+	  <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
+	  $$
+	  y_i = a_0 + a_1 x_i + e
+	  $$
+	  <p>where $e$ is the error, or residual, between the model and the observations.</p>
+	  <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
+	</section>
+
+	<section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+	    <h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
+	    <p> given our assumption of a straightline</p>
+	    $$
+	    y_i = a_0 + a_1 x_i + e_i
+	    $$
+	    <p>the error at each point is given by</p>
+	    $$
+	    e_i  = y_i - a_0 - a_1 x_i
+	    $$
+	    <p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+	      $$
+	      S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	      $$
+	      as our error criterion.
+	    </p>
+	  </section>
+
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+		    $$
+		    S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+		    $$
+		    as our error criterion.
+		  </p>
+		  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" style="height:300px;">
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+		  <p>If we look at our model
+		    $$
+		    S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+		    $$
+		    we see that there are 2 parameters, $a_0$ and $a_1$ that control the slope and intercept of our model.</p>
+		  <p class="fragment">It is a model, we are assuming that there is a linear relationship between $x$ and $y$.</p>  
+		  <p  class="fragment">We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
+		    $$
+		    \begin{align}
+		    \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
+		    \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i]
+		    \end{align}
+		    $$
+		    where the summations go from $0$ to $n-1$.
+		  </p>
+		  <p  class="fragment">Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
+		  <p  class="fragment">For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  <h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+		  <p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
+		    $$
+		    \begin{align}
+		    \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) = 0 \\	  
+		    \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i] = 0
+		    \end{align}
+		    $$
+		    This gives us a pair of simultaneous linear equations, sometimes called the normal equations.</p>
+		  <p> We can solve these for $a_1$ and $a_0$.
+		    $$
+		    a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+		    $$
+		    and plug this into the first equation to get
+		    $$
+		    a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
+		    $$
+		    where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	</section>
+
+    <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  <h3 id="Quantifying the error">Quantifying the error<a class="anchor-link" href="#Quantifying the error">&#182;</a></h3>
+		  <p>To quantify the error in our model we can look at the correlation coefficient of our data, conventionally called $r$.</p>
+		  <p>This is the covariance of the data $(x,y)$ divided by the square roots of the variance of $x$ and $y$.
+		    $$
+		    r = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{\sqrt{n \sum x_i^2 - (\sum x_i)^2}\sqrt{n \sum y_i^2 - (\sum y_i)^2}}
+		    $$
+		    The measures the difference between the scatter of the data from the mean and the scatter of the data from the ideal straight line.		   
+		  </p>
+		  <p>$r^2$ that, for instance, Excel reports, is the square of the correlation of the random variables $X$ and $Y$.</p>
+		</div>
+	      </div>
+	    </div>
+    </section>
+
+	
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
