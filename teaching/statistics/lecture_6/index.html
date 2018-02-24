@@ -1,1165 +1,1204 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
 
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>06 - Medians, Quantiles and Statistical Tables - part 1 slides</title>
+    <title>06 - Medians, Quantiles and Statistical Tables</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="../../../revealjs//css/reveal.css">
-<link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
 
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../../../revealjs//css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
 
-</script>
+    </script>
 
-<!--[if lt IE 9]>
-<script src="../../../revealjs//lib/js/html5shiv.js"></script>
-<![endif]-->
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
 
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      }
+      });
     </script>
     <!-- End of mathjax configuration -->
 
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
-
-<!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="../custom.css">
-
-</head>
-
-
-<body>
-
-
-<div class="reveal">
-<div class="slides">
-<section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="06---Medians,-Quantiles-and-Statistical-Tables">06 - Medians, Quantiles and Statistical Tables<a class="anchor-link" href="#06---Medians,-Quantiles-and-Statistical-Tables">&#182;</a></h1><p>We start to examine in more detail the properties of a probability distribution, and hence the distribution of the values of a random variable.</p>
-<p>Today we'll look at</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-Measures of Central tendency  
-<br>
-Medians, Quantiles and Percentiles  
-<br>
-Measures of Variation  
-
-</div><p>as well as a remarkable result about probability distributions called</p>
-<ul>
-<li>Chebyshev's Inequality.</li>
-</ul>
-<p>Which leads to</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-The Weak Law of Large Numbers
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Measures-of-central-tendency">Measures of central tendency<a class="anchor-link" href="#Measures-of-central-tendency">&#182;</a></h2><p>Where is the middle of the distribution?</p>
-<p>We have looked at the mean, which we saw is also termed the expectation value for a random variable, of a random variable.</p>
-<p>There are two other common measures of the centre of the distribution</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-<br>
-$\textbf{Mean}$ of data or expectation value of a random variable<br><br>
-$\textbf{Mode}$, which is the most commonly occurring value in the distribution  <br><br>
-$\textbf{Median}$, which is middle value of the distribution if values are listed in order, for an odd number of values. Or   the mean of the two central values, for even numbers of data points.<br><br>
-
-</div><p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Median-for-discrete-data">Median for discrete data<a class="anchor-link" href="#Median-for-discrete-data">&#182;</a></h3><p>For a discrete set of data the median is easily defined:</p>
-<ul>
-<li>median, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
-</ul>
-$$
-(1,2,3,4,5)
-$$<p>has median 3, the central value.</p>
-$$
-(1,2,3,4,5,6)
-$$<p>has median 3.5 - the mean of 3 and 4.</p>
-<p>Algorithmically, we sort the list of numbers, check whether there are an odd or even number, then select the central value, or the central two and average.</p>
-<p>We could also think of this as defining a partition that cuts the data in to two pieces, of equal weight - i.e. with equal numbers of data in each partition.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Median-for-a-discrete-random-variable">Median for a discrete random variable<a class="anchor-link" href="#Median-for-a-discrete-random-variable">&#182;</a></h3><p>We could also think of this as defining a partition that cuts the data in to two pieces, of equal weight - i.e. with equal numbers of data in each partition.</p>
-<p>The median is the value where it is likely, i.e. $P /geq 0.5$,  that the variable would take a value greater than or equal, or less than or equal to.</p>
-<p>Remember that the cumulative distribution function of a discrete random variable $Z$ is given by</p>
-$$
-F_Z(a) = P(Z \leq a) = \sum_{z \leq a} p_Z(z)
-$$<p>If we look back at the list $(1,2,3,4,5)$ and convert it to a random variable - say that each value is equally likely, we get</p>
-$$
-p_Z(z) = 1/5, z = 1,2,3,4,5
-$$<p>now</p>
-$$
-F_Z(z) =
-\begin{cases} 
-    \hfill 0 \hfill , z &lt; 1 \\
-    \hfill \frac{1}{5} \hfill , 1 \leq z \lt 2 \\
-    \hfill \frac{2}{5} \hfill , 2 \leq z \lt 3 \\
-    \hfill \frac{3}{5} \hfill , 3 \leq z \lt 4 \\
-    \hfill \frac{4}{5} \hfill , 4 \leq z \lt 5 \\
-    \hfill 1 \hfill , z \geq 5 \\
-\end{cases}
-$$<p>We can deduce that the median must be 3:</p>
-<p>$P(Z \leq 3) = F(3) = \frac{3}{5}$.</p>
-<p>The other equality is a bit more tricky</p>
-$$
-P(Z \geq 3) =  \sum_{z \geq 3} p_Z(z) = p_Z(3) + p_Z(4) + p_Z(5) = \frac{3}{5}
-$$
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Median-for-continuous-data">Median for continuous data<a class="anchor-link" href="#Median-for-continuous-data">&#182;</a></h3><p>The computation of the Median for a continuous random variable is more interesting.</p>
-<p>Recall cumulative distribution function of a random variable gives the probability that the random variable will take on a value equal to, or smaller than, the argument of the function.</p>
-<p>For a continuous random variable $X$</p>
-$$
-F_X(a) = \int_{-\infty}^{a} f(x) dx = P(X \leq a)
-$$<p>If we take a value $a$ such that $F_X(a)$ this means that at that value the probability</p>
-$$
-P(X \leq a)  = P(X \gt a) = \frac{1}{2}
-$$<p>If we think about it this would also apply to the discrete case. If we take a random value from our list, half the time it will be smaller than our median, and half the time it will be larger.</p>
-<p>From this argument, we can say that $a$ is the median of the random variable $X$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Summary-of-calculating-the-Median">Summary of calculating the Median<a class="anchor-link" href="#Summary-of-calculating-the-Median">&#182;</a></h3><p><br></p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-<br>
-<li>median of a discrete set of data is the middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
-<br>
-<li> median of a discrete random variable $Z$ is the value $z$ such that $P(Z \leq z) \geq 0.5$ and $P(Z \geq z) \geq 0.5$.</li>
-<br>
-<li> median of a continuous vandom variable $X$ is the value $x$ such that $F(x) = \frac{1}{2}$.</li>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Quantiles">Quantiles<a class="anchor-link" href="#Quantiles">&#182;</a></h2><p>Quantiles are cutpoints dividing a set of observations into equal sized groups.</p>
-<p>Actually, we've already met one - the median. This cuts the set of observations/values of the distribution in 2.</p>
-<p>For a continuous distribution life is actually easier, the median is just the value at which the cumulative distribution function of a variable reaches $\frac{1}{2}$.</p>
-<ul>
-<li>median of a discrete set of data is the middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
-<li>the median of a discrete random variable $Z$ is the value $z$ such that $P(Z \leq z) \geq 0.5$ and $P(Z \geq z) \geq 0.5$.</li>
-<li>median of a continuous vandom variable $X$ is the value $x$ such that $F(x) = \frac{1}{2}$.</li>
-</ul>
-<p>For a general quantile we just replace $\frac{1}{2}$ with $a/n$ where $(n-1)$ is number of cuts we will make in the data, and $0 &lt; a &lt; n$ gives the $a^{th}$ $n$-tile.</p>
-<p>Some of them have special names.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Quartiles">Quartiles<a class="anchor-link" href="#Quartiles">&#182;</a></h3><p>If we take $n = 4$, then we would make 3 cuts in the data - we've quartered it.</p>
-<p>the values at which we make the three cuts are called quartiles:</p>
-<ul>
-<li>first quartile, $Q_1$, is defined by $F(Q_1) = \frac{1}{4}$</li>
-<li>second quartile, $Q_2$, is defined by $F(Q_2) = \frac{2}{4}$</li>
-<li>third quartile, $Q_3$, is defined by $F(Q_3) = \frac{3}{4}$</li>
-</ul>
-<p>Note again that $Q_2$ is the median.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>example</strong></p>
-<p>consider a probability density function for the random variable $Y$</p>
-$$
-f_Y(y) = \Bigg \{ \begin{array}{ll}
-2e^{-2y} &amp; \mbox{y $\gt$ 0 },\\
-0 &amp; \mbox{ otherwise}
-\end{array} 
-$$<p>The cumulative distribution function is</p>
-$$
-F_Y(a) = \int_0^a f(y) \text{d}y = 1-e^{-2a}
-$$<p>we can then calculate any quartile as</p>
-$$
-F_Y(Q_n) = \frac{n}{4} 
-$$<p>This implies, making $F_Y(Q_n)$ explicit, that</p>
-$$
-1 - e^{-2 Q_n} = \frac{n}{4}
-$$<p>and rearranging we get</p>
-$$
-Q_n = -\frac{\ln(1-\frac{n}{4})}{2}
-$$
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So we have</p>
-$$
-\begin{align}
-Q_1 = -\frac{\ln(1-\frac{1}{4})}{2} \approx 0.1438 \\
-Q_2 = -\frac{\ln(1-\frac{2}{4})}{2} \approx 0.3466 \\
-Q_3 = -\frac{\ln(1-\frac{3}{4})}{2} \approx 0.6931
-\end{align}
-$$<p>It might be helpful to look at these on a graph:</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
-<span class="n">Fx</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$F_Y(y)$&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f_Y(y)$&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">);</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Percentiles">Percentiles<a class="anchor-link" href="#Percentiles">&#182;</a></h2><p>Of course, there is no reason to restrict ourselve to quartiles.</p>
-<p>We can do percentiles ...</p>
-<p>don't know what to call thousentiles ...</p>
-<p>We just choose the value between 0 and 1 that we set the cumulative distribution function equal to appropriately.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>example</strong></p>
-<p>consider a probability density function</p>
-$$
-f_Y(y) = \Bigg \{ \begin{array}{ll}
-2e^{-2y} &amp; \mbox{y $\gt$ 0 },\\
-0 &amp; \mbox{ otherwise}
-\end{array} 
-$$<p>The cumulative distribution function is</p>
-$$
-F_Y(y) = \int_0^a f_Y(y) \text{d}y = 1-e^{-2a}
-$$<p>we can then calculate the $n^{th}$ percentile, $p_n$, as</p>
-$$
- F_Y(p_n) = 1 - e^{-2 p_n} = \frac{n}{100} 
-$$<p>rearranging we get</p>
-$$
-p_n = -\frac{\ln(1-\frac{n}{100})}{2}
-$$<p>So we have</p>
-$$
-p_5 = -\frac{\ln(1-\frac{5}{100})}{2} \approx 0.026 \\
-$$
-</div>
-</div>
-</div></section></section>
-
-<section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="06---Medians,-Quantiles-and-Statistical-Tables">06 - Medians, Quantiles and Statistical Tables<a class="anchor-link" href="#06---Medians,-Quantiles-and-Statistical-Tables">&#182;</a></h1><p>We start to examine in more detail the properties of a probability distribution, and hence the distribution of the values of a random variable.</p>
-<p>Today we've looked at</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-Measures of Central tendency  
-<br>
-Medians, Quantiles and Percentiles  
-<br>
-
-</div><p>Now we'll look at</p>
-<ul>
-<li>Measures of variation,</li>
-</ul>
-<p>as well as a remarkable result about probability distributions called</p>
-<ul>
-<li>Chebyshev's Inequality.</li>
-</ul>
-<p>Which leads to</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-The Weak Law of Large Numbers
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Measures-of-central-tendency---recapitulation">Measures of central tendency - recapitulation<a class="anchor-link" href="#Measures-of-central-tendency---recapitulation">&#182;</a></h2><p>Where is the middle of the distribution?</p>
-<ul>
-<li>We have looked at the mean, which we saw is also termed the expectation value for a random variable.</li>
-</ul>
-<p>There are two other common measures of the centre of the distribution</p>
-<ul>
-<li>mode, which is the most commonly occuring value in the distribution</li>
-<li>median, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
-</ul>
-<p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Meaning-of-averages">Meaning of averages<a class="anchor-link" href="#Meaning-of-averages">&#182;</a></h2><p>Important point - the average can be a fraction / real number - even for systems when it only makes sense that things come in integers.</p>
-<p><strong>examples</strong></p>
-<p>Number of alpacas that escape some shearers with their coats intact.</p>
-<p>Number of spots on a standard die.</p>
-<p>What is the average number of legs on an animal?</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>It is fine that the expected number of spots on the die is 3.5.</p>
-</li>
-<li><p>This does not mean that the most likely roll of a dice will be 3.5!</p>
-</li>
-<li><p>0.01 according to QI - mostly neotodes</p>
-</li>
-<li><p>If we say that 1.2 alpacas, or whatever, are expected to be caught, this doesn't mean the farmer is after them with a chainsaw. Instead, if the experiment was repeated 100 times, 120 alpacas would be expected to be caught.</p>
-</li>
-</ul>
-<p>That in the large number limit this number would be equal to the probability of it happening times the number of attempts is what the Laws of Large numbers are about - we will look at one of them later today.</p>
-<p>It is closely connected to the frequentist viewpoint of probabilities.</p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Measures-of-Variation">Measures of Variation<a class="anchor-link" href="#Measures-of-Variation">&#182;</a></h2><p>We have already looked at how to calculate the variance and standard deviation of a random variable. They mesure how much the different values of a random variable differ from the mean of the variable, and how likely the given value is to occur.</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-
-- variance and standard deviation
-<br><br>
-- range, largest value minus the smallest value. 
-<br><br>
-- inter-quartile distance - the 'distance' between the first quartile and the third quartile
-</div><p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
-<p>The first two we have covered, or are obvious. What are quartiles?</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Quantiles">Quantiles<a class="anchor-link" href="#Quantiles">&#182;</a></h2><p>Quantiles are cutpoints dividing a set of observations into equal sized groups.</p>
-<p>Actually, we've already met one - the median. This cuts the set of observations/values of the distribution in 2.</p>
-<p>For a continuous distribution life is actually easier, the median is just the value at which the cumulative distribution function of a variable reaches $\frac{1}{2}$.</p>
-<ul>
-<li>median of a discrete distribution is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
-<li>median of a continuous distribution is the value of $x$ such that $F(x) = \frac{1}{2}$.</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Percentiles">Percentiles<a class="anchor-link" href="#Percentiles">&#182;</a></h2><p>Of course, there is no reason to restrict ourselve to quartiles. We can do percentiles ... don't know what to call thousentiles ... We just choose the value between 0 and 1 that we set the cumulative distribution function equal to appropriately.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Statistical-tables">Statistical tables<a class="anchor-link" href="#Statistical-tables">&#182;</a></h1><p>these give values of these percentiles for various distributions, that is all. Nowadays it is easier to get a computer to calculate them for you.</p>
-<p>Particularly we will use calls to the python scipy library to generate them.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Markovs's-Inequality">Markovs's Inequality<a class="anchor-link" href="#Markovs's-Inequality">&#182;</a></h2><p>Lets actually use all this machinery that we've built up to see if we can say anything general about a distribution.</p>
-<p>Let $X$ be a continuous random variable with probability density function $f(x)$.</p>
-<p>We can show that if $X$ only takes on positive values that</p>
-$$
-P(X\geq a) \leq \frac{\text{E}[X]}{a}
-$$<p>Now</p>
-$$
-E[X] = \int_{-\infty}^{\infty} xf(x)\text{d}x \\
-     = \int_{-\infty}^{a} xf(x)\text{d}x + \int_{a}^{\infty} xf(x)\text{d}x 
-$$<p>Now we use the condition that $X$ is non-negative to set up an inequality</p>
-$$
-\begin{align}
-\text{E}[X] &amp; = \int_{-\infty}^{a} xf(x)\text{d}x + \int_{a}^{\infty} xf(x)\text{d}x \\
-            &amp; \geq \int_{a}^{\infty} xf(x)\text{d}x \\
-            &amp; \geq \int_{a}^{\infty} af(x)\text{d}x \\
-            &amp; = a \int_{a}^{\infty} f(x)\text{d}x \\
-            &amp; = aP(X\geq a)
-\end{align}
-$$<p>Which proves our initial statement.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Chebyshev's-Inequality">Chebyshev's Inequality<a class="anchor-link" href="#Chebyshev's-Inequality">&#182;</a></h2><p>We've proved that</p>
-$$
-P(X\geq a) \leq \frac{\text{E}[X]}{a}
-$$<p>Take the particular case of $a = k^2$. And consider the expectation value of $g(X)=(X-\text{E[X]})^2$ we get</p>
-$$
-P \big((X-\text{E}[X])^2\geq k^2\big) \leq \frac{\text{E}[(X-\text{E}[X])^2]}{k^2} = \frac{\sigma_X^2}{k^2}
-$$<p>As long as the mean of $X$, $\mu$, and its variance, $\sigma^2$, are finite then we can equivalently say</p>
-$$
-P \Big(\big| X-\text{E}[X] \big| \geq k\Big) \leq  \frac{\sigma^2}{k^2}
-$$<p>or if we define a new $k'$ in units of the standard deviation, $\sigma_X$, $k = k'\sigma_X)$, we get</p>
-$$
-P \Big(\big|X-\text{E}[X]\big| \geq k'\sigma_X \Big) \leq  \frac{1}{k'^2}
-$$<p>this result is known as Chebyshev's Inequality.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Implication-of-Chebyshev's-Inequality">Implication of Chebyshev's Inequality<a class="anchor-link" href="#Implication-of-Chebyshev's-Inequality">&#182;</a></h3><p>What does</p>
-$$
-P \Big(\big|X-\text{E}[X]\big| \geq k'\sigma_X \Big) \leq  \frac{1}{k'^2}
-$$<p>tell us?</p>
-<p>Lets take k' = 2 to be concrete. Then</p>
-$$
-P \Big(\big|X-\text{E}[X]\big| \geq 2\sigma_X \Big) \leq  \frac{1}{4}
-$$<p>or put another way, 75% of the probability distribution is within 2 standard deviations of the mean.</p>
-<p>Only at most 11.1% of the data will be further than 3 standard deviations from the mean.</p>
-<p><strong>We have made no assumptions at all about the distribution - it applies to any random variable!</strong></p>
-<p><strong>It is generally a rather loose bound, if we know something about the real distribution we can do (much) better</strong></p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>example</strong></p>
-<p>suppose it is known that the number of items produced in a factory during a week is a random variable, $X$, with mean 50.</p>
-<ul>
-<li>what can be said about the probability that this week's production exceeds 75?</li>
-<li>If the variance of the production is known to equal 25, then can be said about ithe probability that the production this week will be between 40 and 60 items?</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>we can use Markov's inequality
-$$
-P(X\geq a) \leq \frac{\text{E}[X]}{a}
-$$
-here we know that ${\text{E}[X]}$ is 50, and the production is a random variable that does not take on negative values. Plugging in the numbers we have
-$$
-P(X \geq 75) \leq \frac{50}{75} = \frac{2}{3}
-$$
-So not very useful in this case.</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>By Chebyshevs inequality in the form 
-$$
-P \big(| X-\text{E}[X] | \geq k\big) \leq  \frac{\sigma^2}{k^2}
-$$
-we can plug in the numbers to get
-$$
-P \big(|X-50| \geq 10 \big) \leq  \frac{25}{10^2} = \frac{1}{4}
-$$
-so the probability that the production is between 40 and 60 is at least $1 - \frac{1}{4} = \frac{3}{4}$.</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Equivalent-probabilities">Equivalent probabilities<a class="anchor-link" href="#Equivalent-probabilities">&#182;</a></h3><p>In the last expression we manipulated equivalent probabilities</p>
-$$
-\begin{align}
-P \big(\{|X-50| \geq 10 \}\big) &amp; = P(\{X - 50 &gt; 10 \cup X - 50 &lt; -10\}) \\
-                                &amp; = P(\{X &gt; 60 \cup X &lt; 40\}) \\
-                                &amp; = P(\{40 &lt; X &lt; 60 \}^C) \\
-                                &amp; = 1 - P(40 &lt; X &lt; 60 )
-\end{align}
-$$<p>If we remember the things in the probabilities are really sets, we can rearrange them to get them into a useful form, and get different statements that define the same sets and hence the same probabilities.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Spelling-test">Spelling test<a class="anchor-link" href="#Spelling-test">&#182;</a></h4><p><a href="https://en.wikipedia.org/wiki/Pafnuty_Chebyshev">Pafnuty Lvovich Chebyshev</a> (May 16 1821 – December 8 1894) was a Russian mathematician.</p>
-<p>His name can be alternatively transliterated as Chebychev, Chebysheff, Chebyshov; or Tchebychev, Tchebycheff (French transcriptions); or Tschebyschev, Tschebyschef, Tschebyscheff (German transcriptions)!</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Chebyshev.jpg" alt=""></p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Weak-law-of-large-numbers">Weak law of large numbers<a class="anchor-link" href="#Weak-law-of-large-numbers">&#182;</a></h2><p>We're getting a bit ahead of ourselves, but let us go ahead and follow through a remarkable implication of the inequality we've just derived.</p>
-<p>Let $X_1,X_2, \ldots,X_n$ be a sequence of independent and identically distributed random variables, each having $\text{E}[X] = \mu$. Then for any $\epsilon \gt 0$,
-$$
-P \Bigg(\Bigg|\frac{X_1+X_2+ \cdots+X_n}{n} - \mu\Bigg| \gt \epsilon \Bigg) \to 0 \text{ as $n \to \infty$}
-$$</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>example</strong></p>
-<p>If the $X_i$ correspond to consequtive tosses of a coin, and we give them a value 0 if they come up a tail and 1 a head then the weak law of large numbers will say that</p>
-$$
-P \Bigg(\Bigg|\frac{X_1+X_2+ \cdots+X_n}{n} - \frac{1}{2}\Bigg| \gt \epsilon \Bigg) \to 0 \text{ as $n \to \infty$}
-$$<p>In this case, as $\text{E}[X_i]=P(\text{\{heads\}})$ we see that the average proportion of the first $n$ flips that differ from the idealised probability $P(E)$ by more than $\epsilon$ tends to 0 as $n$ tends to $\infty$.</p>
-<p>You started to look at this in the computer lab on Tuesday.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="k">def</span> <span class="nf">throw_coin</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    some code that returns a sequence of n random 0s and 1s.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    
-<span class="n">running_sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">number_throws</span> <span class="o">=</span> <span class="mi">5000</span>
-
-<span class="n">my_throws</span> <span class="o">=</span> <span class="n">throw_coin</span><span class="p">(</span><span class="n">number_throws</span><span class="p">)</span> <span class="c1"># do the coin flips</span>
-
-<span class="n">running_average</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">number_throws</span><span class="p">):</span>
-    <span class="c1">#calculate the running average</span>
-    <span class="n">running_average</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">my_throws</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    
-<span class="c1"># this plots a chart of the value of heads_vs_tails</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">running_average</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-vJg6UCcwPQAAAABJRU5ErkJggg==
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Proof-of-the-weak-law-of-large-numbers">Proof of the weak law of large numbers<a class="anchor-link" href="#Proof-of-the-weak-law-of-large-numbers">&#182;</a></h2><p>If we assume that the variable also have a common variance $\sigma^2$ we can use our results form last week to show that</p>
-$$
-\text{E}\Bigg[\frac{X_1+X_2+ \cdots+X_n}{n}\Bigg] = \mu 
-$$<p>and</p>
-$$
-\text{var}\Bigg(\frac{X_1+X_2+ \cdots+X_n}{n}\Bigg) = \frac{\sigma^2}{n}
-$$<p>we just plug these into Chebyshev's equality to get</p>
-$$
-P \Bigg(\Bigg| \frac{X_1+X_2+ \cdots+X_n}{n} - \mu\Bigg| \geq \epsilon\Bigg) \leq  \frac{\sigma^2}{n\epsilon^2}
-$$<p>and the result is proved.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p><br></p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-Measures of Central tendency  
-<br>
-Medians, Quantiles and Percentiles  
-<br>
-Measures of Variation  
-
-</div><p>as well as a remarkable result about probability distributions called</p>
-<ul>
-<li>Chebyshev's Inequality.</li>
-</ul>
-<p>Which leads to</p>
-<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-The Weak Law of Large Numbers
-</div>
-</div>
-</div>
-</div></section></section>
-
-</div>
-</div>
-
-<script>
-
-require(
-    {
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+
+  <body>
+
+
+    <div class="reveal">
+      <div class="slides">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="06---Medians,-Quantiles-and-Statistical-Tables">06 - Medians, Quantiles and Statistical Tables<a class="anchor-link" href="#06---Medians,-Quantiles-and-Statistical-Tables">&#182;</a></h1><p>We start to examine in more detail the properties of a probability distribution, and hence the distribution of the values of a random variable.</p>
+[1;5B		  <p>Today we'll look at</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Measures of Central tendency  
+		    <br>
+		    Medians, Quantiles and Percentiles  
+		    <br>
+		    Measures of Variation  
+
+		  </div><p>as well as a remarkable result about probability distributions called</p>
+		  <ul>
+		    <li>Chebyshev's Inequality.</li>
+		  </ul>
+		  <p>Which leads to</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    The Weak Law of Large Numbers
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Measures-of-central-tendency">Measures of central tendency<a class="anchor-link" href="#Measures-of-central-tendency">&#182;</a></h2><p>Where is the middle of the distribution?</p>
+		  <p>We have looked at the mean, which we saw is also termed the expectation value for a random variable, of a random variable.</p>
+		  <p>There are two other common measures of the centre of the distribution</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <br>
+		    $\textbf{Mean}$ of data or expectation value of a random variable<br><br>
+		    $\textbf{Mode}$, which is the most commonly occurring value in the distribution  <br><br>
+		    $\textbf{Median}$, which is middle value of the distribution if values are listed in order, for an odd number of values. Or   the mean of the two central values, for even numbers of data points.<br><br>
+
+		  </div><p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Median-for-discrete-data">Median for discrete data<a class="anchor-link" href="#Median-for-discrete-data">&#182;</a></h3><p>For a discrete set of data the median is easily defined:</p>
+		  <ul>
+		    <li>median, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		  </ul>
+		  $$
+		  (1,2,3,4,5)
+		  $$<p>has median 3, the central value.</p>
+		  $$
+		  (1,2,3,4,5,6)
+		  $$<p>has median 3.5 - the mean of 3 and 4.</p>
+		  <p>Algorithmically, we sort the list of numbers, check whether there are an odd or even number, then select the central value, or the central two and average.</p>
+		  <p>We could also think of this as defining a partition that cuts the data in to two pieces, of equal weight - i.e. with equal numbers of data in each partition.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Median-for-a-discrete-random-variable">Median for a discrete random variable<a class="anchor-link" href="#Median-for-a-discrete-random-variable">&#182;</a></h3><p>We could also think of this as defining a partition that cuts the data in to two pieces, of equal weight - i.e. with equal numbers of data in each partition.</p>
+		  <p>The median is the value where it is likely, i.e. $P /geq 0.5$,  that the variable would take a value greater than or equal, or less than or equal to.</p>
+		  <p>Remember that the cumulative distribution function of a discrete random variable $Z$ is given by</p>
+		  $$
+		  F_Z(a) = P(Z \leq a) = \sum_{z \leq a} p_Z(z)
+		  $$<p>If we look back at the list $(1,2,3,4,5)$ and convert it to a random variable - say that each value is equally likely, we get</p>
+		  $$
+		  p_Z(z) = 1/5, z = 1,2,3,4,5
+		  $$
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  <p>now</p>
+		  $$
+		  F_Z(z) =
+		  \begin{cases} 
+		  \hfill 0, &  z \lt 1 \\
+		  \hfill \frac{1}{5}, & 1 \leq z \lt 2 \\
+		  \hfill \frac{2}{5}, & 2 \leq z \lt 3 \\
+		  \hfill \frac{3}{5}, & 3 \leq z \lt 4 \\
+		  \hfill \frac{4}{5}, & 4 \leq z \lt 5 \\
+		  \hfill 1, & z \geq 5 \\
+		  \end{cases}
+		  $$<p>We can deduce that the median must be 3:</p>
+		  <p>$P(Z \leq 3) = F(3) = \frac{3}{5}$.</p>
+		  <p>The other equality is a bit more tricky</p>
+		  $$
+		  P(Z \geq 3) =  \sum_{z \geq 3} p_Z(z) = p_Z(3) + p_Z(4) + p_Z(5) = \frac{3}{5}
+		  $$
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Median-for-continuous-data">Median for continuous data<a class="anchor-link" href="#Median-for-continuous-data">&#182;</a></h3><p>The computation of the Median for a continuous random variable is more interesting.</p>
+		  <p>Recall cumulative distribution function of a random variable gives the probability that the random variable will take on a value equal to, or smaller than, the argument of the function.</p>
+		  <p>For a continuous random variable $X$</p>
+		  $$
+		  F_X(a) = \int_{-\infty}^{a} f(x) dx = P(X \leq a)
+		  $$<p>If we take a value $a$ such that $F_X(a)$ this means that at that value the probability</p>
+		  $$
+		  P(X \leq a)  = P(X \gt a) = \frac{1}{2}
+		  $$<p>If we think about it this would also apply to the discrete case. If we take a random value from our list, half the time it will be smaller than our median, and half the time it will be larger.</p>
+		  <p>From this argument, we can say that $a$ is the median of the random variable $X$.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Summary-of-calculating-the-Median">Summary of calculating the Median<a class="anchor-link" href="#Summary-of-calculating-the-Median">&#182;</a></h3><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <br>
+		    <li>median of a discrete set of data is the middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		    <br>
+		    <li> median of a discrete random variable $Z$ is the value $z$ such that $P(Z \leq z) \geq 0.5$ and $P(Z \geq z) \geq 0.5$.</li>
+		    <br>
+		    <li> median of a continuous vandom variable $X$ is the value $x$ such that $F(x) = \frac{1}{2}$.</li>
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Quantiles">Quantiles<a class="anchor-link" href="#Quantiles">&#182;</a></h2><p>Quantiles are cutpoints dividing a set of observations into equal sized groups.</p>
+		  <p>Actually, we've already met one - the median. This cuts the set of observations/values of the distribution in 2.</p>
+		  <p>For a continuous distribution life is actually easier, the median is just the value at which the cumulative distribution function of a variable reaches $\frac{1}{2}$.</p>
+		  <ul>
+		    <li>median of a discrete set of data is the middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		    <li>the median of a discrete random variable $Z$ is the value $z$ such that $P(Z \leq z) \geq 0.5$ and $P(Z \geq z) \geq 0.5$.</li>
+		    <li>median of a continuous vandom variable $X$ is the value $x$ such that $F(x) = \frac{1}{2}$.</li>
+		  </ul>
+		  <p>For a general quantile we just replace $\frac{1}{2}$ with $a/n$ where $(n-1)$ is number of cuts we will make in the data, and $0 &lt; a &lt; n$ gives the $a^{th}$ $n$-tile.</p>
+		  <p>Some of them have special names.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Quartiles">Quartiles<a class="anchor-link" href="#Quartiles">&#182;</a></h3><p>If we take $n = 4$, then we would make 3 cuts in the data - we've quartered it.</p>
+		  <p>the values at which we make the three cuts are called quartiles:</p>
+		  <ul>
+		    <li>first quartile, $Q_1$, is defined by $F(Q_1) = \frac{1}{4}$</li>
+		    <li>second quartile, $Q_2$, is defined by $F(Q_2) = \frac{2}{4}$</li>
+		    <li>third quartile, $Q_3$, is defined by $F(Q_3) = \frac{3}{4}$</li>
+		  </ul>
+		  <p>Note again that $Q_2$ is the median.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>consider a probability density function for the random variable $Y$</p>
+		  $$
+		  f_Y(y) = \Bigg \{ \begin{array}{ll}
+		  2e^{-2y} &amp; \mbox{y $\gt$ 0 },\\
+		  0 &amp; \mbox{ otherwise}
+		  \end{array} 
+		  $$<p>The cumulative distribution function is</p>
+		  $$
+		  F_Y(a) = \int_0^a f(y) \text{d}y = 1-e^{-2a}
+		  $$<p>we can then calculate any quartile as</p>
+		  $$
+		  F_Y(Q_n) = \frac{n}{4} 
+		  $$<p>This implies, making $F_Y(Q_n)$ explicit, that</p>
+		  $$
+		  1 - e^{-2 Q_n} = \frac{n}{4}
+		  $$<p>and rearranging we get</p>
+		  $$
+		  Q_n = -\frac{\ln(1-\frac{n}{4})}{2}
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>So we have</p>
+		  $$
+		  \begin{align}
+		  Q_1 = -\frac{\ln(1-\frac{1}{4})}{2} \approx 0.1438 \\
+		  Q_2 = -\frac{\ln(1-\frac{2}{4})}{2} \approx 0.3466 \\
+		  Q_3 = -\frac{\ln(1-\frac{3}{4})}{2} \approx 0.6931
+		  \end{align}
+		  $$<p>It might be helpful to look at these on a graph:</p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing code_cell rendered">
+		<div class="input">
+		  <div class="prompt input_prompt">In&nbsp;[3]:</div>
+		  <div class="inner_cell">
+		    <div class="input_area">
+		      <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+			  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+			  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+			  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+			  <span class="n">fx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+			  <span class="n">Fx</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+			  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+			  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Fx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$F_Y(y)$&#39;</span><span class="p">);</span>
+			  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$f_Y(y)$&#39;</span><span class="p">);</span>
+			  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">);</span>
+		      </pre></div>
+
+		    </div>
+		  </div>
+		</div>
+
+		<div class="output_wrapper">
+		  <div class="output">
+
+
+		    <div class="output_area">
+
+		      <div class="prompt"></div>
+
+
+
+
+		      <div class="output_png output_subarea ">
+			<img src="data:image/png;base64,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
+				  "
+			     >
+		      </div>
+
+		    </div>
+
+		  </div>
+		</div>
+
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Percentiles">Percentiles<a class="anchor-link" href="#Percentiles">&#182;</a></h2><p>Of course, there is no reason to restrict ourselve to quartiles.</p>
+		  <p>We can do percentiles ...</p>
+		  <p>don't know what to call thousentiles ...</p>
+		  <p>We just choose the value between 0 and 1 that we set the cumulative distribution function equal to appropriately.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>consider a probability density function
+		    $$
+		    f_Y(y) =
+		    \begin{cases}
+		    2e^{-2y}, & y \gt 0 ,\\
+		    0, & \text{ otherwise}
+		    \end{cases} 
+		    $$
+		    The cumulative distribution function is
+		    $$
+		    F_Y(a) =
+		    \begin{cases}
+		    0, & a \lt 0\\
+		    \int_0^a f_Y(y) \rm{d}y = 1-e^{-2a}, & a \geq 0
+		    \end{cases}
+		    $$
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>we can then calculate the $n^{th}$ percentile, $p_n$, as</p>
+		  $$
+		  F_Y(p_n) = 1 - e^{-2 p_n} = \frac{n}{100} 
+		  $$<p>rearranging we get</p>
+		  $$
+		  p_n = -\frac{\ln(1-\frac{n}{100})}{2}
+		  $$
+		  So we have for instance
+		  $$
+		  p_5 = -\frac{\ln(1-\frac{5}{100})}{2} \approx 0.026
+		  $$
+		</div>
+	      </div>
+	    </div>
+	</section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="06---Medians,-Quantiles-and-Statistical-Tables">06 - Medians, Quantiles and Statistical Tables<a class="anchor-link" href="#06---Medians,-Quantiles-and-Statistical-Tables">&#182;</a></h1>
+		  <p>We start to examine in more detail the properties of a probability distribution, and hence the distribution of the values of a random variable.</p>
+		  <p>So far today we've looked at</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Measures of Central tendency  
+		    <br>
+		    Medians, Quantiles and Percentiles  
+		    <br>
+
+		  </div><p>Now we'll look at</p>
+		  <ul>
+		    <li>Measures of variation,</li>
+		  </ul>
+		  <p>as well as a remarkable result about probability distributions called</p>
+		  <ul>
+		    <li>Chebyshev's Inequality.</li>
+		  </ul>
+		  <p>Which leads to</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    The Weak Law of Large Numbers
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Measures-of-central-tendency---recapitulation">Measures of central tendency - recapitulation<a class="anchor-link" href="#Measures-of-central-tendency---recapitulation">&#182;</a></h2><p>Where is the middle of the distribution?</p>
+		  <ul>
+		    <li>We have looked at the mean, which we saw is also termed the expectation value for a random variable.</li>
+		  </ul>
+		  <p>There are two other common measures of the centre of the distribution</p>
+		  <ul>
+		    <li>mode, which is the most commonly occuring value in the distribution</li>
+		    <li>median, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		  </ul>
+		  <p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Meaning-of-averages">Meaning of averages<a class="anchor-link" href="#Meaning-of-averages">&#182;</a></h2><p>Important point - the average can be a fraction / real number - even for systems when it only makes sense that things come in integers.</p>
+		</div>
+		</div>
+		</div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">	    
+		  <p><strong>examples</strong></p>
+		  <p>Number of spots on a standard die.</p>
+		  <p>What is the average number of legs on an animal?</p>
+		  <p>Number of alpacas that escape some shearers with their coats intact.</p>
+		</div>
+	      </div>
+	    </div>
+	    <div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <ul>
+		      <li><p>It is fine that the expected number of spots on the die is 3.5.</p>
+			<p><emph>This does not mean that the most likely roll of a dice will be 3.5!</emph></p>
+		      </li>
+		      <li><p>0.01 according to QI - mostly neotodes</p>
+		      </li>
+		      <li><p>If we say that 1.2 alpacas, or whatever, are expected to be caught, this doesn't mean the farmer is after them with a chainsaw. Instead, if the experiment was repeated 100 times, 120 alpacas would be expected to be caught.</p>
+		      </li>
+		    </ul>
+		    <p>That in the large number limit this number would be equal to the probability of it happening times the number of attempts is what the Laws of Large numbers are about - we will look at one of them later today.</p>
+		    <p>It is closely connected to the frequentist viewpoint of probabilities.</p>
+
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Measures-of-Variation">Measures of Variation<a class="anchor-link" href="#Measures-of-Variation">&#182;</a></h2><p>We have already looked at how to calculate the variance and standard deviation of a random variable. They mesure how much the different values of a random variable differ from the mean of the variable, and how likely the given value is to occur.</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+		    - variance and standard deviation
+		    <br><br>
+		    - range, largest value minus the smallest value. 
+		    <br><br>
+		    - inter-quartile distance - the 'distance' between the first quartile and the third quartile
+		  </div><p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
+		  <p>The first two we have covered, or are obvious. What are quartiles?</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Quantiles">Quantiles<a class="anchor-link" href="#Quantiles">&#182;</a></h2><p>Quantiles are cutpoints dividing a set of observations into equal sized groups.</p>
+		  <p>Actually, we've already met one - the median. This cuts the set of observations/values of the distribution in 2.</p>
+		  <p>For a continuous distribution life is actually easier, the median is just the value at which the cumulative distribution function of a variable reaches $\frac{1}{2}$.</p>
+		  <ul>
+		    <li>median of a discrete distribution is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		    <li>median of a continuous distribution is the value of $x$ such that $F(x) = \frac{1}{2}$.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Percentiles">Percentiles<a class="anchor-link" href="#Percentiles">&#182;</a></h2><p>Of course, there is no reason to restrict ourselve to quartiles. We can do percentiles ... don't know what to call thousentiles ... We just choose the value between 0 and 1 that we set the cumulative distribution function equal to appropriately.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Statistical-tables">Statistical tables<a class="anchor-link" href="#Statistical-tables">&#182;</a></h1><p>these give values of these percentiles for various distributions, that is all. Nowadays it is easier to get a computer to calculate them for you.</p>
+		  <p>Particularly we will use calls to the python scipy library to generate them.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Markovs's-Inequality">Markovs's Inequality<a class="anchor-link" href="#Markovs's-Inequality">&#182;</a></h2><p>Lets actually use all this machinery that we've built up to see if we can say anything general about a distribution.</p>
+		  <p>Let $X$ be a continuous random variable with probability density function $f(x)$.</p>
+		  <p>We can show that if $X$ only takes on positive values that</p>
+		  $$
+		  P(X\geq a) \leq \frac{\text{E}[X]}{a}
+		  $$<p>Now</p>
+		  $$
+		  E[X] = \int_{-\infty}^{\infty} xf(x)\text{d}x \\
+		  = \int_{-\infty}^{a} xf(x)\text{d}x + \int_{a}^{\infty} xf(x)\text{d}x 
+		  $$<p>Now we use the condition that $X$ is non-negative to set up an inequality</p>
+		  $$
+		  \begin{align}
+		  \text{E}[X] &amp; = \int_{-\infty}^{a} xf(x)\text{d}x + \int_{a}^{\infty} xf(x)\text{d}x \\
+		  &amp; \geq \int_{a}^{\infty} xf(x)\text{d}x \\
+		  &amp; \geq \int_{a}^{\infty} af(x)\text{d}x \\
+		  &amp; = a \int_{a}^{\infty} f(x)\text{d}x \\
+		  &amp; = aP(X\geq a)
+		  \end{align}
+		  $$<p>Which proves our initial statement.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Chebyshev's-Inequality">Chebyshev's Inequality<a class="anchor-link" href="#Chebyshev's-Inequality">&#182;</a></h2><p>We've proved that</p>
+		  $$
+		  P(X\geq a) \leq \frac{\text{E}[X]}{a}
+		  $$<p>Take the particular case of $a = k^2$. And consider the expectation value of $g(X)=(X-\text{E[X]})^2$ we get</p>
+		  $$
+		  P \big((X-\text{E}[X])^2\geq k^2\big) \leq \frac{\text{E}[(X-\text{E}[X])^2]}{k^2} = \frac{\sigma_X^2}{k^2}
+		  $$<p>As long as the mean of $X$, $\mu$, and its variance, $\sigma^2$, are finite then we can equivalently say</p>
+		  $$
+		  P \Big(\big| X-\text{E}[X] \big| \geq k\Big) \leq  \frac{\sigma^2}{k^2}
+		  $$<p>or if we define a new $k'$ in units of the standard deviation, $\sigma_X$, $k = k'\sigma_X)$, we get</p>
+		  $$
+		  P \Big(\big|X-\text{E}[X]\big| \geq k'\sigma_X \Big) \leq  \frac{1}{k'^2}
+		  $$<p>this result is known as Chebyshev's Inequality.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Implication-of-Chebyshev's-Inequality">Implication of Chebyshev's Inequality<a class="anchor-link" href="#Implication-of-Chebyshev's-Inequality">&#182;</a></h3><p>What does</p>
+		  $$
+		  P \Big(\big|X-\text{E}[X]\big| \geq k'\sigma_X \Big) \leq  \frac{1}{k'^2}
+		  $$<p>tell us?</p>
+		  <p>Lets take k' = 2 to be concrete. Then</p>
+		  $$
+		  P \Big(\big|X-\text{E}[X]\big| \geq 2\sigma_X \Big) \leq  \frac{1}{4}
+		  $$<p>or put another way, 75% of the probability distribution is within 2 standard deviations of the mean.</p>
+		  <p>Only at most 11.1% of the data will be further than 3 standard deviations from the mean.</p>
+		  <p><strong>We have made no assumptions at all about the distribution - it applies to any random variable!</strong></p>
+		  <p><strong>It is generally a rather loose bound, if we know something about the real distribution we can do (much) better</strong></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>suppose it is known that the number of items produced in a factory during a week is a random variable, $X$, with mean 50.</p>
+		  <ul>
+		    <li>what can be said about the probability that this week's production exceeds 75?</li>
+		    <li>If the variance of the production is known to equal 25, then can be said about ithe probability that the production this week will be between 40 and 60 items?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>we can use Markov's inequality
+		      $$
+		      P(X\geq a) \leq \frac{\text{E}[X]}{a}
+		      $$
+		      here we know that ${\text{E}[X]}$ is 50, and the production is a random variable that does not take on negative values. Plugging in the numbers we have
+		      $$
+		      P(X \geq 75) \leq \frac{50}{75} = \frac{2}{3}
+		      $$
+		      So not very useful in this case.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>By Chebyshevs inequality in the form 
+		      $$
+		      P \big(| X-\text{E}[X] | \geq k\big) \leq  \frac{\sigma^2}{k^2}
+		      $$
+		      we can plug in the numbers to get
+		      $$
+		      P \big(|X-50| \geq 10 \big) \leq  \frac{25}{10^2} = \frac{1}{4}
+		      $$
+		      so the probability that the production is between 40 and 60 is at least $1 - \frac{1}{4} = \frac{3}{4}$.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Equivalent-probabilities">Equivalent probabilities<a class="anchor-link" href="#Equivalent-probabilities">&#182;</a></h3><p>In the last expression we manipulated equivalent probabilities</p>
+		  $$
+		  \begin{align}
+		  P \big(\{|X-50| \geq 10 \}\big) &amp; = P(\{X - 50 &gt; 10 \cup X - 50 &lt; -10\}) \\
+                  &amp; = P(\{X &gt; 60 \cup X &lt; 40\}) \\
+                  &amp; = P(\{40 &lt; X &lt; 60 \}^C) \\
+                  &amp; = 1 - P(40 &lt; X &lt; 60 )
+		  \end{align}
+		  $$<p>If we remember the things in the probabilities are really sets, we can rearrange them to get them into a useful form, and get different statements that define the same sets and hence the same probabilities.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Spelling-test">Spelling test<a class="anchor-link" href="#Spelling-test">&#182;</a></h4><p><a href="https://en.wikipedia.org/wiki/Pafnuty_Chebyshev">Pafnuty Lvovich Chebyshev</a> (May 16 1821 – December 8 1894) was a Russian mathematician.</p>
+		  <p>His name can be alternatively transliterated as Chebychev, Chebysheff, Chebyshov; or Tchebychev, Tchebycheff (French transcriptions); or Tschebyschev, Tschebyschef, Tschebyscheff (German transcriptions)!</p>
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Chebyshev.jpg" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Weak-law-of-large-numbers">Weak law of large numbers<a class="anchor-link" href="#Weak-law-of-large-numbers">&#182;</a></h2><p>We're getting a bit ahead of ourselves, but let us go ahead and follow through a remarkable implication of the inequality we've just derived.</p>
+		  <p>Let $X_1,X_2, \ldots,X_n$ be a sequence of independent and identically distributed random variables, each having $\text{E}[X] = \mu$. Then for any $\epsilon \gt 0$,
+		    $$
+		    P \Bigg(\Bigg|\frac{X_1+X_2+ \cdots+X_n}{n} - \mu\Bigg| \gt \epsilon \Bigg) \to 0 \text{ as $n \to \infty$}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>If the $X_i$ correspond to consequtive tosses of a coin, and we give them a value 0 if they come up a tail and 1 a head then the weak law of large numbers will say that</p>
+		  $$
+		  P \Bigg(\Bigg|\frac{X_1+X_2+ \cdots+X_n}{n} - \frac{1}{2}\Bigg| \gt \epsilon \Bigg) \to 0 \text{ as $n \to \infty$}
+		  $$<p>In this case, as $\text{E}[X_i]=P(\text{\{heads\}})$ we see that the average proportion of the first $n$ flips that differ from the idealised probability $P(E)$ by more than $\epsilon$ tends to 0 as $n$ tends to $\infty$.</p>
+		  <p>You started to look at this in the computer lab on Tuesday.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[2]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+			<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+			<span class="o">%</span><span class="k">matplotlib</span> inline
+
+			<span class="k">def</span> <span class="nf">throw_coin</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+			<span class="sd">&#39;&#39;&#39;</span>
+			<span class="sd">    some code that returns a sequence of n random 0s and 1s.</span>
+			<span class="sd">    &#39;&#39;&#39;</span>
+			<span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+			
+			<span class="n">running_sum</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="n">number_throws</span> <span class="o">=</span> <span class="mi">5000</span>
+
+			<span class="n">my_throws</span> <span class="o">=</span> <span class="n">throw_coin</span><span class="p">(</span><span class="n">number_throws</span><span class="p">)</span> <span class="c1"># do the coin flips</span>
+
+			<span class="n">running_average</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">number_throws</span><span class="p">):</span>
+			<span class="c1">#calculate the running average</span>
+			<span class="n">running_average</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">my_throws</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+			
+			<span class="c1"># this plots a chart of the value of heads_vs_tails</span>
+			<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">running_average</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt"></div>
+
+
+
+
+		    <div class="output_png output_subarea ">
+		      <img src="data:image/png;base64,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
+				vJg6UCcwPQAAAABJRU5ErkJggg==
+				"
+			   >
+		    </div>
+
+		  </div>
+
+		</div>
+	      </div>
+
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Proof-of-the-weak-law-of-large-numbers">Proof of the weak law of large numbers<a class="anchor-link" href="#Proof-of-the-weak-law-of-large-numbers">&#182;</a></h2><p>If we assume that the variable also have a common variance $\sigma^2$ we can use our results from last week to show that</p>
+		  $$
+		  \text{E}\Bigg[\frac{X_1+X_2+ \cdots+X_n}{n}\Bigg] = \mu 
+		  $$<p>and</p>
+		  $$
+		  \text{var}\Bigg(\frac{X_1+X_2+ \cdots+X_n}{n}\Bigg) = \frac{\sigma^2}{n}
+		  $$<p>we just plug these into Chebyshev's equality to get</p>
+		  $$
+		  P \Bigg(\Bigg| \frac{X_1+X_2+ \cdots+X_n}{n} - \mu\Bigg| \geq \epsilon\Bigg) \leq  \frac{\sigma^2}{n\epsilon^2}
+		  $$<p>and the result is proved.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Measures of Central tendency  
+		    <br>
+		    Medians, Quantiles and Percentiles  
+		    <br>
+		    Measures of Variation  
+
+		  </div><p>as well as a remarkable result about probability distributions called</p>
+		  <ul>
+		    <li>Chebyshev's Inequality.</li>
+		  </ul>
+		  <p>Which leads to</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    The Weak Law of Large Numbers
+		  </div>
+		</div>
+	      </div>
+	</div></section></section>
+
+      </div>
+    </div>
+
+    <script>
+
+      require(
+      {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
-    },
-    [
+      },
+      [
       "../../../revealjs//lib/js/head.min.js",
       "../../../revealjs//js/reveal.js"
-    ],
+      ],
 
-    function(head, Reveal){
+      function(head, Reveal){
 
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "../../../revealjs//lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "../../../revealjs//plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../../revealjs//lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../../revealjs//plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+      });
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
+      var update = function(event){
+      if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      }
+      };
 
-        Reveal.addEventListener('slidechanged', update);
+      Reveal.addEventListener('slidechanged', update);
 
-        var update_scroll = function(event){
-          $(".reveal").scrollTop(0);
-        };
+      var update_scroll = function(event){
+      $(".reveal").scrollTop(0);
+      };
 
-        Reveal.addEventListener('slidechanged', update_scroll);
+      Reveal.addEventListener('slidechanged', update_scroll);
 
-    }
-);
-</script>
+      }
+      );
+    </script>
 
-</body>
+  </body>
 
 
 </html>
