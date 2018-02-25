@@ -310,8 +310,9 @@
 		    [f, function(){return acc.Value()*(s2.Value()-s1.Value());}, 'upper', function(){return s1.Value();}, function(){return s2.Value();}],
 		    {fillOpacity:0.4}
 		    );
-		    var fx = cdf2.create('functiongraph',[f, 0, 5]);
-		    var Fx = cdf2.create('functiongraph',[cdf, function(){return s1.Value();}, function(){return s2.Value();}], {strokeColor:'red',strokeWidth:3, name:'Fx'});
+		    var fx = cdf2.create('functiongraph',[f, 0, 5], {strokeColor:'blue',strokeWidth:3, name:'f(x)', withLabel:true});
+		    var Fx = cdf2.create('functiongraph',[cdf, function(){return s1.Value();}, function(){return s2.Value();}],
+		    {strokeColor:'red',strokeWidth:3, name:'F(x)', withLabel:true});
 		    var t = cdf2.create('text',[1,-0.5, function(){ return 'Sum=' + JXG.toFixed(r.Value(), 4); }]);
 		  </script>
 		</div>
