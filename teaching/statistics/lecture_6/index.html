@@ -55,6 +55,9 @@
       "HTML-CSS": {
       styles: {'.MathJax_Display': {"margin": 0}},
       linebreaks: { automatic: true }
+      ,"fast-preview": {
+      disabled: true
+        }  
       }
       });
     </script>
@@ -299,21 +302,23 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div id="cdf2" class="jxgbox" style="width:450px; height:450px;"></div>		   
 		  <script>
-		    var cdf2 = JXG.JSXGraph.initBoard('cdf2', {boundingbox: [-1, 3, 3, -1], axis: true});
+		    JXG.Options.text.useMathJax = true;
+		    var cdf2 = JXG.JSXGraph.initBoard('cdf2', {boundingbox: [-1, 3, 3, -1], axis: true, showCopyright:false, axis:true, showNavigation:false});
 		    // Create Riemann sums for f(x) = 2.0*exp(-2*x).
-		    var s1 = cdf2.create('slider',[[1,2.5],[2,2.5],[0.0,0.0,3]],{snapWidth:0.05});
-		    var s2 = cdf2.create('slider',[[1,2.0],[2,2.0],[0.1,0.1,5]],{snapWidth:0.05});
-		    var acc = cdf2.create('slider',[[1,1.5],[2,1.5],[10,10,1000]],{snapWidth:10});
+		    var s1 = cdf2.create('slider',[[1,2.5],[2,2.5],[0.0,0.0,3]],{snapWidth:0.05, name:'  $a$', withLabel:true});
+		    var s2 = cdf2.create('slider',[[1,2.0],[2,2.0],[0.1,0.1,5]],{snapWidth:0.05, name:'  $b$', withLabel:true});
+		    var acc = cdf2.create('slider',[[1,1.5],[2,1.5],[10,10,1000]],{snapWidth:10, name:'  accuracy', withLabel:true});
 		    var f = function(x) { return 2.0*Math.exp(-2*x); };
 		    var cdf = function(x) { return (1.0 - Math.exp(-2*x)); };
 		    var r = cdf2.create('riemannsum',
 		    [f, function(){return acc.Value()*(s2.Value()-s1.Value());}, 'upper', function(){return s1.Value();}, function(){return s2.Value();}],
 		    {fillOpacity:0.4}
 		    );
-		    var fx = cdf2.create('functiongraph',[f, 0, 5], {strokeColor:'blue',strokeWidth:3, name:'f(x)', withLabel:true});
+		    var fx = cdf2.create('functiongraph',[f, 0, 5],
+		    {strokeColor:'blue',strokeWidth:3, name:'$f(x)$', withLabel:true});
 		    var Fx = cdf2.create('functiongraph',[cdf, function(){return s1.Value();}, function(){return s2.Value();}],
-		    {strokeColor:'red',strokeWidth:3, name:'F(x)', withLabel:true});
-		    var t = cdf2.create('text',[1,-0.5, function(){ return 'Sum=' + JXG.toFixed(r.Value(), 4); }]);
+		    {strokeColor:'red',strokeWidth:3, name:'$F(x)$', withLabel:true});
+		    var t = cdf2.create('text',[1,-0.5, function(){ return '$F(b) - F(a) = \\int_a^b f(x) \\rm{d}x \\approx'  + JXG.toFixed(r.Value(), 3) +'$'; }]);
 		  </script>
 		</div>
 	      </div>	      
