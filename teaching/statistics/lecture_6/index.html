@@ -382,6 +382,35 @@
 		</div>
 	      </div>
 	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <div id="cdf3" class="jxgbox" style="width:450px; height:450px;"></div>		   
+		  <script>
+		    JXG.Options.text.useMathJax = true;
+		    var cdf3 = JXG.JSXGraph.initBoard('cdf3', {boundingbox: [-0.5, 3, 1, -0.5], axis: true, showCopyright:false, axis:true, showNavigation:false});
+		    // Create Riemann sums for f(x) = 2.0*exp(-2*x).
+		    var s1 = cdf3.create('slider',[[0.3,2.5],[0.8,2.5],[0.0,0.0,1]],{snapWidth:0.01, name:'  $a$', withLabel:true});
+		    var s2 = cdf3.create('slider',[[0.3,2.0],[0.8,2.0],[0.01,0.1,1]],{snapWidth:0.01, name:'  $b$', withLabel:true});
+		    var acc = cdf3.create('slider',[[0.3,1.5],[0.8,1.5],[10,10,1000]],{snapWidth:10, name:'  accuracy', withLabel:true});
+		    var f = function(x) { return 2.0*Math.exp(-2*x); };
+		    var cdf = function(x) { return (1.0 - Math.exp(-2*x)); };
+		    var r = cdf3.create('riemannsum',
+		    [f, function(){return acc.Value()*(s2.Value()-s1.Value());}, 'upper', function(){return s1.Value();}, function(){return s2.Value();}],
+		    {fillOpacity:0.4}
+		    );
+		    var fx = cdf3.create('functiongraph',[f, 0, 5],
+		    {strokeColor:'blue',strokeWidth:3, name:'$f(x)$', withLabel:true});
+		    var Fx = cdf3.create('functiongraph',[cdf, function(){return s1.Value();}, function(){return s2.Value();}],
+		    {strokeColor:'red',strokeWidth:3, name:'$F(x)$', withLabel:true});
+		    var t = cdf3.create('text',[0.25,-0.25, function(){ return '$F(b) - F(a) = \\int_a^b f(x) \\rm{d}x \\approx'  + JXG.toFixed(r.Value(), 3) +'$'; }]);
+		  </script>
+		</div>
+	      </div>	      
+	    </div>
 	</section></section>
 
 	<section><section>
@@ -533,7 +562,17 @@
 		  <p>We can show that if $X$ only takes on positive values that</p>
 		  $$
 		  P(X\geq a) \leq \frac{\text{E}[X]}{a}
-		  $$<p>Now</p>
+		  $$
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now</p>
 		  $$
 		  E[X] = \int_{-\infty}^{\infty} xf(x)\text{d}x \\
 		  = \int_{-\infty}^{a} xf(x)\text{d}x + \int_{a}^{\infty} xf(x)\text{d}x 
@@ -693,8 +732,6 @@
 		  $$
 		  P \Bigg(\Bigg|\frac{X_1+X_2+ \cdots+X_n}{n} - \frac{1}{2}\Bigg| \gt \epsilon \Bigg) \to 0 \text{ as $n \to \infty$}
 		  $$<p>In this case, as $\text{E}[X_i]=P(\text{\{heads\}})$ we see that the average proportion of the first $n$ flips that differ from the idealised probability $P(E)$ by more than $\epsilon$ tends to 0 as $n$ tends to $\infty$.</p>
-		  <p>You started to look at this in the computer lab on Tuesday.</p>
-
 		</div>
 	      </div>
 	</div></section></section><section><section>
