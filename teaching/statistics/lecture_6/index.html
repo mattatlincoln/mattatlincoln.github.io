@@ -393,20 +393,20 @@
 		    JXG.Options.text.useMathJax = true;
 		    var cdf3 = JXG.JSXGraph.initBoard('cdf3', {boundingbox: [-0.5, 3, 1, -0.5], axis: true, showCopyright:false, axis:true, showNavigation:false});
 		    // Create Riemann sums for f(x) = 2.0*exp(-2*x).
-		    var s1 = cdf3.create('slider',[[0.3,2.5],[0.8,2.5],[0.0,0.0,1]],{snapWidth:0.01, name:'  $a$', withLabel:true});
-		    var s2 = cdf3.create('slider',[[0.3,2.0],[0.8,2.0],[0.01,0.1,1]],{snapWidth:0.01, name:'  $b$', withLabel:true});
-		    var acc = cdf3.create('slider',[[0.3,1.5],[0.8,1.5],[10,10,1000]],{snapWidth:10, name:'  accuracy', withLabel:true});
-		    var f = function(x) { return 2.0*Math.exp(-2*x); };
-		    var cdf = function(x) { return (1.0 - Math.exp(-2*x)); };
-		    var r = cdf3.create('riemannsum',
-		    [f, function(){return acc.Value()*(s2.Value()-s1.Value());}, 'upper', function(){return s1.Value();}, function(){return s2.Value();}],
+		    var s12 = cdf3.create('slider',[[0.3,2.5],[0.8,2.5],[0.0,0.0,1]],{snapWidth:0.01, name:'  $a$', withLabel:true});
+		    var s22 = cdf3.create('slider',[[0.3,2.0],[0.8,2.0],[0.01,0.1,1]],{snapWidth:0.01, name:'  $b$', withLabel:true});
+		    var acc2 = cdf3.create('slider',[[0.3,1.5],[0.8,1.5],[10,10,1000]],{snapWidth:10, name:'  accuracy', withLabel:true});
+		    var f2 = function(x) { return 2.0*Math.exp(-2*x); };
+		    var cdf2 = function(x) { return (1.0 - Math.exp(-2*x)); };
+		    var r2 = cdf3.create('riemannsum',
+		    [f2, function(){return acc2.Value()*(s22.Value()-s12.Value());}, 'upper', function(){return s12.Value();}, function(){return s22.Value();}],
 		    {fillOpacity:0.4}
 		    );
-		    var fx = cdf3.create('functiongraph',[f, 0, 5],
+		    var fx2 = cdf3.create('functiongraph',[f2, 0, 5],
 		    {strokeColor:'blue',strokeWidth:3, name:'$f(x)$', withLabel:true});
-		    var Fx = cdf3.create('functiongraph',[cdf, function(){return s1.Value();}, function(){return s2.Value();}],
+		    var Fx2 = cdf3.create('functiongraph',[cdf2, function(){return s12.Value();}, function(){return s22.Value();}],
 		    {strokeColor:'red',strokeWidth:3, name:'$F(x)$', withLabel:true});
-		    var t = cdf3.create('text',[0.25,-0.25, function(){ return '$F(b) - F(a) = \\int_a^b f(x) \\rm{d}x \\approx'  + JXG.toFixed(r.Value(), 3) +'$'; }]);
+		    var t2 = cdf3.create('text',[0.25,-0.25, function(){ return '$F(b) - F(a) = \\int_a^b f(x) \\rm{d}x \\approx'  + JXG.toFixed(r2.Value(), 3) +'$'; }]);
 		  </script>
 		</div>
 	      </div>	      
