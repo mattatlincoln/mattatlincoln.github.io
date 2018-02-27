@@ -83,7 +83,7 @@
 	      <div class="inner_cell">
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="06---Medians,-Quantiles-and-Statistical-Tables">06 - Medians, Quantiles and Statistical Tables<a class="anchor-link" href="#06---Medians,-Quantiles-and-Statistical-Tables">&#182;</a></h1><p>We start to examine in more detail the properties of a probability distribution, and hence the distribution of the values of a random variable.</p>
-[1;5B		  <p>Today we'll look at</p>
+		  <p>Today we'll look at</p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 		    Measures of Central tendency  
 		    <br>
@@ -107,13 +107,13 @@
 	      <div class="inner_cell">
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Measures-of-central-tendency">Measures of central tendency<a class="anchor-link" href="#Measures-of-central-tendency">&#182;</a></h2><p>Where is the middle of the distribution?</p>
-		  <p>We have looked at the mean, which we saw is also termed the expectation value for a random variable, of a random variable.</p>
+		  <p>We have looked at the mean, which we saw is also termed the expectation value of a random variable.</p>
 		  <p>There are two other common measures of the centre of the distribution</p>
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 		    <br>
 		    $\textbf{Mean}$ of data or expectation value of a random variable<br><br>
-		    $\textbf{Mode}$, which is the most commonly occurring value in the distribution  <br><br>
-		    $\textbf{Median}$, which is middle value of the distribution if values are listed in order, for an odd number of values. Or   the mean of the two central values, for even numbers of data points.<br><br>
+		    $\textbf{Mode}$, which is the most commonly occurring value in the distribution (may not be unique) <br><br>
+		    $\textbf{Median}$, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.<br><br>
 
 		  </div><p>These measures are often applied to samples, which may or may not come from some idealised probability distribution.</p>
 
@@ -126,7 +126,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Median-for-discrete-data">Median for discrete data<a class="anchor-link" href="#Median-for-discrete-data">&#182;</a></h3><p>For a discrete set of data the median is easily defined:</p>
 		  <ul>
-		    <li>median, which is middle value of the distribution if values are listed in order, for an odd number of values. Or the mean of the two central values, for even numbers of data points.</li>
+		    <li>median is middle value of the distribution if values are listed in order, for an odd number of values. Or the (arithmetic) mean of the two central values, for even numbers of data points.</li>
 		  </ul>
 		  $$
 		  (1,2,3,4,5)
@@ -145,7 +145,7 @@
 	      <div class="inner_cell">
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Median-for-a-discrete-random-variable">Median for a discrete random variable<a class="anchor-link" href="#Median-for-a-discrete-random-variable">&#182;</a></h3><p>We could also think of this as defining a partition that cuts the data in to two pieces, of equal weight - i.e. with equal numbers of data in each partition.</p>
-		  <p>The median is the value where it is likely, i.e. $P /geq 0.5$,  that the variable would take a value greater than or equal, or less than or equal to.</p>
+		  <p>The median is the value where it is likely  that the variable would take a value greater than or equal, i.e. $P(Z \geq z_{\rm{median}}) \geq 0.5$, or less than or equal to , i.e. $P(Z \leq z_{\rm{median}})  \geq 0.5$,.</p>
 		  <p>Remember that the cumulative distribution function of a discrete random variable $Z$ is given by</p>
 		  $$
 		  F_Z(a) = P(Z \leq a) = \sum_{z \leq a} p_Z(z)
@@ -475,32 +475,55 @@
 	      <div class="inner_cell">
 		<div class="text_cell_render border-box-sizing rendered_html">	    
 		  <p><strong>examples</strong></p>
-		  <p>Number of spots on a standard die.</p>
+		  <p>Expected number of spots on a standard die.</p>
 		  <p>What is the average number of legs on an animal?</p>
 		  <p>Number of alpacas that escape some shearers with their coats intact.</p>
 		</div>
 	      </div>
 	    </div>
-	    <div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell">
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <ul>
-		      <li><p>It is fine that the expected number of spots on the die is 3.5.</p>
-			<p><emph>This does not mean that the most likely roll of a dice will be 3.5!</emph></p>
-		      </li>
-		      <li><p>0.01 according to QI - mostly neotodes</p>
-		      </li>
-		      <li><p>If we say that 1.2 alpacas, or whatever, are expected to be caught, this doesn't mean the farmer is after them with a chainsaw. Instead, if the experiment was repeated 100 times, 120 alpacas would be expected to be caught.</p>
-		      </li>
-		    </ul>
-		    <p>That in the large number limit this number would be equal to the probability of it happening times the number of attempts is what the Laws of Large numbers are about - we will look at one of them later today.</p>
-		    <p>It is closely connected to the frequentist viewpoint of probabilities.</p>
-
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><em>Expected number of spots on a standard die.</em></p>
+		  <div class='fragment'>		  
+		    <p>It is fine that the expected number of spots on the die is 3.5.</p>
+		    <p><emph>This does not mean that the most likely roll of a dice will be 3.5!</emph></p>
 		  </div>
 		</div>
-	</div></div></section></section><section><section>
+	      </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">	    		  
+		  <p><em>What is the average number of legs on an animal?</em></p>
+		  <div class='fragment'>
+		    <p>$\approx 0.01$ according to QI - mostly <a href='https://en.wikipedia.org/wiki/Nematode'>nematodes</a></p>
+		  </div>		    
+		</div>
+	      </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">	    
+		  <p><em>Number of alpacas that escape some shearers with their coats intact.</em></p>
+		  <div class='fragment
+		       <p>If we say that 1.2 alpacas, or whatever, are expected to be caught, this doesn't mean the farmer is after them with a chainsaw. Instead, if the experiment was repeated 100 times, 120 alpacas would be expected to be caught.</p>
+		  <p>That in the large number limit this number would be equal to the probability of it happening times the number of attempts is what the Laws of Large numbers are about - we will look at one of them later today.</p>
+		  <p>It is closely connected to the frequentist viewpoint of probabilities.</p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell">
@@ -539,10 +562,12 @@
 	      <div class="inner_cell">
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Percentiles">Percentiles<a class="anchor-link" href="#Percentiles">&#182;</a></h2><p>Of course, there is no reason to restrict ourselve to quartiles. We can do percentiles ... don't know what to call thousentiles ... We just choose the value between 0 and 1 that we set the cumulative distribution function equal to appropriately.</p>
-
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	    </div>
+	</section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell">
@@ -767,7 +792,7 @@
 		  </div>
 		</div>
 	      </div>
-
+	      <p>Expectation value of our variable, which equals $P(\{\rm{heads}\})$, as we extend the length of a simulation.</p>
 	      <div class="output_wrapper">
 		<div class="output">
 
