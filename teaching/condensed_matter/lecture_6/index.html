@@ -81,7 +81,7 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="06---Waves-in-Crystals,-Electronic-Band-Structure">06 - Waves in Crystals, Electronic Band Structure<a class="anchor-link" href="#06---Waves-in-Crystals,-Electronic-Band-Structure">&#182;</a></h1>
+		  <h1 id="06---Waves-in-Crystals,-Electronic-Band-Structure">06 - Electronic Band Structure, Quasiparticles, Magnetism<a class="anchor-link" href="#06---Waves-in-Crystals,-Electronic-Band-Structure">&#182;</a></h1>
 		</div>
 	      </div>
 	</div></section></section><section><section>
@@ -165,7 +165,7 @@
 		  \end{align}
 		  $$<p>Further, as we have $N$ sites, to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \pm\frac{N-1}{2}, -\frac{N}{2}$.</p>
 		  <p>With this restriction we have $2N$ normal modes from our $2N$ atoms that each have 1 degree of freedom.</p>
-		  <p>If we had $N_atom$ atoms in our unit cell, we would actually get $N_{atom}$ normal modes, and in 3D, $3 N_{atom}$</p>
+		  <p>If we had $N_{\rm{atom}}$ atoms in our unit cell, we would actually get $N_{\rm{atom}}$ normal modes, and in 3D, $3 N_{\rm{atom}}$</p>
 
 		</div>
 	      </div>
@@ -194,12 +194,10 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h3><p>We took a harmonic model for interaction between our atoms.</p>
-		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.</p>
-		  <p><img src='../lecture_3/binding_curve.png'></p>
-		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interaction become very strong, very quickly).</p>
-		  <p>This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p>
-		  <p>If we replace $k$ in 1D with $\textbf{k}$ in 3D, there will be different expansions and elasticity in different directions for some materials.</p>
+		  <h3 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h3>
+		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.
+		  <img src='../lecture_1/binding_curve.png' style='width:400px'></p>
+		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interactions become very strong).This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p><p> If we replace $k$ in 1D with $\textbf{k}$ in 3D, there will be different expansions and elasticity in different directions for some materials.</p>
 
 		</div>
 	      </div>
@@ -343,9 +341,9 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We get a combined band structure on the right of the figure below, and if we sum up the states at given energies we get the DOS on the left:</p>
-		  <p><img src='TiO2grapheneBands.png' style='width:600px'></p>
-		  <p>This is a very complicated structure - but there are some features of interest that we might come back to. Note some 'transitions' are marked. Remember in atoms electrons can shift between energy levels when a photon of energy $\hbar \omega = \Delta E$, a similar picture holds here. When bands have energy levels at appropriate energies it may be possible to absorb light energy.</p>
+		  <p>We get a combined band structure on the right of the figure below, and if we sum up the states at given energies we get the DOS on the left:
+		  <img src='TiO2grapheneBands.png' style='width:500px'>
+		  This is a very complicated structure - but there are some features of interest that we might come back to. Note some 'transitions' are marked. Remember in atoms electrons can shift between energy levels when a photon of energy $\hbar \omega = \Delta E$, a similar picture holds here. When bands have energy levels at appropriate energies it may be possible to absorb light energy.</p>
 
 		</div>
 	      </div>
@@ -358,9 +356,16 @@
 		  <h2 id="Metals,-Semiconductors,-Insulators">Metals, Semiconductors, Insulators<a class="anchor-link" href="#Metals,-Semiconductors,-Insulators">&#182;</a></h2><p>If there is an energy gap between the highest filled states and the next set of states, then you have an insulator, or if the gap is less than about 5 eV, a semiconductor.</p>
 		  <p>If there is no energy gap between empty and filled states, we have a metal.</p>
 		  <p>Or in very crude cartoon forms</p>
-		  <p><img src='http://what-when-how.com/wp-content/uploads/2011/07/tmp6C267_thumb_thumb.jpg'></p>
-		  <p><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png'></p>
-
+		  <table>
+		    <tr>
+		      <td>
+			<img src='http://what-when-how.com/wp-content/uploads/2011/07/tmp6C267_thumb_thumb.jpg' >
+		      </td>
+		      <td>
+			<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png'>
+		      </td>
+		    </tr>
+		    </table>
 		</div>
 	      </div>
 	  </div></section><section>
@@ -370,7 +375,7 @@
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/D-band_filling.png/500px-D-band_filling.png'></p>
-
+		  <p>Very narrow bands can lead to unusual properties - we'll look at this at the end of the lecture.</p>
 		</div>
 	      </div>
 	</div></section></section>
@@ -384,6 +389,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Quasiparticles">Quasiparticles<a class="anchor-link" href="#Quasiparticles">&#182;</a></h1>
 		</div>
+		<div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/KbsnY--LFh0?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 	      </div>
 	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
@@ -620,9 +626,9 @@
   //minScale: 0.2,
   //maxScale: 1.5,
   // Parallax background image
-  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Diffusion_rayleigh_et_diffraction_svg.svg',
+  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Polaron_scheme1.svg',
   // Parallax background size
-  parallaxBackgroundSize: '799px 261px', // CSS syntax, e.g. "2100px 900px
+  parallaxBackgroundSize: '408px 511px', // CSS syntax, e.g. "2100px 900px
   
   theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
   transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
