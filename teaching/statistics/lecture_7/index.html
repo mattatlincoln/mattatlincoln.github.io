@@ -1,0 +1,1279 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>07 - Special Probability Distributions</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+
+  <body>
+
+
+    <div class="reveal">
+      <div class="slides">
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Special-Distributions">Special Distributions<a class="anchor-link" href="#Special-Distributions">&#182;</a></h1><p>Learning objectives</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Define and use the properties of the major probability distributions:
+
+		    <li> uniform  </li>
+		    <li> binomial </li>
+		    <li> geometric </li>
+		    <li> poisson </li>
+		    <li> exponential </li>
+		    <li> normal </li>
+		  </div><ul>
+		    <li>see examples where these distributions occur.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Uniform-random-variable">Uniform random variable<a class="anchor-link" href="#Uniform-random-variable">&#182;</a></h2><p>A continuous random variable $X$ is said to be uniformly distributed over the interval $[a,b]$ if its probability density function is given by</p>
+		  $$
+		  f(x) = \Bigg \{ \begin{array}{ll}
+		  \frac{1}{b-a} & \mbox{$a \le x \le b$},\\
+		  0 & \mbox{ otherwise}
+		  \end{array} 
+		  $$<p><strong>example</strong>
+		    a uniform random variable between the values of 3 and 7 is shown below. It has a constant value of $\frac{1}{4}$ over the interval [3,7].</p>
+		  <p><img src="uni.png" alt=""></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Discrete-uniformly-distributed-random-variable">Discrete uniformly distributed random variable<a class="anchor-link" href="#Discrete-uniformly-distributed-random-variable">&#182;</a></h3><p>A discrete random variable $Y$ would be described as uniformly distributed if all values of its probability mass function are equal over a finite domain.</p>
+		  <p>We have used this fairly often in fact - it is used implicitly in all the 'counting problem' types of situations: you assign probabilities by counting up the number of ways something can happen, then dividing by the total number of ways. This assumes a uniform distribution for the individual ways.</p>
+		  <p>Examples</p>
+		  <ul>
+		    <li>spots on a die</li>
+		    <li>students in the UoL School of Maths and Physics</li>
+		  </ul>
+		  
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Properties-of-the-uniform-distribution">Properties of the uniform distribution<a class="anchor-link" href="#Properties-of-the-uniform-distribution">&#182;</a></h3><p>We can find the probability that a uniformly distributed random variable has a value in a subinterval $[\alpha, \beta]$ of $[a,b]$ using our normal definition:
+		    $$
+		    \begin{align}
+		    P(\alpha \le x \le \beta) & = \int_{\alpha}^{\beta} f(x) \text{d}x \\
+                    & = \frac{1}{(b-a)} \int_{\alpha}^{\beta} \text{d}x \\
+                    & = \frac{(\beta-\alpha)}{(b-a)}
+		    \end{align}
+		    $$
+		    this is just the ratio of the length of the subinterval $[\alpha,\beta]$ to that of the interval $[a,b]$ that the variable is defined over.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>This immediately shows that the integral of $f(x)$ over all space gives 1, as a probability density function must.
+		    $$
+		    \begin{align}
+		    P(- \infty \le x \le \infty) & = \int_{-\infty}^{\infty} f(x) \text{d}x \\
+                    & = \frac{1}{(b-a)} \int_{a}^{b} \text{d}x \\
+                    & = \frac{(b-a)}{(b-a)} \\
+                    & = 1
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Expectation-value">Expectation value<a class="anchor-link" href="#Expectation-value">&#182;</a></h4><p>The expectation value of a uniformly distributed random variable is calculated as
+		    $$
+		    \begin{align}
+		    \text{E}[X] & = \int_{a}^{b} x f(x) \text{d}x \\
+		    & = \frac{1}{(b-a)} \int_{a}^{b} x \text{d}x \\
+		    & = \frac{b^2 - a^2}{2(b-a)} \\
+		    & = \frac{(b-a)(b+a)}{2(b-a)} \\
+		    & = \frac{a+b}{2}
+		    \end{align}
+		    $$
+		    So the expected value of the random variable is the midpoint of the interval that it is defined over.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Variance-of-uniformly-distributed-random-variable">Variance of uniformly distributed random variable<a class="anchor-link" href="#Variance-of-uniformly-distributed-random-variable">&#182;</a></h4><p>We use our second definition of variance 
+		    $$
+		    \sigma_X^2 = \text{E}[X^2]-\text{E}[X]^2
+		    $$
+		    We have already found $\text{E}[X]$, we need to calculate $\text{E}[X^2]$.
+		    $$
+		    \begin{align}
+		    \text{E}[X^2] & = \int_{a}^{b} x^2 f(x) \text{d}x \\
+		    & = \frac{1}{(b-a)} \int_{a}^{b} x^2 \text{d}x \\
+		    & = \frac{b^3 - a^3}{3(b-a)} \\
+		    & = \frac{b^2+ab+a^2}{3}
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>and so we get
+		    $$
+		    \begin{align}
+		    \sigma_X^2 & = \text{E}[X^2]-\text{E}[X]^2 \\
+		    & = \frac{b^2+ab+a^2}{3} - \big(\frac{a+b}{2}\big)^2 \\
+		    & = \frac{(b-a)^2}{12}
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Quantiles">Quantiles<a class="anchor-link" href="#Quantiles">&#182;</a></h4><p>We can find the quantiles of the uniform distribution very simply.</p>
+		  <p>The cumulative probability distribution function of a uniformly distributed continuous random variable defined between $a$ and $b$  is given by</p>
+		  $$
+		  \begin{align}
+		  F(\alpha) & = \int_{-\infty}^{a} f(x) \text{d}x \\
+		  & = \frac{1}{(b-a)} \int_{a}^{\alpha} \text{d}x \\
+		  & = \frac{(\alpha-a)}{(b-a)}
+		  \end{align}
+		  $$<p>this is just the ratio of the length of the interval the variable is defined over to that of lower bound of the interval to the value of the variable at which we want to calculate the cumulative distribution function.</p>
+
+		</div>
+	      </div>
+	    </div></section><section>
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p><strong>Example</strong></p>
+		    <p>find the value of $p_{95}$ such that there is a 95% probability that the random variable $X$ takes a value smaller than $p_{95}$ .
+		      $$
+		      \begin{align}
+		      P(X < p_{95}) &= F(p_{95}) = 0.95 \\ 
+			    &= \frac{(p_{0.95}-a)}{(b-a)} \\
+			    &\implies p_{0.95} = 0.95(b-a) + a
+			    \end{align}
+			    $$</p>
+			    <p>also implying the median is at the centre of the distribution, like the mean.</p>
+
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Random-number">Random number<a class="anchor-link" href="#Random-number">&#182;</a></h3><p>Probably, the most important use of the uniform distribution is in defining a random number.</p>
+		  <p>The value of a uniform [0,1] random variable is called a <strong>random number</strong>.</p>
+		  <p>We used computer approximations to this distribution in our simulations.</p>
+		  <p>How they can be generated is still a <a href="http://arstechnica.co.uk/science/2016/02/on-chip-random-key-generator-made-using-carbon-nanotubes/">research question</a>.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Next">Next<a class="anchor-link" href="#Next">&#182;</a></h2><p>We've looked in quite some detail at the uniform distribution.</p>
+		  <p>We want to find a similar collection of properties for other distributions that we will encounter. Specifically we'll look at:</p>
+		  <ul>
+		    <li>binomial, </li>
+		    <li>geometric, </li>
+		    <li>poisson, </li>
+		    <li>exponential,</li>
+		    <li>normal <ul>
+			<li>and the derived $\chi^2$ and $t$ distributions).</li>
+		      </ul>
+		    </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Binomial-distribution">Binomial distribution<a class="anchor-link" href="#Binomial-distribution">&#182;</a></h2><p>We've used this fairly often in the first few weeks.</p>
+		  <p><strong>definition</strong><br>
+		    It is the discrete distribution that arises when we have an experiment that can be partitioned into two mutually exclusive events ($\{S\}$, success and $\{F\}$, failure) with a probability of success $P(\{S\})$ that is known, repeated independently $n$ times.</p>
+		  <p><strong>definition</strong><br>
+		    A discrete random variable $X$ with a probability mass function of the form:
+		    $$
+		    P(X=x) = {n \choose x}p^x(1-p)^{n-x}, (x=0,1,\ldots,n-1,n)
+		    $$
+		    is said to have a binomial distribution.</p>
+		  <p>Where $n$ is the number of repetitions of the experiment and $p$ is the probability of 'success'.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Check-it-is-a-probability-mass-distribution">Check it is a probability mass distribution<a class="anchor-link" href="#Check-it-is-a-probability-mass-distribution">&#182;</a></h4><p>To be a probability mass distribution we must have $\sum_{\text{all $x$}} P(x) = 1$. For the binomial distribution we have</p>
+		  $$
+		  \begin{align}
+		  \sum_{\text{all $x$}} P(x) & = \sum_{\text{all $x$}} {n \choose x}p^x(1-p)^{n-x} \\
+                  & = (p + (1-p))^n \\
+                  & = 1^n = 1
+		  \end{align}
+		  $$<p>In the second line we use the binomial expansion 
+		    $$
+		    (a+b)^n = \sum_{k=0}^n {n \choose k} a^{n-k} b^k
+		    $$</p>
+		  <p>So it fits that criteria, and all $p(x)$ are between $0$ and $1$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="The-mean-and-the-variance">The mean and the variance<a class="anchor-link" href="#The-mean-and-the-variance">&#182;</a></h3><p>We have that the mean (expectation value) of our binomially distributed variable $X$ is</p>
+		  $$
+		  \begin{align}
+		  \text{E}[X] & = \sum_{\text{all $x$}} xp(x) \\
+		  & = \sum_{\text{all $x$}} x{n \choose x}p^x(1-p)^{n-x} \\
+		  & = \sum_{x=0}^n x{n \choose x}p^x(1-p)^{n-x} \\
+		  & = \sum_{x=1}^n x \frac{n! p^x(1-p)^{n-x}}{(n-x)!x!} \text{    ($x=0$ term is zero)} \\
+		  & = np \sum_{x=1}^n x \frac{(n-1)! p^{x-1} (1-p)^{n-x}}{(n-x)!x!} \text{     (factorize out $np$)}\\           
+		  \end{align}
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>we can also use:</p>
+		  <ul>
+		    <li>$\frac{x}{x!} = \frac{1}{(x-1)!}$</li>
+		    <li>$(n-x)!$ can be rewritten as $(n - 1 - (x-1))!$</li>
+		    <li>$(1-p)^{n-x}$ can be written as $(1-p)^{n -1 -(x-1)}$
+		      we then get</li>
+		  </ul>
+		  $$
+		  \text{E}[X] = np \sum_{x=1}^n \frac{(n-1)! p^{x-1} (1-p)^{n-1-(x-1)}}{(n-1-(x-1))!(x-1)!}
+		  $$<p>and, deep breath, we substitue $y = x-1$ and $N=n-1$ to get</p>
+		  $$
+		  \text{E}[X] = np \sum_{y=0}^N \frac{N! p^{y} (1-p)^{N-y}}{(N-y)!y!} \\
+		  = np \big[ \sum_{y=0}^N {N \choose y}p^y(1-p)^{N-y} \big] \\
+		  = np 
+		  $$<p>where we have used the binomial expansion definition again.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The variance can be found in a similar manner, but I won't give it all here.
+		    $$
+		    \begin{align}
+		    \sigma_X^2 & = \text{E}[X^2]-\text{E}[X]^2 \\
+		    & = n^2p^2 - np^2 +np - n^2p^2 \\
+		    & = np(1-p)
+		    \end{align}
+		    $$</p>
+		  <p>Note that these proofs are pretty ugly.</p>
+		  <p><a href='https://mattatlincoln.github.io/teaching/statistics/lecture_4/#/16'>Generating functions</a> allow easier, or at least more mechanical, proofs of these relations.</p>
+		  <p>Also the summations make life difficult, which we'll see again and again. It eventually becomes much easier to work with continuous distributions and integrals.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Summary-of-expectation-and-variance-of-binomial-distribution.">Summary of expectation and variance of binomial distribution.<a class="anchor-link" href="#Summary-of-expectation-and-variance-of-binomial-distribution.">&#182;</a></h4>$$
+		  \text{E}[X] = np \\
+		  $$$$
+		  \sigma_X^2=E[X^2]−E[X]^2=np(1−p)
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Cumulative-distribution-function">Cumulative distribution function<a class="anchor-link" href="#Cumulative-distribution-function">&#182;</a></h4><p>for discrete random variables, the cumulative distribution function is often available in tabulated form. To calulate it we need to sum up all the $p(x)$ values where x is less than the value of interest.</p>
+		  $$
+		  F(y) = \sum_{x \le y} p(x)
+		  $$<p>this can get quite tricky (tedious) for the binomial distribution.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="binomial-pmf-and-cdf">binomial pmf and cdf<a class="anchor-link" href="#binomial-pmf-and-cdf">&#182;</a></h3><p><img src='binomial.png'></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>we can access the quantiles for the binomial distribution like so</p>
+		  <p><code>stats.binom.ppf(0.99, n, p)
+		      6.0</code></p>
+		  <p>This says that for our disribution (binomial with parameters $n$ and $p$)  a random value taken from this distribution will have a value less than than 6 99% of the time.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Special-Distributions">Special Distributions<a class="anchor-link" href="#Special-Distributions">&#182;</a></h1><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Define and use the properties of the major probability distributions:
+
+		    <li> uniform  </li>
+		    <li> binomial </li>
+		    <li> geometric </li>
+		    <li> poisson </li>
+		    <li> exponential </li>
+		    <li> normal </li>
+		  </div><ul>
+		    <li>see examples where these distributions occur.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Poisson-distribution">Poisson distribution<a class="anchor-link" href="#Poisson-distribution">&#182;</a></h2><p><strong>definition</strong>
+		    a random variable $X$ having a probability mass function of the form:
+		    $$
+		    p(x) = e^{-\mu}\frac{\mu^x}{x!}, 
+		    $$
+		    for $x = 0,1,2,\ldots$ and $\mu$ can take on any positive value, is said to have a Poisson distribution.</p>
+		  <p>What does it look like?</p>
+		  
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="poisson.png" alt=""></p>
+		  
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The <a href="https://en.wikipedia.org/wiki/Sim%C3%A9on_Denis_Poisson">Poisson</a> distribution has a dubious history according to <a href="https://en.wikipedia.org/wiki/Poisson_distribution">wikipedia</a>.</p>
+		  <blockquote><p>History<br>
+		      The distribution was first introduced by Siméon Denis Poisson (1781–1840) and published, together with his probability theory, in 1837 in his work Recherches sur la probabilité des jugements en matière criminelle et en matière civile ("Research on the Probability of Judgments in Criminal and Civil Matters"). The work theorized about the number of wrongful convictions in a given country by focusing on certain random variables N that count, among other things, the number of discrete occurrences (sometimes called "events" or "arrivals") that take place during a time-interval of given length. The result had been given previously by Abraham de Moivre (1711) in De Mensura Sortis seu; de Probabilitate Eventuum in Ludis a Casu Fortuito Pendentibus in Philosophical Transactions of the Royal Society, p. 219. This makes it an example of <a href="https://en.wikipedia.org/wiki/Stigler%27s_law_of_eponymy">Stigler's law</a> and it has prompted some authors to argue that the Poisson distribution should bear the name of de Moivre.<br><br>
+		      A practical application of this distribution was made by Ladislaus Bortkiewicz in 1898 when he was given the task of investigating the number of soldiers in the Prussian army killed accidentally by horse kicks; this experiment introduced the Poisson distribution to the field of reliability engineering.</p>
+		  </blockquote>
+		  
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Or more to the point, like the horse kicks, it describes the number of times an event that occurs infrequently in a given time period will occur.</p>
+		  <ul>
+		    <li>misprints on a page in a book</li>
+		    <li>errors in my lecture notes</li>
+		    <li>number of wrong telephone numbers dialled in a day</li>
+		    <li>number of $\alpha$-particles discharged in a fixed period of time from a radiocative nuclei</li>
+		  </ul>
+		  <hr>
+		</div>
+	      </div>
+	    </div>
+	</section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="pmf-and-cdf">pmf and cdf<a class="anchor-link" href="#pmf-and-cdf">&#182;</a></h1><p><img src="poisson.png" alt=""></p>
+		  
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Check-it-is-a-valid-probability-mass-function">Check it is a valid probability mass function<a class="anchor-link" href="#Check-it-is-a-valid-probability-mass-function">&#182;</a></h4><p>We have that 
+		    $$
+		    \begin{align}
+		    \sum_{\text{all $x$}} p(x) & = \sum_{x=0}^{\infty} e^{-\mu}\frac{\mu^x}{x!} \\
+                    & = e^{-\mu} \sum_{x=0}^{\infty} \frac{\mu^x}{x!} \\
+                    & =e^{-\mu} e^{\mu} \\
+                    & = 1
+		    \end{align}
+		    $$</p>
+		  <p>as required. We use the series definition of the exponential function in the next to last step.</p>
+		  <p>We've not dealt with discrete variables with infinite numbers of outcomes - as far as we are concerned, they are OK as long as all properties and probabilities that we need to calculate converge as $x \to \infty$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Expectation-and-variance-of-a-Poisson-distributed-random-variable.">Expectation and variance of a Poisson distributed random variable.<a class="anchor-link" href="#Expectation-and-variance-of-a-Poisson-distributed-random-variable.">&#182;</a></h3><p>If $X$ has $p_X(x) = e^{-\mu}\frac{\mu^x}{x!}$</p>
+		  <ul>
+		    <li>$\text{E}[X] = \mu$</li>
+		    <li>$\sigma_X^2 = \mu$</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Proof-of-expectation-of-Poisson-distributed-random-variable">Proof of expectation of Poisson distributed random variable<a class="anchor-link" href="#Proof-of-expectation-of-Poisson-distributed-random-variable">&#182;</a></h4>$$
+		  \begin{align}
+		  \text{E}[X] & = \sum_{x=0}^{\infty} x e^{-\mu}\frac{\mu^x}{x!} \\
+		  & = \sum_{x=1}^{\infty} x e^{-\mu}\frac{\mu^x}{x!} \\
+		  & = e^{-\mu} \sum_{x=1}^{\infty} \frac{\mu^x}{(x-1)!} \\
+		  & = \mu e^{-\mu} \sum_{x=1}^{\infty} \frac{\mu^{(x-1)}}{(x-1)!}
+		  \end{align}
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>then we substitute $y = x -1$
+		    $$
+		    \begin{align}
+		    & = \mu e^{-\mu} \sum_{y=0}^{\infty} \frac{\mu^y}{(y)!} \\
+		    & = \mu e^{-\mu} e^{\mu} \\
+		    &= \mu
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Proof-of-variance-of-Poisson-distributed-random-variable">Proof of variance of Poisson distributed random variable<a class="anchor-link" href="#Proof-of-variance-of-Poisson-distributed-random-variable">&#182;</a></h4>$$
+		  \begin{align}
+		  \text{E}(X^2) & = \sum_{x=0}^{\infty} x^2 e^{-\mu}\frac{\mu^x}{x!} \\
+		  & = \sum_{x=1}^{\infty} (x(x-1)-x) e^{-\mu}\frac{\mu^x}{x!} \\
+		  & = \sum_{x=2}^{\infty} x(x-1) e^{-\mu} \frac{\mu^x}{x!} + \sum_{x=1}^{\infty} x e^{-\mu} \frac{\mu^x}{x!} \\
+		  & = \mu^2 e^{-\mu} \sum_{x=2}^{\infty} \frac{\mu^{(x-2)}}{(x-2)!} + \text{E}[X] \\
+		  & = \mu^2 + \mu
+		  \end{align}
+		  $$<p>where we substitute in $y = x-2$, similarly to the expectation value.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Then identify the sum as an exponential function.</p>
+		  <p>We then get that
+		    $$
+		    \begin{align}
+		    \sigma_X^2 & = \text{E}[X^2] - \text{E}[X]^2 \\
+		    & = \mu^2 + \mu - \mu^2 \\
+		    &= \mu
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="When-is-it-used?">When is it used?<a class="anchor-link" href="#When-is-it-used?">&#182;</a></h2><p>If an event with a low probability of occurence at any instant is known:</p>
+		  <ul>
+		    <li>to occur randomly, and</li>
+		    <li>to have a mean number of occurences $\mu$ in a given time (or space) interval has a Poisson distribution (approximately) with parameter $\mu$.</li>
+		  </ul>
+		  <hr>
+
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>Goverment statistic for a certain country show that the average number of major industrial accidents per year for large firms is 1.1 per 5000 employees. Find the probability that there will be at least one major accident per year for  firm with:</p>
+		  <ul>
+		    <li>5000 employees</li>
+		    <li>10000 employees</li>
+		  </ul>
+
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+		</div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h3><p>Here we have a unit scale of 5000 employees and we are given the average accident rate per year is 1.1 per 5000 employees.</p>
+		  <p>This should satisfy our criteria to be Poisson distributed - the accidents are rare and randomness should be a reasonable assumption.</p>
+		  <p>Then we have a Poisson distribution with $\mu = 1.1$ in the interval of interest (1 year). So
+		    $$
+		    P(X \ge 1) = 1 - p(0) = 1 - e^{-1.1} \frac{1.1^0}{0!} = 0.6671
+		    $$</p>
+		  <ul>
+		    <li>Now we have a new scale of 10000 employees. If the accidents are rare, independent and random we'd then expect 2.2 accidents per year in a firm with 10000 employees. So
+		      $$
+		      P(X \ge 1) = 1 - p(0) = 1 - e^{-2.2} \frac{2.2^0}{0!} = 0.8892
+		      $$</li>
+		  </ul>
+		  <p>So it is bad to work for a big firm?</p>
+		  
+		</div>
+	      </div>
+	    </div>
+	</section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Approximation-to-binomial-distribution">Approximation to binomial distribution<a class="anchor-link" href="#Approximation-to-binomial-distribution">&#182;</a></h2><p>One way to see how it can occur is to see how it can approximate a binomial distribution if $n$ is large and $p$ small.</p>
+		  <p>Recall that
+		    $$
+		    P(X=x) = {n \choose x}p^x(1-p)^{n-x}, (x=0,1,\ldots,n-1,n)
+		    $$
+		    for a binomially distributed random variable.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>So if $X$ is a binomially distributed random variable with parameters ($n, p$). If we let $\mu = np$<br>
+		    $$
+		    \begin{align}
+		    P(X=x) &= {n \choose x}p^x(1-p)^{n-x} \\
+		    &= \frac{n! }{(n-x)!x!} p^x(1-p)^{n-x} \\
+		    &= \frac{n! }{(n-x)!x!} \frac{\mu}{n}^x \Big(1-\frac{\mu}{n}\Big)^{n-x} \\
+		    &= \frac{n(n-1)\cdots(n-x+1)}{n^x}\frac{\mu^x}{x!}\frac{\Big(1-\frac{\mu}{n}\Big)^n}{\Big(1-\frac{\mu}{n}\Big)^x}
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now for large $n$ and small $p$ we can make the approximations
+		    $$
+		    \begin{align}
+		    \Big(1-\frac{\mu}{n}\Big)^n & \approx e^{-\mu}, \\
+		    \frac{n(n-1)\cdots(n-x+1)}{n^x} & \approx 1, \\
+		    \Big(1-\frac{\mu}{n}\Big)^x & \approx 1
+		    \end{align}
+		    $$
+		    Then we get that 
+		    $$
+		    P(X=x) \approx e^{-\mu} \frac{\mu^x}{x!}
+		    $$</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Geometric-Distribution">Geometric Distribution<a class="anchor-link" href="#Geometric-Distribution">&#182;</a></h2><p>A discrete random variable $X$ with probability mass function $p(x)$ of the form:
+		    $$
+		    P(X=x) = p(x) = (1-p)^x p 
+		    $$
+		    with $0 \le p \le 1$ is said to have a geometric distribution.</p>
+		  <p>(This is not dissimilar to Q2 of assignment 1, or problem 6 of problem class 1.)</p>
+		  <p>(Aside, The use of $p$ as the probability of success of individual attempts seems quite common, don't confuse it with the probability mass function (which is a function and should have an argument).)</p>
+		  <p>You can prove that it is a valid probability mass function by noting that the sum over all $x$ is a geometric progression that can be summed up immediately (see this week's problem class).</p>
+
+		</div>
+	      </div>
+	    </div></section><section>
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>We just give the expectation and variance here for completeness.</p>
+		    <hr>
+		    <ul>
+		      <li>$\text{E}[X] = \frac{1-p}{p}$</li>
+		      <li>$\text{var}(X) = \frac{1-p}{p^2}$</li>
+		    </ul>
+		    <hr>
+		    <p>This distribution can be a bit ugly because different people define things a little differently:</p>
+		    <ul>
+		      <li>Some define the variable as the number of experiments until we obtain a success, we get $E(X)=1/p$. </li>
+		      <li>Others talk about the expected number of failures before a success, $E(X) = (1-p)/p$.</li>
+		    </ul>
+
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h5 id="example"><strong>example</strong><a class="anchor-link" href="#example">&#182;</a></h5><p>What is the expected number of rolls of a fair die to obtain a 1?</p>
+		  <p>Here we formulate the question as the total number of experiments until we get a success. So we have $\text{E}[X]=\frac{1}{\frac{1}{6}}=6$.</p>
+		  <p>If it had been phrased as the number of rolls before we get the 1 we'd have
+		    $\text{E}[X]=\frac{1-\frac{1}{6}} {\frac{1}{6}} =5$.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Exponential-distribution">Exponential distribution<a class="anchor-link" href="#Exponential-distribution">&#182;</a></h2><p>An exponential random variable is has pdf</p>
+		  $$
+		  \begin{align}
+		  f_Y(y) & = \beta e^{-\beta y}, \hfill y > 0 \\
+			& = 0 \text{ otherwise:}
+			\end{align}
+			$$<p>Lets find the expectation and variance using the moment generating function of $Y$.</p>
+
+		  </div>
+		</div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The moment generating function of $Y$ is 
+		    $$
+		    \begin{align}
+		    m_Y(t) & = \text{E}[e^{tY}]\\
+		    & = \int_0^{\infty} e^{ty} \beta e^{- \beta y} \text{d}y\\
+		    & = \int_0^{\infty} \beta e^{-y(\beta-t)} \text{d}y\\
+		    & = \frac{\beta}{\beta-t}
+		    \end{align}
+		    $$</p>
+		  <p>to find the moments we take the derivative with respect to $t$ then set $t = 0$</p>
+		  $$
+		  \mu_Y = m^{(1)}(0) = \beta ^{-1}
+		  $$$$
+		  m_2 = m^{(2)}(0) = 2 \beta^{-2}
+		  $$<p>so</p>
+		  $$
+		  \sigma_Y^2 = m_2 - \mu^2 = \beta^{-2}
+		  $$
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Big-N">Big N<a class="anchor-link" href="#Big-N">&#182;</a></h2><p>lets have a look at these distributuions as $N$ gets large</p>
+		  <p>First the Binomial distribution</p>
+		  $$
+		  P(X=x) = {n \choose x}p^x(1-p)^{n-x}, (x=0,1,\ldots,n-1,n)
+		  $$<p><img src="binomial_dists.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>And now for the Poisson distribution</p>
+		  $$
+		  p(x) = e^{-\mu}\frac{\mu^x}{x!}, 
+		  $$<p><img src="poisson_dists.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We see that both tend towards a bell shaped curve as $n$ increases</p>
+		  <p><img src="binomial_dists.png" alt="">
+		    <img src="poisson_dists.png" alt=""></p>
+		  <p>(you can also see that the binomial and poisson look quite similar, poisson should be a good approx when $\mu = np$)</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Normal-Distribution">Normal Distribution<a class="anchor-link" href="#Normal-Distribution">&#182;</a></h1><p>This brings us to the most important distribution in all of probability and statistics, the normal distribution.</p>
+		  <p>The name gives it away (though this probably not the reason for the name) - this is the distribution that you normally expect to see:</p>
+		  <ul>
+		    <li>Peoples' heights, </li>
+		    <li>velocities of atoms ... if there are enough of something, it will be normally distributed.</li>
+		  </ul>
+		  <p>This property, that most distributions tend to the normal distribution as the sample/population gets large, has the big name - <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central Limit Theorem</a>.</p>
+		  <p>We'll look in detail at the normal distribution and some distributions derived from it now.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>definition</strong></p>
+		  <p>We say that $X$ is a normal random variable, or that $X$ is normally distributed, with parameters $\mu$ and $\sigma^2$ if the probability density function of $X$ is given by
+		    $$
+		    f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+		    $$</p>
+		  <p>This function is also called a Gaussian function.</p>
+		  <p><img src="norm_10_5.png" alt=""></p>
+		  <p>We'll see that the parameters $\mu$ and $\sigma$ control the location of the centre of the distribution and its width. $\mu$ defines the centre of the distribution, and as the distribtuion is symmetric about the centre, its mean and median.</p>
+		  <p>We'll also see that $\sigma$ is the standard deviation of this pdf.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Check-it-is-a-valid-pdf">Check it is a valid pdf<a class="anchor-link" href="#Check-it-is-a-valid-pdf">&#182;</a></h2><p>It is not at all obvious that 
+		    $$
+		    f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+		    $$
+		    is a valid probability density function. The integration 
+		    $$
+		    \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \rm{d}x 
+		    $$</p>
+		  <p>requires a few tricks.</p>
+		  <p>You only need the result, but it is good that you see a sketch of how the integral can be done.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>First we define a new variable $y = \frac{(x - \mu)}{\sigma}$, we then see that
+		    $$
+		    \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \rm{d}x  = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}} e^{-\frac{y^2}{2 }} \rm{d}y
+		    $$
+		    So we want to show that
+		    $$
+		    I = \int_{-\infty}^{\infty} e^{-\frac{y^2}{2 }} \rm{d}y = \sqrt{2 \pi}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now lets instead consider the square of $I$
+		    $$
+		    I^2 = \int_{-\infty}^{\infty} e^{-\frac{y^2}{2 }}~\rm{d}y \int_{-\infty}^{\infty} e^{-\frac{x^2}{2 }}~\rm{d}x 
+		    $$
+		    note the two variables are different otherwise it would not be the simple product of the two integrals, which after all are only simple numbers.
+		    $$
+		    I^2 = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{x^2 + y^2}{2 }}~\rm{d}y~\rm{d}x 
+		    $$
+		    The point of squaring the integral is that we can now change to polar coordinates (remember calculus last term), though this goes beyond what you have yet done with multiple integrals.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We let $x = r \cos \theta$ and $y = r \sin \theta$. We also have that $\rm{d}y \rm{d}x = r~\rm{d}\theta~\rm{d}r$. Then we find that
+		    $$
+		    \begin{align}
+		    I^2 & = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{x^2 + y^2}{2 }}~\rm{d}y~\rm{d}x \\
+		    & = \int_{0}^{\infty} \int_{0}^{2 \pi} e^{-\frac{r^2}{2 }} r~\rm{d}\theta~\rm{d}r \\
+		    & = 2 \pi \int_{0}^{\infty}  r e^{-\frac{r^2}{2 }}~\rm{d}r \\
+		    \end{align}
+		    $$
+		    Surprisingly this integral is much easier than $I$. We can substitute $s = -r^2$ to carry out the definite integral, leading to
+		    $$
+		    \begin{align}
+		    I^2  & = 2 \pi e^{\frac{s}{2}} \Big| _{-\infty}^{0} \\
+		    & = 2 \pi
+		    \end{align}
+		    $$
+		    Hence $I = \sqrt{2 \pi}$ and we have proved that $f(x)$ is a valid probability density function.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Expectation-and-variance-of-the-standard-normal-distribution">Expectation and variance of the standard normal distribution<a class="anchor-link" href="#Expectation-and-variance-of-the-standard-normal-distribution">&#182;</a></h2><p>Find the expectation and variance of a standard normally distributed random variable $Z$ with parameters $\mu = 0$ and $\sigma = 1$</p>
+		  <p><img src="stdnorm.png" alt=""></p>
+		  <p>The expectation of $Z$ is given by
+		    $$
+		    \begin{align}
+		    \text{E}[Z] & =\int_{-\infty}^{\infty}z f_Z (z)\rm{d}z \\
+		    & =\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} z e^{-\frac{z^2}{2}} \rm{d}z \\
+		    & = 0
+		    \end{align}
+		    $$</p>
+		  <p>because it is an odd function of $z$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The variance is given by (note $\text{E}[Z]^2  = 0$)</p>
+		  $$
+		  \begin{align}
+		  \sigma_Z^2 & = \text{E}[Z^2] - (\text{E}[Z])^2 \\
+		  & = \text{E}[Z^2] \\
+		  & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty}z^2 e^{-\frac{z^2}{2}} \text{d}z
+		  \end{align}
+		  $$<p>We can integrate by parts ($u = z$) to obtain</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  $$
+		  \begin{align}
+		  \sigma_Z^2 &  = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty}z^2 e^{-\frac{z^2}{2}} \text{d}z \\
+		  & = \frac{1}{\sqrt{2 \pi}} \big( -ze^{-\frac{z^2}{2}} \Big|_{-\infty}^{\infty} + \int_{-\infty}^{\infty}e^{-\frac{z^2}{2}} \text{d}z \big) \\
+		  & = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty}e^{-\frac{z^2}{2}} \text{d}z \\
+		  & = 1
+		  \end{align}
+		  $$<p>using the property of the normal pdf.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Standard-normal-variable">Standard normal variable<a class="anchor-link" href="#Standard-normal-variable">&#182;</a></h2><p>The standard normal variable is a normally distributed random variable with $\mu = 0$ and $\sigma = 1$. The reason this is important is that through a change of variables we can map any other normally distributed variable onto the standard case.</p>
+		  <p>$\textbf{Proposition}$:  if $X$ is normally distributed with parameters $\mu$ and $\sigma$ then 
+		    $$
+		    X = \mu + \sigma Z
+		    $$</p>
+		  <p>where $Z$ is a variable with the standard normal distribution.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now we can use our previous results on the preperties of expectations and variances to show that the expectation and variance of the general normally distributed random variable $X = \mu + \sigma Z$ is given by
+		    $$
+		    \begin{align}
+		    \text{E}[X] & = \text{E}[\mu + \sigma Z] \\
+		    & = \text{E}[\mu] + \text{E}[\sigma Z] \\
+		    & = \mu + \sigma \text{E}[ Z] \\
+		    & = \mu
+		    \end{align}
+		    $$</p>
+		  <p>and</p>
+		  $$
+		  \begin{align}
+		  \text{var}(X) & = \text{var}(\mu + \sigma Z) \\
+		  & = \text{var}(\sigma Z) \\
+		  & = \sigma^2  \text{var}( Z) \\
+		  & = \sigma^2
+		  \end{align}
+		  $$<p>as promised.</p>
+		  <p>The important point is we basically never have to work with a general normally distributed random variable, we just transform to $Z$ and do everything in terms of $Z$ and its distribution.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Equivalent-probabilities">Equivalent probabilities<a class="anchor-link" href="#Equivalent-probabilities">&#182;</a></h3><p>We can go a further and consider the probability density functions of $X$ and $Z$. Consider the probability</p>
+		  $$
+		  P(a \leq X \leq b) = \int_{a}^{b} f_X(x)dx
+		  $$<p>now lets consider the left hand side, but substitute in $X = \mu + \sigma Z$, we get</p>
+		  $$
+		  P(a \leq X \leq b) = P(a \leq \mu + \sigma Z \leq b)
+		  $$<p>now we can manipulate this - $\mu$ is just a number, nd $\sigma$ must be positive, by definition.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  $$
+		  \begin{align}
+		  P(a \leq X \leq b) & = P(a \leq \mu + \sigma Z \leq b) \\
+                  & = P(a - \mu \leq \sigma Z \leq b - \mu ) \\
+                  & = P(\frac{a - \mu}{\sigma} \leq  Z \leq \frac{b - \mu}{\sigma} ) \\
+		  \end{align}
+		  $$<p>and as $Z$ is our standard normal distribution</p>
+		  $$
+		  P(a \leq X \leq b) = \int\limits_{\frac{a - \mu}{\sigma}}^{\frac{b - \mu}{\sigma}} f_Z(z)dz
+		  $$<p>So we can use the standard normal distribution, but we scale the limits of the integral.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Cumulative-distribution-function">Cumulative distribution function<a class="anchor-link" href="#Cumulative-distribution-function">&#182;</a></h2><p>The cumulative distribution function, $F(x)$, of a normally distributed random variable doesn't have an analytic form.</p>
+		  <p>Instead it can be calculated numerically by a variety of methods. Typically its values can be looked up in statistical tables, or calculated on-the-fly with modern computing power.</p>
+		  <p>The cumulative distribution function of $Z$ the standard normal variable is conventionally denoted by $\Phi(z)$, or sometimes $N(z)$.</p>
+		  $$
+		  \Phi(a) = \int_{-\infty}^{a} e^{-\frac{z^2}{2}} \text{d}z
+		  $$<p>we can get this function in python in the same way we were doing for binomial or poisson distributions.</p>
+		  <p>The inverse of this function gives the percentiles of the standard normal distribution.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Python refers to it as the percentage point function of the normal distribution.</p>
+		  $$
+		  \Phi(0) = 0.5
+		  $$<p>or</p>
+		  <p><code>stats.norm.cdf(0.0) = 0.5</code></p>
+		  <p>and</p>
+		  $$
+		  \Phi^{-1}(0.5) = 0
+		  $$<p><code>stats.norm.ppf(0.5) = 0.0</code></p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>To get values of the $\Phi$ that are below 0.5 we can use the symmetry of the function to obtain
+		      $$
+		      \Phi(-z) = 1 - \Phi(z)
+		      $$</p>
+
+		  </div>
+		</div>
+	</div></div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>Learning objectives</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    Define and use the properties of the major probability distributions:
+
+		    <li> uniform  </li>
+		    <li> binomial </li>
+		    <li> geometric </li>
+		    <li> poisson </li>
+		    <li> exponential </li>
+		    <li> normal </li>
+		  </div><ul>
+		    <li>see examples where these distributions occur.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section>
+	
+	</div>
+      </div>
+
+      <script>
+
+	require(
+	{
+	// it makes sense to wait a little bit when you are loading
+	// reveal from a cdn in a slow connection environment
+	waitSeconds: 15
+	},
+	[
+	"../../../revealjs//lib/js/head.min.js",
+	"../../../revealjs//js/reveal.js"
+	],
+
+	function(head, Reveal){
+
+	// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	// Parallax background image
+	parallaxBackgroundImage: '../Images/Airplane_vortex_edit.jpg',
+	//parallaxBackgroundImage: '../Images/Blizzard.jpg',
+	//Parallax background size
+	parallaxBackgroundSize: '2976px 2420px', // CSS syntax, e.g. "2100px 900px
+	//parallaxBackgroundSize: '2858px 2795px', // CSS syntax, e.g. "2100px 900px
+
+	theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+	// Optional libraries used to extend on reveal.js
+	dependencies: [
+	{ src: "../../../revealjs//lib/js/classList.js",
+	condition: function() { return !document.body.classList; } },
+	{ src: "../../../revealjs//plugin/notes/notes.js",
+	async: true,
+	condition: function() { return !!document.body.classList; } }
+	]
+	});
+
+	var update = function(event){
+	if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+	MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+	}
+	};
+
+	Reveal.addEventListener('slidechanged', update);
+
+	var update_scroll = function(event){
+	$(".reveal").scrollTop(0);
+	};
+
+	Reveal.addEventListener('slidechanged', update_scroll);
+
+	}
+	);
+      </script>
+
+  </body>
+
+
+</html>
