@@ -296,18 +296,18 @@ int main() {
 	<p>When we do the Guass elimination method, we actually find all the elements of $\textbf{L}$, we just need to store them. <br> It is the inverse of the matrix we would need to multiply $\textbf{b}$ by to get the correct RHS in the Gauss elmination method. </p>
 	<p>Let us take an initial augmented matrix, and record the values that we would scale the $\textbf{b}$ matrix by if it were there: 
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  a_{10} & a_{11} & a_{12} & a_{31}\\ 
-	  a_{20} & a_{21} & a_{22} & a_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  a_{10} & a_{11} & a_{12} & a_{13}\\ 
+	  a_{20} & a_{21} & a_{22} & a_{23}\\ 
 	  a_{30} & a_{31} & a_{32} & a_{33}\\ 
 	  \end{array} \right) \]
 	</p>
 	<p class=fragment>
 	  pivoting around row 0, we remove all entries below the diagonal entry in column 0, doing this we scaled the $\textbf{b}$ matrix by the ratios shown on the right
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & a'_{21} & a'_{22} & a'_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & a'_{21} & a'_{22} & a'_{23}\\ 
 	  0      & a'_{31} & a'_{32} & a'_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -323,9 +323,9 @@ int main() {
 	<p>
 	  Matrix after pivoting around row 0
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & a'_{21} & a'_{22} & a'_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & a'_{21} & a'_{22} & a'_{23}\\ 
 	  0      & a'_{31} & a'_{32} & a'_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -338,9 +338,9 @@ int main() {
 	</p><p class=fragment>
 	  Then pivoting around row 1 we remove elements below the diagonal in column 1, and subtract multiples of the 2nd row of $\textbf{b}$ as shown in the right hand matrix
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & 0       & a''_{22} & a''_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & 0       & a''_{22} & a''_{23}\\ 
 	  0      & 0       & a''_{32} & a''_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -353,9 +353,9 @@ int main() {
 	</p><p class=fragment>	  
 	  pivoting around row 2
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & 0       & a''_{22} & a''_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & 0       & a''_{22} & a''_{23}\\ 
 	  0      & 0       & 0        & a'''_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -371,9 +371,9 @@ int main() {
       	<p>	  
 	  we had got to
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & 0       & a''_{22} & a''_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & 0       & a''_{22} & a''_{23}\\ 
 	  0      & 0       & 0        & a'''_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -387,9 +387,9 @@ int main() {
       <p class='fragment'>	  
 	  if we fill in the rest of the matrix on the right we have
 	  \[ \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & 0       & a''_{22} & a''_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & 0       & a''_{22} & a''_{23}\\ 
 	  0      & 0       & 0        & a'''_{33}\\ 
 	  \end{array} \right)
 	  \qquad
@@ -411,16 +411,16 @@ int main() {
 	  \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
 	  \end{array} \right)
 	  \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  0      & a'_{11} & a'_{12} & a'_{31}\\ 
-	  0      & 0       & a''_{22} & a''_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+	  0      & 0       & a''_{22} & a''_{23}\\ 
 	  0      & 0       & 0        & a'''_{33}\\ 
 	  \end{array} \right)
 	  =
 	  \left( \begin{array}{cccc}
-	  a_{00} & a_{01} & a_{02} & a_{30}\\ 
-	  a_{10} & a_{11} & a_{12} & a_{31}\\ 
-	  a_{20} & a_{21} & a_{22} & a_{32}\\ 
+	  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+	  a_{10} & a_{11} & a_{12} & a_{13}\\ 
+	  a_{20} & a_{21} & a_{22} & a_{23}\\ 
 	  a_{30} & a_{31} & a_{32} & a_{33}\\ 
 	  \end{array} \right) \]
 	</p>
