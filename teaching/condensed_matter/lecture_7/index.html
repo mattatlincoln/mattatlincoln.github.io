@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>07 - Semiconductor Physics</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="07---Semiconductor-Physics">07 - Semiconductor Physics<a class="anchor-link" href="#07---Semiconductor-Physics">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Metals,-Semiconductors,-Insulators">Metals, Semiconductors, Insulators<a class="anchor-link" href="#Metals,-Semiconductors,-Insulators">&#182;</a></h2><p>If there is an energy gap between the highest filled states and the next set of states, then you have an insulator, or if the gap is less than about $5 \text{eV}$, a semiconductor.</p>
+<p>If there is no energy gap between empty and filled states, we have a metal.</p>
+<p>Or in very crude cartoon forms</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Electrons-and-Holes">Electrons and Holes<a class="anchor-link" href="#Electrons-and-Holes">&#182;</a></h3><p>An excitation, photon or thermal, can excite an electron from the valence band, to the conduction band</p>
+<p>Electron - a (dressed) electron<br>
+Hole - a (dressed) lack of an electron</p>
+<p><img src=https://www.doitpoms.ac.uk/tlplib/semiconductors/images/para01.jpg alt="Smiley face" height="250" width="250"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>when an electron is excited a hole is left behind</p>
+<p><img src=http://www.nature.com/nmat/journal/v7/n2/images/nmat2107-f1.jpg alt="Smiley face" height="250" width="250"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-of-Electrons">Effective Mass of Electrons<a class="anchor-link" href="#Effective-Mass-of-Electrons">&#182;</a></h3><p>Assume that near the bottom of the conduction band, which occurs at $\mathbf{k} = \mathbf{k}_{min}$</p>
+<p>$$
+E = E_{min} + \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
+$$</p>
+<p>We then define the effective mass as</p>
+<p>$$
+\hbar^2/m_e^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
+$$</p>
+<p>and with corresponding velocity</p>
+<p>$$
+\mathbf{v} = \nabla_\mathbf{k} E / \hbar = \hbar(\mathbf{k} - \mathbf{k}_{min})/m_e^*
+$$</p>
+<p>These then correspond to the free electron case, but with $m_e$ replaced by $m^*$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-of-Holes">Effective Mass of Holes<a class="anchor-link" href="#Effective-Mass-of-Holes">&#182;</a></h3><p>We can do the same for holes.</p>
+<p>$$
+E = E_{max} - \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
+$$</p>
+<p>then</p>
+<p>$$
+\hbar^2/m_h^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
+$$</p>
+<p>and again we get</p>
+<p>$$
+E_{hole} = \text{constant } + \frac{\hbar^2|\mathbf{k} - \mathbf{k}_{min}|^2}{2 m^*_h}
+$$</p>
+<p>note that really we are moving electrons, so that you need to keep track of where the electrons are</p>
+<p>$$
+E\text{(absence of electron in state $\mathbf{k}$)} = -E\text{(electron in state $\mathbf{k}$)}
+$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Momentum-and-velocity-of-holes-and-electrons">Momentum and velocity of holes and electrons<a class="anchor-link" href="#Momentum-and-velocity-of-holes-and-electrons">&#182;</a></h3><p>The momentum of a hole is defined via $\mathbf{k}_h = -\mathbf{k}_e$ to be</p>
+<p>$$
+-\hbar \mathbf{k}_e
+$$</p>
+<p>where $\mathbf{k}_e$ is the wavevector of the electron removed to form the hole.</p>
+<p>Then when we use</p>
+<p>$$
+\mathbf{v}_h = \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>we have two negative signs, and get</p>
+<p>$$
+\mathbf{v}_h = \mathbf{v}_e 
+$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-and-equations-of-Motion">Effective Mass and equations of Motion<a class="anchor-link" href="#Effective-Mass-and-equations-of-Motion">&#182;</a></h3><p>If we apply a force $\mathbf{F}$ to an electron it will do work per unit time</p>
+<p>$$
+\frac{dW}{dt} = \mathbf{F} \cdot \mathbf{v} = \mathbf{F} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>This must be equal to the change of energy with time</p>
+<p>$$
+\frac{dE}{dt} = \frac{d\mathbf{k}}{dt} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>comparing the two we get</p>
+<p>$$
+\mathbf{F} = \hbar \frac{\mathbf{k}}{dt} = \frac{d\mathbf{p}}{dt}
+$$</p>
+<p>where $\mathbf{p} = \hbar \mathbf{k}$. When the relation of energy to wavevector is parabolic, we get</p>
+<p>$$
+\mathbf{F} = m^* \frac{d\mathbf{v}}{dt}
+$$</p>
+<p>so they basically move classically in an applied field.</p>
+<p>More generally, away from the band extrema, it is possible to use the 2nd derivative of the energy as a generalised effective mass.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Back-to-Lecture-2---Drude-model-with-effective-mass">Back to Lecture 2 - Drude model with effective mass<a class="anchor-link" href="#Back-to-Lecture-2---Drude-model-with-effective-mass">&#182;</a></h3><p>Now if we take our original Drude model, and replace the mass of an electron with $m_e^*$ we get</p>
+<p>$$
+m_e^* \frac{d\mathbf{v}}{dt} = -e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_e^* \mathbf{v}/ \tau
+$$</p>
+<p>for electrons, or</p>
+<p>$$
+m_h^* \frac{d\mathbf{v}}{dt} = e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_h^* \mathbf{v}/ \tau
+$$</p>
+<p>for holes. So they move the opposite direction under the influence of an electric field!</p>
+<p>This can explain the anamolous results of the Hall effect for some materials.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Doping">Doping<a class="anchor-link" href="#Doping">&#182;</a></h3><p>doping is used to enhance performance,</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in sports</p>
+<p><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQganQRc2lvsvR1Y0l5DnMS-ToJ-B_Y2A_mQYiUJUI8SyjeaAbs1Q" alt=""></p>
+<p>and as the basis of semiconductor engineering</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Defect-levels">Defect levels<a class="anchor-link" href="#Defect-levels">&#182;</a></h3><p>Defects with energy levels within the band gap of the host effectively reduce the band gap and increase the concentration of electrons and holes.</p>
+<p><img src=http://www.globalsino.com/micro/1/images/1micro9974%20Atomic%20models%20of%20Silicon,%20Boron%20and%20Phosphorus2.jpg alt="Smiley face" height="250" width="250"></p>
+<p>A better way to imagine this for the phosphorus atom - is an added proton and an added electron, or a screened hydrogen atom.</p>
+<ul>
+<li>n-type dopants add electrons to the system</li>
+<li>p-type dopants add holes to the system</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Impurity-states">Impurity states<a class="anchor-link" href="#Impurity-states">&#182;</a></h3><p>Considering the phosphorus doping, we can extend the hydrogen atom analogy a little, if we take the formulae for the radius of the first electron 'orbit' in a hydrogen atom and replace $\epsilon_0$ with $\epsilon_0 \epsilon_r$ and the electron mass $m_e$ with the effective electron mass $m_e^*$ we go from a Bohr radius of</p>
+<p>$$
+a_0 = \frac{4 \pi \epsilon_0}{me^2} \approx 0.51 \times 10^{-10} \text{ m} 
+$$</p>
+<p>to</p>
+<p>$$
+a_0^{eff} = a_0(\epsilon_r \frac{m_e}{m_e^*}) &gt; 30 \times 10^{-10} \text{ m} 
+$$</p>
+<p>where the inequality is for silicon ($\epsilon_r \approx 11$) and an effective mass about a third of a free electron.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This also means that the binding energy of the electron to the additional proton is reduced from</p>
+<p>$$
+E_{\text{e-proton}} = \frac{me^2}{8 \epsilon_0^2\hbar^2} \approx 13.6 \text{eV} 
+$$</p>
+<p>to</p>
+<p>$$
+E_{\text{e-to P in Si}} = \Bigg(\frac{me^2}{8 \epsilon_0^2\hbar^2}\Bigg)\times \Bigg(\frac{m_e^*}{m\epsilon_r^2}\Bigg) &lt;&lt; 0.1 \text{eV} 
+$$</p>
+<p>for Silicon.</p>
+<p>So the impurity energy level is just below the conduction band of Silicon.</p>
+<p>They can be thermally excited into the conduction band.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Optical-effects-of-impurities">Optical effects of impurities<a class="anchor-link" href="#Optical-effects-of-impurities">&#182;</a></h3><p>Additional states in the band gap will allow extra optical transitions. If they are in the visible range, and the defect concentration is high enough, they will effect the colour of the material.</p>
+<p><img src="http://diamondsellersguide.com/wp-content/uploads/2014/07/colored-diamonds.gif" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For instance Sapphire is $\text{Al$_2$O$_3$}$, or pretty much cement, but ordered and with some defects.</p>
+<p>Either shiny or</p>
+<p><img src='https://upload.wikimedia.org/wikipedia/en/f/f7/Sapphire.png' alt="Smiley face" height="250" width="250"></p>
+<p>Note these are grown ... and how you grow them effects the colours</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>technologically useful</p>
+<p><img src=http://www.patentlyapple.com/.a/6a0120a5580826970c01bb07896e86970d-800wi alt="Smiley face" height="250" width="250"></p>
+<p><a href="http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html">http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html</a></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Thermodynamics">Thermodynamics<a class="anchor-link" href="#Thermodynamics">&#182;</a></h3><p>the DOS of a free electron gas is given by</p>
+<p>$$
+D(E \gg 0) = \frac{(2m)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E}
+$$</p>
+<p>as we saw, electrons and holes near the bottom or top of a band obey the same dispersion law, so should have a similar density of states.</p>
+<p>$$
+D_e(E \gg E_{CBM}) = \frac{(2m_e^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E-E_{CBM}}
+$$</p>
+<p>and similarly for holes</p>
+<p>$$
+D_h(E \ll E_{VBM}) = \frac{(2m_h^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E_{VBM}-E}
+$$</p>
+<p>and to get the density of electrons, we convolute our DOS with the Fermi function</p>
+<p>$$
+n_e(T) = \int_{E_{CBM}}^{-\infty}D_e(E)n_F(\beta(E-\mu))dE =  \int_{E_{CBM}}^{-\infty} \frac{D_e(E)}{e^{\beta(E-\mu)}+1}dE 
+$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If $\mu$ is well below the CBM, then $\beta(E-\mu) \gg 1$ and we can approximate</p>
+<p>$$
+\frac{D_e(E)}{e^{\beta(E-\mu)}+1} \approx D_e(E)e^{-\beta(E-\mu)}
+$$</p>
+<p>the integral is then doable (Simon p192), and we get</p>
+<p>$$
+n(T) = \frac{1}{4}\Bigg( \frac{2m_e^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(E_{CBM}-\mu)}
+$$</p>
+<p>Mainly the number of conduction electrons increases exponenentially with temperature (exponential is more important than the linear $T$ term).</p>
+<p>A similar expression holds for the density of holes</p>
+<p>$$
+p(T) = \frac{1}{4}\Bigg( \frac{2m_h^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(\mu-E_{VBM})}
+$$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Law-of-Mass-Action">Law of Mass Action<a class="anchor-link" href="#Law-of-Mass-Action">&#182;</a></h3><p>Combining our last two equations we get</p>
+<p>$$
+\begin{align}
+n(T)p(T) &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{CBM}-E_{VBM})} \\
+         &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{gap})}
+\end{align}
+$$
+where the band gap is $E_{gap} = E_{CBM}-E_{VBM}$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Intrinsic-semiconductors">Intrinsic semiconductors<a class="anchor-link" href="#Intrinsic-semiconductors">&#182;</a></h3><p>In an intrinsic semiconductor, $n = p$, we can only make electron hole pairs, as the whole system is electrically neutral.</p>
+<p>With this restraint we can solve for $n=p$ in the law of mass action</p>
+<p>$$
+n_{\text{intrinsic}} = p_{\text{intrinsic}} = \sqrt{np} = \frac{1}{4} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^{3/2} (m_e^* m_h^*)^{\frac{3}{4}} e^{-\beta E_{gap} /2} 
+$$</p>
+<p>You can also solve for the chemical potential $\mu$, which turns out to be mid gap.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Doped-(extrinsic)-semiconductors">Doped (extrinsic) semiconductors<a class="anchor-link" href="#Doped-(extrinsic)-semiconductors">&#182;</a></h3><p>if the semiconductor is doped, and assuming the temperature is high enough that all donor or acceptor states are added into the bands</p>
+<p>$$
+n-p = \text{(density of donors)} - \text{(density of acceptors)}
+$$</p>
+<p>and combined with the law of mass action can be solved to obtain $n$ and $p$.</p>
+<p>If the dopant concentration is larger than the number intrinsic carriers, the chemical potential moves to just below the CBM or just above the VBM.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Semiconductor-Devices">Semiconductor Devices<a class="anchor-link" href="#Semiconductor-Devices">&#182;</a></h3><p>It is not immediately obvious that this bit of physics was completely revolutionary.</p>
+<p>But it was.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="$p-n$-Junction">$p-n$ Junction<a class="anchor-link" href="#$p-n$-Junction">&#182;</a></h2><p>this is a junction of a p-doped semiconductor and an n-doped semiconductor.  Before they are in contact, they have two separate chemical potentials set by the doping levels of the material</p>
+<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSx-7S0CyoLisJ8GWXLWNX9Jm_6wfEm4I62YLgLxZNM5h68nIe6" alt=""></p>
+<p>when they are put into contact there is a transfer of electrons / holes to minimise the energy of the system.</p>
+<p>Electrons will flow into empty hole states, gaining an energy on the order of the band gap.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But this doesn't continue forever. Instead an opposing voltage builds up as more and more electrons transfer. Eventually an equilibrium is reached with a common fermi level for the whole system:</p>
+<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSYSAkhFUkEuiHEbFYuVibuHwgsOBwaWNPkwL8w4a5551qNSKJ_" alt=""></p>
+<p>The potential difference due to the charge separation cancels out the change in chemical potential to give a final balanced system.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://iamtechnical.com/sites/default/files/doide-structure-forward-reverse-bias-animation_0.gif" alt=""></p>
+<p>this junction acts as a diode, only conducting in one bias direction.</p>
+<p>Solar cells act in this way - formed electron-hole pairs are separated by the electric field and can then contribute to current generation.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are four possible processes allowing conduction:</p>
+<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
+<p>Electrons or holes can be thermally excited across the gap, they then flow rapidly away. The number of  carriers in these regimes will be of the form $e^{-E_{gap}/k_BT}$, independent of applied bias.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
+<p>The other two processes require the electrons/holes to climb the potential barrier. As a bias voltage is applied, the barrier height will shift from $E_{gap}$ to $E_{gap + eV}$, and the number of carriers would then be proportional to  $e^{-(E_{gap}+eV)/k_BT}$. Depending on the sign of the bias, the current will be very different.</p>
+<p>Light Emitting Diodes are essentially the same, though their material properties took a lot of tuning.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transistor">Transistor<a class="anchor-link" href="#Transistor">&#182;</a></h3><p>by forming an $n-p-n$ (or $p-n-p$) sandwich, and adding a 'gate', it is possible to build a very efficient switch.</p>
+<p><img src="https://sub.allaboutcircuits.com/images/03423.png" alt=""></p>
+<p>Real geometries are now very complicated.</p>
+<p>As transitiors shrink, individual atomic defects can actually dominate, especially in determining the reliability of devices.</p>
+<p>Much work goes into improving materials for these devices - the atomistic details are fascinating too - these cartoons do not give a real indication of the complexity</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Photophysics">Photophysics<a class="anchor-link" href="#Photophysics">&#182;</a></h3><p>Many devices combine absorbtion or emission of light with semiconductor physics.</p>
+<p>We've met one - solar cell. Which is basically a photodiode.</p>
+<p>Also Light Emitting Diodes (kind of reverse of a photodiode), photocathodes (electron sources), artificial photosynthesis, variety of sensors, and many more.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>Semiconductor physics can work with the simple band model, analogy with Drude model and some thermodynamics.</p>
+
+</div>
+</div>
+</div></section></section>
+
+</div>
+</div>
+
+<script>
+  
+  require(
+  {
+  // it makes sense to wait a little bit when you are loading
+  // reveal from a cdn in a slow connection environment
+  waitSeconds: 15
+  },
+  [
+  "../../../revealjs//lib/js/head.min.js",
+  "../../../revealjs//js/reveal.js"
+  ],
+  
+  function(head, Reveal){
+  
+  // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+  controls: true,
+  progress: true,
+  history: true,
+  mouseWheel: false,
+  center: false,
+  scroll: true,
+  //width: "80%",
+  //height: "80%",
+  //margin: 10,
+  //minScale: 0.2,
+  //maxScale: 1.5,
+  // Parallax background image
+  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Polaron_scheme1.svg',
+  // Parallax background size
+  parallaxBackgroundSize: '408px 511px', // CSS syntax, e.g. "2100px 900px
+  
+  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+  { src: "../../../revealjs//lib/js/classList.js",
+  condition: function() { return !document.body.classList; } },
+  { src: "../../../revealjs//plugin/notes/notes.js",
+  async: true,
+  condition: function() { return !!document.body.classList; } }
+  ]
+  });
+  
+  var update = function(event){
+  if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+  MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+  }
+  };
+  
+  Reveal.addEventListener('slidechanged', update);
+  
+  var update_scroll = function(event){
+  $(".reveal").scrollTop(0);
+  };
+  
+  Reveal.addEventListener('slidechanged', update_scroll);
+  
+  }
+  );
+</script>
+
+</body>
+
+</html>
