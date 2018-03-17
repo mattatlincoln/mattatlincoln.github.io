@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>08 - Samples</title>
+
+    <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      ,"fast-preview": {
+      disabled: true
+      }  
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Populations-and-Samples">Populations and Samples<a class="anchor-link" href="#Populations-and-Samples">&#182;</a></h1><p>Learning outcomes</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <li>what is a population? </li>
+		    <li> what is a sample?    </li>
+		    <li> how are they related </li>
+		  </div>
+		  <br>
+
+		  Consider $X_i$, $i=1,2,\ldots n$, where $X_1, X_2 \ldots X_n$ are mutually independent and identically distributed as $X$. With $\text{E}[X] = \mu_X$ and $\sigma_X^2 = \sigma_X^2$.  
+
+		  The sample mean, $\bar X$, and sample variance, $S^2$, are random variables with 
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <li> $\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$
+		    <li> $\text{E}[\bar{X}] = \mu_X$ </li>
+		    <li> $\text{var}(\bar{X}) = \sigma_X^2/n$ </li>
+		    <li> $S^2 = \sum_{i=1}^n \frac{ (X_i - \bar{X})^2}{n-1}$</li>
+		    <li> $\text{E}[S^2] = \sigma_X^2$
+		  </div>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\mathbf{definition}$</p>
+		  <p>A $\mathbf{population}$ is a complete set of measurements or counts, either existing or conceptial.</p>
+		  <ul>
+		    <li>Everything we have done so far has dealt with populations</li>
+		  </ul>
+		  <p>In principle we have all the information available - for instance when we looked at the distribution of the distance of your home town from Lincoln.</p>
+		  <p>You are the complete population (those that are here anyway) of students in the School of Mathematics and Physics at the University of Lincoln in 2016-17.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\mathbf{definition}$</p>
+		  <p>A $\mathbf{sample}$ is a subset of measurements on a population.</p>
+		  <p>For instance we could instead think of the 'students in the School of Mathematics and Physics at the University of Lincoln in 2016-17' as a sample from the population that is 'students starting undergraduate degrees in the UK 2016-17'.</p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <h4 id="If-we-only-have-information-about-the-sample,--can-we-deduce-information-about-the-population?">If we only have information about the sample,  can we deduce information about the population?<a class="anchor-link" href="#If-we-only-have-information-about-the-sample,--can-we-deduce-information-about-the-population?">&#182;</a></h4>
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\mathbf{definition}$</p>
+		  <p>A $\mathbf{statistic}$ is a numerical descriptive measure of a sample.</p>
+		  <p>A $\mathbf{parameter}$ is a numerical descriptive measure of a population.</p>
+		  <p>A statistic should be derived only from the observations - there should be no assumptions made about the underlying distribution etc.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\mathbf{definition}$</p>
+		  <p>A random $\mathbf{sample}$ of size $n$ taken from some distribution is a set of $n$ random variables $X_1, X_2 \ldots X_n$, satisfying the following two conditions:</p>
+		  <p>(a) Each $X_i$ where $i=1,2,\ldots n$ has exactly the same distribution.</p>
+		  <p>(b) The set $X_1, X_2 \ldots X_n$ are mutually independent.</p>
+		  <p>This is often abbreviated to iid, independent and identitally distributed.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h4><p>This is the crux, distringuishing between sample and population.</p>
+		  <p>Lets look at your heights.</p>
+		  <p>In this case our population is those of you that have turned up this morning.</p>
+		  <p>We can take a sample from that population by picking groups of you at random.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\mathbf{definition}$</p>
+		  <p>Let $X_1, X_2 \ldots X_n$ be a random sample of size $n$ from some distribution.</p>
+		  <p>We define a $\mathbf{statistic}$ (of the sample!) as any function of the set</p>
+		  <p>(a) Each $X_i$ where $i=1,2,\ldots n$.</p>
+		  <p>(b) The set $X_1, X_2 \ldots X_n$ are mutually independent.</p>
+		  <p>This statistic has to be fully defined when the sample is collected.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h4><p>OK, lets actually do this for your heights.</p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <ul>
+		      <li>in centimeters!</li>
+		    </ul>
+
+		  </div>
+		</div>
+	    </div></div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <iframe src="https://trinket.io/embed/python3/f2610110b8" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>In this case our population is those of you that have turned up this morning.</p>
+		  <p>We can take a sample from that population by picking groups of you at random.</p>
+		  <p>Our statistic could be the sample mean</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    $$
+		    \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
+		    $$
+		  </div><p>Note that $\bar{X}$ is a random variable itself, because it is a sum of other random variables.</p>
+
+		</div>
+	      </div>
+	  </div></section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+<iframe src="https://trinket.io/embed/python3/028b232d96" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		</div>
+	      </div>
+	  </div></section>
+
+	</section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Sample-statistics---sample-mean,-and-sample-variance">Sample statistics - sample mean, and sample variance<a class="anchor-link" href="#Sample-statistics---sample-mean,-and-sample-variance">&#182;</a></h2><p>Let $X_1, X_2 \ldots X_n$ be a random sample from the distribution $F$.</p>
+		  <p>$F$ has population mean $\mu$ and population variance $\sigma^2$.</p>
+		  <p>Similarly to the population, the most important sample statistics are the</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    sample mean,
+		    $$
+		    \bar{X} = \sum_{i=1}^n \frac{ X_i}{n},
+		    $$
+
+		    and the sample variance
+
+		    $$
+		    S^2 = \sum_{i=1}^n \frac{ (X_i - \bar{X})^2}{n-1} 
+		    $$
+		  </div>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Sample-mean">Sample mean<a class="anchor-link" href="#Sample-mean">&#182;</a></h3><p>The sample mean is defined as the arithmetic mean of the sample values.</p>
+		  $$
+		  \bar{X} = \sum_{i=1}^n \frac{ X_i}{n},
+		  $$<p>It is proportional to the sum of $n$ independent random variables, so it is itself a random variable. We can use the results we showed earlier for independent random variables to investigate how the sample mean is distributed (remember it is a random variable)</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Expectation-of-the-sample-mean">Expectation of the sample mean<a class="anchor-link" href="#Expectation-of-the-sample-mean">&#182;</a></h4><p>We have
+		    $$
+		    \begin{align}
+		    \text{E}[\bar{X}] & = \text{E} \Bigg[ \frac{X_1 + X_2 +\ldots+ X_n}{n} \Bigg]\\
+                    & = \frac{1}{n}\Big(\text{E}[X_1] + \text{E}[X_2] +\ldots+ \text{E}[X_n]\Big)
+		    \end{align}
+		    $$
+		    where we use the fact that the expectation is a linear operator.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now we have said that each of the sampling random variables is identically distributed according to $F$, which has expectation value of $\mu$, so each of the expectations is $\mu$ and we get</p>
+		  $$
+		  \begin{align}
+		  \text{E}[\bar{X}] & = \frac{1}{n}\Big(\text{E}[X_1] + \text{E}[X_2] +\ldots+ \text{E}[X_n]\Big)\\
+                  & = \frac{1}{n}(\mu + \mu +\ldots+ \mu)\\
+                  & = \frac{1}{n}(n\mu) \\
+                  & = \mu
+		  \end{align}
+		  $$<p>So the expectation of the sample mean should be the same as the population mean.</p>
+		  <p>We saw that this seemed to be the case for the samples we did from your heights.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Variance-of-the-sample-mean">Variance of the sample mean<a class="anchor-link" href="#Variance-of-the-sample-mean">&#182;</a></h4><p>We can do a similar job looking at the variance of the sample mean. We have
+		    $$
+		    \begin{align}
+		    \text{var}(\bar{X}) & = \text{var} \Bigg( \frac{X_1 + X_2 +\ldots+ X_n}{n} \Bigg)\\
+                    & = \frac{1}{n^2} \Bigg[ \text{var}(X_1) + \text{var}(X_2) +\ldots+ \text{var}(X_n) \Bigg]
+		    \end{align}
+		    $$
+		    where we use the properties of the variance for independent variables that we showed earlier.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Again we use the fact that each of the samples is identically distributed with variance $\sigma^2$ to get</p>
+		  $$
+		  \begin{align}
+		  \text{var}(\bar{X}) & = \frac{1}{n^2} \big[ \text{var}(X_1) + \text{var}(X_2) +\ldots+ \text{var}(X_n) \big]\\
+                  & = \frac{1}{n^2} \big[ \sigma^2 + \sigma^2 +\ldots+ \sigma^2 \big]\\
+                  & = \frac{1}{n^2} \big[ n\sigma^2  \big]\\
+                  & = \frac{n\sigma^2}{n^2} \\
+                  & = \frac{\sigma^2}{n}
+		  \end{align}
+		  $$<p>We see that the variance of the sample means is expected to be $n$, the sample size, times smaller than the population variance.</p>
+		  <p>You can check this for our sampling of your heights by changing the sample size in the code.</p>
+		  <p><strong>Note that the variance of the sample mean is not the sample variance!</strong></p>
+
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <iframe src="https://trinket.io/embed/python3/028b232d96" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Unbiased-esimator">Unbiased esimator<a class="anchor-link" href="#Unbiased-esimator">&#182;</a></h3><p>The sample mean is an 'unbiased' estimator of the population mean.</p>
+		  <p>If we didn't know the population mean, $\mu$, it would be natural to take $\bar{X}$ as an estimate of it.</p>
+		  <p>We also see that as the sample size, $n$, increases the sample mean tends precisely to the population mean (law of large numbers).</p>
+		  <p>We can see that the variance of the sample mean
+		    $$\text{var}(\bar{X}) = \frac{\sigma^2}{n}$$
+		    tends to zero as the sample size increases.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Sample-variance">Sample variance<a class="anchor-link" href="#Sample-variance">&#182;</a></h2><p>The sample variance is defined as</p>
+		  $$
+		  S^2 = \sum_{i=1}^n \frac{ (X_i - \bar{X})^2}{n-1}
+		  $$<p>and $S = \sqrt(S^2)$ is the sample standard deviation.</p>
+		  <p>There are a lot of bad explanations for the $(n-1)$ in the denominator on t'interwebs. I'm going to stick with the following:</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Expectation-of-the-sample-variance">Expectation of the sample variance<a class="anchor-link" href="#Expectation-of-the-sample-variance">&#182;</a></h3><p>First, let's prove a formula similar to the one we tend to use when calculating the population variance:</p>
+		  $$
+		  \begin{align}
+		  (n-1)S^2 & = \sum_{i=1}^n (X_i - \bar{X})^2\\
+		  & = \sum_{i=1}^n (X_i^2 - 2X_i\bar{X} - \bar{X}^2) \text{ (expand the bracket) }\\
+		  & = \sum_{i=1}^n X_i^2 - 2\bar{X} \sum_{i=1}^n X_i + \sum_{i=1}^n\bar{X}^2\\
+		  & = \sum_{i=1}^n X_i^2 - 2\bar{X}(n\bar{X}) + n\bar{X}^2 \text{ (because $\bar{X} = \sum_{i=1}^n X_i / n$) }\\
+		  & = \sum_{i=1}^n X_i^2 - 2n\bar{X}^2 + n\bar{X}^2 \\
+		  & = \sum_{i=1}^n X_i^2 - n\bar{X}^2
+		  \end{align}
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We are still sampling from $F$, so the population variance is $\sigma^2$, we can use the formula just derived to evaluate the expectation of the sample variance</p>
+		  $$
+		  \text{E}\Big[(n-1)S^2\Big] = \text{E}\Bigg[\sum_{i=1}^n X_i^2 - n\bar{X}^2\Bigg]
+		  $$<p>Rearranging the standard formula for the variance of a random variable $U$ to $\text{E}[U^2] = \sigma_U^2 + \text{E}[U]^2 $, we have for the case when $U$ is the sample mean</p>
+		  $$
+		  \text{E}[\bar{X}^2] = \frac{\sigma^2}{n} + \mu^2
+		  $$<p>using the results we derived for the expectation and variance of the sample mean.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The same rearranged formula for the variance gives us</p>
+		  $$
+		  \text{E}[X_i^2] = \sigma^2 + \mu^2
+		  $$<p>We then get</p>
+		  $$
+		  \begin{align}
+		  \text{E}\Big[(n-1)S^2\Big] & = \text{E}\Bigg[\sum_{i=1}^n X_i^2 - n\bar{X}^2\Bigg]\\
+                  & = n (\sigma^2 + \mu^2) - n\Bigg(\frac{\sigma^2}{n} + \mu^2\Bigg)\\
+                  & = (n-1)\sigma^2
+		  \end{align}
+		  $$<p>and finally</p>
+		  $$
+		  \text{E}[S^2] =\sigma^2
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>So $S^2$ is an unbiased estimator of the population variance. This is why we define $S^2$ like that.</p>
+		  <p>If we defined $S^2$ with $n$ rather than $(n-1)$ in the denominator our estimate of the population variance would be</p>
+		  $$
+		  \frac{n-1}{n}\sigma^2
+		  $$<p>instead of $\sigma^2$ itself.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Sampling-from-a-finite-set">Sampling from a finite set<a class="anchor-link" href="#Sampling-from-a-finite-set">&#182;</a></h2><p>I've cheated a little in what we've done, or at least we've only considered an infinite set, or a finite set with replacement.</p>
+		  <p>The code for sampling replaces the student each time, so when we average over many samples we include cases where the same student appears multiple times.</p>
+		  <p>If we are really sampling from a small finite sample, then things are more complicated (see Ross for details). The various $X_i$ become correlated to some degree (like when we take multiple balls from a container in probability problems).</p>
+		  <p>We won't look at this case here.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Distribution-of-samples">Distribution of samples<a class="anchor-link" href="#Distribution-of-samples">&#182;</a></h1><p>We've talked about the overall properties of samples, in terms of the statistics $\bar{X}$ and $S$.</p>
+		  <p>The second main theorem of probability theory is the 'central limit theorem'.</p>
+		  <p><strong> Central limit Theorem</strong></p>
+		  <p>Let $S_n = X_1 + X_2 + X_3 + \ldots + X_n$ be the sum of $n$ independent continuous random variables with common probability density function $f$, expectation $\mu$ and variance $\sigma^2$.</p>
+		  <p>Let the standardised variable (meaning it has expectation 0 and variance 1) corresponding to $S_n$ be $S_n^* = \frac{(S_n - n \mu)}{\sigma \sqrt{n}}$.</p>
+		  <p>Then we have, for all $a \lt b$,</p>
+		  $$
+		  \lim_{n \to \infty} P(a \lt S_n^* \lt b) = \frac{1}{\sqrt{2 \pi}} \int_a^b e^{-\frac{x^2}{2}} \text{d}x
+		  $$<p>So, for large $n$, $S_n^*$ is a standard normal random variable. It does not matter what the probability density function $f$ is.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>Suppose a  surveyor wants to measure a known distance, say of 1 mile using some triangulation and wotnot. He knows that all his measurements will be slightly in error.</p>
+		  <p>OK, he'll take several measurements and take an average to reduce the error.</p>
+		  <p>He assumes that his measurements are independent random variables with $\mu = 1$ and $\sigma = 0.0002$.</p>
+		  <ul>
+		    <li>what can he say about the average?</li>
+		    <li>how many measurements should he take to be reasonably sure that his average lies within $0.0001$ of the true value</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>What can he say about the average?</p>
+		  <ul>
+		    <li>He can say that if $n$ is large, the average $S_n/n$ has a probability density function that is approximately normal, with mean $\mu = 1 $ mile, and standard deviation $\sigma = \frac{0.0002}{\sqrt{n}}$ miles.</li>
+		  </ul>
+		  <p>How many measurements should he take to be reasonably sure that his average lies within 0.0001 of the true value</p>
+		  <ul>
+		    <li>The Chebychev inequality says that
+		      $$
+		      P\Bigg( \Big| \frac{S_n}{n} - \mu \Big| \ge 0.0001 \Bigg) \le \frac{(0.0002)^2}{n\cdot 10^{-8}} = \frac{4}{n}
+		      $$
+		      so we need $n \ge 80$ to be $95\%$ confident the error is less than $0.0001$.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>The surveyor doesn't fancy repeating things 80x everytime. If the central limit theorem holds then $S_n$ should be approximately normal. If we know the distribution, we can improve our estimate.</li>
+		  </ul>
+		  $$
+		  \begin{align}
+		  P\Bigg( \Big| \frac{S_n}{n} - \mu \Big| \le 0.0001\Bigg)  & = P(-0.0001 \leq S_n/n - \mu \leq +0.0001) \\
+                  & = P(-0.0001 n \leq S_n - n\mu \leq +0.0001 n) \\
+                  & = P(\frac{-0.0001 n}{\sqrt{n}\sigma} \leq \frac{S_n - n\mu}{\sigma \sqrt{n}}\leq +\frac{0.0001 n }{ \sigma\sqrt{n}}) \\
+                  & = P(-0.5 \sqrt{n} \leq S_n^* \leq 0.5 \sqrt{n}) \\
+                  & = \frac{1}{\sqrt{2 \pi}} \int \limits_{-0.5 \sqrt{n}}^{0.5 \sqrt{n}} e^{-\frac{x^2}{2}} \text{d}x
+		  \end{align}                                              
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>By using the values of the cumulative distribution function of the standard normal distribution, we can figure out that this would be $> 0.95$ if $0.5 \sqrt{n} \ge 1.96$.</p>
+<p>This means 16 measurements would suffice - easy life.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+	<div class="text_cell_render border-box-sizing rendered_html">
+	  <p>We found the value $0.5 \sqrt{n} \ge 1.96$ by looking for the quantiles that enclose 95% of the probability distribution.</p>
+
+	</div>
+      </div>
+  </div></section>
+
+  <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+	<div class="text_cell_render border-box-sizing rendered_html">
+	  <iframe src="https://chris14552249.github.io/UROS/Physics%20Animations/Animation%204/" width="100%" height="650" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+	</div>
+      </div>
+  </div></section>
+
+  <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="prompt input_prompt">
+      </div>
+      <div class="inner_cell">
+	<div class="text_cell_render border-box-sizing rendered_html">
+	  <p>As the normal distribution is symmetric, this means that there should be 2.5% of the density missing at the bottom, and 2.5% missing at the top.</p>
+	  <p>Or we want to find the $2.5^{th}$ and the $97.5^{th}$ percentiles.</p>
+
+	</div>
+      </div>
+    </div><div class="fragment">
+      <div class="cell border-box-sizing text_cell rendered">
+	<div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+	  <div class="text_cell_render border-box-sizing rendered_html">
+	    <p>Note that the estimate based on the central limit theorem is much more informative than the Chebychev inequality.</p>
+	    <p>(This example assumes that 16 measurements is sufficient for the Central Limit Theorem to hold, which is rather borderline.)</p>
+
+	  </div>
+	</div>
+</div></div></section></section>
+</div>
+</div>
+
+<script>
+
+  require(
+  {
+  // it makes sense to wait a little bit when you are loading
+  // reveal from a cdn in a slow connection environment
+  waitSeconds: 15
+  },
+  [
+  "../../../revealjs//lib/js/head.min.js",
+  "../../../revealjs//js/reveal.js"
+  ],
+
+  function(head, Reveal){
+
+  // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+  controls: true,
+  progress: true,
+  history: true,
+
+  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+  { src: "../../../revealjs//lib/js/classList.js",
+  condition: function() { return !document.body.classList; } },
+  { src: "../../../revealjs//plugin/notes/notes.js",
+  async: true,
+  condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+  var update = function(event){
+  if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+  MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+  }
+  };
+
+  Reveal.addEventListener('slidechanged', update);
+
+  var update_scroll = function(event){
+  $(".reveal").scrollTop(0);
+  };
+
+  Reveal.addEventListener('slidechanged', update_scroll);
+
+  }
+  );
+</script>
+
+</body>
+
+
+</html>
