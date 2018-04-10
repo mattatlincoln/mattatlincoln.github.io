@@ -362,7 +362,7 @@
 		      iWMJqloF7LvYbymQ49WL/URkHPAZcIqIrBWRu11nOpCIdANuA34eOXVxQWQw4jXHAR9H3t9fAO+p
 		      6gzHmRrMLpgyxpgk59URvTHGmDixQm+MMUnOCr0xxiQ5K/TGGJPkrNAbY0ySs0JvjDFJzgq9McYk
 		      OSv0xhiT5P4/BSmtQaEQX6AAAAAASUVORK5CYII=">
-            <p>The blue area is contains $c$ probability. The borders between red and blue occur at $\pm z_c$. In this particular case $c = 0.95$</p>
+            <p>The blue area contains $c$ probability. The borders between red and blue occur at $\pm z_c$. In this particular case $c = 0.95$</p>
             <p>Because $N(z_c) - N(-z_c) = c$ and $N(-x) = 1 - N(x)$ we can find the value of $z_c$ from the inverse of the cumulative distribution function, using tables or computer.</p>
           </section>
 	</section>
@@ -371,14 +371,15 @@
           <section>
             <h3 id="Critical-values">Critical values<a class="anchor-link" href="#Critical-values">&#182;</a></h3>
             <p>The critical values can be obtained from the  ppf (percentage point function) of the python scipy.stats library, or tables</p>
+	    <p><a href=https://trinket.io/library/trinkets/7b14151a69>here</p>
             <div class="fragment">
               <div class="output_subarea output_stream output_stdout output_text">
 		<pre>
-                  critical value for 70% confidence 1.04
-                  critical value for 80% confidence 1.28
-                  critical value for 90% confidence 1.64
-                  critical value for 95% confidence 1.96
-                  critical value for 99% confidence 2.58
+                  critical value for 2 sided 70% confidence 1.04
+                  critical value for 2 sided 80% confidence 1.28
+                  critical value for 2 sided 90% confidence 1.64
+                  critical value for 2 sided 95% confidence 1.96
+                  critical value for 2 sided 99% confidence 2.58
 		</pre>
               </div>
             </div>
@@ -2715,7 +2716,7 @@
 		  \begin{align}
 		  u(0) &amp; = \log{g(0)} = 0 \\
 		  u^{(1)}(0) &amp; = \frac{g^{(1)}(0)}{g(0)} = \frac{\mu_1}{1} = 0 \\
-		  u^{(2)}(0) &amp; = \frac{g^{(2)}(0) g(0) - g^{(1)}(0)^2}{g(0)^2} = \frac{\mu_2 - \mu_1}{1} = \sigma^2 = 1
+		  u^{(2)}(0) &amp; = \frac{g^{(2)}(0) g(0) - g^{(1)}(0)^2}{g(0)^2} = \frac{\mu_2 - \mu_1^2}{1} = \sigma^2 = 1
 		  \end{align}
 		  $$</p>
 
