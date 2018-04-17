@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>10 - Hypothesis testing</title>
+
+    <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      ,"fast-preview": {
+      disabled: true
+      }  
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+
+  <body>
+
+
+    <div class="reveal">
+      <div class="slides">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Hypothesis-Testing">Hypothesis Testing<a class="anchor-link" href="#Hypothesis-Testing">&#182;</a></h1><p>This is another part of statistical inference.</p>
+		  <p>Last week we estimated or inferred the values of population parameters (mean and variance) from statistical data.</p>
+		  <p>We looked at confidence intervals - we estimated or inferred the range of values of population parameters with a certain degree of probability or confidence</p>
+		  <p>This week we look at some methods to make decisions based on these estimates.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example</strong></p>
+		  <p>Suppose we'd been following some population over a period of time and found it to be normally distributed with mean $\mu$ and standard deviation $\sigma$. Now, for some reason we have a suspicion that the the mean has changed in some way.</p>
+		  <p>We want to formulate some test that would allow us to make an informed decision whether our suspicions were correct or not. How should we attack this?</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We will draw a random sample $X_1, X_2, \ldots, X_n$ and calculate the value of the sample mean, $\bar{x}$, for the values we've drawn,$x_1, x_2, \ldots, x_n$.</p>
+		  <p>We then look at the difference between the sample mean $\bar{x}$ and $\mu$.</p>
+		  <ul>
+		    <li>if the difference is large, we could decide that the mean of the population is no longer $\mu$</li>
+		    <li>if the difference is small, we accept that there is no evidence to support our suspicion and that the mean is still $\mu$.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The problem here is what is large and what is small?</p>
+		  <p>We'd expect large and small to related to</p>
+		  <ul>
+		    <li>the spread of the distribution</li>
+		    <li>and the sample size)</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We can use essentially the same methods we used to construct confidence intervals to try and quantify whether the difference between the sample mean and the presumed population mean is <strong>significant</strong>.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Schematic-of-a-construction-of-a-test-for-the-mean">Schematic of a construction of a test for the mean<a class="anchor-link" href="#Schematic-of-a-construction-of-a-test-for-the-mean">&#182;</a></h2><p>Let us assume that the population mean is $\mu$,then we consider the distribution of the sample statistic $\bar{X}$ under this assumption.</p>
+		  <p>Remember we know that historically the population was</p>
+		  <ul>
+		    <li>normally distributed </li>
+		    <li>with mean $\mu$ and </li>
+		    <li>standard deviation $\sigma$, </li>
+		  </ul>
+		  <p>so we are assuming that the random sample is drawn from this distribution.</p>
+		  <p>We have shown that $\bar{X}$ should be an unbiased estimator for $\text{E}[\bar{X}] = \text{E}[X] = \mu$.</p>
+		  <p>As the random sample should be drawn from $N(\mu, \sigma)$ the sample mean $\bar{X}$ should be distributed $N(\mu, \sigma / \sqrt{N})$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Then we $\textbf{standardize}$ our variable</p>
+		  <p>$$
+		    \frac{\bar{X}-\mu}{\sigma/\sqrt{N}} \sim N(0,1)
+		    $$
+		    where $\sim$ means is distributed as.</p>
+		  <p>When we have taken our particular sample of $X_1, X_2, \ldots, X_n$ we have $x_1, x_2, \ldots, x_n$ and can calculate $\bar{x}$.</p>
+		  <p>The particular standardized value
+		    $$
+		    \frac{\bar{x}-\mu}{\sigma/\sqrt{N}}
+		    $$
+		    should have come from the standard normal distribution.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We could say that we'll not reject our value if it is a value that could be drawn from a standard normal distribution with some probability. So for instance 95% of the time a random value drawn from a standard normal distribution will have a value between -1.96 and 1.96.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[4]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">zclower</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+			<span class="n">zcupper</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="n">zclower</span><span class="p">,</span> <span class="n">zcupper</span><span class="p">)</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt"></div>
+
+
+		    <div class="output_subarea output_stream output_stdout output_text">
+		      <pre>-1.95996398454 1.95996398454
+		      </pre>
+		    </div>
+		  </div>
+
+		</div>
+	      </div>
+
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>In other words we'd reject our idea if the value we got was only 5% likely to have come from our assumed distribution. To get this value we look for the 2.5% quantile at the bottom, and 97.5% quantile at the top of the distribution.</p>
+		  <p>Lets look at a plot of the regions that don't satisfy this:</p>
+		  <p><img src="2sided5pc.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$">Summary of procedure to test if the population mean is $\mu$<a class="anchor-link" href="#Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$">&#182;</a></h2><ul>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>A machine produces components whose lengths should be distributed Normally with mean 0.160 cm and standard deviation 0.012 cm.</p>
+		  <p>A sample of 100 is drawn and the sample mean computed as 0.157 cm.</p>
+		  <ul>
+		    <li>Is there any evidence at the 5% level that the mean of component lengths has changed?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We are given that $\mu=0.160$, $\sigma=0.012$, $\bar{x}=0.157$ and $N=100$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>We assume that the component lengths are distributed as $N(0.16, 0.012)$.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>A 5% significance level gives us critical $z$ values of $\pm 1.96$, so the rejection areas are as we just saw.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>We calculate our standardized test statistic, here its value is</li>
+		  </ul>
+		  <p>$$
+		    \frac{\bar{x}-\mu}{\sigma/\sqrt{N}} = \frac{0.157-0.160}{0.012/\sqrt{100}} = -2.5
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>The above value lies in our rejection region, and so is significant at the 5% level.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>Therefore, the original assumption can be rejected and we have shown that there is evidence at the 5% level that the mean of the component lengths has changed.</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>Note that $\bar{x}$ is pretty close to $\mu$ - but the standard deviation is small, and the sample size is large - both give allow us to resolve smaller differences between the sample and assumed population mean. </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="P-values">P-values<a class="anchor-link" href="#P-values">&#182;</a></h2><p>there is another slightly different procedure that can be followed:  we run the data and give the critical significance level at which we would reject our hypothesis.</p>
+		  <p><strong>example</strong></p>
+		  <p>if we look at our last example again</p>
+		  <p>$$
+		    \frac{\bar{x}-\mu}{\sigma/\sqrt{N}} = \frac{0.157-0.160}{0.012/\sqrt{100}} = -2.5
+		    $$</p>
+		  <p>our test statistic came out at -2.5. The probability of getting this value from a standard normal distribution is $\Phi(-2.5)$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[6]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+		    <div class="output_text output_subarea output_execute_result">
+		      <pre>0.0062096653257761323</pre>
+		    </div>
+
+		  </div>
+
+		</div>
+	      </div>
+
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>so there is only a 0.6% chance of getting a value of -2.5 (or less) from a standard normal distribution.</p>
+		  <p>We'd have rejected this if the significance level was set at twice this value (because we are doing a two sided test we have the same amount of probability density at the top as the bottom).</p>
+		  <p>So the $P$ value is</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[7]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+		    <div class="output_text output_subarea output_execute_result">
+		      <pre>0.012419330651552265</pre>
+		    </div>
+
+		  </div>
+
+		</div>
+	      </div>
+
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We'd reject this value at a 1.2% significance level (but we'd accept at a 1% level).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="One-sided-vs-two-sided">One sided vs two sided<a class="anchor-link" href="#One-sided-vs-two-sided">&#182;</a></h3><p>We've tended to use a symmetric criteria, or a so called two-sided test (our confidence regions were the same), i.e the value of $\mid \bar{x} - \mu \mid$ is what we've been examining above.</p>
+		  <p>We might have a suspicion that the mean had decreased (the average weight of cakes in our favourite bakery/cafe has decreased for instance)...</p>
+		  <p>In this case we would only be interested in whether the standardized value was too small to be likely have come from our hypthesized distribution.</p>
+		  <p><img src="1vs2sided5pc.png" alt=""></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>In both cases there is a total of 5% of the probability density in the critical region, but in the one sided case, we are only interested in the lower range (if cakes have really got bigger, that is fine).</p>
+		  <p>We could be interested in an upper bound instead, which would be the same as the lower, but at the top...</p>
+		  <p><img src="critregions.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>A machine produces components whose lengths should be distributed Normally with mean 0.160 cm and standard deviation 0.012 cm.</p>
+		  <p>A sample of 100 is drawn and the sample mean computed as 0.157 cm.</p>
+		  <ul>
+		    <li>Is there any evidence at the 1% level that the mean component length has reduced?</li>
+		    <li>What is the P-value of the test?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We are given that $\mu=0.160$, $\sigma=0.012$, $\bar{x}=0.157$ and $N=100$.</p>
+		  <ul>
+		    <li>We assume that the component lengths are distributed as $N(0.16,(0.012)^2)$.</li>
+		    <li>A 1% significance level gives us critical $z$ value of $-2.33$, for a one-sided test</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[12]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+		    <div class="output_text output_subarea output_execute_result">
+		      <pre>-2.3263478740408408</pre>
+		    </div>
+
+		  </div>
+
+		</div>
+	      </div>
+
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>We calculate our standardized test statistic, here its value is
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}} = \frac{0.157-0.160}{0.012/\sqrt{100}} = -2.5
+		      $$</li>
+		    <li>The above value lies in our rejection region, and so is significant at the 1% level.</li>
+		    <li>Therefore, the original assumption can be rejected and we have shown that there is evidence at the 1% level that the mean of the component lengths has reduced.</li>
+		    <li>The P-value is just the significance level at which we'd have rejected the hypothesis. For a one-sided test it is just the value of the cumulative distribution at the test statistic - 0.6% </li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing code_cell rendered">
+	      <div class="input">
+		<div class="prompt input_prompt">In&nbsp;[14]:</div>
+		<div class="inner_cell">
+		  <div class="input_area">
+		    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+		    </pre></div>
+
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="output_wrapper">
+		<div class="output">
+
+
+		  <div class="output_area">
+
+		    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+		    <div class="output_text output_subarea output_execute_result">
+		      <pre>0.0062096653257761323</pre>
+		    </div>
+
+		  </div>
+
+		</div>
+	      </div>
+
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Note-on-interpretation">Note on interpretation<a class="anchor-link" href="#Note-on-interpretation">&#182;</a></h2><p>as is often the case in science, it is relatively easy to prove something is false - in this case if the data fall in the rejection region we can say with a known confidence that it is unlikely to come from our assumed distribution.</p>
+		  <p>However, the case where the data is not in the critical region is harder to be certain about: We can not argue that it shows that the data does come from our assumed distribution; Just that it is plausible, or there is no evidence that it doesn't.</p>
+		  <p>We don't really accept our hypothesis, we just don't reject it.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Hypotheses">Hypotheses<a class="anchor-link" href="#Hypotheses">&#182;</a></h2><p>normally the above is put a bit more formally.</p>
+		  <ul>
+		    <li>we have a null hypothesis - this is the default assumption, and the one we would continue to accept if the evidence doesn't make us change our opinion.</li>
+		    <li>we have an alternative hypothesis, which would be our new default point of view if the evidence calls on us to reject the null hypothesis.</li>
+		  </ul>
+		  <p>These are typically written</p>
+		  <ul>
+		    <li><p>$H_0$: mean = $\mu$</p>
+		      <blockquote><p>the null hypothesis is that the mean has value $\mu$</p>
+		      </blockquote>
+		    </li>
+		    <li><p>$H_1$: mean $\ne$ $\mu$</p>
+		      <blockquote><p>the alternative hypothesis is that the mean is not equal to $\mu$, and we'd use a two sided test</p>
+		      </blockquote>
+		    </li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>or</p>
+		  <ul>
+		    <li><p>$H_1$: mean $\lt$ $\mu$</p>
+		      <blockquote><p>the alternative hypothesis is that the mean is less than $\mu$, and we'd use a one sided test</p>
+		      </blockquote>
+		    </li>
+		    <li><p>$H_1$: mean $\gt$ $\mu$</p>
+		      <blockquote><p>the alternative hypothesis is that the mean is more than $\mu$, and we'd use a one sided test</p>
+		      </blockquote>
+		    </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>Testing the mean when the variance is known</p>
+		  <ul>
+		    <li>define $H_0$ and $H_1$</li>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas corresponding to the significance level and the hypotheses.</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+		  <p>All this applies to other population parameters or sample statistics - we just need to use appropriate distributions.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example</strong></p>
+		  <p>Suppose we'd been following some population over a period of time and found it to be normally distributed with mean $\mu$ and standard deviation $\sigma$. Now, for some reason we have a suspicion that the the mean has changed in some way.</p>
+		  <p>We want to formulate some test that would allow us to make an informed decision whether our suspicions were correct or not. How should we attack this?</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$-and-$\sigma$-is-known">Summary of procedure to test if the population mean is $\mu$ and $\sigma$ is known<a class="anchor-link" href="#Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$-and-$\sigma$-is-known">&#182;</a></h2><ul>
+		    <li>define $H_0$ and $H_1$</li>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas corresponding to the significance level and the hypotheses using a normal distribution.</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}} \sim N(0,1) \text{ (if our assumptions are correct)}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+		  <p>All this applies to other population parameters or sample statistics - we just need to use appropriate distributions.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>example</strong></p>
+		  <p>A machine produces components whose lengths should be distributed Normally with mean 0.160 cm and standard deviation 0.012 cm.</p>
+		  <p>A sample of 100 is drawn and the sample mean computed as 0.157 cm.</p>
+		  <ul>
+		    <li>Is there any evidence at the 5% level that the mean of component lengths has changed?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We are given that $\mu=0.160$, $\sigma=0.012$, $\bar{x}=0.157$ and $N=100$.</p>
+		  <ul>
+		    <li>We assume that the component lengths are distributed as $N(0.16,0.012)$.</li>
+		    <li>A 5% significance level gives us critical $z$ values of $\pm 1.96$, so the rejection areas are as we just saw.</li>
+		    <li>We calculate our standardized test statistic, here its value is
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}} = \frac{0.157-0.160}{0.012/\sqrt{100}} = -2.5
+		      $$</li>
+		    <li>The above value lies in our rejection region, and so is significant at the 5% level.</li>
+		    <li>Therefore, the original assumption can be rejected and we have shown that there is evidence at the 5% level that the mean of the component lengths has changed.</li>
+		    <li>Note that $\bar{x}$ is pretty close to $\mu$ - but the standard deviation is small, and the sample size is large - both give allow us to resolve smaller differences between the sample and assumed population mean. </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Disection-of-the-results-that-we-use">Disection of the results that we use<a class="anchor-link" href="#Disection-of-the-results-that-we-use">&#182;</a></h2><ul>
+		    <li>$\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>how does this come about?</p>
+		  <p>$\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$</p>
+		  <p>If $X_i \sim N(\mu,\sigma)$ then we can look at</p>
+		  <p>$\bar{X} = \frac{1}{N}(X_1 + X_2 + \ldots + X_n)$</p>
+		  <p>We saw last week that standard normal distributed random variables have moment generating functions $e^{t^2/2}$.</p>
+		  <p>This is a special case of a normal distribution, $N(\mu, \sigma)$ having moment generating function $$e^{\mu t + \frac{\sigma^2 t^2}{2 }}$$</p>
+		  <p>We also saw that, if $X$ and $Y$ are independent, then $e^{tX}$ and $e^{tY}$ are too. Then we have a new random variable $Z = X + Y$ has a generating function</p>
+		  <p>$$
+		    \begin{align}
+		    g_Z(t) &amp; = \text{E[$e^{tZ}$]} = \text{E[$e^{t(X + Y)}$]} \\
+		    &amp; = \text{E[$e^{tX}$]} \text{E[$e^{tY}$]} \\
+		    &amp; = g_X(t) g_Y(t)
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>If $X^* = X/N$</p>
+		  <p>$$
+		    g_{X^*}(t) = \text{E[$e^{tX^*}$]} = \text{E[$e^{\frac{tX}{N}}$]} = g_{X}(t/N)
+		    $$</p>
+		  <p>So we expect $\bar{X} = \frac{1}{N}(X_1 + \cdots + X_N)$ to have moment generating function</p>
+		  <p>$$
+		    \begin{align}
+		    g_{X_1}(t/N) \cdot g_{X_2}(t/N) \cdots g_{X_N}(t/N) &amp; = \big(e^{\mu t/N + \frac{\sigma^2 (t/N)^2}{2 }}\big) \cdots \big( e^{\mu t + \frac{\sigma^2 t^2}{2N }} \big) \\ 
+		    &amp; = e^{ N\mu t/N + \frac{ N \sigma^2 (t/N)^2}{2 }} \\
+		    &amp; = e^{ \mu t + \frac{ \sigma^2 t^2}{2N }} 
+		    \end{align}
+		    $$</p>
+		  <p>which is the moment generating function of a normal distribution with mean = $\mu$ and standard deviation = $\frac{\sigma}{\sqrt{N}}$.</p>
+		  <p>As the moment generating function fully defines the random variable, this implies that</p>
+		  <p>$$
+		    \bar{X} \sim N(\mu, \frac{\sigma}{\sqrt{N}})
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>If $X_i$ aren't $\sim N(\mu, \sigma)$ then we can use the Central Limit Theorem as long as $N$ is biggish ($N$ can be smaller the closer the $X_i$ are to being normally distributed themselves).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Disection-of-the-results-that-we-use">Disection of the results that we use<a class="anchor-link" href="#Disection-of-the-results-that-we-use">&#182;</a></h2><ul>
+		    <li>$\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <ul>
+		    <li>If  </li>
+		  </ul>
+		  <p>$$\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$$</p>
+		  <p>then</p>
+		  <p>$$
+		    \frac{\bar{X} - \mu}{\sigma/\sqrt{N}} \sim N(0, 1)
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>we can use the same moment generating technique to show that this transformation is valid</p>
+		  <ul>
+		    <li>If  $\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$ then  $\frac{\bar{X} - \mu}{\sigma/\sqrt{N}} \sim N(0, 1)$</li>
+		  </ul>
+		  <p>If a random variable $X \sim N(\mu,\sigma/ \sqrt{N})$ then let us consider a random variable $Z = \alpha X + \beta$</p>
+		  <p>$Z$ has moment generating function</p>
+		  <p>$$
+		    \begin{align}
+		    \text{E[$e^{tZ}$]} &amp; = \text{E[$e^{t(\alpha X + \beta)}$]} \\
+                    &amp; = e^{t\beta}\text{E[$e^{t\alpha X}$]}  \\
+                    &amp; = e^{t\beta} \exp\{\mu \alpha t + \sigma^2 (\alpha t)^2 /2N\} \\
+                    &amp; = \exp\{ ( \beta + \mu \alpha ) t + \sigma^2 \alpha^2 t^2 /2N\ \}
+		    \end{align}
+		    $$</p>
+		  <p>the last expression is the generating function of a normal distribution with mean = $\beta + \mu \alpha$ and variance $\sigma^2 \alpha^2 / N$.</p>
+		  <p>$\implies Z \sim N(\beta + \mu \alpha, \sigma \alpha)$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>$\implies Z \sim N(\beta + \mu \alpha, \sigma \alpha)$</p>
+		  <p>so if we choose the particular $\alpha$ and $\beta$ so that</p>
+		  <p>$$
+		    Z = \frac{X - \mu}{\sigma / \sqrt{N}}
+		    $$</p>
+		  <p>given that $X \sim N(\mu,\sigma/ \sqrt{N})$, $Z \sim N(0,1)$, as we want.</p>
+		  <p>You can also prove this by a change of variables and fairly standard calculus, but the moment generating function method is easier (to my mind).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Disection-of-the-results-that-we-use">Disection of the results that we use<a class="anchor-link" href="#Disection-of-the-results-that-we-use">&#182;</a></h2><ul>
+		    <li>$\bar{X} \sim N(\mu, \sigma/ \sqrt{N})$</li>
+		    <li>If  $\bar{X} \sim N(\mu, \sigma/\sqrt{N})$ then  $\frac{\bar{X} - \mu}{\sigma/\sqrt{N}} \sim N(0, 1)$</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Test-for-the-mean-when-the-variance-is-unknown">Test for the mean when the variance is unknown<a class="anchor-link" href="#Test-for-the-mean-when-the-variance-is-unknown">&#182;</a></h2><p>exactly like the confidence interval case, if we do not know the variance we approxiate it with the sample variance. We use the random variable</p>
+		  <p>$$
+		    \frac{\bar{X} - \mu}{S/\sqrt{N}}
+		    $$</p>
+		  <p>and test the test statistic</p>
+		  <p>$$
+		    \frac{\bar{x} - \mu}{S/\sqrt{N}}
+		    $$</p>
+		  <p>against a t distribution with $(N-1)$ degrees of freedom.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$-and-$\sigma$-unknown">Summary of procedure to test if the population mean is $\mu$ and $\sigma$ unknown<a class="anchor-link" href="#Summary-of-procedure-to-test-if-the-population-mean-is-$\mu$-and-$\sigma$-unknown">&#182;</a></h2><ul>
+		    <li>define $H_0$ and $H_1$</li>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas corresponding to the significance level and the hypotheses.</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{S/\sqrt{N}} \sim t(N-1) \text{ (if our assumptions are correct)}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Power-of-a-test">Power of a test<a class="anchor-link" href="#Power-of-a-test">&#182;</a></h2><p>Now we've seen practically how the tests work (and filled in the theory behind some of it) it is important to understand a difficulty that arises - false negatives and false positives.</p>
+		  <p>These two types of error are</p>
+		  <ul>
+		    <li>type I, false negative, we reject the null hypothesis when it is in fact true.</li>
+		    <li>type II, false positive, we accept the null hypothesis when the sample actually comes from another distribution</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Type-I-errors">Type I errors<a class="anchor-link" href="#Type-I-errors">&#182;</a></h3><p>these are fairly straightforward, and controllable.</p>
+		  <p>If we look at our rejection region</p>
+		  <p><img src="crit5pc2side.png" alt=""></p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>we can directly see that the probability of getting a false negative is $\alpha$, our significance level. This gives the probability of our random sample just happening to give a value within the rejection region.</p>
+		    <p>In that case why not just take $\alpha$ really small?</p>
+
+		  </div>
+		</div>
+	  </div></div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Type-II-errors">Type II errors<a class="anchor-link" href="#Type-II-errors">&#182;</a></h3><p>these are much harder, often impossible, to quantify.</p>
+		  <p>This is the error that occurs, conventionally with probability $\beta$, that the null hypothesis is accepted when it should be rejected.</p>
+		  <p>In other words our test shows that the test statistic could well have come from the distribution we are testing, but actually comes from another...</p>
+		  <p>Lets consider the case where we think that the sample comes from something $\sim N(20,2)$, but in fact the mean had moved to 25, so really the sample is from $N(25,2)$. When would we make errors?</p>
+		  <p><img src="typeIandII2sided10pc.png" alt=""></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>the two types or error are coloured red and blue.</p>
+		  <ul>
+		    <li>type I (red) - this can occur if the sample was really pulled from the distribution of $H_0$, but the random sample happens to produce an unlikely, but not impossible error - if the error chance is less than $\alpha$</li>
+		    <li>type II (blue) - this occurs if the actual distribution the sample comes from is not that of $H_0$, but instead has a different real  $\mu$. The probability of the type II error is $\beta$, and in this case it is a function of the real population mean $\beta(\mu)$.</li>
+		  </ul>
+		  <p><img src="typeIandII2sided10pc.png" alt=""></p>
+		  <p>To show that $\beta(\mu)$ we can plot the same graphs but for different values of $\mu$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="typeIvstypeII.png" alt=""></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>As we know the true distribution then we can work out $\beta(\mu)$ in this case. It can be very complicated in general.</p>
+		  <p><strong>definition</strong></p>
+		  <p>The <strong>power</strong> of a test is $(1-\beta)$</p>
+		  <p>The larger the power the better the test is at distinguishing between the alternative hypotheses.</p>
+		  <p>In general, when preparing a test the aim should be to have both alpha and beta small. Increasing $\alpha$ will decrease $\beta$, so there is a balance between the risks associated with type I and type II errors.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Other-tests">Other tests<a class="anchor-link" href="#Other-tests">&#182;</a></h2><ul>
+		    <li>test for the variance <ul>
+			<li>we saw in the lectures on confidence limits that the test statistic $\frac{(N-1)}{\sigma^2}S^2 \sim \chi^2(N-1)$</li>
+			<li>we'd calculate rejection regions in the same manner as for the tests of the mean, but using this statistic and the $\chi^2$ distribution</li>
+		      </ul>
+		    </li>
+		  </ul>
+		  <p>other statistics can also be devised and tested, such as</p>
+		  <ul>
+		    <li>test for the correlation coefficient</li>
+		    <li>tests for difference of means of two sets of data</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><h3 id="Testing-the-mean-when-the-variance-is-known">Testing the mean when the variance is known<a class="anchor-link" href="#Testing-the-mean-when-the-variance-is-known">&#182;</a></h3><ul>
+		    <li>define $H_0$ and $H_1$</li>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas corresponding to the significance level and the hypotheses.</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{\sigma/\sqrt{N}}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Testing-the-mean-when-the-variance-is-unknown">Testing the mean when the variance is unknown<a class="anchor-link" href="#Testing-the-mean-when-the-variance-is-unknown">&#182;</a></h3><ul>
+		    <li>define $H_0$ and $H_1$</li>
+		    <li>assume that the population mean is $\mu$</li>
+		    <li>choose a significance level, $\alpha \cdot 100$%, and calculate the corresponding critical values and rejection areas corresponding to the significance level and the hypotheses.</li>
+		    <li>take a random sample of size $N$ from the population under consideration</li>
+		    <li>calculate the quantity 
+		      $$
+		      \frac{\bar{x}-\mu}{S/\sqrt{N}} \sim t(N-1) \text{ (if our assumptions are correct)}
+		      $$
+		      using the sample results</li>
+		    <li>if the calculated quantity is in the rejection areas we reject the idea that the population mean is $\mu$. We say that there is evidence at the $\alpha \cdot 100$% level that the population mean is not $\mu$. </li>
+		    <li>otherwise we have no evidence that our suggestion that $\mu$ is not a reasonable proposition</li>
+		  </ul>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Error-types">Error types<a class="anchor-link" href="#Error-types">&#182;</a></h3><p>type I, $\alpha$ reject $H_0$ when it is true
+		    type II,$\beta$ accept $H_0$ whem if is false</p>
+		  <h3 id="Power">Power<a class="anchor-link" href="#Power">&#182;</a></h3><p>the power of a test is $(1-\beta)$</p>
+		  <p>All this applies to other population parameters or sample statistics - we just need to use appropriate distributions.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+	
+      </div>
+    </div>
+
+    <script>
+
+      require(
+      {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+      },
+      [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+      ],
+
+      function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../../revealjs//lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../../revealjs//plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+      });
+
+      var update = function(event){
+      if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+      $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+      }
+      );
+    </script>
+
+  </body>
+
+
+</html>
