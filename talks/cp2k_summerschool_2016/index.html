@@ -122,19 +122,6 @@
 		      </ul>
 		    </li>
 		  </ul>
-		  <p>the energy has several components:</p>
-		  <p>$E_{tot}[n] = E_{kin}[n] + E_{ext}[n] + E_{H}[n] + E_{XC}[n]$</p>
-		  <ul>
-		    <li>$E_{kin}$ - kinetic energy of electrons</li>
-		    <li>$E_{ext}$ - energy due to external potential (pseudo potentials, external bias or electric fields ... )</li>
-		    <li>$E_{H}$ - Hartree energy, classical electrostatic interactions</li>
-		    <li>$E_{xc}$ - non-classical Coulomb energy: electron correlation</li>
-		  </ul>
-		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kohn.jpg" alt="">
-		    <a href="https://en.wikipedia.org/wiki/Walter_Kohn">Walter Kohn</a>
-		    <img src="http://physics.nyu.edu/~pch2/pierre.hohenberg.png" alt="">
-		    Pierre Hohenberg</p>
-
 		</div>
 	      </div>
 	</div></section></section>
@@ -146,7 +133,28 @@
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Kohn-Sham:-non-interacting-electrons">Kohn-Sham: non-interacting electrons<a class="anchor-link" href="#Kohn-Sham:-non-interacting-electrons">&#182;</a></h2><p>We map the problem of interacting electrons onto an equivalent one with non-interacting electrons with an altered external potential (xc).</p>
-		  <p>We expand the <em>density</em> as a sum of one electron orbital contributions</p>
+		  <p>We expand the electron <em>density</em>, $n$,  as a sum of one electron orbital contributions</p>
+
+		  <p>the energy has several components:</p>
+		  <p>$E_{tot}[n] = E_{kin}[n] + E_{ext}[n] + E_{H}[n] + E_{XC}[n]$</p>
+		  <ul>
+		    <li>$E_{kin}$ - kinetic energy of electrons</li>
+		    <li>$E_{ext}$ - energy due to external potential (pseudo potentials, external bias or electric fields ... )</li>
+		    <li>$E_{H}$ - Hartree energy, classical electrostatic interactions</li>
+		    <li>$E_{xc}$ - non-classical Coulomb energy: electron correlation</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  
 		  <p><strong>Electronic density</strong></p>
 		  $$
 		  n(\mathbf{r}) = \sum_i f_i \mid \psi_i (\mathbf{r}) \mid ^2
@@ -161,9 +169,7 @@
 		    $$<p>with the exact solution as a Slater determinant of the lowest $N$ orbitals</p>
 		    $$
 		    \Psi = \frac{1}{\sqrt{N!}} \text{det} [\psi_1 \psi_2 \psi_3 \cdots \psi_N]
-		    $$<p><img src="https://physics.ucsd.edu/images/people/lsham/lsham1_144x216.jpg" alt="">
-		      <em>Lu Jeu Sham</em></p>
-
+		    $$
 		</div>
 	      </div>
 	</div></section></section>
@@ -197,7 +203,7 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="KS-equations">KS equations<a class="anchor-link" href="#KS-equations">&#182;</a></h2><p>Using the 2nd Hohenberg-Kohn theorem, we find the electron density that minimises the energy of the system. But, like in Hartree-Fock theory, we have to ensure that the electron orbitals are orthonormal to prevent the system imploding.</p>
+		  <p>Using the 2nd Hohenberg-Kohn theorem, we find the electron density that minimises the energy of the system. But, like in Hartree-Fock theory, we have to ensure that the electron orbitals are orthonormal to prevent the system imploding.</p>
 		  <p><strong>Orthogonality constraint</strong></p>
 		  $$
 		  \Omega_{KS} [\psi_i] = E_{KS}[n] - \sum_{ij} \epsilon_{ij} \int \psi_i^*(\mathbf{r})\psi_j(\mathbf{r})\text{d} \mathbf{r}
@@ -208,7 +214,8 @@
 		  $$<p>where $V_{KS}$ is given by</p>
 		  $$
 		  V_{KS}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_{H}(\mathbf{r}) + V_{XC}(\mathbf{r})
-		  $$<p>and, again, all the magic is in $V_{XC}$. The <em>Lagrangian multipliers</em>, $\epsilon_{ij}$ ensure that the orbitals stay orthonormal.</p>
+		  $$
+		  <p>and, again, all the magic is in $V_{XC}$. The <em>Lagrangian multipliers</em>, $\epsilon_{ij}$ ensure that the orbitals stay orthonormal.</p>
 
 		</div>
 	      </div>
@@ -398,7 +405,8 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3><ul>
+		  <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3>
+		  <ul>
 		    <li>localised atom-centred GTO basis</li>
 		  </ul>
 		  $$
