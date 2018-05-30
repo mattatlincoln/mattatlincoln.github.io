@@ -81,7 +81,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -98,7 +100,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -133,7 +137,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -160,7 +166,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -181,7 +189,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -202,7 +212,8 @@
 
 		</div>
 	      </div>
-	  </div></section><section>
+	  </div></section>
+	  <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -220,7 +231,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -243,7 +256,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -264,7 +279,8 @@
 		  $$
 		</div>
 	      </div>
-	  </div></section><section>
+	  </div></section>
+	  <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -285,7 +301,9 @@
 		  $$
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -307,7 +325,9 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -320,28 +340,34 @@
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	    </div>
+	</section></section>
+
+	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Gaussian's-and-Plane-Wave-method-(GPW)">Gaussian's and Plane Wave method (GPW)<a class="anchor-link" href="#Gaussian's-and-Plane-Wave-method-(GPW)">&#182;</a></h2>
-		</div>
-	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered">
-		<div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <h2 id="GPW-ingredients">GPW ingredients<a class="anchor-link" href="#GPW-ingredients">&#182;</a></h2><p>As the name suggests, this method uses two different types of functions</p>
-		    <ul>
+		  <ul>
 		      <li>localized Gaussians, centred at atomic positions</li>
 		      <li>plane waves</li>
 		    </ul>
 		    <p>The idea of GPW is to use the plane-waves as an auxiliary basis, primarily to construct the Hartree potential.</p>
 		    <p>This leads to linear scaling KS construction for Gaussian Type Orbitals (GTO)</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		    <h2 id="GPW-ingredients">GPW ingredients<a class="anchor-link" href="#GPW-ingredients">&#182;</a></h2><p>As the name suggests, this method uses two different types of functions</p>
 		    <ul>
 		      <li><p>Guassian basis sets (many matrix elements can be done analytically)<br>
 			  we go a bit further than implied above - to be more accurate, we <em>contract</em> several Gaussians to form approximate atomic orbitals
@@ -408,16 +434,29 @@
 		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
 		  $$$$
 		  g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
-		  $$<p>Generally the first column is the exponents ($\alpha_m$ above) and the later columns give the $d_{m \alpha}$, each column being a set $\alpha$. Details can be found in the header of the BASIS_MOLOPT file</p>
+		  $$
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+
+		  <p>Generally the first column is the exponents ($\alpha_m$ above) and the later columns give the $d_{m \alpha}$, each column being a set $\alpha$. Details can be found in the header of the BASIS_MOLOPT file</p>
 		  <p>A MOLOPT basis for nitrogen is</p>
-		  <p><code>N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
-		      1
-		      2 0 2 5 2 2 1
-		      7.341988051825  0.113789156500  0.077765588400 -0.053744330400 -0.007627243700  0.033688455200
-		      2.542637110957  0.097294516500  0.108655219900 -0.165752516200  0.015163333100  0.109813343200
-		      0.888574967229 -0.445077422600 -0.374125427100 -0.317365165600 -0.129388247500  0.856542971300
-		      0.333802200435 -0.584142233900  0.024021712400 -0.312039675200  0.554905847400  0.509681657500
-		      0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200</code></p>
+		  <p><pre><code>
+N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
+1
+2 0 2 5 2 2 1
+7.341988051825  0.113789156500  0.077765588400 -0.053744330400 -0.007627243700  0.033688455200
+2.542637110957  0.097294516500  0.108655219900 -0.165752516200  0.015163333100  0.109813343200
+0.888574967229 -0.445077422600 -0.374125427100 -0.317365165600 -0.129388247500  0.856542971300
+0.333802200435 -0.584142233900  0.024021712400 -0.312039675200  0.554905847400  0.509681657500
+0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200</code></pre></p>
 		  <p>Here there are gaussians with five different exponents ( in Bohr$^{-2}$). From these 5 sets of functions are built, two $s$ functions (2nd and 3rd columns), 2 sets of $p$ functions (4th and fifth columns) and one set of $d$  functions (last column).</p>
 		  <p>Note  that the contraction coefficients are not varied during calculation. For the nitrogen basis above we have $2 + 2 \times 3 + 1 \times 5 = 13$ variables to optimize for each nitrogen atom in the system.</p>
 		  <p>(CP2K tends to use general contractions for efficiency, allowing maximum use of recursion relations to generate matrix elements for high angular momentum functions).</p>
@@ -446,11 +485,18 @@
 			E_H[n_{tot}] = 2 \pi \Omega \sum_G  \frac{\tilde{n}(\mathbf{G}) ^* \tilde{n}(\mathbf{G}) }{\mathbf{G}^2}
 			$$</p>
 		    </li>
-		    <li><p>The electrostatic energy converges rapidly with the grid spacing / planewave cutoff
-			<img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr001.gif" alt=""></p>
-		    </li>
-		  </ul>
-
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <img src="collocate.bmp" alt="">
+		  <li><p>The electrostatic energy converges rapidly with the grid spacing / planewave cutoff
+		      <img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr001.gif" alt=""></p>
+		  </li>
 		</div>
 	      </div>
 	</div></section></section><section><section>
@@ -461,14 +507,13 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2><p>Finite cutoff and simulation box define a realspace grid</p>
 		  <ul>
-		    <li><p>density collocation
+		    <li><p>density collocation</p>
 			$$
 			n(\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
 			\rightarrow
 			\sum_{\alpha \beta} P_{\alpha \beta} \bar{\phi}_{\alpha \beta} (\mathbf{r}) = n(\mathbf{R})
 			$$
 			where $n(\mathbf{R})$ is the density at grid points in the cell
-			<img src="materials/collocate.bmp" alt=""></p>
 		    </li>
 		    <li><p>numerical approximation of the gradient $n(\mathbf{R}) \rightarrow \nabla n(\mathbf{R})$</p>
 		    </li>
@@ -493,10 +538,19 @@
 		  <h2 id="Energy-ripples">Energy ripples<a class="anchor-link" href="#Energy-ripples">&#182;</a></h2><p>Low density regions can cause unphysical behaviour of $XC$ terms (such as $\frac{\mid \nabla n \mid ^2}{n^{\alpha}}$)</p>
 		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr002.gif" alt=""></p>
 		  <p>GTH pseudos have small density at the core - graph of density and $v_{XC}$ through a water molecule. These spikes can cause ripples in the energy as atoms move relative to the grid.</p>
-		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, but probably best to stick with the defaults ... whatever you do don't change settings between simulations you want to compare.</p>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, but probably best to stick with the defaults if you are using PBE or related functional.
+		    Whatever you do don't change settings between simulations you want to compare.</p>
 		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr003.gif" alt=""></p>
-		  <p>avoid with higher cutoff, or GAPW methodology.</p>
-		  <p>These can be very problematic when trying to calculate vibrational frequencies.</p>
+		  <p>You can these effects with a higher cutoff, or using the GAPW methodology.</p>
+		  <p>These ripples (egg-box effect) can be very problematic when trying to calculate vibrational frequencies.</p>
 
 		</div>
 	      </div>
