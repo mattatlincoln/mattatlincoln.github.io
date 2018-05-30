@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>GPW (GAPW) electronic structure calculations slides</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../revealjs//css/theme/simple.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="GPW-(GAPW)-electronic-structure-calculations">GPW (GAPW) electronic structure calculations<a class="anchor-link" href="#GPW-(GAPW)-electronic-structure-calculations">&#182;</a></h1><p>Matt Watkins</p>
+		  <p>School of Mathematics and Physics, University of Lincoln, UK</p>
+		  <p><a href="http://www.cp2k.org">http://www.cp2k.org</a></p>
+		  <p><img src="https://www.cp2k.org/lib/tpl/cp2kwiki/images/logo.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="DFT">DFT<a class="anchor-link" href="#DFT">&#182;</a></h1><p>Why DFT?</p>
+		  <ul>
+		    <li>Explicit inclusion of electronic structure</li>
+		    <li>predictable accuracy (at least when benchmarked for related systems)</li>
+		    <li>many observables available (spectroscopy)</li>
+		    <li>cheaper (better scaling) than many wavefunction based approaches</li>
+		    <li><em>ab initio</em> molecular dynamics / Monte Carlo</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Hohenberg-Kohn-Theorems">Hohenberg-Kohn Theorems<a class="anchor-link" href="#Hohenberg-Kohn-Theorems">&#182;</a></h2><p><strong>Theorem 1</strong></p>
+		  <ul>
+		    <li>the potential and hence the total energy are a unique functional of the electronic density, $n(\mathbf{r})$<ul>
+			<li>$n(\mathbf{r}) \leftrightarrow V_{ext}(\mathbf{r},\mathbf{R})$</li>
+		      </ul>
+		    </li>
+		  </ul>
+		  <p><strong>Theorem 2</strong></p>
+		  <ul>
+		    <li>the total energy is variational<ul>
+			<li>$E[n] \geq E[n_{GS}]$</li>
+		      </ul>
+		    </li>
+		  </ul>
+		  <p>the energy has several components:</p>
+		  <p>$E_{tot}[n] = E_{kin}[n] + E_{ext}[n] + E_{H}[n] + E_{XC}[n]$</p>
+		  <ul>
+		    <li>$E_{kin}$ - kinetic energy of electrons</li>
+		    <li>$E_{ext}$ - energy due to external potential (pseudo potentials, external bias or electric fields ... )</li>
+		    <li>$E_{H}$ - Hartree energy, classical electrostatic interactions</li>
+		    <li>$E_{xc}$ - non-classical Coulomb energy: electron correlation</li>
+		  </ul>
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kohn.jpg" alt="">
+		    <a href="https://en.wikipedia.org/wiki/Walter_Kohn">Walter Kohn</a>
+		    <img src="http://physics.nyu.edu/~pch2/pierre.hohenberg.png" alt="">
+		    Pierre Hohenberg</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Kohn-Sham:-non-interacting-electrons">Kohn-Sham: non-interacting electrons<a class="anchor-link" href="#Kohn-Sham:-non-interacting-electrons">&#182;</a></h2><p>We map the problem of interacting electrons onto an equivalent one with non-interacting electrons with an altered external potential (xc).</p>
+		  <p>We expand the <em>density</em> as a sum of one electron orbital contributions</p>
+		  <p><strong>Electronic density</strong></p>
+		  $$
+		  n(\mathbf{r}) = \sum_i f_i \mid \psi_i (\mathbf{r}) \mid ^2
+		  $$<p>where $f_i$ is the occupation number of the $i$th orbital</p>
+		  <p><strong>Kinetic energy of non-interacting electrons</strong></p>
+		  $$
+		  T_s[n] = \sum_i f_i \big{<} \psi_i (\mathbf{r}) \mid -\frac{1}{2} \nabla^2 \mid \psi_i (\mathbf{r}) \big{>}
+		    $$<p><strong>Electronic interaction with the external potential</strong></p>
+		    $$
+		    E_{ext} [n] = \int_r n(\mathbf{r}) V_{ext} (\mathbf{r}) \text{d}\mathbf{r}, 
+		    V_{ext} = \sum_I -\frac{Z_I}{\mid \mathbf{r} - \mathbf{R}_I \mid}
+		    $$<p>with the exact solution as a Slater determinant of the lowest $N$ orbitals</p>
+		    $$
+		    \Psi = \frac{1}{\sqrt{N!}} \text{det} [\psi_1 \psi_2 \psi_3 \cdots \psi_N]
+		    $$<p><img src="https://physics.ucsd.edu/images/people/lsham/lsham1_144x216.jpg" alt="">
+		      <em>Lu Jeu Sham</em></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="KS-energy-functional">KS energy functional<a class="anchor-link" href="#KS-energy-functional">&#182;</a></h2><p>We correct the non-interacting electron model by adding in an (in principle unknown) XC potential that accounts for <em>all</em> quantum mechanical many-body interactions (electron-electron repulsion)</p>
+		  <p><strong>Classical election-electron repulsion</strong></p>
+		  $$
+		  J[n] = \frac{1}{2} \int_r \int_{r'} \frac{n(\mathbf{r})n(\mathbf{r'})}{\mid \mathbf{r} - \mathbf{r'}} = 
+		  \frac{1}{2} \int_r n(\mathbf{r}) V_H(\mathbf{r}) \text{d} \mathbf{r}
+		  $$<p><strong>Kohn-Sham functional</strong></p>
+		  $$
+		  E_{KS}[n] = T_s[n] + E_{ext}[n] + J[n] + E_{XC}[n]
+		  $$$$
+		  E_{XC}[n] = E_{kin}[n] - T_s[n] + E_{ee}[n] - J[n]
+		  $$<p>The exact functional form for the electron-electron repulsion is not known, but various levels of approximation are available (Jacob's Ladder). The existence of this functional is guarenteed by the 1st Hohenberg-Kohn Theroem.</p>
+		  <p>This maps mathematically onto the familiar Hartree-Fock model of electronic structure.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="KS-equations">KS equations<a class="anchor-link" href="#KS-equations">&#182;</a></h2><p>Using the 2nd Hohenberg-Kohn theorem, we find the electron density that minimises the energy of the system. But, like in Hartree-Fock theory, we have to ensure that the electron orbitals are orthonormal to prevent the system imploding.</p>
+		  <p><strong>Orthogonality constraint</strong></p>
+		  $$
+		  \Omega_{KS} [\psi_i] = E_{KS}[n] - \sum_{ij} \epsilon_{ij} \int \psi_i^*(\mathbf{r})\psi_j(\mathbf{r})\text{d} \mathbf{r}
+		  $$<p><strong>Variational search in the space of the orbitals</strong></p>
+		  <p>By finding the minimum (extremum) of the $\Omega$ functional $\partial \frac{\Omega_{KS} [\psi_i]}{\partial \psi_i}$ we get the KS equations</p>
+		  $$
+		  H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
+		  $$<p>where $V_{KS}$ is given by</p>
+		  $$
+		  V_{KS}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_{H}(\mathbf{r}) + V_{XC}(\mathbf{r})
+		  $$<p>and, again, all the magic is in $V_{XC}$. The <em>Lagrangian multipliers</em>, $\epsilon_{ij}$ ensure that the orbitals stay orthonormal.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="KS-equations">KS equations<a class="anchor-link" href="#KS-equations">&#182;</a></h2>$$
+		  H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
+		  $$<p>We can transform the generalised eigenvalue problem given by the KS equations above, to get rid of the nasty sum on the right hand side. In this case $\epsilon_{ij}$ is diagonal, and we get an eigenvalue problem:</p>
+		  $$\big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \epsilon_i \psi_i$$<ul>
+		    <li>KS equations look like the Schr$\ddot{o}$dinger equations</li>
+		    <li>coupled and highly non-linear ($V_{KS}$ depends on the orbitals!)</li>
+		    <li>self consistent solution (Self Consistent Field - the $V_{KS}$ is consistent with the orbitals)</li>
+		    <li>KS scheme is, in principle, exact (if we knew the exact $E_{XC}$)</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Self-consistency">Self-consistency<a class="anchor-link" href="#Self-consistency">&#182;</a></h2><p><code>generate an initial guess, from a superposition of atomic densities (typical PW code) or atomic block diagonal density matrix (CP2K)</code></p>
+		  <ul>
+		    <li>generate a starting density $\Rightarrow n^{init}$</li>
+		    <li>generate the KS potential   $\Rightarrow V_{KS}^{init}$</li>
+		    <li>solve the KS equations  $\Rightarrow \epsilon, \psi$</li>
+		  </ul>
+		  <p><code>then repeat until convergence</code></p>
+		  <ul>
+		    <li>calculate the new density $\Rightarrow n^{1}$ </li>
+		    <li>calculate the new KS potential $\Rightarrow V_{KS}^{1}$ </li>
+		    <li>new orbitals and energies $\Rightarrow \epsilon^1, \psi^1$</li>
+		  </ul>
+		  <p><code>calculate properties from final density and orbitals</code></p>
+		  <p>Stopping criteria in CP2K are either that the change in energy is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Basis-Set-Representation(s)">Basis Set Representation(s)<a class="anchor-link" href="#Basis-Set-Representation(s)">&#182;</a></h2><p>to actually do calculations we need to expand the KS equations into a basis. In CP2K we use Gaussian functions, as the primary basis set:</p>
+		  <p>the KS orbitals are then represented as</p>
+		  $$
+		  \psi_i (\mathbf{r}) = \sum_{\alpha} C_{\alpha i} \phi_{\alpha} (\mathbf{r})
+		  $$<p>the density as</p>
+		  $$
+		  n (\mathbf{r}) =  \sum_i \sum_{\alpha \beta} f_i C_{\alpha i} C_{\beta i} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) =
+		  P_{\alpha \beta} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r})
+		  $$<p>where the density matrix $\mathbf{P}$ is defined.</p>
+		  <p>There is a complication - the basis functions are <strong>not</strong> orthogonal. We have an <em>overlap matrix</em>, $\mathbf{S}$,</p>
+		  $$
+		  S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>KS total energy</strong></p>
+		  $$
+		  E[\{\psi_i\};\{\mathbf{R}_I\}] = T[\{\psi_i\}] + E_{ext}[n] + E_H [n] + E_{XC}[n] + E_{II}
+		  $$<p>for local of semi-local functionals or</p>
+		  $$
+		  E[\{\psi_i\};\{\mathbf{R}_I\}] = T[\{\psi_i\}] + E_{ext}[n] + E_H [n] + E_{XC}[\{\psi_i\}] + E_{II}
+		  $$<p>for hybrid functionals.</p>
+		  <p>Where $E[\{\psi_i\};\{\mathbf{R}_I\}]$ indicates that the energy depends on the (occupied) KS orbitals (which then give a density) and parametrically on all the $I$ nuclear coordinates, $\mathbf{R}_I$.</p>
+		  <p><strong>Matrix formulation of the KS equations</strong></p>
+		  <p>using the variational principle we get</p>
+		  $$
+		  \mathbf{K}(C)\mathbf{C} = \mathbf{T}(C) + \mathbf{V}_{ext}(C) + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C) = \mathbf{SC}\epsilon
+		  $$
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Algorithmic-challenges">Algorithmic challenges<a class="anchor-link" href="#Algorithmic-challenges">&#182;</a></h2><ul>
+		    <li>construct the Kohn-Sham matrix<ul>
+			<li>Hartree potential</li>
+			<li>XC potential</li>
+			<li>HF/exact exchange</li>
+			<li>core/pseudopotential terms</li>
+		      </ul>
+		    </li>
+		    <li>fast and efficient minimization of the energy functional</li>
+		    <li>efficient calculation of the density matrix and construction of the Molecular Orbitals ($\mathbf{C}$)</li>
+		  </ul>
+		  <p>Construction of the KS matrix should be (and is in CP2K) linear scaling (O(N)) in basis set size. Using dual basis set (GPW) techniques - coming up.</p>
+		  <p>Minimization / diagonalization is harder - linear scaling routines are available but are only more efficient for large systems and require considerable computational resources.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="GPW-method-in-CP2K">GPW method in CP2K<a class="anchor-link" href="#GPW-method-in-CP2K">&#182;</a></h1><p>after the general discussion of DFT above, what does CP2K do to solve the KS equations efficiently?</p>
+		  <p>What should you know / look out for, to get good use of the code?</p>
+		  <p><a href="http://www.cp2k.org">http://www.cp2k.org</a></p>
+		  <p><img src="https://www.cp2k.org/lib/tpl/cp2kwiki/images/logo.png" alt=""></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Gaussian's-and-Plane-Wave-method-(GPW)">Gaussian's and Plane Wave method (GPW)<a class="anchor-link" href="#Gaussian's-and-Plane-Wave-method-(GPW)">&#182;</a></h2>
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered">
+		<div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <h2 id="GPW-ingredients">GPW ingredients<a class="anchor-link" href="#GPW-ingredients">&#182;</a></h2><p>As the name suggests, this method uses two different types of functions</p>
+		    <ul>
+		      <li>localized Gaussians, centred at atomic positions</li>
+		      <li>plane waves</li>
+		    </ul>
+		    <p>The idea of GPW is to use the plane-waves as an auxiliary basis, primarily to construct the Hartree potential.</p>
+		    <p>This leads to linear scaling KS construction for Gaussian Type Orbitals (GTO)</p>
+		    <ul>
+		      <li><p>Guassian basis sets (many matrix elements can be done analytically)<br>
+			  we go a bit further than implied above - to be more accurate, we <em>contract</em> several Gaussians to form approximate atomic orbitals
+			  $$
+			  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+			  $$
+			  where a primitive cartesian Gaussian centred at the origin is given by
+			  $$
+			  g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
+			  $$
+			  and $m_x + m_y + m_z = l$, the angular momentum quantum number of the functions.</p>
+		      </li>
+		      <li><p>Pseudo potentials</p>
+		      </li>
+		      <li>Plane waves auxiliary basis for Coulomb integrals</li>
+		      <li>Regular grids and FFT for the density</li>
+		      <li>Sparse matrices (KS and P)</li>
+		      <li>Efficient screening</li>
+		    </ul>
+
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3><ul>
+		    <li>localised atom-centred GTO basis</li>
+		  </ul>
+		  $$
+		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+		  $$<ul>
+		    <li>expansion of the density using the density matrix</li>
+		  </ul>
+		  $$
+		  n (\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
+		  $$<ul>
+		    <li>operator matrices are sparse. By neglecting overlap elements smaller than some number indirectly specified by <code>EPS_DEFAULT</code>, the Gaussian functions are localized with finite support. This means that S, H and P are sparse.</li>
+		  </ul>
+		  $$
+		  S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		  $$$$
+		  H_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r}) V(\mathbf{r}) \phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		  $$
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Basis-set-libraries">Basis set libraries<a class="anchor-link" href="#Basis-set-libraries">&#182;</a></h3><p>There are two main types of basis sets supplied with CP2K</p>
+		  <ul>
+		    <li><p>GTH_BASIS_SETS: atomically optimized sets. These were the first shipped with the code and vary systematically in quality from DZ to QZ for lighter elements. Can be very good for molecular systems, but can be very bad for condensed matter systems.</p>
+		    </li>
+		    <li><p>BASIS_MOLOPT: molcularly optimized basis sets. These cover most elements of the periodic table, but only with fairly good quality DZVP-MOLOPT-SR-GTH. Should be a good starting point for most condensed matter calculations.</p>
+		    </li>
+		  </ul>
+		  <p>The basis set files provide the contraction coefficients ($d_{m \alpha}$) and exponents ($\alpha_m$) of the Gaussian functions.</p>
+		  $$
+		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+		  $$$$
+		  g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
+		  $$<p>Generally the first column is the exponents ($\alpha_m$ above) and the later columns give the $d_{m \alpha}$, each column being a set $\alpha$. Details can be found in the header of the BASIS_MOLOPT file</p>
+		  <p>A MOLOPT basis for nitrogen is</p>
+		  <p><code>N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
+		      1
+		      2 0 2 5 2 2 1
+		      7.341988051825  0.113789156500  0.077765588400 -0.053744330400 -0.007627243700  0.033688455200
+		      2.542637110957  0.097294516500  0.108655219900 -0.165752516200  0.015163333100  0.109813343200
+		      0.888574967229 -0.445077422600 -0.374125427100 -0.317365165600 -0.129388247500  0.856542971300
+		      0.333802200435 -0.584142233900  0.024021712400 -0.312039675200  0.554905847400  0.509681657500
+		      0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200</code></p>
+		  <p>Here there are gaussians with five different exponents ( in Bohr$^{-2}$). From these 5 sets of functions are built, two $s$ functions (2nd and 3rd columns), 2 sets of $p$ functions (4th and fifth columns) and one set of $d$  functions (last column).</p>
+		  <p>Note  that the contraction coefficients are not varied during calculation. For the nitrogen basis above we have $2 + 2 \times 3 + 1 \times 5 = 13$ variables to optimize for each nitrogen atom in the system.</p>
+		  <p>(CP2K tends to use general contractions for efficiency, allowing maximum use of recursion relations to generate matrix elements for high angular momentum functions).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Electrostatics">Electrostatics<a class="anchor-link" href="#Electrostatics">&#182;</a></h2><ul>
+		    <li><p>long-range term: Non-local Hartree Potential<br>
+			Poisson equation solved using the auxiliary plane-wave basis
+			$$
+			E_H[n_{tot}] = \frac{1}{2} \int_r \int_{r'} \frac{n(\mathbf{r})n(\mathbf{r'})}{\mid \mathbf{r} - \mathbf{r'}}
+			$$
+			where $n_{tot}$ includes the nuclear charge as well as the electronic.<br>
+			(The nuclear charge density is (of course) represented as a Gaussian distribution with parameter $R_I^c$ chosen to cancel a similar term from the local part of the pseudopotential)</p>
+		    </li>
+		    <li><p>FFT (scaling as $N\text{log}N$) gives 
+			$$\tilde{n}(\mathbf{r}) = \frac{1}{\Omega} \sum_G \tilde{n}(\mathbf{G})e^{i\mathbf{G \cdot r}})$$
+			In the G space representation the Poisson equation is diagonal and the Hartree energy is easily evaluated
+			$$
+			E_H[n_{tot}] = 2 \pi \Omega \sum_G  \frac{\tilde{n}(\mathbf{G}) ^* \tilde{n}(\mathbf{G}) }{\mathbf{G}^2}
+			$$</p>
+		    </li>
+		    <li><p>The electrostatic energy converges rapidly with the grid spacing / planewave cutoff
+			<img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr001.gif" alt=""></p>
+		    </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2><p>Finite cutoff and simulation box define a realspace grid</p>
+		  <ul>
+		    <li><p>density collocation
+			$$
+			n(\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
+			\rightarrow
+			\sum_{\alpha \beta} P_{\alpha \beta} \bar{\phi}_{\alpha \beta} (\mathbf{r}) = n(\mathbf{R})
+			$$
+			where $n(\mathbf{R})$ is the density at grid points in the cell
+			<img src="materials/collocate.bmp" alt=""></p>
+		    </li>
+		    <li><p>numerical approximation of the gradient $n(\mathbf{R}) \rightarrow \nabla n(\mathbf{R})$</p>
+		    </li>
+		    <li><p>$\epsilon_{xc}$ and derivatives evaluated on the grid 
+			$$v_{XC}[n](\mathbf{r}) \rightarrow V_{XC}(\mathbf{R}) = \frac{\partial \epsilon_{xc}}{\partial n} (\mathbf{R})$$</p>
+		    </li>
+		    <li><p>real space integration
+			$$
+			H_{HXC}^{\mu \nu} = < \mu \mid V_{HXC} (\mathbf{r}) \mid \nu > \rightarrow \sum_R V_{HXC} (\mathbf{R}) \bar{\phi}_{\alpha \beta} (\mathbf{R})
+			  $$</p>
+		    </li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Energy-ripples">Energy ripples<a class="anchor-link" href="#Energy-ripples">&#182;</a></h2><p>Low density regions can cause unphysical behaviour of $XC$ terms (such as $\frac{\mid \nabla n \mid ^2}{n^{\alpha}}$)</p>
+		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr002.gif" alt=""></p>
+		  <p>GTH pseudos have small density at the core - graph of density and $v_{XC}$ through a water molecule. These spikes can cause ripples in the energy as atoms move relative to the grid.</p>
+		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, but probably best to stick with the defaults ... whatever you do don't change settings between simulations you want to compare.</p>
+		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr003.gif" alt=""></p>
+		  <p>avoid with higher cutoff, or GAPW methodology.</p>
+		  <p>These can be very problematic when trying to calculate vibrational frequencies.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
+		  <p>
+		    When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
+
+		    More diffuse Gaussians can be collocated onto coarser grids
+
+		    <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif'>
+
+		    specified in input as:
+		    <pre><code>
+			&MGRID
+			CUTOFF 400
+			REL_CUTOFF 60
+			NGRIDS 5
+			&END MGRID
+		    </code></pre>
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
+		  <p>
+		    you can see in the output
+
+		    <pre><code>
+-------------------------------------------------------------------------------
+----                             MULTIGRID INFO                            ----
+-------------------------------------------------------------------------------
+count for grid        1:          24832          cutoff [a.u.]          200.00
+count for grid        2:          11934          cutoff [a.u.]           66.67
+count for grid        3:           6479          cutoff [a.u.]           22.22
+count for grid        4:           1976          cutoff [a.u.]            7.41
+count for grid        5:            215          cutoff [a.u.]            2.47
+total gridlevel count  :          45436
+		    </code></pre>
+
+		    For this system (formaldeyhde with an aug-TZV2P-GTH basis) that 45436 density matrix elements ($\bar{\phi}_{\alpha \beta}$) were mapped onto the grids. To be efficient, all grids should be used.
+
+		    To fully converge calculations both ''CUTOFF'' and ''REL_CUTOFF'' need to be increased together otherwise the highest grid may not be used.
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Timings">Timings<a class="anchor-link" href="#Timings">&#182;</a></h2>
+		  <p>
+
+
+		    At the end of the run you'll see timings - these can be very useful for understanding performance.
+
+		    Here we can see the timings for the formaldehyde example. It is in a large box, and the operations on grids dominate the cost on a single processor.
+
+		    <pre><code>
+-------------------------------------------------------------------------------
+-                                                                             -
+-                                T I M I N G                                  -
+-                                                                             -
+-------------------------------------------------------------------------------
+SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
+MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
+CP2K                                 1  1.0    0.013    0.013   24.048   24.048
+qs_energies                          1  2.0    0.000    0.000   23.417   23.417
+scf_env_do_scf                       1  3.0    0.000    0.000   22.962   22.962
+scf_env_do_scf_inner_loop           14  4.0    0.001    0.001   22.962   22.962
+qs_ks_update_qs_env                 14  5.0    0.000    0.000   19.555   19.555
+rebuild_ks_matrix                   14  6.0    0.000    0.000   19.554   19.554
+qs_ks_build_kohn_sham_matrix        14  7.0    0.002    0.002   19.554   19.554
+qs_vxc_create                       14  8.0    0.000    0.000    8.977    8.977
+xc_vxc_pw_create                    14  9.0    0.273    0.273    8.977    8.977
+xc_rho_set_and_dset_create          14 10.0    0.086    0.086    8.147    8.147
+pw_transfer                        203  9.2    0.009    0.009    7.539    7.539
+fft_wrap_pw1pw2                    203 10.2    0.001    0.001    7.530    7.530
+pw_poisson_solve                    14  8.0    0.458    0.458    7.457    7.457
+xc_functional_eval                  14 11.0    0.000    0.000    7.395    7.395
+pbe_lda_eval                        14 12.0    7.394    7.394    7.394    7.394
+fft_wrap_pw1pw2_200                 87 10.8    0.400    0.400    7.147    7.147
+fft3d_s                            204 12.1    4.799    4.799    4.805    4.805
+qs_rho_update_rho                   15  5.0    0.000    0.000    3.631    3.631
+calculate_rho_elec                  15  6.0    0.711    0.711    3.631    3.631
+ps_wavelet_solve                    14  9.0    3.418    3.418    3.496    3.496
+density_rs2pw                       15  7.0    0.001    0.001    2.882    2.882
+sum_up_and_integrate                14  8.0    0.040    0.040    1.917    1.917
+integrate_v_rspace                  14  9.0    0.378    0.378    1.877    1.877
+potential_pw2rs                     14 10.0    0.005    0.005    1.498    1.498
+pw_gather_s                        104 11.5    1.274    1.274    1.274    1.274
+pw_scatter_s                        99 12.8    1.028    1.028    1.028    1.028
+pw_nn_compose_r                     84 10.5    0.968    0.968    0.968    0.968
+pw_poisson_rebuild                  14  9.0    0.000    0.000    0.897    0.897
+ps_wavelet_create                    1 10.0    0.000    0.000    0.897    0.897
+RS_z_slice_distribution              1 11.0    0.897    0.897    0.897    0.897
+qs_init_subsys                       1  2.0    0.001    0.001    0.567    0.567
+qs_env_setup                         1  3.0    0.000    0.000    0.563    0.563
+qs_env_rebuild_pw_env                2  3.5    0.000    0.000    0.563    0.563
+pw_env_rebuild                       1  5.0    0.000    0.000    0.563    0.563
+pw_grid_setup                        5  6.0    0.000    0.000    0.516    0.516
+pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
+-------------------------------------------------------------------------------
+		    </code></pre>
+		    
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Warnings">Warnings<a class="anchor-link" href="#Warnings">&#182;</a></h2>
+		  <p>
+
+Also check if you get an output like
+
+<pre><code>
+  The number of warnings for this run is : 0
+</code></pre>
+if there are warnings, you should try and understand why!
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
+
+		    
+      </div>
+    </div>
+
+    <script>
+
+      require(
+      {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+      },
+      [
+      "../../revealjs//lib/js/head.min.js",
+      "../../revealjs//js/reveal.js"
+      ],
+
+      function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      // Parallax background image
+      parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Bloch_function.svg/1280px-Bloch_function.svg.png',
+      //Parallax background size
+      parallaxBackgroundSize: '1280px 557px', // CSS syntax, e.g. "2100px 900px
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../revealjs//lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../revealjs//plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+      });
+
+      var update = function(event){
+      if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+      $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+      }
+      );
+    </script>
+
+  </body>
+
+
+</html>
