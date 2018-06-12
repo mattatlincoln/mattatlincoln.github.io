@@ -1,944 +1,830 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>02 - Breaking Classical Physics</title>
+	<title>02 - Breaking Classical Physics</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-    <!-- General and theme style sheets -->
-    <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
-    <!-- <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme"> -->
+	<!-- General and theme style sheets -->
+	<link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+	<!-- <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme"> -->
 
-    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-    <script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = '../../../revealjs/css/print/pdf.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = '../../../revealjs/css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
 
-    </script>
+	</script>
 
     <!--[if lt IE 9]>
 	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
-	<![endif]-->
+<![endif]-->
 
-    <!-- Loading the mathjax macro -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      TeX: { equationNumbers: { autoNumber: "AMS" } }
-      });
-    </script>
-    <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      processEnvironments: true
-      },
-      // Center justify equations in code and markdown cells. Elsewhere
-      // we use CSS to left justify single line equations in code cells.
-      displayAlign: 'center',
-      "HTML-CSS": {
-      styles: {'.MathJax_Display': {"margin": 0}},
-      linebreaks: { automatic: true }
-      }
-      });
-    </script>
-    <!-- End of mathjax configuration -->
+<!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	tex2jax: {
+	inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	processEscapes: true,
+	processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
 
-    <!-- Get Font-awesome from cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-    <!-- Custom stylesheet, it must be in the same directory as the html file -->
-    <link rel="stylesheet" href="../simple.css">
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../simple.css">
 
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-	
-		<section>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+
 			<section>
-		     	<div class="inner_cell">
-			  		<h1 id="Drude-theory-of-electrons-in-metals">Drude theory of electrons in metals<!-- <a class="anchor-link" href="#Drude-theory-of-electrons-in-metals">&#182;</a> --></h1>
-			  		<ul>
-			    		<li>Chapter 3 - Solid State Basics, Simon</li>
-			    		<li>Some of chapter 3.3 of Hook and Hall</li>
-			  		</ul>
-			  		<div class="must_learn">
-					    <h2 id="Learning-outcomes">Learning outcomes<a class="anchor-link" href="#Learning-outcomes">&#182;</a></h2>
-					    <p>you should have</p>
-					    <ul>
-			      			<li>good knowledge of the classical model of transport by 'electrons'.</li>
-			      			<li>feeling for the magnitude of timescales and energy ranges </li>
-			      			<li>knowledge of phenomena that demonstrate the failure of the model</li>
-			    		</ul>
-			  		</div>
-				</div>
-			</section>
-		</section>
-
-		<section>
-			<section>
-		    	<div class="inner_cell" >
-					<h2 id="Classical-Electron-gas">Classical Electron gas<a class="anchor-link" href="#Classical-Electron-gas">&#182;</a></h2>
-				  	<p>J.J. Thomson discovers electrons in 1896</p>
-		  			<p>1900 Paul Drude (Drood-a, apparently) applied kinetic theory to electrons</p>
-		  			<ul>
-		    			<li>electrons have scattering time $\tau$</li>
-			    		<li>on scattering the eletron returns to momentum $\mathbf{p}=0$</li>
-		    			<li>in between scattering, electrons, with charge <em>-e</em> respond to external $\mathbf{E}$ and $\mathbf{B}$ fields</li>
-					</ul>
-				</div>
-			</section>
-	      	<section>
-	     	    <div class="inner_cell" >
-		     		<p>Now consider what happens, on average, between times $t$ and $t + \Delta t$. Two things can happen - either an electron scatters, or it doesn't:</p>
-		  			<ol>
-		    			<li>probability of scattering is $\frac{\Delta t}{\tau}$</li>
-		    			<li>probabliity of not scattering is $1 - \frac{\Delta t}{\tau}$</li>
-		  			</ol>
-		  			<p>then</p>
-		  			$$
-		  			\mathbf{p}(t + \Delta t) = \big( 1 - \frac{\Delta t}{\tau} \big)(\mathbf{p}(t)+ \mathbf{F} \Delta t) + \frac{\mathbf{0} \Delta t}{\tau}
-		  			$$
-		  			<p>keeping linear terms and rearranging and taking the limit that $\delta t \to 0$, we get</p>
-		  			$$
-		  			\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau}
-		  			$$
-				</div>
-			</section>
-		</section>
-
-		<section>
-			<section>
-	      		<div class="inner_cell" >
-		  			<div class='question'>
-					    <li>Fill in the details of the derivation above</li>
-		    			<li>If there is no external field (i.e. $\mathbf{F} = 0$), how will the motion of electrons change with time?</li>
+				<section>
+					<div class="inner_cell">
+						<h1 id="Drude-theory-of-electrons-in-metals">Drude theory of electrons in metals<!-- <a class="anchor-link" href="#Drude-theory-of-electrons-in-metals">&#182;</a> --></h1>
+						<ul>
+							<li>Chapter 3 - Solid State Basics, Simon</li>
+							<li>Some of chapter 3.3 of Hook and Hall</li>
+						</ul>
+						<div class="must_learn">
+							<h2 id="Learning-outcomes">Learning outcomes<a class="anchor-link" href="#Learning-outcomes">&#182;</a></h2>
+							<p>you should have</p>
+							<ul>
+								<li>good knowledge of the classical model of transport by 'electrons'.</li>
+								<li>feeling for the magnitude of timescales and energy ranges </li>
+								<li>knowledge of phenomena that demonstrate the failure of the model</li>
+							</ul>
+						</div>
 					</div>
-				</div>
+				</section>
 			</section>
-		</section>
 
-		<section>
 			<section>
-		      	<div class="inner_cell" >
-					<h2 id="Electrons-in-Fields">Electrons in Fields<a class="anchor-link" href="#Electrons-in-Fields">&#182;</a></h2>
-				</div>
+				<section>
+					<div class="inner_cell" >
+						<h2 id="Classical-Electron-gas">Classical Electron gas<a class="anchor-link" href="#Classical-Electron-gas">&#182;</a></h2>
+						<p>J.J. Thomson discovers electrons in 1896</p>
+						<p>1900 Paul Drude (Drood-a, apparently) applied kinetic theory to electrons</p>
+						<ul>
+							<li>electrons have scattering time $\tau$</li>
+							<li>on scattering the eletron returns to momentum $\mathbf{p}=0$</li>
+							<li>in between scattering, electrons, with charge <em>-e</em> respond to external $\mathbf{E}$ and $\mathbf{B}$ fields</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>Now consider what happens, on average, between times $t$ and $t + \Delta t$. Two things can happen - either an electron scatters, or it doesn't:</p>
+						<ol>
+							<li>probability of scattering is $\frac{\Delta t}{\tau}$</li>
+							<li>probabliity of not scattering is $1 - \frac{\Delta t}{\tau}$</li>
+						</ol>
+						<p>then</p>
+						$$
+						\mathbf{p}(t + \Delta t) = \big( 1 - \frac{\Delta t}{\tau} \big)(\mathbf{p}(t)+ \mathbf{F} \Delta t) + \frac{\mathbf{0} \Delta t}{\tau}
+						$$
+						<p>keeping linear terms and rearranging and taking the limit that $\delta t \to 0$, we get</p>
+						$$
+						\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau}
+						$$
+					</div>
+				</section>
 			</section>
-		</section>
 
-		<section>
 			<section>
-			    <div class="inner_cell" >
-					<h3 id="DC-Electric-fields">DC Electric fields<a class="anchor-link" href="#DC-Electric-fields">&#182;</a></h3>
-					<p>so in our Drude approximation</p>
-			  		\begin{align*}
-					  \frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
-	                  = -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
-				 	\end{align*}<p>At steady state we have that the momentum isn't changing</p>
-			  		$$
-			  		\mathbf{p} = m\mathbf{v} = -e \tau \mathbf{E} 
-			  		$$
-				</div>
+				<section>
+					<div class="inner_cell" >
+						<div class='question'>
+							<li>Fill in the details of the derivation above</li>
+							<li>If there is no external field (i.e. $\mathbf{F} = 0$), how will the motion of electrons change with time?</li>
+						</div>
+					</div>
+				</section>
 			</section>
-			<section>
-			    <div class="inner_cell" >
-					<p>if the density of electrons in a metal is $n$ then the electric current is given by</p>
-			  		$$
-			  		\mathbf{j} = -en\mathbf{v} = \frac{-e^2 \tau n}{m} \mathbf{E} 
-			  		$$
-			  		<p>and the coefficient in front of the field strength is the conductivity</p>
-			  		$$
-			  		\sigma = \frac{-e^2 \tau n}{m}
-			  		$$
-			  		<p>So if we measure the conductivity we can determine the product of the electron density and scattering time.</p>
-			  		<p>The resistivity, $\rho$ is the inverse of conductivity - or it is the coefficient relating $\mathbf{j}$ to $\mathbf{E}$ - i.e. $\mathbf{E} =  \rho \mathbf{j}$.</p>
-				</div>
-			</section>
-		</section>
 
-	<section>
-		<section>
-	    	<div class="inner_cell" >
-				<h3 id="Electric-and-Magnetic-fields">Electric and Magnetic fields<a class="anchor-link" href="#Electric-and-Magnetic-fields">&#182;</a></h3><p>Now we need the full Lorentz force</p>
-				$$
-				\mathbf{F} = -e(\mathbf{E}+ \mathbf{v} \times \mathbf{B})
-				$$
-				<p>so</p>
-				\begin{align*}
-				\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
-		              = -e (\mathbf{E}+ \mathbf{v} \times \mathbf{B}) - \frac{\mathbf{p}}{\tau}
-				\end{align*}<p>For a steady state current, and using $\mathbf{p} = m \mathbf{v}$ and $\mathbf{j} = - ne\mathbf{v}$ we get</p>
-				$$
-				0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
-				$$
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h2 id="Electrons-in-Fields">Electrons in Fields<a class="anchor-link" href="#Electrons-in-Fields">&#182;</a></h2>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h3 id="DC-Electric-fields">DC Electric fields<a class="anchor-link" href="#DC-Electric-fields">&#182;</a></h3>
+						<p>so in our Drude approximation</p>
+						\begin{align*}
+						\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
+						= -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
+						\end{align*}<p>At steady state we have that the momentum isn't changing</p>
+						$$
+						\mathbf{p} = m\mathbf{v} = -e \tau \mathbf{E} 
+						$$
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>if the density of electrons in a metal is $n$ then the electric current is given by</p>
+						$$
+						\mathbf{j} = -en\mathbf{v} = \frac{-e^2 \tau n}{m} \mathbf{E} 
+						$$
+						<p>and the coefficient in front of the field strength is the conductivity</p>
+						$$
+						\sigma = \frac{-e^2 \tau n}{m}
+						$$
+						<p>So if we measure the conductivity we can determine the product of the electron density and scattering time.</p>
+						<p>The resistivity, $\rho$ is the inverse of conductivity - or it is the coefficient relating $\mathbf{j}$ to $\mathbf{E}$ - i.e. $\mathbf{E} =  \rho \mathbf{j}$.</p>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h3 id="Electric-and-Magnetic-fields">Electric and Magnetic fields<a class="anchor-link" href="#Electric-and-Magnetic-fields">&#182;</a></h3><p>Now we need the full Lorentz force</p>
+						$$
+						\mathbf{F} = -e(\mathbf{E}+ \mathbf{v} \times \mathbf{B})
+						$$
+						<p>so</p>
+						\begin{align*}
+						\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
+						= -e (\mathbf{E}+ \mathbf{v} \times \mathbf{B}) - \frac{\mathbf{p}}{\tau}
+						\end{align*}<p>For a steady state current, and using $\mathbf{p} = m \mathbf{v}$ and $\mathbf{j} = - ne\mathbf{v}$ we get</p>
+						$$
+						0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
+						$$
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						$$
+						0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
+						$$<p>and rearranging to find $\mathbf{E}$</p>
+						$$
+						\mathbf{E} = \frac{1}{ne} \mathbf{j} \times \mathbf{B} + \frac{m}{ne^2 \tau}\mathbf{j}
+						$$<p>Now if we look at the connection between E and J we need to define a 3x3 matrix $\rho$.</p>
+						\begin{align*}
+						\mathbf{E} = 
+						\begin{pmatrix}
+						\rho_{xx} & \rho_{xy} & \rho_{xz} \\
+						\rho_{yx} & \rho_{yy} & \rho_{yz} \\
+						\rho_{zx} & \rho_{zy} & \rho_{zz} 
+						\end{pmatrix}
+						\mathbf{j}
+						\end{align*}
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<div class="question">
+							<li>By writing out the cross product terms, what is the full form of the matrix $\rho$ in the Drude model when a magnetic field $(0, 0, B_z)$ is applied?</li>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h2 id="Hall-effect-and-magnetoresistance">Hall effect and magnetoresistance<a class="anchor-link" href="#Hall-effect-and-magnetoresistance">&#182;</a></h2>
+						<p>Filling in the values using our Drude theory and only applying a magnetic field in the $z$ direction, so $\mathbf{B} = (0,0,B)$, we have:</p>
+						\begin{align*}
+						\mathbf{E} = 
+						\begin{pmatrix}
+						\frac{m}{ne^2\tau} & \frac{B}{ne} & 0 \\
+						-\frac{B}{ne} & \frac{m}{ne^2\tau} & 0 \\
+						0 & 0 & \frac{m}{ne^2\tau}
+						\end{pmatrix}
+						\mathbf{j}
+						\end{align*}
+						<p>The Hall coefficient $R_h$ is defined as</p>
+						$$R_H = \frac{\rho_{yx}}{|B|} = \frac{-1}{ne}$$<p>$\rho_{yx}$ is called the (transverse) magnetoresistance.</p>
+						<p>Notice it only depends on the electron density! So by measurements of the voltage perpendicular to the current and the magnetic field, we can measure the density of electrons in the metal.</p>
+						<p>If we believe the measurements and Drude theory, we can also extract the scattering time by measuring the conductivity too.</p>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<div class="question">
+							<li>What would happen if the charge on the electrons was opposite (+$e$)</li>
+							<li>The Drude scattering time typically comes out at ~$10^{-13,14}$s, how does this compare to processes you know about?</li>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h2 id="AC-response-to-electric-field">AC response to electric field<a class="anchor-link" href="#AC-response-to-electric-field">&#182;</a></h2>
+						<p>Suppose we apply a time-dependent electric field</p>
+						$$
+						\mathbf{E}(t) = \text{Re}(\mathbf{E}(\omega)e^{-i\omega t})
+						$$
+						<p>where Re means the real part of the thing in brackets (so here a cosine term). Our equation of motion for $\mathbf{p}$ is</p>
+						\begin{align*}
+						\frac{d \mathbf{p}}{dt} =  -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
+						\end{align*}
+						<p>We need a steady state solution where the electrons move at the same frequency as the driving field. So</p>
+						$$
+						\mathbf{p}(t) = \text{Re}(\mathbf{p}(\omega)e^{-i\omega t})
+						$$
+						<p>plugging in and cancelling the exponential terms leads to</p>
+						$$
+						i \omega \mathbf{p}(\omega) =  -e\mathbf{E} - \frac{\mathbf{p}(\omega)}{\tau}
+						$$
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>As the current density, $\mathbf{j} = -ne \mathbf{p}/m$ we find</p>
+						$$
+						\mathbf{j}(\omega) = -\frac{ne\mathbf{p}(\omega)}{m} = \frac{(ne^2/m) \mathbf{E}(\omega)}{(1/\tau)-i\omega}
+						$$<p>Again, taking the proportionality between $\mathbf{j}$ and $\mathbf{E}$ as</p>
+						$$
+						\mathbf{j}(\omega) = \sigma(\omega) \mathbf{E}(\omega)
+						$$<p>where</p>
+						$$
+						\sigma(\omega) = \frac{\sigma_0}{1-i\omega \tau}, \sigma_0 = \frac{ne^2 \tau}{m}
+						$$
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<div class="inner_cell" >
+						<h3 id="opacity---electrodynamics">opacity - electrodynamics<a class="anchor-link" href="#opacity---electrodynamics">&#182;</a></h3><p>can a metal transmit an electromagnetic wave?</p>
+						<p>We can use Maxwell's equations and the expression for $\mathbf{j}$ we just found to explore this in the classical (and long wavelength) limit.</p>
+						<p>Remember from electrodynamics, if no (induced) charge is present</p>
+						<div class="revision">
+							$$\mathbf{\nabla} . \mathbf{E} = 0; \mathbf{\nabla} . \mathbf{B} = 0$$  
+							$$\mathbf{\nabla} \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$  
+							$$\mathbf{\nabla} \times \mathbf{B} = \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big)$$  
+						</div>
+						<p>We look for a solution with a time dependence $e^{-i\omega t}$.</p>
+						<p>Take the curl of both sides of the curl of $\mathbf{E}$</p>
+						$$
+						\mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = - \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t}
+						$$
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>Now two pieces of info are needed</p>
+						$$
+						\mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = \mathbf{\nabla}(\mathbf{\nabla}.  \mathbf{E}) -  \mathbf{\nabla}^2 \mathbf{E} = - \mathbf{\nabla}^2 \mathbf{E}
+						$$<p>and</p>
+						$$
+						- \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t} = -  \frac{\partial ( \mathbf{\nabla} \times \mathbf{B}) }{\partial t}
+						$$<p>(write out the second derivatives and remember from calculus that the order of derivatives shouldn't matter for well behaved functions if you're not convinced).</p>
+						<p>Now plugging in, and using another of the Maxwell equations we get</p>
+						$$
+						- \mathbf{\nabla}^2 \mathbf{E} =  -  \frac{\partial  }{\partial t} \Big[  \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big) \Big]
+						$$
+						<p>now we substitute in our expression for $\mathbf{j}$ and perform the time derivatives (which just give us a factor of $i\omega$) to get</p>
+						\begin{align*}
+						- \mathbf{\nabla}^2 \mathbf{E}(\omega) e^{-i\omega t} & = & -  \mu_0 \frac{\partial  }{\partial t} \Big[ \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} + \epsilon_0 \frac{\partial \mathbf{E}(\omega)e^{-i\omega t}}{\partial t} \Big] \\
+						& = & -  \mu_0 \frac{\partial  }{\partial t} \Big[  \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} - \epsilon_0 i \omega \mathbf{E}(\omega)e^{-i\omega t} \Big] \\
+						& = &  i \omega \mu_0 \Big[  \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} - \epsilon_0 i \omega \mathbf{E}(\omega)e^{-i\omega t} \Big]
+						\end{align*}
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>which implies</p>
+						\begin{align*}
+						- \mathbf{\nabla}^2 \mathbf{E}(\omega) & = & i \omega \mu_0 \Big[  \sigma (\omega) \mathbf{E}(\omega) - \epsilon_0 i \omega \mathbf{E}(\omega) \Big] \\
+						& = & \omega^2 \mu_0 \Big[  \epsilon_0 +  \frac{i \sigma (\omega)}{\omega} \Big] \mathbf{E}(\omega) \\
+						& = & \frac{\omega^2 }{c^2} \Big[  1 +  \frac{i \sigma (\omega)}{\epsilon_0 \omega} \Big] \mathbf{E}(\omega)
+						\end{align*}
+						<p>this is the standard form of a wave equation with a complex dielectric function</p>
+						$$
+						\epsilon (\omega) =   1 +  \frac{i \sigma (\omega)}{\epsilon_0 \omega}
+						$$
+						<p>where $\sigma (\omega)$ is our Drude AC conductivity.</p>
+					</div>
+				</section></section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<div class="question">
+
+								<li>Show that if $\omega \tau \gg 1$ that $\epsilon (\omega) = 1 - \omega_p ^2 / \omega ^2$</li>
+								<li>Give a formula for $\omega_p$ - this is called the plasma frequency</li>
+								<li>using the wave equation in the large $\omega \tau$ limit, can a metal transmit a wave with frequency less than the plasma frequency?</li>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h3 id="Plasmons">Plasmons<a class="anchor-link" href="#Plasmons">&#182;</a></h3><p>The plasmon was initially proposed in 1952 by David Pines and David Bohm and was shown to arise from a Hamiltonian for the long-range electron-electron correlations.</p>
+							<p>Plasmons are an example of collective behaviour of a system (metal here). We can find a classical description of how they behave in a metal using our expression for the current, the law of conservation of charge and Gauss's law</p>
+							$$
+							\nabla . \mathbf{j} = - \frac{\partial \rho}{\partial t}
+							$$<p>when the density has a oscillatory time dependence we have</p>
+							$$
+							\nabla . \mathbf{j}(\omega) = - i \omega \rho (\omega)
+							$$<p>and using Gauss's law,</p>
+							$$
+							\nabla . \mathbf{E}(\omega) = \frac{ \rho(\omega)}{\epsilon_0}
+							$$
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>and using our relationship between $\mathbf{E}$ and $\mathbf{j}$</p>
+							<p>we get</p>
+							$$
+							i \omega \rho (\omega) = \frac{\sigma(\omega) \rho(\omega)}{\epsilon_0}
+							$$<p>which has a solution if</p>
+							$$
+							1 + \frac{i \sigma(\omega)}{\epsilon_0 \omega} = 0
+							$$<p>which corresponds to the plasma frequency again.</p>
+							<p>Quantizing these oscillations (so like Photons are quantized oscillations in free space) produces plasmons ...</p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h3 id="Uses-and-properties">Uses and properties<a class="anchor-link" href="#Uses-and-properties">&#182;</a></h3><ul>
+								<li>Metals are shiny! Plasma frequency is often in the UV</li>
+								<li>Surface Polarons</li>
+								<li>Surface enhanced Raman spectroscopy</li>
+								<li>Control the colour of materials</li>
+								<li>Sensors</li>
+								<li>Improve Photovoltaics and LEDs</li>
+								<li>Interact with photons to produce plasmon-polaritons (Light-excitons)</li>
+							</ul>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Drude-model-of-Thermal-Transport">Drude model of Thermal Transport<a class="anchor-link" href="#Drude-model-of-Thermal-Transport">&#182;</a></h2><p>Using kinetic theory (basically ideal gas) we can estimate the thermal conductivity $\kappa$ of free electrons.</p>
+							<p>Kappa is defined by the ratio of heat current density $\mathbf{j}_q$ to temperature gradient $\nabla T$</p>
+							$$
+							\mathbf{j}_q = \kappa \nabla T
+							$$<p>Then by considering a flux of electrons that carry an amount of heat $c_v T$ at a velocity $ \langle v \rangle$ for a distance $\lambda$ we get</p>
+							$$
+							\kappa = \frac{1}{3}nc_v \langle v \rangle \lambda
+							$$<p>where $c_v$ is the heat capacity per particle (electron), $ \langle v \rangle$ is the average thermal velocity and $\lambda =  \langle v \rangle \tau$ is the scattering length.</p>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>Assuming that electrons behave like a gas (?), we would expect that $c_v = \frac{3}{2}k_B$ and the average velocity is $ \langle v \rangle = \sqrt{\frac{8 k_B T}{\pi m}}$</p>
+							<p>we get</p>
+							$$
+							\kappa = \frac{4}{\pi} \frac{n \tau k_B^2 T}{m}
+							$$<p>and if we assume that the $\tau$ is the same as before we could look at the ratio of thermal to electrical conductivity to get a value for the Lorenz number $L$</p>
+							$$
+							L = \frac{\kappa}{T\sigma} = \frac{3}{2} \left( \frac{(k_B)}{e} \right)^2 \approx 0.94 \times 10^{-8} W \Omega K^{-2}
+							$$<p>This constant ratio is known as the <em>Wiedemann-Franz law</em>.</p>
+							<p>Note there are some slightly different numbers around ($2.44  \times 10^{-8} W \Omega K^{-2}$ ) - see wikipedia for instance, but they are due to errors by Drude. On the other hand the model is complete nonsense;) So not to worry about a factor of 2.</p>
+							<p>We will see later that our guess at $c_v$ is way to big (ignoring the quantum) and our $ \langle v \rangle$ is way to small. The former is important - no measurements revealed a heat capacity of electrons of this magnitude!</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h3 id="Peltier-effect">Peltier effect<a class="anchor-link" href="#Peltier-effect">&#182;</a></h3><p>We can see more clearly the problems by considering the Peltier effect - if we run an electrical current through a material we should also transport heat. The Peltier coefficient is defined by</p>
+							$$
+							\mathbf{j}_q = \Pi \mathbf{j}
+							$$<p>Using our classical kinetic theory the thermal current is</p>
+							$$
+							\mathbf{j}_q = \frac{1}{3} (c_v T) n \mathbf{v}
+							$$<p>and</p>
+							$$
+							\mathbf{j} = -ne\mathbf{v}
+							$$<p>thus giving</p>
+							$$
+							\Pi = -\frac{c_v T}{3e} = -\frac{k_BT}{2e}
+							$$<p>So the ratio $S = \Pi / T$ (called the Seebeck coeffiecient) should be a constant</p>
+							$$
+							S = \frac{\Pi }{T} =  -\frac{k_B}{2e} = -4.3 \times 10 ^{-4} V / K
+							$$<p>in Drude theory.</p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<p>But $S$ of Pt is $\approx 1.0 \times 10^{-6} V/K$</p>
+							<table class="wikitable" style="text-align:center">
+								<tr>
+									<th>Material</th>
+									<th>Seebeck coefficient(relative to platinum) (μV/K)</th>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Selenium" title="Selenium">Selenium</a></td>
+									<td>900</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Silicon" title="Silicon">Silicon</a></td>
+									<td>440</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Germanium" title="Germanium">Germanium</a></td>
+									<td>330</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Molybdenum" title="Molybdenum">Molybdenum</a></td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Gold" title="Gold">Gold</a>, <a href="/wiki/Silver" title="Silver">silver</a>, <a href="/wiki/Copper" title="Copper">copper</a></td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Rhodium" title="Rhodium">Rhodium</a></td>
+									<td>6.0</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Lead" title="Lead">Lead</a></td>
+									<td>4.0</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Aluminium" title="Aluminium">Aluminium</a></td>
+									<td>3.5</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Carbon" title="Carbon">Carbon</a></td>
+									<td>3.0</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Mercury_(element)" title="Mercury (element)">Mercury</a></td>
+									<td>0.6</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Platinum" title="Platinum">Platinum</a></td>
+									<td>0 (definition)</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Sodium" title="Sodium">Sodium</a></td>
+									<td>-2.0</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Potassium" title="Potassium">Potassium</a></td>
+									<td>-9.0</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Nickel" title="Nickel">Nickel</a></td>
+									<td>-15</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Constantan" title="Constantan">Constantan</a></td>
+									<td>-35</td>
+								</tr>
+								<tr>
+									<td><a href="/wiki/Bismuth" title="Bismuth">Bismuth</a></td>
+									<td>-72</td>
+								</tr>
+							</table>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Failures-of-the-classical-theory">Failures of the classical theory<a class="anchor-link" href="#Failures-of-the-classical-theory">&#182;</a></h2><ul>
+								<li>variable sign of the Hall coefficient</li>
+								<li>dielectric function much too simple</li>
+								<li>heat capacity of electrons grossly overestimated</li>
+								<li>infer that the mobility of electrons is grossly underestimated</li>
+								<li>Thermopower off by factor of ~100</li>
+							</ul>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h1 id="Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">Sommerfeld (Free Electron) theory - just a little bit quantum<a class="anchor-link" href="#Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">&#182;</a></h1><p>In 1925 Pauli discovered the exclusion principle - no two electrons can be in the same state.</p>
+							<p>This changes the 'statistics' and Fermi and Dirac together (at least in name, see <a href="https://en.wikipedia.org/wiki/Stigler&#39;s_law_of_eponymy">Stigler's Law of Eponymy</a>) derived Fermi-Dirac statistics.</p>
+							<p>Sommerfeld combined Fermi-Dirac statistics with Drude's theory of metals.</p>
+							<p>Which we'll try and do ...</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Fermi-Dirac-Statistics">Fermi-Dirac Statistics<a class="anchor-link" href="#Fermi-Dirac-Statistics">&#182;</a></h2><p>Given a system of free electrons with chemical potential $\mu$ the probability of an energy level $E$ being occupied is</p>
+							$$
+							n_F(\beta(E-\mu)) = \frac{1}{e^{\beta(E-\mu)} +1}
+							$$<p>where $\beta = \frac{1}{k_B T}$ controls how it changes with temperature.</p>
+
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>Fermi-Dirac distribution
+								<img src="../images/fermi_dirac_300K.png" alt="">
+							</p>
+							<p>"filling the bus"</p>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>Bose-Einstein distribution
+								<img src="../images/bose_einstein_300K.png" alt="">
+								"more sociable"
+							</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<div class="question">
+								<li>What is $k_B T$ at room temperaure (300 K)?</li>
+								<li>Plot the function for room temperature</li>
+								<li>Plot the function at 0K, what is this function known as?</li>
+								<li>Look up the form of the Bose-Einstein distribution?</li>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Electron-gas-in-a-box">Electron gas in a box<a class="anchor-link" href="#Electron-gas-in-a-box">&#182;</a></h2><p>Lets put our (free) electrons in a box of size $V = L^3$ - the quantum requires them to satisfy the Schroedinger equation</p>
+							$$
+							-\frac{\hbar^2}{2m}\nabla^2 \psi = \epsilon \psi
+							$$
+							<p>We'll use periodic boundary conditions. Mathematically this requires that</p>
+							$$
+							\psi(x+L,y+L,z+L) = \psi(x,y,z)
+							$$<p>this is basically the same as the particle in a box you did last year in quantum</p>
+							<div class="question">
+								<li>Do you recognise that the Shroedinger equation is both a differential equation and an eigenvalue problem?</li>
+								<li>What form will the solutions to the equation take?</li>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Plane-waves">Plane-waves<a class="anchor-link" href="#Plane-waves">&#182;</a></h2>$$
+							\psi(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
+							$$<p>the $\frac{1}{\sqrt{V}}$ ensures that the wavefunctions are normalised and (quantum)</p>
+							$$
+							k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
+							$$<p>($p,q$ and $r$ taking integer values).</p>
+							<div class="question">
+								<li>Show that the solutions are normalised</li>
+								<li>Show that the solutions satisfy the Schroedinger equation</li>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<p>The energy of the electrons is</p>
+							$$
+							\epsilon = \frac{\hbar^2 |\mathbf{k}|^2}{2m}
+							$$<div class="question">
+								<li>Show that this is the energy</li>
+							</div><p>To find the total number of electrons we add up the number of electrons in each state.</p>
+							$$
+							N = 2 \sum_{\mathbf{k}}n_F(\beta(\epsilon(\mathbf{k}-\mu))) = 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu)))
+							$$<p>the two comes from the number of spin states.</p>
+							<p><strong>If we know the number of electrons in the system, then this defines our chemical potential.</strong></p>
+							<p>We'll look at how we go from the sum to the integral in the problem class - it comes up frequently.</p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<p><strong>The fermi energy is the chemical potential at T = 0</strong></p>
+							<p>What does this mean? At T=0 the Fermi function becomes a step function:</p>
+							<p><img src="../images/fermi_dirac_lowK.png" alt=""></p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<p>so our expression for the number of electrons in our periodically repeating box is given by</p>
+							\begin{align*}
+							N  & = &  2 \sum_{\mathbf{k}}n_F ( \beta(\epsilon(\mathbf{k}-\mu)) )\\
+							& = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu))) \\
+							& = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} \Theta(E_f -\epsilon(\mathbf{k} )) \\
+							& = & 2 \frac{V}{2 \pi}^3 \int_{0}^{|k| < k_F} \mathbf{dk}
+							\end{align*}
+
+							<p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
+							$$
+							E_F = \frac{\hbar^2 k_F^2}{2m}
+							$$
+							<p>the final integral is over a ball of radius $k_F$, so we get</p>
+							$$
+							N = 2 \frac{V}{2 \pi}^3 (\frac{4}{3}\pi k_F^3)
+							$$
+							<p>this wavevector, $k_F$, defines a surface, called the Fermi surface that divides filled states from empty states.</p>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
+							$$
+							k_F = \frac{(3 \pi^2n)^{2/3}}{2m}
+							$$<p>and</p>
+							$$
+							E_F = \frac{\hbar^2(3\pi^2n)^{2/3}}{2m}
+							$$<p>if we can estimate the electron density, we can estimate the Fermi energy and wavelength.</p>
+							<div class="question">
+								<li>Estimate the Fermi energy for copper</li>
+								<li>What is $k_B T$ at room temperature</li>
+								<li>What does this imply for the accessibility of electrons for mobility?</li>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h1 id="Electronic-Heat-Capacity">Electronic Heat Capacity<a class="anchor-link" href="#Electronic-Heat-Capacity">&#182;</a></h1>
+							<p>We can calculate the total energy (expectation value of $E$, given occupation probabilities and energy levels)</p>
+							\begin{align*}
+							E_{total} = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
+							= & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))
+							\end{align*}
+							<p>and</p>
+							\begin{align*}
+							N = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
+							= & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk n_F(\beta (\epsilon(\mathbf{k})-\mu))
+							\end{align*}
+							<p>now we change variables to those of the energy levels $\epsilon$</p>
+							$$
+							k = \sqrt{\frac{2 \epsilon m}{\hbar^2}}
+							$$
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>which implies</p>
+							$$
+							dk = \sqrt{\frac{m}{2 \epsilon \hbar^2}} d\epsilon
+							$$<p>and we can rewrite our integrals for $E_{\rm{total}}$ and $N$ in terms of $d \epsilon$ as</p>
+							\begin{align}
+							E_{total} = & V \int_{0}^{\infty} d\epsilon \epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
+							N = & V \int_{0}^{\infty} d\epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
+							\end{align}<p>where we have defined</p>
+							$$
+							g(\epsilon)d \epsilon = \frac{2}{(2\pi)^3} 4\pi k^2 dk = \frac{(2m)^{3/2}}{2 \pi^2 \hbar^3} \epsilon^{1/3} d \epsilon
+							$$
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h1 id="What-is-$g(\epsilon)$?">What is $g(\epsilon)$?<a class="anchor-link" href="#What-is-$g(\epsilon)$?">&#182;</a></h1><p>It is called the density of states - it gives the number of energy levels that are present in an energy interval between $\epsilon$ and $\epsilon + d \epsilon$</p>
+							<p>We'll come across analogues of this multiple times - we'll talk about it more in the practical session on Thursday.</p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h1 id="Heat-capacity">Heat capacity<a class="anchor-link" href="#Heat-capacity">&#182;</a></h1><p>all we need to do is take the derivative of $E_{total}$ with respect to temperature ... but this is non trivial.</p>
+							<p>A back of the envelope calculation goes as follows</p>
+							<ul>
+								<li>Assume that $\mu$ is $E_F$</li>
+								<li>Only molecules within $\approx k_B T$ can be excited, and they are excited by $\approx k_B T$, then</li>
+							</ul>
+							$$
+							E(T) \approx E(T=0) + (\text{some constant/2})[V g(E_F)(k_B T)](k_B T) + ...
+							$$<p>then $C_V = \frac{\partial E}{\partial T} \approx  \text{some constant})[V g(E_F)(k_B T)](k_B)$</p>
+							<p>and rearranging our expression for the density of states we get</p>
+							$$
+							C_V = (\text{some constant})(\frac{3N k_B}{2})\frac{T}{T_F}
+							$$<p>so the electronic $C_V$ is temperature dependent (linear), and greatly reduced from the classical $C_V = \frac{3N k_B}{2}$ if $T_F$ is larger than $T$.</p>
+
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="inner_cell" >
+							<h2 id="Drude-vs-Somerfeld">Drude vs Somerfeld<a class="anchor-link" href="#Drude-vs-Somerfeld">&#182;</a></h2><p>Reduced availability of electrons explains several deficiencies in Drude's model, but still some unexplained things:</p>
+							<ul>
+								<li>variable sign of the Hall coefficient</li>
+								<li>dielectric function much too simple</li>
+							</ul>
+
+						</div>
+					</section>
+				</section>
+
 			</div>
-	  	</section>
-		<section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  $$
-		  0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
-		  $$<p>and rearranging to find $\mathbf{E}$</p>
-		  $$
-		  \mathbf{E} = \frac{1}{ne} \mathbf{j} \times \mathbf{B} + \frac{m}{ne^2 \tau}\mathbf{j}
-		  $$<p>Now if we look at the connection between E and J we need to define a 3x3 matrix $\rho$.</p>
-		  \begin{align*}
-		  \mathbf{E} = 
-		  \begin{pmatrix}
-		  \rho_{xx} & \rho_{xy} & \rho_{xz} \\
-		  \rho_{yx} & \rho_{yy} & \rho_{yz} \\
-		  \rho_{zx} & \rho_{zy} & \rho_{zz} 
-		  \end{pmatrix}
-		  \mathbf{j}
-		  \end{align*}
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		</div>																					
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-		    <li>By writing out the cross product terms, what is the full form of the matrix $\rho$ in the Drude model when a magnetic field $(0, 0, B_z)$ is applied?</li>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		<script>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Hall-effect-and-magnetoresistance">Hall effect and magnetoresistance<a class="anchor-link" href="#Hall-effect-and-magnetoresistance">&#182;</a></h2><p>Filling in the values using our Drude theory and only applying a magnetic field in the $z$ direction, so $\mathbf{B} = (0,0,B)$, we have:</p>
-		  \begin{align*}
-		  \mathbf{E} = 
-		  \begin{pmatrix}
-		  \frac{m}{ne^2\tau} & \frac{B}{ne} & 0 \\
-		  -\frac{B}{ne} & \frac{m}{ne^2\tau} & 0 \\
-		  0 & 0 & \frac{m}{ne^2\tau}
-		  \end{pmatrix}
-		  \mathbf{j}
-		  \end{align*}<p>The Hall coefficient $R_h$ is defined as</p>
-		  $$R_H = \frac{\rho_{yx}}{|B|} = \frac{-1}{ne}$$<p>$\rho_{yx}$ is called the (transverse) magnetoresistance.</p>
-		  <p>Notice it only depends on the electron density! So by measurements of the voltage perpendicular to the current and the magnetic field, we can measure the density of electrons in the metal.</p>
-		  <p>If we believe the measurements and Drude theory, we can also extract the scattering time by measuring the conductivity too.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-		    <li>What would happen if the charge on the electrons was opposite (+$e$)</li>
-		    <li>The Drude scattering time typically comes out at ~$10^{-13,14}$s, how does this compare to processes you know about?</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="AC-response-to-electric-field">AC response to electric field<a class="anchor-link" href="#AC-response-to-electric-field">&#182;</a></h2><p>Suppose we apply a time-dependent electric field</p>
-		  $$
-		  \mathbf{E}(t) = \text{Re}(\mathbf{E}(\omega)e^{-i\omega t})
-		  $$
-		  <p>where Re means the real part of the thing in brackets (so here a cosine term). Our equation of motion for $\mathbf{p}$ is</p>
-		  \begin{align*}
-		  \frac{d \mathbf{p}}{dt} =  -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
-		  \end{align*}
-		  <p>We need a steady state solution where the electrons move at the same frequency as the driving field. So</p>
-		  $$
-		  \mathbf{p}(t) = \text{Re}(\mathbf{p}(\omega)e^{-i\omega t})
-		  $$
-		  <p>plugging in and cancelling the exponential terms leads to</p>
-		  $$
-		  i \omega \mathbf{p}(\omega) =  -e\mathbf{E} - \frac{\mathbf{p}(\omega)}{\tau}
-		  $$
-		</div>
-	      </div>
-	  </div></section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>As the current density, $\mathbf{j} = -ne \mathbf{p}/m$ we find</p>
-		  $$
-		  \mathbf{j}(\omega) = -\frac{ne\mathbf{p}(\omega)}{m} = \frac{(ne^2/m) \mathbf{E}(\omega)}{(1/\tau)-i\omega}
-		  $$<p>Again, taking the proportionality between $\mathbf{j}$ and $\mathbf{E}$ as</p>
-		  $$
-		  \mathbf{j}(\omega) = \sigma(\omega) \mathbf{E}(\omega)
-		  $$<p>where</p>
-		  $$
-		  \sigma(\omega) = \frac{\sigma_0}{1-i\omega \tau}, \sigma_0 = \frac{ne^2 \tau}{m}
-		  $$
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="opacity---electrodynamics">opacity - electrodynamics<a class="anchor-link" href="#opacity---electrodynamics">&#182;</a></h3><p>can a metal transmit an electromagnetic wave?</p>
-		  <p>We can use Maxwell's equations and the expression for $\mathbf{j}$ we just found to explore this in the classical (and long wavelength) limit.</p>
-		  <p>Remember from electrodynamics, if no (induced) charge is present</p>
-		  <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-		    $$\mathbf{\nabla} . \mathbf{E} = 0; \mathbf{\nabla} . \mathbf{B} = 0$$  
-		    $$\mathbf{\nabla} \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$  
-		    $$\mathbf{\nabla} \times \mathbf{B} = \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big)$$  
-		  </div><p>We look for a solution with a time dependence $e^{-i\omega t}$.</p>
-		  <p>Take the curl of both sides of the curl of $\mathbf{E}$</p>
-		  $$
-		  \mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = - \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t}
-		  $$
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now two pieces of info are needed</p>
-		  $$
-		  \mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = \mathbf{\nabla}(\mathbf{\nabla}.  \mathbf{E}) -  \mathbf{\nabla}^2 \mathbf{E} = - \mathbf{\nabla}^2 \mathbf{E}
-		  $$<p>and</p>
-		  $$
-		  - \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t} = -  \frac{\partial ( \mathbf{\nabla} \times \mathbf{B}) }{\partial t}
-		  $$<p>(write out the second derivatives and remember from calculus that the order of derivatives shouldn't matter for well behaved functions if you're not convinced).</p>
-		  <p>Now plugging in, and using another of the Maxwell equations we get</p>
-		  $$
-		  - \mathbf{\nabla}^2 \mathbf{E} =  -  \frac{\partial  }{\partial t} \Big[  \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big) \Big]
-		  $$
-		  <p>now we substitute in our expression for $\mathbf{j}$ and perform the time derivatives (which just give us a factor of $i\omega$) to get</p>
-		  \begin{align*}
-		  - \mathbf{\nabla}^2 \mathbf{E}(\omega) e^{-i\omega t} & = & -  \mu_0 \frac{\partial  }{\partial t} \Big[ \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} + \epsilon_0 \frac{\partial \mathbf{E}(\omega)e^{-i\omega t}}{\partial t} \Big] \\
-		  & = & -  \mu_0 \frac{\partial  }{\partial t} \Big[  \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} - \epsilon_0 i \omega \mathbf{E}(\omega)e^{-i\omega t} \Big] \\
-		  & = &  i \omega \mu_0 \Big[  \sigma (\omega) \mathbf{E}(\omega) e^{-i\omega t} - \epsilon_0 i \omega \mathbf{E}(\omega)e^{-i\omega t} \Big]
-		  \end{align*}
-		</div>
-	      </div>
-	  </div></section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">		  
-		  <p>which implies</p>
-		  \begin{align*}
-		  - \mathbf{\nabla}^2 \mathbf{E}(\omega) & = & i \omega \mu_0 \Big[  \sigma (\omega) \mathbf{E}(\omega) - \epsilon_0 i \omega \mathbf{E}(\omega) \Big] \\
-		  & = & \omega^2 \mu_0 \Big[  \epsilon_0 +  \frac{i \sigma (\omega)}{\omega} \Big] \mathbf{E}(\omega) \\
-		  & = & \frac{\omega^2 }{c^2} \Big[  1 +  \frac{i \sigma (\omega)}{\epsilon_0 \omega} \Big] \mathbf{E}(\omega)
-		  \end{align*}
-		  <p>this is the standard form of a wave equation with a complex dielectric function</p>
-		  $$
-		  \epsilon (\omega) =   1 +  \frac{i \sigma (\omega)}{\epsilon_0 \omega}
-		  $$
-		  <p>where $\sigma (\omega)$ is our Drude AC conductivity.</p>
-
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-	
-	<section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt"></div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-
-		    <li>Show that if $\omega \tau \gg 1$ that $\epsilon (\omega) = 1 - \omega_p ^2 / \omega ^2$</li>
-		    <li>Give a formula for $\omega_p$ - this is called the plasma frequency</li>
-		    <li>using the wave equation in the large $\omega \tau$ limit, can a metal transmit a wave with frequency less than the plasma frequency?</li>
-		  </div>
-		</div>
-	      </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Plasmons">Plasmons<a class="anchor-link" href="#Plasmons">&#182;</a></h3><p>The plasmon was initially proposed in 1952 by David Pines and David Bohm and was shown to arise from a Hamiltonian for the long-range electron-electron correlations.</p>
-		  <p>Plasmons are an example of collective behaviour of a system (metal here). We can find a classical description of how they behave in a metal using our expression for the current, the law of conservation of charge and Gauss's law</p>
-		  $$
-		  \nabla . \mathbf{j} = - \frac{\partial \rho}{\partial t}
-		  $$<p>when the density has a oscillatory time dependence we have</p>
-		  $$
-		  \nabla . \mathbf{j}(\omega) = - i \omega \rho (\omega)
-		  $$<p>and using Gauss's law,</p>
-		  $$
-		  \nabla . \mathbf{E}(\omega) = \frac{ \rho(\omega)}{\epsilon_0}
-		  $$
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>and using our relationship between $\mathbf{E}$ and $\mathbf{j}$</p>
-		  <p>we get</p>
-		  $$
-		  i \omega \rho (\omega) = \frac{\sigma(\omega) \rho(\omega)}{\epsilon_0}
-		  $$<p>which has a solution if</p>
-		  $$
-		  1 + \frac{i \sigma(\omega)}{\epsilon_0 \omega} = 0
-		  $$<p>which corresponds to the plasma frequency again.</p>
-		  <p>Quantizing these oscillations (so like Photons are quantized oscillations in free space) produces plasmons ...</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Uses-and-properties">Uses and properties<a class="anchor-link" href="#Uses-and-properties">&#182;</a></h3><ul>
-		    <li>Metals are shiny! Plasma frequency is often in the UV</li>
-		    <li>Surface Polarons</li>
-		    <li>Surface enhanced Raman spectroscopy</li>
-		    <li>Control the colour of materials</li>
-		    <li>Sensors</li>
-		    <li>Improve Photovoltaics and LEDs</li>
-		    <li>Interact with photons to produce plasmon-polaritons (Light-excitons)</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Drude-model-of-Thermal-Transport">Drude model of Thermal Transport<a class="anchor-link" href="#Drude-model-of-Thermal-Transport">&#182;</a></h2><p>Using kinetic theory (basically ideal gas) we can estimate the thermal conductivity $\kappa$ of free electrons.</p>
-		  <p>Kappa is defined by the ratio of heat current density $\mathbf{j}_q$ to temperature gradient $\nabla T$</p>
-		  $$
-		  \mathbf{j}_q = \kappa \nabla T
-		  $$<p>Then by considering a flux of electrons that carry an amount of heat $c_v T$ at a velocity $ \langle v \rangle$ for a distance $\lambda$ we get</p>
-		  $$
-		  \kappa = \frac{1}{3}nc_v \langle v \rangle \lambda
-		  $$<p>where $c_v$ is the heat capacity per particle (electron), $ \langle v \rangle$ is the average thermal velocity and $\lambda =  \langle v \rangle \tau$ is the scattering length.</p>
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Assuming that electrons behave like a gas (?), we would expect that $c_v = \frac{3}{2}k_B$ and the average velocity is $ \langle v \rangle = \sqrt{\frac{8 k_B T}{\pi m}}$</p>
-		  <p>we get</p>
-		  $$
-		  \kappa = \frac{4}{\pi} \frac{n \tau k_B^2 T}{m}
-		  $$<p>and if we assume that the $\tau$ is the same as before we could look at the ratio of thermal to electrical conductivity to get a value for the Lorenz number $L$</p>
-		  $$
-		  L = \frac{\kappa}{T\sigma} = \frac{3}{2} \left( \frac{(k_B)}{e} \right)^2 \approx 0.94 \times 10^{-8} W \Omega K^{-2}
-		  $$<p>This constant ratio is known as the <em>Wiedemann-Franz law</em>.</p>
-		  <p>Note there are some slightly different numbers around ($2.44  \times 10^{-8} W \Omega K^{-2}$ ) - see wikipedia for instance, but they are due to errors by Drude. On the other hand the model is complete nonsense;) So not to worry about a factor of 2.</p>
-		  <p>We will see later that our guess at $c_v$ is way to big (ignoring the quantum) and our $ \langle v \rangle$ is way to small. The former is important - no measurements revealed a heat capacity of electrons of this magnitude!</p>
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Peltier-effect">Peltier effect<a class="anchor-link" href="#Peltier-effect">&#182;</a></h3><p>We can see more clearly the problems by considering the Peltier effect - if we run an electrical current through a material we should also transport heat. The Peltier coefficient is defined by</p>
-		  $$
-		  \mathbf{j}_q = \Pi \mathbf{j}
-		  $$<p>Using our classical kinetic theory the thermal current is</p>
-		  $$
-		  \mathbf{j}_q = \frac{1}{3} (c_v T) n \mathbf{v}
-		  $$<p>and</p>
-		  $$
-		  \mathbf{j} = -ne\mathbf{v}
-		  $$<p>thus giving</p>
-		  $$
-		  \Pi = -\frac{c_v T}{3e} = -\frac{k_BT}{2e}
-		  $$<p>So the ratio $S = \Pi / T$ (called the Seebeck coeffiecient) should be a constant</p>
-		  $$
-		  S = \frac{\Pi }{T} =  -\frac{k_B}{2e} = -4.3 \times 10 ^{-4} V / K
-		  $$<p>in Drude theory.</p>
-
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>But $S$ of Pt is $\approx 1.0 \times 10^{-6} V/K$</p>
-		  <table class="wikitable" style="text-align:center">
-		    <tr>
-		      <th>Material</th>
-		      <th>Seebeck coefficient(relative to platinum) (μV/K)</th>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Selenium" title="Selenium">Selenium</a></td>
-		      <td>900</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Silicon" title="Silicon">Silicon</a></td>
-		      <td>440</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Germanium" title="Germanium">Germanium</a></td>
-		      <td>330</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Molybdenum" title="Molybdenum">Molybdenum</a></td>
-		      <td>10</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Gold" title="Gold">Gold</a>, <a href="/wiki/Silver" title="Silver">silver</a>, <a href="/wiki/Copper" title="Copper">copper</a></td>
-		      <td>6.5</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Rhodium" title="Rhodium">Rhodium</a></td>
-		      <td>6.0</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Lead" title="Lead">Lead</a></td>
-		      <td>4.0</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Aluminium" title="Aluminium">Aluminium</a></td>
-		      <td>3.5</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Carbon" title="Carbon">Carbon</a></td>
-		      <td>3.0</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Mercury_(element)" title="Mercury (element)">Mercury</a></td>
-		      <td>0.6</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Platinum" title="Platinum">Platinum</a></td>
-		      <td>0 (definition)</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Sodium" title="Sodium">Sodium</a></td>
-		      <td>-2.0</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Potassium" title="Potassium">Potassium</a></td>
-		      <td>-9.0</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Nickel" title="Nickel">Nickel</a></td>
-		      <td>-15</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Constantan" title="Constantan">Constantan</a></td>
-		      <td>-35</td>
-		    </tr>
-		    <tr>
-		      <td><a href="/wiki/Bismuth" title="Bismuth">Bismuth</a></td>
-		      <td>-72</td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Failures-of-the-classical-theory">Failures of the classical theory<a class="anchor-link" href="#Failures-of-the-classical-theory">&#182;</a></h2><ul>
-		    <li>variable sign of the Hall coefficient</li>
-		    <li>dielectric function much too simple</li>
-		    <li>heat capacity of electrons grossly overestimated</li>
-		    <li>infer that the mobility of electrons is grossly underestimated</li>
-		    <li>Thermopower off by factor of ~100</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">Sommerfeld (Free Electron) theory - just a little bit quantum<a class="anchor-link" href="#Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">&#182;</a></h1><p>In 1925 Pauli discovered the exclusion principle - no two electrons can be in the same state.</p>
-		  <p>This changes the 'statistics' and Fermi and Dirac together (at least in name, see <a href="https://en.wikipedia.org/wiki/Stigler&#39;s_law_of_eponymy">Stigler's Law of Eponymy</a>) derived Fermi-Dirac statistics.</p>
-		  <p>Sommerfeld combined Fermi-Dirac statistics with Drude's theory of metals.</p>
-		  <p>Which we'll try and do ...</p>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Fermi-Dirac-Statistics">Fermi-Dirac Statistics<a class="anchor-link" href="#Fermi-Dirac-Statistics">&#182;</a></h2><p>Given a system of free electrons with chemical potential $\mu$ the probability of an energy level $E$ being occupied is</p>
-		  $$
-		  n_F(\beta(E-\mu)) = \frac{1}{e^{\beta(E-\mu)} +1}
-		  $$<p>where $\beta = \frac{1}{k_B T}$ controls how it changes with temperature.</p>
-
-		</div>
-	      </div>
-	  </div></section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Fermi-Dirac distribution
-		    <img src="../images/fermi_dirac_300K.png" alt=""></p>
-		  <p>"filling the bus"</p>
-		</div>
-	      </div>
-	  </div></section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Bose-Einstein distribution
-		    <img src="../images/bose_einstein_300K.png" alt="">
-		    "more sociable"
-		  </p>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-		       8px; padding-right: 8px; padding-top: 8px;">
-		    <li>What is $k_B T$ at room temperaure (300 K)?</li>
-		    <li>Plot the function for room temperature</li>
-		    <li>Plot the function at 0K, what is this function known as?</li>
-		    <li>Look up the form of the Bose-Einstein distribution?</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Electron-gas-in-a-box">Electron gas in a box<a class="anchor-link" href="#Electron-gas-in-a-box">&#182;</a></h2><p>Lets put our (free) electrons in a box of size $V = L^3$ - the quantum requires them to satisfy the Schroedinger equation</p>
-		  $$
-		  -\frac{\hbar^2}{2m}\nabla^2 \psi = \epsilon \psi
-		  $$
-		  <p>We'll use periodic boundary conditions. Mathematically this requires that</p>
-		  $$
-		  \psi(x+L,y+L,z+L) = \psi(x,y,z)
-		  $$<p>this is basically the same as the particle in a box you did last year in quantum</p>
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-		       8px; padding-right: 8px; padding-top: 8px;">
-		    <li>Do you recognise that the Shroedinger equation is both a differential equation and an eigenvalue problem?</li>
-		    <li>What form will the solutions to the equation take?</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Plane-waves">Plane-waves<a class="anchor-link" href="#Plane-waves">&#182;</a></h2>$$
-		  \psi(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
-		  $$<p>the $\frac{1}{\sqrt{V}}$ ensures that the wavefunctions are normalised and (quantum)</p>
-		  $$
-		  k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
-		  $$<p>($p,q$ and $r$ taking integer values).</p>
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-		       8px; padding-right: 8px; padding-top: 8px;">
-		    <li>Show that the solutions are normalised</li>
-		    <li>Show that the solutions satisfy the Schroedinger equation</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>The energy of the electrons is</p>
-		  $$
-		  \epsilon = \frac{\hbar^2 |\mathbf{k}|^2}{2m}
-		  $$<div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			 8px; padding-right: 8px; padding-top: 8px;">
-		    <li>Show that this is the energy</li>
-		  </div><p>To find the total number of electrons we add up the number of electrons in each state.</p>
-		  $$
-		  N = 2 \sum_{\mathbf{k}}n_F(\beta(\epsilon(\mathbf{k}-\mu))) = 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu)))
-		  $$<p>the two comes from the number of spin states.</p>
-		  <p><strong>If we know the number of electrons in the system, then this defines our chemical potential.</strong></p>
-		  <p>We'll look at how we go from the sum to the integral in the problem class - it comes up frequently.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><strong>The fermi energy is the chemical potential at T = 0</strong></p>
-		  <p>What does this mean? At T=0 the Fermi function becomes a step function:</p>
-		  <p><img src="../images/fermi_dirac_lowK.png" alt=""></p>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>so our expression for the number of electrons in our periodically repeating box is given by</p>
-		  \begin{align*}
-		  N  & = &  2 \sum_{\mathbf{k}}n_F ( \beta(\epsilon(\mathbf{k}-\mu)) )\\
-		  & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu))) \\
-		  & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} \Theta(E_f -\epsilon(\mathbf{k} )) \\
-		  & = & 2 \frac{V}{2 \pi}^3 \int_{0}^{|k| < k_F} \mathbf{dk}
-							    \end{align*}
-							    
-							    <p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
-							    $$
-							    E_F = \frac{\hbar^2 k_F^2}{2m}
-							    $$
-							    <p>the final integral is over a ball of radius $k_F$, so we get</p>
-							    $$
-							    N = 2 \frac{V}{2 \pi}^3 (\frac{4}{3}\pi k_F^3)
-							    $$
-		  <p>this wavevector, $k_F$, defines a surface, called the Fermi surface that divides filled states from empty states.</p>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-							    
-		  <p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
-		  $$
-		  k_F = \frac{(3 \pi^2n)^{2/3}}{2m}
-		  $$<p>and</p>
-		  $$
-		  E_F = \frac{\hbar^2(3\pi^2n)^{2/3}}{2m}
-		  $$<p>if we can estimate the electron density, we can estimate the Fermi energy and wavelength.</p>
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-		    <li>Estimate the Fermi energy for copper</li>
-		    <li>What is $k_B T$ at room temperature</li>
-		    <li>What does this imply for the accessibility of electrons for mobility?</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Electronic-Heat-Capacity">Electronic Heat Capacity<a class="anchor-link" href="#Electronic-Heat-Capacity">&#182;</a></h1><p>We can calculate the total energy (expectation value of $E$, given occupation probabilities and energy levels)</p>
-		  \begin{align*}
-		  E_{total} = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
-		  = & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))
-		  \end{align*}
-		  <p>and</p>
-		  \begin{align*}
-		  N = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
-		  = & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk n_F(\beta (\epsilon(\mathbf{k})-\mu))
-		  \end{align*}
-		  <p>now we change variables to those of the energy levels $\epsilon$</p>
-		  $$
-		  k = \sqrt{\frac{2 \epsilon m}{\hbar^2}}
-		  $$
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>which implies</p>
-		  $$
-		  dk = \sqrt{\frac{m}{2 \epsilon \hbar^2}} d\epsilon
-		  $$<p>and we can rewrite our integrals for $E_{\rm{total}}$ and $N$ in terms of $d \epsilon$ as</p>
-		  \begin{align}
-		  E_{total} = & V \int_{0}^{\infty} d\epsilon \epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
-		  N = & V \int_{0}^{\infty} d\epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
-		  \end{align}<p>where we have defined</p>
-		  $$
-		  g(\epsilon)d \epsilon = \frac{2}{(2\pi)^3} 4\pi k^2 dk = \frac{(2m)^{3/2}}{2 \pi^2 \hbar^3} \epsilon^{1/3} d \epsilon
-		  $$
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="What-is-$g(\epsilon)$?">What is $g(\epsilon)$?<a class="anchor-link" href="#What-is-$g(\epsilon)$?">&#182;</a></h1><p>It is called the density of states - it gives the number of energy levels that are present in an energy interval between $\epsilon$ and $\epsilon + d \epsilon$</p>
-		  <p>We'll come across analogues of this multiple times - we'll talk about it more in the practical session on Thursday.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Heat-capacity">Heat capacity<a class="anchor-link" href="#Heat-capacity">&#182;</a></h1><p>all we need to do is take the derivative of $E_{total}$ with respect to temperature ... but this is non trivial.</p>
-		  <p>A back of the envelope calculation goes as follows</p>
-		  <ul>
-		    <li>Assume that $\mu$ is $E_F$</li>
-		    <li>Only molecules within $\approx k_B T$ can be excited, and they are excited by $\approx k_B T$, then</li>
-		  </ul>
-		  $$
-		  E(T) \approx E(T=0) + (\text{some constant/2})[V g(E_F)(k_B T)](k_B T) + ...
-		  $$<p>then $C_V = \frac{\partial E}{\partial T} \approx  \text{some constant})[V g(E_F)(k_B T)](k_B)$</p>
-		  <p>and rearranging our expression for the density of states we get</p>
-		  $$
-		  C_V = (\text{some constant})(\frac{3N k_B}{2})\frac{T}{T_F}
-		  $$<p>so the electronic $C_V$ is temperature dependent (linear), and greatly reduced from the classical $C_V = \frac{3N k_B}{2}$ if $T_F$ is larger than $T$.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" >
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Drude-vs-Somerfeld">Drude vs Somerfeld<a class="anchor-link" href="#Drude-vs-Somerfeld">&#182;</a></h2><p>Reduced availability of electrons explains several deficiencies in Drude's model, but still some unexplained things:</p>
-		  <ul>
-		    <li>variable sign of the Hall coefficient</li>
-		    <li>dielectric function much too simple</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	</div>
-      </div>
-
-      <script>
-	
-	require(
-	{
+			require(
+			{
 	// it makes sense to wait a little bit when you are loading
 	// reveal from a cdn in a slow connection environment
 	waitSeconds: 15
-	},
-	[
-	"../../../revealjs//lib/js/head.min.js",
-	"../../../revealjs//js/reveal.js"
-	],
-	
-	function(head, Reveal){
+},
+[
+"../../../revealjs//lib/js/head.min.js",
+"../../../revealjs//js/reveal.js"
+],
+
+function(head, Reveal){
 	
 	// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
 	Reveal.initialize({
-	controls: true,
-	progress: true,
-	history: true,
-	mouseWheel: false,
-	center: false,
-	scroll: true,
+		controls: true,
+		progress: true,
+		history: true,
+		mouseWheel: false,
+		center: false,
+		scroll: true,
 	//width: "80%",
 	//height: "80%",
 	//margin: 10,
@@ -960,26 +846,26 @@
 	async: true,
 	condition: function() { return !!document.body.classList; } }
 	]
-	});
+});
 	
 	var update = function(event){
-	if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-	MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-	}
+		if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+			MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+		}
 	};
 	
 	Reveal.addEventListener('slidechanged', update);
 	
 	var update_scroll = function(event){
-	$(".reveal").scrollTop(0);
+		$(".reveal").scrollTop(0);
 	};
 	
 	Reveal.addEventListener('slidechanged', update_scroll);
 	
-	}
-	);
-      </script>
+}
+);
+</script>
 
-  </body>
+</body>
 
 </html>
