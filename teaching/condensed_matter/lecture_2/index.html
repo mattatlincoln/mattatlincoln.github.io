@@ -20,7 +20,7 @@
 
     <!-- General and theme style sheets -->
     <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
-    <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+    <!-- <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme"> -->
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -70,170 +70,137 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
     <!-- Custom stylesheet, it must be in the same directory as the html file -->
-    <link rel="stylesheet" href="../custom.css">
+    <link rel="stylesheet" href="../simple.css">
 
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
 	
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Drude-theory-of-electrons-in-metals">Drude theory of electrons in metals<a class="anchor-link" href="#Drude-theory-of-electrons-in-metals">&#182;</a></h1><ul>
-		    <li>Chapter 3 - Solid State Basics, Simon</li>
-		    <li>Some of chapter 3.3 of Hook and Hall</li>
-		  </ul>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
+		<section>
+			<section>
+		     	<div class="inner_cell">
+			  		<h1 id="Drude-theory-of-electrons-in-metals">Drude theory of electrons in metals<!-- <a class="anchor-link" href="#Drude-theory-of-electrons-in-metals">&#182;</a> --></h1>
+			  		<ul>
+			    		<li>Chapter 3 - Solid State Basics, Simon</li>
+			    		<li>Some of chapter 3.3 of Hook and Hall</li>
+			  		</ul>
+			  		<div class="must_learn">
+					    <h2 id="Learning-outcomes">Learning outcomes<a class="anchor-link" href="#Learning-outcomes">&#182;</a></h2>
+					    <p>you should have</p>
+					    <ul>
+			      			<li>good knowledge of the classical model of transport by 'electrons'.</li>
+			      			<li>feeling for the magnitude of timescales and energy ranges </li>
+			      			<li>knowledge of phenomena that demonstrate the failure of the model</li>
+			    		</ul>
+			  		</div>
+				</div>
+			</section>
+		</section>
 
-		    <h2 id="Learning-outcomes">Learning outcomes<a class="anchor-link" href="#Learning-outcomes">&#182;</a></h2>
-		    <p>you should have</p>
-		    <ul>
-		      <li>good knowledge of the classical model of transport by 'electrons'.</li>
-		      <li>feeling for the magnitude of timescales and energy ranges </li>
-		      <li>knowledge of phenomena that demonstrate the failure of the model</li>
-		    </ul>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		<section>
+			<section>
+		    	<div class="inner_cell" >
+					<h2 id="Classical-Electron-gas">Classical Electron gas<a class="anchor-link" href="#Classical-Electron-gas">&#182;</a></h2>
+				  	<p>J.J. Thomson discovers electrons in 1896</p>
+		  			<p>1900 Paul Drude (Drood-a, apparently) applied kinetic theory to electrons</p>
+		  			<ul>
+		    			<li>electrons have scattering time $\tau$</li>
+			    		<li>on scattering the eletron returns to momentum $\mathbf{p}=0$</li>
+		    			<li>in between scattering, electrons, with charge <em>-e</em> respond to external $\mathbf{E}$ and $\mathbf{B}$ fields</li>
+					</ul>
+				</div>
+			</section>
+	      	<section>
+	     	    <div class="inner_cell" >
+		     		<p>Now consider what happens, on average, between times $t$ and $t + \Delta t$. Two things can happen - either an electron scatters, or it doesn't:</p>
+		  			<ol>
+		    			<li>probability of scattering is $\frac{\Delta t}{\tau}$</li>
+		    			<li>probabliity of not scattering is $1 - \frac{\Delta t}{\tau}$</li>
+		  			</ol>
+		  			<p>then</p>
+		  			$$
+		  			\mathbf{p}(t + \Delta t) = \big( 1 - \frac{\Delta t}{\tau} \big)(\mathbf{p}(t)+ \mathbf{F} \Delta t) + \frac{\mathbf{0} \Delta t}{\tau}
+		  			$$
+		  			<p>keeping linear terms and rearranging and taking the limit that $\delta t \to 0$, we get</p>
+		  			$$
+		  			\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau}
+		  			$$
+				</div>
+			</section>
+		</section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Classical-Electron-gas">Classical Electron gas<a class="anchor-link" href="#Classical-Electron-gas">&#182;</a></h2><p>J.J. Thomson discovers electrons in 1896</p>
-		  <p>1900 Paul Drude (Drood-a, apparently) applied kinetic theory to electrons</p>
-		  <ul>
-		    <li>electrons have scattering time $\tau$</li>
-		    <li>on scattering the eletron returns to momentum $\mathbf{p}=0$</li>
-		    <li>in between scattering, electrons, with charge <em>-e</em> respond to external $\mathbf{E}$ and $\mathbf{B}$ fields</li>
-		  </ul>
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now consider what happens, on average, between times $t$ and $t + \Delta t$. Two things can happen - either an electron scatters, or it doesn't:</p>
-		  <ol>
-		    <li>probability of scattering is $\frac{\Delta t}{\tau}$</li>
-		    <li>probabliity of not scattering is $1 - \frac{\Delta t}{\tau}$</li>
-		  </ol>
-		  <p>then</p>
-		  $$
-		  \mathbf{p}(t + \Delta t) = \big( 1 - \frac{\Delta t}{\tau} \big)(\mathbf{p}(t)+ \mathbf{F} \Delta t) + \frac{\mathbf{0} \Delta t}{\tau}
-		  $$<p>keeping linear terms and rearranging and taking the limit that $\delta t \to 0$, we get</p>
-		  $$
-		  \frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau}
-		  $$
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		<section>
+			<section>
+	      		<div class="inner_cell" >
+		  			<div class='question'>
+					    <li>Fill in the details of the derivation above</li>
+		    			<li>If there is no external field (i.e. $\mathbf{F} = 0$), how will the motion of electrons change with time?</li>
+					</div>
+				</div>
+			</section>
+		</section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px;">
-		    <li>Fill in the details of the derivation above</li>
-		    <li>If there is no external field (i.e. $\mathbf{F} = 0$), how will the motion of electrons change with time?</li>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		<section>
+			<section>
+		      	<div class="inner_cell" >
+					<h2 id="Electrons-in-Fields">Electrons in Fields<a class="anchor-link" href="#Electrons-in-Fields">&#182;</a></h2>
+				</div>
+			</section>
+		</section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Electrons-in-Fields">Electrons in Fields<a class="anchor-link" href="#Electrons-in-Fields">&#182;</a></h2>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
+		<section>
+			<section>
+			    <div class="inner_cell" >
+					<h3 id="DC-Electric-fields">DC Electric fields<a class="anchor-link" href="#DC-Electric-fields">&#182;</a></h3>
+					<p>so in our Drude approximation</p>
+			  		\begin{align*}
+					  \frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
+	                  = -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
+				 	\end{align*}<p>At steady state we have that the momentum isn't changing</p>
+			  		$$
+			  		\mathbf{p} = m\mathbf{v} = -e \tau \mathbf{E} 
+			  		$$
+				</div>
+			</section>
+			<section>
+			    <div class="inner_cell" >
+					<p>if the density of electrons in a metal is $n$ then the electric current is given by</p>
+			  		$$
+			  		\mathbf{j} = -en\mathbf{v} = \frac{-e^2 \tau n}{m} \mathbf{E} 
+			  		$$
+			  		<p>and the coefficient in front of the field strength is the conductivity</p>
+			  		$$
+			  		\sigma = \frac{-e^2 \tau n}{m}
+			  		$$
+			  		<p>So if we measure the conductivity we can determine the product of the electron density and scattering time.</p>
+			  		<p>The resistivity, $\rho$ is the inverse of conductivity - or it is the coefficient relating $\mathbf{j}$ to $\mathbf{E}$ - i.e. $\mathbf{E} =  \rho \mathbf{j}$.</p>
+				</div>
+			</section>
+		</section>
 
-	<section><section>
+	<section>
+		<section>
+	    	<div class="inner_cell" >
+				<h3 id="Electric-and-Magnetic-fields">Electric and Magnetic fields<a class="anchor-link" href="#Electric-and-Magnetic-fields">&#182;</a></h3><p>Now we need the full Lorentz force</p>
+				$$
+				\mathbf{F} = -e(\mathbf{E}+ \mathbf{v} \times \mathbf{B})
+				$$
+				<p>so</p>
+				\begin{align*}
+				\frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
+		              = -e (\mathbf{E}+ \mathbf{v} \times \mathbf{B}) - \frac{\mathbf{p}}{\tau}
+				\end{align*}<p>For a steady state current, and using $\mathbf{p} = m \mathbf{v}$ and $\mathbf{j} = - ne\mathbf{v}$ we get</p>
+				$$
+				0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
+				$$
+			</div>
+	  	</section>
+		<section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="DC-Electric-fields">DC Electric fields<a class="anchor-link" href="#DC-Electric-fields">&#182;</a></h3><p>so in our Drude approximation</p>
-		  \begin{align*}
-		  \frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
-                  = -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
-		  \end{align*}<p>At steady state we have that the momentum isn't changing</p>
-		  $$
-		  \mathbf{p} = m\mathbf{v} = -e \tau \mathbf{E} 
-		  $$
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>if the density of electrons in a metal is $n$ then the electric current is given by</p>
-		  $$
-		  \mathbf{j} = -en\mathbf{v} = \frac{-e^2 \tau n}{m} \mathbf{E} 
-		  $$<p>and the coefficient in front of the field strength is the conductivity</p>
-		  $$
-		  \sigma = \frac{-e^2 \tau n}{m}
-		  $$<p>So if we measure the conductivity we can determine the product of the electron density and scattering time.</p>
-		  <p>The resistivity, $\rho$ is the inverse of conductivity - or it is the coefficient relating $\mathbf{j}$ to $\mathbf{E}$ - i.e. $\mathbf{E} =  \rho \mathbf{j}$.</p>
-		</div>
-	      </div>
-	    </div>
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Electric-and-Magnetic-fields">Electric and Magnetic fields<a class="anchor-link" href="#Electric-and-Magnetic-fields">&#182;</a></h3><p>Now we need the full Lorentz force</p>
-		  $$
-		  \mathbf{F} = -e(\mathbf{E}+ \mathbf{v} \times \mathbf{B})
-		  $$<p>so</p>
-		  \begin{align*}
-		  \frac{d \mathbf{p}}{dt} = \mathbf{F} - \frac{\mathbf{p}}{\tau} 
-                  = -e (\mathbf{E}+ \mathbf{v} \times \mathbf{B}) - \frac{\mathbf{p}}{\tau}
-		  \end{align*}<p>For a steady state current, and using $\mathbf{p} = m \mathbf{v}$ and $\mathbf{j} = - ne\mathbf{v}$ we get</p>
-		  $$
-		  0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
-		  $$
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  $$
 		  0 = -e\mathbf{E} + \frac{\mathbf{j} \times \mathbf{B}}{n} + \frac{m}{ne \tau}\mathbf{j}
@@ -259,7 +226,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			      8px; padding-right: 8px; padding-top: 8px;">
@@ -274,7 +241,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Hall-effect-and-magnetoresistance">Hall effect and magnetoresistance<a class="anchor-link" href="#Hall-effect-and-magnetoresistance">&#182;</a></h2><p>Filling in the values using our Drude theory and only applying a magnetic field in the $z$ direction, so $\mathbf{B} = (0,0,B)$, we have:</p>
 		  \begin{align*}
@@ -296,7 +263,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			      8px; padding-right: 8px; padding-top: 8px;">
@@ -309,7 +276,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="AC-response-to-electric-field">AC response to electric field<a class="anchor-link" href="#AC-response-to-electric-field">&#182;</a></h2><p>Suppose we apply a time-dependent electric field</p>
 		  $$
@@ -334,7 +301,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>As the current density, $\mathbf{j} = -ne \mathbf{p}/m$ we find</p>
 		  $$
@@ -354,7 +321,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="opacity---electrodynamics">opacity - electrodynamics<a class="anchor-link" href="#opacity---electrodynamics">&#182;</a></h3><p>can a metal transmit an electromagnetic wave?</p>
 		  <p>We can use Maxwell's equations and the expression for $\mathbf{j}$ we just found to explore this in the classical (and long wavelength) limit.</p>
@@ -377,7 +344,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Now two pieces of info are needed</p>
 		  $$
@@ -403,7 +370,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">		  
 		  <p>which implies</p>
 		  \begin{align*}
@@ -426,7 +393,7 @@
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt"></div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 			      8px; padding-right: 8px; padding-top: 8px;">
@@ -443,7 +410,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Plasmons">Plasmons<a class="anchor-link" href="#Plasmons">&#182;</a></h3><p>The plasmon was initially proposed in 1952 by David Pines and David Bohm and was shown to arise from a Hamiltonian for the long-range electron-electron correlations.</p>
 		  <p>Plasmons are an example of collective behaviour of a system (metal here). We can find a classical description of how they behave in a metal using our expression for the current, the law of conservation of charge and Gauss's law</p>
@@ -462,7 +429,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>and using our relationship between $\mathbf{E}$ and $\mathbf{j}$</p>
 		  <p>we get</p>
@@ -480,7 +447,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Uses-and-properties">Uses and properties<a class="anchor-link" href="#Uses-and-properties">&#182;</a></h3><ul>
 		    <li>Metals are shiny! Plasma frequency is often in the UV</li>
@@ -498,7 +465,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Drude-model-of-Thermal-Transport">Drude model of Thermal Transport<a class="anchor-link" href="#Drude-model-of-Thermal-Transport">&#182;</a></h2><p>Using kinetic theory (basically ideal gas) we can estimate the thermal conductivity $\kappa$ of free electrons.</p>
 		  <p>Kappa is defined by the ratio of heat current density $\mathbf{j}_q$ to temperature gradient $\nabla T$</p>
@@ -514,7 +481,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Assuming that electrons behave like a gas (?), we would expect that $c_v = \frac{3}{2}k_B$ and the average velocity is $ \langle v \rangle = \sqrt{\frac{8 k_B T}{\pi m}}$</p>
 		  <p>we get</p>
@@ -534,7 +501,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Peltier-effect">Peltier effect<a class="anchor-link" href="#Peltier-effect">&#182;</a></h3><p>We can see more clearly the problems by considering the Peltier effect - if we run an electrical current through a material we should also transport heat. The Peltier coefficient is defined by</p>
 		  $$
@@ -562,7 +529,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>But $S$ of Pt is $\approx 1.0 \times 10^{-6} V/K$</p>
 		  <table class="wikitable" style="text-align:center">
@@ -644,7 +611,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Failures-of-the-classical-theory">Failures of the classical theory<a class="anchor-link" href="#Failures-of-the-classical-theory">&#182;</a></h2><ul>
 		    <li>variable sign of the Hall coefficient</li>
@@ -662,7 +629,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">Sommerfeld (Free Electron) theory - just a little bit quantum<a class="anchor-link" href="#Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">&#182;</a></h1><p>In 1925 Pauli discovered the exclusion principle - no two electrons can be in the same state.</p>
 		  <p>This changes the 'statistics' and Fermi and Dirac together (at least in name, see <a href="https://en.wikipedia.org/wiki/Stigler&#39;s_law_of_eponymy">Stigler's Law of Eponymy</a>) derived Fermi-Dirac statistics.</p>
@@ -677,7 +644,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Fermi-Dirac-Statistics">Fermi-Dirac Statistics<a class="anchor-link" href="#Fermi-Dirac-Statistics">&#182;</a></h2><p>Given a system of free electrons with chemical potential $\mu$ the probability of an energy level $E$ being occupied is</p>
 		  $$
@@ -691,7 +658,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Fermi-Dirac distribution
 		    <img src="../images/fermi_dirac_300K.png" alt=""></p>
@@ -703,7 +670,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>Bose-Einstein distribution
 		    <img src="../images/bose_einstein_300K.png" alt="">
@@ -718,7 +685,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
 		       8px; padding-right: 8px; padding-top: 8px;">
@@ -735,7 +702,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Electron-gas-in-a-box">Electron gas in a box<a class="anchor-link" href="#Electron-gas-in-a-box">&#182;</a></h2><p>Lets put our (free) electrons in a box of size $V = L^3$ - the quantum requires them to satisfy the Schroedinger equation</p>
 		  $$
@@ -756,7 +723,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Plane-waves">Plane-waves<a class="anchor-link" href="#Plane-waves">&#182;</a></h2>$$
 		  \psi(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
@@ -775,7 +742,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>The energy of the electrons is</p>
 		  $$
@@ -796,7 +763,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p><strong>The fermi energy is the chemical potential at T = 0</strong></p>
 		  <p>What does this mean? At T=0 the Fermi function becomes a step function:</p>
@@ -810,7 +777,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>so our expression for the number of electrons in our periodically repeating box is given by</p>
 		  \begin{align*}
@@ -834,7 +801,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 							    
 		  <p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
@@ -858,7 +825,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Electronic-Heat-Capacity">Electronic Heat Capacity<a class="anchor-link" href="#Electronic-Heat-Capacity">&#182;</a></h1><p>We can calculate the total energy (expectation value of $E$, given occupation probabilities and energy levels)</p>
 		  \begin{align*}
@@ -882,7 +849,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <p>which implies</p>
 		  $$
@@ -901,7 +868,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="What-is-$g(\epsilon)$?">What is $g(\epsilon)$?<a class="anchor-link" href="#What-is-$g(\epsilon)$?">&#182;</a></h1><p>It is called the density of states - it gives the number of energy levels that are present in an energy interval between $\epsilon$ and $\epsilon + d \epsilon$</p>
 		  <p>We'll come across analogues of this multiple times - we'll talk about it more in the practical session on Thursday.</p>
@@ -912,7 +879,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h1 id="Heat-capacity">Heat capacity<a class="anchor-link" href="#Heat-capacity">&#182;</a></h1><p>all we need to do is take the derivative of $E_{total}$ with respect to temperature ... but this is non trivial.</p>
 		  <p>A back of the envelope calculation goes as follows</p>
@@ -934,7 +901,7 @@
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="inner_cell" >
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Drude-vs-Somerfeld">Drude vs Somerfeld<a class="anchor-link" href="#Drude-vs-Somerfeld">&#182;</a></h2><p>Reduced availability of electrons explains several deficiencies in Drude's model, but still some unexplained things:</p>
 		  <ul>
