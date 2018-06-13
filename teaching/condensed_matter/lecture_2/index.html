@@ -325,6 +325,10 @@ linebreaks: { automatic: true }
 						$$
 						- \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t} = -  \frac{\partial ( \mathbf{\nabla} \times \mathbf{B}) }{\partial t}
 						$$<p>(write out the second derivatives and remember from calculus that the order of derivatives shouldn't matter for well behaved functions if you're not convinced).</p>
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >						
 						<p>Now plugging in, and using another of the Maxwell equations we get</p>
 						$$
 						- \mathbf{\nabla}^2 \mathbf{E} =  -  \frac{\partial  }{\partial t} \Big[  \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big) \Big]
@@ -401,7 +405,8 @@ linebreaks: { automatic: true }
 				<section>
 					<section>
 						<div class="inner_cell" >
-							<h3 id="Uses-and-properties">Uses and properties<a class="anchor-link" href="#Uses-and-properties">&#182;</a></h3><ul>
+							<h3 id="Uses-and-properties">Uses and properties<a class="anchor-link" href="#Uses-and-properties">&#182;</a></h3>
+							<ul>
 								<li>Metals are shiny! Plasma frequency is often in the UV</li>
 								<li>Surface Polarons</li>
 								<li>Surface enhanced Raman spectroscopy</li>
@@ -446,22 +451,21 @@ linebreaks: { automatic: true }
 				<section>
 					<section>
 						<div class="inner_cell" >
-							<h3 id="Peltier-effect">Peltier effect<a class="anchor-link" href="#Peltier-effect">&#182;</a></h3><p>We can see more clearly the problems by considering the Peltier effect - if we run an electrical current through a material we should also transport heat. The Peltier coefficient is defined by</p>
+							<h3 id="Peltier-effect">Peltier effect<a class="anchor-link" href="#Peltier-effect">&#182;</a></h3>
+							<p>If we run an electrical current through a material we should also transport heat. The Peltier coefficient is defined by</p>
 							$$
 							\mathbf{j}_q = \Pi \mathbf{j}
-							$$<p>Using our classical kinetic theory the thermal current is</p>
 							$$
-							\mathbf{j}_q = \frac{1}{3} (c_v T) n \mathbf{v}
-							$$<p>and</p>
-							$$
-							\mathbf{j} = -ne\mathbf{v}
-							$$<p>thus giving</p>
+							<p>Using our classical kinetic theory the thermal current is
+							$\mathbf{j}_q = \frac{1}{3} (c_v T) n \mathbf{v}$ and $\mathbf{j} = -ne\mathbf{v}$
+							thus giving</p>
 							$$
 							\Pi = -\frac{c_v T}{3e} = -\frac{k_BT}{2e}
 							$$<p>So the ratio $S = \Pi / T$ (called the Seebeck coeffiecient) should be a constant</p>
 							$$
 							S = \frac{\Pi }{T} =  -\frac{k_B}{2e} = -4.3 \times 10 ^{-4} V / K
-							$$<p>in Drude theory.</p>
+							$$
+							<p>in Drude theory.</p>
 
 						</div>
 					</section>
@@ -470,74 +474,75 @@ linebreaks: { automatic: true }
 				<section>
 					<section>
 						<div class="inner_cell" >
+
 							<p>But $S$ of Pt is $\approx 1.0 \times 10^{-6} V/K$</p>
-							<table class="wikitable" style="text-align:center">
+							<table class="table">
 								<tr>
 									<th>Material</th>
 									<th>Seebeck coefficient(relative to platinum) (μV/K)</th>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Selenium" title="Selenium">Selenium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Selenium" title="Selenium">Selenium</a></td>
 									<td>900</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Silicon" title="Silicon">Silicon</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Silicon" title="Silicon">Silicon</a></td>
 									<td>440</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Germanium" title="Germanium">Germanium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Germanium" title="Germanium">Germanium</a></td>
 									<td>330</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Molybdenum" title="Molybdenum">Molybdenum</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Molybdenum" title="Molybdenum">Molybdenum</a></td>
 									<td>10</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Gold" title="Gold">Gold</a>, <a href="/wiki/Silver" title="Silver">silver</a>, <a href="/wiki/Copper" title="Copper">copper</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Gold" title="Gold">Gold</a>, <a href="https://en.wikipedia.org/wiki/Silver" title="Silver">silver</a>, <a href="https://en.wikipedia.org/wiki/Copper" title="Copper">copper</a></td>
 									<td>6.5</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Rhodium" title="Rhodium">Rhodium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Rhodium" title="Rhodium">Rhodium</a></td>
 									<td>6.0</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Lead" title="Lead">Lead</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Lead" title="Lead">Lead</a></td>
 									<td>4.0</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Aluminium" title="Aluminium">Aluminium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Aluminium" title="Aluminium">Aluminium</a></td>
 									<td>3.5</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Carbon" title="Carbon">Carbon</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Carbon" title="Carbon">Carbon</a></td>
 									<td>3.0</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Mercury_(element)" title="Mercury (element)">Mercury</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Mercury_(element)" title="Mercury (element)">Mercury</a></td>
 									<td>0.6</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Platinum" title="Platinum">Platinum</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Platinum" title="Platinum">Platinum</a></td>
 									<td>0 (definition)</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Sodium" title="Sodium">Sodium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Sodium" title="Sodium">Sodium</a></td>
 									<td>-2.0</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Potassium" title="Potassium">Potassium</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Potassium" title="Potassium">Potassium</a></td>
 									<td>-9.0</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Nickel" title="Nickel">Nickel</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Nickel" title="Nickel">Nickel</a></td>
 									<td>-15</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Constantan" title="Constantan">Constantan</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Constantan" title="Constantan">Constantan</a></td>
 									<td>-35</td>
 								</tr>
 								<tr>
-									<td><a href="/wiki/Bismuth" title="Bismuth">Bismuth</a></td>
+									<td><a href="https://en.wikipedia.org/wiki/Bismuth" title="Bismuth">Bismuth</a></td>
 									<td>-72</td>
 								</tr>
 							</table>
@@ -564,7 +569,7 @@ linebreaks: { automatic: true }
 					<section>
 						<div class="inner_cell" >
 							<h1 id="Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">Sommerfeld (Free Electron) theory - just a little bit quantum<a class="anchor-link" href="#Sommerfeld-(Free-Electron)-theory---just-a-little-bit-quantum">&#182;</a></h1><p>In 1925 Pauli discovered the exclusion principle - no two electrons can be in the same state.</p>
-							<p>This changes the 'statistics' and Fermi and Dirac together (at least in name, see <a href="https://en.wikipedia.org/wiki/Stigler&#39;s_law_of_eponymy">Stigler's Law of Eponymy</a>) derived Fermi-Dirac statistics.</p>
+							<p>This changes the 'statistics' and Fermi and Dirac together (at least in name, see <a href="https://en.wikipedia.orghttps://en.wikipedia.org/wiki/Stigler&#39;s_law_of_eponymy">Stigler's Law of Eponymy</a>) derived Fermi-Dirac statistics.</p>
 							<p>Sommerfeld combined Fermi-Dirac statistics with Drude's theory of metals.</p>
 							<p>Which we'll try and do ...</p>
 						</div>
@@ -697,7 +702,15 @@ linebreaks: { automatic: true }
 							$$
 							N = 2 \frac{V}{2 \pi}^3 (\frac{4}{3}\pi k_F^3)
 							$$
-							<p>this wavevector, $k_F$, defines a surface, called the Fermi surface that divides filled states from empty states.</p>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<div class="must_learn">
+								<p>The Fermi wavevector, $k_F$, defines a surface, called the Fermi surface.</p>
+								<p>The Fermi surface divides filled states from empty states.</p>
+							</div>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Fermi_energy_momentum.svg" style="width:200px">
 						</div>
 					</section>
 					<section>
@@ -823,13 +836,13 @@ function(head, Reveal){
 		progress: true,
 		history: true,
 		mouseWheel: false,
-		center: false,
+		center: true,
 		scroll: true,
-	//width: "80%",
-	//height: "80%",
-	//margin: 10,
-	//minScale: 0.2,
-	//maxScale: 1.5,
+		width: "70%",
+		height: "70%",
+		//margin: 10,
+		//minScale: 0.2,
+		//maxScale: 1.5,
 	// Parallax background image
 	parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg',
 	// Parallax background size
