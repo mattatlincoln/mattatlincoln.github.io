@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>OT_talk slides</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../revealjs/css/reveal.css">
+<link rel="stylesheet" href="../../revealjs/css/theme/simple.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../revealjs/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<style type="text/css"></style>
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+<section>
+  <section>
+    <h1 id="SCF-Methods-&#8212;-Diagonalisation-&amp;-Orbital-Transformation">SCF Methods &#8212; Diagonalisation &amp; Orbital Transformation<a class="anchor-link" href="#SCF-Methods-&#8212;-Diagonalisation-&amp;-Orbital-Transformation">&#182;</a></h1>
+    <h3 id="CP2K-summer-school-2018">CP2K summer school 2018<a class="anchor-link" href="#CP2K-summer-school-2018">&#182;</a></h3>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Self-Consistent-Field-(SCF)">Self Consistent Field (SCF)<a class="anchor-link" href="#Self-Consistent-Field-(SCF)">&#182;</a></h2>
+    <div style='display: flex'>
+      <div>
+        <img src='scf_loop.png' style='max-height:400px'>
+      </div>
+      <div style='min-width:400px margin-top:20px'>
+        <ul>
+          <li> Central to the QuickStep (DFT) calculation is the Self-Consistent-Field cycle
+          \begin{align}
+          H[\rho] \phi_n = E_n \phi_n\\
+          \rho(\mathbf{r}) = \sum_n f_n \phi^*_n(\mathbf{r}) \phi_n(\mathbf{r})
+          \end{align}
+          </li>
+          <li> 
+           Key to speed and stability of the calculation:
+           <ul>
+            <li>Energy minimisation</li>
+            <li>Charge mixing</li>
+          </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2>
+    <ul>
+      <li>Common Methods In CP2K
+        <ul>
+          <li>Eigensolvers (diagonlisation)
+            <ul>
+              <li>Charge Mixing for Diagonalisation Methods</li>
+            </ul>
+          </li>
+          <li>Optimisers
+            <ul>
+              <li>Orbital Transformation (OT)
+                <ul>
+                  <li>Preconditioners</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Comparison of OT and Diagonalization.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>This talk is only an introductory overview.</p>
+    <p>A <a href='https://www.cp2k.org/_media/events:2016_summer_school:20160824_scf.pdf'>much more detailed version of this talk</a> given by Lianheng Tong at the 2016 summer school.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Generalised-Eigenvalue-Problem">Generalised Eigenvalue Problem<a class="anchor-link" href="#Generalised-Eigenvalue-Problem">&#182;</a></h2>
+    <p>We converted the Kohn-Sham equations into matrix form by introducing basis functions.</p>
+    <p>\begin{align}
+    \mathbf{H C} = \mathbf{E S C}\\
+    \end{align}</p>
+    <p>Where</p>
+    <ul>
+      <li>$\mathbf{H}$ is the matrix representation of the Kohn-Sham equations</li>
+      <li>$\mathbf{C}$ is the matrix of Molecular Orbital coefficients of the basis functions used </li>
+      <li>$\mathbf{S}$ is the overlap matrix showing how the basis functions overlap (are not orthogonal).</li>
+      <li>$\mathbf{E}$ is the matrix with the eigenenergies of the MOs.</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Eigenvalue-Problem">Eigenvalue Problem<a class="anchor-link" href="#Eigenvalue-Problem">&#182;</a></h2><p>change variables</p>
+    <p>
+      \begin{align}
+      \mathbf{H C} &amp; = \mathbf{E S C}\\
+      \mathbf{H S^{-1/2} S^{1/2} C} &amp; = \mathbf{E S^{1/2} S^{1/2} C}\\
+      \mathbf{S^{-1/2} H S^{-1/2} S^{1/2} C} &amp; = \mathbf{S^{-1/2} E S^{1/2} S^{1/2} C}\\
+      \mathbf{S^{-1/2} H S^{-1/2} C'} &amp; = \mathbf{E S^{-1/2} S^{1/2} C'}\\
+      \mathbf{H' C'} &amp; = \mathbf{ E C'}\\
+      \end{align}</p>
+      <p>where $\mathbf{C'} = \mathbf{S}^{1/2} \mathbf{C}'$ and $\mathbf{H}' = \mathbf{S}^{-1/2} \mathbf{H} \mathbf{S}^{-1/2}$, is a standard (non-linear) Eigenvalue problem.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1 id="Diagonalisation">Diagonalisation<a class="anchor-link" href="#Diagonalisation">&#182;</a></h1>
+    <p>we can diagnonalise $\mathbf{H' C'} = \mathbf{ E C'}$ to find a new set of MOs given the input Kohn-Sham matrix built from the current density.</p>
+    <p>Standard methods of diagonalising the matrix can be used - termed 'traditional diagonalisation'.</p>
+    <p>The new orbitals are used to build</p>
+    <ul>
+      <li>a new density </li>
+      <li>a new Kohn-Sham matrix</li>
+    </ul>
+    <p>Then the process repeats until (if?) it converges - i.e. MOs in are the same as MOs out.</p>
+  </section>
+  <section>
+    <h3 id="Charge-density-mixing">Charge density mixing<a class="anchor-link" href="#Charge-density-mixing">&#182;</a></h3><p>Instead of using the new set of orbitals directly mix together some older solutions and the new solution.</p>
+    <p>Much more stable that blindly taking only the new density.</p>
+    <p>In the simplest case linearly mix $\alpha$ of the new density with $1-\alpha$ of the density in the previous step.</p>
+  </section>
+  <section>
+    <h3 id="Input---linear-mixing">Input - linear mixing<a class="anchor-link" href="#Input---linear-mixing">&#182;</a></h3>
+    <pre>
+&SCF
+   SCF_GUESS ATOMIC
+   EPS_SCF 1.0E-06
+   MAX_SCF 50
+   &MIXING
+       ALPHA 0.2 !sensible value, the default 0.4 is very aggressive.
+   &END MIXING
+&END SCF
+    </pre>
+    <p>Instead of mixing in a fraction of the new density with the previous step a more sophisticated approach mixes in a history of previous density using some 'recipe'.</p>
+    <p>By default CP2K switches to the DIIS method when the largest change in an element of the density matrix is smaller than <code>EPS_DIIS</code>, which is 0.05 by if not set explicitly.</p>
+  </section>
+  <section>
+    <h3 id="Output">Output<a class="anchor-link" href="#Output">&#182;</a></h3><p>should look something like this:</p>
+    <pre>
+ Step  Update method          Time   Convergence      Total energy         Change
+ ---------------------------------------------------------------------------------
+ 1     P_Mix/Diag. 0.50E+00    2.1   0.41056021     -2133.4408435676     -2.13E+03
+ 2     P_Mix/Diag. 0.50E+00    3.2   0.20432922     -2132.0776002852      1.36E+00
+ 3     P_Mix/Diag. 0.50E+00    3.2   0.10741372     -2131.3677551799      7.10E-01
+ 4     P_Mix/Diag. 0.50E+00    3.2   0.05420394     -2131.0080867703      3.60E-01
+ 5     DIIS/Diag.  0.39E-03    3.2   0.02722180     -2130.8276990683      1.80E-01
+ 6     DIIS/Diag.  0.19E-03    3.1   0.00062404     -2130.6473761946      1.80E-01
+ 7     DIIS/Diag.  0.84E-04    3.2   0.00050993     -2130.6473778175     -1.62E-06
+    </pre>
+    <p>note the switch to DIIS when Convergence is &lt; 0.05.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3 id="Smearing">Smearing<a class="anchor-link" href="#Smearing">&#182;</a></h3><p>For metallic systems we generalise how we build the density. Up to now we build the density by filling the $N$ electrons into the $N$ lowest molecular spin orbitals.</p>
+    <h4 id="Problem">Problem<a class="anchor-link" href="#Problem">&#182;</a></h4>
+    <p>If the system is metallic (or has a very small band-gap) this can lead to 'charge sloshing'. The orbitals around the 'fermi energy' can change their ordering, and different ones are occupied from iteration to iteration.</p>
+    <h4 id="Solution">Solution<a class="anchor-link" href="#Solution">&#182;</a></h4>
+    <p>Fill the orbitals using a Fermi-Dirac distribution at a fictitious finite temperature - smooths out charge sloshing.</p>
+  </section>
+  <section>
+    <h3 id="Smearing-input">Smearing input<a class="anchor-link" href="#Smearing-input">&#182;</a></h3>
+    <pre>
+&SCF
+   SCF_GUESS ATOMIC
+   EPS_SCF 1.0E-6
+   MAX_SCF 50
+   ADDED_MOS 200
+   &SMEAR ON
+       METHOD FERMI_DIRAC
+       ELECTRONIC_TEMPERATURE [K] 300
+   &END SMEAR
+   &MIXING
+       METHOD BRYODEN_MIXING
+       ALPHA 0.2
+       NBUFFER 5
+   &END MIXING
+&END SCF
+    </pre>
+    <p>We also use a different mixing scheme, which is probably optimal for metallic systems.</p>
+    <p>Fermi Temperature is typically between 300 - 3000 K. The larger the value the smoother convergence, but it can affect the physical properties of the system if too large.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="OT">OT<a class="anchor-link" href="#OT">&#182;</a></h2><p>why not just directly minimize the energy functional with respect to the MO coefficients?</p>
+    <ul>
+      <li>we need our orbitals to remain orthogonal - Pauli principle</li>
+    </ul>
+    <p>So the minimization must be subject to a constraint - on an M dimensional hypersphere!</p>
+    <p><img src='OT1.svg' style='width:400px'></p>
+    <p>This is built into diagonalisation, as the new vectors are always eigenfunctions of the (current) Kohn-Sham matrix.</p>
+  </section>
+  <section>
+    <h3 id="change-variables-in-some-clever-way-that-builds-in-the-constraint">change variables in some clever way that builds in the constraint<a class="anchor-link" href="#change-variables-in-some-clever-way-that-builds-in-the-constraint">&#182;</a></h3><p>Work with new variables $\mathbf{X}$</p>
+    <p>$$\mathbf{C}(\mathbf{X}) = \mathbf{C}_0 \cos(\mathbf{U}) + \mathbf{X U}^{-1} \sin(\mathbf{U})$$</p>
+    <p>$$\mathbf{U} = (\mathbf{X}^T\mathbf{SX})^{1/2}$$</p>
+    <p><img src='OT2.svg' style='width:400px'></p>
+    <p>Can show that this leads to optimization in an M-1 dimensional linear space.</p>
+  </section>
+  <section>
+    <h3 id="Change-variables-in-some-clever-way-that-builds-in-the-constraint.">Change variables in some clever way that builds in the constraint.<a class="anchor-link" href="#Change-variables-in-some-clever-way-that-builds-in-the-constraint.">&#182;</a></h3>
+    <div style="display: flex; width=100%">
+      <div style='min-width:30%'>
+        <img src='OT3.svg'>
+        $$\big< \mathbf{X}, \mathbf{C}_0\big> = \mathbf{X}^T \mathbf{SC}_0 = 0\\
+        \mathbf{C} = \bigg[\begin{array}{c}
+        \cos(\theta)\\
+        \sin(\theta)
+        \end{array}\bigg]
+        = \mathbf{C}_0 \cos(\theta) + \hat{\mathbf{X}} \sin(\theta)\\
+        \theta = \frac{|\mathbf{X}|}{|\mathbf{C}|} = \frac{(\mathbf{X}^T\mathbf{SX})^{1/2}}{(\mathbf{C}^T\mathbf{SC)}^{1/2}} = \mathbf{U}\\
+        \mathbf{C}(\mathbf{X}) = \mathbf{C}_0 \cos(\mathbf{U}) + \mathbf{X U}^{-1} \sin(\mathbf{U})\\
+        $$
+      </div>
+      <div style='margin-top:20px; min-width:50%'>
+        New variables $\mathbf{X}$ are always orthogonal to the initial vector $\mathbf{C}_0$ by construction. 
+        <br><br>
+        We can use standard minimization routines and we never have to diagonalise the Kohn-Sham matrix!
+        <br><br>
+        Far more robust - but requires a band gap - revert to diagonalization and smearing for metallic systems.
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3 id="Preconditioning">Preconditioning<a class="anchor-link" href="#Preconditioning">&#182;</a></h3><p>In minimization problems it is often a good idea change the problem by applying some approximate solution to the problem to make an equivalent set of equations that are</p>
+  <ul>
+    <li>approximately diagonal</li>
+    <li>with diagonal elements of the same size and of order 1.</li>
+  </ul>
+  <p>The OT solver is no exception. There are a variety of preconditioners available, and they can dramatically speed up convergence.</p>
+
+  </section>
+  <section>
+    <h3 id="OT-recipe-1---small-medium-systems">OT recipe 1 - small-medium systems<a class="anchor-link" href="#OT-recipe-1---small-medium-systems">&#182;</a></h3>
+    <pre>
+&SCF
+    SCF_GUESS RESTART
+    EPS_SCF 1.0E-06
+    MAX_SCF 20
+    &OT ON
+        MINIMIZER DIIS
+        PRECONDITIONER FULL_ALL
+        ENERGY_GAP 0.001
+    &END OT
+    &OUTER_SCF
+        MAX_SCF 2
+    &END OUTER_SCF
+&END SCF
+    </pre>
+    <ul>
+      <li><p>This uses the most efficient minimizer, DIIS.  Change to CG for difficult systems.</p>
+      </li>
+      <li><p>The most accurate, and expensive to calculate, preconditioner - <code>FULL_ALL</code>.</p>
+      </li>
+      <li><p>The <code>OUTER_SCF</code> restarts the SCF cycle and reapplies a new preconditioner when the original loop finishes.</p>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3 id="OT-recipe-2---pretty-large-systems">OT recipe 2 - pretty large systems<a class="anchor-link" href="#OT-recipe-2---pretty-large-systems">&#182;</a></h3>
+    <pre>
+&SCF
+    SCF_GUESS RESTART
+    EPS_SCF 1.0E-06
+    MAX_SCF 20
+    &OT ON
+        MINIMIZER DIIS
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        ENERGY_GAP 0.1
+    &END OT
+    &OUTER_SCF
+        MAX_SCF 2
+    &END OUTER_SCF
+&END SCF
+    </pre>
+    <p>The <code>FULL_ALL</code> preconditioner is expensive to apply to large systems (diagonalization of the approximate Hamiltonian is required). The <code>FULL_SINGLE_INVERSE</code> is pretty good, and much cheaper for big systems.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Choice-of-method">Choice of method<a class="anchor-link" href="#Choice-of-method">&#182;</a></h2>
+    <ul>
+      <li>Use OT if you can, it is faster and converges more reliably<ul>
+      <li>disadvantage: requires additional calculations to obtain unoccupied states.</li>
+      </ul>
+      </li>
+      <li>Use Diagonalisation if you need to work with the occupation numbers of orbitals<ul>
+      <li>Use Diagonalisation (with smearing) for metallic systems</li>
+      </ul>
+      </li>
+      </ul>
+      <p>The two methods use quite different code paths.</p>
+      <ul>
+      <li><code>EPS_SCF</code> has different meanings for OT (largest derivative of energy wrt MO coefficients) and TD (largest change in the density matrix).</li>
+      </ul>
+      <p>Some options will only work with either OT or TD.</p>
+      <ul>
+      <li>Most common is <code>MO</code> section in <code>PRINT</code> only works properly with diagonalisation</li>
+      <li><code>MO_CUBES</code> section in <code>PRINT</code> only works properly with OT.</li>
+      </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>See <a href='https://www.cp2k.org/_media/events:2016_summer_school:20160824_scf.pdf'>a more detailed version of this talk</a> given by Lianheng Tong at the 2016 summer school, if you want to know (much) more!</p>
+  </section>
+</section>
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../revealjs/lib/js/head.min.js",
+      "../../revealjs/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../revealjs/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../revealjs/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
+
+</html>
