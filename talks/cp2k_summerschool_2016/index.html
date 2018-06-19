@@ -466,7 +466,8 @@
 
 		  <p>Generally the first column is the exponents ($\alpha_m$ above) and the later columns give the $d_{m \alpha}$, each column being a set $\alpha$. Details can be found in the header of the BASIS_MOLOPT file</p>
 		  <p>A MOLOPT basis for nitrogen is</p>
-		  <p><pre><code>
+		  <p style='font-size: 15px;'>
+		    <pre style='font-size: 15px;'>
 N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 1
 2 0 2 5 2 2 1
@@ -474,7 +475,9 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 2.542637110957  0.097294516500  0.108655219900 -0.165752516200  0.015163333100  0.109813343200
 0.888574967229 -0.445077422600 -0.374125427100 -0.317365165600 -0.129388247500  0.856542971300
 0.333802200435 -0.584142233900  0.024021712400 -0.312039675200  0.554905847400  0.509681657500
-0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200</code></pre></p>
+0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200
+		    </pre>
+		  </p>
 		  <p>Here there are gaussians with five different exponents ( in Bohr$^{-2}$). From these 5 sets of functions are built, two $s$ functions (2nd and 3rd columns), 2 sets of $p$ functions (4th and fifth columns) and one set of $d$  functions (last column).</p>
 		  <p>Note  that the contraction coefficients are not varied during calculation. For the nitrogen basis above we have $2 + 2 \times 3 + 1 \times 5 = 13$ variables to optimize for each nitrogen atom in the system.</p>
 		  <p>(CP2K tends to use general contractions for efficiency, allowing maximum use of recursion relations to generate matrix elements for high angular momentum functions).</p>
