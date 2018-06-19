@@ -399,56 +399,64 @@
 		</div>
 	</div></section></section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3>
-		  <ul>
-		    <li>localised atom-centred GTO basis</li>
-		  </ul>
-		  $$
-		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
-		  $$<ul>
-		    <li>expansion of the density using the density matrix</li>
-		  </ul>
-		  $$
-		  n (\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
-		  $$<ul>
-		    <li>operator matrices are sparse. By neglecting overlap elements smaller than some number indirectly specified by <code>EPS_DEFAULT</code>, the Gaussian functions are localized with finite support. This means that S, H and P are sparse.</li>
-		  </ul>
-		  $$
-		  S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
-		  $$$$
-		  H_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r}) V(\mathbf{r}) \phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
-		  $$
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Basis-set-libraries">Basis set libraries<a class="anchor-link" href="#Basis-set-libraries">&#182;</a></h3><p>There are two main types of basis sets supplied with CP2K</p>
-		  <ul>
-		    <li><p>GTH_BASIS_SETS: atomically optimized sets. These were the first shipped with the code and vary systematically in quality from DZ to QZ for lighter elements. Can be very good for molecular systems, but can be very bad for condensed matter systems.</p>
-		    </li>
-		    <li><p>BASIS_MOLOPT: molcularly optimized basis sets. These cover most elements of the periodic table, but only with fairly good quality DZVP-MOLOPT-SR-GTH. Should be a good starting point for most condensed matter calculations.</p>
-		    </li>
-		  </ul>
-		  <p>The basis set files provide the contraction coefficients ($d_{m \alpha}$) and exponents ($\alpha_m$) of the Gaussian functions.</p>
-		  $$
-		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
-		  $$$$
-		  g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
-		  $$
-		</div>
-	      </div>
+	<section>
+	  <section>
+	    <div style='background:rgba(255,235,204,0.99)'>
+	      <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3>
+	      <p>
+		<img src='1DgaussianOritals.svg' style='float: left; display: inline; max-width: 30%; margin: 5px'>
+
+		<ul>
+		  <li>localised atom-centred GTO basis</li>
+		</ul>
+		$$
+		\phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+		$$
+		<ul>
+		  <li>expansion of the density using the density matrix</li>
+		</ul>
+		<img src='gaussProd.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+		$$
+		n (\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
+		$$<ul>
+		  <li>operator matrices are sparse. By neglecting overlap elements smaller than some number indirectly specified by <code>EPS_DEFAULT</code>, the Gaussian functions are localized with finite support. This means that S, H and P are sparse.</li>
+		</ul>
+		$$
+		S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		$$
+		$$
+		H_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r}) V(\mathbf{r}) \phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		$$
+	      </p>
 	    </div>
 	  </section>
+	</section>
+
+	<section>
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+	      <h3 id="Basis-set-libraries">Basis set libraries<a class="anchor-link" href="#Basis-set-libraries">&#182;</a></h3>
+	      <p>There are two main types of basis sets supplied with CP2K</p>
+	      <ul>
+		<li>
+		  <p>GTH_BASIS_SETS: atomically optimized sets. These were the first shipped with the code and vary systematically in quality from DZ to QZ for lighter elements. Can be very good for molecular systems, but can be very bad for condensed matter systems.</p>
+		</li>
+		<li>
+		  <p>BASIS_MOLOPT: molcularly optimized basis sets. These cover most elements of the periodic table, but only with fairly good quality DZVP-MOLOPT-SR-GTH. Should be a good starting point for most condensed matter calculations.</p>
+		</li>
+	      </ul>
+	      <p>The basis set files provide the contraction coefficients ($d_{m \alpha}$) and exponents ($\alpha_m$) of the Gaussian functions.
+
+		<img src='1DgaussianOritals.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+	      $$
+	      \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+	      $$$$
+	      g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
+	      $$
+	      </p>
+	    </div>
+	  </section>
+
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
@@ -515,7 +523,10 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2><p>Finite cutoff and simulation box define a realspace grid</p>
+		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2>
+		  <p>Finite cutoff and simulation box define a realspace grid</p>
+		  <img src='gaussProd.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+		  
 		  <ul>
 		    <li><p>density collocation</p>
 			$$
@@ -556,41 +567,33 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, but probably best to stick with the defaults if you are using PBE or related functional.
+		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, that can help get consistent forces for AIMD. But probably best to stick with the defaults if you are performing a static calculation.
 		    Whatever you do don't change settings between simulations you want to compare.</p>
 		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr003.gif" alt=""></p>
-		  <p>You can these effects with a higher cutoff, or using the GAPW methodology.</p>
+		  <p>You can minimize these effects with a higher cutoff, or using the GAPW methodology.</p>
 		  <p>These ripples (egg-box effect) can be very problematic when trying to calculate vibrational frequencies.</p>
 
 		</div>
 	      </div>
 	</div></section></section>
 	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
-		  <p>
-		    When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
-
-		    More diffuse Gaussians can be collocated onto coarser grids
-
-		    <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif'>
-
-		    specified in input as:
-		    <pre><code>
-			&MGRID
-			CUTOFF 400
-			REL_CUTOFF 60
-			NGRIDS 5
-			&END MGRID
-		    </code></pre>
-		  </p>
-		</div>
+		<h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
+		<p>
+		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
+		  When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
+		</p><p>
+		  More diffuse Gaussians can be collocated onto coarser grids specified in input as:
+		  <pre style='margin:10px'> 
+		      &MGRID
+		      CUTOFF 400
+		      REL_CUTOFF 60
+		      NGRIDS 5
+		      &END MGRID
+		  </pre>
+		</p>
 	      </div>
-	</div></section></section>
+	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
@@ -697,12 +700,12 @@ pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
 		  <h2 id="Warnings">Warnings<a class="anchor-link" href="#Warnings">&#182;</a></h2>
 		  <p>
 
-Also check if you get an output like
+		    Also check if you get an output like
 
-<pre><code>
+		    <pre><code>
   The number of warnings for this run is : 0
-</code></pre>
-if there are warnings, you should try and understand why!
+		    </code></pre>
+		    if there are warnings, you should try and understand why!
 		  </p>
 		</div>
 	      </div>
