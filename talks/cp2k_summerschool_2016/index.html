@@ -497,7 +497,7 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 			(The nuclear charge density is (of course) represented as a Gaussian distribution with parameter $R_I^c$ chosen to cancel a similar term from the local part of the pseudopotential)</p>
 		    </li>
 		    <li><p>FFT (scaling as $N\text{log}N$) gives 
-			$$\tilde{n}(\mathbf{r}) = \frac{1}{\Omega} \sum_G \tilde{n}(\mathbf{G})e^{i\mathbf{G \cdot r}})$$
+			$$\tilde{n}(\mathbf{r}) = \frac{1}{\Omega} \sum_G \tilde{n}(\mathbf{G})e^{i\mathbf{G \cdot r}}$$
 			In the G space representation the Poisson equation is diagonal and the Hartree energy is easily evaluated
 			$$
 			E_H[n_{tot}] = 2 \pi \Omega \sum_G  \frac{\tilde{n}(\mathbf{G}) ^* \tilde{n}(\mathbf{G}) }{\mathbf{G}^2}
