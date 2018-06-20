@@ -264,8 +264,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
   <section>
     <h3 id="Change-variables-in-some-clever-way-that-builds-in-the-constraint.">Change variables in some clever way that builds in the constraint.<a class="anchor-link" href="#Change-variables-in-some-clever-way-that-builds-in-the-constraint.">&#182;</a></h3>
     <div style="display: flex; width=100%">
-      <div style='min-width:30%'>
-        <img src='OT3.svg'>
+      <div style='flex:30%'>
         $$\big< \mathbf{X}, \mathbf{C}_0\big> = \mathbf{X}^T \mathbf{SC}_0 = 0\\
         \mathbf{C} = \bigg[\begin{array}{c}
         \cos(\theta)\\
@@ -276,7 +275,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         \mathbf{C}(\mathbf{X}) = \mathbf{C}_0 \cos(\mathbf{U}) + \mathbf{X U}^{-1} \sin(\mathbf{U})\\
         $$
       </div>
-      <div style='margin-top:20px; min-width:50%'>
+      <div style='flex:40%'>
+        <img src='OT3.svg'>
+      </div>
+      <div style='margin-top:20px; flex:30%'>
         New variables $\mathbf{X}$ are always orthogonal to the initial vector $\mathbf{C}_0$ by construction. 
         <br><br>
         We can use standard minimization routines and we never have to diagonalise the Kohn-Sham matrix!
