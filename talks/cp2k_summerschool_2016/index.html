@@ -259,7 +259,7 @@
 		    <li>new orbitals and energies $\Rightarrow \epsilon^1, \psi^1$</li>
 		  </ul>
 		  <p><code>calculate properties from final density and orbitals</code></p>
-		  <p>Stopping criteria in CP2K are either that the change in energy is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
+		  <p>Stopping criteria in CP2K are either that the largest derivative of the in energy wrt a MO coefficient ($\frac{\delta E(C)}{\delta C}$) is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
 
 		</div>
 	      </div>
@@ -304,7 +304,10 @@
 		  <p><strong>Matrix formulation of the KS equations</strong></p>
 		  <p>using the variational principle we get</p>
 		  $$
-		  \mathbf{K}(C)\mathbf{C} = \mathbf{T}(C) + \mathbf{V}_{ext}(C) + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C) = \mathbf{SC}\epsilon
+		  \mathbf{K}(C)\mathbf{C} = \mathbf{SC}\epsilon
+		  $$
+		  $$
+		  \mathbf{K}(C) = \mathbf{T} + \mathbf{V}_{ext} + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C)
 		  $$
 		</div>
 	      </div>
@@ -493,7 +496,43 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	  </div></section>
+
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+	      <p>
+		Gaussian basis sets are used to analytically calculate the kinetic energy and non-local pseudo-potential terms in the KS matrix, which are the first two terms in  
+		$$
+		\mathbf{K}(C) = \mathbf{T} + \mathbf{V}_{ext} + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C)
+		$$
+	      </p>
+	      <div class='fragment'>
+		<p>What about the last two terms?</p>
+	      </div>
+	    </div>
+	  </section>
+
+	<section><section>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
+		<p> We collocate the Gaussian representation of the density onto the plane-wave basis set.</p>
+		<p>
+		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
+		  When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
+		</p><p>
+		  More diffuse Gaussians can be collocated onto coarser grids specified in input as:
+		  <pre style='margin:10px'> 
+		      &MGRID
+		      CUTOFF 400
+		      REL_CUTOFF 60
+		      NGRIDS 5
+		      &END MGRID
+		  </pre>
+		</p>
+	      </div>
+	</section></section>
+	  
+	</section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -523,7 +562,7 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <img src="collocate.bmp" alt="">
+		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
 		  <li><p>The electrostatic energy converges rapidly with the grid spacing / planewave cutoff
 		      <img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr001.gif" alt=""></p>
 		  </li>
@@ -588,24 +627,6 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 		</div>
 	      </div>
 	</div></section></section>
-	<section><section>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
-		<p>
-		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
-		  When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
-		</p><p>
-		  More diffuse Gaussians can be collocated onto coarser grids specified in input as:
-		  <pre style='margin:10px'> 
-		      &MGRID
-		      CUTOFF 400
-		      REL_CUTOFF 60
-		      NGRIDS 5
-		      &END MGRID
-		  </pre>
-		</p>
-	      </div>
-	</section></section>
 
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
@@ -645,13 +666,9 @@ total gridlevel count  :          45436
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Timings">Timings<a class="anchor-link" href="#Timings">&#182;</a></h2>
 		  <p>
-
-
 		    At the end of the run you'll see timings - these can be very useful for understanding performance.
-
 		    Here we can see the timings for the formaldehyde example. It is in a large box, and the operations on grids dominate the cost on a single processor.
-
-		    <pre><code>
+		    <pre><code style='font-size:0.75em'>
 -------------------------------------------------------------------------------
 -                                                                             -
 -                                T I M I N G                                  -
@@ -697,7 +714,6 @@ pw_grid_setup                        5  6.0    0.000    0.000    0.516    0.516
 pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
 -------------------------------------------------------------------------------
 		    </code></pre>
-		    
 		  </p>
 		</div>
 	      </div>
@@ -722,7 +738,26 @@ pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
 		</div>
 	      </div>
 	</div></section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="GAPW">GAPW<a class="anchor-link" href="#GAPW">&#182;</a></h2>
+		  <p>
+		    <li>
+		    The Gaussian and Augmented Plane Wave method works similarly to the GPW method. But Gaussians with larger exponents are not mapped onto the grids, instead onto an extra set of atom centered radial grids (there is more to it that this).</li>
+		    <li>This allows core electrons to be represented and all-electron calculations to be run</li>
+		    <li>It also allows a smaller plane-wave cutoff to be used.</li>
+		    <li>Activate GAPW with the <code>METHOD GAPW</code> keywords in the <code>&QS</code> section.</li>
+		    <li>To run all-electron use <code>POTENTIAL ALL</code> in the <code>&KIND SECTION</code> and an all-electron basis.</li>
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
 
+	
 		    
       </div>
     </div>
