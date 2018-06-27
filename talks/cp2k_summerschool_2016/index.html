@@ -259,7 +259,7 @@
 		    <li>new orbitals and energies $\Rightarrow \epsilon^1, \psi^1$</li>
 		  </ul>
 		  <p><code>calculate properties from final density and orbitals</code></p>
-		  <p>Stopping criteria in CP2K are either that the change in energy is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
+		  <p>Stopping criteria in CP2K are either that the largest derivative of the in energy wrt a MO coefficient ($\frac{\delta E(C)}{\delta C}$) is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
 
 		</div>
 	      </div>
@@ -304,7 +304,10 @@
 		  <p><strong>Matrix formulation of the KS equations</strong></p>
 		  <p>using the variational principle we get</p>
 		  $$
-		  \mathbf{K}(C)\mathbf{C} = \mathbf{T}(C) + \mathbf{V}_{ext}(C) + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C) = \mathbf{SC}\epsilon
+		  \mathbf{K}(C)\mathbf{C} = \mathbf{SC}\epsilon
+		  $$
+		  $$
+		  \mathbf{K}(C) = \mathbf{T} + \mathbf{V}_{ext} + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C)
 		  $$
 		</div>
 	      </div>
@@ -334,6 +337,15 @@
 	      </div>
 	</div></section></section>
 
+	<section>
+	  <section>
+	    <!--<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>-->
+	    <div class="inner_cell"'>
+	      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ZnYyY8bVF2tdBIL?controls=none&short_poll=true" width="100%" height="100%" frameBorder="10" style='min-height:600px'></iframe>
+	    </div>
+	  </section>
+	</section>
+	
 	<section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
@@ -399,56 +411,64 @@
 		</div>
 	</div></section></section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3>
-		  <ul>
-		    <li>localised atom-centred GTO basis</li>
-		  </ul>
-		  $$
-		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
-		  $$<ul>
-		    <li>expansion of the density using the density matrix</li>
-		  </ul>
-		  $$
-		  n (\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
-		  $$<ul>
-		    <li>operator matrices are sparse. By neglecting overlap elements smaller than some number indirectly specified by <code>EPS_DEFAULT</code>, the Gaussian functions are localized with finite support. This means that S, H and P are sparse.</li>
-		  </ul>
-		  $$
-		  S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
-		  $$$$
-		  H_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r}) V(\mathbf{r}) \phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
-		  $$
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Basis-set-libraries">Basis set libraries<a class="anchor-link" href="#Basis-set-libraries">&#182;</a></h3><p>There are two main types of basis sets supplied with CP2K</p>
-		  <ul>
-		    <li><p>GTH_BASIS_SETS: atomically optimized sets. These were the first shipped with the code and vary systematically in quality from DZ to QZ for lighter elements. Can be very good for molecular systems, but can be very bad for condensed matter systems.</p>
-		    </li>
-		    <li><p>BASIS_MOLOPT: molcularly optimized basis sets. These cover most elements of the periodic table, but only with fairly good quality DZVP-MOLOPT-SR-GTH. Should be a good starting point for most condensed matter calculations.</p>
-		    </li>
-		  </ul>
-		  <p>The basis set files provide the contraction coefficients ($d_{m \alpha}$) and exponents ($\alpha_m$) of the Gaussian functions.</p>
-		  $$
-		  \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
-		  $$$$
-		  g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
-		  $$
-		</div>
-	      </div>
+	<section>
+	  <section>
+	    <div style='background:rgba(255,235,204,0.99)'>
+	      <h3 id="Gaussian-Basis-set">Gaussian Basis set<a class="anchor-link" href="#Gaussian-Basis-set">&#182;</a></h3>
+	      <p>
+		<img src='1DgaussianOritals.svg' style='float: left; display: inline; max-width: 30%; margin: 5px'>
+
+		<ul>
+		  <li>localised atom-centred GTO basis</li>
+		</ul>
+		$$
+		\phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+		$$
+		<ul>
+		  <li>expansion of the density using the density matrix</li>
+		</ul>
+		<img src='gaussProd.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+		$$
+		n (\mathbf{r}) = \sum_{\alpha \beta} P_{\alpha \beta} \phi_{\alpha}^* (\mathbf{r})\phi_{\beta} (\mathbf{r})
+		$$<ul>
+		  <li>operator matrices are sparse. By neglecting overlap elements smaller than some number indirectly specified by <code>EPS_DEFAULT</code>, the Gaussian functions are localized with finite support. This means that S, H and P are sparse.</li>
+		</ul>
+		$$
+		S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		$$
+		$$
+		H_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r}) V(\mathbf{r}) \phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+		$$
+	      </p>
 	    </div>
 	  </section>
+	</section>
+
+	<section>
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+	      <h3 id="Basis-set-libraries">Basis set libraries<a class="anchor-link" href="#Basis-set-libraries">&#182;</a></h3>
+	      <p>There are two main types of basis sets supplied with CP2K</p>
+	      <ul>
+		<li>
+		  <p>GTH_BASIS_SETS: atomically optimized sets. These were the first shipped with the code and vary systematically in quality from DZ to QZ for lighter elements. Can be very good for molecular systems, but can be very bad for condensed matter systems.</p>
+		</li>
+		<li>
+		  <p>BASIS_MOLOPT: molcularly optimized basis sets. These cover most elements of the periodic table, but only with fairly good quality DZVP-MOLOPT-SR-GTH. Should be a good starting point for most condensed matter calculations.</p>
+		</li>
+	      </ul>
+	      <p>The basis set files provide the contraction coefficients ($d_{m \alpha}$) and exponents ($\alpha_m$) of the Gaussian functions.
+
+		<img src='1DgaussianOritals.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+	      $$
+	      \phi_{\alpha} (\mathbf{r}) = \sum_m d_{m\alpha}g_m(\mathbf{r})
+	      $$$$
+	      g_m(\mathbf{r}) = x^{m_x}y^{m_y}z^{m_z} e^{-\alpha_m r^2}
+	      $$
+	      </p>
+	    </div>
+	  </section>
+
 	  <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
@@ -458,7 +478,8 @@
 
 		  <p>Generally the first column is the exponents ($\alpha_m$ above) and the later columns give the $d_{m \alpha}$, each column being a set $\alpha$. Details can be found in the header of the BASIS_MOLOPT file</p>
 		  <p>A MOLOPT basis for nitrogen is</p>
-		  <p><pre><code>
+		  <p style='font-size: 15px;'>
+		    <pre style='font-size: 15px;'>
 N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 1
 2 0 2 5 2 2 1
@@ -466,14 +487,52 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 2.542637110957  0.097294516500  0.108655219900 -0.165752516200  0.015163333100  0.109813343200
 0.888574967229 -0.445077422600 -0.374125427100 -0.317365165600 -0.129388247500  0.856542971300
 0.333802200435 -0.584142233900  0.024021712400 -0.312039675200  0.554905847400  0.509681657500
-0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200</code></pre></p>
+0.112012109029 -0.139562383500  0.979415132500 -0.117936008100  1.001020469600  0.047030652200
+		    </pre>
+		  </p>
 		  <p>Here there are gaussians with five different exponents ( in Bohr$^{-2}$). From these 5 sets of functions are built, two $s$ functions (2nd and 3rd columns), 2 sets of $p$ functions (4th and fifth columns) and one set of $d$  functions (last column).</p>
 		  <p>Note  that the contraction coefficients are not varied during calculation. For the nitrogen basis above we have $2 + 2 \times 3 + 1 \times 5 = 13$ variables to optimize for each nitrogen atom in the system.</p>
 		  <p>(CP2K tends to use general contractions for efficiency, allowing maximum use of recursion relations to generate matrix elements for high angular momentum functions).</p>
 
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	  </div></section>
+
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+	      <p>
+		Gaussian basis sets are used to analytically calculate the kinetic energy and non-local pseudo-potential terms in the KS matrix, which are the first two terms in  
+		$$
+		\mathbf{K}(C) = \mathbf{T} + \mathbf{V}_{ext} + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C)
+		$$
+	      </p>
+	      <div class='fragment'>
+		<p>What about the last two terms?</p>
+	      </div>
+	    </div>
+	  </section>
+
+	<section><section>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
+		<p> We collocate the Gaussian representation of the density onto the plane-wave basis set.</p>
+		<p>
+		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
+		  When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
+		</p><p>
+		  More diffuse Gaussians can be collocated onto coarser grids specified in input as:
+		  <pre style='margin:10px'> 
+		      &MGRID
+		      CUTOFF 400
+		      REL_CUTOFF 60
+		      NGRIDS 5
+		      &END MGRID
+		  </pre>
+		</p>
+	      </div>
+	</section></section>
+	  
+	</section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -489,7 +548,7 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 			(The nuclear charge density is (of course) represented as a Gaussian distribution with parameter $R_I^c$ chosen to cancel a similar term from the local part of the pseudopotential)</p>
 		    </li>
 		    <li><p>FFT (scaling as $N\text{log}N$) gives 
-			$$\tilde{n}(\mathbf{r}) = \frac{1}{\Omega} \sum_G \tilde{n}(\mathbf{G})e^{i\mathbf{G \cdot r}})$$
+			$$\tilde{n}(\mathbf{r}) = \frac{1}{\Omega} \sum_G \tilde{n}(\mathbf{G})e^{i\mathbf{G \cdot r}}$$
 			In the G space representation the Poisson equation is diagonal and the Hartree energy is easily evaluated
 			$$
 			E_H[n_{tot}] = 2 \pi \Omega \sum_G  \frac{\tilde{n}(\mathbf{G}) ^* \tilde{n}(\mathbf{G}) }{\mathbf{G}^2}
@@ -503,7 +562,7 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <img src="collocate.bmp" alt="">
+		  <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif' style='float: right; margin-right:10px; background: white'>
 		  <li><p>The electrostatic energy converges rapidly with the grid spacing / planewave cutoff
 		      <img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr001.gif" alt=""></p>
 		  </li>
@@ -515,7 +574,10 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2><p>Finite cutoff and simulation box define a realspace grid</p>
+		  <h2 id="Real-space-integration">Real space integration<a class="anchor-link" href="#Real-space-integration">&#182;</a></h2>
+		  <p>Finite cutoff and simulation box define a realspace grid</p>
+		  <img src='gaussProd.svg' style='float: right; display: inline; max-width: 30%; margin: 5px'>
+		  
 		  <ul>
 		    <li><p>density collocation</p>
 			$$
@@ -556,38 +618,12 @@ N  DZVP-MOLOPT-SR-GTH DZVP-MOLOPT-SR-GTH-q5
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, but probably best to stick with the defaults if you are using PBE or related functional.
+		  <p>There are smoothing routines <code>&amp;XC_GRID / XC_DERIV</code>, that can help get consistent forces for AIMD. But probably best to stick with the defaults if you are performing a static calculation.
 		    Whatever you do don't change settings between simulations you want to compare.</p>
 		  <p><img src="http://ars.els-cdn.com/content/image/1-s2.0-S0010465505000615-gr003.gif" alt=""></p>
-		  <p>You can these effects with a higher cutoff, or using the GAPW methodology.</p>
+		  <p>You can minimize these effects with a higher cutoff, or using the GAPW methodology.</p>
 		  <p>These ripples (egg-box effect) can be very problematic when trying to calculate vibrational frequencies.</p>
 
-		</div>
-	      </div>
-	</div></section></section>
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Multigrids">Multigrids<a class="anchor-link" href="#Multigrids">&#182;</a></h2>
-		  <p>
-		    When we want to put (collocate) a Gaussian type function onto the realspace grid, we can gain efficiency by using multiple grids with differing cutoff / spacing.
-
-		    More diffuse Gaussians can be collocated onto coarser grids
-
-		    <img src='http://pubs.acs.org/appl/literatum/publisher/achs/journals/content/jctcce/2005/jctcce.2005.1.issue-6/ct050123f/production/images/medium/ct050123ff00002.gif'>
-
-		    specified in input as:
-		    <pre><code>
-			&MGRID
-			CUTOFF 400
-			REL_CUTOFF 60
-			NGRIDS 5
-			&END MGRID
-		    </code></pre>
-		  </p>
 		</div>
 	      </div>
 	</div></section></section>
@@ -630,13 +666,9 @@ total gridlevel count  :          45436
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h2 id="Timings">Timings<a class="anchor-link" href="#Timings">&#182;</a></h2>
 		  <p>
-
-
 		    At the end of the run you'll see timings - these can be very useful for understanding performance.
-
 		    Here we can see the timings for the formaldehyde example. It is in a large box, and the operations on grids dominate the cost on a single processor.
-
-		    <pre><code>
+		    <pre><code style='font-size:0.75em'>
 -------------------------------------------------------------------------------
 -                                                                             -
 -                                T I M I N G                                  -
@@ -682,7 +714,6 @@ pw_grid_setup                        5  6.0    0.000    0.000    0.516    0.516
 pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
 -------------------------------------------------------------------------------
 		    </code></pre>
-		    
 		  </p>
 		</div>
 	      </div>
@@ -697,17 +728,36 @@ pw_grid_setup_internal               5  7.0    0.012    0.012    0.516    0.516
 		  <h2 id="Warnings">Warnings<a class="anchor-link" href="#Warnings">&#182;</a></h2>
 		  <p>
 
-Also check if you get an output like
+		    Also check if you get an output like
 
-<pre><code>
+		    <pre><code>
   The number of warnings for this run is : 0
-</code></pre>
-if there are warnings, you should try and understand why!
+		    </code></pre>
+		    if there are warnings, you should try and understand why!
+		  </p>
+		</div>
+	      </div>
+	</div></section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="GAPW">GAPW<a class="anchor-link" href="#GAPW">&#182;</a></h2>
+		  <p>
+		    <li>
+		    The Gaussian and Augmented Plane Wave method works similarly to the GPW method. But Gaussians with larger exponents are not mapped onto the grids, instead onto an extra set of atom centered radial grids (there is more to it that this).</li>
+		    <li>This allows core electrons to be represented and all-electron calculations to be run</li>
+		    <li>It also allows a smaller plane-wave cutoff to be used.</li>
+		    <li>Activate GAPW with the <code>METHOD GAPW</code> keywords in the <code>&QS</code> section.</li>
+		    <li>To run all-electron use <code>POTENTIAL ALL</code> in the <code>&KIND SECTION</code> and an all-electron basis.</li>
 		  </p>
 		</div>
 	      </div>
 	</div></section></section>
 
+	
 		    
       </div>
     </div>
