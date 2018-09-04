@@ -242,7 +242,52 @@ linebreaks: { automatic: true }
 			<p>Still looks like standard KS build - but no screening on initial $\mathbf{P}$.</p>
 
 		</div>
-	</div>
+	</div
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1>$$
+E[\rho] = T_S[\rho] + J[\rho] + E_{XC}[\rho, P] + \int v(\mathbf{r})\rho(\mathbf{r})\text{d}\mathbf{r}
+$$$$
+E_{XC} = \alpha E_X^{HFX}[P] + (1 - \alpha ) E_X^{DFT}[\rho] + E_C^{DFT}[\rho]
+$$$$
+E_X^{HFX} [P] = -\frac{1}{2} \sum_{\lambda \sigma \mu \nu} P^{\mu \sigma} P^{\nu \sigma} (\mu \nu | \lambda \sigma)
+$$<p>introduce auxiliary density matrix $\hat{P}\approx P$</p>
+\begin{align}
+E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
+              & \approx E_X^{HFX}[\hat{P}] + E_X^{DFT}[P] - E_X^{DFT}[\hat{P}]
+\end{align}<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>total energy functional of both $P$ and $\hat{P}$</li>
+</ul>
+$$
+E_{total} = E[P] + \hat{E}[\hat{P}]
+$$<ul>
+<li>still Kohn-Sham theory with ADMM</li>
+</ul>
+\begin{align}
+K_{total} & = \frac{\partial E[P]}{ \partial P} + \frac{\partial \hat{E}[\hat{P}]}{ \partial P} \\
+          & = K + \frac{\partial \hat{E}[\hat{P}]}{ \partial \hat{P}}\frac{\partial \hat{P}}{ \partial P}
+\end{align}<p>using a chain rule and</p>
+$$
+K_{total} C = SC\epsilon
+$$<p>as the equation to be solved self-consistently. (Simplest case given here, ADMM1)</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>>
 </div></section></section><section><section>
 	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	</div>
@@ -464,32 +509,6 @@ linebreaks: { automatic: true }
 			</ul>
 			<p>Also delta SCF method (Maximum overlap method implemented)</p>
 
-		</div>
-	</div>
-</div></section></section><section><section>
-	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	</div>
-	<div class="inner_cell">
-		<div class="text_cell_render border-box-sizing rendered_html">
-			<h2 id="Maximum-Overlap-Method">Maximum Overlap Method<a class="anchor-link" href="#Maximum-Overlap-Method">&#182;</a></h2><p>is a delta-SCF method.</p>
-			<p>We project new orbitals onto previous ones
-				$$
-				\mathbf{O} = \mathbf{C^{new} S C^{old}}
-			$$</p>
-			<p>we then occupy the orbitals that are most like the previous iterations occupied orbitals.</p>
-			<p>By choosing some intitial set of occupations we can then try to self-consistently converge an excited state.</p>
-			<p><em>MOM force and hessians are available.</em></p>
-			<p>It doesn't work very well ... </p>
-
-		</div>
-	</div>
-</div></section></section><section><section>
-	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	</div>
-	<div class="inner_cell">
-		<div class="text_cell_render border-box-sizing rendered_html">
-			<h1 id="Transport">Transport<a class="anchor-link" href="#Transport">&#182;</a></h1>
-			<p>We have also implemented a basic version of NEGF transport inside CP2K.</p>
 		</div>
 	</div>
 </div></section></section><section><section>
