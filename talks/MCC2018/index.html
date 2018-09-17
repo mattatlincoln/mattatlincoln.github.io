@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<title>TDDFPT in CP2K</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<!-- General and theme style sheets -->
+	<link rel="stylesheet" href="../../revealjs/css/reveal.css">
+	<link rel="stylesheet" href="night.css" id="theme">
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = '../../revealjs//css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+
+	</script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	tex2jax: {
+	inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	processEscapes: true,
+	processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+</head>
+
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+			<section><section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell" style='background:rgba(0,0,0,0.40);'>
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="Excited-states in CP2K">Excited states in CP2K<a class="anchor-link" href="#Excited-states">&#182;</a></h1>
+						<h2 id="Sergey-Chulkov,-Matt-Watkins">Sergey Chulkov, Matt Watkins<a class="anchor-link" href="#Sergey-Chulkov,-Matt-Watkins">&#182;</a></h2>
+						<h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
+						<h2 id="Jack-Strand,-Alex-Shluger">Jack Strand, Alex Shluger<a class="anchor-link" href="#Jack-Strand,-Alex-Shluger">&#182;</a>
+						</h2>
+						<h3 id="University-College-London">University College London<a class="anchor-link" href="#University-College-London">&#182;</a>
+						</h3>
+
+					</div>
+				</div>
+			</div></section></section>
+
+			<section><section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="TDDFT">TDDFT<a class="anchor-link" href="#TDDFT">&#182;</a></h1><p>DFT normally thought of as ground state theory.</p>
+						<p>But, time dependent version actually has quite long history - it didn't really achieve prominence until <strong>Casida's</strong> reformulation caught on with Quantum Chemistry community.</p>
+						<p><a href="http://scitation.aip.org/content/aip/journal/jcp/104/13/10.1063/1.471140">Dynamic polarizabilities and excitation spectra from a molecular implementation of time‐dependent density‐functional response theory: N2 as a case study,
+						Christine Jamorski, Mark E. Casida and Dennis R. Salahub, J. Chem. Phys. 104, 5134 (1996)</a></p>
+						<p>TDDFT maps onto CIS and TDHF methods already well known in QC community, in similar way groundstate DFT -&gt; HF .</p>
+					</div>
+				</div>
+			</div></section>
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<p>Two main methods to solve the TDKS equations</p>
+						<ul>
+							<li>Linear-response Time Dependent Density Functional Perturbation Theory</li>
+							<li>Real time propagation, see <a href="https://goo.gl/m8DODn">Florian Schiffmann's PhD thesis</a></li>
+						</ul>
+						<p>both methods are available in CP2K.</p>
+						<p>We have been working on the Linear Response implementation.</p>
+					</div>
+				</div>
+			</div></section></section><section><section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h2 id="Electron-hole-pairs">Electron hole pairs<a class="anchor-link" href="#Electron-hole-pairs">&#182;</a></h2><p>The <em>transition density</em> is a linear combination of $\color{red}{electron}-\color{blue}{hole}$ pairs</p>
+						<p>\begin{gather*}
+							n_{j, \tau}^{(1)} = \sum_{j \in HOMOs} \left ( \color{blue}{\psi_{j,\sigma}^*} (r) \color{red}{\psi_{j,\sigma}^{(-)}(r)} + \color{red}{\psi_{j,\sigma}^{(-)*}(r)}\color{blue}{ \psi_{j,\sigma}(r)} \right) 
+						\end{gather*}</p>
+						<p>$$
+							\color{red}{\psi_{i, \sigma}^{(\pm)}(r)} = \sum_{k \in LUMOs} c_{ik, \sigma}\psi_{k,\sigma} (r)
+						$$</p>
+						<p>$\color{blue}{\psi_{j,\sigma} (r) }$ contributes to the hole, $\color{red}{\psi_{j,\sigma}^{(-)}(r)}$ contributes to the electron.</p>
+						<ul>
+							<li>Each of the terms in the sum are single determinant excitation in Quantum Chemical language.</li>
+							<li><em>in the ground state the $\psi_{j,\sigma}$ function would be fully occupied, but here density has be transferred to $\psi_{j,\sigma}^{(-)}(r)$ .</em></li>
+							<li>The sum over all the HOMOs allows the hole to relax by mixing in other occupied orbitals.</li>
+							<li><em>Typical transitions will be dominated by a single determinant - mixing of others gives orbital relaxation.</em></li>
+						</ul>
+
+					</div>
+				</div>
+			</div></section></section>
+
+			<section><section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><p>We followed the original implementation of TDDFPT for semi-local functionals within CP2K (<a href="http://opac.nebis.ch/F/1V8XHFA2Q5FFGRIN5XIPD6HVDVLK7TU8GQNU8LXFQDRJU9S38H-00179?func=short-0&amp;set_number=016867">Thomas Chaissang's PhD thesis</a>). But, ended up with complete rewrite.</p>
+						<ul>
+							<li><p>It is activated within the <code>&amp;PROPERTIES</code> section of <code>&amp;FORCE_EVAL</code> - so can be used within MD or MC or single point calcs etc.</p>
+							</li>
+							<li><p><code>XC</code> section is inherited from the ground state calculation.</p>
+							</li>
+						</ul>
+						<p>Uses a standard block Davidson algorithm for iterative diagonalization of excited states.</p>
+
+					</div>
+				</div>
+			</div></section></section><section><section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h2 id="Gaussians-and-Plane-waves">Gaussians and Plane waves<a class="anchor-link" href="#Gaussians-and-Plane-waves">&#182;</a></h2><p>For hybrid functionals we add in an extra term that comes from the response of the exact exchange part of the functional.</p>
+						<p>With hybrid density functionals the original action functional becomes a mixture of the TDDFT outlined above and TDHF.</p>
+						<ul>
+							<li>The coulomb interaction in standard functionals actually becomes an exchange like term, dependent on wavefunction overlap between the electron and hole.</li>
+						</ul>
+						<p>\begin{gather}
+							\mathbf{K_{\nu \mu \sigma}} = \big{&lt;} \phi_{\nu} \big{|} \sum_{\tau=\alpha, \beta} \big{[} \color{red}{\int_{r'} \text{d}r' \frac{n_{j, \tau}^{(1)} (r')}{\mid r' - r\mid}} + f_{XC,\sigma,\tau} (r,r';\pm \omega)) n_{j, \tau}^{(1)} (r') \big{]}
+							\big{|} \phi_{\mu} \big{&gt;}
+						\end{gather}</p>
+						<p>\begin{gather*}
+							\color{red}{
+							n_{j, \sigma}^{(1)} (r)  = 
+							\sum_{j \in HOMOs} \left ( \psi_{j,\sigma}^* (r) \psi_{j,\sigma}^{(-)} (r)  \right) + 
+							\left (  + \psi_{j,\sigma}^{(-)*}(r) \psi_{j,\sigma}(r) \right) 
+						}
+					\end{gather*}</p>
+					<p><strong>Semi-local functionals have incorrect long-range behaviour because of this - well known underestimation of charge transfer states.</strong></p>
+
+				</div>
+			</div>
+		</div></section><section>
+			<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+			</div>
+			<div class="inner_cell">
+				<div class="text_cell_render border-box-sizing rendered_html">
+					<h2 id="Semi-local-terms---grids">Semi-local terms - grids<a class="anchor-link" href="#Semi-local-terms---grids">&#182;</a></h2><p>Semi-local DFT terms are calculated on realspace multigrids</p>
+					<p>\begin{gather}
+						\mathbf{K_{\nu \mu \sigma}} = \big{&lt;} \phi_{\nu} \big{|} \sum_{\tau=\alpha, \beta} \big{[} \color{red}{\int_{r'} \text{d}r' \frac{n_{j, \tau}^{(1)} (r')}{\mid r' - r\mid} + f_{XC,\sigma,\tau} (r,r';\pm \omega)) n_{j, \tau}^{(1)} (r')} \big{]}
+						\big{|} \phi_{\mu} \big{&gt;}
+					\end{gather}</p>
+					<ul>
+						<li>first red term is a potential that arises from the transition density</li>
+					</ul>
+					<p>\begin{gather*}
+						n_{j, \tau}^{(1)} = \sum_{j \in HOMOs} \left ( \color{blue}{\psi_{j,\sigma}^*} (r) \color{red}{\psi_{j,\sigma}^{(-)}(r)} + \color{red}{\psi_{j,\sigma}^{(-)*}(r)}\color{blue}{ \psi_{j,\sigma}(r)} \right) 
+					\end{gather*}</p>
+					<ul>
+						<li>2nd term is the 2nd functional derivative of the GGA part of the functional
+							$$
+							\color{red}{f_{xc}(r,t; r',t') ≈ δ(t − t')\frac{\delta^2 E_{xc}^{LSDA/GGA}[n]}{ \delta n(r,t)\delta n(r',t')}_{n(r,t)=n^{(0)}(r,t)}}
+						$$</li>
+					</ul>
+					<p>For each trial vector this looks like a normal KS build.</p>
+
+				</div>
+			</div>
+		</div></section><section>
+			<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+			</div>
+			<div class="inner_cell">
+				<div class="text_cell_render border-box-sizing rendered_html">
+					<h2 id="Hybrid-functionals">Hybrid functionals<a class="anchor-link" href="#Hybrid-functionals">&#182;</a></h2><p>the exact exchange energy term in the ground state functional becomes a coulomb type interaction between the electron and hole density for each excitation.</p>
+					<p>\begin{gather}
+						\mathbf{K_{\nu \mu \sigma}} = \big{&lt;} \phi_{\nu} \big{|} \sum_{\tau=\alpha, \beta} \big{[} \color{green} { c_{HF} \frac{K(r,r')}{ {\mid r' - r\mid}}} + \color{red}{ \int_{r'} \text{d}r' \frac{n_{j, \tau}^{(1)} (r')}{\mid r' - r\mid}} + \color{green}{(1-c_{HF})} f_{XC,\sigma,\tau} (r,r';\pm \omega)) n_{j, \tau}^{(1)} (r') \big{]}
+						\big{|} \phi_{\mu} \big{&gt;}
+					\end{gather}</p>
+					<p>where the symbolic $\color{green}{K(r,r')}$ operator exchanges electrons, like in HF theory. In this case operating on an exchange type term, it gives an electron-hole coulomb interaction. Symbollically, terms of the form:</p>
+					<p>$$
+						\color{green}{
+						\big&lt;\psi_{HOMOS} (r) \psi_{HOMOS} (r) \big| { \frac{1}{\mid r' - r\mid}} \big| \psi_{LUMOS} (r') \psi_{LUMOS} (r') \big&gt;
+					}
+				$$</p>
+				<p><strong>Note this is like a coloumb interaction screened by an effective dielectric function equal to $\color{green}{c_{HF}^{-1}}$.</strong></p>
+
+			</div>
+		</div>
+	</div></section><section>
+		<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h2 id="Hybrid-terms---gaussians">Hybrid terms - gaussians<a class="anchor-link" href="#Hybrid-terms---gaussians">&#182;</a></h2><p>Because of the exchange, it is not possible for the added exact exchange term to be calculated on the grids with iterative diagonalisation:</p>
+				<ul>
+					<li>Hybrid term is calculated analytically using the existing hybrid functional routines in CP2K <ul>
+						<li>access to fast ADMM approximation (x1000 speed up for some basis sets)</li>
+						<li>works for ADMM with no purification</li>
+						<li>works for <em>global</em> hybrids - tested for B3LYP and PBE0</li>
+					</ul>
+				</li>
+			</ul>
+			<p>Still looks like standard KS build - but no screening on initial $\mathbf{P}$.</p>
+
+		</div>
+	</div
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1>$$
+E[\rho] = T_S[\rho] + J[\rho] + E_{XC}[\rho, P] + \int v(\mathbf{r})\rho(\mathbf{r})\text{d}\mathbf{r}
+$$$$
+E_{XC} = \alpha E_X^{HFX}[P] + (1 - \alpha ) E_X^{DFT}[\rho] + E_C^{DFT}[\rho]
+$$$$
+E_X^{HFX} [P] = -\frac{1}{2} \sum_{\lambda \sigma \mu \nu} P^{\mu \sigma} P^{\nu \sigma} (\mu \nu | \lambda \sigma)
+$$<p>introduce auxiliary density matrix $\hat{P}\approx P$</p>
+\begin{align}
+E_X^{HFX} [P] & = E_X^{HFX}[\hat{P}] + E_X^{HFX}[P] - E_X^{HFX}[\hat{P}]\\
+              & \approx E_X^{HFX}[\hat{P}] + E_X^{DFT}[P] - E_X^{DFT}[\hat{P}]
+\end{align}<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auxiliary-Density-Matrix-Methods-(ADMM)">Auxiliary Density Matrix Methods (ADMM)<a class="anchor-link" href="#Auxiliary-Density-Matrix-Methods-(ADMM)">&#182;</a></h1><ul>
+<li>total energy functional of both $P$ and $\hat{P}$</li>
+</ul>
+$$
+E_{total} = E[P] + \hat{E}[\hat{P}]
+$$<ul>
+<li>still Kohn-Sham theory with ADMM</li>
+</ul>
+\begin{align}
+K_{total} & = \frac{\partial E[P]}{ \partial P} + \frac{\partial \hat{E}[\hat{P}]}{ \partial P} \\
+          & = K + \frac{\partial \hat{E}[\hat{P}]}{ \partial \hat{P}}\frac{\partial \hat{P}}{ \partial P}
+\end{align}<p>using a chain rule and</p>
+$$
+K_{total} C = SC\epsilon
+$$<p>as the equation to be solved self-consistently. (Simplest case given here, ADMM1)</p>
+<p>Guidon, Hutter and VandeVondele, J. Chem. Theory Comput., 6, 2348 (2010)</p>
+
+</div>
+</div>>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="Parallelization-and-optimization">Parallelization and optimization<a class="anchor-link" href="#Parallelization-and-optimization">&#182;</a></h1><ul>
+				<li>Each KS build for trial vector is independent - parallelize over groups.</li>
+				<li>But - need to diagonalize approximate H, and orthogonalize guess vectors - limits to few groups.</li>
+				<li>Reduced PW cutoff - excitations mainly around valence states, much smoother than semi-core</li>
+			</ul>
+
+		</div>
+	</div>
+</div><div class="fragment">
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h2 id="Aside---Tamm-Dancoff-approximation">Aside - Tamm-Dancoff approximation<a class="anchor-link" href="#Aside---Tamm-Dancoff-approximation">&#182;</a></h2><p>only the Tamm-Dancoff approximation to TDDFT is implemented in CP2K at the moment.</p>
+			<p>In this approximation $\phi^{(+)}_{j\sigma} (r) = 0$ and the equations simplify and become Hermitian.</p>
+			<p>Hopefully fairly well separated - so full TDDFT can be implemented.</p>
+
+		</div>
+	</div>
+</div></div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="Oscillator-Strengths">Oscillator Strengths<a class="anchor-link" href="#Oscillator-Strengths">&#182;</a></h1><p>Oscillator strengths calculated using either</p>
+			<ul>
+				<li><p>the position operator form of the dipole interaction operator, which is valid for non-periodic systems</p>
+				</li>
+				<li><p>the velocity operator form of the dipole interaction operator</p>
+				</li>
+				<li><p>Berry Phase polarisation, following Bernasconi, Sprik and Hutter, CPL, 2003</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="MgO-benchmarking">MgO benchmarking<a class="anchor-link" href="#MgO-benchmarking">&#182;</a></h1><table>
+				<tr>
+					<td><img src='images/MgO_576atoms_top-box.png' width=100%></td>
+					<td><img id='svg'src='images/MgO-pbe-cpuh_24states_450Ry_24cpus-per-state.svg' width=100%><h4>linear scaling with number of states for full TDDFPT</h4></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div></section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="MgO surface slab system">MgO surface slab system<a class="anchor-link" href="#MgO-benchmarking">&#182;</a></h1>
+			<img src='images/MgO_576atoms-box-rot90.png' style="width:100%">
+			<table>
+				<tr>
+					<td><img id='svg' src='images/MgO-pbe-nstates_576atoms_450Ry_24cpus-per-state.svg' width=100%><h4>PBE</h4></td>
+					<td><img id='svg' src='images/MgO-pbe0admm-cpuh_450Ry.svg ' width=100%><h4>PBE0</h4></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div></section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="MgO surface slab system">MgO bulk defects<a class="anchor-link" href="#MgO-benchmarking">&#182;</a></h1>
+			<table>
+				<tr>
+					<td>
+						<p>Independent particle adsoprtion spectrum</p>						
+						<p>512 atom bulk supercell.</p>
+						<p>$\Gamma$ point only (always in this presentation).</p>
+					</td>
+					<td><img id='svg' src='images/MgO-bulk-pbe0admm.svg' width=100%></td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td><img src='images/MgO_defects.png' style="width:100%"></td>
+					<td>
+						<p>Broadened absorption spectra for canonical F centres in MgO.</p>
+						<p>Dielectric function consistent PBE0 functional.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div></section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="MgO surface slab system">MgO bulk defects<a class="anchor-link" href="#MgO-benchmarking">&#182;</a></h1>
+			<table>
+				<tr>
+					<td width='40%'>
+						<img src='images/MgO_defects.png' style="width:100%">
+						<img id='svg' src='images/MgO_cartoon.png' style="width:100%">
+
+					</td>
+					<td width='60%'>
+					<p> The F$^0$ defect in MgO has strong absorption peaking at 4.85 eV from a transition between an S-like and a P-like state.</p>
+					<p> The F$^{+1}$ defect in MgO has a lower energy absorption peak at 4.70 from excitation of an alpha spin electron in a gap-state into CB states and a higher energy peak at 5.26 eV which comes from excitation of beta spin electrons in VB states into the unoccupied state in the gap.
+                               		</p>
+					</td>
+                               </tr>
+			</table>
+		</div>
+	</div>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="Example---porphyrin-derivative-on-NaCl">Example - porphyrin derivative on NaCl<a class="anchor-link" href="#Example---porphyrin-derivative-on-NaCl">&#182;</a></h1><table>
+				<tr>
+					<td><img src='images/structure-HOMO.jpg' width=500></td>
+					<td><img src='images/out.png' width=500></td>
+				</tr>
+			</table><ul>
+				<li>960 atoms of NaCl</li>
+				<li>1031 atoms total</li>
+				<li>TZV2P basis on molecule</li>
+				<li>DZVP basis on NaCl</li>
+				<li>11790 Cartesian basis functions</li>
+				<li>7898 electrons</li>
+				<li>~2 hours on 192 cores to converge 10 lowest transition energies (12 iterations)</li>
+			</ul>
+
+		</div>
+	</div>
+</div></section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h2 id="TDDFPT:">TDDFPT:<a class="anchor-link" href="#TDDFPT:">&#182;</a></h2><ul>
+				<li><p>experimental peaks according to the Philipda Luangprasert's Master Thesis:
+				2.2 eV (small), 2.95 eV (broad, main), 3.3 eV (small);</p>
+			</li>
+			<li><p>PBE-D3: 2.37/2.40 (medium), 2.60 (medium), 3.22 (small);</p>
+			</li>
+			<li><p>B3LYP-D3 (using PBE-D3 optimal geometry): 2.19 eV (small), 3.23 eV (medium), 3.41 eV (medium), 3.78 (small).</p>
+			</li>
+		</ul>
+		<p>The structure of the UV spectrum is well reproduced, but the last 3 excitation energies are overestimated by approximately 0.4 eV. This shift is probably due to unoptimised molecular structure (it was optimized using the PBE-D3 xc-functional, not B3LYP-D3) and/or the lack of diffuse basis functions.</p>
+
+	</div>
+</div>
+</div></section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h3 id="Timings:">Timings:<a class="anchor-link" href="#Timings:">&#182;</a></h3><ul>
+				<li>TDDFPT/PBE-D3:<ul>
+					<li>CPU Time: 956957 s = 265.8 core*hours (4.0 kAU);</li>
+					<li>MPI Wait:  45884 s =  12.7 core*hours (0.2 kAU);
+						<br><br></li>
+					</ul>
+				</li>
+				<li>TDDFPT/B3LYP-D3/ADMM [Zn] cFIT9, [H,C,N,O] cFIT3, [Na,Cl] cFIT3 with 2 the most diffuse functions removed:<ul>
+					<li>CPU Time: 1517936 s = 421.6 core*hours (6.3 kAU);</li>
+					<li>MPI Wait:  106947 s =  29.7 core*hours (0.4 kAU);
+						<br><br></li>
+					</ul>
+				</li>
+				<li>TDDFPT/B3LYP-D3/ADMM [Zn] cFIT9, [H,C,N,O,Na,Cl] cFIT3:<ul>
+					<li>CPU Time: 3511819 s = 975.5 core*hours (14.6 kAU);</li>
+					<li>MPI Wait:  185165 s =  51.4 core*hours ( 0.8 kAU);</li>
+				</ul>
+			</li>
+		</ul>
+		<p>maximum deviation in excitation energies with respect to the ones computed using the reduced auxillary basis set: 0.05 eV .</p>
+
+	</div>
+</div>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="Excited-states-during-MD-of-TiO$_2$-surface">Excited states during MD of TiO$_2$ surface<a class="anchor-link" href="#Excited-states-during-MD-of-TiO$_2$-surface">&#182;</a></h1>
+			<table>
+				<tr>
+					<td>
+						<h4 style="text-align: center;">Bulk TDDFT vs KS energies</h4>
+						<img src='images/HOMO-LUMO.png' width='100%'>
+					</td>
+					<td>
+						<h4 style="text-align: center;">Bulk vs $\big{<}110\big{>}$ surface TDDFT</h4>
+						<img src='images/transeng.png' width='100%'>
+					</td>
+				</tr>
+			</table><p>HOMO-LUMO gaps and lowest energy excitation from ~2 ps simulation of Rutile TiO$_2$ bulk and surface.</p>
+
+		</div>
+	</div>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h2 id="Linear-response-summary">Linear response summary<a class="anchor-link" href="#Linear-response-summary">&#182;</a></h2><ul>
+				<li>gives electron transitions and detailed information on the types of transition</li>
+				<li>cost will depend on system size, but increase linearly with the number of excited states that you want to calculate</li>
+				<li>supports calculations using hybrid functionals and the ADMM approximation</li>
+				<li>current implementation is still in beta, but is being actively developed.</li>
+				<li>nearly production ready, needs final testing and refining - it is available in the latest developers version of CP2K via sourceforge or github</li>
+			</ul>
+			<p>Also delta SCF method (Maximum overlap method implemented)</p>
+
+		</div>
+	</div>
+</div></section></section><section><section>
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	</div>
+	<div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+			<h1 id="Thanks-To">Thanks To<a class="anchor-link" href="#Thanks-To">&#182;</a></h1><ul>
+				<li>ARCHER and EPSRC for funding.</li>
+				<li>Jurg Hutter and the CP2K developers group.</li>
+				<li>Iain Bethune, STFC.</li>
+				<li>Materials Chemistry Consortium!</li>
+				<li>Scott Woodley for helping organise this conference!</li>
+			</ul>
+		</div>
+	</div>
+</div></section></section>
+</div>
+</div>
+
+<script>
+
+	require(
+	{
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+  },
+  [
+  "../../revealjs//lib/js/head.min.js",
+  "../../revealjs//js/reveal.js"
+  ],
+
+  function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      	controls: true,
+      	progress: true,
+      	history: true,
+      	//width: '100%',
+		//height: '100%',
+		margin: 0,
+		//minScale: 1,
+		//maxScale: 1,
+      // Parallax background image
+      parallaxBackgroundImage: 'images/image2.png',
+      //Parallax background size
+      parallaxBackgroundSize: '2929px 1650px', // CSS syntax, e.g. "2100px 900px
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../revealjs/lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../revealjs/plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+  });
+
+      var update = function(event){
+      	if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      		MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      	}
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+      	$(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+  }
+  );
+</script>
+
+</body>
+
+
+</html>
+width: '80%',
+height: '100%',
+transition: 'concave',
