@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <title>Numerical Methods - Curve Fitting 3</title>
+  <title>System of Linear Equations 1</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -83,19 +83,19 @@ MathJax.Hub.Config({
 
     <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/16/BilinearInterpolExample.png">
       <h2 style="color:white;" id="Numerical Methods Week 4">Numerical Methods Week 4<a class="anchor-link" href="#Numerical Methods Week 4">&#182;</a></h2>
-      <h1 style="color:white;" id="Curve Fitting 3">Curve Fitting 3<a class="anchor-link" href="#Curve Fitting 3">&#182;</a></h1>
+      <h1 style="color:white;" id="System of Linear Equations 1">System of Linear Equations 1<a class="anchor-link" href="#System of Linear Equations 1">&#182;</a></h1>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 	
-	<p>We continue with Curve Fitting. This week <a href='https://en.wikipedia.org/wiki/Interpolation'>interpolation</a>.</p>
+	<p>We move on to the second main topic: <a href=''>systems of linear equations</a>.</p>
 	<p>Learning outcomes:</p>
       </div>
       <br>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> Understand when you would use interpolation and when you would use regression.</li>
-        <li> Be aware of most common interpolation methods.</li>
-        <li> Implement and use Newton Divided Difference and Lagrange polynomials for interpolation.</li>	
+        <li> Recall methods of solution of inhomogeneous systems of linear equations.</li>
+        <li> Elimination methods, Householder transformation.</li>
+        <li> Implement and use Gauss-Jordan Elimination to solve systems of equations.</li>	
       </div>
       <br>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
