@@ -9402,6 +9402,9 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+  background:rgba(255,255,255,0.80);
+  border-radius: 25px;
+
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
