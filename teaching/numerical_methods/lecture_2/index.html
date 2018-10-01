@@ -336,9 +336,37 @@ double gauss_elim( double *a[], int N) {
   </section>    
   <section>
   <div class="inner_cell">    
-  <h2 id="Python Gauss Elimination">Python Gauss Elimination<a class="anchor-link" href="#Python Gauss Elimination">&#182;</a></h2>
-  <p>Ideally I would like everyone to be able to use C++ or python. The equivalent python code is also available on Bb.</p>
-  <p>You can run python code using spyder, a python shell or jupyter notebooks. All are available on the boxes in INB 2305 and are freely available online.</p>  
+  <h3 id="Python Gauss Elimination">Python Gauss Elimination<a class="anchor-link" href="#Python Gauss Elimination">&#182;</a></h3>
+  <p>Ideally I would like everyone to be able to use C++ or python. Here is an equivalent python code.<br>
+  You can run python code using spyder, a python shell or jupyter notebooks. All are available on the boxes in INB 2305 and are freely available online.</p>  
+  <pre>
+     <code class="python">
+import numpy as np
+
+def gauss_elim(a, N):
+    """solves a set of linear equations
+    N must be the number of rows.    
+    """
+    x = np.zeros(N);
+    # eliminating
+    for i in range(N-1):
+        for j in range(i+1,N,1):
+            coeff = a[j,i]/a[i,i]
+            for k in range(i,N+1,1):
+                a[j,k] -= a[i,k]*coeff
+    # now back substitute
+    for i in range(N-1,-1,-1):
+        x[i] = a[i,N+1-1]
+        for j in range(i+1, N,1):
+            x[i] -= a[i,j]*x[j]
+        x[i] /= a[i,i]
+    return x
+
+# build a random 2d 3x4 augmented matrix
+a = np.random.uniform(1,10,12).reshape(3,4)
+x =gauss_elim(a,3)      
+     </code>
+   </pre>
 </div>
 </section>
 
