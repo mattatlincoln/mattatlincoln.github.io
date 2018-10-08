@@ -217,8 +217,8 @@ linebreaks: { automatic: true }
     S_r = \sum_{i=0}^{N-1} (y_i - a_0 - a_1 x_i - a_2 x_i^2 - \ldots - a_n x_i^n)^2
     $$
   </p>
-  <p>We then take the derivatives wrt to the parameters ($a_0 \ldots a_n$) to get a set of equations.</p>
-  <p>Setting these equations equal to zero then solving gives us the optimal set of parameters.</p>      
+  <p>We then take partial derivatives with respect to the parameters ($a_0 \ldots a_n$) to get a set of equations.</p>
+  <p>Setting these equations equal to zero, writing in matrix form, then solving, gives us the optimal set of parameters.</p>      
 </div>
 </section>
 
@@ -245,10 +245,10 @@ linebreaks: { automatic: true }
    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
    <li> Derive the above equations by differentiating $S_r$ with respect to each of the $a_i$ in turn.</li>	
-   <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
-   <p>using the data you can find on Blackboard for today's session called "Curve Fitting 1"</p>
-   <li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-   <li> Plot your fitted parabola against the data to check the fit</li>
+   <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ and $b$ is a column matrix with terms that do not depend on the fitting parameters, $a_0$, $a_1$  and  $a_2$. </li>
+   <p>using the data you can find on Blackboard for today's session under the assessments tab."</p>
+   <li> Solve for $a_0$, $a_1$  and  $a_2$.</li>
+   <li> Plot your fitted parabola against the data to check the fit.</li>
  </div>      
 </div>           
 </section>

@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <title>Numerical Methods - Curve Fitting 2</title>
+  <title>01 - Curve Fitting</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -24,476 +24,339 @@
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = '../../../revealjs/css/print/pdf.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../revealjs/css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
 
   </script>
 
   <!--[if lt IE 9]>
   <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-<![endif]-->
+  <![endif]-->
 
-<!-- Loading the mathjax macro -->
+  <!-- Loading the mathjax macro -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
+MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-<!-- Load mathjax -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-<!-- MathJax configuration -->
-<script type="text/x-mathjax-config">
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-  tex2jax: {
-  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-  processEscapes: true,
-  processEnvironments: true
-},
-// Center justify equations in code and markdown cells. Elsewhere
-// we use CSS to left justify single line equations in code cells.
-displayAlign: 'center',
-"HTML-CSS": {
-styles: {'.MathJax_Display': {"margin": 0}},
-linebreaks: { automatic: true }
-}
-});
-</script>
-<!-- End of mathjax configuration -->
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+    }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
 
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+  <!-- Get Font-awesome from cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-<!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="../custom.css">
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="../custom.css">
 
 </head>
 <body>
 
-  <div class="reveal">
-    <div class="slides">
+<div class="reveal">
+  <div class="slides">
 
-      <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/2/20/Coloured_Voronoi_2D.svg">
-        <h2 style="color:white;" id="Numerical Methods Week 3">Numerical Methods Week 3<a class="anchor-link" href="#Numerical Methods Week 3">&#182;</a></h2>
-        <h1 style="color:white;" id="Curve Fitting 1">Curve Fitting 1<a class="anchor-link" href="#Curve Fitting 1">&#182;</a></h1>
-        <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <p>We continue with Curve Fitting. This week polynomial and multiple linear regression.</p>
-        <p>Reading: Capra and Canale, introduction to part 5 and chapter 17.</p>
+    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/2/20/Coloured_Voronoi_2D.svg">
+      <h2 style="color:white;" id="Numerical Methods Week 2">Numerical Methods Week 2<a class="anchor-link" href="#Numerical Methods Week 2">&#182;</a></h2>
+      <h1 style="color:white;" id="Curve Fitting 1">Curve Fitting 1<a class="anchor-link" href="#Curve Fitting 1">&#182;</a></h1>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	
+	<p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
+	<p>Learning outcomes:</p>
       </div>
       <br>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-      <p>Learning outcomes:</p>
-      <li> Extend the work on Linear Regression to polynomial and multiple variables.</li>
-      <li> Combine C++ and analytical or other platforms.</li>
-      <li> Check your code works correctly, via an external reference.</li>	
-    </div>
-    <br>
-    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Understand the mathematics of the simplest version of linear regression.</li>
+        <li> Code a working version of linear regression using C++.</li>
+        <li> Check your code works correctly, via an external reference.</li>	
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ 
+       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+      </div>
+    </section>
 
-    <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
-  </div>
-</section>
-
-<section>
-  <section>
-    <div class="inner_cell">    
-      <h2 id="Least-squares Regression - summary">Least Squares Regression  - summary<a class="anchor-link" href="#Least Squares Regression - summary">&#182;</a></h2>
-      <p> we saw in <a href='https://mattatlincoln.github.io/teaching/numerical_methods/lecture_1/#/'>lecture 1</a> that given our assumption of a straightline
-       $$
-       y_i = a_0 + a_1 x_i + e_i
-       $$
-       the error at each point is given by
-       $$
-       e_i  = y_i - a_0 - a_1 x_i
-       $$
-     </p>
-     <p> We take the sum of the squares of the errors
-       $$
-       S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-       $$
-       as our error criterion.
-     </p>
-   </div>
- </section>
- <section>
-  <div class="inner_cell">
-   <p> We can find an optimal $a_1$ and $a_0$.
-     $$
-     a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
-     $$
-     and 
-     $$
-     a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
-     $$
-   </p>
-   <p>$\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
-    $$
-    \bar{y} = \frac{1}{N}\sum_{i=0}^{N-1} y_i \qquad \bar{x} = \frac{1}{N}\sum_{i=0}^{N-1} x_i
-    $$
-  </p>
-  <br>
-  <p> Correlation of the data: covariance of the data $(x,y)$ divided by the standard deviation of $x$ and $y$.<br><br>
-   $$
-   r = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{\sqrt{n \sum x_i^2 - (\sum x_i)^2}\sqrt{n \sum y_i^2 - (\sum y_i)^2}}
-   $$
- </p>      
-</div>
-</section>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2>
-    <p>Remember in week 1 we looked at finding sums:</p>
-    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-    <li> What is $\sum_{n=1}^{100} n$</li>  
-    <li> What is $\sum_{n=2}^{200} 2n$</li> 
-    <li> What is $\sum_{n=0}^{99} 2n^2$</li>
-  </div>
-
-  <p>Now add an extra array into your code and calculate the following:</p>
-
-  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-  <p>$\text{let } x_i = i, i = {1,2,\dots,10}$ and $\text{let } y_i = 2i + 0.3$ for $i = {1,2,\dots,10}$</p>
-  <li> What is $\sum_i x_i$</li>  
-  <li> What is $\sum_i y_i$</li>
-  <li> What is $\sum_i x_i y_i$</li>
-  <li> What are $\bar{y}$ and $\bar{x}$</li>
-  <li> Find the parameters $a_0$ and $a_1$ for a linear regression model of this data.</li>
-</div>
-<p> Check your results are correct! I'd suggest using both inspection and Excel.</p>      
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="Array bounds">Array bounds<a class="anchor-link" href="#Array bounds">&#182;</a></h2>
-    <p> This code example goes wrong because it tries to access x[10]</p>
-    <p> C arrays start from element [0] and go up to [n-1].</p>
-    <p> So in the code below x[0], x[1], ... x[9] are assigned. </p>
-    <p> But in the loop, x[10] just prints whatever happens to exist in that memory location. </p>
-    <pre data-lang="c++">
-     <code class='c++'>
-      // Be careful of array bounds
-      #include&ltiostream>
-
-      int main()
-      {
-        // assign an array of length 10
-        double x[10] = {0,1,2,3,4,5,6,7,8,9};
-
-        // loop over array elements, be very careful!
-        // array elements not assigned will contain random data
-        // visual studio may complain (depends on version, it seems)
-        for (int i = 0; i < 11; i++) {
-        std::cout << "i = " << i << ", x[" << i << "] = " << x[i] << "\n";
-      }
-    }	  
-  </code>
-</pre>
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="Polynomial Regression">Polynomial Least-squares Regression<a class="anchor-link" href="#Polynomial Regression">&#182;</a></h2>
-    <p>We can easily extend our method to deal with polynomicals:
-     $$
-     y_i = a_0 + a_1 x_i + a_2 x_i^2 + \ldots + a_n x_i^n  + e_i
-     $$
-   </p>
-   <p>and an overall error function
-    $$
-    S_r = \sum_{i=0}^{N-1} (y_i - a_0 - a_1 x_i - a_2 x_i^2 - \ldots - a_n x_i^n)^2
-    $$
-  </p>
-  <p>We then take the derivatives wrt to the parameters ($a_0 \ldots a_n$) to get a set of equations.</p>
-  <p>Setting these equations equal to zero then solving gives us the optimal set of parameters.</p>      
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h3 id="Fitting a Quadratic function">Fitting a Quadratic function<a class="anchor-link" href="#Fitting a Quadratic function">&#182;</a></h3>
-    <p>In the case that the largest power of $x$ is $x^2$ we have
-     $$
-     y_i = a_0 + a_1 x_i + a_2 x_i^2 + e_i
-     $$
-     and an overall error function
-     $$
-     S_r = \sum_{i=0}^{N-1} (y_i - a_0 - a_1 x_i - a_2 x_i^2)^2
-     $$
-   </p>
-   <p>This leads to a set of equations
-     \begin{align*}
-     \left(n\right)a_0 + \left(\sum x_i\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum y_i \\
-     \left(\sum x_i\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i y_i \\
-     \left(\sum x_i^2\right) a_0  + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
-     \end{align*}
-   </p>
-
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <li> Derive the above equations by differentiating $S_r$ with respect to each of the $a_i$ in turn.</li>	
-   <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
-   <p>using the data you can find on Blackboard for today's session called "Curve Fitting 1"</p>
-   <li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-   <li> Plot your fitted parabola against the data to check the fit</li>
- </div>      
-</div>           
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="Multiple Linear Regression">Multiple Linear Regression<a class="anchor-link" href="#Multiple Linear Regression">&#182;</a></h2>
-    <p>Instead of powers of a single variable, our model for $y_i$ could be that it is a function of several independent variables:
-     $$
-     y_i = a_0 + a_1 x_{1i} + a_2 x_{2i} + a_3 x_{3i} + \ldots + a_n x_{ni}
-     $$
-   </p>
-
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <li> Derive the a set of equations for the case of two independent variables</li>	
-   <li> Write the equations in matrix form $Ax = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
-   <p>Using the following data
-     $$
-     \begin{array} {ccc}
-     x_1 & x_2 & y \\
-     \hline
-     0 & 0 & 5 \\
-     2 & 1 & 10 \\
-     2.5 & 2 & 9 \\
-     1 & 3 & 0 \\
-     4 & 6 & 3 \\
-     7 & 2 & 27 \\
-     \hline
-     \end{array}
-     $$
-   </p>
-
-   <li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-   <li> Plot your fitted function against the data to check the fit</li>
- </div>                 
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h3 id="Linearization of data sets">Linearization of data sets<a class="anchor-link" href="#Linearization of data sets">&#182;</a></h3>
-    <p>Multiple Linear Regression is not just limited to obviously linear data.</p>
-    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-    <li> How would you apply multiple linear regression to data that you thought was related by $y = a_0 x_1 ^ {a_1} x_2 ^ {a_2} \cdots x_n ^ {a_n}$ ?</li>	
-  </div>
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
-    <p>Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
-     $$
-     y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
-     $$
-     where $z_0, z_1, \ldots , z_m$ are $m+1$ $\textbf{basis functions}$.
-   </p>
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <p>What would $z_0, z_1, \ldots , z_m$ be for</p>
-   <li>Simple linear least squares regression?</li> 
-   <li>Polynomial least squares regression?</li> 
-   <li>Multiple linear least squares regression?</li> 
- </div>
-
- <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
- <p>For instance.
-   $$
-   y = a_0 + a_1 \cos (\omega t) + a_2 \sin (\omega t)
-   $$
-   fits this model.
- </p>
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
-    <p>We can rewrite
-     $$
-     y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
-     $$
-     in matrix notation as
-     $$
-     \{Y\} = [Z]\{A\} + \{E\}
-     $$
-     where $\{\}$ indicates a column vector, for clarity, and $[]$ indicates a matrix.
-     $[Z]$ contains the calculated values of the $m+1$ basis functions at the $n+1$ measured values of the independent variables:
-     $$
-     [Z] =
-     \left[
-     \begin{matrix}
-     z_{00} & z_{10} & \cdots & z_{m0} \\
-     z_{01} & z_{11} & \cdots & z_{m1} \\
-     \vdots & \vdots & \ddots & \vdots \\
-     z_{0n} & z_{1n} & \cdots & z_{mn} \\
-     \end{matrix}
-     \right]
-     $$
-   </p>
-
-   <p>
-    The column vector $\{Y\}$ contains the $n+1$ observed values of the dependent variable
-     $$
-     \{Y\}^T = \left[y_0, y_1, y_2, y_3, \ldots, y_n  \right]
-     $$
-     The column vector $\{A\}$ contains the $m+1$ unknown parameters of the model
-     $$
-     \{A\}^T = \left[a_0, a_1, a_2, \ldots, a_{m}  \right]
-     $$
-     The column vector $\{E\}$ contains the $n+1$ observed residuals (errors)
-     $$
-     \{E\}^T = \left[e_0, e_1, e_2, e_3, \ldots, e_n  \right]
-     $$
-
-   </p>
- </div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
-    <p>We can also express error in our model as a sum of the squares much like before:
-     $$
-     S_r = \sum_{i=0}^{n}\left(y_i - \sum_{j=0}^{m} a_j z_{ji}  \right)^2
-     $$
-     Again, $S_r$ is minimised by taking partial derivatives wrt $a_i$, and yields
-     $$
-     [[Z]^T[Z]]\{A\} = \{[Z^T]\{Y\}\}
-     $$
-     which is equivalent to the normal equations (set of simultaneous equations for $a_i$ we found previously).
-     More details can of the derivation can be found <a href="http://fourier.eng.hmc.edu/e176/lectures/NM/node35.html">here</a>, though the notation is a little different.
-   </p>
-   <p>
-     This set of equations can be solved using the methods of solving linear equations.
-   </p><p>
-     For now, it can be done brute force by calculating the matrix inverse of $[[Z]^T[Z]]$ or using Gauss elimination.
-   </p>
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <p>Try to redo the earlier fitting problems in this notation / method.</p>
- </div><br><br>
-</div>
-</section>
-
-
-<section><section>
-  <div class="inner_cell">
-    <h2 id="General Linear Least Squares - Example">General Linear Least Squares - Example<a class="anchor-link" href="#General Linear Least Squares - Example">&#182;</a></h2>
-    <p>
-      Suppose we have 11 measurements at 
+    <section>
+      <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
+      <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
       $$
-        x^T = -3. , -2.3, -1.6, -0.9, -0.2,  0.5,  1.2,  1.9,  2.6,  3.3,  4.
+      y_i = a_0 + a_1 x_i + e
       $$
-      with values
-      $$
-        y^T = 8.26383742,  6.44045188,  4.74903073,  4.5656476 ,  3.61011683,
-        3.32743918,  2.9643915 ,  1.02239181,  1.09485138,  1.84053372,
-        1.49110572
-      $$
-      <img src='../images/genRegData.png' width="400px">
-    </p>
-    <p>Let us fit it to a function of the form $y_i = a_0 + a_1 e^{-x} + a_2 e^{-2x} $</p>
-  </div></section>
-  <section><div class='inner_cell'>
-    <p>Our $Z$ matrix has 3 columns - for the basis function corresponding to $a_0$, then $a_1$ ($e^{-x}$) and then the term corresponding to $a_2$ $e^{-2x}$. It will have 11 rows corresponding to the 11 measurements.
-      <pre>
-        Z = 
-      [[  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
-       [  1.00000000e+00,   9.97418245e+00,   9.94843156e+01],
-       [  1.00000000e+00,   4.95303242e+00,   2.45325302e+01],
-       [  1.00000000e+00,   2.45960311e+00,   6.04964746e+00],
-       [  1.00000000e+00,   1.22140276e+00,   1.49182470e+00],
-       [  1.00000000e+00,   6.06530660e-01,   3.67879441e-01],
-       [  1.00000000e+00,   3.01194212e-01,   9.07179533e-02],
-       [  1.00000000e+00,   1.49568619e-01,   2.23707719e-02],
-       [  1.00000000e+00,   7.42735782e-02,   5.51656442e-03],
-       [  1.00000000e+00,   3.68831674e-02,   1.36036804e-03],
-       [  1.00000000e+00,   1.83156389e-02,   3.35462628e-04]]
+      <p>where $e$ is the error, or residual, between the model and the observations.</p>
+      <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
+	<p> given our assumption of a straightline</p>
+	$$
+	y_i = a_0 + a_1 x_i + e_i
+	$$
+	<p>the error at each point is given by</p>
+	$$
+	e_i  = y_i - a_0 - a_1 x_i
+	$$
+	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+	  $$
+	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	  $$
+	  as our error criterion.
+	</p>
+      </section>
+
+      <section>
+	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+	  $$
+	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	  $$
+	  as our error criterion.
+	</p>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" style="height:300px;">
+      </section>
+      
+      <section>
+	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+	<p>If we look at our model
+	  $$
+	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+	  $$
+	  we see that there are 2 parameters, $a_0$ and $a_1$ that control the slope and intercept of our model.</p>
+	<p class="fragment">It is a model, we are assuming that there is a linear relationship between $x$ and $y$.</p>  
+	<p  class="fragment">We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
+	  $$
+	  \begin{align}
+	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
+	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i]
+	  \end{align}
+	  $$
+	  where the summations go from $0$ to $n-1$ (this is to agree with C style arrays).
+	</p>
+	<p  class="fragment">Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
+	<p  class="fragment">For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
+      </section>
+      <section>
+	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+	<p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
+	  $$
+	  \begin{align}
+	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) = 0 \\	  
+	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i] = 0
+	  \end{align}
+	  $$
+	  This gives us a pair of simultaneous linear equations, sometimes called the normal equations.</p>
+	<p> We can solve these for $a_1$ and $a_0$.
+	  $$
+	  a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+	  $$
+	  and plug this into the first equation to get
+	  $$
+	  a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
+	  $$
+	  where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
+	</p>
+      </section>
+    </section>
+    
+    <section>
+      <h3 id="Coding up linear regression">Coding up linear regression<a class="anchor-link" href="#Coding up linear regression">&#182;</a></h3>
+      <p>You will want to use arrays to store data. Remember arrays are like a list, or ordered set, of numbers. The type of number is defined in the normal way.</p>
+      <p>Here is some code to allocate an array of size 100, place the numbers 0 to 99, in that order, into the array.</p>
+      <p>Then we add up the elements of the array, and print them out.</p>
+      <pre data-lang="c++">
+	<code class='c++'>
+#include "stdafx.h"
+#include &ltiostream>
+using namespace std;
+
+int main()
+{
+    double x[100] ;
+    for (int i = 0; i < 100; i++) {
+        x[i] = i;
+    }
+
+    double sumx = 0.0;
+    for (int i = 0; i < 100; i++) {
+	    sumx += x[i];
+    }
+    cout << "The sum of the numbers 0 to 99 is " << sumx <<"\n";
+}
+        </code>
       </pre>
-    </p>
-    <p>
-    Then we set up the linear equation problem by forming \([Z]^T[Z]\) and $[Z]\{y\}$ and combine them to form the following augmented matrix
-      <pre>
-      [[  1.10000000e+01,   3.98805235e+01,   5.35475292e+02, 3.86526046e+01],
-       [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03, 2.57093542e+02],
-       [  5.35475292e+02,   9.23382518e+03,   1.73292733e+05, 3.89173010e+03]]        
+    </section>
+
+    <section>
+      <h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2>
+      <p>Alter the previous code to answer the following questions:</p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> What is $\sum_{n=1}^{100} n$</li>	
+        <li> What is $\sum_{n=2}^{200} 2n$</li>	
+        <li> What is $\sum_{n=0}^{99} 2n^2$</li>
+      </div>
+
+      <p>Now add an extra array into your code and calculate the following:</p>
+      
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>$\text{let } x_i = i, i = {1,2,\dots,10}$ and $\text{let } y_i = 2i + 0.3, i = {1,2,\dots,10}$</p>
+        <li> What is $\sum_i x_i$</li>	
+        <li> What is $\sum_i y_i$</li>
+	<li> What is $\sum_i x_i y_i$</li>
+	<li> What are $\bar{y}$ and $\bar{x}$
+	<li> Find the parameters $a_0$ and $a_1$ for a linear regression model of this data.</li>
+      </div>
+
+      <p> Check your results are correct!</p>      
+    </section>
+
+    <section>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/jvbgsuMqd91tsTg?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/oF57qo4dXVI3kn5?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+    </section>
+
+    <section>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/YPCLA9NHwShIxj0?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ESd57XyWZvru1fm?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+    </section>
+
+    <section>      
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/QyCxpOYenyTHz5F?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/dj16xfIH99rRTi4?controls=none&short_poll=true" width="75%" height="350px" frameBorder="0"></iframe>
+    </section>
+
+    <section>
+      <h3 id="Quantifying the error">Quantifying the error<a class="anchor-link" href="#Quantifying the error">&#182;</a></h3>
+      <p>To quantify the error in our model we can look at the correlation coefficient of our data, conventionally called $r$.</p>
+      <p>This is the covariance of the data $(x,y)$ divided by the square roots of the variance of $x$ and $y$.
+	$$
+	r = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{\sqrt{n \sum x_i^2 - (\sum x_i)^2}\sqrt{n \sum y_i^2 - (\sum y_i)^2}}
+	$$
+	The measures the difference between the scatter of the data from the mean and the scatter of the data from the ideal straight line.
+      </p>      
+    </section>
+
+    <section>
+      <h3 id="Some data">Some data<a class="anchor-link" href="#Some data">&#182;</a></h3>
+      <p>Here is some data with $n=100$ that you should be able to cut and paste:</p>
+      <pre data-lang="c++">
+	<code class='c++'>
+    double xi[] = { 
+        0.        ,   0.1010101 ,   0.2020202 ,   0.3030303 ,
+        0.4040404 ,   0.50505051,   0.60606061,   0.70707071,
+        0.80808081,   0.90909091,   1.01010101,   1.11111111,
+        1.21212121,   1.31313131,   1.41414141,   1.51515152,
+        1.61616162,   1.71717172,   1.81818182,   1.91919192,
+        2.02020202,   2.12121212,   2.22222222,   2.32323232,
+        2.42424242,   2.52525253,   2.62626263,   2.72727273,
+        2.82828283,   2.92929293,   3.03030303,   3.13131313,
+        3.23232323,   3.33333333,   3.43434343,   3.53535354,
+        3.63636364,   3.73737374,   3.83838384,   3.93939394,
+        4.04040404,   4.14141414,   4.24242424,   4.34343434,
+        4.44444444,   4.54545455,   4.64646465,   4.74747475,
+        4.84848485,   4.94949495,   5.05050505,   5.15151515,
+        5.25252525,   5.35353535,   5.45454545,   5.55555556,
+        5.65656566,   5.75757576,   5.85858586,   5.95959596,
+        6.06060606,   6.16161616,   6.26262626,   6.36363636,
+        6.46464646,   6.56565657,   6.66666667,   6.76767677,
+        6.86868687,   6.96969697,   7.07070707,   7.17171717,
+        7.27272727,   7.37373737,   7.47474747,   7.57575758,
+        7.67676768,   7.77777778,   7.87878788,   7.97979798,
+        8.08080808,   8.18181818,   8.28282828,   8.38383838,
+        8.48484848,   8.58585859,   8.68686869,   8.78787879,
+        8.88888889,   8.98989899,   9.09090909,   9.19191919,
+        9.29292929,   9.39393939,   9.49494949,   9.5959596 ,
+        9.6969697 ,   9.7979798 ,   9.8989899 ,  10. 
+    };
+
+    double yi[] = { 
+        6.01469413,   14.09996968,    9.12100078,    3.73282861,
+        3.78942871,   -0.80602985,  -11.66859711,   -5.47649636,
+        1.42688043,  -19.21550529,  -11.36675823,  -11.52035088,
+        -12.78108715,  -24.7444492 ,  -18.21072249,  -10.25901618,
+        -25.25658938,  -26.50312596,  -27.38329998,  -25.98510757,
+        -24.77780539,  -43.26902796,  -33.07165188,  -35.15315958,
+        -42.5563826 ,  -37.38939826,  -47.14096056,  -40.15575937,
+        -44.73475717,  -38.15779936,  -51.05774419,  -54.79376375,
+        -55.63165111,  -61.28604873,  -50.62652442,  -61.91830736,
+        -64.26923379,  -62.67497829,  -74.49810931,  -71.67737897,
+        -74.08110435,  -69.21877935,  -86.65971022,  -81.76601778,
+        -74.87565634,  -86.05172849,  -84.97568593,  -75.23147413,
+        -74.81314469,  -84.11032466,  -88.12612336,  -88.66430364,
+        -89.16641119,  -98.31572601,  -99.5877934 , -100.23988776,
+        -101.25789035, -109.75819414, -105.84140181, -105.23523665,
+        -122.60927949, -106.39523463, -123.02075393, -118.53726793,
+        -118.13475666, -120.17611906, -129.80198049, -125.23872405,
+        -120.29937702, -127.53296514, -128.38744678, -135.58414852,
+        -134.56512625, -129.73246677, -138.44263851, -134.84290239,
+        -144.86399101, -142.08490521, -133.26692841, -154.74419441,
+        -147.37756306, -144.86988039, -169.78056679, -163.14984653,
+        -163.37503186, -155.46348415, -154.93317035, -178.65683429,
+        -168.08804204, -174.41498129, -170.71034792, -181.28027204,
+        -181.75735231, -172.88715969, -180.25148771, -180.53352578,
+        -187.12812126, -186.3930225 , -179.49747799, -184.85728151 
+    };
+	</code>
       </pre>
-    </p>
-  </div>
-</section>
-<section>
-  <div class="inner_cell">
-    <p>
-    The solutions of this problem are 
-    <pre>
-      a = [ 2.13758951,  0.58605735, -0.01537541]
-    </pre>
-    This means that our final model for the data is
-    $$
-    y = 2.13758951 + 0.58605735e^{-x} - 0.01537541e^{-2x}
-    $$
-    </p>
-    <p>
-      <img src='../images/fittedModel.png' width="500px">
-    </p>
 
-  </div>
-</section>
-</section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Find $a_0$, $a_1$ and $r$ for the data set above.</li>	
+        <li> Do you think it is a good model of the data?</li>	
+      </div>
+    </section>
 
-<section>
-  <div class="inner_cell">
-    <h2 id="Statistical interpretation of least squares">Statistical interpretation of least squares<a class="anchor-link" href="#Statistical interpretation of least squares">&#182;</a></h2>
-    <p>The matrix $[[Z]^T[Z]]^{-1}$ actually contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
-    <p>We can use the Gauss Jordan method to find $[[Z]^T[Z]]^{-1}$.</p>
-    <p>We will look into this in more detail next week.</p>
-  </div>
-</section>
+      
+    <section>
+      <h3 id="Linearization of data sets">Linearization of data sets<a class="anchor-link" href="#Linearization of data sets">&#182;</a></h3>
+      <p>Linear fitting is not just limited to obviously linear data.</p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> How would you apply linear regression to data that you thought was related by $y = \alpha \exp^{\beta x}$.</li>	
+      </div>
+    </section>
+    
+    </div> <!-- slides -->
+  </div> <!-- reveal -->
 
-<section>
-  <div class="inner_cell">
-    <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
-    <p>You should be reading additional material to provide a solid background to what we do in class</p>
-    <p>Reading: Capra and Canale, introduction to part 5 and chapter 17.</p>
-    <p>Lots of details inchapters 14 and 15 of <a href="http://apps.nrbook.com/c/index.html">Numerical Recipes</a>.</p>
-  </div>
-</section>
-
-</div> <!-- slides -->
-</div> <!-- reveal -->
-
-<script>
+  <script>
 
   require(
-  {
+    {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
     },
     [
-    "../../../revealjs//lib/js/head.min.js",
-    "../../../revealjs//js/reveal.js"
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -508,7 +371,7 @@ linebreaks: { automatic: true }
         scroll: true,
 
         // Parallax background image
-        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Coloured_Voronoi_2D.svg',
+        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
         // Parallax background size
         parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
 
@@ -517,11 +380,11 @@ linebreaks: { automatic: true }
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-        { src: "../../../revealjs//lib/js/classList.js",
-        condition: function() { return !document.body.classList; } },
-        { src: "../../../revealjs//plugin/notes/notes.js",
-        async: true,
-        condition: function() { return !!document.body.classList; } }
+          { src: "../../../revealjs//lib/js/classList.js",
+          condition: function() { return !document.body.classList; } },
+          { src: "../../../revealjs//plugin/notes/notes.js",
+          async: true,
+          condition: function() { return !!document.body.classList; } }
         ]
       });
 
@@ -540,7 +403,7 @@ linebreaks: { automatic: true }
       Reveal.addEventListener('slidechanged', update_scroll);
 
     }
-    );
+  );
   </script>
 
 </body>
