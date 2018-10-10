@@ -9402,7 +9402,7 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-  background:rgba(255,255,255,0.80);
+  background:rgba(255,255,255,0.95);
   border-radius: 25px;
 
 }
