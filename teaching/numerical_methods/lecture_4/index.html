@@ -135,7 +135,7 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">
     <h3 id="Feedback: Fitting a Quadratic function">Fitting a Quadratic function<a class="anchor-link" href="#Fitting a Quadratic function">&#182;</a></h3>
-   <p>This leads to a set of equations
+    <p>This leads to a set of equations
      \begin{align*}
      \frac{\delta S_r (a_0, a_1, a_2)}{\delta a_0} & \implies \left(n\right)a_0 + \left(\sum x_i\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum y_i \\
      \frac{\delta S_r (a_0, a_1, a_2)}{\delta a_1} & \implies \left(\sum x_i\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i y_i \\
@@ -144,26 +144,26 @@ linebreaks: { automatic: true }
    </p>
    <p>
     We can rewrite these equations as
-     $$
-     \begin{pmatrix}
-        \left(\sum x_i^0\right) & \left(\sum x_i\right)  & \left(\sum x_i^2\right) \\ 
-        \left(\sum x_i\right)  & \left(\sum x_i^2\right) & \left(\sum x_i^3\right) \\ 
-        \left(\sum x_i^2\right)   & \left(\sum x_i^3\right)  & \left(\sum x_i^4\right) \\ 
-     \end{pmatrix}
-     \begin{pmatrix}
-     a_0 \\
-     a_1 \\
-     a_2 
-     \end{pmatrix} =
-     \begin{pmatrix}
+    $$
+    \begin{pmatrix}
+    \left(\sum x_i^0\right) & \left(\sum x_i\right)  & \left(\sum x_i^2\right) \\ 
+    \left(\sum x_i\right)  & \left(\sum x_i^2\right) & \left(\sum x_i^3\right) \\ 
+    \left(\sum x_i^2\right)   & \left(\sum x_i^3\right)  & \left(\sum x_i^4\right) \\ 
+    \end{pmatrix}
+    \begin{pmatrix}
+    a_0 \\
+    a_1 \\
+    a_2 
+    \end{pmatrix} =
+    \begin{pmatrix}
     \sum y_i \\
     \sum x_i y_i \\
     \sum x_i^2 y_i 
-     \end{pmatrix}
-     $$
-   </p>
-   <p> Which is of the form $\textbf{A}x = b$</p>
- </div>      
+    \end{pmatrix}
+    $$
+  </p>
+  <p> Which is of the form $\textbf{A}x = b$</p>
+</div>      
 </section>
 
 
@@ -207,26 +207,20 @@ linebreaks: { automatic: true }
     <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
     <p>Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
      $$
-     y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+     y_i (a_0, a_1, a_2, a_3 \ldots a_n; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
      $$
-     where $z_0, z_1, \ldots , z_m$ are $m+1$ $\textbf{basis functions}$.
+     are now not just coordinates $x_i$ but some <em>predefined</em> functions of those positions $z_0(x_0, x_1, x_2, x_3 \ldots x_n), z_1( x_0, x_1, x_2, x_3 \ldots x_n), \ldots , z_m( x_0, x_1, x_2, x_3 \ldots x_n)$ are $m+1$ $\textbf{basis functions}$.
    </p>
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <p>What would $z_0, z_1, \ldots , z_m$ be for</p>
-   <li>Simple linear least squares regression?</li> 
-   <li>Polynomial least squares regression?</li> 
-   <li>Multiple linear least squares regression?</li> 
- </div>
 
- <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
- <p>For instance.
-   $$
-   y = a_0 + a_1 \cos (\omega t) + a_2 \sin (\omega t)
-   $$
-   fits this model.
- </p>
-</div>
+   <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
+   <p>For instance.
+     $$
+     y(a_0, a_1, a_2; x_0) = a_0 + a_1 \cos (\omega x_0) + a_2 \sin (\omega x_0)
+     $$
+     fits this model with $z_0 = 1, z_1 = \cos(\omega x_0)$ and $z_2 = \sin(\omega x_0)$. Where $\omega$ is a single independent variable and $\omega$ is a predefined constant.</p>
+     <p> I'll supress the functional dependence notation as it gets too much. Remember the $z$s are predefined - only the $a$s are optimized.
+   </p>
+ </div>
 </section>
 
 <section>
@@ -257,20 +251,20 @@ linebreaks: { automatic: true }
 
    <p>
     The column vector $\{Y\}$ contains the $n+1$ observed values of the dependent variable
-     $$
-     \{Y\}^T = \left[y_0, y_1, y_2, y_3, \ldots, y_n  \right]
-     $$
-     The column vector $\{A\}$ contains the $m+1$ unknown parameters of the model
-     $$
-     \{A\}^T = \left[a_0, a_1, a_2, \ldots, a_{m}  \right]
-     $$
-     The column vector $\{E\}$ contains the $n+1$ observed residuals (errors)
-     $$
-     \{E\}^T = \left[e_0, e_1, e_2, e_3, \ldots, e_n  \right]
-     $$
+    $$
+    \{Y\}^T = \left[y_0, y_1, y_2, y_3, \ldots, y_n  \right]
+    $$
+    The column vector $\{A\}$ contains the $m+1$ unknown parameters of the model
+    $$
+    \{A\}^T = \left[a_0, a_1, a_2, \ldots, a_{m}  \right]
+    $$
+    The column vector $\{E\}$ contains the $n+1$ observed residuals (errors)
+    $$
+    \{E\}^T = \left[e_0, e_1, e_2, e_3, \ldots, e_n  \right]
+    $$
 
-   </p>
- </div>
+  </p>
+</div>
 </section>
 
 <section>
@@ -306,13 +300,13 @@ linebreaks: { automatic: true }
     <p>
       Suppose we have 11 measurements at 
       $$
-        x^T = -3. , -2.3, -1.6, -0.9, -0.2,  0.5,  1.2,  1.9,  2.6,  3.3,  4.
+      x^T = -3. , -2.3, -1.6, -0.9, -0.2,  0.5,  1.2,  1.9,  2.6,  3.3,  4.
       $$
       with values
       $$
-        y^T = 8.26383742,  6.44045188,  4.74903073,  4.5656476 ,  3.61011683,
-        3.32743918,  2.9643915 ,  1.02239181,  1.09485138,  1.84053372,
-        1.49110572
+      y^T = 8.26383742,  6.44045188,  4.74903073,  4.5656476 ,  3.61011683,
+      3.32743918,  2.9643915 ,  1.02239181,  1.09485138,  1.84053372,
+      1.49110572
       $$
       <img src='../images/genRegData.png' width="400px">
     </p>
@@ -322,25 +316,25 @@ linebreaks: { automatic: true }
     <p>Our $Z$ matrix has 3 columns - for the basis function corresponding to $a_0$, then $a_1$ ($e^{-x}$) and then the term corresponding to $a_2$ $e^{-2x}$. It will have 11 rows corresponding to the 11 measurements.
       <pre>
         Z = 
-      [[  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
-       [  1.00000000e+00,   9.97418245e+00,   9.94843156e+01],
-       [  1.00000000e+00,   4.95303242e+00,   2.45325302e+01],
-       [  1.00000000e+00,   2.45960311e+00,   6.04964746e+00],
-       [  1.00000000e+00,   1.22140276e+00,   1.49182470e+00],
-       [  1.00000000e+00,   6.06530660e-01,   3.67879441e-01],
-       [  1.00000000e+00,   3.01194212e-01,   9.07179533e-02],
-       [  1.00000000e+00,   1.49568619e-01,   2.23707719e-02],
-       [  1.00000000e+00,   7.42735782e-02,   5.51656442e-03],
-       [  1.00000000e+00,   3.68831674e-02,   1.36036804e-03],
-       [  1.00000000e+00,   1.83156389e-02,   3.35462628e-04]]
+        [[  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
+        [  1.00000000e+00,   9.97418245e+00,   9.94843156e+01],
+        [  1.00000000e+00,   4.95303242e+00,   2.45325302e+01],
+        [  1.00000000e+00,   2.45960311e+00,   6.04964746e+00],
+        [  1.00000000e+00,   1.22140276e+00,   1.49182470e+00],
+        [  1.00000000e+00,   6.06530660e-01,   3.67879441e-01],
+        [  1.00000000e+00,   3.01194212e-01,   9.07179533e-02],
+        [  1.00000000e+00,   1.49568619e-01,   2.23707719e-02],
+        [  1.00000000e+00,   7.42735782e-02,   5.51656442e-03],
+        [  1.00000000e+00,   3.68831674e-02,   1.36036804e-03],
+        [  1.00000000e+00,   1.83156389e-02,   3.35462628e-04]]
       </pre>
     </p>
     <p>
-    Then we set up the linear equation problem by forming \([Z]^T[Z]\) and $[Z]^T\{y\}$ and combine them to form the following augmented matrix
+      Then we set up the linear equation problem by forming \([Z]^T[Z]\) and $[Z]^T\{y\}$ and combine them to form the following augmented matrix
       <pre>
-      [[  1.10000000e+01,   3.98805235e+01,   5.35475292e+02, 3.86526046e+01],
-       [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03, 2.57093542e+02],
-       [  5.35475292e+02,   9.23382518e+03,   1.73292733e+05, 3.89173010e+03]]        
+        [[  1.10000000e+01,   3.98805235e+01,   5.35475292e+02, 3.86526046e+01],
+        [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03, 2.57093542e+02],
+        [  5.35475292e+02,   9.23382518e+03,   1.73292733e+05, 3.89173010e+03]]        
       </pre>
     </p>
   </div>
@@ -348,14 +342,14 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">
     <p>
-    The solutions of this problem are 
-    <pre>
-      a = [ 2.13758951,  0.58605735, -0.01537541]
-    </pre>
-    This means that our final model for the data is
-    $$
-    y = 2.13758951 + 0.58605735e^{-x} - 0.01537541e^{-2x}
-    $$
+      The solutions of this problem are 
+      <pre>
+        a = [ 2.13758951,  0.58605735, -0.01537541]
+      </pre>
+      This means that our final model for the data is
+      $$
+      y = 2.13758951 + 0.58605735e^{-x} - 0.01537541e^{-2x}
+      $$
     </p>
     <p>
       <img src='../images/fittedModel.png' width="500px">
