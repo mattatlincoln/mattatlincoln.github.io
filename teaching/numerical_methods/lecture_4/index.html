@@ -365,7 +365,7 @@ linebreaks: { automatic: true }
     <p>The matrix $[[Z]^T[Z]]^{-1}$ contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
     <p>We can use the Gauss Jordan method to find $[[Z]^T[Z]]^{-1}$.</p>
     <p>The diagonal elements of $[[Z]^T[Z]]^{-1}$ can be designated as $z_{i,i}^{-1}$</p>
-    <p>We will call the standard deviation of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-1}}\sqrt{\sum_{i=0}^{i=n} (y_i -  a_0 z_{0i} + a_1 z_{1i} + a_2 z_{2i} + \cdots + a_m z_{mi} )^2}$</p>
+    <p>We will call the standard error of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-(m+1)}}\sqrt{\sum_{i=0}^{i=n} (y_i -  a_0 z_{0i} + a_1 z_{1i} + a_2 z_{2i} + \cdots + a_m z_{mi} )^2}$</p>
     <p>The variances of our parameters are given by $\text{var}(a_i) = s^2(a_i)= z_{i,i}^{-1} s_{y/x}^2$</p>
   </div>
 </section>
@@ -375,6 +375,71 @@ linebreaks: { automatic: true }
     <p>We can now place error limits on our optimal parameters, $a_0, ... a_m$.</p>
     <p>If our model is good, the real data should be approximately normally distributed around our model. You can the show that the parameters should have a <a href="https://mattatlincoln.github.io/teaching/statistics/lecture_9/#/6/2">t-distribution</a> with $n-2$ degrees of freedom.</p>
     <p>We can put confidence limits on the parameters using $P(\text{true value of the ith parameter is in the interval } (a_i - t_{c/2,n-1} s(a_i) , a_i + t_{c/2,n-1} s(a_i) ) = c$ where $c$ is our confidence, for instance 0.95 to be 95% certain the parameter lies within those bounds.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <p>
+    Perform a fit to the following data.
+    <table>
+      <tr>
+        <td>
+    <pre>
+      x = {
+    10.00,
+    16.30,
+    23.00,
+    27.50,
+    31.00,
+    35.60,
+    39.00,
+    41.50,
+    42.90,
+    45.00,
+    46.00,
+    45.50,
+    46.00,
+    49.00,
+    50.00
+    }
+    </pre>          
+        </td>
+        <td>
+          <pre>
+    y = {
+    8.953,
+    16.405,
+    22.607,
+    27.769,
+    32.065,
+    35.641,
+    38.617,
+    41.095,
+    43.156,
+    44.872,
+    46.301,
+    47.490,
+    48.479,
+    49.303,
+    49.988
+    }
+    </pre>          
+
+        </td>
+      </tr>
+    </table>
+    you can assume that $y_i = a_0 + a_1 x_i + e_i$
+   </p>
+   <li>
+     Calculate an error estimate for the optimal parameters.
+     Note, you can perform the matrix inversion required using <a href="https://mattatlincoln.github.io/teaching/numerical_methods/lecture_2/#/7">Gauss Jordan elimination</a>, by hand, or other means for now.
+   </li> 
+   <li>Upload your solutions and answers to related questions onto Bb.</li>
+ </div><br><br>
+
   </div>
 </section>
 
