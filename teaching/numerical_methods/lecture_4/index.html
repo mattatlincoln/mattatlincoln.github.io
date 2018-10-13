@@ -365,7 +365,7 @@ linebreaks: { automatic: true }
     <p>The matrix $[[Z]^T[Z]]^{-1}$ contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
     <p>We can use the Gauss Jordan method to find $[[Z]^T[Z]]^{-1}$.</p>
     <p>The diagonal elements of $[[Z]^T[Z]]^{-1}$ can be designated as $z_{i,i}^{-1}$</p>
-    <p>We will call the standard error of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-(m+1)}}\sqrt{\sum_{i=0}^{i=n} (y_i -  a_0 z_{0i} + a_1 z_{1i} + a_2 z_{2i} + \cdots + a_m z_{mi} )^2}$</p>
+    <p>We will call the standard error of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-(m+1)}}\sqrt{\sum_{i=0}^{i=n-1} (y_i -  a_0 z_{0i} + a_1 z_{1i} + a_2 z_{2i} + \cdots + a_m z_{mi} )^2}$</p>
     <p>The variances of our parameters are given by $\text{var}(a_i) = s^2(a_i)= z_{i,i}^{-1} s_{y/x}^2$</p>
   </div>
 </section>
