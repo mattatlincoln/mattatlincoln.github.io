@@ -15,8 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
- <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
- <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>  
+  <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+  <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>  
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -27,226 +27,223 @@
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
-  if( window.location.search.match( /print-pdf/gi ) ) {
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../revealjs/css/print/pdf.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  }
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 
   </script>
 
   <!--[if lt IE 9]>
   <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-  <![endif]-->
+<![endif]-->
 
-  <!-- Loading the mathjax macro -->
+<!-- Loading the mathjax macro -->
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-  <!-- Load mathjax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-  <!-- MathJax configuration -->
-  <script type="text/x-mathjax-config">
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    // Center justify equations in code and markdown cells. Elsewhere
-    // we use CSS to left justify single line equations in code cells.
-    displayAlign: 'center',
-    "HTML-CSS": {
-      styles: {'.MathJax_Display': {"margin": 0}},
-      linebreaks: { automatic: true }
-    }
-  });
-  </script>
-  <!-- End of mathjax configuration -->
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
 
-  <!-- Get Font-awesome from cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-  <!-- Custom stylesheet, it must be in the same directory as the html file -->
-  <link rel="stylesheet" href="../custom.css">
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
 
 </head>
 <body>
 
-<div class="reveal">
-  <div class="slides">
+  <div class="reveal">
+    <div class="slides">
 
-    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/16/BilinearInterpolExample.png">
-      <h2 style="color:white;" id="Numerical Methods Week 4">Numerical Methods Week 4<a class="anchor-link" href="#Numerical Methods Week 4">&#182;</a></h2>
-      <h1 style="color:white;" id="Curve Fitting 3">Curve Fitting 3<a class="anchor-link" href="#Curve Fitting 3">&#182;</a></h1>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	
-	<p>We continue with Curve Fitting. This week <a href='https://en.wikipedia.org/wiki/Interpolation'>interpolation</a>.</p>
-	<p>Learning outcomes:</p>
-      </div>
-      <br>
-      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+      <section>
+        <div class="inner_cell">
+          <h2 style="color:white;" id="Numerical Methods Week 4">Numerical Methods Week 4<a class="anchor-link" href="#Numerical Methods Week 4">&#182;</a></h2>
+          <h1 style="color:white;" id="Curve Fitting 3">Curve Fitting 3<a class="anchor-link" href="#Curve Fitting 3">&#182;</a></h1>
+          <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+          8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+          <p>We continue with Curve Fitting. This week <a href='https://en.wikipedia.org/wiki/Interpolation'>interpolation</a>.</p>
+          <p>Learning outcomes:</p>
+        </div>
+        <br>
+        <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
         <li> Understand when you would use interpolation and when you would use regression.</li>
         <li> Be aware of most common interpolation methods.</li>
         <li> Implement and use Newton Divided Difference and Lagrange polynomials for interpolation.</li>	
       </div>
       <br>
       <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- 
-       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
-      </div>
-    </section>
+      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;"> 
+      <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2 id="Recap: Fitting a Quadratic function">Recap: Fitting a Quadratic function<a class="anchor-link" href="#Recap: Fitting a Quadratic function">&#182;</a></h2>
-      <p>In the case that the largest power of $x$ is $x^2$ we have
-      	$$
-	y_i = a_0 + a_1 x_i + a_2 x_i^2 + e_i
-	$$
-      </p>
-      <p>This leads to a set of equations
-	\begin{align*}
-	\left(n\right)a_0 + \left(\sum x_i\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum y_i \\
-	\left(\sum x_i\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i y_i \\
-	\left(\sum x_i^2\right) a_0  + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
-	\end{align*}
-      </p>
-      <p>We found those equations by taking the derivative wrt to the coefficients of the sum of the squared differences.</p>
-      <p>We assume that there is noise in our measurements.</p>
-    </section>
-    
-    <section>
-      <h2 id="What is Interpolation?">What is Interpolation?<a class="anchor-link" href="#What is Interpolation?">&#182;</a></h2>
-      <h4>Example</h4>
-      <p> For example, suppose we have a table like this, which gives some values of an unknown function $f$
-	$$
-	\begin{array} {cc}
-	x & f(x) \\
-	\hline
-	0 & 0.0000 \\
-	1 & 0.8415 \\
-	2 & 0.9093\\
-	3 & 0.1411 \\
-	4 & -0.7658 \\
-	5 & -0.9589 \\
-	6 & -0.2794 \\
-	\hline
-	\end{array}
-	$$
-      </p>
-      <p>
-	Interpolation provides a means of estimating the function at intermediate points, such as $x=2.5$.
-      </p>
-      <p>
-	There are many different interpolation methods, some of which we'll look at.<br>
-	Some of the concerns to take into account when choosing an appropriate algorithm are:
-	<li>How accurate is the method?</li>
-	<li>How expensive is it?</li>
-	<li>How smooth is the interpolant?</li>
-	<li> How many data points are needed?</li>
-      </p>
-    </section>
+<section>
+  <div class="inner_cell">
+    <h2 id="What is Interpolation?">What is Interpolation?<a class="anchor-link" href="#What is Interpolation?">&#182;</a></h2>
+    <p> For example, suppose we have a table like this, which gives some values of an unknown function $f$
+     $$
+     \begin{array} {cc}
+     x & f(x) \\
+     \hline
+     0 & 0.0000 \\
+     1 & 0.8415 \\
+     2 & 0.9093\\
+     3 & 0.1411 \\
+     4 & -0.7658 \\
+     5 & -0.9589 \\
+     6 & -0.2794 \\
+     \hline
+     \end{array}
+     $$
+   </p>
+   <p>
+     Interpolation provides a means of estimating the function at intermediate points, such as $x=2.5$.
+     There are many different interpolation methods, some of which we'll look at.<br>
+     Some of the concerns to take into account when choosing an appropriate algorithm are:
+     <li>How accurate is the method?</li>
+     <li>How expensive is it?</li>
+     <li>How smooth is the interpolant?</li>
+     <li> How many data points are needed?</li>
+   </p>
+ </div>
+</section>
 
-    <section>
-      <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
-      <p>If we have two points we can draw a straightline between them</p>
-      <div id="box1" class="jxgbox" style="width:450px; height:450px;"></div>
-      <p>Solid line is the fit, dotted line is the gradient, dashed line is the curvature.</p>
-      <script>
-	var board = JXG.JSXGraph.initBoard('box1', {boundingbox: [-5, 10, 7, -6], axis: true});
-	var p = [];
-	p[0] = board.create('point', [-1,2], {size:4});
-	p[1] = board.create('point', [3,-1], {size:4});
-	var f = JXG.Math.Numerics.lagrangePolynomial(p);
-	var graph = board.create('functiongraph', [f,-10, 10], {strokeWidth:3});
-	var d1 = board.create('functiongraph', [JXG.Math.Numerics.D(f), -10, 10], {dash:1});
-	var d2 = board.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(f)), -10, 10], {dash:2});
-      </script>
-    </section>
+<section>
+  <div class="inner_cell">
+    <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
+    <p>If we have two points we can draw a straightline between them</p>
+    <div id="box1" class="jxgbox" style="width:450px; height:450px;"></div>
+    <p>Solid line is the fit, dotted line is the gradient, dashed line is the curvature.</p>
+    <script>
+     var board = JXG.JSXGraph.initBoard('box1', {boundingbox: [-5, 10, 7, -6], axis: true});
+     var p = [];
+     p[0] = board.create('point', [-1,2], {size:4});
+     p[1] = board.create('point', [3,-1], {size:4});
+     var f = JXG.Math.Numerics.lagrangePolynomial(p);
+     var graph = board.create('functiongraph', [f,-10, 10], {strokeWidth:3});
+     var d1 = board.create('functiongraph', [JXG.Math.Numerics.D(f), -10, 10], {dash:1});
+     var d2 = board.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(f)), -10, 10], {dash:2});
+   </script>
+ </div>
+</section>
 
-   <section>
-      <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
-      <p>If the function is not a straightline, linear interpolation will be an approximation.<br>      
-      The quality of the approximation will depend on how far apart the points are:</p>
-      <div id="LinInt" class="jxgbox" style="width:900px; height:450px;"></div>
-      <p>Thin line is $y = \ln x$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
-      <script>
-	var linint = JXG.JSXGraph.initBoard('LinInt', {boundingbox: [-1, 3, 10, -0.5], axis: true});
-	var lnx = linint.create('functiongraph', [function(x){return Math.log2(x);}, 1, 8])
+<section>
+  <div class="inner_cell">
+    <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
+    <p>If the function is not a straightline, linear interpolation will be an approximation.<br>      
+    The quality of the approximation will depend on how far apart the points are:</p>
+    <div id="LinInt" class="jxgbox" style="width:900px; height:450px;"></div>
+    <p>Thin line is $y = \ln x$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
+    <script>
+     var linint = JXG.JSXGraph.initBoard('LinInt', {boundingbox: [-1, 3, 10, -0.5], axis: true});
+     var lnx = linint.create('functiongraph', [function(x){return Math.log2(x);}, 1, 8])
 
-	var s = linint.create('slider',[[0,2],[3,2],[1.1,6,6]]);
-	var p2 = [];
-	p2[0] = linint.create('point', [1,Math.log2(1)], {size:2, name:'point 1'});
-	p2[1] = linint.create('point', [function(){return s.Value();}, function(){return Math.log2(s.Value());}], {size:2, name:'point 2'});
-	var func = JXG.Math.Numerics.lagrangePolynomial(p2);
-	
-	approx = linint.create('point', [2.5,function(){return func(2.5)}], {size:4, name:'approx'});
-	exact = linint.create('point', [2.5, Math.log2(2.5)], {size:4, name:'exact'});
-	var graph = linint.create('functiongraph', [func,1, 8], {strokeWidth:3});
-	var d1 = linint.create('functiongraph', [JXG.Math.Numerics.D(func), 1, 8], {dash:1});
-	var d2 = linint.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(func)), 1, 8], {dash:2});
-      </script>
-    </section>    
+     var s = linint.create('slider',[[0,2],[3,2],[1.1,6,6]]);
+     var p2 = [];
+     p2[0] = linint.create('point', [1,Math.log2(1)], {size:2, name:'point 1'});
+     p2[1] = linint.create('point', [function(){return s.Value();}, function(){return Math.log2(s.Value());}], {size:2, name:'point 2'});
+     var func = JXG.Math.Numerics.lagrangePolynomial(p2);
 
-    <section>
+     approx = linint.create('point', [2.5,function(){return func(2.5)}], {size:4, name:'approx'});
+     exact = linint.create('point', [2.5, Math.log2(2.5)], {size:4, name:'exact'});
+     var graph = linint.create('functiongraph', [func,1, 8], {strokeWidth:3});
+     var d1 = linint.create('functiongraph', [JXG.Math.Numerics.D(func), 1, 8], {dash:1});
+     var d2 = linint.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(func)), 1, 8], {dash:2});
+   </script>
+ </div>
+</section>    
+
+<section>
+  <section>
+    <div class="inner_cell">
       <h2 id="Linear Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear Interpolation">&#182;</a></h2>
       <p>Geometrically, the slopes should be the same:.<br>
-      $$
-      {\frac {y-y_{0}}{x-x_{0}}}={\frac {y_{1}-y_{0}}{x_{1}-x_{0}}},
-      $$
+        $$
+        {\frac {y-y_{0}}{x-x_{0}}}={\frac {y_{1}-y_{0}}{x_{1}-x_{0}}},
+        $$
       </p>
-    
+
       <p>
-      Or rearranged:
-      $$
+        Or rearranged:
+        $$
         y=y_{0}+(x-x_{0}){\frac {y_{1}-y_{0}}{x_{1}-x_{0}}}={\frac {y_{0}(x_{1}-x)+y_{1}(x-x_{0})}{x_{1}-x_{0}}},
-      $$
+        $$
       </p>
       <p>
-      This should remind you of the first term in a Taylor series. It is sometimes referred to as a 'lerp'.
+        This should remind you of the first term in a Taylor series. It is sometimes referred to as a 'lerp'.
       </p>
+    </div>
+  </section>
+  <section>
+    <div class="inner_cell">
       <p>
-      Linear interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.
-      <img src='https://upload.wikimedia.org/wikipedia/commons/6/67/Interpolation_example_linear.svg' height='200'>
+        Linear interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.
+        <img src='https://upload.wikimedia.org/wikipedia/commons/6/67/Interpolation_example_linear.svg' height='200'>
       </p>
-    </section>
+    </div>
+  </section>
+</section>
 
-    <section>
-      <h2 id="Polynomial Interpolation">Polynomial Interpolation<a class="anchor-link" href="#Polynomial Interpolation">&#182;</a></h2>
-      <p>Approximation can be improved by using a polynomial.<br>
-      We can fit a polynomial of order $n-1$ through $N$ points.</p>
-      <div id="polyfit" class="jxgbox" style="width:900px; height:450px;"></div>
-      <p>Thin line is $y = \ln x$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
-      <script>
-        var polyfit = JXG.JSXGraph.initBoard('polyfit', {boundingbox: [-1, 3, 6.5, -0.5], axis: true});
-        var lnx = polyfit.create('functiongraph', [function(x){return Math.log2(x);}, 1, 8]);
+<section>
+  <div class="inner_cell">
+    <h2 id="Polynomial Interpolation">Polynomial Interpolation<a class="anchor-link" href="#Polynomial Interpolation">&#182;</a></h2>
+    <p>Approximation can be improved by using a polynomial.<br>
+    We can fit a polynomial of order $n-1$ through $N$ points.</p>
+    <div id="polyfit" class="jxgbox" style="width:900px; height:450px;"></div>
+    <p>Thin line is $y = \ln x$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
+    <script>
+      var polyfit = JXG.JSXGraph.initBoard('polyfit', {boundingbox: [-1, 3, 6.5, -0.5], axis: true});
+      var lnx = polyfit.create('functiongraph', [function(x){return Math.log2(x);}, 1, 8]);
 
-        var mys = polyfit.create('slider',[[0,2],[2,2],[1.1,4.0,5.9]]);
-        var p3 = [];
-        p3[0] = polyfit.create('point', [1,Math.log2(1)], {size:4, name:'point 1'});
-        p3[1] = polyfit.create('point', [function(){return mys.Value()},function(){return Math.log2(mys.Value())}], {size:4, name:'point 2'});
-        p3[2] = polyfit.create('point', [6,Math.log2(6)], {size:4, name:'point 3'});
-        var fpoly = JXG.Math.Numerics.lagrangePolynomial(p3);
-        
-        var approx = polyfit.create('point', [2.5,function(){return fpoly(2.5)}], {size:4, name:'approx'});
-        var exact = polyfit.create('point', [2.5, Math.log2(2.5)], {size:4, name:'exact'});
-        var graph = polyfit.create('functiongraph', [fpoly,1, 8], {strokeWidth:3});
-        var d1 = polyfit.create('functiongraph', [JXG.Math.Numerics.D(fpoly), 1, 8], {dash:1});
-        var d2 = polyfit.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(fpoly)), 1, 8], {dash:2});
-      </script>
-    </section>
+      var mys = polyfit.create('slider',[[0,2],[2,2],[1.1,4.0,5.9]]);
+      var p3 = [];
+      p3[0] = polyfit.create('point', [1,Math.log2(1)], {size:4, name:'point 1'});
+      p3[1] = polyfit.create('point', [function(){return mys.Value()},function(){return Math.log2(mys.Value())}], {size:4, name:'point 2'});
+      p3[2] = polyfit.create('point', [6,Math.log2(6)], {size:4, name:'point 3'});
+      var fpoly = JXG.Math.Numerics.lagrangePolynomial(p3);
 
-    <section>
-      <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
-      <p>The first divided difference is just the linear interpolation
+      var approx = polyfit.create('point', [2.5,function(){return fpoly(2.5)}], {size:4, name:'approx'});
+      var exact = polyfit.create('point', [2.5, Math.log2(2.5)], {size:4, name:'exact'});
+      var graph = polyfit.create('functiongraph', [fpoly,1, 8], {strokeWidth:3});
+      var d1 = polyfit.create('functiongraph', [JXG.Math.Numerics.D(fpoly), 1, 8], {dash:1});
+      var d2 = polyfit.create('functiongraph', [JXG.Math.Numerics.D(JXG.Math.Numerics.D(fpoly)), 1, 8], {dash:2});
+    </script>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Newton's Divided Difference Interpolation">Newton's Divided Difference Interpolation<a class="anchor-link" href="#Newton's Divided Difference Interpolation">&#182;</a></h2>
+    <p>The first divided difference is just the linear interpolation
       \begin{align*}
       f[x_0, x_1] = \frac{f(x_1)-f(x_0)}{x_1 - x_0} \\
       f[x_1, x_2] = \frac{f(x_2)-f(x_1)}{x_2 - x_1} \\
@@ -258,295 +255,271 @@ MathJax.Hub.Config({
       f[x_1, x_2, x_3] = \frac{f[x_2, x_3]-f[x_1, x_2]}{x_3 - x_1} \\
       \end{align*}
       These terms can be related to higher order terms of Taylor's series.
-      </p>
-      <p>The divided difference interpolation polynomial can be written as
+    </p>
+    <p>The divided difference interpolation polynomial can be written as
       $$
       P(x) = f(x_0) + (x-x_0)f[x_0, x_1] + (x-x_0)(x-x_1)f[x_0,x_1,x_2] + \cdots + (x-x_0) \cdots (x-x_{n-1}f[x_0,x_1,\ldots,x_n])
       $$
       It is possible to truncate the polynomial at any term, and estimate the error, from the next term in the series.
-      </p>
-    </section>
- 
-    <section>
-      <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
-      <p>One form of the Interpolating polynomials is named after Lagrange. </p>
-      <p>Notice fit is excellent in the centre of the data points, but degrades at the edges</p>
-      <p>Should not be used for extrapolation - zoom out to see! </p>
-      <form>
-	<input type="button" value="Add point" onclick="addPoint()">
-      </form>
-      <div id="lip" class="jxgbox" style="width:800px; height:400px;"></div>
-      <p>Thin line is $y = \frac{\sin x}{x}$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
-      <script>
-	var lip = JXG.JSXGraph.initBoard('lip', {boundingbox: [-10, 2, 10, -2], axis: true});
-	var sincx = lip.create('functiongraph', [function(x){return Math.sin(x)/x;}, -20, 20]);
-	var i = -9 ;
-	function build_line() {
-	    var myp = [];
-	    for (i; i < -6; i = i + 2) {
-	        myp.push(lip.create('point', [i, Math.sin(i)/i], {size:2}));
-	    }
-	    i = i -2		
-	    return myp;
-	};
-	p3 = build_line();
-	function addPoint() {
-	   i = i + 2			 
-           p3.push(lip.create('point',[i, Math.sin(i)/i],{size:4}));
-           lip.update();
-        }
-	var f = JXG.Math.Numerics.lagrangePolynomial(p3);
-	var graph = lip.create('functiongraph', [f,-20, 20], {strokeWidth:3});
-      </script>
-    </section>
-   
-    <section>
-      <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
-      <p>Examine the formula below closely - see that at each data point location $x_i$, all terms will vanish except the $i^{th}$<br> 
- \begin{align*}
-p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_0 + \frac{(x-x_0)(x-x_2)\cdots(x-x_n)}{(x_1-x_0)(x_1-x_2)\cdots(x_1-x_n)}y_1 +\ldots+\frac{(x-x_0)(x-x_1)\cdots(x-x_{n-1})}{(x_n-x_0)(x_n-x_1)\cdots(x_n-x_{n-1})}y_n \\
-&=\sum_{i=0}^{n}\left ( \prod_{\stackrel{\!0\leq j\leq n}{j\neq i}}\frac{x-x_j}{x_i-x_j}\right ) y_i
-\end{align*}
-      <br>The denominator then just ensures the correct value $y_i$ is given.
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+    </p>
+  </div>
+</section>
 
-        <p> - Find p(1) given the data $(-1,5), (0,2), (2,0), (3,1)$</p>
-        <!--1/3-->
-        <p> - Determine the interpolating polynomial for the data $(0,1), (1,3), (3,55)$</p>
-        <!--8x^2 - 6x + 1-->
-        <p>Is the polynomial the same as you would get using Newton's Divided Difference interpolation?</p>
-        <p>Write a code to perform interpolation using Lagrange Interpolating Polynomials.</p>
-      </div>
-    </section>
+<section>
+  <div class="inner_cell">
+    <h3 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h3>
+    <p>One form of the Interpolating polynomials is named after Lagrange. <br>
+      Notice fit is excellent in the centre of the data points, but degrades at the edges<br>
+    Should not be used for extrapolation - zoom out to see! </p>
+    <form>
+     <input type="button" value="Add point" onclick="addPoint()">
+   </form>
+   <div id="lip" class="jxgbox" style="width:800px; height:400px;"></div>
+   <p>Thin line is $y = \frac{\sin x}{x}$; thick line is the fit; dotted line is the gradient; dashed line is the curvature.</p>
+   <script>
+     var lip = JXG.JSXGraph.initBoard('lip', {boundingbox: [-10, 2, 10, -2], axis: true});
+     var sincx = lip.create('functiongraph', [function(x){return Math.sin(x)/x;}, -20, 20]);
+     var i = -9 ;
+     function build_line() {
+       var myp = [];
+       for (i; i < -6; i = i + 2) {
+         myp.push(lip.create('point', [i, Math.sin(i)/i], {size:2}));
+       }
+       i = i -2		
+       return myp;
+     };
+     p3 = build_line();
+     function addPoint() {
+      i = i + 2			 
+      p3.push(lip.create('point',[i, Math.sin(i)/i],{size:4}));
+      lip.update();
+    }
+    var f = JXG.Math.Numerics.lagrangePolynomial(p3);
+    var graph = lip.create('functiongraph', [f,-20, 20], {strokeWidth:3});
+  </script>
+</div>
+</section>
 
-    <section>
-      <h2 id="Splines">Splines<a class="anchor-link" href="#Splines">&#182;</a></h2>
-      <p>Instead of fitting a complex high-order polynomial through many points - join many simple functions together</p>
-      <p>Splines typically require that the functions go through the points and the gradient and curvature are smoothly interpolated</p>
-      <p>Requirements that the polynomials (or generally functions of finite support)
+<section>
+  <div class="inner_cell">
+    <h2 id="Lagrange Interpolating Polynomials">Lagrange Interpolating Polynomials<a class="anchor-link" href="#Lagrange Interpolating Polynomials">&#182;</a></h2>
+    <p>Examine the formula below closely - see that at each data point location $x_i$, all terms will vanish except the $i^{th}$<br> 
+     \begin{align*}
+     p(x) &= \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{(x_0-x_1)(x_0-x_2)\cdots(x_0-x_n)} y_0 + \frac{(x-x_0)(x-x_2)\cdots(x-x_n)}{(x_1-x_0)(x_1-x_2)\cdots(x_1-x_n)}y_1 +\ldots+\frac{(x-x_0)(x-x_1)\cdots(x-x_{n-1})}{(x_n-x_0)(x_n-x_1)\cdots(x_n-x_{n-1})}y_n \\
+     &=\sum_{i=0}^{n}\left ( \prod_{\stackrel{\!0\leq j\leq n}{j\neq i}}\frac{x-x_j}{x_i-x_j}\right ) y_i
+     \end{align*}
+     <br>The denominator then just ensures the correct value $y_i$ is given.
+   </p>
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+   <p> - Find p(1) given the data $(-1,5), (0,2), (2,0), (3,1)$</p>
+   <!--1/3-->
+   <p> - Determine the interpolating polynomial for the data $(0,1), (1,3), (3,55)$</p>
+   <!--8x^2 - 6x + 1-->
+   <p>Write a code to perform interpolation using Lagrange Interpolating Polynomials.</p>
+   <p>Is the polynomial the same as you would get using Newton's Divided Difference interpolation?</p>   
+ </div>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Splines">Splines<a class="anchor-link" href="#Splines">&#182;</a></h2>
+    <p>Instead of fitting a complex high-order polynomial through many points - join many simple functions together</p>
+    <p>Splines typically require that the functions go through the points and the gradient and curvature are smoothly interpolated</p>
+    <p>Requirements that the polynomials (or generally functions of finite support)
       <li>Pass throught the $n$ data points</li>
       <li>Neighbouring polynomials have the same gradients at the points they overlap</li>
       <li>For cubic functions, neighbouring polynomials have the same curvature at the points that they overlap</li></p>
       <p>provide sufficient conditions to determine the conditions - another linear system of equations to solve.</p>
-    </section>
+    </div>
+  </section>
 
-    <section>    
+  <section>    
+    <div class="inner_cell">
       <h2 id="Multidimensional interpolation">Multidimensional interpolation<a class="anchor-link" href="#Multidimensional interpolation">&#182;</a></h2>
       <p>Maybe our function is in 2 or more dimensions<br>
-	$$
-	f = f(x,y) 
-	$$
-	<br>and now we have data in the form of triples<br>
-	$$(x_i,y_i,f(x_i,y_i))$$
-	<br>
-	and want to know $f(x,y)$ at a point not in our data set.
-      </p>
-      <p>
-	Most common application is in image processing.
-      </p>
-      <div>
-	<table>
-	  <tr>
-	    <td>
-	      <img src='../images/interpolation_2De.png' height='200'>
-	      <p>original image</p>
-	    </td><td>
-	      <img src='../images/interpolation_2D-lg.png' height='200'>
-	      <p>sides doubled</p>
-	    </td><td>
-	      <img src='../images/interpolation_2D-interp.png' height='200'>
-	      <p>interpolated</p>
-	    </td><td>
-	      <img src='../images/interpolation_nointerp.png' height='200'>
-	      <p>non interpolated</p>
-	    </td>
-	  </tr>
-	</table>
-      </div>
-      <p>
-	This is a very crude digital zoom.
-      </p>
-    </section>
+       $$
+       f = f(x,y) 
+       $$
+       <br>and now we have data in the form of triples<br>
+       $$(x_i,y_i,f(x_i,y_i))$$
+       <br>
+       and want to know $f(x,y)$ at a point not in our data set.
+     </p>
+     <p>
+       Most common application is in image processing.
+     </p>
+     <div>
+       <table>
+         <tr>
+           <td>
+             <img src='../images/interpolation_2De.png' height='200'>
+             <p>original image</p>
+           </td><td>
+             <img src='../images/interpolation_2D-lg.png' height='200'>
+             <p>sides doubled</p>
+           </td><td>
+             <img src='../images/interpolation_2D-interp.png' height='200'>
+             <p>interpolated</p>
+           </td><td>
+             <img src='../images/interpolation_nointerp.png' height='200'>
+             <p>non interpolated</p>
+           </td>
+         </tr>
+       </table>
+     </div>
+     <p>
+       This is a very crude digital zoom.
+     </p>
+   </div>
+ </section>
 
-    <section>
-      <h2 id="Bilinear interpolation">Bilinear interpolation<a class="anchor-link" href="#Bilinear interpolation">&#182;</a></h2>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
-      <p>First, linearly interpolate in $x$ direction
-\begin{aligned}f(x,y_{1})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21}),\\f(x,y_{2})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22}).\end{aligned}
-      </p>
-      <p>Then interpolate in $y$ direction
-\begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\end{aligned}
-      </p>
-    </section>
+ <section>
+  <div class="inner_cell">
+    <h2 id="Bilinear interpolation">Bilinear interpolation<a class="anchor-link" href="#Bilinear interpolation">&#182;</a></h2>
+    <table>
+      <tr>
+        <td>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250px'>
+        </td>
+        <td>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250px'>
+        </td>
+      </tr>
+    </table>
+    <p>First, linearly interpolate in $x$ direction
+      \begin{aligned}f(x,y_{1})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21}),\\f(x,y_{2})&\approx {\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22}).\end{aligned}
+    </p>
+    <p>Then interpolate in $y$ direction
+      \begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\end{aligned}
+    </p>
+  </div>
+</section>
 
-    <section>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250'>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250'>
-      <p>
-\begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\\&={\frac {y_{2}-y}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21})\right)+{\frac {y-y_{1}}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22})\right)\\&={\frac {1}{(x_{2}-x_{1})(y_{2}-y_{1})}}{\big (}f(Q_{11})(x_{2}-x)(y_{2}-y)+f(Q_{21})(x-x_{1})(y_{2}-y)+f(Q_{12})(x_{2}-x)(y-y_{1})+f(Q_{22})(x-x_{1})(y-y_{1}){\big )}\\&={\frac {1}{(x_{2}-x_{1})(y_{2}-y_{1})}}{\begin{bmatrix}x_{2}-x&x-x_{1}\end{bmatrix}}{\begin{bmatrix}f(Q_{11})&f(Q_{12})\\f(Q_{21})&f(Q_{22})\end{bmatrix}}{\begin{bmatrix}y_{2}-y\\y-y_{1}\end{bmatrix}}.\end{aligned}
-      </p>
-    </section>
+<section>
+  <div class="inner_cell">
+    <table>
+      <tr>
+        <td>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='250px'>
+        </td>
+        <td>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='250px'>
+        </td>
+      </tr>
+    </table>
+    <p>
+      \begin{aligned}f(x,y)&\approx {\frac {y_{2}-y}{y_{2}-y_{1}}}f(x,y_{1})+{\frac {y-y_{1}}{y_{2}-y_{1}}}f(x,y_{2})\\
+      &={\frac {y_{2}-y}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{11})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{21})\right)+{\frac {y-y_{1}}{y_{2}-y_{1}}}\left({\frac {x_{2}-x}{x_{2}-x_{1}}}f(Q_{12})+{\frac {x-x_{1}}{x_{2}-x_{1}}}f(Q_{22})\right)\\
+      \end{aligned}
+    </p>
+  </div>
+</section>
 
-    <section>
-      <h2 id="Bilinear interpolation - question">Bilinear interpolation - question<a class="anchor-link" href="#Bilinear interpolation - question">&#182;</a></h2>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Bilinear_interpolation.png' height='200'>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/c/c6/Bilininterp.png' height='200'>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <p>Suppose you have measured temperatures at a number of positions of a rectangular heated plate:
-	</p>
-	<table>
-	  <tr>
-	    <th>$x_i$</th>
-	    <th>$y_i$</th>
-	    <th>$T(x_i, y_i)$</th>
-	  </tr>
-	  <tr>
-	    <td>2</td>
-	    <td>2</td>
-	    <td>60</td>
-	  </tr>
-	  <tr>
-	    <td>2</td>
-	    <td>6</td>
-	    <td>55</td>
-	  </tr>
-	  <tr>
-	    <td>9</td>
-	    <td>1</td>
-	    <td>57.5</td>
-	  </tr>
-	  <tr>
-	    <td>9</td>
-	    <td>6</td>
-	    <td>70</td>
-	  </tr>	    
-	</table>
-	<p>- Use bilinear interpolation to find the temperature at $(5.25, 4.8)$</p>
-	<!--T(5.25, 4.8) = 61.2143 -->
-	<p> - Write a code to perform a general bilinear interpolation. Test it on a simple functions, such as $f(x,y) = xy$, being careful of the domain you work in.</p>
-      </div>
-    </section>
+<section>
+  <div class="inner_cell">
+    <h2 id="Bilinear interpolation - question">Bilinear interpolation - question<a class="anchor-link" href="#Bilinear interpolation - question">&#182;</a></h2>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+    <p>Suppose you have measured temperatures at a number of positions of a rectangular heated plate:
+    </p>
+    <table>
+     <tr>
+       <th>$x_i$</th>
+       <th>$y_i$</th>
+       <th>$T(x_i, y_i)$</th>
+     </tr>
+     <tr>
+       <td>2</td>
+       <td>2</td>
+       <td>60</td>
+     </tr>
+     <tr>
+       <td>2</td>
+       <td>6</td>
+       <td>55</td>
+     </tr>
+     <tr>
+       <td>9</td>
+       <td>1</td>
+       <td>57.5</td>
+     </tr>
+     <tr>
+       <td>9</td>
+       <td>6</td>
+       <td>70</td>
+     </tr>	    
+   </table>
+   <p>- Use bilinear interpolation to find the temperature at $(5.25, 4.8)$</p>
+   <!--T(5.25, 4.8) = 61.2143 -->
+   <p> - Write a code to perform a general bilinear interpolation. Test it on a simple functions, such as $f(x,y) = xy$, being careful of the domain you work in.</p>
+ </div>
+</div>
+</section>
 
-    <section>
-      <h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2>
-      <p>It is not so obvious how to conveniently plot you data in C++, here is one way</p>
-      <pre>
-	<code>
-#include "stdafx.h"
-#include &ltiostream>
-#include &ltfstream>
+<section>
+  <div class="inner_cell">
+    <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+    <p>You should be reading additional material to provide a solid background to what we do in class</p>
+    <p>Reading: Capra and Canale, introduction to part 5 and chapter 18.</p>
+    <p>All the textbooks contain sections on interpolation, for instance chapters 3 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+  </div>
+</section>
 
-int main() {
-    std::ofstream fout("mytex.tex");
-    fout << "\\documentclass[11pt]{article}\n\n"
-        << "% graphics\n"
-        << "\\usepackage{tikz}\n"
-        << "\\usepackage{pgfplots}\n"
-        << "\\pgfplotsset{compat=1.12}\n"
-        << "\\usepgfplotslibrary{fillbetween}\n\n\n"
-        << "\\begin{document}\n"
-        << "\\begin{tikzpicture}\n\n"
-        << "\\pgfplotsset{\n"
-        << "scale only axis,\n"
-        << "}\n\n"
-        << "\\begin{axis}[\n"
-        << "xlabel = $x$,\n"
-        << "ylabel = $y$,\n"
-        << "samples = 100,\n"
-        << "]\n"
-        << "\\addplot[only marks] table{\n";         
-
-    // write data points
-    fout << "0.0 1.0\n 1.0 2.0\n";
-
-    fout << "};\n"
-         << "\\addplot[][domain =-1.5:10]{\n";
-    // write function
-    fout << "1.5*x + 2*x^2";
-		    
-    fout << "};\n"
-        << "\\end{axis}\n"
-        << "\\end{tikzpicture}\n"
-        << "\\end{document}\n";
-
-    std::cout << "wrote " << "mytex.tex\n\n";
-}
-			     </code></pre>
-      <p>This writes a file "mytex.tex" that you can compile in TeXnicCenter - but Tex is not currently working... The pdf can be exported to Word or an image if wanted.</p>
-      <p>You can add points and define curves (and many more things) using <a href="http://pgfplots.sourceforge.net/">PGFPlots</a>.</p>
-    </section>
-
-    <section>
-      <h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>Modify the LaTeX output code so you can flexibly add points and define polynomial curves.</p>
-	<p>Plot your Lagrangian polynomial fits and the data points the came from.</p>
-      </div>
-    </section>
-    
-    <section>
-      <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
-      <p>You should be reading additional material to provide a solid background to what we do in class</p>
-      <p>All the textbooks contain sections on interpolation,<br> for instance chapters 3 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
-    </section>
-
-    <section>
-      <h2 id="Snake">Snake<a class="anchor-link" href="#Snake">&#182;</a></h2>
-      <p>Use the arrow keys</p>
-      <form><input type="button" onClick="startGame()" value="start game"></form>
-      <div id="snakebox" class="jxgbox" style="width:500px; height:500px; overflow:hidden; "></div>
-      <script>
+<section>
+  <h2 id="Snake">Snake<a class="anchor-link" href="#Snake">&#182;</a></h2>
+  <p>Use the arrow keys</p>
+  <form><input type="button" onClick="startGame()" value="start game"></form>
+  <div id="snakebox" class="jxgbox" style="width:500px; height:500px; overflow:hidden; "></div>
+  <script>
     var snakeBoard = JXG.JSXGraph.initBoard('snakebox',{boundingbox: [0, 20, 20, 0],grid:true});
     var snake = {
-        points : [[10,11],[10,10]],
-        dir : [1,0],
-        size: 2,
-        newSize: 2,
-        speed: 50,
-        hitSelf: function(x,y) {
-            for (var i=0;i<this.size-1;i++) {
-                if (x==this.points[0][i]) if (y==this.points[1][i]) { return true; }
-            }
-            return false;
+      points : [[10,11],[10,10]],
+      dir : [1,0],
+      size: 2,
+      newSize: 2,
+      speed: 50,
+      hitSelf: function(x,y) {
+        for (var i=0;i<this.size-1;i++) {
+          if (x==this.points[0][i]) if (y==this.points[1][i]) { return true; }
         }
+        return false;
+      }
     }
     var curve = snakeBoard.create('curve', snake.points , {strokeWidth:20,strokeOpacity:0.5});
     var point = snakeBoard.create('point', [
-        Math.round(Math.random()*18)+1,Math.round(Math.random()*18)+1], 
-        {strokeColor:'#4CADD4',fillColor:'#4CADD4',strokeWidth:10,name:' '});
+      Math.round(Math.random()*18)+1,Math.round(Math.random()*18)+1], 
+      {strokeColor:'#4CADD4',fillColor:'#4CADD4',strokeWidth:10,name:' '});
     var t = snakeBoard.create('text', [2,1,function() { return snake.size; }], {fontSize:28});
 
     var setRandomPosition = function()  {
-        point.setPositionDirectly(JXG.COORDS_BY_USER,
-            [Math.round(Math.random()*18)+1,
-            Math.round(Math.random()*18)+1]);
+      point.setPositionDirectly(JXG.COORDS_BY_USER,
+        [Math.round(Math.random()*18)+1,
+        Math.round(Math.random()*18)+1]);
     }
     var keyDown = function (Evt) {
-        var code;
-        if (!Evt) Evt = window.event;
-        if (Evt.which) {
-            code = Evt.which;
-        } else if (Evt.keyCode) {
-            code = Evt.keyCode;
-        }
+      var code;
+      if (!Evt) Evt = window.event;
+      if (Evt.which) {
+        code = Evt.which;
+      } else if (Evt.keyCode) {
+        code = Evt.keyCode;
+      }
         // 37: left,  38: up,  39: right,  40: down
         if (code==37) { snake.dir = [-1,0]; return false;}
         else if (code==38) { snake.dir = [0,1]; return false;}
         else if (code==39) { snake.dir = [1,0]; return false;}
         else if (code==40) { snake.dir = [0,-1]; return false;}
         return true;
-    }
-    document.onkeydown = keyDown;
+      }
+      document.onkeydown = keyDown;
 
-    var crawl = function() {
+      var crawl = function() {
         if (snake.size>=snake.newSize) {
-            snake.points[0].shift();
-            snake.points[1].shift();
+          snake.points[0].shift();
+          snake.points[1].shift();
         }
         var x = snake.points[0][snake.points[0].length-1]+snake.dir[0];
         snake.points[0].push(x);
@@ -555,19 +528,19 @@ int main() {
         snake.size = snake.points[0].length;
         snakeBoard.update();
         if (x>=20 || x<=0 || y>=20 || y<=0 || snake.hitSelf(x,y)) {
-            alert('Game over');
+          alert('Game over');
         } else {
-            if (x==point.X()) if (y==point.Y()) {
-                snake.newSize += 5;
-                snake.speed -= 10;
-                setRandomPosition();
-                snakeBoard.update();
-            }
-            setTimeout(crawl,snake.speed);
+          if (x==point.X()) if (y==point.Y()) {
+            snake.newSize += 5;
+            snake.speed -= 10;
+            setRandomPosition();
+            snakeBoard.update();
+          }
+          setTimeout(crawl,snake.speed);
         }
-    }
-    
-    var startGame = function () {
+      }
+
+      var startGame = function () {
         snake.points[0].splice(0,snake.size,10,11);
         snake.points[1].splice(0,snake.size,10,10);
         snake.dir = [1,0];
@@ -576,24 +549,24 @@ int main() {
         snake.speed = 200;
         setRandomPosition();
         crawl();
-     } 
-	</script>
-    </section>
-    
-  </div> <!-- slides -->
+      } 
+    </script>
+  </section>
+
+</div> <!-- slides -->
 </div> <!-- reveal -->
 
-  <script>
+<script>
 
   require(
-    {
+  {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
     },
     [
-      "../../../revealjs//lib/js/head.min.js",
-      "../../../revealjs//js/reveal.js"
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -608,20 +581,20 @@ int main() {
         scroll: true,
 
         // Parallax background image
-        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/1/16/BilinearInterpolExample.png',
         // Parallax background size
-        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+        parallaxBackgroundSize: '1980px 1536px', // CSS syntax, e.g. "2100px 900px
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: "../../../revealjs//lib/js/classList.js",
-          condition: function() { return !document.body.classList; } },
-          { src: "../../../revealjs//plugin/notes/notes.js",
-          async: true,
-          condition: function() { return !!document.body.classList; } }
+        { src: "../../../revealjs//lib/js/classList.js",
+        condition: function() { return !document.body.classList; } },
+        { src: "../../../revealjs//plugin/notes/notes.js",
+        async: true,
+        condition: function() { return !!document.body.classList; } }
         ]
       });
 
@@ -640,7 +613,7 @@ int main() {
       Reveal.addEventListener('slidechanged', update_scroll);
 
     }
-  );
+    );
   </script>
 
 </body>
