@@ -227,22 +227,163 @@ linebreaks: { automatic: true }
 
 <section>
   <div class="inner_cell">
-  <h3>Power method, why does it work?</h3>
-  <p>If our matrix is diagonalizable it has a set of orthogonal eigenvectors $\nu_1, \nu_2, \ldots, \nu_n $with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ with  $|\lambda _{1}|>|\lambda _{j}|$ for $j>1$.</p>
-  <p>Any vector can be expanded as a linear combination the $\nu_i$:
+    <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
+    <p>Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
+     $$
+     y_i (a_0, a_1, a_2, a_3 \ldots a_n; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+     $$
+     are now not just coordinates $x_i$ but some <em>predefined</em> functions of those positions $z_0(x_0, x_1, x_2, x_3 \ldots x_n), z_1( x_0, x_1, x_2, x_3 \ldots x_n), \ldots , z_m( x_0, x_1, x_2, x_3 \ldots x_n)$ are $m+1$ $\textbf{basis functions}$.
+   </p>
+
+   <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
+   <p>For instance.
+     $$
+     y(a_0, a_1, a_2; x_0) = a_0 + a_1 \cos (\omega x_0) + a_2 \sin (\omega x_0)
+     $$
+   fits this model with $z_0 = 1, z_1 = \cos(\omega x_0)$ and $z_2 = \sin(\omega x_0)$. Where $\omega$ is a single independent variable and $\omega$ is a predefined constant.</p>
+   <p> I'll supress the functional dependence notation as it gets too much. Remember the $z$s are predefined - only the $a$s are optimized.
+   </p>
+ </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="General Linear Least Squares Example">General Linear Least Squares Example<a class="anchor-link" href="#General Linear Least Squares Example">&#182;</a></h2>
+    <p>Let's redo the quadratic fit example using the general linear least squares formalism. The general expression 
+     $$
+     y_i (a_0, a_1, a_2, a_3 \ldots a_n; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 z_0(x_i) + a_1 z_1(x_i) + a_2 z_2(x_i) + \cdots + a_m z_m(x_i) + e
+     $$<br>
+     becomes
+     $$
+     y_i (a_0, a_1, a_2; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 z_0(x_i) + a_1 z_1(x_i) + a_2 z_2(x_i)  + e
+     $$<br>
+   as we only have three parameters.</p> 
+   <p>Comparing to the formula for a quadratic fit 
+     $$
+     y_i (a_0, a_1, a_2; x_0, x_1, x_2, x_3 \ldots x_n) = a_0  + a_1 x_i + a_2 x_i^2  + e
+     $$<br>
+   we see that $z_0 (x_i)= 1$, $z_1 (x_i)= x_i$ and $z_2 (x_i)= x_i^2$</p>
+ </div>
+</section>
+
+<section><div class="inner_cell">
+  <p>We write the set of equations for the all the $n+1$ data points in matrix form
     $$
-    b_{0}=c_{{1}}v_{{1}}+c_{{2}}v_{{2}}+\cdots +c_{{m}}v_{{m}}.
+    \left[
+    \begin{matrix}
+    y_0  \\
+    y_1 \\
+    \vdots  \\
+    y_n \\
+    \end{matrix}
+    \right]
+    =
+
+    \left[
+    \begin{matrix}
+    z_0 (x_0) & z_1 (x_0) & \cdots & z_m (x_0) \\
+    z_0 (x_1) & z_1 (x_1) & \cdots & z_m (x_1) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    z_0 (x_n) & z_1 (x_n) & \cdots & z_m (x_n) \\
+    \end{matrix}
+    \right]
+    \left[
+    \begin{matrix}
+    a_0  \\
+    a_1 \\
+    \vdots  \\
+    a_m \\
+    \end{matrix}
+    \right]
+    +
+    \left[
+    \begin{matrix}
+    e (x_0)  \\
+    e (x_1) \\
+    \vdots  \\
+    e (x_n) \\
+    \end{matrix}
+    \right]
     $$
+    we'll define
+    $$
+    \{Y\} = 
+    \left[
+    \begin{matrix}
+    y (x_0)  \\
+    y (x_1) \\
+    \vdots  \\
+    y (x_n) \\
+    \end{matrix}
+    \right], 
+    [Z] = 
+    \left[
+    \begin{matrix}
+    z_0 (x_0) & z_1 (x_0) & \cdots & z_m (x_0) \\
+    z_0 (x_1) & z_1 (x_1) & \cdots & z_m (x_1) \\
+    \vdots & \vdots & \ddots & \vdots \\
+    z_0 (x_n) & z_1 (x_n) & \cdots & z_m (x_n) \\
+    \end{matrix}
+    \right], 
+    \{e\} = 
+    \left[
+    \begin{matrix}
+    e (x_0)  \\
+    e (x_1) \\
+    \vdots  \\
+    e (x_n) \\
+    \end{matrix}
+    \right]
+    $$
+    which contain the values of the basis functions and the errors at each point, and
+    $$
+    \{A\} = 
+    \left[
+    \begin{matrix}
+    a_0  \\
+    a_1 \\
+    \vdots  \\
+    a_m \\
+    \end{matrix}
+    \right]
+    $$ which contains the $m+1$ parameters we optimize.
   </p>
-  <p>
-    If we apply our matrix $\textbf{A}$ to $b_0$ $k$ times we get
-    $$
-    {\begin{array}{lcl}A^{{k}}b_{0}&=&c_{{1}}A^{{k}}v_{{1}}+c_{{2}}A^{{k}}v_{{2}}+\cdots +c_{{m}}A^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}v_{{1}}+c_{{2}}\lambda _{{2}}^{{k}}v_{{2}}+\cdots +c_{{m}}\lambda _{{m}}^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}\left(v_{{1}}+{\frac  {c_{{2}}}{c_{{1}}}}\left({\frac  {\lambda _{{2}}}{\lambda _{{1}}}}\right)^{{k}}v_{{2}}+\cdots +{\frac  {c_{{m}}}{c_{{1}}}}\left({\frac  {\lambda _{{m}}}{\lambda _{{1}}}}\right)^{{k}}v_{{m}}\right).\end{array}}
-    $$
-    using the fact that for the eigenvectors $\textbf{A} \nu_i = \lambda_i \nu_i$. 
-  </p>
-  <p>Because $\lambda_1$ is larger than any other $\lambda$, all the terms except the first in the bracket tend to zero as $k$ gets larger.</p>
-</div>
+</div></section>
+<section>
+  <div class="inner_cell">
+  <p>We can also express error in our model as a sum of the squares much like before:
+   $$
+   S_r = \sum_{i=0}^{n}\left(y_i - \sum_{j=0}^{m} a_j z_j(x_i)  \right)^2
+   $$<br>
+   You can show by taking partial derivatives that $S_r$ is minimised when<br><br>
+   $$
+   [[Z]^T[Z]]\{A\} = \{[Z^T]\{Y\}\}
+   $$<br>
+   More details can of the derivation can be found <a href="http://fourier.eng.hmc.edu/e176/lectures/NM/node35.html">here</a>, though the notation is a little different.
+ </p>
+
+</p>
+</div></section>
+
+
+<section>
+  <div class="inner_cell">
+    <h3>Power method, why does it work?</h3>
+    <p>If our matrix is diagonalizable it has a set of orthogonal eigenvectors $\nu_1, \nu_2, \ldots, \nu_n $with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ with  $|\lambda _{1}|>|\lambda _{j}|$ for $j>1$.</p>
+    <p>Any vector can be expanded as a linear combination the $\nu_i$:
+      $$
+      b_{0}=c_{{1}}v_{{1}}+c_{{2}}v_{{2}}+\cdots +c_{{m}}v_{{m}}.
+      $$
+    </p>
+    <p>
+      If we apply our matrix $\textbf{A}$ to $b_0$ $k$ times we get
+      $$
+      {\begin{array}{lcl}A^{{k}}b_{0}&=&c_{{1}}A^{{k}}v_{{1}}+c_{{2}}A^{{k}}v_{{2}}+\cdots +c_{{m}}A^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}v_{{1}}+c_{{2}}\lambda _{{2}}^{{k}}v_{{2}}+\cdots +c_{{m}}\lambda _{{m}}^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}\left(v_{{1}}+{\frac  {c_{{2}}}{c_{{1}}}}\left({\frac  {\lambda _{{2}}}{\lambda _{{1}}}}\right)^{{k}}v_{{2}}+\cdots +{\frac  {c_{{m}}}{c_{{1}}}}\left({\frac  {\lambda _{{m}}}{\lambda _{{1}}}}\right)^{{k}}v_{{m}}\right).\end{array}}
+      $$
+      using the fact that for the eigenvectors $\textbf{A} \nu_i = \lambda_i \nu_i$. 
+    </p>
+    <p>Because $\lambda_1$ is larger than any other $\lambda$, all the terms except the first in the bracket tend to zero as $k$ gets larger.</p>
+  </div>
 </section>
 
 
@@ -368,9 +509,9 @@ linebreaks: { automatic: true }
         scroll: true,
 
         // Parallax background image
-        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg',
+        //parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg',
         // Parallax background size
-        parallaxBackgroundSize: '2000px 1691px', // CSS syntax, e.g. "2100px 900px
+        //parallaxBackgroundSize: '2000px 1691px', // CSS syntax, e.g. "2100px 900px
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
