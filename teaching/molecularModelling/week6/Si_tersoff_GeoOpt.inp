@@ -1,0 +1,63 @@
+&GLOBAL
+  PROJECT Si_tersoff
+  RUN_TYPE GEO_OPT
+&END GLOBAL
+&MOTION
+  &GEO_OPT
+    OPTIMIZER LBFGS
+  &END
+&END MOTION
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      &SPLINE
+       EPS_SPLINE 1.E-6
+      &END
+      &NONBONDED
+        &TERSOFF
+          ATOMS Si Si
+          A        1.8308E3
+          B        4.7118E2
+          lambda1  2.4799
+          lambda2  1.7322
+          alpha    0.00
+          beta     1.0999E-6
+          n        7.8734E-1
+          c        1.0039E5
+          d        1.6218E1
+          h       -5.9826E-1
+          lambda3  1.7322
+          bigR     2.85
+          bigD     0.15
+        &END TERSOFF
+      &END NONBONDED
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE none
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+      A     5.430697500    0.000000000    0.000000000
+      B     0.000000000    5.430697500    0.000000000
+      C     0.000000000    0.000000000    5.430697500
+      MULTIPLE_UNIT_CELL 4 4 4
+    &END CELL
+    &COORD
+      Si    0.000000000    0.000000000    0.000000000
+      Si    0.000000000    2.715348700    2.715348700
+      Si    2.715348700    2.715348700    0.000000000
+      Si    2.715348700    0.000000000    2.715348700
+      Si    4.073023100    1.357674400    4.073023100
+      Si    1.357674400    1.357674400    1.357674400
+      Si    1.357674400    4.073023100    4.073023100
+      Si    4.073023100    4.073023100    1.357674400
+    &END COORD
+    &TOPOLOGY
+      MULTIPLE_UNIT_CELL 4 4 4
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL
