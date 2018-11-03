@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Questions</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+ <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+ <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../revealjs/css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+    }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
+
+  <!-- Get Font-awesome from cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="../custom.css">
+
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg">
+      <h2 style="color:black;" id="Numerical Methods Week 6">Numerical Methods Week 6<a class="anchor-link" href="#Questions Week 6">&#182;</a></h2>
+      <h1 style="color:black;" id="Questions">Questions<a class="anchor-link" href="#Questions">&#182;</a></h1>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
+	<p>Learning outcomes:</p>
+      </div>
+      <br>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Practice using some of the methods we have covered so far.</li>
+        <li> Start to see the utility of eigenvectors and eigenvalues.</li>
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ 
+       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="Practice Questions"><a class="anchor-link" href="#Practice Questions">&#182;</a></h2>
+      <p>The following slides contain a series of questions for you to work through to reinforce your knowledge of the material covered so far adn to start using eigenfunctions.</p>
+      <p>You may also want to look back over the questions in last week's lecture if you did not finish them.</p>
+    </section>
+
+    <section>
+      <h2>differential equations</h2>
+      	<p>Some differential equations can be solved numerically as follows (more details next term).</p>
+	<p>We can approximate a function $y = f(x)$ on a grid of $n$ points that are spaced by $\Delta x$.</p>
+	<p>We can approximate derivatives of $y$ by finite differences
+	  $$
+	  \frac{\text{d}^2 y}{\text{d} x^2} \Big|_i
+	  = \frac{(y_{i+1}-y_{i})/\Delta x - (y_{i}-y_{i-1})/\Delta x}{\Delta x} = \frac{y_{i+1} - 2y_i + y_{i-1}}{\Delta x^2}
+	  $$
+	</p>
+	<p>In matrix form we can write this as
+	  $$
+	  \frac{1}{\Delta x^2}
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  $$
+	</p>
+    </section>
+    <section>
+	<p>
+	  We can write
+	  $$
+	  \frac{\text{d}^2 y}{\text{d} x^2} = g(x)
+	  $$
+	  as
+	  $$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 y_L\\
+	  g_1 \Delta x^2\\
+	  \vdots\\
+	  g_i \Delta x^2\\
+	  \vdots\\
+	  g_{n-2} \Delta x^2\\
+	  -2 y_R\\
+	  \end{pmatrix}
+	  $$
+	  where $y_L$ and $y_R$ are the values of $y$ at the left and right boundaries.
+	</p>
+    </section>
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Find a solution for $y$ in the interval [0,1] when:
+	  <br> - $g(x) = x, y_L = 0.2, y_R=1.5$ with $n=10, 100, 500$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	If we discritize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+	We can write our equations at each point as:
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 0.2\\
+	  x_1 \Delta x^2\\
+	  \vdots\\
+	  x_i \Delta x^2\\
+	  \vdots\\
+	  x_{n-2} \Delta x^2\\
+	  -2 \times 1.5\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p> - Solve when $g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$ in the interval $[-5,5]$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	If we discritize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+	We can write our equations at each point as:
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_{n/2}\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 0\\
+	  0 \times  \Delta x^2\\
+	  \vdots\\
+	  \frac{1}{\Delta x}  \Delta x^2\\
+	  \vdots\\
+	  0 \times \Delta x^2\\
+	  -2 \times 0\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p> Solve $\frac{\text{d}^2 y}{\text{d} x^2} + ky = g(x)$ when $g(x) = C$, $y_L = 5, y_R=0$ in the interval $[-3,3]$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	To get our linear equation we must have $\textbf{D(x)} y(x) = g(x)$, in this case $\textbf{D(x)}y = (\frac{\text{d}^2 }{\text{d} x^2} + k) y$
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 + k \Delta x^2&  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 + k \Delta x^2&  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 + k \Delta x^2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 5\\
+	  C \Delta x^2\\
+	  \vdots\\
+	  C \Delta x^2\\
+	  \vdots\\
+	  C \Delta x^2\\
+	  -2 \times 0\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
+
+    
+    <section>
+      <h2>Power method</h2>
+      	<p>This is a way of finding the eigenvector with the largest eigenvector
+	</p>
+	<p>
+	  <li>Start with a guess $\textbf{x}_0$ at the eigenvector (it must not be orthogonal to the true eigenvector).</li>
+	  <li>Update the eigenvector $\textbf{x}_i = \frac{\textbf{A} \textbf{x}_{n-1}}{||\textbf{A} \textbf{x}_{n-1}||}$</li>
+	</p>
+
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>
+	  Find the largest eigenvector of 
+	  $$ \textbf{A} = \begin{pmatrix}
+	   1 & -1 & -1 & -1\\
+	  -1 &  2 &  0 &  0\\
+	  -1 &  0 &  3 &  1\\
+	  -1 &  0 &  1 &  4
+	  \end{pmatrix}.$$
+	  using the power method.
+	</p>
+      </div>
+      <p>
+	We basically used this when studying Markov Chains in year 1. What is the stationary state of a system described by a Markov chain with this transition matrix?
+	$$
+	P=\begin{bmatrix}0.9&0.075&0.025\\0.15&0.8&0.05\\0.25&0.25&0.5\end{bmatrix}
+	$$.
+      </p>
+
+    </section>
+
+    <section>
+      <h3>Power method, why does it work?</h3>
+      <p>If our matrix is diagonalizable it has a set of orthogonal eigenvectors $\nu_1, \nu_2, \ldots, \nu_n $with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ with  $|\lambda _{1}|>|\lambda _{j}|$ for $j>1$.</p>
+      <p>Any vector can be expanded as a linear combination the $\nu_i$:
+	$$
+	b_{0}=c_{{1}}v_{{1}}+c_{{2}}v_{{2}}+\cdots +c_{{m}}v_{{m}}.
+	$$
+      </p>
+      <p>
+	If we apply our matrix $\textbf{A}$ to $b_0$ $k$ times we get
+	$$
+	{\begin{array}{lcl}A^{{k}}b_{0}&=&c_{{1}}A^{{k}}v_{{1}}+c_{{2}}A^{{k}}v_{{2}}+\cdots +c_{{m}}A^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}v_{{1}}+c_{{2}}\lambda _{{2}}^{{k}}v_{{2}}+\cdots +c_{{m}}\lambda _{{m}}^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}\left(v_{{1}}+{\frac  {c_{{2}}}{c_{{1}}}}\left({\frac  {\lambda _{{2}}}{\lambda _{{1}}}}\right)^{{k}}v_{{2}}+\cdots +{\frac  {c_{{m}}}{c_{{1}}}}\left({\frac  {\lambda _{{m}}}{\lambda _{{1}}}}\right)^{{k}}v_{{m}}\right).\end{array}}
+	$$
+	using the fact that for the eigenvectors $\textbf{A} \nu_i = \lambda_i \nu_i$. 
+      </p>
+      <p>Because $\lambda_1$ is larger than any other $\lambda$, all the terms except the first in the bracket tend to zero as $k$ gets larger.</p>
+    </section>
+    
+    <section>
+      <h2>All Eigenfunctions</h2>
+      <p>We can find the eigenfunctions of a matrix from the QR algorithm.</p>
+      <p>It can be shown that the sequence
+	$$
+	\begin{align*}
+	\textbf{A}^{0} & = \textbf{A} \\
+	\textbf{A}^{k+1} & = \textbf{R}^{k} \textbf{Q}^{k}
+	\end{align*}
+	$$
+	converges to a upper triangular matrix with the eigenvalues of $\textbf{A}$ as its diagonal entries.
+      </p>
+      <p>
+	In the sequence $\textbf{Q}^{k}$ and  $\textbf{R}^{k}$ are formed by the QR decomposition of $\textbf{A}^{k}$
+	$$\textbf{A}^{k} = \textbf{Q}^{k} \textbf{R}^{k}$$
+      </p>
+      <p>It can also be shown that the sequence of matrix products
+	$$
+	\textbf{Q}^{0} \textbf{Q}^{1} \textbf{Q}^{2} \cdots \textbf{Q}^{k-1} \textbf{Q}^{k}
+	$$
+	converges to the a matrix with the eigenvectors of $\textbf{A}$ as the column entries.
+      </p>
+
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Modify the QR algorithm code to also compute and output the eigenvectors of a matrix.</p>
+	<p>Test it on simple systems and compare to using Gauss Elimination.</p>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Diagonalization</h2>
+      <p>We can use the eigenfunctions to define matrix functions.</p>
+      <p>We can use the matrix of eigenfunctions $\textbf{P}$ to perform a similarity transform on our matrix, taking it to diagonal form $\textbf{D}$. Where $\textbf{D}$ is a diagonal matrix with the eigenvectors of  $\textbf{A}$ as its diagonal elements.
+	$$
+	\textbf{P}^{-1} \textbf{A}\textbf{P} =  \textbf{D}
+	$$
+      </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>verify this using your QR code for
+	  $$
+	  \textbf{A}=\begin{bmatrix}1&3\\2&1\end{bmatrix}
+	  $$
+	 </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Matrix functions</h2>
+      <p>We can use the diagonal form to define functions of matrices.</p>
+      <p>
+	$$
+	f(\textbf{A}) = \textbf{P} f(\textbf{D})\textbf{P}^{-1}
+	$$
+      </p>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Find $\textbf{A}^4$ and $\textbf{A}!$ for
+		  $$
+	  \textbf{A}=\begin{bmatrix}1&3\\2&1\end{bmatrix}
+	  $$
+	</p>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Optimization of matrices</h2>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>The minimum of the quadratic form
+	  $$
+	  f(\textbf{x}) = \frac{1}{2}\textbf{x}^T \textbf{A x} - \textbf{b}^T\textbf{x}
+	  $$
+	  is given by the solution of $\textbf{Ax} - \textbf{b}= 0$
+	</p>
+	<p>Find the minimum of $f(\textbf{x})$ where $\textbf{x}^T = (-2,-1,0,1,2)$, $A_{ij} = 2 \delta_{ij}$ and $b_i = 1$ where $\delta_{ij}$ is the <a href='https://en.wikipedia.org/wiki/Kronecker_delta'>Kronecker delta</a>.</p>
+	<p>Pen and paper - by looking at the result of differentiating  $f(\textbf{x})$ by $x_i$ derive the above formula for the minima of $f(\textbf{x})$.
+	</p>
+      </div>
+    </section>
+    
+    <section>
+      <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+      <p>You should be reading additional material to provide a solid background to what we do in class</p>
+      <p>All the textbooks contain sections on solving linear equations, for instance chapter 2 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+      <h3>Homework</h3>
+      <p>The next portfolio item is due in 1 weeks time, 16:00 on 16th Novermber.</p>
+      <p>Marks and feedback for portfolio item 1 is available on Bb.</p>
+    </section>
+
+    <section>
+      <h2 id="Snake">Snake<a class="anchor-link" href="#Snake">&#182;</a></h2>
+      <p>Use the arrow keys</p>
+      <form><input type="button" onClick="startGame()" value="start game"></form>
+      <div id="snakebox" class="jxgbox" style="width:500px; height:500px; overflow:hidden; "></div>
+      <script>
+    var snakeBoard = JXG.JSXGraph.initBoard('snakebox',{boundingbox: [0, 20, 20, 0],grid:true});
+    var snake = {
+        points : [[10,11],[10,10]],
+        dir : [1,0],
+        size: 2,
+        newSize: 2,
+        speed: 50,
+        hitSelf: function(x,y) {
+            for (var i=0;i<this.size-1;i++) {
+                if (x==this.points[0][i]) if (y==this.points[1][i]) { return true; }
+            }
+            return false;
+        }
+    }
+    var curve = snakeBoard.create('curve', snake.points , {strokeWidth:20,strokeOpacity:0.5});
+    var point = snakeBoard.create('point', [
+        Math.round(Math.random()*18)+1,Math.round(Math.random()*18)+1], 
+        {strokeColor:'#4CADD4',fillColor:'#4CADD4',strokeWidth:10,name:' '});
+    var t = snakeBoard.create('text', [2,1,function() { return snake.size; }], {fontSize:28});
+
+    var setRandomPosition = function()  {
+        point.setPositionDirectly(JXG.COORDS_BY_USER,
+            [Math.round(Math.random()*18)+1,
+            Math.round(Math.random()*18)+1]);
+    }
+    var keyDown = function (Evt) {
+        var code;
+        if (!Evt) Evt = window.event;
+        if (Evt.which) {
+            code = Evt.which;
+        } else if (Evt.keyCode) {
+            code = Evt.keyCode;
+        }
+        // 37: left,  38: up,  39: right,  40: down
+        if (code==37) { snake.dir = [-1,0]; return false;}
+        else if (code==38) { snake.dir = [0,1]; return false;}
+        else if (code==39) { snake.dir = [1,0]; return false;}
+        else if (code==40) { snake.dir = [0,-1]; return false;}
+        return true;
+    }
+    document.onkeydown = keyDown;
+
+    var crawl = function() {
+        if (snake.size>=snake.newSize) {
+            snake.points[0].shift();
+            snake.points[1].shift();
+        }
+        var x = snake.points[0][snake.points[0].length-1]+snake.dir[0];
+        snake.points[0].push(x);
+        var y = snake.points[1][snake.points[1].length-1]+snake.dir[1];
+        snake.points[1].push(y);
+        snake.size = snake.points[0].length;
+        snakeBoard.update();
+        if (x>=20 || x<=0 || y>=20 || y<=0 || snake.hitSelf(x,y)) {
+            alert('Game over');
+        } else {
+            if (x==point.X()) if (y==point.Y()) {
+                snake.newSize += 5;
+                snake.speed -= 10;
+                setRandomPosition();
+                snakeBoard.update();
+            }
+            setTimeout(crawl,snake.speed);
+        }
+    }
+    
+    var startGame = function () {
+        snake.points[0].splice(0,snake.size,10,11);
+        snake.points[1].splice(0,snake.size,10,10);
+        snake.dir = [1,0];
+        snake.size = 2;
+        snake.newSize = 2;
+        snake.speed = 200;
+        setRandomPosition();
+        crawl();
+     } 
+	</script>
+    </section>
+    
+  </div> <!-- slides -->
+</div> <!-- reveal -->
+
+  <script>
+
+  require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        mouseWheel: false,
+        center: false,
+        scroll: true,
+
+        // Parallax background image
+        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+        // Parallax background size
+        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: "../../../revealjs//lib/js/classList.js",
+          condition: function() { return !document.body.classList; } },
+          { src: "../../../revealjs//plugin/notes/notes.js",
+          async: true,
+          condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      var update = function(event){
+        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+        $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+  );
+  </script>
+
+</body>
+
+</html>
