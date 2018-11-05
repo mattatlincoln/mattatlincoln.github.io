@@ -273,11 +273,37 @@ linebreaks: { automatic: true }
  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
  <li>Derive Newton's Method for opimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
- <li>Implement Newton's Method for optimization and use it to find the minima of the following functions.</li>
- <li>$f(x) = x^2 - \cos{x}$, </li>	
- <li>$f(x) = x^4 − 14 x^3 + 60x^2 − 70x$
+ <ul>
+   <li>Implement Newton's Method for optimization and use it to find minima of the following functions.
+   <ul>
+      <li>$f(x) = x^2 - \cos{x}$, </li> 
+      <li>$f(x) = x^4 − 14 x^3 + 60x^2 − 70x$ </li>
+   </ul>
  </li>
+ </ul><br><br> 
+
 </div>
+<br><br>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">  
+  <h2>Root finding in higher dimensions</h2>
+  <p>Newton's method or modified Newton schemes can be readily extended to higher dimensions.</p>
+  <p>
+    One may also use Newton's method to solve systems of $k$ (nonlinear) equations, which amounts to finding the zeroes of continuously differentiable functions $F : ℝ^k → ℝ^k$ - i.e. a vector is mapped to a vector. <br>
+
+    In the formulation given above, one then has to left multiply with the inverse of the $k \times k$ Jacobian matrix $J_F(x_n)$ instead of dividing by $f′(x_n)$ as we did in one dimension:
+    $$
+    x_{n+1}=x_{n}-J_{F}(x_{n})^{-1}F(x_{n})
+    $$
+</p>
+<p>
+  Instead of finding the inverse we can instead solve the set of equivalent equations
+  $$J_{F}(x_{n})(x_{n+1}-x_{n})=-F(x_{n})$$ for the unknown $x_{n + 1} − x_n$.
+  The solutions give you the change in the guess vector at each iteration.
+  </p>
 </div>
 </section>
 
@@ -286,19 +312,19 @@ linebreaks: { automatic: true }
   <h2>Optimization in higher dimensions</h2>
   <p>Newton's method or modified Newton schemes for optimization can be readily extended to higher dimensions.</p>
   <p>
-    One may also use Newton's method to solve systems of $k$ (nonlinear) equations, which amounts to finding the zeroes of continuously differentiable functions $F : ℝ^k → ℝ^k$. <br>
+    You can find minima of a scalar field using the same multidimensional Newton algorithm. </p>
+    <p>
 
-    In the formulation given above, one then has to left multiply with the inverse of the $k \times k$ Jacobian matrix $J_F(x_n)$ instead of dividing by $f′(x_n)$:
+    If you have a scalar field $f(x_1, x_2, \ldots , x_n)$ then the grad of it is a series of equations that should be equal to zero at a minimum (extrema).
+    You can then use the algorithm on the previous slide to find the zeros of the grad of $f$.
     $$
-    x_{n+1}=x_{n}-J_{F}(x_{n})^{-1}F(x_{n})
+    x_{n+1}=x_{n}-J_{ \nabla f}(x_{n})^{-1} \nabla f(x_{n})
     $$
+    The Jacobian of the grad of a scalar field is often called the Hessian and contains the mixed 2nd order partial derivatives of the field.
 </p>
-<p>
-  Instead of finding the inverse we can instead solve the set of equivalent equations
-$$J_{F}(x_{n})(x_{n+1}-x_{n})=-F(x_{n})$$ for the unknown $x_{n + 1} − x_n$.
-  </p>
 </div>
 </section>
+
 
 <section>
   <div class="inner_cell">  
