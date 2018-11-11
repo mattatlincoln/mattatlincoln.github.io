@@ -177,6 +177,135 @@ MathJax.Hub.Config({
 	  where $y_L$ and $y_R$ are the values of $y$ at the left and right boundaries.
 	</p>
     </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p>Find a solution for $y$ in the interval [0,1] when:
+	  <br> - $g(x) = x, y_L = 0.2, y_R=1.5$ with $n=10, 100, 500$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	If we discritize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+	We can write our equations at each point as:
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 0.2\\
+	  x_1 \Delta x^2\\
+	  \vdots\\
+	  x_i \Delta x^2\\
+	  \vdots\\
+	  x_{n-2} \Delta x^2\\
+	  -2 \times 1.5\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p> - Solve when $g(x_{n/2}) = 1/\Delta x$, all other $g_i = 0$ and $y_L = 0, y_R=0$ in the interval $[-5,5]$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	If we discretize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+	We can write our equations at each point as:
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 &  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 &  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_{n/2}\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 0\\
+	  0 \times  \Delta x^2\\
+	  \vdots\\
+	  \frac{1}{\Delta x}  \Delta x^2\\
+	  \vdots\\
+	  0 \times \Delta x^2\\
+	  -2 \times 0\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	<p> Solve $\frac{\text{d}^2 y}{\text{d} x^2} + ky = g(x)$ when $g(x) = C$, $y_L = 5, y_R=0$ in the interval $[-3,3]$</p>
+      </div>
+      <p></p>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+	To get our linear equation we must have $\textbf{D(x)} y(x) = g(x)$, in this case $\textbf{D(x)}y = (\frac{\text{d}^2 }{\text{d} x^2} + k) y$
+	$$
+	  \begin{pmatrix}
+	  -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
+	   1 & -2 + k \Delta x^2&  1 &  0 & 0 & 0 & 0 & 0 \\
+	   0 & \ddots & \ddots & \ddots & 0 & 0 & 0 & 0\\
+	   0 & 0 & 1 & -2 + k \Delta x^2&  1 &  0 & 0 & 0  \\
+	   0 & 0 & 0 & \ddots & \ddots & \ddots & 0 & 0\\
+	   0 & 0 & 0 & 0 & 0 & 1 & -2 + k \Delta x^2 &  1   \\
+	  0  &  0 &  0 &  0 & 0 & 0 & 0 & -2 \\
+	  \end{pmatrix}
+	  \begin{pmatrix}
+	  y_0\\
+	  y_1\\
+	  \vdots\\
+	  y_i\\
+	  \vdots\\
+	  y_{n-2}\\
+	  y_{n-1}\\
+	  \end{pmatrix}
+	  =
+	  \begin{pmatrix}
+	  -2 \times 5\\
+	  C \Delta x^2\\
+	  \vdots\\
+	  C \Delta x^2\\
+	  \vdots\\
+	  C \Delta x^2\\
+	  -2 \times 0\\
+	  \end{pmatrix}
+	  $$
+      </div>
+    </section>
     
     <section>
       <h2>Building the stencil (array representing $\frac{\text{d}^2 y}{\text{d} x^2}$)</h2>
@@ -185,6 +314,7 @@ MathJax.Hub.Config({
     //allocate space for our stencil
     static double D[501][502];
     int n = 501;
+    // fill the array with zeros
     for (int i = 0; i< n; i++) {
         for (int j = 0; j< n + 1; j++) {
             D[i][j] = 0;
@@ -194,6 +324,7 @@ MathJax.Hub.Config({
     //fill the stencil	  
     D[0][0] = -2; //top row
     D[n - 1][n - 1] = -2; // bottom row
+    // loop over other rows - we miss the top and bottom ones
     for (int i = 1; i< n - 1; i++) {
         D[i][i - 1] = 1;
         D[i][i] = -2;
@@ -201,7 +332,7 @@ MathJax.Hub.Config({
     }	  
 	</code>
       </pre>
-      <p>I used just a single loop that build a row at a time - there are plenty of other ways</p>
+      <p>I used just a single loop over rows to build a row at a time (there are plenty of other ways you could do this).</p>
     </section>
 
     <section>
@@ -214,7 +345,7 @@ MathJax.Hub.Config({
       </div>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<h3>Hints</h3>
+	<h4>Hints</h4>
 	<p>Note the stencil is the same, but you need to modify $g(x)$</p>
 	<p>Output your data in a format that you can read into Excel (or other brand of numerical software)</p>
 	<pre>
@@ -230,204 +361,11 @@ MathJax.Hub.Config({
 	</pre>
       </div>
     </section>
-
-    <section>
-      <section>
-	<h2>Reusing code</h2>
-	<p>You may dislike having lots of code / routines copied around everytime we reuse something</p>
-	<p>The solution is to $\textbf{include}$ other files or, generally, libraries.</p>
-	<p>We can make our own library file by copying functions other than <span style='font-family: monospace'>main</span> into a file called <span style='font-family: monospace'>'my_library.h'</span></p>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_0.png'>
-	    </td>
-	  </tr>
-	</table>
-      </section>
-      <section>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_1.png'>
-	    </td>
-	  </tr>
-	</table>
-	<p>This is my example project. Right click on the $\textbf{bolded}$ project name in the pane to right.</p>
-	<p>Then select  <span style='font-family: monospace'>properties</span>.</p>
-      </section>
-      <section>
-	<p>A new window should have appeared, like this:<p>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_2.png'>
-	    </td>
-	  </tr>
-	</table>
-	<p>Open the <span style='font-family: monospace'>C/C++</span> then the   <span style='font-family: monospace'>General</span> tab</p>
-      </section>
-      <section>
-	<p>Then click on drop down button in the second column of the the 'Additional Include Directories' row and select edit</p>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_3.png'>
-	    </td>
-	  </tr>
-	</table>
-      </section>
-      <section>
-	<p>You should see something like this:</p>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_4.png'>
-	    </td>
-	  </tr>
-	</table>
-      </section>
-      <section>
-	<p>Click on the folder icon, and select the directory where you saved your 'my_library.h' file in</p>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_5.png'>
-	    </td>
-	  </tr>
-	</table>
-      </section>
-      <section>
-	<table>
-	  <tr>
-	    <td>
-	    <img src='../images/include_dir_6.png'>
-	    </td>
-	  </tr>
-	</table>
-	<p>Now I can add a #include line in the file and use any functions in the library .</p>
-      </section>
-    </section>
-    
-    <section>
-      <h2>Power method</h2>
-      	<p>This is a way of finding the eigenvector with the largest eigenvector
-	</p>
-	<p>
-	  <li>Start with a guess $\textbf{x}_0$ at the eigenvector (it must not be orthogonal to the true eigenvector).</li>
-	  <li>Update the eigenvector $\textbf{x}_i = \frac{\textbf{A} \textbf{x}_{n-1}}{||\textbf{A} \textbf{x}_{n-1}||}$</li>
-	</p>
-
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>
-	  Find the largest eigenvector of 
-	  $$ \textbf{A} = \begin{pmatrix}
-	   1 & -1 & -1 & -1\\
-	  -1 &  2 &  0 &  0\\
-	  -1 &  0 &  3 &  1\\
-	  -1 &  0 &  1 &  4
-	  \end{pmatrix}.$$
-	  using the power method.
-	</p>
-      </div>
-      <p>
-	We basically used this when studying Markov Chains in year 1. What is the stationary state of a system described by a Markov chain with this transition matrix?
-	$$
-	P=\begin{bmatrix}0.9&0.075&0.025\\0.15&0.8&0.05\\0.25&0.25&0.5\end{bmatrix}
-	$$.
-      </p>
-
-    </section>
-
-    <section>
-      <h2>All Eigenfunctions</h2>
-      <p>We can find the eigenfunctions of a matrix from the QR algorithm.</p>
-      <p>It can be shown that the sequence
-	$$
-	\begin{align*}
-	\textbf{A}^{0} & = \textbf{A} \\
-	\textbf{A}^{k+1} & = \textbf{R}^{k} \textbf{Q}^{k}
-	\end{align*}
-	$$
-	converges to a upper triangular matrix with the eigenvalues of $\textbf{A}$ as its diagonal entries.
-      </p>
-      <p>
-	In the sequence $\textbf{Q}^{k}$ and  $\textbf{R}^{k}$ are formed by the QR decomposition of $\textbf{A}^{k}$
-	$$\textbf{A}^{k} = \textbf{Q}^{k} \textbf{R}^{k}$$
-      </p>
-      <p>It can also be shown that the sequence of matrix products
-	$$
-	\textbf{Q}^{0} \textbf{Q}^{1} \textbf{Q}^{2} \cdots \textbf{Q}^{k-1} \textbf{Q}^{k}
-	$$
-	converges to the a matrix with the eigenvectors of $\textbf{A}$ as the column entries.
-      </p>
-
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>Modify the QR algorithm code to also compute and output the eigenvectors of a matrix.</p>
-	<p>Test it on simple systems and compare to using Gauss Elimination.</p>
-      </div>
-    </section>
-    
-    <section>
-      <h2>Diagonalization</h2>
-      <p>We can use the eigenfunctions to define matrix functions.</p>
-      <p>We can use the matrix of eigenfunctions $\textbf{P}$ to perform a similarity transform on our matrix, taking it to diagonal form $\textbf{D}$. Where $\textbf{D}$ is a diagonal matrix with the eigenvectors of  $\textbf{A}$ as its diagonal elements.
-	$$
-	\textbf{P}^{-1} \textbf{A}\textbf{P} =  \textbf{D}
-	$$
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>verify this using your QR code for
-	  $$
-	  \textbf{A}=\begin{bmatrix}1&3\\2&1\end{bmatrix}
-	  $$
-	 </p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Matrix functions</h2>
-      <p>We can use the diagonal form to define functions of matrices.</p>
-      <p>
-	$$
-	f(\textbf{A}) = \textbf{P} f(\textbf{D})\textbf{P}^{-1}
-	$$
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>Find $\textbf{A}^4$ and $\textbf{A}!$ for
-		  $$
-	  \textbf{A}=\begin{bmatrix}1&3\\2&1\end{bmatrix}
-	  $$
-</p>
-      </div>
-    </section>
-    
-    <section>
-      <h2>Optimization of matrices</h2>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>The minimum of the quadratic form
-	  $$
-	  f(\textbf{x}) = \frac{1}{2}\textbf{x}^T \textbf{A x} - \textbf{b}^T\textbf{x}
-	  $$
-	  is given by the solution of $\textbf{Ax} - \textbf{b}= 0$
-	</p>
-	<p>Find the minimum of $f(\textbf{x})$ where $\textbf{x}^T = (-2,-1,0,1,2)$, $A_{ij} = 2 \delta_{ij}$ and $b_i = 1$ where $\delta_{ij}$ is the <a href='https://en.wikipedia.org/wiki/Kronecker_delta'>Kronecker delta</a>.</p>
-	<p>Pen and paper - by looking at the result of differentiating  $f(\textbf{x})$ by $x_i$ derive the above formula for the minima of $f(\textbf{x})$.
-	</p>
-      </div>
-    </section>
     
     <section>
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
       <p>All the textbooks contain sections on solving linear equations, for instance chapter 2 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
-      <h3>Homework</h3>
-      <p>The next portfolio item is due today at 16:00.</p>
     </section>
 
     <section>
