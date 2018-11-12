@@ -187,7 +187,7 @@ MathJax.Hub.Config({
       <p></p>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	If we discritize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+	If we discretize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
 	We can write our equations at each point as:
 	$$
 	  \begin{pmatrix}
@@ -312,8 +312,12 @@ MathJax.Hub.Config({
       <pre>
 	<code>
     //allocate space for our stencil
-    static double D[501][502];
-    int n = 501;
+    int N = 301;
+    int M = N+1;
+    double** D = new double*[N];
+    for (int i = 0; i < N; ++i) {
+        D[i] = new double[M];
+    }
     // fill the array with zeros
     for (int i = 0; i< n; i++) {
         for (int j = 0; j< n + 1; j++) {
@@ -336,29 +340,25 @@ MathJax.Hub.Config({
     </section>
 
     <section>
-      <h2>Try another</h2>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<p>Find a solution for $y$ in the interval [-1,1] when:
-	  <br> $g(x) = -kx,$ where <br> $y_L = 0.0, y_R=0, k=1.0$ with $n=100, 500$</p>
-	<p>Does this look like the solution you expect?</p>
-      </div>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
                   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<h4>Hints</h4>
-	<p>Note the stencil is the same, but you need to modify $g(x)$</p>
+	<h3>Task Solve the question in the Week 8 online test.</h3>
+	<p>You need to build an augmented matrix including a modified $g(x)$</p>
+  <p>Think carefully about you value of $\Delta x$</p>
 	<p>Output your data in a format that you can read into Excel (or other brand of numerical software)</p>
 	<pre>
 	  <code>
+      //something like
 	    std::ofstream myout("HarmOsc.csv");
 	    /*
 	    bunch of stuff
 	    */
             for (int i = 0; i< n; i++) {
-               myout << i / (n / 2.0) -1  << ", " << D[i][n] << "\n";
+               myout << i / (n / 2.0) -1  << ", " << x[n] << "\n";
             }
 	  </code>
 	</pre>
+  <p>You could include that in a modified gauss_elim routine, or use the modified gauss_elim I gave in <a href="https://blackboard.lincoln.ac.uk/bbcswebdav/pid-2250886-dt-content-rid-3594326_2/courses/MTH3007M-1819/myLibrary%281%29.h">week 7</a> as feedback on the first Portfolio item that returns the solution.</p>
       </div>
     </section>
     
@@ -366,6 +366,7 @@ MathJax.Hub.Config({
       <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
       <p>You should be reading additional material to provide a solid background to what we do in class</p>
       <p>All the textbooks contain sections on solving linear equations, for instance chapter 2 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+      <p>The second Portfolio item is due today at 4.</p>
     </section>
 
     <section>
