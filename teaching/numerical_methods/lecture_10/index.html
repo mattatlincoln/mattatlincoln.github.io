@@ -24,262 +24,313 @@
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
-  if( window.location.search.match( /print-pdf/gi ) ) {
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../revealjs/css/print/pdf.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  }
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 
   </script>
 
   <!--[if lt IE 9]>
   <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-  <![endif]-->
+<![endif]-->
 
-  <!-- Loading the mathjax macro -->
+<!-- Loading the mathjax macro -->
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-  <!-- Load mathjax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-  <!-- MathJax configuration -->
-  <script type="text/x-mathjax-config">
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    // Center justify equations in code and markdown cells. Elsewhere
-    // we use CSS to left justify single line equations in code cells.
-    displayAlign: 'center',
-    "HTML-CSS": {
-      styles: {'.MathJax_Display': {"margin": 0}},
-      linebreaks: { automatic: true }
-    }
-  });
-  </script>
-  <!-- End of mathjax configuration -->
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
 
-  <!-- Get Font-awesome from cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-  <!-- Custom stylesheet, it must be in the same directory as the html file -->
-  <link rel="stylesheet" href="../custom.css">
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
 
 </head>
 <body>
 
-<div class="reveal">
-  <div class="slides">
+  <div class="reveal">
+    <div class="slides">
 
-    <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/f/fa/Fourier_synthesis.svg" background-position='top'>
-      <h2 style="color:black;" id="Numerical Methods Week 10">Numerical Methods Week 10<a class="anchor-link" href="#Numerical Methods Week 10">&#182;</a></h2>
-      <h1 style="color:black;" id="Fourier Series and Transforms">Fourier Series and Transforms<a class="anchor-link" href="#Fourier Series and Transforms">&#182;</a></h1>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
-	<p>Learning outcomes:</p>
+      <section>
+        <h2 style="color:black;" id="Numerical Methods Week 10">Numerical Methods Week 10<a class="anchor-link" href="#Numerical Methods Week 10">&#182;</a></h2>
+        <h1 style="color:black;" id="Fourier Series and Transforms">Fourier Series and Transforms<a class="anchor-link" href="#Fourier Series and Transforms">&#182;</a></h1>
+        <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
+        <p>Learning outcomes:</p>
       </div>
       <br>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> Numerically calculate Fourier series of functions.</li>
-        <li> Perform numerical Fourier transform of functions.</li>
-      </div>
-      <br>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- 
-       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
-      </div>
-    </section>
+      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+      <li> Numerically calculate Fourier series of functions.</li>
+      <li> Perform numerical Fourier transform of functions.</li>
+    </div>
+    <br>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 
-    <section>
-      <h2>Fourier Series</h2>
-      <p>Expanding a function in a series of basis functions, particularly periodic sin and cosines can be very useful.
-	<li>May help analysing a function.</li>
-	<li>Can be used make a filter - removing high or low frequency noise.</li>
-      </p>
-      <p>Suppose we have a periodic function - this means that
-	$$
-	f(x+T) = f(x)
-	$$
-	where $T = 2l$ is the period.
-      </p>
-      <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
-	$$
-	\phi_n(x) = \cos(\frac{n \pi x}{l}) \text{ and } \psi_n(x) = \sin(\frac{n \pi x}{l})
-	$$
-      </p>
+    <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+  </div>
+</section>
 
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</li>
-      </div>
-      
-    </section>
-    
-    <section>
-      <h2>Orthogonal Functions</h2>
-      <p>
-	$\phi_n(x)$ and $\psi_n(x)$ have the special properties that
-	$$
-	\int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
-	$$
-	where $\delta_{nm}$ is the Kronecker delta.</p>
-      <p>Also
-	$$
-	\int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
-	$$
-      </p>
-    </section>
+<section>
+  <div class="inner_cell">
+    <h2>Fourier Series</h2>
+    <p>Expanding a function in a series of basis functions, particularly periodic sin and cosines can be very useful.
+     <li>May help analysing a function.</li>
+     <li>Can be used make a filter - removing high or low frequency noise.</li>
+   </p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+  <p>Suppose we have a periodic function - this means that
+   $$
+   f(x+T) = f(x)
+   $$
+   where $T = 2l$ is the period.
+ </p>
+ <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
+   $$
+   \phi_n(x) = \cos \left( \frac{n \pi x}{l} \right) \text{ and } \psi_n(x) = \sin \left( \frac{n \pi x}{l} \right)
+   $$
+ </p>
 
-    
-    <section>
-      <h2>Fourier Series</h2>
-      <p>$\it{Assume}$ that we can expand our function as
-	$$
-	f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]
-	$$
-	This isn't actually true for all $x$, but it is good enough for now.
-      </p>
-    </section>
-    <section>
-      <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$. For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
-        $$
-        \begin{align*}
-        \int_{-l}^{l}\phi_m(x) f(x) \text{d}x = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
-                                    = \frac{a_0}{2} \int_{-l}^{l}\phi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\phi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\phi_m(x) \psi_n(x)\text{d}x]
-        \end{align*}
-        $$
-        Using the orthogonality relations only the term containing $a_m$ survives, giving
-        $$
-        a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x
-        $$
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
-      </div>
-    </section>
+ <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+ 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ <p>Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</p>
+</div>
+<p></p>
+<br>
+</div>
+</section>
 
-    <section>
-      <h2>Numerical Fourier Series</h2>
-      <p>To calculate the terms in the fourier series we need to numerically intergrate our function.</p>
-      <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals as
-         $$
-         a_m = \frac{1}{l} \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \Delta x   
-         $$
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	<li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
-	<li>Calculate the Fourier series of the periodic function $f(x) = x^2$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
-	<li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
-	<li>What does the previous series converge to at $x =  -\pi$</li>
-      </div>
-    </section>
+<section>
+  <div class='inner_cell'>
+  <h2>Orthogonal Functions</h2>
+  <p>
+   $\phi_n(x)$ and $\psi_n(x)$ have the special properties that
+   $$
+   \int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
+   $$
+ where $\delta_{nm}$ is the Kronecker delta.</p>
+ <p>Also
+   $$
+   \int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
+   $$
+ </p>
+</div>
+</section>
 
-    <section>
-      <h2>Parseval's Theorem</h2>
-      <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
-         $$
-         \frac{1}{l} \int_{-l}^{l} f(x)^2 \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
-         $$
-      </p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
-        <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0)$.</li>
-      </div>
-    </section>
 
-    <section>
-      <h2>Other forms of Fourier Series</h2>
-      <p>Odd or even functions can be expanded as just $\sin$ or $\cos$ series</p>
-      <p>The expansion can be written in terms of complex exponentials instead of $\sin$ and $\cos$ terms - instead of our functions $\phi$ and $\psi$ we use
-      $$
-      \chi_n(x) = \exp(\frac{inx\pi}{l})
-      $$
-      and expand $f(x)$ as
-      $$
-      f(x) = \sum_{n=-\infty}^{\infty}c_n \chi_n(x)
-      $$
-      </p>
-      <p>This is just rewriting the series, because $\chi_n$ are just linear combinations of $\phi_n$ and $\psi_n$. The $\chi_n$ also satisfy orthogonality relations, and the coefficients can be found in the same way - multiply by the complex conjugate of the function whose coefficient you want to find and then integrate over the period.
-      $$
-      c_n = \int_{-l}^{l} \chi^*_n(x) f(x) \text{d}x
-      $$
-    </section>
+<section>
+  <div class="inner_cell">
+  <h2>Fourier Series</h2>
+  <p>Assume that we can expand our function in the interval $(-l,l]$ as
+   $$
+   \begin{align*}
+   f(x) & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]\\
+        & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \cos \left( \frac{n \pi x}{l} \right) + b_n \sin \left( \frac{n \pi x}{l} \right)]
+   \end{align*}
+   $$
+   This isn't actually true for all $x$, but it is good enough for now.
+ </p>
+ <p>Note this will repeat over $(l,3l]$ and other $(il,(i+2)l]$ where $i \in \mathbb{Z}$ </p>
+</div>
+</section>
 
-    <section>
-      <h2>Solving Differential Equations</h2>
-      <p>Differential equations can often be transformed into algebraic form using Fourier series. Often the exponential form is most easy to use.
-      </p>
-      <p>Take an example of the from
-	$$
-	\ddot{y} + \omega_0^2 y = f(t)
-	$$
-	where the function $f(t)$ is a periodic function with the period $T = 2 \pi / \omega$. We can expand $f(t)$ as a Fourier series
-	$$
-	f(t)= \sum_{n = -\infty}^{\infty}f_n e^{in\pi t \omega / \pi} = \sum_{n = -\infty}^{\infty}f_n e^{in \omega t }
-	$$
-	with
-	$$
-	f_n = \frac{1}{T}\int_{-T/2}^{T/2}f(t)\exp(-in\omega t)\text{d}t
-	$$
-    </section>
+<section>
+  <div class="inner_cell">
+  <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$.</p>
+  <p> For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
+    $$
+    \begin{align*}
+    \int_{-l}^{l}\phi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
+    & = \frac{a_0}{2} \int_{-l}^{l}\phi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\phi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\phi_m(x) \psi_n(x)\text{d}x]
+    \end{align*}
+    $$
+    Using the orthogonality relations only the term containing $a_m$ survives, giving
+    $$
+    a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x
+    $$
+  </p>
+  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+  <li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
+  <li>the first term is a bit special: $\frac{a_0}{2} =  \frac{1}{l}\int_{-l}^{l} f(x) \text{d}x$</li>
+</div>
+<p></p>
+</div>
+</section>
 
-    <section>
-      <p>
-	- but we can also expand $y$ as a fourier series with the same period, $T$.
-		$$
-	y(t)= \sum_{n = -\infty}^{\infty}y_n e^{in \omega t }
-	$$
-	substituting and performing the straightforward derivative of the exponential we get
-	$$
-	\sum_{n = -\infty}^{\infty} \left\{ \left[-(n \omega)^2 + \omega_0^2\right]y_n -f_n \right\}\exp(in\omega t) = 0
-	$$
-	which implies that
-	$$
-	y_n = \frac{f_n}{\omega_0^2 - (n \omega^2)}
-	$$
-	From which the full solution can be found.
-	$$
-	y(t) = \sum_{n = -\infty}^{\infty} \frac{f_n}{\omega_0^2 - (n \omega^2)} \exp(in\omega t)
+<section>
+  <div class="inner_cell">
+  <p> To find $b_m$ we multiply by $\psi_m$ and integrate over the period:
+    $$
+    \begin{align*}
+    \int_{-l}^{l}\psi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\psi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\psi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
+    & = \frac{a_0}{2} \int_{-l}^{l}\psi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\psi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\psi_m(x) \psi_n(x)\text{d}x]
+    \end{align*}
+    $$
+    Using the orthogonality relations only the term containing $b_m$ survives, giving
+    $$
+    b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x
+    $$
+  </p>
+<p></p>
+</div>
+</section>
 
-	$$
-      </p>
-    </section>
-    
-    <section>
-      <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
-      <p>You should be reading additional material to provide a solid background to what we do in class</p>
-      <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapters 12 and 13 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
-      <h3>Homework</h3>
-      <p>Marks and feedback on the 2nd portfolio item are available on Bb.</p>
-      <p>The 3rd portfolio item is due at 16:00 on 7th December.</p>
-    </section>
-    
-  </div> <!-- slides -->
+<section>
+  <div class="inner_cell">
+  <h2>Numerical Fourier Series</h2>
+  <p>To calculate the terms in the fourier series we need to numerically intergrate our function.</p>
+  <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals as
+   $$
+   a_m = \frac{1}{l} \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \Delta x   
+   $$
+ </p>
+ <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+ 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ <li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
+ <li>Calculate the Fourier series of the periodic function $f(x) = x^2$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+ <li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+ <li>What does the previous series converge to at $x =  -\pi$</li>
+</div>
+<p></p>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">
+  <h2>Parseval's Theorem</h2>
+  <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
+   $$
+   \frac{1}{l} \int_{-l}^{l} f(x)^2 \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
+   $$
+ </p>
+ <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+ 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+ <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
+ <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0)$.</li>
+</div>
+<p></p>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">
+  <h2>Other forms of Fourier Series</h2>
+  <p>Odd or even functions can be expanded as just $\sin$ or $\cos$ series</p>
+  <p>The expansion can be written in terms of complex exponentials instead of $\sin$ and $\cos$ terms - instead of our functions $\phi$ and $\psi$ we use
+    $$
+    \chi_n(x) = \exp(\frac{inx\pi}{l})
+    $$
+    and expand $f(x)$ as
+    $$
+    f(x) = \sum_{n=-\infty}^{\infty}c_n \chi_n(x)
+    $$
+  </p>
+  <p>This is just rewriting the series, because $\chi_n$ are just linear combinations of $\phi_n$ and $\psi_n$. The $\chi_n$ also satisfy orthogonality relations, and the coefficients can be found in the same way - multiply by the complex conjugate of the function whose coefficient you want to find and then integrate over the period.
+    $$
+    c_n = \int_{-l}^{l} \chi^*_n(x) f(x) \text{d}x
+    $$
+  </p>
+</div>
+  </section>
+
+  <section>
+    <div class="inner_cell">
+    <h2>Solving Differential Equations</h2>
+    <p>Differential equations can often be transformed into algebraic form using Fourier series. Often the exponential form is most easy to use.
+    </p>
+    <p>Take an example of the from
+     $$
+     \ddot{y} + \omega_0^2 y = f(t)
+     $$
+     where the function $f(t)$ is a periodic function with the period $T = 2 \pi / \omega$. We can expand $f(t)$ as a Fourier series
+     $$
+     f(t)= \sum_{n = -\infty}^{\infty}f_n e^{in\pi t \omega / \pi} = \sum_{n = -\infty}^{\infty}f_n e^{in \omega t }
+     $$
+     with
+     $$
+     f_n = \frac{1}{T}\int_{-T/2}^{T/2}f(t)\exp(-in\omega t)\text{d}t
+     $$
+   </p>
+ </div>
+   </section>
+
+   <section>
+    <div class="inner_cell">
+    <p>
+     - but we can also expand $y$ as a fourier series with the same period, $T$.
+     $$
+     y(t)= \sum_{n = -\infty}^{\infty}y_n e^{in \omega t }
+     $$
+     substituting and performing the straightforward derivative of the exponential we get
+     $$
+     \sum_{n = -\infty}^{\infty} \left\{ \left[-(n \omega)^2 + \omega_0^2\right]y_n -f_n \right\}\exp(in\omega t) = 0
+     $$
+     which implies that
+     $$
+     y_n = \frac{f_n}{\omega_0^2 - (n \omega^2)}
+     $$
+     From which the full solution can be found.
+     $$
+     y(t) = \sum_{n = -\infty}^{\infty} \frac{f_n}{\omega_0^2 - (n \omega^2)} \exp(in\omega t)
+     $$
+   </p>
+ </div>
+ </section>
+
+ <section>
+  <div class="inner_cell">
+  <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+  <p>You should be reading additional material to provide a solid background to what we do in class</p>
+  <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapters 12 and 13 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+</div>
+</section>
+
+</div> <!-- slides -->
 </div> <!-- reveal -->
 
-  <script>
+<script>
 
   require(
-    {
+  {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
     },
     [
-      "../../../revealjs//lib/js/head.min.js",
-      "../../../revealjs//js/reveal.js"
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -294,20 +345,20 @@ MathJax.Hub.Config({
         scroll: true,
 
         // Parallax background image
-        //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Fourier_synthesis.svg',
         // Parallax background size
-        parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+        parallaxBackgroundSize: '2244px 1551px', // CSS syntax, e.g. "2100px 900px
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: "../../../revealjs//lib/js/classList.js",
-          condition: function() { return !document.body.classList; } },
-          { src: "../../../revealjs//plugin/notes/notes.js",
-          async: true,
-          condition: function() { return !!document.body.classList; } }
+        { src: "../../../revealjs//lib/js/classList.js",
+        condition: function() { return !document.body.classList; } },
+        { src: "../../../revealjs//plugin/notes/notes.js",
+        async: true,
+        condition: function() { return !!document.body.classList; } }
         ]
       });
 
@@ -326,7 +377,7 @@ MathJax.Hub.Config({
       Reveal.addEventListener('slidechanged', update_scroll);
 
     }
-  );
+    );
   </script>
 
 </body>
