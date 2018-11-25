@@ -34,15 +34,15 @@
 
   </script>
 
-  <!--[if lt IE 9]>
-  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+  <![endif]-->
 
-<!-- Loading the mathjax macro -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
+  <!-- Loading the mathjax macro -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
 </script>
 <!-- Load mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
@@ -105,168 +105,196 @@ linebreaks: { automatic: true }
     <p>Expanding a function in a series of basis functions, particularly periodic sin and cosines can be very useful.
      <li>May help analysing a function.</li>
      <li>Can be used make a filter - removing high or low frequency noise.</li>
+     <li>Useful solving some differential equations.</li>
+     <li>...</li>
    </p>
  </div>
 </section>
 <section>
   <div class="inner_cell">
-  <p>Suppose we have a periodic function - this means that
-   $$
-   f(x+T) = f(x)
-   $$
-   where $T = 2l$ is the period.
- </p>
- <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
-   $$
-   \phi_n(x) = \cos \left( \frac{n \pi x}{l} \right) \text{ and } \psi_n(x) = \sin \left( \frac{n \pi x}{l} \right)
-   $$
- </p>
+    <p>Suppose we have a periodic function - this means that
+     $$
+     f(x+T) = f(x)
+     $$
+     where $T = 2l$ is the period.
+   </p>
+   <p>Assume we can expand the function as a sum of (known) functions with the same periodicity
+     $$
+     \phi_n(x) = \cos \left( \frac{n \pi x}{l} \right) \text{ and } \psi_n(x) = \sin \left( \frac{n \pi x}{l} \right)
+     $$
+   </p>
 
- <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
- 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- <p>Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</p>
-</div>
-<p></p>
-<br>
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <p>Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</p>
+ </div>
+ <p></p>
+ <br>
 </div>
 </section>
 
 <section>
   <div class='inner_cell'>
-  <h2>Orthogonal Functions</h2>
-  <p>
-   $\phi_n(x)$ and $\psi_n(x)$ have the special properties that
-   $$
-   \int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
-   $$
- where $\delta_{nm}$ is the Kronecker delta.</p>
- <p>Also
-   $$
-   \int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
-   $$
- </p>
-</div>
+    <h2>Orthogonal Functions</h2>
+    <p>
+     $\phi_n(x)$ and $\psi_n(x)$ have the special properties that
+     $$
+     \int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
+     $$
+   where $\delta_{nm}$ is the Kronecker delta.</p>
+   <p>Also
+     $$
+     \int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
+     $$
+   </p>
+ </div>
 </section>
 
 
 <section>
   <div class="inner_cell">
-  <h2>Fourier Series</h2>
-  <p>Assume that we can expand our function in the interval $(-l,l]$ as
-   $$
-   \begin{align*}
-   f(x) & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]\\
-        & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \cos \left( \frac{n \pi x}{l} \right) + b_n \sin \left( \frac{n \pi x}{l} \right)]
-   \end{align*}
-   $$
-   This isn't actually true for all $x$, but it is good enough for now.
- </p>
- <p>Note this will repeat over $(l,3l]$ and other $(il,(i+2)l]$ where $i \in \mathbb{Z}$ </p>
+    <h2>Fourier Series</h2>
+    <p>Assume that we can expand our function in the interval $(-l,l]$ as
+     $$
+     \begin{align*}
+     f(x) & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]\\
+     & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \cos \left( \frac{n \pi x}{l} \right) + b_n \sin \left( \frac{n \pi x}{l} \right)]
+     \end{align*}
+     $$
+     This isn't actually true for all $x$, but it is good enough for now.
+   </p>
+   <p>Note this will repeat over $(l,3l]$ and other $(il,(i+2)l]$ where $i \in \mathbb{Z}$ </p>
+ </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$.</p>
+    <p> For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
+      $$
+      \begin{align*}
+      \int_{-l}^{l}\phi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
+      & = \frac{a_0}{2} \int_{-l}^{l}\phi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\phi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\phi_m(x) \psi_n(x)\text{d}x]
+      \end{align*}
+      $$
+      Using the orthogonality relations only the term containing $a_m$ survives, giving
+      $$
+      a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x
+      $$
+    </p>
+    <p></p>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p> To find $b_m$ we multiply by $\psi_m$ and integrate over the period:
+      $$
+      \begin{align*}
+      \int_{-l}^{l}\psi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\psi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\psi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
+      & = \frac{a_0}{2} \int_{-l}^{l}\psi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\psi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\psi_m(x) \psi_n(x)\text{d}x]
+      \end{align*}
+      $$
+      Using the orthogonality relations only the term containing $b_m$ survives, giving
+      $$
+      b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x
+      $$
+    </p>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+    <li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
+    <li>the first term is a bit special: $\frac{a_0}{2} =  \frac{1}{l}\int_{-l}^{l} f(x) \text{d}x$</li>
+  </div>
+  <p></p>
 </div>
 </section>
 
 <section>
   <div class="inner_cell">
-  <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$.</p>
-  <p> For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
-    $$
-    \begin{align*}
-    \int_{-l}^{l}\phi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
-    & = \frac{a_0}{2} \int_{-l}^{l}\phi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\phi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\phi_m(x) \psi_n(x)\text{d}x]
-    \end{align*}
-    $$
-    Using the orthogonality relations only the term containing $a_m$ survives, giving
-    $$
-    a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x
-    $$
-  </p>
-  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-  <li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
-  <li>the first term is a bit special: $\frac{a_0}{2} =  \frac{1}{l}\int_{-l}^{l} f(x) \text{d}x$</li>
+    <h2>Numerical Fourier Series</h2>
+    <p>To calculate the terms in the fourier series we need to numerically integrate our function.</p>
+    <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals using the trapezium rule as
+     $$
+     a_m = \frac{1}{l} \sum_{i=0}^{n-1} \phi_m(x_i) f(x_i) \Delta x   
+     $$
+     This discretization is very similar to what we did in previous weeks - we discretize the period $2l$ along the $x$ axis with $n$ points in each period. The $n+1$th point is a replica of $0$th. We don't want to include the $n+1$th point at $2l$ because it is the same as the first one. $\Delta x$ will be the period of the function divided by the number of points, $\Delta x = \frac{2l}{n}$.
+       <div class="inner_cell">
+   <div style="background-color:Pink; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   Suppose we want to sample a function with period $2 \pi$ with n = 4 points in each period. This means the 5th point will be at $2 \pi$ the beginning of the next period. The spacing between the points will be the period divided by the 4 spaces between the 5 points. So $\Delta x = 2  \pi / 4 = \pi / 2$.
+ </div>
+
+   </p>
+ </div>
+=</section>
+
+<section>
+  <div class="inner_cell">
+    <p></p>
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
+   <li>Calculate the Fourier series of the periodic function $f(x) = \cos(x)$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$ - note you don't want to include $\pi$ where the function repeats itself.</li>
+   <li>Try the question on Bb.</li>
+ </div>
+    <br><br>
 </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p></p>
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <h3>Extra things to try. Everything from now on is optional.</h3>
+   <li>Calculate the Fourier series of the periodic function $f(x) = x^2$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+   <li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
+   <li>What does the previous series converge to at $x =  -\pi$</li>
+ </div>
 <p></p>
 </div>
 </section>
 
 <section>
   <div class="inner_cell">
-  <p> To find $b_m$ we multiply by $\psi_m$ and integrate over the period:
-    $$
-    \begin{align*}
-    \int_{-l}^{l}\psi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\psi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\psi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
-    & = \frac{a_0}{2} \int_{-l}^{l}\psi_m(x)\text{d}x + \sum_{n=1}^{\infty} [ a_n \int_{-l}^{l}\psi_m(x) \phi_n(x)\text{d}x + b_n \int_{-l}^{l}\psi_m(x) \psi_n(x)\text{d}x]
-    \end{align*}
-    $$
-    Using the orthogonality relations only the term containing $b_m$ survives, giving
-    $$
-    b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x
-    $$
-  </p>
-<p></p>
+    <h2>Parseval's Theorem</h2>
+    <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
+     $$
+     \frac{1}{l} \int_{-l}^{l} f(x)^2 \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
+     $$
+   </p>
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
+   <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0)$.</li>
+ </div>
+ <p></p>
 </div>
 </section>
 
 <section>
   <div class="inner_cell">
-  <h2>Numerical Fourier Series</h2>
-  <p>To calculate the terms in the fourier series we need to numerically intergrate our function.</p>
-  <p>Assuming that we have a series of $n$ evenly spaced $\{x,f(x)\}$ values we can simply calculate the integrals as
-   $$
-   a_m = \frac{1}{l} \sum_{i=0}^{n} \phi_m(x_i) f(x_i) \Delta x   
-   $$
- </p>
- <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
- 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- <li>Write code to perform these integrations. Check the orthogonality conditions are satisfied by your code.</li>
- <li>Calculate the Fourier series of the periodic function $f(x) = x^2$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
- <li>Calculate the Fourier series of the periodic function $f(x) = x$ within $[-\pi ,\pi)$, which then repeats itself every $2 \pi$</li>
- <li>What does the previous series converge to at $x =  -\pi$</li>
-</div>
-<p></p>
-</div>
+    <h2>Other forms of Fourier Series</h2>
+    <p>Odd or even functions can be expanded as just $\sin$ or $\cos$ series</p>
+    <p>The expansion can be written in terms of complex exponentials instead of $\sin$ and $\cos$ terms - instead of our functions $\phi$ and $\psi$ we use
+      $$
+      \chi_n(x) = \exp \left( \frac{inx\pi}{l} \right)
+      $$
+      and expand $f(x)$ as
+      $$
+      f(x) = \sum_{n=-\infty}^{\infty}c_n \chi_n(x)
+      $$
+    </p>
+    <p>This is just rewriting the series, because $\chi_n$ are just linear combinations of $\phi_n$ and $\psi_n$. The $\chi_n$ also satisfy orthogonality relations, and the coefficients can be found in the same way - multiply by the complex conjugate of the function whose coefficient you want to find and then integrate over the period.
+      $$
+      c_n = \int_{-l}^{l} \chi^*_n(x) f(x) \text{d}x
+      $$
+    </p>
+  </div>
 </section>
 
 <section>
   <div class="inner_cell">
-  <h2>Parseval's Theorem</h2>
-  <p>I the 'power' of the function is conversed, or multiplying on both sides by $f(x)$ and integrating over the period
-   $$
-   \frac{1}{l} \int_{-l}^{l} f(x)^2 \text{d}x = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} [a_n ^2 + b_n ^2]
-   $$
- </p>
- <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
- 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- <li>Check that Parseval's Theorem is satisfied for $f(x) = x^2$.</li>
- <li>Check that Parseval's Theorem is satisfied for $f(x) = x$ taking the periodic interval to be $[-2 \pi, 0)$.</li>
-</div>
-<p></p>
-</div>
-</section>
-
-<section>
-  <div class="inner_cell">
-  <h2>Other forms of Fourier Series</h2>
-  <p>Odd or even functions can be expanded as just $\sin$ or $\cos$ series</p>
-  <p>The expansion can be written in terms of complex exponentials instead of $\sin$ and $\cos$ terms - instead of our functions $\phi$ and $\psi$ we use
-    $$
-    \chi_n(x) = \exp(\frac{inx\pi}{l})
-    $$
-    and expand $f(x)$ as
-    $$
-    f(x) = \sum_{n=-\infty}^{\infty}c_n \chi_n(x)
-    $$
-  </p>
-  <p>This is just rewriting the series, because $\chi_n$ are just linear combinations of $\phi_n$ and $\psi_n$. The $\chi_n$ also satisfy orthogonality relations, and the coefficients can be found in the same way - multiply by the complex conjugate of the function whose coefficient you want to find and then integrate over the period.
-    $$
-    c_n = \int_{-l}^{l} \chi^*_n(x) f(x) \text{d}x
-    $$
-  </p>
-</div>
-  </section>
-
-  <section>
-    <div class="inner_cell">
     <h2>Solving Differential Equations</h2>
     <p>Differential equations can often be transformed into algebraic form using Fourier series. Often the exponential form is most easy to use.
     </p>
@@ -284,10 +312,10 @@ linebreaks: { automatic: true }
      $$
    </p>
  </div>
-   </section>
+</section>
 
-   <section>
-    <div class="inner_cell">
+<section>
+  <div class="inner_cell">
     <p>
      - but we can also expand $y$ as a fourier series with the same period, $T$.
      $$
@@ -307,14 +335,14 @@ linebreaks: { automatic: true }
      $$
    </p>
  </div>
- </section>
+</section>
 
- <section>
+<section>
   <div class="inner_cell">
-  <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
-  <p>You should be reading additional material to provide a solid background to what we do in class</p>
-  <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapters 12 and 13 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
-</div>
+    <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+    <p>You should be reading additional material to provide a solid background to what we do in class</p>
+    <p>All the textbooks contain sections on root finding and solving non-linear equations, for instance chapters 12 and 13 of <a href="http://www.nrbook.com/a/bookcpdf.php">Numerical Recipes</a>.</p>
+  </div>
 </section>
 
 </div> <!-- slides -->
@@ -324,62 +352,62 @@ linebreaks: { automatic: true }
 
   require(
   {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-    "../../../revealjs//lib/js/head.min.js",
-    "../../../revealjs//js/reveal.js"
-    ],
+        // it makes sense to wait a little bit when you are loading
+        // reveal from a cdn in a slow connection environment
+        waitSeconds: 15
+      },
+      [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+      ],
 
-    function(head, Reveal){
+      function(head, Reveal){
 
-      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        mouseWheel: false,
-        center: false,
-        scroll: true,
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          mouseWheel: false,
+          center: false,
+          scroll: true,
 
-        // Parallax background image
-        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Fourier_synthesis.svg',
-        // Parallax background size
-        parallaxBackgroundSize: '2244px 1551px', // CSS syntax, e.g. "2100px 900px
+          // Parallax background image
+          parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Fourier_synthesis.svg',
+          // Parallax background size
+          parallaxBackgroundSize: '2244px 1551px', // CSS syntax, e.g. "2100px 900px
 
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-        { src: "../../../revealjs//lib/js/classList.js",
-        condition: function() { return !document.body.classList; } },
-        { src: "../../../revealjs//plugin/notes/notes.js",
-        async: true,
-        condition: function() { return !!document.body.classList; } }
-        ]
-      });
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+          { src: "../../../revealjs//lib/js/classList.js",
+          condition: function() { return !document.body.classList; } },
+          { src: "../../../revealjs//plugin/notes/notes.js",
+          async: true,
+          condition: function() { return !!document.body.classList; } }
+          ]
+        });
 
-      var update = function(event){
-        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-        }
-      };
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
 
-      Reveal.addEventListener('slidechanged', update);
+        Reveal.addEventListener('slidechanged', update);
 
-      var update_scroll = function(event){
-        $(".reveal").scrollTop(0);
-      };
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
 
-      Reveal.addEventListener('slidechanged', update_scroll);
+        Reveal.addEventListener('slidechanged', update_scroll);
 
-    }
-    );
-  </script>
+      }
+      );
+    </script>
 
-</body>
+  </body>
 
-</html>
+  </html>
