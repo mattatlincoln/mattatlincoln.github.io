@@ -218,13 +218,17 @@ linebreaks: { automatic: true }
      a_m = \frac{1}{l} \sum_{i=0}^{n-1} \phi_m(x_i) f(x_i) \Delta x   
      $$
      This discretization is very similar to what we did in previous weeks - we discretize the period $2l$ along the $x$ axis with $n$ points in each period. The $n+1$th point is a replica of $0$th. We don't want to include the $n+1$th point at $2l$ because it is the same as the first one. $\Delta x$ will be the period of the function divided by the number of points, $\Delta x = \frac{2l}{n}$.
-       <div class="inner_cell">
    <div style="background-color:Pink; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
    Suppose we want to sample a function with period $2 \pi$ with n = 4 points in each period. This means the 5th point will be at $2 \pi$ the beginning of the next period. The spacing between the points will be the period divided by the 4 spaces between the 5 points. So $\Delta x = 2  \pi / 4 = \pi / 2$.
  </div>
 
    </p>
+   <div style="background-color:Pink; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   Note that there is a maximum frequency of wave that can be represented. Don't go above $n/2$ terms in the Fourier series otherwise you will get <a href='https://en.wikipedia.org/wiki/Aliasing'>'aliasing'</a>.
+ </div>
+<p></p>
  </div>
 =</section>
 
