@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>05 - diffraction</title>
+    <title>04 - 3D crystals</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -82,10 +82,165 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="X-ray-diffraction">X-ray diffraction<a class="anchor-link" href="#X-ray-diffraction">&#182;</a></h1><ul>
-		    <li>IOP core physics "Crystal structure and Bragg scattering"</li>
+		  <h1 id="Geometry-of-3D-crystals---real-space">Geometry of 3D crystals - real space<a class="anchor-link" href="#Geometry-of-3D-crystals---real-space">&#182;</a></h1>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A <strong>lattice</strong> is an infinite set of points defined by integer sums of a set of (linear independent) primitive lattice vectors
+		  </div>
+		  <br>
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			      8px; padding-right: 8px; padding-top: 8px;">
+		    A <strong>unit cell</strong> is a region of space such that when many identical units are stacked together it tiles (completely fills) all of space and reconstructs the full structure
+		  </div>
+		  <br>
+
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			      8px; padding-right: 8px; padding-top: 8px;">
+		    A <strong>primitive unit cell</strong> is a unit cell containing exactly one lattice point
+		  </div>
+		  <br>
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			      8px; padding-right: 8px; padding-top: 8px;">
+		    The set of all points that are closer to a given lattice point than any other lattice point constitute the <strong>Wigner-Seitz cell</strong> of the given lattice point.
+		  </div>
+		  <br>
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			      8px; padding-right: 8px; padding-top: 8px;">
+		    The description of objects in the unit cell with respect to the reference lattice point in the unit cell is known as a <strong>basis</strong>
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>After those fairly formal definitions we can finally define our crystal as</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			      8px; padding-right: 8px; padding-top: 8px;">
+		    The lattice + the basis = crystal
+		  </div><p>so this is a set of lattice points - at each lattice point we add the basis to get the crystal.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="http://www.bradbury.com/victorian/images/persian_enrichment_br_400.jpg" style='width:400px'></p>
+		  <p>here is some flock wall paper</p>
+		  <ul>
+		    <li>can you see the lattice and the basis?</li>
 		  </ul>
-		  <p>First real, solid evidence about the structure of condensed matter</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 2D crystal has lattice vectors $\mathbf{a_1} = (a,0), \mathbf{a_2} = (0,b)$. 
+		    <li>Write down the lattice for this crystal</li>
+		  </div>
+		  <br>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 3D crystal has lattice vectors $\mathbf{a_1} = a(1,0,0), \mathbf{a_2} = a(0,1,0), \mathbf{a_3} = a(0,0,1)$
+		    <li>Write down the lattice for this crystal</li>
+		  </div>
+		  <br>
+
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 2D crystal has lattice vectors $\mathbf{a_1} = (a,0), \mathbf{a_2} = (0,b)$, and a basis 
+		    atom type 1 at (0,0) and atom type 2 at $\frac{1}{2}(a,b)$. 
+		    <li>Sketch the crystal.</li>
+		  </div>
+		  <br>
+
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 3D crystal has lattice vectors $\mathbf{a_1} = a(1,0,0), \mathbf{a_2} = a(0,1,0), \mathbf{a_3} = a(0,0,1)$, and a basis 
+		    atom type 1 at (0,0,0) and atom type 2 at $\frac{a}{2}(1,1,1)$. 
+		    <li>What is the distance between type 1 atoms?</li>
+		    <li>Type 2 atoms?</li>
+		    <li>Type 1 and type 2 atoms?</li>
+		  </div>
+		  <br>
+		</div>
+	      </div>
+	    </div>
+	  </section>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  
+		  
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 2D crystal has lattice vectors $\mathbf{a_1} = (a,0), \mathbf{a_2} = (0,b)$, and a basis 
+		    atom type 1 at (0,0) and atom type 2 at $\frac{1}{2}(a,b)$. 
+		    <li>Sketch the Wigner-Seitz cell for this crystal.</li>
+		  </div>
+		  <br>
+
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A 2D crystal has lattice vectors $\mathbf{a_1} = (a,0), \mathbf{a_2} = (a/2,a \sqrt{3}/2)$, and a basis of two atoms: atom type 1 at $1/3(\mathbf{a_1}+\mathbf{a_2})$ and atom type 2 at $2/3(\mathbf{a_1}+\mathbf{a_2})$. 
+		    <li>Sketch the crystal.</li>
+		  </div><p><br></p>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">explain clearly why $\mathbf{a_1}.(\mathbf{a_2} \times \mathbf{a_3})$ gives the volume of a box whose sides are parallel to $\mathbf{a_1}, \mathbf{a_2}$ and $\mathbf{a_3}$.  
+
+		    <li>What is the volume of the box given by $\mathbf{a_1} = a(1,0,0)$, $\mathbf{a_2} = a(0,1,0)$, $\mathbf{a_3} = a(0,0,1)$?</li>
+		    <li>What is the volume of the box given by $\mathbf{a_1} = a(1,0,0)$, $\mathbf{a_2} = a(0,0,1)$, $\mathbf{a_3} = a(0,1,0)$?</li>
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Real-3D-lattices">Real 3D lattices<a class="anchor-link" href="#Real-3D-lattices">&#182;</a></h2><p>it turns out that there are only 14 types of lattice possible in normal 3D space. They are called Bravais lattices after Auguste Bravais who characterised them.</p>
+		  <p><img src="https://s-media-cache-ak0.pinimg.com/originals/12/ca/76/12ca76251716bd55687b3265af2c347e.jpg" style="width:400px"></p>
+
+		</div>
+	      </div>
+	  </section>
+          <section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The most friendly are cubic, tetragonal and then orthorhombic - they all have cell vectors that are all at $90^o$ to each other.</p>
+		  <p>Cubic lattices have all three lengths the same, tetragonal 2, and orthorhombic they all differ.</p>
+		  <p>Cubic lattices come in three flavours: simple, body centred and face centred.
+		    <br></p>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    <li>Simple metals and noble gasses normally have fcc or bcc structures. How would you rationalise this? Hint metallic binding and van der Waals interactions are not strongly directional.</li>
+		    <li><a href='https://chem.libretexts.org/Core/Physical_and_Theoretical_Chemistry/Physical_Properties_of_Matter/States_of_Matter/Properties_of_Solids/Crystal_Lattice/Closest_Pack_Structures'>Look here</a> and have a play with the ball and stick sets.</li>
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Symmetry---space-groups">Symmetry - space groups<a class="anchor-link" href="#Symmetry---space-groups">&#182;</a></h2><p>there is a powerful branch of mathematics called group theory that classifies relations between objects. In particular many atoms in a crystal are related to each other by 'symmetry operations' reflections, rotations etc. It is possible to specify for a crystal which of these are present (they will depend on the basis and the lattice in general). Then only a subset of the total atoms need be fully specified.</p>
+		  <p>A crystals symmetry is specified by its 'space group', which is a list of the symmetry operations that exist for that crystal.</p>
+		  <p>This can be immensely useful, especially in crystallography, but we won't do more than mention the concept here.</p>
 
 		</div>
 	      </div>
@@ -94,21 +249,76 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Crystal-Structure">Crystal Structure<a class="anchor-link" href="#Crystal-Structure">&#182;</a></h2><p>Crystaline materials <em>periodically</em> repeat</p>
+		  <h2 id="Real-Crystals">Real Crystals<a class="anchor-link" href="#Real-Crystals">&#182;</a></h2><p>Sodium Na<br>
+		    Lattice = Cubic-I (body centred cubic)<br>
+		    Basis = Na at (0,0,0)</p>
+		  <p>CsCl<br>
+		    Lattice = Cubic-P<br>
+		    Basis = Cs at (0,0,0), Cl at (1/2,1/2,1/2)</p>
+		  <p>NaCl<br>
+		    Lattice = Cubic-F (face centred cubic)<br>
+		    Basis = Na at (0,0,0), Cl at (1/2,1/2,1/2)</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    <p>There are quite a few programs for visualising 3D structures.</p>
+                    <p><a href='https://web.chemdoodle.com/demos/iza-zeolite-explorer/'>This lets you look at Zeolite structures</a>
+                      (note, <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank">Double tap</a> to stop rotation in the previous link.)</p> 
+                    
+		  </div>
+		</div>
+	      </div>
+	</div></section></section>
+	
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Geometry-of-3D-crystals---reciprocal-space">Geometry of 3D crystals - reciprocal space<a class="anchor-link" href="#Geometry-of-3D-crystals---reciprocal-space">&#182;</a></h1>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="http://www.bradbury.com/victorian/images/persian_enrichment_br_400.jpg" style='width:400px'></p>
+		  <p>here is some flock wall paper</p>
+		  <ul>
+		    <li>can you see the lattice and the basis?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="1D">1D<a class="anchor-link" href="#1D">&#182;</a></h2><p>In 1D we found that certain k-vectors were equivalent for the electrons or phonons.</p>
+		  <p>We found that both electrons and vibrations behaved as waves in the ideal 1D lattice of atoms spaced by a 'lattice constant' of $a$.</p>
+		  <p>In particular we found that our solutions would be equivalent if</p>
+		  <p>$k_1 = k_2 + G_m$, where $G_m = 2 \pi  m / a: m \in \mathbb{Z}$</p>
 
 		</div>
 	      </div>
 	    </div><div class="fragment">
 	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p>Gaps between atoms are of the order 0.1 nanometers = $10^{-10} \text{m} = 1 \mathring{\text{A}}$</p>
-		    <div style="background-color:LightGoldenRodYellow; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
-
-		      The unit is named after the Swedish physicist Anders Jonas Ångström (1814–1874). The symbol is always written with a ring diacritic, as the letter in the Swedish alphabet. It is not a part of the SI system of units.
-		    </div><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Anders_%C3%85ngstr%C3%B6m_painting.jpg/220px-Anders_%C3%85ngstr%C3%B6m_painting.jpg" alt=""></p>
-		    <p><a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m"></a></p>
+		    <p>Because we sought solutions of the form</p>
+		    <p>$$
+		      e^{ikx_n} = e^{ikna}: n \in \mathbb{Z}
+		      $$</p>
+		    <p>we can show that $k \to  k + G_m$ doesn't change our solution.</p>
 
 		  </div>
 		</div>
@@ -117,551 +327,414 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Light">Light<a class="anchor-link" href="#Light">&#182;</a></h1><p>As you know from interferometer experiments - if you have a grating of similar dimensions to the dimensions of light waves, you get diffraction.</p>
-		  <p>Looking at the wavelengths of light</p>
-		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Light_spectrum.svg/324px-Light_spectrum.svg.png" style='height:350px'></p>
-		  <p><a href="https://en.wikipedia.org/wiki/Electromagnetic_spectrum">https://en.wikipedia.org/wiki/Electromagnetic_spectrum</a></p>
-		  <p>we see that X-rays are the appropriate rays to diffract from a crystal.</p>
-		  <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
-		    Other things with wavelengths will can also be used - remember wave-particle duality? 
-		    <li>
-		      Give examples?
-		    </li>
-		    <li>
-		      How fast / how much energy should your chosen particles have to interact with a crystal with atomic spacing 0.25 nm.
-		    </li>
+		  <h2 id="Definition-of-the-Reciprocal-Lattice">Definition of the Reciprocal Lattice<a class="anchor-link" href="#Definition-of-the-Reciprocal-Lattice">&#182;</a></h2><p><br></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A <strong>lattice</strong> is an infinite set of points defined by integer sums of a set of (linear independent) primitive lattice vectors
+		    $$
+		    \mathbf{R} = n_1 \mathbf{a_1} + n_2 \mathbf{a_2} + n_3 \mathbf{a_3} 
+		    $$
+		  </div>
+		  <br>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    Given a direct lattice of points $\mathbf{R}$, a point $\mathbf{G}$ is a point in the reciprocal lattice if and only if
+		    $$
+		    e^{i\mathbf{G}.\mathbf{R}} = 1
+		    $$
+		    for all points $\mathbf{R}$ in the lattice.
 		  </div>
 		</div>
 	      </div>
-	</div></section></section>
-	<section><section>
+	</div></section></section><section><section>
 	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Bragg-condition">Bragg condition<a class="anchor-link" href="#Bragg-condition">&#182;</a></h2><p>In the simplest case we are looking for the conditions of constructive interference between diffracted rays in the crystal.</p>
-		  <p>The extra path length should be a multiple of the wavelength $2d \sin \theta =n\lambda $</p>
-		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/BraggPlaneDiffraction.svg/800px-BraggPlaneDiffraction.svg.png" alt=""></p>
-
+		  <p>What could this mean. The direct lattice points are integer multiples of the lattice vectors</p>
+		  <p>$\mathbf{R} = n_1 \mathbf{a_1} + n_2 \mathbf{a_2} + n_3 \mathbf{a_3}$</p>
+		  <p>where $\mathbf{a_1},\mathbf{a_2},\mathbf{a_3}$ are the lattice vectors and $n_1, n_2, n_3$ are integers.</p>
+		  <p>Now we can satisfy our definition, if every $\mathbf{G}$ is formed from an integer sum of reciprocal vectors, $\mathbf{b}_i: i =1,2,3$, that satisfy</p>
+		  <p>$$
+		    \mathbf{a}_i \cdot \mathbf{b}_j = 2 \pi \delta_{ij}
+		    $$</p>
+		  <p>where $\delta_{ij}$ is the Kronecker delta.</p>
+		  <p>Just mechanically this will work if we take</p>
+		  <p>$$
+		    \begin{align}
+		    \mathbf{b}_1 =  2 \pi \frac{\mathbf{a}_2 \times \mathbf{a}_3}{\mathbf{a}_1 \cdot (\mathbf{a}_2 \times \mathbf{a}_3)} \\
+		    \mathbf{b}_2 =  2 \pi \frac{\mathbf{a}_3 \times \mathbf{a}_1}{\mathbf{a}_1 \cdot (\mathbf{a}_2 \times \mathbf{a}_3)} \\
+		    \mathbf{b}_3 =  2 \pi \frac{\mathbf{a}_1 \times \mathbf{a}_2}{\mathbf{a}_1 \cdot (\mathbf{a}_2 \times \mathbf{a}_3)} \\
+		    \end{align}
+		    $$</p>
+		  <div style="background-color:LightBlue; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    <li>Show that the relation $e^{i\mathbf{G}.\mathbf{R}} = 1$ is satisfied if and only if $\mathbf{G}$ is formed from integer multiples of $\mathbf{b_i}$</li>
+		  </div>
 		</div>
 	      </div>
-	    </div>
-	</section></section>
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
-		    A crystal (lattice) plane is a plane containing at least 3 non-colinear points of  a lattice
-		    <br>
-		    A family of lattice (crystal) planes is an infinite set of equally spaced parallel planes, which all together contain every point of the lattice.
-		  </div><p><br></p>
-		  <p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
-		      The families of lattice planes are in one-to-one correspondence with the possible directions of reciprocal vectors, to which they are normal. The lattice spacing between the lattice planes is 
-		      $$
-		      d = 2 \pi / |\mathbf{G_{min}}|
-		      $$</p>
-		  <p>where $\mathbf{G_{min}}$ is the minimum length reciprocal vector in this normal direction.</p>
-
+		    The reciprocal lattice is the set of points constructed from integer multiples of the reciprocal vectors
+		    $$
+		    \mathbf{G} = m_1 \mathbf{b_1} + m_2 \mathbf{b_2} + m_3 \mathbf{b_3} 
+		    $$
 		  </div>
 		</div>
-	      </div>    
-	</section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2>Proof of last statement</h2>
-		  <p>Consider a set of points $\mathbf{r}$ such that for some integer $m$</p>
-		  $$
-		  \mathbf{G} \cdot \mathbf{r} = 2 \pi m
-		  $$<p>Which defines an infinite series of planes perpendicular to $\mathbf{G}$.</p>
-		  <p>Since $e^{i \mathbf{G} \cdot \mathbf{r}} = 1$ we know that every lattice point will be a member of one of these planes, <a href='https://mattatlincoln.github.io/teaching/condensed_matter/lecture_4/#/12'>from our definition of $\mathbf{G}$</a>.</p>
-
+		  <h2 id="Why-is-the-reciprocal-lattice-useful?">Why is the reciprocal lattice useful?<a class="anchor-link" href="#Why-is-the-reciprocal-lattice-useful?">&#182;</a></h2><ul>
+		    <li>it is directly linked to a spatial fourier transform of the real lattice, so often of use in analysing wave motion in crystals.</li>
+		    <li>Reciprocal lattice vectors are directly linked to the spacings between planes of atoms in the crystal, which in turn can be measured using diffraction experiments.</li>
+		  </ul>
+		  <p>Next week we will talk about imaging in reciprocal space (AKA diffraction)</p>
 		</div>
 	      </div>
-	    </div>    
-	  </section>
+	</div></section></section>
 
+	<section data-background="../../../images/CaF2_zoom3.jpg">
 	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="container" id="title">
+		<h3  id="Seeing surfaces in real space: how scanning probe microscopes work.">Seeing surfaces in real space: how scanning probe microscopes work.<a class="anchor-link" href="#Seeing surfaces in real space: how scanning probe microscopes work.">&#182;</a></h3>
 	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-
-		  <p>Now the spacing between two of these planes will be given by</p>
-		  $$
-		  \mathbf{G} \cdot (\mathbf{r}_{m+1} - \mathbf{r}_m) = 2 \pi  
-		  $$<p>so in the direction parallel to $\mathbf{G}$ the spacing, $d$, is given by</p>
-		  $$
-		  d = \frac{2 \pi}{|\mathbf{G} |}
-		  $$<p>you can argue that taking the minimum length $\mathbf{G}$ will then still contain all the lattice points and no extra planes that do not cut lattice points. Then</p>
-		  $$
-		  d = \frac{2 \pi}{|\mathbf{G}_{min} |}
-		  $$<p>gives the spacing of these lattice planes.</p>
-		  <p>As a reciprocal lattice vector is an integer multiple of the reciprocal lattice vectors, we can label them by the integers, which then will also index the planes.</p>
-
-	</section></section>
-	
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Miller-Indices">Miller Indices<a class="anchor-link" href="#Miller-Indices">&#182;</a></h2><p>A family of lattice planes is determined by three integers h, k, and ℓ, the Miller indices. They are written $(hkl)$, and denote the family of planes orthogonal to $h \mathbf {b_{1}} +k\mathbf {b_{2}} + l \mathbf {b_{3}}  $, where $ \mathbf {b_{i}} $ are the basis of the reciprocal lattice vectors.</p>
-		  <p>By convention, negative integers are written with a bar, as in 3 for −3. The integers are usually written in lowest terms, i.e. their greatest common divisor should be 1.</p>
-		  <p>Miller indices were introduced in 1839 by the British mineralogist William Hallowes Miller. The method was also historically known as the Millerian system, and the indices as Millerian,[2] although this is now rare.</p>
-		  <p>The Miller indices are defined with respect to any choice of unit cell and not only with respect to primitive basis vectors, as is sometimes stated.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Miller_Indices_Felix_Kling.svg/600px-Miller_Indices_Felix_Kling.svg.png" style='height:450px'></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>There are also several related notations:</p>
-		  <p>the notation {hkl} denotes the set of all planes that are equivalent to (hkl) by the symmetry of the lattice.</p>
-		  <p>In the context of crystal directions (not planes), the corresponding notations are:
-		    [hkl], with square instead of round brackets, denotes a direction in the basis of the direct lattice vectors instead of the reciprocal lattice;  and similarly, the notation <hkl> denotes the set of all directions that are equivalent to [hkl] by symmetry.</p>
-		  <p>Another way to look at it is that the planes cut the axes at $[a/h, 0, 0], [0, a/k, 0],  [0,0,a/l]$</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Fermi's-Golden-rule">Fermi's Golden rule<a class="anchor-link" href="#Fermi's-Golden-rule">&#182;</a></h2><p>OK, but how will we make a quantitative estimate of scattering factors? Quantum mechanics...</p>
-		  <p>We can consider a particle (xray, electron, neutron) characterised by its wavevector</p>
-		  <p>$$
-		    \mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} 
-		    $$</p>
-		  <p>where $\mathbf{\hat{k}} _{i}$ is the unit vector pointing along $\mathbf{k}$.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>The transition rate per unit time of a particle scattering from the state $\mathbf{k}$ to $\mathbf{k'}$ is given by</p>
-		  <p>$$
-		    \begin{align}
-		    \Gamma(\mathbf{k}, \mathbf{k'}) &amp; = \frac{2 \pi}{\hbar} \Big| \int d\mathbf{r} \frac{e^{-i\mathbf{k'.r}}}{\sqrt{L^3}} V(\mathbf{r}) \frac{e^{i\mathbf{k.r}}}{\sqrt{L^3}}\Big| ^2 \delta(E_{\mathbf{k}'}-E_{\mathbf{k}}) \\
-                    &amp; = \frac{2 \pi}{\hbar} \Big| \int d\mathbf{r} \frac{e^{-i\mathbf{(k - k').r}}}{L^3} V(\mathbf{r})\Big| ^2 \delta(E_{\mathbf{k}'}-E_{\mathbf{k}})
-		    \end{align}
-		    $$</p>
-		  <p>where $ \frac{e^{-i\mathbf{k.r}}}{\sqrt{L^3}}$ is the wavefunction of a free particle with wavevector $\mathbf{k}$, and $ \frac{e^{-i\mathbf{k'.r}}}{\sqrt{L^3}}$ of the particle with wavevector $\mathbf{k'}$.</p>
-		  <p>This looks a bit terrifying, but it isn't as bad as all that, and we won't need to explicitly evaluate these integrals. The equation is called Fermi's Golden rule. It gives a recipe for how quickly transitions occur (on average) beween an intitial and final state.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Ignore the rest for now and look at the integral (matrix element)</p>
-		  <p>$$
-		    \frac{1}{L^3}\int d\mathbf{r} e^{-i\mathbf{(k - k').r}}V(\mathbf{r})
-		    $$</p>
-		  <p>where the integral is over all of the crystal. It looks more or less like our hopping integral we encountered when doing tight binding - it gives the chance of hopping from state $\mathbf{k}$ to $\mathbf{k'}$. (Also note that this is a fourier transform).</p>
-		  <p>We know that we can write any location in the crystal as $\mathbf{r} = \mathbf{R + x}$ - where $\mathbf{R}$ is a real space lattice vector and $\mathbf{x}$ is a position in the cell.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Then 
-		    $$
-		    \begin{align}
-		    \frac{1}{L^3} \int d\mathbf{r} e^{-i\mathbf{(k - k').r}} V(\mathbf{r})\\
-		    = \frac{1}{L^3} \sum_{\mathbf{R}} \int_{\text{unit-cell}} d \mathbf{x} e^{-i\mathbf{(k - k').(\mathbf{x + R})}}V(\mathbf{x + R}) \\
-		    \end{align}
-		    $$</p>
-		  <p>and now the trick, because our crystal is periodic we have $V(\mathbf{x + R}) = V(\mathbf{x})$ and we can split our integral into two bits</p>
-		  <p>$$
-		    \frac{1}{L^3} \sum_{\mathbf{R}} \big[ e^{-i\mathbf{(k - k').\mathbf{R}}} \big] \int_{\text{unit-cell}} d \mathbf{x} e^{-i\mathbf{(k - k').\mathbf{x}}}V(\mathbf{x})
-		    $$</p>
-		  <p>However, the sum will be zero unless $\mathbf{(k - k')} = \mathbf{G}$, when each term in the sum will be 1. Otherwise the terms in the sum will oscillate and overall sum to zero on average.</p>
-		  <p>The first sum then just gives us some constant, with the condition that the change in wavevector is a reciprocal lattice vector. This is known as the Laue condition. It is a statement of the conservation of momentum.</p>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Laue-Condition">Laue Condition<a class="anchor-link" href="#Laue-Condition">&#182;</a></h2><p>If 
-		    $$ \mathbf {G} =h\mathbf {A} +k\mathbf {B} +l\mathbf {C} $$ 
-		    is the reciprocal lattice vector, we know 
-		    $$ \mathbf {G} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$.</p>
-		  <p>The Laue equations specify 
-		    $$ \mathbf {\Delta k} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$</p>
-		  <p>Hence we have $ {\Delta k} =\mathbf {G} $ or $ \mathbf {k} _{o}-\mathbf {k} _{i}=\mathbf {G} $.</p>
-
-		</div>
-	      </div>
-	    </div>    
+	      <table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+		  <img src='../images/caco3.png' width=600>
+		</tr>
+	      </table>
+	    </div>
 	  </section>
+	</section>
 
+	<section>
 	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h3>
+	    <table>
+	      <tr>
+		<td><img src='../images/dyn_an16.gif' style='height:100%;width:100%'></td>
+		<td width='300' style="vertical-align:middle">
+		  <p>Atomic force microscopy (left) </p>
+		  <p> and Scanning Tunnelling microscopy (right)</p>
+		</td>
+		<td><img src='../images/ani_stm.gif' style='height:100%;width:100%'></td>
+	      </tr>
+	    </table>
+	    <ul style="text-align=center">
+	      <li>Local measurements.</li>
+	      <li>Invasive?</li>
+	      <li>Ambient or liquid conditions?</li>
+	    </ul>
+	    </div>
+	  </section>
+	</section>
 
-		  <p>From this we get the diffraction condition:</p>
-		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
-		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
-		  <p>Since $(\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2} (\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2}$ (considering elastic scattering) and  $\mathbf {G} =-\mathbf {G}$ (a negative reciprocal lattice vector is still a reciprocal lattice vector):</p>
-		  <p>$$ 2\mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$$ .</p>
-		  <p>The diffraction condition 
-		    $ \mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$ can be reduced to the Bragg law $ 2d\sin \theta =n\lambda$ as follows.</p>
+	<section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	    <img src="../images/unit_cell.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	    <img src="../images/unit_cell_expand_1.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	    <img src="../images/unit_cell_expand_2.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	    <img src="../images/unit_cell_expand_3.png">
+	    </div>
+	  </section>
+	</section>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Firstly we can write  $\mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} $, where  $\mathbf{\hat{k}} _{i}$ is the unit vector pointing in the direction of the incident ray. Then</p>
-		  <p>$$ 
-		    \begin{align*}
-		    2\mathbf {k} _{i} \cdot \mathbf {G} &amp; =G^{2} \\
-		    \frac{4 \pi }{ \lambda } \mathbf{\hat{k}} _{i} \cdot \mathbf {G} &amp; = G^{2} \\
-		    \frac{4 \pi }{ \lambda }  G \sin \theta &amp; = G^{2} \\
-		    \implies \frac{2 \pi }{ G } 2 \sin \theta &amp; = \lambda
-		    \end{align*}
-		    $$ .</p>
-		  <p>And comparing to Braggs' Law we see that $\frac{2 \pi}{G}$ must be equal to $d$.</p>
+	<section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	    <img src="../images/cube_rotate_111.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>	    
+	      <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	      <img src="../images/cube_rotate_111_cut.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	      <img src="../images/cube_rotate_111_cleaved.png">
+	    </div>
+	  </section>
+	  <section data-transition="none">	    
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	      <img src="../images/111_surf.png">
+	    </div>
+	  </section>
+	  <section>
+	     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	       <h3 id="Surface energy?">Surface energy<a class="anchor-link" href="#Surface energy">&#182;</a></h3>
+	       <p class='fragment'>Energy of a surface depends on:</p>
+	       <p class='fragment'> - the number of bonds cut</p>
+	       <p class='fragment'> - similar idea to <a href='https://en.wikipedia.org/wiki/Surface_tension#Causes'>surface tension</a></p>
+	       <p class='fragment'> - is there a dipole moment, unbalanced charges cause divergent energy cost as the surface grows.</p>
+	     </div>
+	  </section>
+	</section>
 
-		</div>
-	      </div>
-	</div></section></section>
-	
+	<section>
+	  <section >
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="Aside: Crystal Shape?">Aside: Crystal Shape?<a class="anchor-link" href="#Aside: Crystal Shape?">&#182;</a></h3>
+	    <table cellspacing="0" cellpadding="0" border="0">
+	      <tr>
+		<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Apatite-Rhodochrosite-Fluorite-169799.jpg" height="250px"></td>
+		<td><img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Monokristalines_Silizium_f%C3%BCr_die_Waferherstellung.jpg"</td>
+			 </tr>
+	    </table>
+	    </div>
+	  </section>
+	</section>
+
+	<section>
+	  <div style="position:relative;height:0;padding-bottom:87.76%">
+	    <iframe src="https://www.youtube.com/embed/8WmCn5xGebs?ecver=2" style="position:absolute;width:80%;height:80%;left:0" height="350px" frameborder="0" allowfullscreen>
+	    </iframe>
+	  </div>
+	</section>
+
+	<section>
+	  <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>	  
+	  <h3 id="Atomic, molecular and cluster manipulation">Atomic, molecular and cluster manipulation<a class="anchor-link" href="#Atomic, molecular and cluster manipulation">&#182;</a></h3>
+	  <img src="https://images.nature.com/m685/nature-assets/srep/2013/130214/srep01270/images/srep01270-f1.jpg">
+	  </div>
+	</section>
+
+	<section>
+	  <div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/xSa5HD4oO5E?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allowfullscreen></iframe></div>
+	</section>
+
+	<section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	  <h3 id="Science bit">Science bit<a class="anchor-link" href="#Science bit">&#182;</a></h3>
+	  <p>How do SPMs get such high resolution imaging?</p>
+	  <p class='fragment'>The trick is a highly non-linear signal</p>
+	  <p class='fragment'> - STM the signal drops off exponentially (why?)</p>
+	  <p class='fragment'> - AFM in attractive regime the signal drops off with large power of distance ($r^{-3}$ to $r^{-6}$)</p>
+	  <p class='fragment'> - AFM in repulsive regime the signal drops off exponentially (why?)</p>
+	  </div>
+	</section>
+
+	<section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	  <h3 id="AFM">AFM<a class="anchor-link" href="#AFM">&#182;</a></h3>
+	  <p>
+	    Model the cantilever oscilations:
+	    $$
+	    \ddot{z} + \omega_{0}^{2} \alpha \dot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = \frac{\omega_0^2}{k}F_{ext}
+	    $$
+	  </p>
+	  <p class='fragment'>
+	    work in constant amplitude and frequency change
+	    $$
+	    \ddot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = 0
+	    $$
+	  </p>
+	  <p class='fragment'>
+	    motion is periodic, we can find a solution of the form
+	    $$
+	    \frac{\omega}{\omega_0}^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) \cos (\tau) d\tau
+	    $$
+	  </p>
+	  <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
+	  </div>
+	</section>
+
 	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Structure-factor">Structure factor<a class="anchor-link" href="#Structure-factor">&#182;</a></h2><p>we saw that the intensity of scattering (related to the rate) can be deduced from</p>
-		  <p>$$
-		    \frac{1}{L^3} \sum_{\mathbf{R}} \big[ e^{-i\mathbf{(k - k') \cdot \mathbf{R}}} \big] \int_{\text{unit-cell}} d \mathbf{x} e^{i\mathbf{G \cdot \mathbf{x}}}V(\mathbf{x})
-		    $$</p>
-		  <p>the summation reduces to the number of unit cells in the crystal, and is divided by the volume of the crystal, so gives a density.</p>
-		  <p>The term in the integral is called the structure factor - it is a factor that depends on the structure</p>
-		  <p>$$
-		    S(\mathbf{G}) = \int_{\text{unit-cell}} d \mathbf{x} e^{i\mathbf{G \cdot \mathbf{x}}}V(\mathbf{x})
-		    $$</p>
-		  <p>it is often possible to approximate the potential $V(\mathbf{x})$ as the sum of scattering potentials of the atoms in the crystal</p>
-		  <p>$$
-		    V(\mathbf{x}) = \sum_{\text{ atoms } j} V_j(\mathbf{x} - \mathbf{x}_j)
-		    $$</p>
-		  <p>the form of $\mathbf{V}_j$ will depend on whether we are using X-rays, neutrons, electrons etc to perform the experiment.</p>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="Macro-vs-Nano">Macro vs Nano<a class="anchor-link" href="#Macro-vs-Nano">&#182;</a></h3>
+	    <table>
+	      <tr>
+		<td>
+		  <img src='../images/dyn_an16.gif'>
+		</td>
+		<td>
+		  <img src="../images/caco3.png"  width="300">
+		</td>
+	      </tr>
+	    </table>
+	    <p>cantilever is macroscopic, tip apex is nanoscopic</p>
+	    <p>experiment measures frequency change due to all interactions - macro + nano</p>
+	    </div>
+	  </section>	  
+	</section>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="X-rays">X-rays<a class="anchor-link" href="#X-rays">&#182;</a></h3><p>x-rays interact with the electron density. We expect the scattering potential to be proportional to the electron density</p>
-		  <p>$$
-		    V_j (\mathbf{x} - \mathbf{x}_j) = Z_j g_j (\mathbf{x} - \mathbf{x}_j)
-		    $$</p>
-		  <p>where $Z_j$ is the number of electrons in the atom. And $g_j$ is some short ranged function. And we get</p>
-		  <p>$$
-		    S(\mathbf{G}) = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{i\mathbf{G \cdot x}_j}
-		    $$</p>
-		  <p>and $f_j$, called the form factor of atom $j$ is approximately proportional to $Z_j$. This approximation is better at small angles.</p>
+	<section>
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="Experiment:-Macroscopic-effects">Experiment: Macroscopic effects<a class="anchor-link" href="#Experiment:-Macroscopic-effects">&#182;</a></h3>
+	    <p>removed empirically by subtracting force from averaged long range scan data over several surface locations</p>
+	    <table cellspacing="0" cellpadding="0">
+	      <tr>
+		<td>
+		  <img src='../images/long_range.png' width=600>
+		</td>
+	      </tr>
+	    </table>
+	    <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+	    </div>
+	  </section>
+	</section>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
+	<section>
+	  <div style="position:relative;height:0;padding-bottom:56.21%">
+	    <iframe src="https://www.youtube.com/embed/Ehw8PTA4QkE?ecver=2" style="position:absolute;width:80%;height:80%;left:0" width="641" height="360" frameborder="0" allowfullscreen>
+	    </iframe>
+	  </div>
+	  <p class='fragment'>Nottingham Nanoscience group's papers as <a href='http://bit.ly/NottinghamNano'> PDFs</a></p>
+	  <p class='fragment'>Phil is an extremely good guitarist;)</p>
+	</section>
+	
+	<section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	  <h3 id="STM">STM<a class="anchor-link" href="#STM">&#182;</a></h3>
+	  <p>
+	    $$
+	    I(z) \propto \exp^{-k \sqrt{2 \phi}z}
+	    $$
+	    where, $k$ is a constant, $\phi$ is the work function of the surface and $z$ is the distance from the surface.
+	  </p>
+	  <p>
+	    Using <a href='https://en.wikipedia.org/wiki/Ballistic_conduction'>Landau-Buttiker</a> formalism + a lot of simplifications, we can approximate the current through a tip as
+	    $$
+	    I(z,E) \propto \text{LDOS}(z, E)
+	    $$
+	    where $\text{LDOS}$ is a local density of states - the amplitude of electron states of the surface that have an energy within $dE$ of $E$ at the location $z$.<br>
+	    Again this gives exponential decay.
+	  </p>
+	  </div>
+	</section>
+	
+	<section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	  <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
+	  <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
+	  <p>Or use Quantum Mechanical calculations (Density Functional Theory (~1000x slower) than forcefield)</p>
+	  <p>For STM we need the electron density (LDOS), we need Quantum Mechanics</p>
+	  <p>For AFM we need the to calculate the force on a tip model on a 3D grid (1000s of calculations)</p><br>
+	  <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
+	  </div>
+	</section>
 
-
-		  <h3 id="Neutrons">Neutrons<a class="anchor-link" href="#Neutrons">&#182;</a></h3><p>neutrons, being neutral do not interact with electronic density to any appreciable degree, instead the neutron interacts only with the nuclear core, which can be considered as a point particle at the atomic position</p>
-		  <p>$$
-		    V_j (\mathbf{x} - \mathbf{x}_j) = f_j \delta (\mathbf{x} - \mathbf{x}_j)
-		    $$</p>
-		  <p>and $f_j$ is an essentially atomic dependent quantity that determines how strongly atoms of a given type scatter neutrons.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>Caesium Chloride, which has a primitive cubic lattice, and a basis</p>
-		  <p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
-		  <p>$$
-		    \begin{align}
-		    &amp;\text{Cs at } [0.0,0.0,0.0]\\
-		    &amp;\text{Cl at } [0.5a,0.5a,0.5a]
-		    \end{align}
-		    $$
-		    Now in this case the reciprocal lattices vectors are given by</p>
-		  <p>$$
-		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
-		    $$</p>
-		  <p>and</p>
-		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>The general form of the structure factor will then be</p>
-		  <p>$$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
-		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)}
-		    \end{align}
-		    $$</p>
-		  <p>and for our particular case we get
-		    $$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
-		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
-		    &amp; = f_{\text{Cs}} + f_{\text{Cl}}(-1)^{h + k + l} 
-		    \end{align}
-		    $$</p>
-		  <p>And the scattered wave intensity $I_{hkl} \sim |S_{hkl}|^2$</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Systematic-absences">Systematic absences<a class="anchor-link" href="#Systematic-absences">&#182;</a></h2><h4 id="Caesium-bcc-metal.">Caesium bcc metal.<a class="anchor-link" href="#Caesium-bcc-metal.">&#182;</a></h4><p>Caesium metal can crystallise in the BCC structure. If we work with the conventional unit cell, then the scattering will be described in a very similar way to the previous example.</p>
-		  <p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
-		  <p>$$
-		    \begin{align}
-		    &amp;\text{Cs at } [0.0,0.0,0.0]\\
-		    &amp;\text{Cs at } [0.5a,0.5a,0.5a]
-		    \end{align}
-		    $$
-		    Now in this case the reciprocal lattices vectors are given by</p>
-		  <p>$$
-		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
-		    $$</p>
-		  <p>and</p>
-		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>and now the structure factor will be given by
-		    $$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
-		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
-		    &amp; = f_{\text{Cs}}(1 + (-1)^{h + k + l}) 
-		    \end{align}
-		    $$</p>
-		  <p>This means that all the odd reflections are missing for a BCC crystal! By describing the BCC as a primitive cubic with a basis, we ignored some of the symmetry - the layer of atoms at the centre of the unit cells leads to destructive interference with some reflections.</p>
-		  <p>And the scattered wave intensity $I_{hkl} \sim |S_{hkl}|^2$</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h4 id="Copper-fcc-metal">Copper fcc metal<a class="anchor-link" href="#Copper-fcc-metal">&#182;</a></h4><p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
-		  <p>$$
-		    \begin{align}
-		    &amp;\text{Cu at } [0.0,0.0,0.0]\\
-		    &amp;\text{Cu at } [0.0,0.5a,0.5a] \\
-		    &amp;\text{Cu at } [0.5a,0.0,0.5a] \\
-		    &amp;\text{Cu at } [0.5a,0.5a,0.0] \\
-		    \end{align}
-		    $$
-		    Now in this case the reciprocal lattices vectors are given by</p>
-		  <p>$$
-		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
-		    $$</p>
-		  <p>and</p>
-		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
-		  <p>$$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
-		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
-		    &amp; = f_{\text{Cu}}\Big(1 + e^{i \pi(h + k)} + e^{i \pi(k + l)} + e^{i \pi(l + h)}\Big) 
-		    \end{align}
-		    $$</p>
-		  <p>and this is non zero only if $h,k,l$ are all odd or all even.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h4 id="Stucture-factor-factorizes">Stucture factor factorizes<a class="anchor-link" href="#Stucture-factor-factorizes">&#182;</a></h4><p>Consider ZnS, Zinc Sulfide = FCC with a basis.</p>
-		  <p>We will use a conventional cubic cell for the FCC, and the ZnS, which is essentially a diamond structure has a basis</p>
-		  <p>$$
-		    \begin{align}
-		    \text{Zn at postiions:  } &amp;[0.00,0.00,0.00], [0.50,0.50,0.00], [0.50,0.00,0.50], [0.00, 0.50, 0.50]\\
-		    \text{S at postiions:  } &amp;[0.25,0.25,0.25], [0.75,0.75,0.25], [0.75,0.25,0.75], [0.25, 0.75, 0.75]
-		    \end{align}
-		    $$
-		    in units of $a$.</p>
-		  <p>The structure factor is given by</p>
-		  <p>$$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = f_{\text{Zn}}\Big(1 + e^{2i \pi(hkl)\cdot(0.5,0.5,0.0)} + e^{2i \pi(hkl)\cdot(0.5,0.0,0.5)} + e^{2i \pi(hkl)\cdot(0.0,0.5,0.5)}\Big) \\
-		    &amp; + f_{\text{S}}\Big(e^{2i \pi(hkl)\cdot(0.25,0.25,0.25)} + e^{2i \pi(hkl)\cdot(0.75,0.75,0.25)} + e^{2i \pi(hkl)\cdot(0.75,0.25,0.75)} + e^{2i \pi(hkl)\cdot(0.25,0.75,0.75)}\Big)
-		    \end{align}
-		    $$</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>but this can be factored into a lattice term, and a basis term</p>
-		  <p>$$
-		    \begin{align}
-		    S(\mathbf{G})_{hkl} &amp; = \Big(1 + e^{i \pi(h + k)} + e^{i \pi(k + l)} + e^{i \pi(l + h)}\Big) \\
-                    &amp; \times \Big(f_{\text{Zn}}  + f_{\text{S}}\Big(e^{2i \pi(hkl)\cdot(0.25,0.25,0.25)}\Big)
-		    \end{align}
-		    $$</p>
-		  <p>and the first term in the brackets is the same as for an ideal FCC crystal. The second term gives a structure associated specifically with ZnS.</p>
-		  <p>This follows from the fact that atomic positions are defined by $\mathbf{r_i} = \mathbf{R + x_i}$. The structure factor will always factorize into</p>
-		  <p>$$
-		    S(\mathbf{G})_{hkl} = S(\mathbf{G})_{hkl}^{\text{lattice}} \times S(\mathbf{G})_{hkl}^{\text{basis}}
-		    $$</p>
-		  <p>We will see that this factorization is very general in the solid state. In its most general form, it is known as Bloch's Theorem.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h4 id="Powder-Diffraction-Analysis">Powder Diffraction Analysis<a class="anchor-link" href="#Powder-Diffraction-Analysis">&#182;</a></h4><p>See problem class 5, some notes from Elisa on Blackboard and pages 151 to 155 (and rather more advanced 264-266) of Simon.</p>
-		  <p>Also some quite nice notes <a href="http://pd.chem.ucl.ac.uk/pdnn/diff2/structf.htm">here</a>. They go into more detail on practical procedures than we have, but they look quite good.</p>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-
+	<section>
+	  <section>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	    <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
+	    <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
+	    <p>Danilo will talk about this in week 9.</p>
+	    <table>
+	      <tr>
+		<td>
+		  <video width="520" height="400" controls>
+		    <source src="../images/CDB.mp4" type="video/mp4">
+		  </video>
+		</td>
+		<td>
+		  <video width="520" height="400" controls>
+		    <source src="../images/TCB.mp4" type="video/mp4">
+		  </video>
+		</td>
+	      </tr>
+	    </table>
+	    <p>Using classical potentials to 'pull' molecules onto a KCl surface.</p>
+	    <h5>Gaberle, J., Gao, D. Z., Watkins, M. B., & Shluger, A. L. (2016). Calculating the entropy loss on adsorption of organic molecules at insulating surfaces. The Journal of Physical Chemistry C, 120(7), 3913-3921.</h5>
+	    </div>
+	  </section>
+	</section>
+	
 	
 	</div>
-	</div>
+      </div>
 
-	<script>
-	  
-	  require(
-	  {
-	  // it makes sense to wait a little bit when you are loading
-	  // reveal from a cdn in a slow connection environment
-	  waitSeconds: 15
-	  },
-	  [
-	  "../../../revealjs//lib/js/head.min.js",
-	  "../../../revealjs//js/reveal.js"
-	  ],
-	  
-	  function(head, Reveal){
-	  
-	  // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-	  Reveal.initialize({
-	  controls: true,
-	  progress: true,
-	  history: true,
-	  mouseWheel: false,
-	  center: false,
-	  scroll: true,
-	  //width: "80%",
-	  //height: "80%",
-	  //margin: 10,
-	  //minScale: 0.2,
-	  //maxScale: 1.5,
-	  // Parallax background image
-	  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Diffusion_rayleigh_et_diffraction_svg.svg',
-	  // Parallax background size
-	  parallaxBackgroundSize: '799px 261px', // CSS syntax, e.g. "2100px 900px
-	  
-	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-	  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-	  
-	  // Optional libraries used to extend on reveal.js
-	  dependencies: [
-	  { src: "../../../revealjs//lib/js/classList.js",
-	  condition: function() { return !document.body.classList; } },
-	  { src: "../../../revealjs//plugin/notes/notes.js",
-	  async: true,
-	  condition: function() { return !!document.body.classList; } }
-	  ]
-	  });
-	  
-	  var update = function(event){
-	  if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-	  MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-	  }
-	  };
-	  
-	  Reveal.addEventListener('slidechanged', update);
-	  
-	  var update_scroll = function(event){
-	  $(".reveal").scrollTop(0);
-	  };
-	  
-	  Reveal.addEventListener('slidechanged', update_scroll);
-	  
-	  }
-	  );
-	</script>
+      <script>
+	
+	require(
+	{
+	// it makes sense to wait a little bit when you are loading
+	// reveal from a cdn in a slow connection environment
+	waitSeconds: 15
+	},
+	[
+	"../../../revealjs//lib/js/head.min.js",
+	"../../../revealjs//js/reveal.js"
+	],
+	
+	function(head, Reveal){
+	
+	// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	mouseWheel: false,
+	center: false,
+	scroll: true,
+	//width: "80%",
+	//height: "80%",
+	//margin: 10,
+	//minScale: 0.2,
+	//maxScale: 1.5,
+	// Parallax background image
+	parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/SiO2_Quartz_extra-O.svg/1280px-SiO2_Quartz_extra-O.svg.png',
+	// Parallax background size
+	parallaxBackgroundSize: '1280px 705px', // CSS syntax, e.g. "2100px 900px
+	
+	theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+	
+	// Optional libraries used to extend on reveal.js
+	dependencies: [
+	{ src: "../../../revealjs//lib/js/classList.js",
+	condition: function() { return !document.body.classList; } },
+	{ src: "../../../revealjs//plugin/notes/notes.js",
+	async: true,
+	condition: function() { return !!document.body.classList; } }
+	]
+	});
+	
+	var update = function(event){
+	if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+	MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+	}
+	};
+	
+	Reveal.addEventListener('slidechanged', update);
+	
+	var update_scroll = function(event){
+	$(".reveal").scrollTop(0);
+	};
+	
+	Reveal.addEventListener('slidechanged', update_scroll);
+	
+	}
+	);
+      </script>
 
   </body>
 

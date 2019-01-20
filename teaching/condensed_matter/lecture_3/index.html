@@ -1,958 +1,894 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>03 - 1D crystals</title>
+  <title>01 - Structure of matter</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-    <!-- General and theme style sheets -->
-    <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
-    <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
 
-    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-    <script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = '../../../revealjs/css/print/pdf.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '../../../revealjs/css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
 
-    </script>
+  </script>
 
-    <!--[if lt IE 9]>
-	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
-	<![endif]-->
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+  <![endif]-->
 
-    <!-- Loading the mathjax macro -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      TeX: { equationNumbers: { autoNumber: "AMS" } }
-      });
-    </script>
-    <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      tex2jax: {
+  <!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+  <!-- MathJax configuration -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
       processEscapes: true,
       processEnvironments: true
-      },
-      // Center justify equations in code and markdown cells. Elsewhere
-      // we use CSS to left justify single line equations in code cells.
-      displayAlign: 'center',
-      "HTML-CSS": {
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
       styles: {'.MathJax_Display': {"margin": 0}},
       linebreaks: { automatic: true }
-      }
-      });
-    </script>
-    <!-- End of mathjax configuration -->
+    }
+  });
+  </script>
+  <!-- End of mathjax configuration -->
 
-    <!-- Get Font-awesome from cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+  <!-- Get Font-awesome from cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-    <!-- Custom stylesheet, it must be in the same directory as the html file -->
-    <link rel="stylesheet" href="../custom.css">
+  <!-- Custom stylesheet, it must be in the same directory as the html file -->
+  <link rel="stylesheet" href="../custom.css">
 
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
+</head>
+<body>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="03---Electronic-Band-Structure-of-a-1D-Periodic-Chain">03 - Electronic Band Structure of a 1D Periodic Chain<a class="anchor-link" href="#03---Electronic-Band-Structure-of-a-1D-Periodic-Chain">&#182;</a></h1><p>Consider a 1D chain of $N$ identical atoms , each with a single atomic orbital $\phi_i$, which is the solution of the atomic Schrodinger equation for the $i$th atom.</p>
-		  <p>The atoms are $a$ apart - also known as the lattice constant.</p>
-		  <p>We assume that the orbitals are orthonormal again:</p>
-		  \begin{align*}
-		  \int_0^{Na} \textrm{d}x \phi_i^* \phi_j = \delta_{ij}
-		  \end{align*}<p>Now we join the two ends of the chain together. This is called periodic boundary conditions, and means that atom $0$ is a neighbour of atom $(N-1)$.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Our Hamiltonian is very similar to previous molecular work</p>
-		  \begin{align*}
-		  \hat{H} = \hat{T} + \sum_{j=0}^{N-1} \hat{V_j}
-		  \end{align*}<p>where $\hat{T} = -(\hbar^2/2m) \frac{\textrm{d}^2}{\textrm{d} x^2} $ is the kinetic energy operator and the $\bar{V}_j$ are the coulomb potential energy operators of an electron with the $j$th nuclei, which on our chain will be at position $ja$, i.e. atom number times the distance between atoms.</p>
-		  \begin{align*}
-		  V_j(x) = \frac{-e^2}{4 \pi \epsilon_0 |x - ja|}
-		  \end{align*}<p>Now we need to figure out our Hamiltonian matrix. The Hamiltonian matrix elements are given by</p>
-		  \begin{align*}
-		  H_{ij} = \int_0^{Na} \textrm{d}x \phi_i^* \hat{H}\phi_j
-		  \end{align*}<p>and we should remember that</p>
-		  \begin{align*}
-		  H_{\rm{atomic}} \phi_j = (\hat{T} + \hat{V_j}) \phi_j = \epsilon_j \phi_j
-		  \end{align*}<p>and, as all the atoms are the same $\epsilon_j = \epsilon$ is a single parameter, and atomic orbital $\phi$.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Hamiltonian">Hamiltonian<a class="anchor-link" href="#Hamiltonian">&#182;</a></h1><p>Our matrix form of the Schroedinger equation is</p>
-		  \begin{align*}
-		  \sum_j H_{ij} C_j = E C_i
-		  \end{align*}<p>If we write out our general matrix element we have</p>
-		  \begin{align*}
-		  H_{ij} & = \int_0^{Na} \textrm{d}x \phi_i^* \hat{H}\phi_j \\
-		  & = \int_0^{Na} \textrm{d}x \phi_i^*  (\hat{T} + \hat{V_j}) \phi_j + \sum_{k \neq j} \int_0^{Na} \textrm{d}x \phi_i \hat{V}_k \phi_j \\
-		  & = \delta_{i,j} \epsilon + \sum_{k \neq j} \int_0^{Na} \textrm{d}x\phi_i \hat{V}_k \phi_j
-		  \end{align*}
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  \begin{align*}
-		  H_{ij} & = \int_0^{Na} \textrm{d}x \phi_i^* \hat{H}\phi_j \\
-		  & = \int_0^{Na} \textrm{d}x \phi_i^*  (\hat{T} + \hat{V_j}) \phi_j + \sum_{k \neq j} \int_0^{Na} \textrm{d}x \phi_i \hat{V}_k \phi_j \\
-		  & = \delta_{i,j} \epsilon + \sum_{k \neq j} \int_0^{Na} \textrm{d}x\phi_i \hat{V}_k \phi_j
-		  \end{align*}<p>The sum is a little bit fiddly, but once you figure out what the $V$ integrals are and look carefully at the indices we will end up with</p>
-		  \begin{align*}
-		  \sum_{k \neq j} \int_0^{Na} \textrm{d}x \phi_i V_k \phi_j = 
-		  \begin{cases} 
-		  \hfill V_0    \hfill & \text{ if $i = j$} \\
-		  \hfill t \hfill & \text{ if $i = j \pm 1$} \\
-		  \hfill 0 \hfill & \text{ otherwise} \\
-		  \end{cases}
-		  \end{align*}<p>$V_0$ is the total coulomb energy of the electron at an atomic site with all the other nuclei.</p>
-		  <p>When the atoms are neighbours we have a hopping integral, $t$, exactly like the molecular case.</p>
-		  <p>If the atoms are separated by more than one site, we have no interaction.</p>
-		  \begin{align*}
-		  H_{ij} & = \delta_{i,j} (\epsilon + V_0) - t(\delta_{i+1,j} + \delta_{i-1,j})
-		  \end{align*}
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>or written out in a matrix</p>
-		  \begin{align*}
-		  H = 
-		  \left( \begin{array}{ccccccc}
-		  (\epsilon + V_0) & t      & 0      & \ldots & 0 & 0 & t\\
-		  t      & (\epsilon + V_0) & t      & 0 & \ldots & 0 & 0\\
-		  0      &    t   & (\epsilon + V_0) & t & 0 & \ldots & 0 \\
-		  \vdots & \vdots & \vdots & \vdots& \vdots & \vdots & \vdots \\
-		  0 & \ldots & 0 & 0 & t &(\epsilon + V_0) & t      \\
-		  t & \ldots & 0 & 0 & 0 & t &(\epsilon + V_0)      
-		  \end{array}
-		  \right)
-		  \end{align*}
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Periodic-chain---1D-crystal,-computational">Periodic chain - 1D crystal, computational<a class="anchor-link" href="#Periodic-chain---1D-crystal,-computational">&#182;</a></h1><p>We'll take a computational approach to solving this problem first.</p>
-		  <p>We can build a big matrix <em>in silico</em> and diagonalize it to find the eigenvalues and eigenvectors.</p>
-		  <p><code>n = 50           # how long the chain should be
-		      epsilon = -7.0   # atomic energy (eV)
-		      V_0 = -0.5       # coulomb interaction energy with other atoms (eV)
-		      t = -3.0         # hopping integral (eV)</code></p>
-
-		  <div class="fragment">
-		    <pre>array([[-7.5, -3. ,  0. , ...,  0. ,  0. , -3. ],
-		      [-3. , -7.5, -3. , ...,  0. ,  0. ,  0. ],
-		      [ 0. , -3. , -7.5, ...,  0. ,  0. ,  0. ],
-		      ..., 
-		      [ 0. ,  0. ,  0. , ..., -7.5, -3. ,  0. ],
-		      [ 0. ,  0. ,  0. , ..., -3. , -7.5, -3. ],
-		      [-3. ,  0. ,  0. , ...,  0. , -3. , -7.5]])</pre>
-		  </div>
+  <div class="reveal">
+    <div class="slides">
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/15/Co_ellipse.png">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="01---structure-of-matter">01 - structure of matter<a class="anchor-link" href="#01---structure-of-matter">&#182;</a></h1><br>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  <li>We will derive the matrix form of Quantum Mechanics</li>
+		  <li>and use it to explain covalent bonding in the Molecular Orbital picture</li>
+		  <li>the same procedure will allow us to use the tight-binding model of crystals</li>
 		</div>
 	      </div>
 	    </div>
-	  </section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now we can look at our sorted eigenvalues, and note that there are exactly $N$ of them.</p>
+      </div></section></section>
 
-		</div>
-	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered">
-		<div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><img src='energy_levels.jpg'></p>
-
-		  </div>
-		</div>
-	    </div></div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered">
-		<div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p>
-		    <ul>
-		      <li>apart from the first and last values, there are two states of the same energy (degenerate states)</li>
-		      <li>the density of states (number of states in an energy range) is larger for lower and higher values</li>
-		      <li>the distribution of values looks like it might be described by a simple rule</li>
-		      <li>the eigenvalues cover an energy range of $4t$.</li>
-		    </ul>
-		    </p>
-		  </div>
-		</div>
-	  </div></div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Let us take a look at the first few eigenfunctions - I'll only print one of the pairs of degenerate orbitals.</p>
-		  <p>What we show is the values of $c_i$ - the coefficients of the atomic orbitals in the states.</p>
-		  <p><img src='eigenvectors.jpg'></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>These look quite familiar(?)!</p>
-		  <p>Lets look at not the lowest state, but the two just above it in energy:</p>
-
-		</div>
-	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered">
-		<div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p><img src='states_2_and_3.jpg'></p>
-
-		  </div>
-		</div>
-	  </div></div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>These look like a pair of sine and cosine functions, with with a period of the whole chain.</p>
-		  <p>Lets look at the next two states:</p>
-
-		</div>
-	      </div>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 	    </div>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><img src='states_4_and_5.jpg'></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now remember our actual wavefunction is</p>
-		  \begin{align*}
-		  \psi(x) = \sum_i C_i \phi_i(x)
-		  \end{align*}<p>so we have atomic orbitals, whose contribution to the wavefunction is modulated by waves that fit the periodicity of the system.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Analytical-solution">Analytical solution<a class="anchor-link" href="#Analytical-solution">&#182;</a></h1><p>Another way of writing pairs of sin and cosine functions is as pairs of complex exponentials.</p>
-		  <p>We could try a solution to our set of equations of the form</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    \begin{align*}
-		    C_{n} = \frac{e^{-ikna}}{\sqrt{N}}
-		    \end{align*}
-		  </div><p>the $\sqrt{N}$ is to ensure the probability of an electron that occupies an orbital being 1 over all space (normalisation).</p>
-		  <p>We plug our guess solution and matrix form of the Hamiltonian into the LHS of the Schroedinger equation, and using the properties of the Kronecker delta we get:
-		  \begin{align*}
-		  \sum_j H_{mj} C_j & = \sum_j \delta_{m,j} (\epsilon + V_0) C_j - \sum_j t(\delta_{m+1,j} + \delta_{m-1,j}) C_j \\
-                  & = (\epsilon + V_0) \frac{e^{-ikma}}{\sqrt{N}} - t \Bigg(\frac{e^{-ik(m+1)a}}{\sqrt{N}} + \frac{e^{-ik(m-1)a}}{\sqrt{N}} \Bigg)
-		  \end{align*}and the right hand side is</p>
-		  \begin{align*}
-		  E \frac{e^{-ikma}}{\sqrt{N}}
-		  \end{align*}<p>.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  \begin{align*}
-		  (\epsilon + V_0) \frac{e^{-ikma}}{\sqrt{N}} - t \Bigg(\frac{e^{-ik(m+1)a}}{\sqrt{N}} + \frac{e^{-ik(m-1)a}}{\sqrt{N}} \Bigg) = E \frac{e^{-ikma}}{\sqrt{N}}
-		  \end{align*}<p>then dividing both sides by $\frac{e^{-ikma}}{\sqrt{N}}$ we get</p>
-		  \begin{align*}
-		  (\epsilon + V_0) - t \Bigg(\frac{e^{-ika}}{\sqrt{N}} + \frac{e^{+ika}}{\sqrt{N}} \Bigg) & = E \\
-		  (\epsilon + V_0) - 2t \cos(ka) = E
-		  \end{align*}<p>This gives us</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>
-		      Electronic 'dispersion' relation (for a 1D chain of s type orbitals)
-		    </h4>
+	    <div class="inner_cell">
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px; background:rgba(255,215,0,0.9)">		  
+		  <h1 id="Quantum Mechanics">Quantum Mechanics<a class="anchor-link" href="#Quantum Mechanics">&#182;</a></h1><br>		  <p>We take as a given the time independent form of the Schroedinger wave equation
 		    $$
-		    E = (\epsilon + V_0) - 2t \cos(ka) 
+		    \hat{H} \psi = E \psi
 		    $$
-		  </div><p>We have effectively fourier transformed our equations, and this has led to a set of algebraic equations that can be solved.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Quantisation-of-$k$">Quantisation of $k$<a class="anchor-link" href="#Quantisation-of-$k$">&#182;</a></h1><p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that 
-		    \begin{align*}
-		    k \to k + 2 \pi / a 
-		    \end{align*}</p>
-		  <p>should give a physically identical system. 
-		    <img src='https://upload.wikimedia.org/wikipedia/commons/f/f4/Electron_wave_doubling_over.png'></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>To see this we substitute this into our wavefunctions</p>
-		  $$
-		  C_{n} = \frac{e^{-i(k+2\pi / a) na}}{\sqrt{N}} = \frac{e^{-ik na}e^{-i2\pi n}}{\sqrt{N}} = \frac{e^{-ik na}}{\sqrt{N}} 
-		  $$<p>And further, as we have $N$ sites to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \frac{N}{2}$, similarly to the free electron case in the Sommerfeld model.</p>
-		  <p>This corresponds to choosing a range $-\pi/a \lt k \leq \pi/a$ with $k$ values separated by $\frac{2 \pi} { N a }$.</p>
-		  <p>With this restriction (quantization) we have $N$ energy levels from our $N$ initial atomic orbitals, and they are indeed the atomic orbitals modulated by the running waves we guessed at from the computational section.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we look back at the energy levels we got by computational diagonalisation</p>
-		  <p><img src='energy_levels.jpg'></p>
-
-		</div>
-	      </div>
-	    </div><div class="fragment">
-	      <div class="cell border-box-sizing text_cell rendered">
-		<div class="prompt input_prompt">
-		</div>
-		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		  <div class="text_cell_render border-box-sizing rendered_html">
-		    <p>We can see that our calculated values do describe a cosine function, the bandwidth is $4t$ and the pairs of degenerate values are (combinations) of those for which $k = \pm m$.</p>
-		    <p>On the other hand, the spacing of levels is of the order $\Delta E = 2t 2 \pi a / Na$ (using a small angle approx for cos($ka$)) as $N$ tends to a macroscopic size, say Avagadro's Number, this means the level spacing is of the order  $\Delta E \approx 2t 2 \pi a/ Na \approx 12 t / N \sim 10^{-22} \textrm{ eV}$.</p>
-		    <p>So even though $k$ is discrete, in practice it behaves as a continous variable, which is why we often (must) replace a sum over $k$ with an integral.</p>
-
-		  </div>
-		</div>
-	</div></div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Electron-filling">Electron filling<a class="anchor-link" href="#Electron-filling">&#182;</a></h1><p>Now that we have the energy levels, we need to feed electrons into them, until we have the correct number.</p>
-		  <p>If we remember our rules that at very low temperature, the occupations the $i^{th}$ orbital with energy $\epsilon_i$ is given by</p>
-		  \begin{align*}
-		  N_i = 
-		  \begin{cases} 
-		  \hfill 2   \hfill & \text{ if $\epsilon_i < E_f$} \\
-							      \hfill 1 \hfill & \text{ if $\epsilon_i = E_f$} \\
-							      \hfill 0 \hfill & \text{ if $\epsilon_i > E_f$} \\
-		    \end{cases}
-		    \end{align*}<p>this mean that if we have $N$ states and $N$ electrons to feed into them we will half fill the band.</p>
-		    <p>The situation will be (rather) similar to the free electron case.</p>
-		    <p>At higher $T$s the occupations will be smeared out over a width of $\approx k_B T$ and only electrons within $\approx k_B T$ of $E_F$ will be 'active', i.e. will contribute to transport etc.</p>
-		    <p>If we had two electrons per atom, all $N$ states would be fully filled. There would be no available states for electrons to thermally excite into, and no transport!</p>
-		    <p>Full bands can effectively be ignored for many reasons.</p>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-
-        <section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Effective-Mass">Effective Mass<a class="anchor-link" href="#Effective-Mass">&#182;</a></h1><p>We now show that near the top and bottom of the band, electrons behave similarly to free-electrons.</p>
-		  <p>Taking our dispersion relation</p>
-		  $$
-		  E = (\epsilon + V_0) - 2t \cos(ka) 
-		  $$<p>and making a small angle expansion of the cosine, ($\cos x \approx 1 - x^2/2$) we get</p>
-		  $$
-		  E = (\epsilon + V_0) - 2t + ta^2k^2
-		  $$<p>if you remember, the dispersion relation for free electrons was similar</p>
-		  $$
-		  E_{\rm{free}} = \frac{\hbar^2 k^2}{2m_e}
-		  $$
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>so our tight-binding dispersion relation near the bottom of the band would look similar to the free-electron model if we define an effective mass</p>
-		  $$
-		  m^* = \frac{\hbar^2}{2ta^2}
-		  $$<p>then our dispersion relation near the bottom of the band looks like</p>
-		  $$
-		  E_{\rm{tight}} = \frac{\hbar^2 k^2}{2m^*}
-		  $$<p>We can take the top of the band, and expand around $k = \pi/a$ instead of 0 to get a similar relation at the top of the band.</p>
-		  <p>This gives a hint why the free-electron model is still useful - near the top and bottom of bands, electrons behave rather similarly to free electrons in many ways, but with a modified effective mass.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Multiple-orbitals---characterisation-of-materials">Multiple orbitals - characterisation of materials<a class="anchor-link" href="#Multiple-orbitals---characterisation-of-materials">&#182;</a></h1><p>In reality atoms have multiple electrons and multiple atomic orbitals.</p>
-		  <p>The orbitals will form their own bands, which could overlap (in the 2 or 3D case: technically this can't really happen in 1D) in energy. The pattern of bands will depend on the hopping integrals, and the atomic energies, which will in principle be different for different atoms and different orbitals and orbital pairs in the crystal.<br><br></p>
-                  <p>The width of the band depends on $t$, and $t$ depends on the interatomic spaceing, as it is approximately the rate of electtrons hopping from atomic orbital to atomic orbital.</p>
-                  <img src='https://upload.wikimedia.org/wikipedia/commons/e/ef/Solid_state_electronic_band_structure.svg' style='width:400px'>
-                </div>
-              </div>
-          </div></section></section>
-	  
-          <section><section>
-            <div class="cell border-box-sizing text_cell rendered">
-              <div class="prompt input_prompt">
-              </div>
-              <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-                <div class="text_cell_render border-box-sizing rendered_html">
-                    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
-			      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>
-		      This gives us an approximate characterisation scheme for materials.
-		    </h4>
-
-		    <li> Metals, have a partially filled band(s). This means that electrons around the fermi level are active electrically and thermally.</li><br>
-		    <li> Insulators have all bands fully occupied or empty and the energy gap between the highest occupied band state and the lowest unoccupied band state is very large ($5$ eV, well into the UV range).</li><br>
-		    <li> Semiconductors are similar to insulators, but the "bandgap" is smaller - archetype is Silicon with bandgap $\approx 1.2$ eV. We'll see later that this means in practice that some electrons will be promoted to the empty band, and some conductivity will appear.</li>
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Links">Links<a class="anchor-link" href="#Links">&#182;</a></h1><p>Steven Simon's lecture</p>
-		  <p><a href="https://podcasts.ox.ac.uk/08-microscopic-view-electrons-solids-one-dimension-tight-binding-chain">https://podcasts.ox.ac.uk/08-microscopic-view-electrons-solids-one-dimension-tight-binding-chain</a></p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
-		    <li>we've used a tight binding approach to calculate and examine the wavefunctions and energies of a 1D chain of atoms.</li>
-		    <li>the 'dispersion' of the band is $E = \epsilon + V_0 + 2t\cos(ka)$</li>
-		    <li>the bandwidth is $4t$.</li>
-		    <li>there are $N$, where $N$ is the number of atoms (assuming each contributes 1 orbital function).</li>
-		    <li>the states are a product of something that repeats with the period of the atomic constituents ($\phi_i$) and running waves that extend over the chain which modulate over its entire length.</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="03---Atomic-Vibrations-of-a-1D-Periodic-Chain">03 - Atomic Vibrations of a 1D Periodic Chain<a class="anchor-link" href="#03---Atomic-Vibrations-of-a-1D-Periodic-Chain">&#182;</a></h1><p>Consider a 1D chain of $N$ identical 'atoms'.</p>
-		  <p>Each atom has mass $m$ and is separated from the next by an equilibrium spacing $a$ (lattice constant).</p>
-		  <p>The total length of the chain is $Na$. We define the equilibrium position of atom $n$ to be $x_n^{eq} = na$.</p>
-		  <p>Atoms can move only in the $x$ direction, and we can describe the instantaneous movement of an atom by the variable $\delta x_n = x_n - x_n^{eq}$.</p>
-		  <p><img src="binding_curve.png" style="width:300px"></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We'll approximate our interatomic potential, using a Taylor expansion around the equilibrium postition of the atoms.</p>
-		  <p>At low enough temperature, we can just keep the first term in the expansion, to give us</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>Harmonic approximation
-		    </h4>
-
-		    We expand the potential energy due to an atomic displacement in powers of $x - x^{eq}$
-		    \begin{align*}
-		    V(x) &= V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2 - \frac{\kappa_3}{3!}(x-x^{eq})^3 + \ldots \\
-		    &\approx V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2
-		    \end{align*}
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We'll use classical mechanics for now.</p>
-		  <p>We have springs, with spring constant $\kappa$ between our atoms.</p>
-		  <p>The extension of the bond will be related to the difference in the instantaneous movements of two neighbouring atoms.</p>
-		  $$
-		  V_{tot} = \sum_i V(x_{i+1}-x_i) = \sum_i \frac{\kappa}{2}(x_{i+1} - x_i - a)^2 = \sum_i \frac{\kappa}{2}(\delta x_{i+1}
-		  - \delta x_i)^2
-		  $$
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>The force on the $n^{th}$ atom is then given by</p>
-		  $$
-		  F_n = - \frac{\partial V_{tot}}{\partial x_n} = \kappa(\delta x_{n+1} - \delta x_n) + \kappa(\delta x_{n-1} - \delta x_n)
-		  $$<p>Which gives us Newton's equations of motion for this system</p>
-		  $$
-		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa(\delta x_{n+1} + \delta x_{n-1} -  2 \delta x_n) $$<p>We look for normal modes, and attempt a wavelike solution</p>
-		  $$
-		  \delta x_n = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  $$<p>where $A$, $\omega$ and $k$ are the amplitude, frequency and wavevector of the proposed wave.</p>
-		  <p>(Note, this is very similar to the solution of the tightbinding electronic model, and of the Drude AC conductivity.)</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we plug this guess into our equations of motion we get</p>
-		  $$
-		  -m \omega^2 Ae^{i \omega t - ikna} = \kappa Ae^{i \omega t } \left[ e^{- ik(n+1)a} + e^{- ik(n-1)a} - 2 e^{- ikna}  \right]
-		  $$<p>which simplifies to</p>
-		  $$
-		  m \omega^2 = 2 \kappa \left[1 - \text{cos}(ka) \right] = 4 \kappa \text{sin}^2(ka/2)
-		  $$<p>from which it follows</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>Dispersion relation for 1D system of identical masses
-		    </h4>
+		    We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting
 		    $$
-		    \omega = 2 \sqrt {\frac{\kappa}{m}} \mid \text{sin}(ka/2) \mid
+		    x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		    $$		    
+		    and for the linear momenta,
 		    $$
-		  </div><p>which gives us a dispersion relation - a connection between frequency and wavevector.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Sound-waves">Sound waves<a class="anchor-link" href="#Sound-waves">&#182;</a></h1><p>Sound waves correspond to very long wavelength oscillations - which means very small wave vector.</p>
-		  <p>Again we make a small angle expansion to get</p>
-		  $$
-		  \omega = 2 \sqrt {\frac{\kappa}{m}} | \sin(ka/2) | \approx 2 \sqrt {\frac{\kappa}{m}}|ka/2| = \sqrt {\frac{\kappa}{m}} a |k|
-		  $$<p>(and phase velocity, which equals group velocity in this case when the dispersion is linear),</p>
-		  $$
-		  \nu = \omega / |k| = \sqrt{\frac{\kappa}{m}}a
-		  $$<p>.</p>
-		  <p>This give the speed of sound waves in our 1D crystal.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h1><p>We took a harmonic model for interaction between our atoms.</p>
-		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.</p>
-		  <p><img src="binding_curve.png" style="width:300px"</p>
-		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interaction become very strong, very quickly).</p>
-		  <p>This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Reciprocal-Lattice">Reciprocal Lattice<a class="anchor-link" href="#Reciprocal-Lattice">&#182;</a></h1><p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that</p>
-		  \begin{align*}
-		  k \to k + 2 \pi / a 
-		  \end{align*}<p>should give a physically identical system.</p>
-		  <p>Further, as we have $N$ sites to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \frac{N}{2}$, as for the tight binding model.</p>
-		  <p>This corresponds to choosing a range $-\pi/a \lt k \leq \pi/a$</p>
-		  <p>With this restriction we have $N$ normal modes from our $N$ atoms that each have 1 degree of freedom.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Quantum-Correspondence-Principle">Quantum Correspondence Principle<a class="anchor-link" href="#Quantum-Correspondence-Principle">&#182;</a></h1><p>Classical normal mode $\to$ quantum harmonic oscillator.</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4> 1 quantum of vibrational (of a quantum oscillator) in a crystal is called a 'phonon'. 
-		    </h4>
-		  </div><p>Phonons are bosons, so they behave differently to the electrons we've been discussing. - they tend to accumulate in the ground state.</p>
-		  <p>If we have time we can look at this in more detaiil later.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Alternating-chain">Alternating chain<a class="anchor-link" href="#Alternating-chain">&#182;</a></h1><p>What would happen if we had two types of atoms that alternated along the chain?</p>
-		  <p>For simplicity lets keep the mass the same, but the spring that connects them alternates, with spring constants $\kappa_1$ and $\kappa_2$.</p>
-		  <p>Now we have a 'unit cell' with two atoms in it.</p>
-		  <p>This unit cell is the unit that replicates itself to form the crystal. We'll discuss this much more next week.</p>
-		  <p>Let us define a reference point in the same location within each unit cell. If we have a 'lattice constant' $a$, which is the length of the unit cell then</p>
-		  $$
-		  r_n = an
-		  $$<p>lets say that the reference point is in the center of the cell, and the two types of atom are dispaced from it by $\pm 1/4 a$. We then have the equilibrium positions of our atoms as</p>
-		  $$
-		  x_n^{eq} = an - 1/4 a
-		  $$$$
-		  y_n^{eq} = an + 1/4 a
-		  $$<p>where we call the positions of atom type one $x_n$ and type two $y_n$.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now we can set up our equations of motion pretty much like we did for the monoatomic chain.</p>
-		  \begin{align*}
-		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa_2(\delta y_n - \delta x_n) + \kappa_1(\delta y_{n-1} - \delta x_n)) \\
-		  m\frac{\partial ^2 (\delta y_n)}{\partial t^2} = \kappa_1(\delta x_{n+1} - \delta y_n) + \kappa_2(\delta x_n - \delta y_n))
-		  \end{align*}<p>and we again guess that there will be an envelope of atomic displacements of a running wave form</p>
-		  \begin{align*}
-		  \delta x_n = A_x e^{i \omega t - ikx_n^{eq}} = A_x e^{i \omega t - ikna} \\
-		  \delta y_n = A_y e^{i \omega t - iky_n^{eq}} = A_y e^{i \omega t - ikna}
-		  \end{align*}<p>proceding as before we get</p>
-		  \begin{align*}
-		  -m \omega^2 A_x = \kappa_2 A_y + \kappa_1 A_y e^{ ika}  - (\kappa_1 + \kappa_2) A_x\\
-		  -m \omega^2 A_y =  \kappa_1 A_x e^{ ika} + \kappa_2 A_x + - (\kappa_1 + \kappa_2) A_y
-		  \end{align*}
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>collecting this together in matrix form we get</p>
-		  \begin{align*}
-		  m \omega^2 
-		  \left( \begin{array}{c}
-		  A_x  \\
-		  A_y 
-		  \end{array}\right) = 
-		  \left( \begin{array}{c}
-		  (\kappa_1 + \kappa_2) & - \kappa_2 - \kappa_1  e^{ ika} \\
-		  - \kappa_1 - \kappa_2  e^{ ika} &  (\kappa_1 + \kappa_2)
-		  \end{array}\right) 
-		  \left( \begin{array}{c}
-		  A_x  \\
-		  A_y 
-		  \end{array}\right)
-		  \end{align*}<p>which means that will get 2 solutions for each value of $\omega$.</p>
-		  $$
-		  \omega_{\pm} = \sqrt{\frac{\kappa_1 + \kappa_2}{m} \pm \frac{1}{m}\sqrt{(\kappa_1 + \kappa_2)^2 - 4 \kappa_1 \kappa_2 \text{sin}^2 (ka/2)}}
-		  $$<p>we have $N$ values of $k$ as before, and 2 solutions for each $k$, so $2N$ modes, which all adds up.</p>
-		  <p>We'll discuss the implications next week and in the problem class.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Links">Links<a class="anchor-link" href="#Links">&#182;</a></h1><p>Steven Simon's lecture</p>
-		  <p><a href="https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain">https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain</a></p>
-		  <p>visualisation of vibrations - you can download a program called CHAINPLOT from Mike Glazer's website. You need to go to the downloads and fill in a request.</p>
-		  <p><a href="http://www.amg122.com/programs/chains.html">http://www.amg122.com/programs/chains.html</a></p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
-		    <li>binding curves lead to effective springs between atoms</li>
-		    <li>our simple model allows us to get a flavour of a wide variety of phenomena (this is the purpose of a model!)</li>
-		    <li>sound waves</li>
-		    <li>optical branch in systems with more than one atom in the unit cell</li>
-		    <li>thermal expansion</li>
-		    <li>phonons - collective excitations, analogous to classical normal modes</li>
-		    <li>unit cell, range of k-points, hints at reciprocal lattice</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section>
-
-	<section>
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Electron Transport">Electron Transport<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
-		  <p>Why do filled bands not conduct electricity?</p>
-		  <p>Why do we still study the Drude model if quantum mechanics takes over?</p>
+		    p_x \to \hat{p_x} = i\hbar \frac{\partial}{\partial x}, p_y \to \hat{p_y} = i\hbar \frac{\partial}{\partial y}, p_z \to \hat{p_z} = i\hbar \frac{\partial}{\partial z}
+		    $$
+		    how do we find solutions to the equation?
 		</div>
 	      </div>
 	    </div>
-	  </section>
+      </div></section></section>
 
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Effect on Band diagram">Effect on Band diagram - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
-		  <p>The velocity of an electron is proportional to the $k$-vector</p>
-		  <p>Without an electric field there are equal numbers of states with electrons moving to left and right.</p>
-		  <img src='partialFillBand.jpg'>
-		  <p>Net current is zero.</p>
-		</div>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,215,0,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="General-matrix-formulation">General matrix formulation<a class="anchor-link" href="#General-matrix-formulation">&#182;</a></h2>
+		<p>We have  a Hamiltonian operator $\hat{H}$.</p>
+		<p>We try to find solutions to the Schroedinger equation of the form</p>
+		<p>$$
+		  \psi = \sum_i c_i \phi_i
+		  $$</p>
+		<p>where the $\phi_i$ are functions we know - maybe solutions to the atomic problem, for instance, and the $c_i$ are complex coefficients.</p>
+		<p>We assume the $\phi$ are orthonormal</p>
+		<p>$$
+		  \int d^3x \phi_i^* \phi_j = \delta_{ij}
+		  $$</p>
 	      </div>
 	    </div>
-	  </section>
+      </div></section></section>
 
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Effect on Band diagram">Effect on Band diagram  - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
-		  <p></p>
-		  <p>With an electric field there are equal numbers of states with electrons moving to left and right.</p>
-		  <img src='partialFillBandField.jpg'>
-		  <p>Net current flows. Any size of field will induce a current - metal.</p>
-		</div>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>We substitute our guess into the time-independent Schroedinger equation</p>
+		<p>\begin{align*}
+		  \hat{H} \psi  &amp; = E \psi \\
+		  \hat{H} \sum_j c_j \phi_j  &amp; = E \sum_j c_j \phi_j 
+		  \end{align*}</p>
+		<p>now we multiply on the left by $\psi^*$ and integrate over all space</p>
+		<p>\begin{align*}
+		  \int d^3x\sum_i c_i^* \phi_i^* \hat{H} \sum_j c_j \phi_j &amp; = E \int d^3x \sum_i c_i^* \phi_i^* \sum_j c_j \phi_j \\
+		  \int d^3x\sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \phi_j
+		  \end{align*}</p>
+		<p>now, because of orthogonality, we have $\int d^3x \phi_i^* \phi_j = \delta_{ij}$, so we can lose one of the sums and the integral on the right hand side</p>
+		<p>\begin{align*}
+		  \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = E \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \phi_j \\
+		  &amp; = E \sum_k c_k^* c_k 
+		  \end{align*}</p>
 	      </div>
 	    </div>
-	  </section>
+      </div></section></section>
 
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Effect on Band diagram">Effect on Band diagram - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
-		  <p>The velocity of an electron is proportional to the $k$-vector</p>
-		  <p>Without an electric field there are equal numbers of states with electrons moving to left and right.</p>
-		  <img src='FullBand.jpg'>
-		  <p>Net current is zero.</p>
-		</div>
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3 id="Variation-of-parameters">Variation of parameters
+		  <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
+		</h3>
+		<p>now the trick - we differentiate with respect to $c_i^*$. The only thing that depends upon $c_i^*$ is $c_i^*$ and we dramatically simplify our equations.</p>
+		<p>\begin{align}
+		  \frac{\partial}{\partial c_i^* } \int d^3x \sum_i \sum_j c_i^* c_j \phi_i^* \hat{H} \phi_j &amp; = \frac{\partial}{\partial c_i^* } E  \sum_k c_k^* c_k  \\
+		  \int d^3x \sum_j c_j \phi_i^* \hat{H} \phi_j &amp; = E c_i \\
+		  \sum_j \int d^3x \phi_i^* \hat{H} \phi_j c_j &amp; = E c_i \\
+		  \sum_j H_{ij} c_j &amp; = E c_i \\
+		  \implies H C &amp; = E C
+		  \end{align}</p>
+		<p>Now $H$ is a matrix with elements $H_{ij} = \int d^3x \phi_i^* \hat{H} \phi_j $ and $C$ a column vector with elements $c_i$.</p>
 	      </div>
 	    </div>
-	  </section>
-
-
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Drude model">Drude model<a class="anchor-link" href="#Drude Model">&#182;</a></h1>
-		  <p></p>
-		  <p>With an electric field there are equal numbers of states with electrons moving to left and right, though the levels have shifted a little.</p>
-		  <img src='FullBandField.jpg'>
-		  <p>Still no net current flows.</p>
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  
-	  <section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Effect on Band diagram">Effect on Band diagram  - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
-		  <p>If there are just a very few electrons in the band, then they behave like Drude electrons - we'll discuss this in more detail when we talk about microelectronics in a few weeks.</p>
-		</div>
-	      </div>
-	    </div>
-	  </section>
-	  
+	  </div>
 	</section>
-      </div>
+	<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3>Matrix Mechanics</h3>
+		<p>
+		  $$H C = E C$$
+		  Notice that this looks like the Schroedinger equation again - but now we are dealing with matrices and vectors rather than differential equations.</p>		
+		<p>In fact it is quite clearly an eigenvalue problem now, and you can use the techniques you learnt last year to solve for $C$ and $E$.</p>
+	      </div>
+	      <div class='fragment'>
+		<p>The $E$ values give us the energy levels of the system - they are then filled according to Fermi-Dirac statistics.<br>
+		  For simple systems, this means filling the levels, from lowest first, until the correct number of electrons are accommodated.
+		</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h3 id="Independent electrons"> Independent electrons
+		  <a class="anchor-link" href="#Independent electrons">&#182;</a>
+		</h3>
+		<p>We are assuming that our electrons are independent.</p>
+		<p>Filling a level does not change the energy of the level or any other level.</p>
+		<p>The energy of the system is the sum of the energies of the occupied states.</p>
+	      </div>
+	    </div>
+	  </div>
+      </section></section>
+
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="Matrix-formulation-of-Quantum-Mechanics">Matrix formulation of Quantum Mechanics<a class="anchor-link" href="#Matrix-formulation-of-Quantum-Mechanics">&#182;</a></h1><p>what we have just done is the way most real quantum mechanical calculations are done. The Schroedinger wave equation itself is almost never used. Now the coefficients $C$ effectively describe our wavefunction.</p>
+		<p>Instead we have a matrix fomulation of QM, which is associated with the names Heisenberg and Born.</p>
+		<p>The matrix form of the Hamiltonian has elements that have the elements of our trial wavefunction sandwiching the operator.</p>
+		<p>This form of the matrix equation is the same every time, and the full derivation doesn't need to be done, we can just write down the matrix elements in many cases.</p>
+		<p>Actually, much theoretical work involves building models to explore by assuming forms of the Hamiltonian and values for matrix elements to describe the important physics of a problem.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <h1>Summary</h1>
+		  We take as a given the time independent form of the Schroedinger equation		  
+		  $$
+		  \hat{H} \psi = E \psi
+		  $$		  
+		  We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting		  
+		  $$
+		  x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		  $$		  
+		  and for the linear momenta,
+		  $$
+		  p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		  $$
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  We take a trial wavefunction
+		  $$
+		  \psi = \sum_i c_i \phi_i,
+		  $$
+		  operate on it with the Hamiltonian operator, then multiply on the left by the complex conjugate of $\psi$ and integrate over all space. Finally we differentiate with respect to each $c_i^*$ to get a series of equations that read
+		  $$
+		  \sum_j H_{ij} c_j = E c_i
+		  $$
+		  where
+		  $$
+		  H_{ij} = \int d^3x \phi_i \hat{H} \phi_j
+		  $$		  
+		  where $\phi_i, \phi_j$ are all the functions that make up our trial wavefunction. 
+		</div><p><br><br></p>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  In matrix notation this reads		  
+		  $$
+		  HC = EC
+		  $$		  
+		  This has solutions given by solving the characteristic equations (secular equations) given by		  
+		  $$
+		  | H_{ij} - \delta_{ij} E | = 0
+		  $$		  
+		  where $| H_{ij} - \delta_{ij} E |$ is short hand for the determinant of the matrix $H - EI$.
+		  <br><br>
+		  When we have the energy levels, we fill them according to Fermi-Dirac statistics.
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="Electron-gas">Electron gas<a class="anchor-link" href="#Electron-gas">&#182;</a></h1>
+		<p>Let's look at the Sommerfeld model of an electron gas and use it to build an approximate quantum theory:) This is a bit long-winded, but it shows that this is just a special case of our standard QM method.</p>
+		<p>In our case the classical Hamiltonian, the sum of kinetic and potential energy, $T + U$, is just $\frac{\mathbf{p}^2}{2m}$ (i.e. $U$ = 0) so we get</p>
+		<p>\begin{align}
+		  \hat{H} = \frac{\mathbf{p}^2}{2m} &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right).\left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right)\\
+		  &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} + \frac{\partial ^2}{\partial z^2} \right)\\
+		  &amp; = -\frac{\hbar^2}{2m} \nabla^2
+		  \end{align}</p>
+		<p>this only makes sense if it operates on something, which we'll call $\psi$, our trial wavefunction.</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>Lets operate on the trial wavefunction</p>
+		<p>$$
+		  \psi = \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k},\text{ where } \phi_\mathbf{k}(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
+		  $$</p>
+		<p>a sum of <a href='https://en.wikipedia.org/wiki/Plane_wave'>plane waves</a>.
+		  <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Linear_Polarization_Linearly_Polarized_Light_plane_wave.svg" style="max-width:40%">
+		  <a href='https://en.wikipedia.org/wiki/Dispersion_relation#Plane_waves_in_vacuum'>Also see</a><br>
+		  <a href='https://www.youtube.com/watch?v=xkG86pwaOH0'>lecture from Bucknell University, USA</a><br>
+		  <a href='http://www.falstad.com/wavebox'>Animation</a>
+		</p>		  
+	      </div>
+	    </div>
+	</div></section>
+	<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>To make the waves fit nicely in our box of dimension $L^3$ we insist that</p>
+		<p>$$
+		  k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
+		  $$</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>What we get is</p>
+		<p>$$
+		  \hat{H} \psi =  -\frac{\hbar^2}{2m} \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
+		  $$</p>
+		<p>now the trick - we multiply both sides on the left by $\psi$ (complex conjugate), and integrate over all space. This gives us</p>
+		<p>$$
+		  -\frac{\hbar^2}{2m} \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
+		  $$</p>
+		<p>don't worry it gets better.</p>		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>The reason is that our planewaves are orthogonal to each other</p>
+		<p>$$
+		  \int d^3x \phi_\mathbf{k'}^*  \phi_\mathbf{k} = 0, \text{ unless } \mathbf{k'} = \mathbf{k}
+		  $$</p>
+		<p>If  $\mathbf{k'} = \mathbf{k}$, then the integral is equal to 1, i.e. the functions are normalised within the box $L^3$.</p>
+		<p>(note that $0, \text{ unless } \mathbf{k'} = \mathbf{k}$, and 1 if they are equal, is normally written $\delta_{\mathbf{k'}\mathbf{k}}$, the Kronecker delta).</p>
+		<p>This means that we can kill off one of the summations and get</p>
+		<p>$$
+		  -\frac{\hbar^2}{2m} \sum_\mathbf{k}  -k^2 c_\mathbf{k}^* c_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k}^*  c_\mathbf{k}
+		  $$</p>
+		<p>Which at least looks better!</p>
+		
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Variation-of-parameters">
+		  Variation of parameters
+		  <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
+		</h2>
+		<p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$.
+		  We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
+		<p>In our system we are left with a series of equations of the form, one for each value of $c_{\mathbf{k}}^*$ for each value of $c_{\mathbf{k}}^*$</p>
+		<p>\begin{align}
+		  -\frac{\hbar^2 k^2}{2m} c_\mathbf{k} = E c_\mathbf{k} \\
+		  \implies (\frac{\hbar^2 k^2}{2m} + E)c_\mathbf{k} = 0
+		  \end{align}</p>		
+	      </div>
+	    </div>
+	  </div>
+      </section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>Lets say for arguments sake that we just have 4 plane waves, so $\mathbf{k} = 2 \pi / L \{(0,0,0), (1,0,0), (0,1,0), (0,0,1)\}$. This is a set of linear equations for $c_\mathbf{k}$ we can write them out in matrix form</p>
+		<p>$$ 
+		  \left( \begin{array}{cccx}
+		  E &amp; 0 &amp; 0 &amp; 0\\
+		  0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0 &amp; 0\\
+		  0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0\\
+		  0 &amp; 0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E
+		  \end{array} \right) 
+		  \left( \begin{array}{c}
+		  c_{0,0,0}  \\
+		  c_{1,0,0}  \\
+		  c_{0,1,0}  \\
+		  c_{0,0,1}
+		  \end{array} \right) 
+		  = 0
+		  $$</p>
+		<p>The standard solution to a set of linear equations like this is that the determinant of the matrix must be zero for a set of non-trivial solutions to exist.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>In this case, because the matrix is diagonal, we can just read the energies off that make the determinant equal to zero, in general they will be</p>
+		<p>$$
+		  E_\mathbf{k} = -\frac{\hbar^2 k^2}{2m}
+		  $$</p>
+		<p>We can see that adding in the extra values of $\mathbf{k}$ will just make the matrix bigger (infinite in fact, but we'll not worry about that).</p>
+		<p>We were lucky (;)) that our matrix was diagonal - this basically means that we guessed the exact wavefunctions!</p>
+		<p>This may seem very long winded, but it is general - and we will use it to explore bonding in molecules and solids.</p>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Covalent-bonding">Covalent bonding<a class="anchor-link" href="#Covalent-bonding">&#182;</a></h2>
+		<p>is a quantum mechanical phenomenon, where atoms lower their energy by sharing electrons.
+		  We'll see below in a approximation called Molecule Orbital theory, that the reduction in energy primarily comes from a reduction in the kinetic energy of the electrons.</p>
+		<p>Lets consider a molecule made up of two nuclei and a single electron.</p>
+		<p><img src='https://chem.libretexts.org/@api/deki/files/38974/4aeb3f23f811474fd3aeddaa8db5a56c.jpg' width=600><p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Molecular-Orbital,-or-Tight-Binding-Theory">Molecular Orbital, or Tight Binding Theory<a class="anchor-link" href="#Molecular-Orbital,-or-Tight-Binding-Theory">&#182;</a></h2><p>see Simon section 6.2.2. This is the same, but the notation is a bit different.</p>
+		<p>To make life simple, lets assume the nuclei are stationary - after all they are &gt; 1000 times heavier than the electron, so they will move incredibly slowly compared to the electron.
+		  <br><br></p>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  Fixing the nuclei is known as the Born-Oppenheimer approximation.
+		</div>
+		<p>
+		  Total energy is then the sum of the Electronic part and the nuclear part.
+		  $$
+		  E_{\rm{total}}(;\mathbf{R}_{i,j}) = E_{\rm{electronic}}(;\mathbf{R}_{i,j}) +  V_{\mathbf{R}_{ij}}
+		  $$
+		  The value of the electronic energy will depend parametrically on the distance the nuclei are apart.
+		</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Electronic-Hamiltonian">Electronic Hamiltonian<a class="anchor-link" href="#Electronic-Hamiltonian">&#182;</a></h2>
+		<p>We write out our classical Hamiltonian
+		  $$
+		  H = T + V_1 + V_2
+		  $$
+		</p>
+		<p>
+		  Then to go quantum we replace the classical Hamiltonian with the quantum operators
+		  $$
+		  \hat{H} = \hat{T} + \hat{V_1} + \hat{V_2}
+		  $$</p>
+		<p>where $T = \mathbf{p}^2/2m$ is the kinetic energy of the electron and</p>
+		<p>$$
+		  V_i = \frac{e^2}{4\pi \epsilon_0 |\mathbf{r-R}_i|}
+		  $$</p>
+		<p>is the coulomb interaction between the electron at $\mathbf{r}$ and the $i$th nucleus at which we have fixed at $\mathbf{R}_i$.</p>
+		
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>We do exactly what we just did for the non-interacting electron gas. We take a trial wavefunction</p>
+		<p>$$
+		  \psi = c_1 \phi_1 + c_2 \phi_2
+		  $$</p>
+		<p>and the functions $\phi$ in the trial wavefunction are "atomic" orbitals, that correspond to solutions when the electron is near just one isolated nuclei (i.e. an atom). By this we mean that they satisfy the atomic Schroedinger equations</p>
+		<p>\begin{align*}
+		  (\hat{T} + \hat{V_1})\phi_1 = \epsilon_1 \phi_1\\
+		  (\hat{T} + \hat{V_2})\phi_2 = \epsilon_2 \phi_2
+		  \end{align*}</p>
+		<p>if the nuclei are the same, then the eigenvalues will be the same, so I'll just use $\epsilon_1$ from now on.</p>
+		<p>We assume that the $\phi$ are orthogonal
+		  $$
+		  \int d^3x \phi_i^* \phi_j = \delta_{ij}
+		  $$</p>		
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>now we can build the matrix form of our Hamiltonian</p>
+		<p>\begin{align*}
+		  H_{11} = &amp; \int d^3x \phi_1 \hat{H} \phi_1 = \int d^3x \phi_1 (\hat{T} + \hat{V_1}) \phi_1 + \int d^3x \phi_1 \hat{V_2} \phi_1 = \epsilon_1 + V_{cross}\\
+		  H_{22} = &amp; \int d^3x \phi_2 \hat{H} \phi_2 = \int d^3x \phi_2 (\hat{T} + \hat{V_2}) \phi_2 + \int d^3x \phi_2 \hat{V_1} \phi_2 = \epsilon_2 + V_{cross}\\
+		  H_{12} = &amp; \int d^3x \phi_1 \hat{H} \phi_2 = \int d^3x \phi_1 (\hat{T} + \hat{V_2}) \phi_2 + \int d^3x \phi_1 \hat{V_1} \phi_2 = 0 - t\\
+		  H_{21} = &amp; \int d^3x \phi_2 \hat{H} \phi_1 = \int d^3x \phi_2 (\hat{T} + \hat{V_1}) \phi_1 + \int d^3x \phi_2 \hat{V_2} \phi_1 = 0 - t
+		  \end{align*}</p>
+		<p>where we have used the atomic Schroedinger equations to simplify the equations, and introduced some notation $t$ and $V_{cross}$ for two new types of matrix elements that do not appear in the atomic problem.</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2>Matrix elements</h2><br>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  <p>$t$ is called the hopping term, as it lets the electon 'hop' from one orbital to the other.<br>
+		    In a timedependent picture it would give the rate of oscillation between the two orbitals.<br>
+		    It will tend to increase as $\mathbf{R}_{ij}$ decreases, as the orbitals get closer together, so the bonding will become stronger.</p>
+		</div>
+		<br>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <p>$V_{cross}$ is the coulomb energy of an electron occupying the orbital on one the nuclei with the other nuclei.</p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>In matrix form we now have</p>
+		<p>$$ 
+		  \left( \begin{array}{cc}
+		  \epsilon_1 + V_{cross} - E &amp; -t \\
+		  -t &amp; \epsilon_1 + V_{cross} - E
+		  \end{array} \right) 
+		  \left( \begin{array}{c}
+		  c_1  \\
+		  c_2
+		  \end{array} \right) 
+		  = 0
+		  $$</p>
+		<p>The determinant of this matrix can be written $(\epsilon_1 + V_{cross} - E)^2 + t^2$ and taking $\pm$ the square roots of the left hand side we get Eigenvalues</p>
+		<p>$$
+		  E_{\pm} = \epsilon_1 + V_{cross} \pm t
+		  $$</p>
+		<p>and Eigenvectors</p>
+		<p>$$
+		  \psi_{\pm} = \frac{1}{\sqrt{2}}(\phi_1 \pm \phi_2)
+		  $$</p>		
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h1 id="Filling-the-levels">Filling the levels<a class="anchor-link" href="#Filling-the-levels">&#182;</a></h1>
+		<p>just like for atomic systems, where it lead to the periodic table of the elements, we can now feed electrons into the energy levels we have found.</p>
+		<p>Remember, Pauli's exclusion principle states that no two electrons can share the same spin orbital. This means that two electrons can go into each of the MOs we have found. In particular the bonding orbital can accept two electrons.</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Nuclear-Hamiltonian">Nuclear Hamiltonian<a class="anchor-link" href="#Nuclear-Hamiltonian">&#182;</a></h2>
+		<p>really we should indicate that the energies that we get depend on where the nuclei are placed, and a nuclear-nuclear repulsion term should be added.</p>
+		<p>$$
+		  E_{\pm}(;\mathbf{R}_{i,j}) = \epsilon_1 + V_{cross} \pm t + V_{\mathbf{R}_{ij}}
+		  $$</p>
+		<p>the effective nuclear-nuclear interaction in this case would be coulomb-like at reasonable distances, and tend to cancel the $V_{cross}$ term in the energy.</p>
+		<p>For atoms with more electrons things are more complicated, there is a coulomb like term with an effective charge (nuclear charge + charge of tightly bound electrons) + a term that arises from the Pauli repulsion of the tightly bound electrons when the charge clouds start to overlap.</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+      
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>As the nuclei get too close (our model will breakdown first) nuclear-nuclear repulsion will grow ~exponentially.</p>
+		<p>$t$ is called the hopping term, as it lets the electon 'hop' from one orbital to the other (compare the non-interacting electrons when things were diagonal). In a timedependent picture it would give the rate of oscillation between the two orbitals. It will tend to increase as $\mathbf{R}_{ij}$ decreases, as the orbitals get closer together, so the bonding will become stronger.
+		</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>
+		  In fact if you squeeze things enough they will become metallic.</p>
+		<p><img src="https://cdn.arstechnica.net/wp-content/uploads/2017/01/metal-hydrogen-800x450.jpg" alt=""></p>
+		<p><a href="http://science.sciencemag.org/content/early/2017/01/25/science.aal1579">Recent paper describes the observation of metallic hydrogen</a>.</p>
+		<p>The competition between the nuclear-nuclear repulsion and this hopping term, will lead to a 'binding curve' if we plot $E_{\pm}$ as a function of $\mathbf{R}_{ij}$</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>A popular approximate form for the shape of the bonding curve is the Morse potential</p>
+		<p>
+		  $$
+		  V(R_{ij}) = V_0 \left[ e^{-2 \kappa (R_{ij}-R_0)} - 2 e^{-\kappa (R_{ij}-R_0)} \right]
+		  $$
+		  <img src='binding_curve.png'>
+		</p>
+		<p>
+		  where $R_{ij}$ is the distance between nuclei $i$ and $j$
+		</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<p>We can put up to two electrons into a binding orbital (though we have to pay an electron-electron repulsion energy).</p>
+		<p>This gives rise to the simple Molecular orbital picture of why H$_2$ is strongly bound, but He$_2$ is unbound.
+		</p>
+		<table>
+		  <tr>
+		    <td>
+		      <img src='https://upload.wikimedia.org/wikipedia/commons/7/79/H2_antibonding_orbital.png'>
+		    </td>
+		    <td>
+		      <img src='https://upload.wikimedia.org/wikipedia/commons/3/3e/He2_antibonding_orbital.png'>
+		    </td>
+		  </tr>
+		</table>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Covalent-bonding">Covalent bonding<a class="anchor-link" href="#Covalent-bonding">&#182;</a></h2>
+		<p>The molecular orbital picture above gives an approximate description of <strong>covalent bonding</strong>.</p>
+		<p>It is the 'hopping' integral, which results in sharing of electron density between atom centred orbitals that causes covalent binding.</p>
+		<p>This sharing reduces the kinetic energy of the electrons - the binding orbital is more distributed and has no nodes, this makes its curvature, and hence the kinetic energy smaller.</p>
+		<p>A similar explanation in terms of reduction in kinetic energy can be used to explain why metals are stable.</p>
+		<p>This picture also explains the bonding in covalent crystals, like Diamond or silicon.</p>
+		<p>It leads to the tight-binding model of the electronic structure of solids, so understanding this as well as possible is time well spent.</p>	
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<h2 id="Ionic bonding">Ionic bonding<a class="anchor-link" href="#Ionic bonding">&#182;</a></h2>
+		<p>We can put up to two electrons into a binding orbital (though we have to pay an electron-electron repulsion energy).</p>
+		<p>If the energy levels of the two atomic orbitals are very different, we get ionic bonding.
+		</p>
+		<img src='https://upload.wikimedia.org/wikipedia/commons/3/33/NaF_MO_energy_diagram.png' width='500'>
+		<p>Actual energetics is more complicated than independent electron picture - we should be penalised for putting two electrons into the same orbital (wavefunction).</p>
+		<p>Overall we lose energy from putting electrons together, but gain from lower initial energy of state and ionic interaction.</p>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+      </section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  <h1>Summary</h1>
+		  We take as a given the time independent form of the Schroedinger equation		  
+		  $$
+		  \hat{H} \psi = E \psi
+		  $$		  
+		  We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting		  
+		  $$
+		  x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+		  $$		  
+		  and for the linear momenta,
+		  $$
+		  p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+		  $$
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+
+      <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+	  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	    </div>
+	    <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+	      <div class="text_cell_render border-box-sizing rendered_html">
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">		  
+		  We take a trial wavefunction
+		  $$
+		  \psi = \sum_i c_i \phi_i,
+		  $$
+		  operate on it with the Hamiltonian operator, then multiply on the left by the complex conjugate of $\psi$ and integrate over all space. Finally we differentiate with respect to each $c_i^*$ to get a series of equations that read
+		  $$
+		  \sum_j H_{ij} c_j = E c_i
+		  $$
+		  where
+		  $$
+		  H_{ij} = \int d^3x \phi_i \hat{H} \phi_j
+		  $$		  
+		  where $\phi_i, \phi_j$ are all the functions that make up our trial wavefunction. 
+		</div><p><br><br></p>
+		<div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+			    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		  In matrix notation this reads		  
+		  $$
+		  HC = EC
+		  $$		  
+		  This has solutions given by solving the characteristic equations (secular equations) given by		  
+		  $$
+		  | H_{ij} - \delta_{ij} E | = 0
+		  $$		  
+		  where $| H_{ij} - \delta_{ij} E |$ is short hand for the determinant of the matrix $H - EI$.
+		  <br><br>
+		  When we have the energy levels, we fill them according to Fermi-Dirac statistics.
+		</div>
+	      </div>
+	    </div>
+      </div></section></section>
+      
     </div>
-
-    <script>
-      
-      require(
-      {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-      },
-      [
-      "../../../revealjs//lib/js/head.min.js",
-      "../../../revealjs//js/reveal.js"
-      ],
-      
-      function(head, Reveal){
-      
-      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      mouseWheel: false,
-      center: false,
-      scroll: true,
-      //width: "80%",
-      //height: "80%",
-      //margin: 10,
-      //minScale: 0.2,
-      //maxScale: 1.5,
-      // Parallax background image
-      parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg',
-      // Parallax background size
-      parallaxBackgroundSize: '2000px 1500px', // CSS syntax, e.g. "2100px 900px
-      
-      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-      
-      // Optional libraries used to extend on reveal.js
-      dependencies: [
-      { src: "../../../revealjs//lib/js/classList.js",
-      condition: function() { return !document.body.classList; } },
-      { src: "../../../revealjs//plugin/notes/notes.js",
-      async: true,
-      condition: function() { return !!document.body.classList; } }
-      ]
-      });
-      
-      var update = function(event){
-      if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-      }
-      };
-      
-      Reveal.addEventListener('slidechanged', update);
-      
-      var update_scroll = function(event){
-      $(".reveal").scrollTop(0);
-      };
-      
-      Reveal.addEventListener('slidechanged', update_scroll);
-      
-      }
-      );
-    </script>
-
-  </body>
+  </div>
+  
+  <script>
+    
+    require(
+    {
+    // it makes sense to wait a little bit when you are loading
+    // reveal from a cdn in a slow connection environment
+    waitSeconds: 15
+    },
+    [
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
+    ],
+    
+    function(head, Reveal){
+    
+    // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    mouseWheel: false,
+    center: false,
+    scroll: true,
+    //width: "80%",
+    //height: "80%",
+    //margin: 10,
+    //minScale: 0.2,
+    //maxScale: 1.5,
+    // Parallax background image
+    //parallaxBackgroundImage: 'https://github.com/mattatlincoln/mattatlincoln.github.io/blob/master/images/CaF2_zoom.jpg?raw=true',
+    // Parallax background size
+    //parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px
+    
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+    
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+    { src: "../../../revealjs//lib/js/classList.js",
+    condition: function() { return !document.body.classList; } },
+    { src: "../../../revealjs//plugin/notes/notes.js",
+    async: true,
+    condition: function() { return !!document.body.classList; } }
+    ]
+    });
+    
+    var update = function(event){
+    if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+    MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+    }
+    };
+    
+    Reveal.addEventListener('slidechanged', update);
+    
+    var update_scroll = function(event){
+    $(".reveal").scrollTop(0);
+    };
+    
+    Reveal.addEventListener('slidechanged', update_scroll);
+    
+    }
+    );
+  </script>
+  
+</body>
 
 </html>
