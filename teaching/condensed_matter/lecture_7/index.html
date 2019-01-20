@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>06 - 3D materials</title>
+    <title>07 - Semiconductor Physics</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -75,524 +75,451 @@
   <body>
     <div class="reveal">
       <div class="slides">
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="06---Waves-in-Crystals,-Electronic-Band-Structure">06 - Electronic Band Structure, Quasiparticles, Magnetism<a class="anchor-link" href="#06---Waves-in-Crystals,-Electronic-Band-Structure">&#182;</a></h1>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Waves-in-Crystals">Waves in Crystals<a class="anchor-link" href="#Waves-in-Crystals">&#182;</a></h2><p>Look back at our investigation of vibrations and electronic bands in 1D.</p>
-		  <p>First, lets look at the diatomic chain.</p>
-		  <p>We found, by solving Newton's equations of motion, that the solutions were running waves - and for each allowed wavevector there were two allowed frequencies of oscillation:</p>
-		  $$
-		  \omega_{\pm}^2 = \frac{\kappa_1 + \kappa_2}{m} \pm \frac{1}{m}\sqrt{(\kappa_1 + \kappa_2)^2 - 4 \kappa_1 \kappa_2 \text{sin}^2 (ka/2)}
-		  $$<p>if we plot these 'dispersion relations' we get something like this:</p>
-		  <p><img src='phononDisp.jpg'></p>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="07---Semiconductor-Physics">07 - Semiconductor Physics<a class="anchor-link" href="#07---Semiconductor-Physics">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Metals,-Semiconductors,-Insulators">Metals, Semiconductors, Insulators<a class="anchor-link" href="#Metals,-Semiconductors,-Insulators">&#182;</a></h2><p>If there is an energy gap between the highest filled states and the next set of states, then you have an insulator, or if the gap is less than about $5 \text{eV}$, a semiconductor.</p>
+<p>If there is no energy gap between empty and filled states, we have a metal.</p>
+<p>Or in very crude cartoon forms</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png" alt=""></p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we plot out the same functions over a wider range of $k$, we get something like</p>
-		  <p><img src='phononDispAll.jpg'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Electrons-and-Holes">Electrons and Holes<a class="anchor-link" href="#Electrons-and-Holes">&#182;</a></h3><p>An excitation, photon or thermal, can excite an electron from the valence band, to the conduction band</p>
+<p>Electron - a (dressed) electron<br>
+Hole - a (dressed) lack of an electron</p>
+<p><img src=https://www.doitpoms.ac.uk/tlplib/semiconductors/images/para01.jpg alt="Smiley face" height="250" width="250"></p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Solutions with $k \to k + 2 \pi / a$ are physically identical. We can dispose of the duplicates and instead look at a so called extended zone scheme view</p>
-		  <p><img src='phononDispExtended.jpg'></p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>when an electron is excited a hole is left behind</p>
+<p><img src=http://www.nature.com/nmat/journal/v7/n2/images/nmat2107-f1.jpg alt="Smiley face" height="250" width="250"></p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Number-of-states">Number of states<a class="anchor-link" href="#Number-of-states">&#182;</a></h2><p>If we go back to the diatomic chain and look at the two branches within the range $-\pi/a \leq k \lt \pi/a$</p>
-		  <p><img src='phononDisp.jpg'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-of-Electrons">Effective Mass of Electrons<a class="anchor-link" href="#Effective-Mass-of-Electrons">&#182;</a></h3><p>Assume that near the bottom of the conduction band, which occurs at $\mathbf{k} = \mathbf{k}_{min}$</p>
+<p>$$
+E = E_{min} + \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
+$$</p>
+<p>We then define the effective mass as</p>
+<p>$$
+\hbar^2/m_e^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
+$$</p>
+<p>and with corresponding velocity</p>
+<p>$$
+\mathbf{v} = \nabla_\mathbf{k} E / \hbar = \hbar(\mathbf{k} - \mathbf{k}_{min})/m_e^*
+$$</p>
+<p>These then correspond to the free electron case, but with $m_e$ replaced by $m^*$</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>we found that there would be $N$ states in each branch, when our chain was made of $N$ unit cells, so $2N$ atoms.</p>
-		  <p>This quantization of levels comes about because of the periodic boundary conditions.</p>
-		  <p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that</p>
-		  \begin{align}
-		  k \to k + 2 \pi / a 
-		  \end{align}<p>should give a physically identical system.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-of-Holes">Effective Mass of Holes<a class="anchor-link" href="#Effective-Mass-of-Holes">&#182;</a></h3><p>We can do the same for holes.</p>
+<p>$$
+E = E_{max} - \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
+$$</p>
+<p>then</p>
+<p>$$
+\hbar^2/m_h^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
+$$</p>
+<p>and again we get</p>
+<p>$$
+E_{hole} = \text{constant } + \frac{\hbar^2|\mathbf{k} - \mathbf{k}_{min}|^2}{2 m^*_h}
+$$</p>
+<p>note that really we are moving electrons, so that you need to keep track of where the electrons are</p>
+<p>$$
+E\text{(absence of electron in state $\mathbf{k}$)} = -E\text{(electron in state $\mathbf{k}$)}
+$$</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we remember that we took as our vibrational modes the guess</p>
-		  $$
-		  \delta x_n = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  $$<p>we can see that this is true. If we look at this and argue that $\delta x_n = \delta x_{n+N}$ we get</p>
-		  $$
-		  \begin{align}
-		  \delta x_n  = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  & = \delta x_{N+n} = Ae^{i \omega t - ikx_{n+N}^{eq}} = Ae^{i \omega t - ik(n+N)a}
-		  \end{align}
-		  $$<p>Further, as we have $N$ sites, to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \pm\frac{N-1}{2}, -\frac{N}{2}$.</p>
-		  <p>With this restriction we have $2N$ normal modes from our $2N$ atoms that each have 1 degree of freedom.</p>
-		  <p>If we had $N_{\rm{atom}}$ atoms in our unit cell, we would actually get $N_{\rm{atom}}$ normal modes, and in 3D, $3 N_{\rm{atom}}$</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Momentum-and-velocity-of-holes-and-electrons">Momentum and velocity of holes and electrons<a class="anchor-link" href="#Momentum-and-velocity-of-holes-and-electrons">&#182;</a></h3><p>The momentum of a hole is defined via $\mathbf{k}_h = -\mathbf{k}_e$ to be</p>
+<p>$$
+-\hbar \mathbf{k}_e
+$$</p>
+<p>where $\mathbf{k}_e$ is the wavevector of the electron removed to form the hole.</p>
+<p>Then when we use</p>
+<p>$$
+\mathbf{v}_h = \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>we have two negative signs, and get</p>
+<p>$$
+\mathbf{v}_h = \mathbf{v}_e 
+$$</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Sound-waves">Sound waves<a class="anchor-link" href="#Sound-waves">&#182;</a></h3><p>Sound waves correspond to very long wavelength oscillations - which means very small wave vector.</p>
-		  <p>Again we make a small angle expansion to get</p>
-		  $$
-		  \omega = 2 \sqrt {\frac{\kappa}{m}} |\text{sin}(ka/2)| \approx 2 \sqrt {\frac{\kappa}{m}}|ka/2| = \sqrt {\frac{\kappa}{m}} a |k|
-		  $$<p>(and phase velocity, which equals group velocity in this case when the dispersion is linear,</p>
-		  $$
-		  \nu = \omega / |k| = \sqrt{\frac{\kappa}{m}}a
-		  $$<p>)</p>
-		  <p>This give the speed of sound waves in our 1D crystal.</p>
-		  <p>If we replace $k$ in 1D with $\textbf{k}$ in 3D, there will be different speeds in different directions for some materials.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Effective-Mass-and-equations-of-Motion">Effective Mass and equations of Motion<a class="anchor-link" href="#Effective-Mass-and-equations-of-Motion">&#182;</a></h3><p>If we apply a force $\mathbf{F}$ to an electron it will do work per unit time</p>
+<p>$$
+\frac{dW}{dt} = \mathbf{F} \cdot \mathbf{v} = \mathbf{F} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>This must be equal to the change of energy with time</p>
+<p>$$
+\frac{dE}{dt} = \frac{d\mathbf{k}}{dt} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
+$$</p>
+<p>comparing the two we get</p>
+<p>$$
+\mathbf{F} = \hbar \frac{\mathbf{k}}{dt} = \frac{d\mathbf{p}}{dt}
+$$</p>
+<p>where $\mathbf{p} = \hbar \mathbf{k}$. When the relation of energy to wavevector is parabolic, we get</p>
+<p>$$
+\mathbf{F} = m^* \frac{d\mathbf{v}}{dt}
+$$</p>
+<p>so they basically move classically in an applied field.</p>
+<p>More generally, away from the band extrema, it is possible to use the 2nd derivative of the energy as a generalised effective mass.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h3>
-		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.
-		  <img src='../lecture_1/binding_curve.png' style='width:400px'></p>
-		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interactions become very strong).This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p><p> If we replace $k$ in 1D with $\textbf{k}$ in 3D, there will be different expansions and elasticity in different directions for some materials.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Back-to-Lecture-2---Drude-model-with-effective-mass">Back to Lecture 2 - Drude model with effective mass<a class="anchor-link" href="#Back-to-Lecture-2---Drude-model-with-effective-mass">&#182;</a></h3><p>Now if we take our original Drude model, and replace the mass of an electron with $m_e^*$ we get</p>
+<p>$$
+m_e^* \frac{d\mathbf{v}}{dt} = -e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_e^* \mathbf{v}/ \tau
+$$</p>
+<p>for electrons, or</p>
+<p>$$
+m_h^* \frac{d\mathbf{v}}{dt} = e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_h^* \mathbf{v}/ \tau
+$$</p>
+<p>for holes. So they move the opposite direction under the influence of an electric field!</p>
+<p>This can explain the anamolous results of the Hall effect for some materials.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="1D-tight-binding">1D tight binding<a class="anchor-link" href="#1D-tight-binding">&#182;</a></h3><p>These arguments about counting the number of states hold essentially without change to the 1D tight binding model.</p>
-		  <p>From $N$ atoms, each with one atomic basis function, we get $N$ states dispersed in energy as $k$ changes.</p>
-		  <p>In this case the states can accept 2 electrons each, due to Fermi-Dirac statistics applying to electrons because of the Fermionic character.</p>
-		  $$
-		  E = (\epsilon + V_0) - 2t \textrm{cos}(ka) 
-		  $$<p><img src='bandDisp.jpg'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Doping">Doping<a class="anchor-link" href="#Doping">&#182;</a></h3><p>doping is used to enhance performance,</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Brillouin-zone-is-a-primitive-unit-cell-of-the-reciprocal-lattice">Brillouin zone is a primitive unit cell of the reciprocal lattice<a class="anchor-link" href="#Brillouin-zone-is-a-primitive-unit-cell-of-the-reciprocal-lattice">&#182;</a></h3><p>We saw that we only had distinct solutions to the 1D case in the $k$ range $-\pi/a \leq k \lt \pi/a$. Very similar arguments hold in 3D.</p>
-		  <p>Equivalently to the 1D case, physical waves are unchanged by the addition of any reciprocal lattice vector $\mathbf{k} \to \mathbf{k}  + \mathbf{G}$.</p>
-		  <p>The equivalent in 3D to only plotting the solutions in the range $-2 \pi / a \leq k \lt 2 \pi /a$ is to only work within ranges in the first Billouin zone.</p>
-		  <p>We define the Brillouin zone like this:</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in sports</p>
+<p><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQganQRc2lvsvR1Y0l5DnMS-ToJ-B_Y2A_mQYiUJUI8SyjeaAbs1Q" alt=""></p>
+<p>and as the basis of semiconductor engineering</p>
 
-		    Start with reciprocal lattice point $\mathbf{G} = 0$. Then all k-points that are closer to $\mathbf{G} = 0$ than any other reciprocal lattice point are in the first Brilluoin zone.
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Defect-levels">Defect levels<a class="anchor-link" href="#Defect-levels">&#182;</a></h3><p>Defects with energy levels within the band gap of the host effectively reduce the band gap and increase the concentration of electrons and holes.</p>
+<p><img src=http://www.globalsino.com/micro/1/images/1micro9974%20Atomic%20models%20of%20Silicon,%20Boron%20and%20Phosphorus2.jpg alt="Smiley face" height="250" width="250"></p>
+<p>A better way to imagine this for the phosphorus atom - is an added proton and an added electron, or a screened hydrogen atom.</p>
+<ul>
+<li>n-type dopants add electrons to the system</li>
+<li>p-type dopants add holes to the system</li>
+</ul>
 
-		  </div>
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Easier to see in 2D</p>
-		  <p><img src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRODeysbP8NGmfCsckq_NmyeDN5cOdKKcxOd1tA9wC1vbqV3mHf'></p>
-		  <p><img src='http://pubs.rsc.org/services/images/RSCpubs.ePlatform.Service.FreeContent.ImageService.svc/ImageService/Articleimage/2010/CP/c003524f/c003524f-f1.gif'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Impurity-states">Impurity states<a class="anchor-link" href="#Impurity-states">&#182;</a></h3><p>Considering the phosphorus doping, we can extend the hydrogen atom analogy a little, if we take the formulae for the radius of the first electron 'orbit' in a hydrogen atom and replace $\epsilon_0$ with $\epsilon_0 \epsilon_r$ and the electron mass $m_e$ with the effective electron mass $m_e^*$ we go from a Bohr radius of</p>
+<p>$$
+a_0 = \frac{4 \pi \epsilon_0}{me^2} \approx 0.51 \times 10^{-10} \text{ m} 
+$$</p>
+<p>to</p>
+<p>$$
+a_0^{eff} = a_0(\epsilon_r \frac{m_e}{m_e^*}) &gt; 30 \times 10^{-10} \text{ m} 
+$$</p>
+<p>where the inequality is for silicon ($\epsilon_r \approx 11$) and an effective mass about a third of a free electron.</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>When we go to 3D it can be quite complicated</p>
-		  <p><img src='https://inspirehep.net/record/1278209/files/Fig1.png'></p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This also means that the binding energy of the electron to the additional proton is reduced from</p>
+<p>$$
+E_{\text{e-proton}} = \frac{me^2}{8 \epsilon_0^2\hbar^2} \approx 13.6 \text{eV} 
+$$</p>
+<p>to</p>
+<p>$$
+E_{\text{e-to P in Si}} = \Bigg(\frac{me^2}{8 \epsilon_0^2\hbar^2}\Bigg)\times \Bigg(\frac{m_e^*}{m\epsilon_r^2}\Bigg) &lt;&lt; 0.1 \text{eV} 
+$$</p>
+<p>for Silicon.</p>
+<p>So the impurity energy level is just below the conduction band of Silicon.</p>
+<p>They can be thermally excited into the conduction band.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Band-structures">Band structures<a class="anchor-link" href="#Band-structures">&#182;</a></h2><p>There is, unfortunately, a whole language and notation for dealing with the reciprocal lattice. In particular for particular lattices, there are a list of 'special' k-points that get labelled things like $X, L$ and directions linking points $\Lambda, \Sigma$ ... You only need to know of their existance, and the reason for using them.</p>
-		  <p>We want to be able to visualise the dispersion relations of the bands - how the energy levels change with $k$. We do this by calculating the energy levels at particular k-points that follow a path through the primitive cell of the reciprocal lattice</p>
-		  <p><img src='https://image.slidesharecdn.com/freeelectroninmetal-150916165755-lva1-app6891/95/free-electron-inmetal-62-638.jpg?cb=1442422825'  style='width:400px'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Optical-effects-of-impurities">Optical effects of impurities<a class="anchor-link" href="#Optical-effects-of-impurities">&#182;</a></h3><p>Additional states in the band gap will allow extra optical transitions. If they are in the visible range, and the defect concentration is high enough, they will effect the colour of the material.</p>
+<p><img src="http://diamondsellersguide.com/wp-content/uploads/2014/07/colored-diamonds.gif" alt=""></p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><img src='https://image.slidesharecdn.com/freeelectroninmetal-150916165755-lva1-app6891/95/free-electron-inmetal-62-638.jpg?cb=1442422825' style='width:400px'></p>
-		  <p>Along a given direction we get something that often looks rather to our 1D tightbinding chain - look at the $\Gamma$-point, which is what the $\mathbf{G} = 0$ point is called conventionally. As it moves to the left, towards the $L$ point, it traces out something that looks almost identical to the tight binding model.</p>
-		  <p>Now, however, we many bands at each k-point. These occur because there are many atomic orbitals on each atom in a real system.</p>
-		  <p>The basic rules still apply though. Within the a Brillouin Zone the will be as many k-states as there are unit cells in our system. And the states are filled up to the fermi-energy.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For instance Sapphire is $\text{Al$_2$O$_3$}$, or pretty much cement, but ordered and with some defects.</p>
+<p>Either shiny or</p>
+<p><img src='https://upload.wikimedia.org/wikipedia/en/f/f7/Sapphire.png' alt="Smiley face" height="250" width="250"></p>
+<p>Note these are grown ... and how you grow them effects the colours</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Effective-Mass">Effective Mass<a class="anchor-link" href="#Effective-Mass">&#182;</a></h2><p>The dispersion relation for electrons in an s-type band
-		    $$
-		    E = (\epsilon + V_0) - 2t \textrm{cos}(ka) 
-		    $$
-		    can be approximately written as
-		    $$
-		    E = E_0 + \frac{\hbar^2 k^2}{2m^*}
-		    $$
-		    at both the bottom of the band, and at the top of the band.</p>
-		  <p>For small angles $\cos(ka) \approx 1 - \frac{(ka)^2}{2}$ so</p>
-		  $$
-		  E \approx (\epsilon + V_0 - 2t ) + t(ka)^2
-		  $$<p>which is of the form required if $m^* = \frac{\hbar^2}{2ta^2}$.</p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>technologically useful</p>
+<p><img src=http://www.patentlyapple.com/.a/6a0120a5580826970c01bb07896e86970d-800wi alt="Smiley face" height="250" width="250"></p>
+<p><a href="http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html">http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html</a></p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Or around $k = \pi/a$ we expand the cosine around $\pi$ to get
-		    $$ 
-		    -1 + \frac{(ka - \pi)^2}{2} 
-		    $$
-		    to get a similar result - quadratic in the shift of $k$ from $\pi/a$.</p>
-		  <p>Free electron gas is simply 
-		    $$
-		    E = E_0 + \frac{\hbar^2 k^2}{2m}
-		    $$
-		    so all expressions transfer, but with $m^*$ instead.</p>
-		  <p>We'll see next week that we can deal with electrons and holes in semiconductors using this terminology, and even bolt in the Drude model to get a reasonable model of processes in devices.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Thermodynamics">Thermodynamics<a class="anchor-link" href="#Thermodynamics">&#182;</a></h3><p>the DOS of a free electron gas is given by</p>
+<p>$$
+D(E \gg 0) = \frac{(2m)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E}
+$$</p>
+<p>as we saw, electrons and holes near the bottom or top of a band obey the same dispersion law, so should have a similar density of states.</p>
+<p>$$
+D_e(E \gg E_{CBM}) = \frac{(2m_e^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E-E_{CBM}}
+$$</p>
+<p>and similarly for holes</p>
+<p>$$
+D_h(E \ll E_{VBM}) = \frac{(2m_h^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E_{VBM}-E}
+$$</p>
+<p>and to get the density of electrons, we convolute our DOS with the Fermi function</p>
+<p>$$
+n_e(T) = \int_{E_{CBM}}^{-\infty}D_e(E)n_F(\beta(E-\mu))dE =  \int_{E_{CBM}}^{-\infty} \frac{D_e(E)}{e^{\beta(E-\mu)}+1}dE 
+$$</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Density-of-States">Density of States<a class="anchor-link" href="#Density-of-States">&#182;</a></h3><p>If we sum up all the states that appear in an energy window, we can flatten these 'spaghetti diagrams' into 1D, which shows where there are energy levels that electrons can occupy:</p>
-		  <p>Consider a rather complicated system - graphene on Titanium Oxide.</p>
-		  <p><img src='TiO2graphene.png'   style='width:600px'></p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If $\mu$ is well below the CBM, then $\beta(E-\mu) \gg 1$ and we can approximate</p>
+<p>$$
+\frac{D_e(E)}{e^{\beta(E-\mu)}+1} \approx D_e(E)e^{-\beta(E-\mu)}
+$$</p>
+<p>the integral is then doable (Simon p192), and we get</p>
+<p>$$
+n(T) = \frac{1}{4}\Bigg( \frac{2m_e^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(E_{CBM}-\mu)}
+$$</p>
+<p>Mainly the number of conduction electrons increases exponenentially with temperature (exponential is more important than the linear $T$ term).</p>
+<p>A similar expression holds for the density of holes</p>
+<p>$$
+p(T) = \frac{1}{4}\Bigg( \frac{2m_h^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(\mu-E_{VBM})}
+$$</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We get a combined band structure on the right of the figure below, and if we sum up the states at given energies we get the DOS on the left:
-		  <img src='TiO2grapheneBands.png' style='width:500px'>
-		  This is a very complicated structure - but there are some features of interest that we might come back to. Note some 'transitions' are marked. Remember in atoms electrons can shift between energy levels when a photon of energy $\hbar \omega = \Delta E$, a similar picture holds here. When bands have energy levels at appropriate energies it may be possible to absorb light energy.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Law-of-Mass-Action">Law of Mass Action<a class="anchor-link" href="#Law-of-Mass-Action">&#182;</a></h3><p>Combining our last two equations we get</p>
+<p>$$
+\begin{align}
+n(T)p(T) &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{CBM}-E_{VBM})} \\
+         &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{gap})}
+\end{align}
+$$
+where the band gap is $E_{gap} = E_{CBM}-E_{VBM}$</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Metals,-Semiconductors,-Insulators">Metals, Semiconductors, Insulators<a class="anchor-link" href="#Metals,-Semiconductors,-Insulators">&#182;</a></h2><p>If there is an energy gap between the highest filled states and the next set of states, then you have an insulator, or if the gap is less than about 5 eV, a semiconductor.</p>
-		  <p>If there is no energy gap between empty and filled states, we have a metal.</p>
-		  <p>Or in very crude cartoon forms</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='http://what-when-how.com/wp-content/uploads/2011/07/tmp6C267_thumb_thumb.jpg' >
-		      </td>
-		      <td>
-			<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png'>
-		      </td>
-		    </tr>
-		    </table>
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/D-band_filling.png/500px-D-band_filling.png'></p>
-		  <p>Very narrow bands can lead to unusual properties - we'll look at this at the end of the lecture.</p>
-		</div>
-	      </div>
-	</div></section></section>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Intrinsic-semiconductors">Intrinsic semiconductors<a class="anchor-link" href="#Intrinsic-semiconductors">&#182;</a></h3><p>In an intrinsic semiconductor, $n = p$, we can only make electron hole pairs, as the whole system is electrically neutral.</p>
+<p>With this restraint we can solve for $n=p$ in the law of mass action</p>
+<p>$$
+n_{\text{intrinsic}} = p_{\text{intrinsic}} = \sqrt{np} = \frac{1}{4} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^{3/2} (m_e^* m_h^*)^{\frac{3}{4}} e^{-\beta E_{gap} /2} 
+$$</p>
+<p>You can also solve for the chemical potential $\mu$, which turns out to be mid gap.</p>
 
-	
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Quasiparticles">Quasiparticles<a class="anchor-link" href="#Quasiparticles">&#182;</a></h1>
-		</div>
-		<div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/KbsnY--LFh0?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Polarons">Polarons<a class="anchor-link" href="#Polarons">&#182;</a></h2><p>Are the interaction of an electron (or hole) with vibrations of the crystal (phonon).</p>
-		  <p>This is sometimes talked about as an electron digging itself a potential well.</p>
-		  <p>A material where identification of these trapped electrons is of interest is TiO$_\text{2}$, because of its use in solar cells and photocatalysts.</p>
-		  <table>
-		    <tr>
-		      <td>
-			My calculations
-			<img src='https://journals.aps.org/prl/article/10.1103/PhysRevLett.117.116402/figures/3/medium'>
-		      </td>
-		      <td>
-			STM images
-			<img src='https://journals.aps.org/prl/article/10.1103/PhysRevLett.117.116402/figures/1/medium'>
-		      </td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Aside---Surfaces-Scanning-Tunnelling-microscope">Aside - Surfaces Scanning Tunnelling microscope<a class="anchor-link" href="#Aside---Surfaces-Scanning-Tunnelling-microscope">&#182;</a></h3><p>This instrument was invented in the mid 80s and revolutionised surface science. It uses the tunnelling current between a biased metal tip and a substrate to create a mock image of the surface, with subatomic detail.</p>
-		  <p>Because the tunnelling current drops off exponentially with the separation of the tip and surface (basically a hopping integral), this is an extremely sensitive tool</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='http://www.tut.fi/cs/groups/public/@l102/@web/@p/documents/kuva/mdbw/mdex/~edisp/p011505.jpg'>
-		      </td>
-		      <td>
-			<img src='http://www.ieap.uni-kiel.de/surface/ag-kipp/stm/images/stm.jpg'>
-		      </td>
-		      <td>
-			<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgp9PxK89KMve2FOfCe_PQHJuqcSAKhol2RRAfnB9pXEjLlBH0'>
-		      </td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Optical-properties">Optical properties<a class="anchor-link" href="#Optical-properties">&#182;</a></h2><p>Photons carry a very small amount of momentum compared to that carried by electrons in crystals (why?).</p>
-		  <p>This means that the optical spectrum consists of transitions between bands with $\Delta k = 0$.</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='https://image.slidesharecdn.com/freeelectroninmetal-150916165755-lva1-app6891/95/free-electron-inmetal-62-638.jpg?cb=1442422825'>
-		      </td>
-		      <td>
-			<img src='http://www.yambo-code.org/tutorials/Electron_Phonon/BSE_rim_no_rim.png'>
-		      </td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>It is possible to have weaker transitions where $\Delta k \neq 0$ and other process occur - such as the creation or annhilation of phonons (vibrations) at the same time. Leads to a temperature dependence of the absorption.</p>
-		  <p><img src='http://www.ioffe.ru/SVA/NSM/Semicond/Si/Figs/143.gif'></p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Doped-(extrinsic)-semiconductors">Doped (extrinsic) semiconductors<a class="anchor-link" href="#Doped-(extrinsic)-semiconductors">&#182;</a></h3><p>if the semiconductor is doped, and assuming the temperature is high enough that all donor or acceptor states are added into the bands</p>
+<p>$$
+n-p = \text{(density of donors)} - \text{(density of acceptors)}
+$$</p>
+<p>and combined with the law of mass action can be solved to obtain $n$ and $p$.</p>
+<p>If the dopant concentration is larger than the number intrinsic carriers, the chemical potential moves to just below the CBM or just above the VBM.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Excitons">Excitons<a class="anchor-link" href="#Excitons">&#182;</a></h2><p>When an electron is excited, it leaves behind a 'hole', with the 'shape' of the wavefunction of the electron that was excited.</p>
-		  <p>Normally, in many materials both the electron and hole are quite delocalised, so there is only a very minor coulomb interaction between them. The energy of interaction is meV, and they are spread out over 10s of nm. Largely, for many purposes they can be ignored.</p>
-		  <p>In some materials, like TiO$_\text{2}$ for instance, it is possible that the electron and hole can be very localised, and there is a strong interaction, leading to the formation of a bound Exciton.</p>
-		  <p>The are also partially responsible for the colour of many materials.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Semiconductor-Devices">Semiconductor Devices<a class="anchor-link" href="#Semiconductor-Devices">&#182;</a></h3><p>It is not immediately obvious that this bit of physics was completely revolutionary.</p>
+<p>But it was.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Solar-Cells-/-photocatalysis">Solar Cells / photocatalysis<a class="anchor-link" href="#Solar-Cells-/-photocatalysis">&#182;</a></h2><p>rely on separating the electrons and holes using solar light.</p>
-		  <p>The enemy is recombination, where the electron falls back into a hole.</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='https://www.gamry.com/assets/Uploads/_resampled/ResizedImageWzYwMCw0NThd-dye-solar-cell.png'>
-		      </td>
-		      <td>
-			<img src='http://www.toukimas.jp/english/business/solar/img/img_shikumi.jpg'>
-		      </td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Breakdown-of-band-picture">Breakdown of band picture<a class="anchor-link" href="#Breakdown-of-band-picture">&#182;</a></h2><p>Up to now we have assumed that we can calculate the energy levels, then populate them with electrons.</p>
-		  <p>This is not really true - the electrons do interact - primarily by the coulomb interaction.</p>
-		  <p>This means that the energy levels change as electrons are placed into them.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="$p-n$-Junction">$p-n$ Junction<a class="anchor-link" href="#$p-n$-Junction">&#182;</a></h2><p>this is a junction of a p-doped semiconductor and an n-doped semiconductor.  Before they are in contact, they have two separate chemical potentials set by the doping levels of the material</p>
+<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSx-7S0CyoLisJ8GWXLWNX9Jm_6wfEm4I62YLgLxZNM5h68nIe6" alt=""></p>
+<p>when they are put into contact there is a transfer of electrons / holes to minimise the energy of the system.</p>
+<p>Electrons will flow into empty hole states, gaining an energy on the order of the band gap.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Magnetism">Magnetism<a class="anchor-link" href="#Magnetism">&#182;</a></h2><p>If we look at the DOS for Iron and Nickel</p>
-		  <p><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/D-band_filling.png/500px-D-band_filling.png' style='width:400px'></p>
-		  <p>we see that there is an extremely high density of electrons - and they occupy 'd' states.</p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But this doesn't continue forever. Instead an opposing voltage builds up as more and more electrons transfer. Eventually an equilibrium is reached with a common fermi level for the whole system:</p>
+<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSYSAkhFUkEuiHEbFYuVibuHwgsOBwaWNPkwL8w4a5551qNSKJ_" alt=""></p>
+<p>The potential difference due to the charge separation cancels out the change in chemical potential to give a final balanced system.</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p><img src='http://www.chemtube3d.com/images/aleximages/td.png' style='width:400px'></p>
-		  <p>These are rather tightly bound to the nuclei, for slightly complicated reasons, and so they have rather lowing hopping integrals. This means that instead of being spread over the whole crystal, it is not a bad idea to start thinking of them as being localised onto individual atoms. Then putting two electrons onto the same site is quite energetically unfavourable.</p>
-		  <p>This is just a first approximation, there is still an overlap between the electrons on neighbouring atoms.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://iamtechnical.com/sites/default/files/doide-structure-forward-reverse-bias-animation_0.gif" alt=""></p>
+<p>this junction acts as a diode, only conducting in one bias direction.</p>
+<p>Solar cells act in this way - formed electron-hole pairs are separated by the electric field and can then contribute to current generation.</p>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If two electrons have the same spin direction, then they cannot occupy a shared orbital, which in turn means they will tend to be further apart, and have a lower coulomb interaction. This is called the exchange interaction.</p>
-		  <p>It is sometimes expressed using the Heisenberg Hamiltonian.</p>
-		  $$
-		  \mathbb{H} = - \frac{1}{2} \sum_{(i,j)} J_{ij} \mathbf{S}_i \cdot \mathbf{S}_j
-		  $$<p>Unpaired electrons have a magnetic moment. As the electrons tend to have the same spin direction the moments align, and the local part of the crystal has a net magnetic moment. In this case $J_{ij}$ is positive. In some materials, NiO for instance, you can get effective antiferromagnetic coupling.</p>
-		  <p>More complex are ferrimagnets, where there are several different metals with different magnetic moments in the magnetic unit cell. If they cannot couple completely to remove the magnetic moment this is referred to as ferrimagnetism.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are four possible processes allowing conduction:</p>
+<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
+<p>Electrons or holes can be thermally excited across the gap, they then flow rapidly away. The number of  carriers in these regimes will be of the form $e^{-E_{gap}/k_BT}$, independent of applied bias.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Grains---grain-boundaries">Grains - grain boundaries<a class="anchor-link" href="#Grains---grain-boundaries">&#182;</a></h2><p>Even ferromagnets are not generally magnetic on a macroscopic scale.</p>
-		  <p>Crystals are generally not just a single crystal, but a set of smaller ones squished together in some way.</p>
-		  <p>The magnetic moments of the different grains is random, and sums to zero.</p>
-		  <p>A Magnetic field (like another magnet) can align the electron spins, and induce magnetism in a ferromagnet.</p>
-		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Weiss-Bezirke1.png" alt=""></p>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
+<p>The other two processes require the electrons/holes to climb the potential barrier. As a bias voltage is applied, the barrier height will shift from $E_{gap}$ to $E_{gap + eV}$, and the number of carriers would then be proportional to  $e^{-(E_{gap}+eV)/k_BT}$. Depending on the sign of the bias, the current will be very different.</p>
+<p>Light Emitting Diodes are essentially the same, though their material properties took a lot of tuning.</p>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Amorphous-Materials">Amorphous Materials<a class="anchor-link" href="#Amorphous-Materials">&#182;</a></h2><p>not all materials are crystalline with order. One large category is glasses, which are intrinsically disordered.</p>
-		  <p>Take SiO$_\text{2}$ quartz,</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/5/medium'>
-		      </td>
-		      <td>
-			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/6/medium'>
-		      </td>
-		    </tr>
-		  </table><p>This will result in properties intermediate between crystals and molecules.</p>
-		  <p>It is also possible to perform diffraction measurements on amorphous materials (or liquids). What is measured is then a distribtution function of the likely distances between atoms.</p>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transistor">Transistor<a class="anchor-link" href="#Transistor">&#182;</a></h3><p>by forming an $n-p-n$ (or $p-n-p$) sandwich, and adding a 'gate', it is possible to build a very efficient switch.</p>
+<p><img src="https://sub.allaboutcircuits.com/images/03423.png" alt=""></p>
+<p>Real geometries are now very complicated.</p>
+<p>As transitiors shrink, individual atomic defects can actually dominate, especially in determining the reliability of devices.</p>
+<p>Much work goes into improving materials for these devices - the atomistic details are fascinating too - these cartoons do not give a real indication of the complexity</p>
 
-		</div>
-	      </div>
-	</div></section></section>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Photophysics">Photophysics<a class="anchor-link" href="#Photophysics">&#182;</a></h3><p>Many devices combine absorbtion or emission of light with semiconductor physics.</p>
+<p>We've met one - solar cell. Which is basically a photodiode.</p>
+<p>Also Light Emitting Diodes (kind of reverse of a photodiode), photocathodes (electron sources), artificial photosynthesis, variety of sensors, and many more.</p>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>Semiconductor physics can work with the simple band model, analogy with Drude model and some thermodynamics.</p>
+
+</div>
+</div>
 </div></section></section>
-
-
 
 </div>
 </div>
