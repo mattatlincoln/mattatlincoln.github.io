@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<title>CP2K overview</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<!-- General and theme style sheets -->
+	<link rel="stylesheet" href="../../revealjs/css/reveal.css">
+	<link rel="stylesheet" href="night.css" id="theme">
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = '../../revealjs//css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+
+	</script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	tex2jax: {
+	inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	processEscapes: true,
+	processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+</head>
+
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell" style='background:rgba(0,0,0,0.40);'>
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="Quick intro to CP2K">Quick intro to CP2K<a class="anchor-link" href="#Quick intro to CP2K">&#182;</a></h1>
+						<h2 id="Sergey-Chulkov,-Matt-Watkins">Matt Watkins<a class="anchor-link" href="#Matt-Watkins">&#182;</a></h2>
+						<h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
+						<h2 id="CP2K-developers">CP2K developers<a class="anchor-link" href="#CP2K-developers">&#182;</a>
+						</h2>
+					</div>
+				</div>
+			</div></section>
+
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="CP2K-overview">CP2K overview<a class="anchor-link" href="#CP2K-overview">&#182;</a></h1>
+						
+									<table>
+				<tr>
+					<td>
+						<ul>
+						<li>Many force models:</li>
+							<ul>
+								<li> Classical</li>
+								<li> DFT (GPW, GAPW + vDW)</li>
+								<li> LS-DFT</li>
+								<li> Hybrid Hartree-Fock</li>
+								<li> post-HF (MP2, RPA)</li>
+								<li> Combinations (QM/MM, mixed)</li>
+							</ul>
+						<li>Simulation tools:</li>
+							<ul>
+								<li> MD (various ensembles)</li>
+								<li> Monte Carlo, Global Optimisation</li>
+								<li> Minimisation (GEO/CELL_OPT)</li>
+								<li> Properties (Spectra, excitations ...)</li>
+								</ul>
+						<li>Open Source and development</li>
+							<ul>
+								<li> GPL, www.cp2k.org</li>
+								<li> 1m loc, ~2 commits per day</li>
+								<li> ~20 core developers</li>
+							</ul>
+						</ul>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					<p>Swiss Army knife for molecular calculations.</p>
+					</td>
+				</tr>
+			</table>
+
+					</div>
+				</div>
+			</div>
+			</section>
+
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="CP2K history">CP2K history<a class="anchor-link" href="#CP2K history">&#182;</a></h1>
+						
+									<table>
+				<tr>
+					<td>
+						<ul>
+						<li> 25 th June 2001 – CP2K repository online at berliOS.de</li>
+						<ul>
+							<li>Merger of Quickstep (DFT) + FIST (MD) codes</li>
+							<li>Jürg Hutter, Matthias Krack, Chris Mundy</li>
+						</ul>
+						<li> Oct 2011 – First ‘official’ release</li>
+						<ul>
+							<li>CP2K 2.2</li>
+						</ul>
+
+						<li>15 years on...</li>
+						<ul>
+							<li>1m lines of code, ~18.5k commits</li>
+							<li>25 developers + many contributors</li>
+							<li>1000s of users</li>
+							<li>Fully open-source (GPL)</li>
+						</ul>
+						<li> <a href="https://www.cp2k.org/version_history">version 7.0 development version</a>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					<p>Swiss Army knife for molecular calculations.</p>
+					</td>
+				</tr>
+			</table>
+
+
+					</div>
+				</div>
+			</div></section>
+
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="Features-in-detail">Features in detail<a class="anchor-link" href="#Features in detail">&#182;</a></h1>
+						
+						<h2 id="Core-algorithms">Core algorithms<a class="anchor-link" href="#Core-algorithms">&#182;</a></h1>
+				<table>
+				<tr>
+					<td>
+						<li> <a href="https://mattatlincoln.github.io/talks/cp2k_summerschool_2016/#/">GPW and GAPW</a></li>
+						<li> <a href="https://mattatlincoln.github.io/talks/cp2k_summerschool_2016/#/">Orbital transform</a></li>
+						<li> <a href="https://mattatlincoln.github.io/talks/cp2k_summerschool_2018/nidex.html#/">fast hybrid functionals</a>
+
+					</td>
+					<td><img src="images/swissKnifeSmall.jpeg">
+					</td>
+				</tr>
+				</table>
+
+
+					</div>
+				</div>
+			</div></section>
+
+
+			<section>
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="More-Features">More Features<a class="anchor-link" href="#More Features">&#182;</a></h1>
+						
+				<table>
+				<tr>
+					<td><ul>
+						<li> QM/MM (Laino et al, JCTC, 2005, 2006)</li>
+						<ul>
+							<li> Fully periodic, linear scaling electrostatic coupling</li>
+						</ul>
+						<li> Gaussian and Augmented Plane Waves (Iannuzzi et al, CHIMIA, 2005)</li>
+						<ul>
+							<li> Partitioning the electronic density -> all-electron calculations</li>
+							<li> Many spectroscopic properties</li>
+						</ul>
+						<li> Hartree-Fock Exchange (Guidon et al, JCP, 2008)</li>
+						<ul>
+							<li> Beyond local DFT (later MP2, RPA…)</li>
+							<li> Auxiliary Density Matrix Method (Guidon et al, JCTC, 2010)</li>
+						</ul>
+
+						<li> Linear Scaling DFT (VandeVondele, Borstnik & Hutter, JCTC, 2012)</li>
+						<ul>
+							<li> Fully linear scaling condensed-phase DFT, up to ~1m atoms</li>
+						</ul>
+</ul>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					</td>
+				</tr>
+				</table>
+					</div>
+				</div>
+			</div></section>
+						<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="More-Features">Yet More Features<a class="anchor-link" href="#More Features">&#182;</a></h1>
+						
+				<table>
+				<tr>
+					<td><ul>
+<li> Many XC functionals</li>
+<ul>
+<li>100s via libxc, dispersion (pair-potential and non-local)</li>
+</ul>
+
+<li> Excited States</li>
+<ul>
+	<li>Realtime and Linear Response TD-DFT</li>
+	<ul><li>With Hybrid functionals since 2017</li></ul>
+	<li>Ehrenfest Dynamics (Andermatt et al, JCTC, 2016)</li>
+</ul>
+<li> Classical Potentials (FIST)</li>
+<ul>
+	<li>CHARMM/AMBER, pair-potentials, core-shell model, any analytic
+potential...</li>
+</ul>
+<li> Semi-empirical and DFTB</li>
+<ul><li>MNDO, AM1, PM6, PNNL ...</li></ul>
+						</ul>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					</td>
+				</tr>
+				</table>
+					</div>
+				</div>
+			</div></section>
+
+						<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="More-Features">Yet More Features<a class="anchor-link" href="#More Features">&#182;</a></h1>
+						
+				<table>
+				<tr>
+					<td><ul>
+<li> Molecular Dynamics</li>
+<ul><li> Born-Oppenheimer MD in various ensembles</li></ul>
+
+<li> Metadynamics</li>
+<ul><li> Free energy calculations - inbuilt module or use PLUMED</li></ul>
+<li> Optimisation</li>
+<ul><li> Geometry/cell optimisation (local minimisation)</li>
+<li> Global optimisation (Schütt Diploma thesis 2014)</li>
+<li> Nudged elastic band, Dimer method</li></ul>
+
+<li> Properties calculation</li>
+<ul> <li>Atomic charges (Mulliken ...)</li>
+<li> Spectra (EPR, NMR, NQR, IR, XAS ...)</li></ul>
+						</ul>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					</td>
+				</tr>
+				</table>
+					</div>
+				</div>
+			</div></section>
+
+		</section>
+
+						<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="New-developments">New-developments<a class="anchor-link" href="#New-developments">&#182;</a></h1>
+						<li>Resolution of the identity for everything</li>
+						<li>New ewald sum methods for exact exchange terms</li>
+						<li>More k-point functionality</li>
+						<li>Addition of plane-wave functionality via <a href="https://www.pasc-ch.org/projects/2017-2020/sirius/">sirus</a> on footing with Quickstep and FIST </li>
+						<li>TDDFT gradients</li>
+						<li>More pseudo potentials and PAW</li>
+					</div>
+				</div>
+			</div></section>
+
+    <section>
+      					<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+
+	<h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
+	<ul>
+	  <li>EPSRC for funding three eCSE software development projects</li>
+	  <li>Ben Slater, Alex Shluger, University College London</li>
+	  <li>Lev Kantorovitch, King's College London</li>
+	  <li>Iain Bethune, STFC, Daresbury</li>
+	  <li>Materials Chemistry Consortium for computer time.</li>
+	  <li>Juerg Hutter, Joost Vandevondele, all CP2K developers and (almost all) users</li>
+	</ul>
+	<h3 id="Lincoln-is-here">Lincoln is here<a class="anchor-link" href="#Lincoln-is-here">&#182;</a></h3><table>
+	  <tr>
+	    <td><img src='images/lincoln_loc.png' width=200></td>
+	    <td><img src='images/brayford.png' width=200></td>
+	    <td><img src='images/lincoln_dep.png' width=200></td>
+	  </tr>
+	</table>
+</div></div></div>
+      </section>
+
+</div>
+</div>
+
+<script>
+
+	require(
+	{
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+  },
+  [
+  "../../revealjs//lib/js/head.min.js",
+  "../../revealjs//js/reveal.js"
+  ],
+
+  function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      	controls: true,
+      	progress: true,
+      	history: true,
+      	//width: '100%',
+		//height: '100%',
+		margin: 0,
+		//minScale: 1,
+		//maxScale: 1,
+      // Parallax background image
+      parallaxBackgroundImage: 'images/image2.png',
+      //Parallax background size
+      parallaxBackgroundSize: '2929px 1650px', // CSS syntax, e.g. "2100px 900px
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../revealjs/lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../revealjs/plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+  });
+
+      var update = function(event){
+      	if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      		MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      	}
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+      	$(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+  }
+  );
+</script>
+
+</body>
+
+
+</html>
+width: '80%',
+height: '100%',
+transition: 'concave',
