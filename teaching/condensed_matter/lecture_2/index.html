@@ -203,7 +203,7 @@ linebreaks: { automatic: true }
 						$$<p>and rearranging to find $\mathbf{E}$</p>
 						$$
 						\mathbf{E} = \frac{1}{ne} \mathbf{j} \times \mathbf{B} + \frac{m}{ne^2 \tau}\mathbf{j}
-						$$<p>Now if we look at the connection between E and J we need to define a 3x3 matrix $\rho$.</p>
+						$$<p>Now if we look at the connection between $\mathbf{E}$ and $\mathbf{j}$ we need to define a 3x3 matrix $\rho$.</p>
 						\begin{align*}
 						\mathbf{E} = 
 						\begin{pmatrix}
@@ -243,6 +243,12 @@ linebreaks: { automatic: true }
 						\end{align*}
 						<p>The Hall coefficient $R_h$ is defined as</p>
 						$$R_H = \frac{\rho_{yx}}{|B|} = \frac{-1}{ne}$$<p>$\rho_{yx}$ is called the (transverse) magnetoresistance.</p>
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
+						<p>The Hall coefficient $R_h$ is defined as</p>
+						$$R_H = \frac{\rho_{yx}}{|B|} = \frac{-1}{ne}$$<p>$\rho_{yx}$ is called the (transverse) magnetoresistance.</p>
 						<p>Notice it only depends on the electron density! So by measurements of the voltage perpendicular to the current and the magnetic field, we can measure the density of electrons in the metal.</p>
 						<p>If we believe the measurements and Drude theory, we can also extract the scattering time by measuring the conductivity too.</p>
 					</div>
@@ -255,6 +261,8 @@ linebreaks: { automatic: true }
 						<div class="question">
 							<li>What would happen if the charge on the electrons was opposite (+$e$)</li>
 							<li>The Drude scattering time typically comes out at ~$10^{-13,14}$s, how does this compare to processes you know about?</li>
+							<li>What form of light does this frequency correspond to?</li>
+							<li>What energy does light of that frequency carry?</li>
 						</div>
 					</div>
 				</section>
@@ -272,6 +280,10 @@ linebreaks: { automatic: true }
 						\begin{align*}
 						\frac{d \mathbf{p}}{dt} =  -e\mathbf{E} - \frac{\mathbf{p}}{\tau}
 						\end{align*}
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
 						<p>We need a steady state solution where the electrons move at the same frequency as the driving field. So</p>
 						$$
 						\mathbf{p}(t) = \text{Re}(\mathbf{p}(\omega)e^{-i\omega t})
@@ -282,6 +294,7 @@ linebreaks: { automatic: true }
 						$$
 					</div>
 				</section>
+
 				<section>
 					<div class="inner_cell" >
 						<p>As the current density, $\mathbf{j} = -ne \mathbf{p}/m$ we find</p>
@@ -309,22 +322,23 @@ linebreaks: { automatic: true }
 							$$\mathbf{\nabla} \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$  
 							$$\mathbf{\nabla} \times \mathbf{B} = \mu_0 \big( \mathbf{j} + \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} \big)$$  
 						</div>
+					</div>
+				</section>
+				<section>
+					<div class="inner_cell" >
 						<p>We look for a solution with a time dependence $e^{-i\omega t}$.</p>
 						<p>Take the curl of both sides of the curl of $\mathbf{E}$</p>
 						$$
 						\mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = - \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t}
 						$$
-					</div>
-				</section>
-				<section>
-					<div class="inner_cell" >
+
 						<p>Now two pieces of info are needed</p>
 						$$
 						\mathbf{\nabla} \times \mathbf{\nabla} \times \mathbf{E} = \mathbf{\nabla}(\mathbf{\nabla}.  \mathbf{E}) -  \mathbf{\nabla}^2 \mathbf{E} = - \mathbf{\nabla}^2 \mathbf{E}
 						$$<p>and</p>
 						$$
 						- \mathbf{\nabla} \times \frac{\partial \mathbf{B}}{\partial t} = -  \frac{\partial ( \mathbf{\nabla} \times \mathbf{B}) }{\partial t}
-						$$<p>(write out the second derivatives and remember from calculus that the order of derivatives shouldn't matter for well behaved functions if you're not convinced).</p>
+						$$
 					</div>
 				</section>
 				<section>
@@ -442,7 +456,6 @@ linebreaks: { automatic: true }
 							$$
 							L = \frac{\kappa}{T\sigma} = \frac{3}{2} \left( \frac{(k_B)}{e} \right)^2 \approx 0.94 \times 10^{-8} W \Omega K^{-2}
 							$$<p>This constant ratio is known as the <em>Wiedemann-Franz law</em>.</p>
-							<p>Note there are some slightly different numbers around ($2.44  \times 10^{-8} W \Omega K^{-2}$ ) - see wikipedia for instance, but they are due to errors by Drude. On the other hand the model is complete nonsense;) So not to worry about a factor of 2.</p>
 							<p>We will see later that our guess at $c_v$ is way to big (ignoring the quantum) and our $ \langle v \rangle$ is way to small. The former is important - no measurements revealed a heat capacity of electrons of this magnitude!</p>
 						</div>
 					</section>
@@ -695,6 +708,20 @@ linebreaks: { automatic: true }
 							\end{align*}
 
 							<p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<div class="must_learn">
+								<p>The Fermi wavevector, $k_F$, defines a surface, called the Fermi surface.</p>
+								<p>The Fermi surface divides filled states from empty states.</p>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Fermi_energy_momentum.svg" style="width:200px">
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="inner_cell" >
+							<p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
 							$$
 							E_F = \frac{\hbar^2 k_F^2}{2m}
 							$$
@@ -704,15 +731,7 @@ linebreaks: { automatic: true }
 							$$
 						</div>
 					</section>
-					<section>
-						<div class="inner_cell" >
-							<div class="must_learn">
-								<p>The Fermi wavevector, $k_F$, defines a surface, called the Fermi surface.</p>
-								<p>The Fermi surface divides filled states from empty states.</p>
-							</div>
-							<img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Fermi_energy_momentum.svg" style="width:200px">
-						</div>
-					</section>
+
 					<section>
 						<div class="inner_cell" >
 							<p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
@@ -727,53 +746,6 @@ linebreaks: { automatic: true }
 								<li>What is $k_B T$ at room temperature</li>
 								<li>What does this imply for the accessibility of electrons for mobility?</li>
 							</div>
-						</div>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<div class="inner_cell" >
-							<h1 id="Electronic-Heat-Capacity">Electronic Heat Capacity<a class="anchor-link" href="#Electronic-Heat-Capacity">&#182;</a></h1>
-							<p>We can calculate the total energy (expectation value of $E$, given occupation probabilities and energy levels)</p>
-							\begin{align*}
-							E_{total} = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
-							= & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk \epsilon(\mathbf{k}) n_F(\beta (\epsilon(\mathbf{k})-\mu))
-							\end{align*}
-							<p>and</p>
-							\begin{align*}
-							N = & \frac{2V}{(2 \pi ^3)} \int \mathbf{dk} n_F(\beta (\epsilon(\mathbf{k})-\mu))\\
-							= & \frac{2V}{(2 \pi ^3)} \int_{0}^{\infty} 4 \pi k^2 dk n_F(\beta (\epsilon(\mathbf{k})-\mu))
-							\end{align*}
-							<p>now we change variables to those of the energy levels $\epsilon$</p>
-							$$
-							k = \sqrt{\frac{2 \epsilon m}{\hbar^2}}
-							$$
-						</div>
-					</section>
-					<section>
-						<div class="inner_cell" >
-							<p>which implies</p>
-							$$
-							dk = \sqrt{\frac{m}{2 \epsilon \hbar^2}} d\epsilon
-							$$<p>and we can rewrite our integrals for $E_{\rm{total}}$ and $N$ in terms of $d \epsilon$ as</p>
-							\begin{align}
-							E_{total} = & V \int_{0}^{\infty} d\epsilon \epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
-							N = & V \int_{0}^{\infty} d\epsilon g(\epsilon) n_F{\beta(\epsilon - \mu)} \\
-							\end{align}<p>where we have defined</p>
-							$$
-							g(\epsilon)d \epsilon = \frac{2}{(2\pi)^3} 4\pi k^2 dk = \frac{(2m)^{3/2}}{2 \pi^2 \hbar^3} \epsilon^{1/3} d \epsilon
-							$$
-						</div>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<div class="inner_cell" >
-							<h1 id="What-is-$g(\epsilon)$?">What is $g(\epsilon)$?<a class="anchor-link" href="#What-is-$g(\epsilon)$?">&#182;</a></h1><p>It is called the density of states - it gives the number of energy levels that are present in an energy interval between $\epsilon$ and $\epsilon + d \epsilon$</p>
-							<p>We'll come across analogues of this multiple times - we'll talk about it more in the practical session on Thursday.</p>
-
 						</div>
 					</section>
 				</section>
