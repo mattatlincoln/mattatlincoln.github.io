@@ -354,157 +354,6 @@ linebreaks: { automatic: true }
 </div>
 </div></section></section>
 
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <h1 id="Electron-gas">Electron gas<a class="anchor-link" href="#Electron-gas">&#182;</a></h1>
-    <p>Let's look at the Sommerfeld model of an electron gas and use it to build an approximate quantum theory:) This is a bit long-winded, but it shows that this is just a special case of our standard QM method.</p>
-    <p>In our case the classical Hamiltonian, the sum of kinetic and potential energy, $T + U$, is just $\frac{\mathbf{p}^2}{2m}$ (i.e. $U$ = 0) so we get</p>
-    <p>\begin{align}
-      \hat{H} = \frac{\mathbf{p}^2}{2m} &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right).\left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right)\\
-      &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} + \frac{\partial ^2}{\partial z^2} \right)\\
-      &amp; = -\frac{\hbar^2}{2m} \nabla^2
-    \end{align}</p>
-    <p>this only makes sense if it operates on something, which we'll call $\psi$, our trial wavefunction.</p>		
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>Lets operate on the trial wavefunction</p>
-    <p>$$
-      \psi = \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k},\text{ where } \phi_\mathbf{k}(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
-    $$</p>
-    <p>a sum of <a href='https://en.wikipedia.org/wiki/Plane_wave'>plane waves</a>.
-      <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Linear_Polarization_Linearly_Polarized_Light_plane_wave.svg" style="max-width:40%">
-      <a href='https://en.wikipedia.org/wiki/Dispersion_relation#Plane_waves_in_vacuum'>Also see</a><br>
-      <a href='https://www.youtube.com/watch?v=xkG86pwaOH0'>lecture from Bucknell University, USA</a><br>
-      <a href='http://www.falstad.com/wavebox'>Animation</a>
-    </p>		  
-  </div>
-</div>
-</div></section>
-<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>To make the waves fit nicely in our box of dimension $L^3$ we insist that</p>
-    <p>$$
-      k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
-    $$</p>		
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>What we get is</p>
-    <p>$$
-      \hat{H} \psi =  -\frac{\hbar^2}{2m} \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
-    $$</p>
-    <p>now the trick - we multiply both sides on the left by $\psi$ (complex conjugate), and integrate over all space. This gives us</p>
-    <p>$$
-      -\frac{\hbar^2}{2m} \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
-    $$</p>
-    <p>don't worry it gets better.</p>		
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>The reason is that our planewaves are orthogonal to each other</p>
-    <p>$$
-      \int d^3x \phi_\mathbf{k'}^*  \phi_\mathbf{k} = 0, \text{ unless } \mathbf{k'} = \mathbf{k}
-    $$</p>
-    <p>If  $\mathbf{k'} = \mathbf{k}$, then the integral is equal to 1, i.e. the functions are normalised within the box $L^3$.</p>
-    <p>(note that $0, \text{ unless } \mathbf{k'} = \mathbf{k}$, and 1 if they are equal, is normally written $\delta_{\mathbf{k'}\mathbf{k}}$, the Kronecker delta).</p>
-    <p>This means that we can kill off one of the summations and get</p>
-    <p>$$
-      -\frac{\hbar^2}{2m} \sum_\mathbf{k}  -k^2 c_\mathbf{k}^* c_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k}^*  c_\mathbf{k}
-    $$</p>
-    <p>Which at least looks better!</p>
-
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <h2 id="Variation-of-parameters">
-      Variation of parameters
-      <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
-    </h2>
-    <p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$.
-    We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
-    <p>In our system we are left with a series of equations of the form, one for each value of $c_{\mathbf{k}}^*$ for each value of $c_{\mathbf{k}}^*$</p>
-    <p>\begin{align}
-      -\frac{\hbar^2 k^2}{2m} c_\mathbf{k} = E c_\mathbf{k} \\
-      \implies (\frac{\hbar^2 k^2}{2m} + E)c_\mathbf{k} = 0
-    \end{align}</p>		
-  </div>
-</div>
-</div>
-</section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>Lets say for arguments sake that we just have 4 plane waves, so $\mathbf{k} = 2 \pi / L \{(0,0,0), (1,0,0), (0,1,0), (0,0,1)\}$. This is a set of linear equations for $c_\mathbf{k}$ we can write them out in matrix form</p>
-    <p>$$ 
-      \left( \begin{array}{cccx}
-      E &amp; 0 &amp; 0 &amp; 0\\
-      0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0 &amp; 0\\
-      0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0\\
-      0 &amp; 0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E
-      \end{array} \right) 
-      \left( \begin{array}{c}
-      c_{0,0,0}  \\
-      c_{1,0,0}  \\
-      c_{0,1,0}  \\
-      c_{0,0,1}
-      \end{array} \right) 
-      = 0
-    $$</p>
-    <p>The standard solution to a set of linear equations like this is that the determinant of the matrix must be zero for a set of non-trivial solutions to exist.</p>
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>In this case, because the matrix is diagonal, we can just read the energies off that make the determinant equal to zero, in general they will be</p>
-    <p>$$
-      E_\mathbf{k} = -\frac{\hbar^2 k^2}{2m}
-    $$</p>
-    <p>We can see that adding in the extra values of $\mathbf{k}$ will just make the matrix bigger (infinite in fact, but we'll not worry about that).</p>
-    <p>We were lucky (;)) that our matrix was diagonal - this basically means that we guessed the exact wavefunctions!</p>
-    <p>This may seem very long winded, but it is general - and we will use it to explore bonding in molecules and solids.</p>
-  </div>
-</div>
-</div></section></section>
-
 <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/5/5c/SiO2_Quartz_extra-O.svg">
  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
  </div>
@@ -816,166 +665,69 @@ linebreaks: { automatic: true }
 </section>
 </section>
 
-<section>
-  <section>
-   <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-      <h2 id="Electron-gas-in-a-box">Electron gas in a box<a class="anchor-link" href="#Electron-gas-in-a-box">&#182;</a></h2><p>Lets put our (free) electrons in a box of size $V = L^3$ - the quantum requires them to satisfy the Schroedinger equation</p>
-      $$
-      -\frac{\hbar^2}{2m}\nabla^2 \psi = \epsilon \psi
-      $$
-      <p>We'll use periodic boundary conditions. Mathematically this requires that</p>
-      $$
-      \psi(x+L,y+L,z+L) = \psi(x,y,z)
-      $$<p>this is basically the same as the particle in a box you did last year in quantum</p>
-      <div class="question">
-        <li>Do you recognise that the Shroedinger equation is both a differential equation and an eigenvalue problem?</li>
-        <li>What form will the solutions to the equation take?</li>
-      </div>
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
-     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <h2 id="Plane-waves">Plane-waves<a class="anchor-link" href="#Plane-waves">&#182;</a></h2>$$
-      \psi(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
-      $$<p>the $\frac{1}{\sqrt{V}}$ ensures that the wavefunctions are normalised and (quantum)</p>
-      $$
-      k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
-      $$<p>($p,q$ and $r$ taking integer values).</p>
-      <div class="question">
-        <li>Show that the solutions are normalised</li>
-        <li>Show that the solutions satisfy the Schroedinger equation</li>
-      </div>
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
-     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <p>The energy of the electrons is</p>
-      $$
-      \epsilon = \frac{\hbar^2 |\mathbf{k}|^2}{2m}
-      $$<div class="question">
-        <li>Show that this is the energy</li>
-      </div><p>To find the total number of electrons we add up the number of electrons in each state.</p>
-      $$
-      N = 2 \sum_{\mathbf{k}}n_F(\beta(\epsilon(\mathbf{k}-\mu))) = 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu)))
-      $$<p>the two comes from the number of spin states.</p>
-      <p><strong>If we know the number of electrons in the system, then this defines our chemical potential.</strong></p>
-      <p>We'll look at how we go from the sum to the integral in the problem class - it comes up frequently.</p>
-
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
  <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">     
+    <h1>Summary</h1>
+    We take as a given the time independent form of the Schroedinger equation     
+    $$
+    \hat{H} \psi = E \psi
+    $$      
+    We make the Hamiltonian (operator) by taking the classical expression for the Hamiltonian (energy), and substituting      
+    $$
+    x \to \hat{x}, y \to \hat{y}, z \to \hat{z}
+    $$      
+    and for the linear momenta,
+    $$
+    p_x = i\hbar \frac{\partial}{\partial x}, p_y = i\hbar \frac{\partial}{\partial y}, p_z = i\hbar \frac{\partial}{\partial z}
+    $$
+  </div>
+</div>
+</div>
+</div></section></section>
 
-      <p><strong>The fermi energy is the chemical potential at T = 0</strong></p>
-      <p>What does this mean? At T=0 the Fermi function becomes a step function:</p>
-      <p><img src="../images/fermi_dirac_lowK.png" alt=""></p>
-
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/9/91/Schrodingers_cat.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
  <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <p>so our expression for the number of electrons in our periodically repeating box is given by</p>
-      \begin{align*}
-      N  & = &  2 \sum_{\mathbf{k}}n_F ( \beta(\epsilon(\mathbf{k}-\mu)) )\\
-      & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu))) \\
-      & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} \Theta(E_f -\epsilon(\mathbf{k} )) \\
-      & = & 2 \frac{V}{2 \pi}^3 \int_{0}^{|k| < k_F} \mathbf{dk}
-      \end{align*}
-
-      <p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
-    </div>
-  </section>
-  <section>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <div class="must_learn">
-        <p>The Fermi wavevector, $k_F$, defines a surface, called the Fermi surface.</p>
-        <p>The Fermi surface divides filled states from empty states.</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Fermi_energy_momentum.svg" style="width:200px">
-      </div>
-    </div>
-  </section>
-  <section>
-     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
-      $$
-      E_F = \frac{\hbar^2 k_F^2}{2m}
-      $$
-      <p>the final integral is over a ball of radius $k_F$, so we get</p>
-      $$
-      N = 2 \frac{V}{2 \pi}^3 (\frac{4}{3}\pi k_F^3)
-      $$
-    </div>
-  </section>
-
-  <section>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
-      $$
-      k_F = (3 \pi^2n)^{1/3}
-      $$<p>and</p>
-      $$
-      E_F = \frac{\hbar^2(3\pi^2n)^{2/3}}{2m}
-      $$<p>if we can estimate the electron density, we can estimate the Fermi energy and wavelength.</p>
-      <div class="question">
-        <li>Estimate the Fermi energy for copper</li>
-        <li>What is $k_B T$ at room temperature</li>
-        <li>What does this imply for the accessibility of electrons for mobility?</li>
-      </div>
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-      <h2 id="Heat-capacity">Heat capacity<a class="anchor-link" href="#Heat-capacity">&#182;</a></h2><p>all we need to do is take the derivative of $E_{total}$ with respect to temperature ... but this is non trivial.</p>
-      <p>A back of the envelope calculation goes as follows</p>
-      <ul>
-        <li>Assume that $\mu$ is $E_F$</li>
-        <li>Only molecules within $\approx k_B T$ can be excited, and they are excited by $\approx k_B T$, then</li>
-      </ul>
-      $$
-      E(T) \approx E(T=0) + (\text{some constant/2})[V g(E_F)(k_B T)](k_B T) + ...
-      $$<p>then $C_V = \frac{\partial E}{\partial T} \approx  \text{some constant})[V g(E_F)(k_B T)](k_B)$</p>
-      <p>and rearranging our expression for the density of states we get</p>
-      $$
-      C_V = (\text{some constant})(\frac{3N k_B}{2})\frac{T}{T_F}
-      $$<p>so the electronic $C_V$ is temperature dependent (linear), and greatly reduced from the classical $C_V = \frac{3N k_B}{2}$ if $T_F$ is larger than $T$.</p>
-
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
-    <div class="inner_cell" >
-      <h2 id="Drude-vs-Somerfeld">Drude vs Somerfeld<a class="anchor-link" href="#Drude-vs-Somerfeld">&#182;</a></h2><p>Reduced availability of electrons explains several deficiencies in Drude's model, but still some unexplained things:</p>
-      <ul>
-        <li>variable sign of the Hall coefficient</li>
-        <li>dielectric function much too simple</li>
-      </ul>
-
-    </div>
-  </section>
-</section>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">     
+    We take a trial wavefunction
+    $$
+    \psi = \sum_i c_i \phi_i,
+    $$
+    operate on it with the Hamiltonian operator, then multiply on the left by the complex conjugate of $\psi$ and integrate over all space. Finally we differentiate with respect to each $c_i^*$ to get a series of equations that read
+    $$
+    \sum_j H_{ij} c_j = E c_i
+    $$
+    where
+    $$
+    H_{ij} = \int d^3x \phi_i \hat{H} \phi_j
+    $$      
+    where $\phi_i, \phi_j$ are all the functions that make up our trial wavefunction. 
+  </div><p><br><br></p>
+  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+  In matrix notation this reads     
+  $$
+  HC = EC
+  $$      
+  This has solutions given by solving the characteristic equations (secular equations) given by     
+  $$
+  | H_{ij} - \delta_{ij} E | = 0
+  $$      
+  where $| H_{ij} - \delta_{ij} E |$ is short hand for the determinant of the matrix $H - EI$.
+  <br><br>
+  When we have the energy levels, we fill them according to Fermi-Dirac statistics.
+</div>
+</div>
+</div>
+</div></section></section>
 
 
 </div>
