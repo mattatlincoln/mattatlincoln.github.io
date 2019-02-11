@@ -533,264 +533,6 @@
 	      </div>
 	</div></section></section>
 
-	<section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="03---Atomic-Vibrations-of-a-1D-Periodic-Chain">03 - Atomic Vibrations of a 1D Periodic Chain<a class="anchor-link" href="#03---Atomic-Vibrations-of-a-1D-Periodic-Chain">&#182;</a></h1><p>Consider a 1D chain of $N$ identical 'atoms'.</p>
-		  <p>Each atom has mass $m$ and is separated from the next by an equilibrium spacing $a$ (lattice constant).</p>
-		  <p>The total length of the chain is $Na$. We define the equilibrium position of atom $n$ to be $x_n^{eq} = na$.</p>
-		  <p>Atoms can move only in the $x$ direction, and we can describe the instantaneous movement of an atom by the variable $\delta x_n = x_n - x_n^{eq}$.</p>
-		  <p><img src="binding_curve.png" style="width:300px"></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We'll approximate our interatomic potential, using a Taylor expansion around the equilibrium postition of the atoms.</p>
-		  <p>At low enough temperature, we can just keep the first term in the expansion, to give us</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>Harmonic approximation
-		    </h4>
-
-		    We expand the potential energy due to an atomic displacement in powers of $x - x^{eq}$
-		    \begin{align*}
-		    V(x) &= V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2 - \frac{\kappa_3}{3!}(x-x^{eq})^3 + \ldots \\
-		    &\approx V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2
-		    \end{align*}
-		  </div>
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>We'll use classical mechanics for now.</p>
-		  <p>We have springs, with spring constant $\kappa$ between our atoms.</p>
-		  <p>The extension of the bond will be related to the difference in the instantaneous movements of two neighbouring atoms.</p>
-		  $$
-		  V_{tot} = \sum_i V(x_{i+1}-x_i) = \sum_i \frac{\kappa}{2}(x_{i+1} - x_i - a)^2 = \sum_i \frac{\kappa}{2}(\delta x_{i+1}
-		  - \delta x_i)^2
-		  $$
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>The force on the $n^{th}$ atom is then given by</p>
-		  $$
-		  F_n = - \frac{\partial V_{tot}}{\partial x_n} = \kappa(\delta x_{n+1} - \delta x_n) + \kappa(\delta x_{n-1} - \delta x_n)
-		  $$<p>Which gives us Newton's equations of motion for this system</p>
-		  $$
-		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa(\delta x_{n+1} + \delta x_{n-1} -  2 \delta x_n) $$<p>We look for normal modes, and attempt a wavelike solution</p>
-		  $$
-		  \delta x_n = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  $$<p>where $A$, $\omega$ and $k$ are the amplitude, frequency and wavevector of the proposed wave.</p>
-		  <p>(Note, this is very similar to the solution of the tightbinding electronic model, and of the Drude AC conductivity.)</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we plug this guess into our equations of motion we get</p>
-		  $$
-		  -m \omega^2 Ae^{i \omega t - ikna} = \kappa Ae^{i \omega t } \left[ e^{- ik(n+1)a} + e^{- ik(n-1)a} - 2 e^{- ikna}  \right]
-		  $$<p>which simplifies to</p>
-		  $$
-		  m \omega^2 = 2 \kappa \left[1 - \text{cos}(ka) \right] = 4 \kappa \text{sin}^2(ka/2)
-		  $$<p>from which it follows</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4>Dispersion relation for 1D system of identical masses
-		    </h4>
-		    $$
-		    \omega = 2 \sqrt {\frac{\kappa}{m}} \mid \text{sin}(ka/2) \mid
-		    $$
-		  </div><p>which gives us a dispersion relation - a connection between frequency and wavevector.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Sound-waves">Sound waves<a class="anchor-link" href="#Sound-waves">&#182;</a></h1><p>Sound waves correspond to very long wavelength oscillations - which means very small wave vector.</p>
-		  <p>Again we make a small angle expansion to get</p>
-		  $$
-		  \omega = 2 \sqrt {\frac{\kappa}{m}} | \sin(ka/2) | \approx 2 \sqrt {\frac{\kappa}{m}}|ka/2| = \sqrt {\frac{\kappa}{m}} a |k|
-		  $$<p>(and phase velocity, which equals group velocity in this case when the dispersion is linear),</p>
-		  $$
-		  \nu = \omega / |k| = \sqrt{\frac{\kappa}{m}}a
-		  $$<p>.</p>
-		  <p>This give the speed of sound waves in our 1D crystal.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h1><p>We took a harmonic model for interaction between our atoms.</p>
-		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.</p>
-		  <p><img src="binding_curve.png" style="width:300px"</p>
-		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interaction become very strong, very quickly).</p>
-		  <p>This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Reciprocal-Lattice">Reciprocal Lattice<a class="anchor-link" href="#Reciprocal-Lattice">&#182;</a></h1><p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that</p>
-		  \begin{align*}
-		  k \to k + 2 \pi / a 
-		  \end{align*}<p>should give a physically identical system.</p>
-		  <p>Further, as we have $N$ sites to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \frac{N}{2}$, as for the tight binding model.</p>
-		  <p>This corresponds to choosing a range $-\pi/a \lt k \leq \pi/a$</p>
-		  <p>With this restriction we have $N$ normal modes from our $N$ atoms that each have 1 degree of freedom.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Quantum-Correspondence-Principle">Quantum Correspondence Principle<a class="anchor-link" href="#Quantum-Correspondence-Principle">&#182;</a></h1><p>Classical normal mode $\to$ quantum harmonic oscillator.</p>
-		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-		    <h4> 1 quantum of vibrational (of a quantum oscillator) in a crystal is called a 'phonon'. 
-		    </h4>
-		  </div><p>Phonons are bosons, so they behave differently to the electrons we've been discussing. - they tend to accumulate in the ground state.</p>
-		  <p>If we have time we can look at this in more detaiil later.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Alternating-chain">Alternating chain<a class="anchor-link" href="#Alternating-chain">&#182;</a></h1><p>What would happen if we had two types of atoms that alternated along the chain?</p>
-		  <p>For simplicity lets keep the mass the same, but the spring that connects them alternates, with spring constants $\kappa_1$ and $\kappa_2$.</p>
-		  <p>Now we have a 'unit cell' with two atoms in it.</p>
-		  <p>This unit cell is the unit that replicates itself to form the crystal. We'll discuss this much more next week.</p>
-		  <p>Let us define a reference point in the same location within each unit cell. If we have a 'lattice constant' $a$, which is the length of the unit cell then</p>
-		  $$
-		  r_n = an
-		  $$<p>lets say that the reference point is in the center of the cell, and the two types of atom are dispaced from it by $\pm 1/4 a$. We then have the equilibrium positions of our atoms as</p>
-		  $$
-		  x_n^{eq} = an - 1/4 a
-		  $$$$
-		  y_n^{eq} = an + 1/4 a
-		  $$<p>where we call the positions of atom type one $x_n$ and type two $y_n$.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Now we can set up our equations of motion pretty much like we did for the monoatomic chain.</p>
-		  \begin{align*}
-		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa_2(\delta y_n - \delta x_n) + \kappa_1(\delta y_{n-1} - \delta x_n)) \\
-		  m\frac{\partial ^2 (\delta y_n)}{\partial t^2} = \kappa_1(\delta x_{n+1} - \delta y_n) + \kappa_2(\delta x_n - \delta y_n))
-		  \end{align*}<p>and we again guess that there will be an envelope of atomic displacements of a running wave form</p>
-		  \begin{align*}
-		  \delta x_n = A_x e^{i \omega t - ikx_n^{eq}} = A_x e^{i \omega t - ikna} \\
-		  \delta y_n = A_y e^{i \omega t - iky_n^{eq}} = A_y e^{i \omega t - ikna}
-		  \end{align*}<p>proceding as before we get</p>
-		  \begin{align*}
-		  -m \omega^2 A_x = \kappa_2 A_y + \kappa_1 A_y e^{ ika}  - (\kappa_1 + \kappa_2) A_x\\
-		  -m \omega^2 A_y =  \kappa_1 A_x e^{ ika} + \kappa_2 A_x + - (\kappa_1 + \kappa_2) A_y
-		  \end{align*}
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>collecting this together in matrix form we get</p>
-		  \begin{align*}
-		  m \omega^2 
-		  \left( \begin{array}{c}
-		  A_x  \\
-		  A_y 
-		  \end{array}\right) = 
-		  \left( \begin{array}{c}
-		  (\kappa_1 + \kappa_2) & - \kappa_2 - \kappa_1  e^{ ika} \\
-		  - \kappa_1 - \kappa_2  e^{ ika} &  (\kappa_1 + \kappa_2)
-		  \end{array}\right) 
-		  \left( \begin{array}{c}
-		  A_x  \\
-		  A_y 
-		  \end{array}\right)
-		  \end{align*}<p>which means that will get 2 solutions for each value of $\omega$.</p>
-		  $$
-		  \omega_{\pm} = \sqrt{\frac{\kappa_1 + \kappa_2}{m} \pm \frac{1}{m}\sqrt{(\kappa_1 + \kappa_2)^2 - 4 \kappa_1 \kappa_2 \text{sin}^2 (ka/2)}}
-		  $$<p>we have $N$ values of $k$ as before, and 2 solutions for each $k$, so $2N$ modes, which all adds up.</p>
-		  <p>We'll discuss the implications next week and in the problem class.</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Links">Links<a class="anchor-link" href="#Links">&#182;</a></h1><p>Steven Simon's lecture</p>
-		  <p><a href="https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain">https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain</a></p>
-		  <p>visualisation of vibrations - you can download a program called CHAINPLOT from Mike Glazer's website. You need to go to the downloads and fill in a request.</p>
-		  <p><a href="http://www.amg122.com/programs/chains.html">http://www.amg122.com/programs/chains.html</a></p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
-		    <li>binding curves lead to effective springs between atoms</li>
-		    <li>our simple model allows us to get a flavour of a wide variety of phenomena (this is the purpose of a model!)</li>
-		    <li>sound waves</li>
-		    <li>optical branch in systems with more than one atom in the unit cell</li>
-		    <li>thermal expansion</li>
-		    <li>phonons - collective excitations, analogous to classical normal modes</li>
-		    <li>unit cell, range of k-points, hints at reciprocal lattice</li>
-		  </ul>
-
-		</div>
-	      </div>
-	</div></section></section>
 
 <section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
  <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -1198,6 +940,267 @@
 	  </section>
 	  
 	</section>
+
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="03---Atomic-Vibrations-of-a-1D-Periodic-Chain">03 - Atomic Vibrations of a 1D Periodic Chain<a class="anchor-link" href="#03---Atomic-Vibrations-of-a-1D-Periodic-Chain">&#182;</a></h1><p>Consider a 1D chain of $N$ identical 'atoms'.</p>
+		  <p>Each atom has mass $m$ and is separated from the next by an equilibrium spacing $a$ (lattice constant).</p>
+		  <p>The total length of the chain is $Na$. We define the equilibrium position of atom $n$ to be $x_n^{eq} = na$.</p>
+		  <p>Atoms can move only in the $x$ direction, and we can describe the instantaneous movement of an atom by the variable $\delta x_n = x_n - x_n^{eq}$.</p>
+		  <p><img src="binding_curve.png" style="width:300px"></p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We'll approximate our interatomic potential, using a Taylor expansion around the equilibrium postition of the atoms.</p>
+		  <p>At low enough temperature, we can just keep the first term in the expansion, to give us</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <h4>Harmonic approximation
+		    </h4>
+
+		    We expand the potential energy due to an atomic displacement in powers of $x - x^{eq}$
+		    \begin{align*}
+		    V(x) &= V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2 - \frac{\kappa_3}{3!}(x-x^{eq})^3 + \ldots \\
+		    &\approx V(x^{eq}) + \frac{\kappa}{2!}(x - x^{eq})^2
+		    \end{align*}
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>We'll use classical mechanics for now.</p>
+		  <p>We have springs, with spring constant $\kappa$ between our atoms.</p>
+		  <p>The extension of the bond will be related to the difference in the instantaneous movements of two neighbouring atoms.</p>
+		  $$
+		  V_{tot} = \sum_i V(x_{i+1}-x_i) = \sum_i \frac{\kappa}{2}(x_{i+1} - x_i - a)^2 = \sum_i \frac{\kappa}{2}(\delta x_{i+1}
+		  - \delta x_i)^2
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The force on the $n^{th}$ atom is then given by</p>
+		  $$
+		  F_n = - \frac{\partial V_{tot}}{\partial x_n} = \kappa(\delta x_{n+1} - \delta x_n) + \kappa(\delta x_{n-1} - \delta x_n)
+		  $$<p>Which gives us Newton's equations of motion for this system</p>
+		  $$
+		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa(\delta x_{n+1} + \delta x_{n-1} -  2 \delta x_n) $$<p>We look for normal modes, and attempt a wavelike solution</p>
+		  $$
+		  \delta x_n = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
+		  $$<p>where $A$, $\omega$ and $k$ are the amplitude, frequency and wavevector of the proposed wave.</p>
+		  <p>(Note, this is very similar to the solution of the tightbinding electronic model, and of the Drude AC conductivity.)</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>If we plug this guess into our equations of motion we get</p>
+		  $$
+		  -m \omega^2 Ae^{i \omega t - ikna} = \kappa Ae^{i \omega t } \left[ e^{- ik(n+1)a} + e^{- ik(n-1)a} - 2 e^{- ikna}  \right]
+		  $$<p>which simplifies to</p>
+		  $$
+		  m \omega^2 = 2 \kappa \left[1 - \text{cos}(ka) \right] = 4 \kappa \text{sin}^2(ka/2)
+		  $$<p>from which it follows</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <h4>Dispersion relation for 1D system of identical masses
+		    </h4>
+		    $$
+		    \omega = 2 \sqrt {\frac{\kappa}{m}} \mid \text{sin}(ka/2) \mid
+		    $$
+		  </div><p>which gives us a dispersion relation - a connection between frequency and wavevector.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Sound-waves">Sound waves<a class="anchor-link" href="#Sound-waves">&#182;</a></h1><p>Sound waves correspond to very long wavelength oscillations - which means very small wave vector.</p>
+		  <p>Again we make a small angle expansion to get</p>
+		  $$
+		  \omega = 2 \sqrt {\frac{\kappa}{m}} | \sin(ka/2) | \approx 2 \sqrt {\frac{\kappa}{m}}|ka/2| = \sqrt {\frac{\kappa}{m}} a |k|
+		  $$<p>(and phase velocity, which equals group velocity in this case when the dispersion is linear),</p>
+		  $$
+		  \nu = \omega / |k| = \sqrt{\frac{\kappa}{m}}a
+		  $$<p>.</p>
+		  <p>This give the speed of sound waves in our 1D crystal.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h1><p>We took a harmonic model for interaction between our atoms.</p>
+		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.</p>
+		  <p><img src="binding_curve.png" style="width:300px"</p>
+		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interaction become very strong, very quickly).</p>
+		  <p>This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Reciprocal-Lattice">Reciprocal Lattice<a class="anchor-link" href="#Reciprocal-Lattice">&#182;</a></h1><p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that</p>
+		  \begin{align*}
+		  k \to k + 2 \pi / a 
+		  \end{align*}<p>should give a physically identical system.</p>
+		  <p>Further, as we have $N$ sites to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \frac{N}{2}$, as for the tight binding model.</p>
+		  <p>This corresponds to choosing a range $-\pi/a \lt k \leq \pi/a$</p>
+		  <p>With this restriction we have $N$ normal modes from our $N$ atoms that each have 1 degree of freedom.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Quantum-Correspondence-Principle">Quantum Correspondence Principle<a class="anchor-link" href="#Quantum-Correspondence-Principle">&#182;</a></h1><p>Classical normal mode $\to$ quantum harmonic oscillator.</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <h4> 1 quantum of vibrational (of a quantum oscillator) in a crystal is called a 'phonon'. 
+		    </h4>
+		  </div><p>Phonons are bosons, so they behave differently to the electrons we've been discussing. - they tend to accumulate in the ground state.</p>
+		  <p>If we have time we can look at this in more detaiil later.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Alternating-chain">Alternating chain<a class="anchor-link" href="#Alternating-chain">&#182;</a></h1><p>What would happen if we had two types of atoms that alternated along the chain?</p>
+		  <p>For simplicity lets keep the mass the same, but the spring that connects them alternates, with spring constants $\kappa_1$ and $\kappa_2$.</p>
+		  <p>Now we have a 'unit cell' with two atoms in it.</p>
+		  <p>This unit cell is the unit that replicates itself to form the crystal. We'll discuss this much more next week.</p>
+		  <p>Let us define a reference point in the same location within each unit cell. If we have a 'lattice constant' $a$, which is the length of the unit cell then</p>
+		  $$
+		  r_n = an
+		  $$<p>lets say that the reference point is in the center of the cell, and the two types of atom are dispaced from it by $\pm 1/4 a$. We then have the equilibrium positions of our atoms as</p>
+		  $$
+		  x_n^{eq} = an - 1/4 a
+		  $$$$
+		  y_n^{eq} = an + 1/4 a
+		  $$<p>where we call the positions of atom type one $x_n$ and type two $y_n$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now we can set up our equations of motion pretty much like we did for the monoatomic chain.</p>
+		  \begin{align*}
+		  m\frac{\partial ^2 (\delta x_n)}{\partial t^2} = \kappa_2(\delta y_n - \delta x_n) + \kappa_1(\delta y_{n-1} - \delta x_n)) \\
+		  m\frac{\partial ^2 (\delta y_n)}{\partial t^2} = \kappa_1(\delta x_{n+1} - \delta y_n) + \kappa_2(\delta x_n - \delta y_n))
+		  \end{align*}<p>and we again guess that there will be an envelope of atomic displacements of a running wave form</p>
+		  \begin{align*}
+		  \delta x_n = A_x e^{i \omega t - ikx_n^{eq}} = A_x e^{i \omega t - ikna} \\
+		  \delta y_n = A_y e^{i \omega t - iky_n^{eq}} = A_y e^{i \omega t - ikna}
+		  \end{align*}<p>proceding as before we get</p>
+		  \begin{align*}
+		  -m \omega^2 A_x = \kappa_2 A_y + \kappa_1 A_y e^{ ika}  - (\kappa_1 + \kappa_2) A_x\\
+		  -m \omega^2 A_y =  \kappa_1 A_x e^{ ika} + \kappa_2 A_x + - (\kappa_1 + \kappa_2) A_y
+		  \end{align*}
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>collecting this together in matrix form we get</p>
+		  \begin{align*}
+		  m \omega^2 
+		  \left( \begin{array}{c}
+		  A_x  \\
+		  A_y 
+		  \end{array}\right) = 
+		  \left( \begin{array}{c}
+		  (\kappa_1 + \kappa_2) & - \kappa_2 - \kappa_1  e^{ ika} \\
+		  - \kappa_1 - \kappa_2  e^{ ika} &  (\kappa_1 + \kappa_2)
+		  \end{array}\right) 
+		  \left( \begin{array}{c}
+		  A_x  \\
+		  A_y 
+		  \end{array}\right)
+		  \end{align*}<p>which means that will get 2 solutions for each value of $\omega$.</p>
+		  $$
+		  \omega_{\pm} = \sqrt{\frac{\kappa_1 + \kappa_2}{m} \pm \frac{1}{m}\sqrt{(\kappa_1 + \kappa_2)^2 - 4 \kappa_1 \kappa_2 \text{sin}^2 (ka/2)}}
+		  $$<p>we have $N$ values of $k$ as before, and 2 solutions for each $k$, so $2N$ modes, which all adds up.</p>
+		  <p>We'll discuss the implications next week and in the problem class.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Links">Links<a class="anchor-link" href="#Links">&#182;</a></h1><p>Steven Simon's lecture</p>
+		  <p><a href="https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain">https://podcasts.ox.ac.uk/06-microscopic-view-vibrations-solids-one-dimension-i-monatomic-harmonic-chain</a></p>
+		  <p>visualisation of vibrations - you can download a program called CHAINPLOT from Mike Glazer's website. You need to go to the downloads and fill in a request.</p>
+		  <p><a href="http://www.amg122.com/programs/chains.html">http://www.amg122.com/programs/chains.html</a></p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
+		    <li>binding curves lead to effective springs between atoms</li>
+		    <li>our simple model allows us to get a flavour of a wide variety of phenomena (this is the purpose of a model!)</li>
+		    <li>sound waves</li>
+		    <li>optical branch in systems with more than one atom in the unit cell</li>
+		    <li>thermal expansion</li>
+		    <li>phonons - collective excitations, analogous to classical normal modes</li>
+		    <li>unit cell, range of k-points, hints at reciprocal lattice</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+
       </div>
     </div>
 
