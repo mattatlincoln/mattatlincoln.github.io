@@ -552,66 +552,6 @@
  </div>
  <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
    <div class="text_cell_render border-box-sizing rendered_html">
-    <p>What we get is</p>
-    <p>$$
-      \hat{H} \psi =  -\frac{\hbar^2}{2m} \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
-    $$</p>
-    <p>now the trick - we multiply both sides on the left by $\psi$ (complex conjugate), and integrate over all space. This gives us</p>
-    <p>$$
-      -\frac{\hbar^2}{2m} \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} -k^2 c_\mathbf{k} \phi_\mathbf{k} = E \int d^3x \sum_\mathbf{k'} c_\mathbf{k'}^* \phi_\mathbf{k'}^* \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k}
-    $$</p>
-    <p>don't worry it gets better.</p>		
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <p>The reason is that our planewaves are orthogonal to each other</p>
-    <p>$$
-      \int d^3x \phi_\mathbf{k'}^*  \phi_\mathbf{k} = 0, \text{ unless } \mathbf{k'} = \mathbf{k}
-    $$</p>
-    <p>If  $\mathbf{k'} = \mathbf{k}$, then the integral is equal to 1, i.e. the functions are normalised within the box $L^3$.</p>
-    <p>(note that $0, \text{ unless } \mathbf{k'} = \mathbf{k}$, and 1 if they are equal, is normally written $\delta_{\mathbf{k'}\mathbf{k}}$, the Kronecker delta).</p>
-    <p>This means that we can kill off one of the summations and get</p>
-    <p>$$
-      -\frac{\hbar^2}{2m} \sum_\mathbf{k}  -k^2 c_\mathbf{k}^* c_\mathbf{k} = E \sum_\mathbf{k} c_\mathbf{k}^*  c_\mathbf{k}
-    $$</p>
-    <p>Which at least looks better!</p>
-
-  </div>
-</div>
-</div></section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
-    <h2 id="Variation-of-parameters">
-      Variation of parameters
-      <a class="anchor-link" href="#Variation-of-parameters">&#182;</a>
-    </h2>
-    <p>The last step, is to determine the best values of our expansion coefficients $c_{\mathbf{k}}$.
-    We do this as you would expect, by differentiating with respect to the coefficents $c_{\mathbf{k}}^*$.</p>
-    <p>In our system we are left with a series of equations of the form, one for each value of $c_{\mathbf{k}}^*$ for each value of $c_{\mathbf{k}}^*$</p>
-    <p>\begin{align}
-      -\frac{\hbar^2 k^2}{2m} c_\mathbf{k} = E c_\mathbf{k} \\
-      \implies (\frac{\hbar^2 k^2}{2m} + E)c_\mathbf{k} = 0
-    \end{align}</p>		
-  </div>
-</div>
-</div>
-</section></section>
-
-<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
- <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
- </div>
- <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-   <div class="text_cell_render border-box-sizing rendered_html">
     <p>Lets say for arguments sake that we just have 4 plane waves, so $\mathbf{k} = 2 \pi / L \{(0,0,0), (1,0,0), (0,1,0), (0,0,1)\}$. This is a set of linear equations for $c_\mathbf{k}$ we can write them out in matrix form</p>
     <p>$$ 
       \left( \begin{array}{cccx}
