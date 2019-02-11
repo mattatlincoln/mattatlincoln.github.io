@@ -584,47 +584,10 @@
     $$</p>
     <p>We can see that adding in the extra values of $\mathbf{k}$ will just make the matrix bigger (infinite in fact, but we'll not worry about that).</p>
     <p>We were lucky (;)) that our matrix was diagonal - this basically means that we guessed the exact wavefunctions!</p>
-    <p>This may seem very long winded, but it is general - and we will use it to explore bonding in molecules and solids.</p>
   </div>
 </div>
 </div></section></section>
 
-<section>
-  <section>
-   <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-      <h2 id="Electron-gas-in-a-box">Electron gas in a box<a class="anchor-link" href="#Electron-gas-in-a-box">&#182;</a></h2><p>Lets put our (free) electrons in a box of size $V = L^3$ - the quantum requires them to satisfy the Schroedinger equation</p>
-      $$
-      -\frac{\hbar^2}{2m}\nabla^2 \psi = \epsilon \psi
-      $$
-      <p>We'll use periodic boundary conditions. Mathematically this requires that</p>
-      $$
-      \psi(x+L,y+L,z+L) = \psi(x,y,z)
-      $$<p>this is basically the same as the particle in a box you did last year in quantum</p>
-      <div class="question">
-        <li>Do you recognise that the Shroedinger equation is both a differential equation and an eigenvalue problem?</li>
-        <li>What form will the solutions to the equation take?</li>
-      </div>
-    </div>
-  </section>
-</section>
-
-<section>
-  <section>
-     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-
-      <h2 id="Plane-waves">Plane-waves<a class="anchor-link" href="#Plane-waves">&#182;</a></h2>$$
-      \psi(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
-      $$<p>the $\frac{1}{\sqrt{V}}$ ensures that the wavefunctions are normalised and (quantum)</p>
-      $$
-      k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
-      $$<p>($p,q$ and $r$ taking integer values).</p>
-      <div class="question">
-        <li>Show that the solutions are normalised</li>
-        <li>Show that the solutions satisfy the Schroedinger equation</li>
-      </div>
-    </div>
-  </section>
-</section>
 
 <section>
   <section>
@@ -640,7 +603,6 @@
       N = 2 \sum_{\mathbf{k}}n_F(\beta(\epsilon(\mathbf{k}-\mu))) = 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu)))
       $$<p>the two comes from the number of spin states.</p>
       <p><strong>If we know the number of electrons in the system, then this defines our chemical potential.</strong></p>
-      <p>We'll look at how we go from the sum to the integral in the problem class - it comes up frequently.</p>
 
     </div>
   </section>
