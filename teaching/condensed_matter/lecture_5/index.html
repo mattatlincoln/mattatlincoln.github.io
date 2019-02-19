@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>04 - 3D crystals</title>
+    <title>05 - 3D crystals</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -639,7 +639,158 @@
 	  </section>
 	</section>
 	
+    <section><section>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <h2 id="Crystal-Structure">Crystal Structure<a class="anchor-link" href="#Crystal-Structure">&#182;</a></h2>
+      <p>Crystaline materials <em>periodically</em> repeat</p>
+        <p>Gaps between atoms are of the order 0.1 nanometers = $10^{-10} \text{m} = 1 \mathring{\text{A}}$</p>
+        <div style="background-color:LightGoldenRodYellow; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+
+          The unit is named after the Swedish physicist Anders Jonas Ångström (1814–1874). The symbol is always written with a ring diacritic, as the letter in the Swedish alphabet. It is not a part of the SI system of units.
+        </div>
+        <table>
+          <tr>
+        <td><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Anders_%C3%85ngstr%C3%B6m_painting.jpg/220px-Anders_%C3%85ngstr%C3%B6m_painting.jpg" alt=""></p></td>
+        <td><p><a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m">Anders Jonas Ångström</a></p></td>
+      </tr></table>
+      </div></section></section>
+
+      <section><section>
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Light">Light<a class="anchor-link" href="#Light">&#182;</a></h1><p>As you know from interferometer experiments - if you have a grating of similar dimensions to the dimensions of light waves, you get diffraction.</p>
+      <p>Looking at the wavelengths of light</p>
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Light_spectrum.svg/324px-Light_spectrum.svg.png" style='height:350px'></p>
+      <p><a href="https://en.wikipedia.org/wiki/Electromagnetic_spectrum">https://en.wikipedia.org/wiki/Electromagnetic_spectrum</a></p>
+    </div>
+  </div>
+</div></section>
+<section>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <p>we see that X-rays are the appropriate rays to diffract from a crystal.</p>
+      <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+        Other things with similar wavelengths can also be used - remember wave-particle duality? 
+        <li>
+          Give examples?
+        </li>
+        <li>
+          How fast / how much energy should your chosen particles have to interact with a crystal with atomic spacing 0.25 nm.
+        </li>
+  </div></section></section>
+  <section><section>
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Bragg-condition">Bragg condition<a class="anchor-link" href="#Bragg-condition">&#182;</a></h2><p>In the simplest case we are looking for the conditions of constructive interference between diffracted rays in the crystal.</p>
+      <p>The extra path length should be a multiple of the wavelength $2d \sin \theta =n\lambda $</p>
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/BraggPlaneDiffraction.svg/800px-BraggPlaneDiffraction.svg.png" alt=""></p>
+
+    </div>
+        </div>
+      </div>
+  </section></section>
+  <section><section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+        A crystal (lattice) plane is a plane containing at least 3 non-colinear points of  a lattice
+        <br>
+        A family of lattice (crystal) planes is an infinite set of equally spaced parallel planes, which all together contain every point of the lattice.
+      </div><p><br></p>
+      <p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+          The families of lattice planes are in one-to-one correspondence with the possible directions of reciprocal vectors, to which they are normal. The lattice spacing between the lattice planes is 
+          $$
+          d = 2 \pi / |\mathbf{G_{min}}|
+          $$</p>
+      <p>where $\mathbf{G_{min}}$ is the minimum length reciprocal vector in this normal direction.</p>
+
+      </div>
+    </div>
+        </div>    
+  </section></section>
+
+  <section><section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h2>Proof of last statement</h2>
+      <p>Consider a set of points $\mathbf{R}$ such that for some integer $m$</p>
+      $$
+      \mathbf{G} \cdot \mathbf{R} = 2 \pi m
+      $$<p>Which defines an infinite series of planes perpendicular to $\mathbf{G}$.</p>
+      <p>Since $e^{i \mathbf{G} \cdot \mathbf{R}} = 1$ we know that every lattice point will be a member of one of these planes, <a href='https://mattatlincoln.github.io/teaching/condensed_matter/lecture_5/#/11'>from our definition of $\mathbf{G}$</a>.</p>
+
+    </div>
+        </div>
+      </div>    
+    </section>
+
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+
+      <p>Now the spacing between two of these planes will be given by</p>
+      $$
+      \mathbf{G} \cdot (\mathbf{R}_{m+1} - \mathbf{R}_m) = 2 \pi  
+      $$<p>so in the direction parallel to $\mathbf{G}$ the spacing, $d$, is given by</p>
+      $$
+      d = \frac{2 \pi}{|\mathbf{G} |}
+      $$<p>you can argue that taking the minimum length $\mathbf{G}$ will then still contain all the lattice points and no extra planes that do not cut lattice points. Then</p>
+      $$
+      d = \frac{2 \pi}{|\mathbf{G}_{min} |}
+      $$<p>gives the spacing of these lattice planes.</p>
+      <p>As a reciprocal lattice vector is an integer multiple of the reciprocal lattice vectors, we can label them by the integers, which then will also index the planes.</p>
+
+  </section></section>
+  
+  <section><section>
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Miller-Indices">Miller Indices<a class="anchor-link" href="#Miller-Indices">&#182;</a></h2><p>A family of lattice planes is determined by three integers h, k, and ℓ, the Miller indices. They are written $(hkl)$, and denote the family of planes orthogonal to $h \mathbf {b_{1}} +k\mathbf {b_{2}} + l \mathbf {b_{3}}  $, where $ \mathbf {b_{i}} $ are the basis of the reciprocal lattice vectors.</p>
+      <p>By convention, negative integers are written with a bar, as in 3 for −3. The integers are usually written in lowest terms, i.e. their greatest common divisor should be 1.</p>
+      <p>Miller indices were introduced in 1839 by the British mineralogist William Hallowes Miller. The method was also historically known as the Millerian system, and the indices as Millerian,[2] although this is now rare.</p>
+      <p>The Miller indices are defined with respect to any choice of unit cell and not only with respect to primitive basis vectors, as is sometimes stated.</p>
+
+    </div>
+        </div>
+    </div></section><section>
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Miller_Indices_Felix_Kling.svg/600px-Miller_Indices_Felix_Kling.svg.png" style='height:450px'></p>
+
+    </div>
+        </div>
+    </div></section><section>
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <p>There are also several related notations:</p>
+      <p>the notation {hkl} denotes the set of all planes that are equivalent to (hkl) by the symmetry of the lattice.</p>
+      <p>In the context of crystal directions (not planes), the corresponding notations are:
+        [hkl], with square instead of round brackets, denotes a direction in the basis of the direct lattice vectors instead of the reciprocal lattice;  and similarly, the notation <hkl> denotes the set of all directions that are equivalent to [hkl] by symmetry.</p>
+      <p>Another way to look at it is that the planes cut the axes at $[a/h, 0, 0], [0, a/k, 0],  [0,0,a/l]$</p>
+
+    </div>
+        </div>
+  </div></section></section>
 	
+
 	</div>
       </div>
 
