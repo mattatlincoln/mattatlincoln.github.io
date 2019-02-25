@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>07 - Semiconductor Physics</title>
+    <title>05 - diffraction</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
@@ -75,519 +76,593 @@
   <body>
     <div class="reveal">
       <div class="slides">
-<section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="07---Semiconductor-Physics">07 - Semiconductor Physics<a class="anchor-link" href="#07---Semiconductor-Physics">&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Metals,-Semiconductors,-Insulators">Metals, Semiconductors, Insulators<a class="anchor-link" href="#Metals,-Semiconductors,-Insulators">&#182;</a></h2><p>If there is an energy gap between the highest filled states and the next set of states, then you have an insulator, or if the gap is less than about $5 \text{eV}$, a semiconductor.</p>
-<p>If there is no energy gap between empty and filled states, we have a metal.</p>
-<p>Or in very crude cartoon forms</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Band_filling_diagram.svg/300px-Band_filling_diagram.svg.png" alt=""></p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Electrons-and-Holes">Electrons and Holes<a class="anchor-link" href="#Electrons-and-Holes">&#182;</a></h3><p>An excitation, photon or thermal, can excite an electron from the valence band, to the conduction band</p>
-<p>Electron - a (dressed) electron<br>
-Hole - a (dressed) lack of an electron</p>
-<p><img src=https://www.doitpoms.ac.uk/tlplib/semiconductors/images/para01.jpg alt="Smiley face" height="250" width="250"></p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="X-ray-diffraction">X-ray diffraction<a class="anchor-link" href="#X-ray-diffraction">&#182;</a></h1><ul>
+		    <li>IOP core physics "Crystal structure and Bragg scattering"</li>
+		  </ul>
+		  <p>First real, solid evidence about the structure of condensed matter</p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>when an electron is excited a hole is left behind</p>
-<p><img src=http://www.nature.com/nmat/journal/v7/n2/images/nmat2107-f1.jpg alt="Smiley face" height="250" width="250"></p>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Crystal-Structure">Crystal Structure<a class="anchor-link" href="#Crystal-Structure">&#182;</a></h2><p>Crystaline materials <em>periodically</em> repeat</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Effective-Mass-of-Electrons">Effective Mass of Electrons<a class="anchor-link" href="#Effective-Mass-of-Electrons">&#182;</a></h3><p>Assume that near the bottom of the conduction band, which occurs at $\mathbf{k} = \mathbf{k}_{min}$</p>
-<p>$$
-E = E_{min} + \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
-$$</p>
-<p>We then define the effective mass as</p>
-<p>$$
-\hbar^2/m_e^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
-$$</p>
-<p>and with corresponding velocity</p>
-<p>$$
-\mathbf{v} = \nabla_\mathbf{k} E / \hbar = \hbar(\mathbf{k} - \mathbf{k}_{min})/m_e^*
-$$</p>
-<p>These then correspond to the free electron case, but with $m_e$ replaced by $m^*$</p>
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>Gaps between atoms are of the order 0.1 nanometers = $10^{-10} \text{m} = 1 \mathring{\text{A}}$</p>
+		    <div style="background-color:LightGoldenRodYellow; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Effective-Mass-of-Holes">Effective Mass of Holes<a class="anchor-link" href="#Effective-Mass-of-Holes">&#182;</a></h3><p>We can do the same for holes.</p>
-<p>$$
-E = E_{max} - \alpha|\mathbf{k} - \mathbf{k}_{min}|^2 + \ldots
-$$</p>
-<p>then</p>
-<p>$$
-\hbar^2/m_h^* = \frac{\partial^2E }{\partial k^2} = 2 \alpha
-$$</p>
-<p>and again we get</p>
-<p>$$
-E_{hole} = \text{constant } + \frac{\hbar^2|\mathbf{k} - \mathbf{k}_{min}|^2}{2 m^*_h}
-$$</p>
-<p>note that really we are moving electrons, so that you need to keep track of where the electrons are</p>
-<p>$$
-E\text{(absence of electron in state $\mathbf{k}$)} = -E\text{(electron in state $\mathbf{k}$)}
-$$</p>
+		      The unit is named after the Swedish physicist Anders Jonas Ångström (1814–1874). The symbol is always written with a ring diacritic, as the letter in the Swedish alphabet. It is not a part of the SI system of units.
+		    </div><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Anders_%C3%85ngstr%C3%B6m_painting.jpg/220px-Anders_%C3%85ngstr%C3%B6m_painting.jpg" alt=""></p>
+		    <p><a href="https://en.wikipedia.org/wiki/%C3%85ngstr%C3%B6m"></a></p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Momentum-and-velocity-of-holes-and-electrons">Momentum and velocity of holes and electrons<a class="anchor-link" href="#Momentum-and-velocity-of-holes-and-electrons">&#182;</a></h3><p>The momentum of a hole is defined via $\mathbf{k}_h = -\mathbf{k}_e$ to be</p>
-<p>$$
--\hbar \mathbf{k}_e
-$$</p>
-<p>where $\mathbf{k}_e$ is the wavevector of the electron removed to form the hole.</p>
-<p>Then when we use</p>
-<p>$$
-\mathbf{v}_h = \nabla_{\mathbf{k}_h} E_h / \hbar
-$$</p>
-<p>we have two negative signs, and get</p>
-<p>$$
-\mathbf{v}_h = \mathbf{v}_e 
-$$</p>
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Light">Light<a class="anchor-link" href="#Light">&#182;</a></h1><p>As you know from interferometer experiments - if you have a grating of similar dimensions to the dimensions of light waves, you get diffraction.</p>
+		  <p>Looking at the wavelengths of light</p>
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Light_spectrum.svg/324px-Light_spectrum.svg.png" style='height:350px'></p>
+		  <p><a href="https://en.wikipedia.org/wiki/Electromagnetic_spectrum">https://en.wikipedia.org/wiki/Electromagnetic_spectrum</a></p>
+		  <p>we see that X-rays are the appropriate rays to diffract from a crystal.</p>
+		  <div style="background-color:LightGreen; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    Other things with wavelengths will can also be used - remember wave-particle duality? 
+		    <li>
+		      Give examples?
+		    </li>
+		    <li>
+		      How fast / how much energy should your chosen particles have to interact with a crystal with atomic spacing 0.25 nm.
+		    </li>
+		  </div>
+		</div>
+	      </div>
+	</div></section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Bragg-condition">Bragg condition<a class="anchor-link" href="#Bragg-condition">&#182;</a></h2><p>In the simplest case we are looking for the conditions of constructive interference between diffracted rays in the crystal.</p>
+		  <p>The extra path length should be a multiple of the wavelength $2d \sin \theta =n\lambda $</p>
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/BraggPlaneDiffraction.svg/800px-BraggPlaneDiffraction.svg.png" alt=""></p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Effective-Mass-and-equations-of-Motion">Effective Mass and equations of Motion<a class="anchor-link" href="#Effective-Mass-and-equations-of-Motion">&#182;</a></h3><p>If we apply a force $\mathbf{F}$ to an electron it will do work per unit time</p>
-<p>$$
-\frac{dW}{dt} = \mathbf{F} \cdot \mathbf{v} = \mathbf{F} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
-$$</p>
-<p>This must be equal to the change of energy with time</p>
-<p>$$
-\frac{dE}{dt} = \frac{d\mathbf{k}}{dt} \cdot  \nabla_{\mathbf{k}_h} E_h / \hbar
-$$</p>
-<p>comparing the two we get</p>
-<p>$$
-\mathbf{F} = \hbar \frac{\mathbf{k}}{dt} = \frac{d\mathbf{p}}{dt}
-$$</p>
-<p>where $\mathbf{p} = \hbar \mathbf{k}$. When the relation of energy to wavevector is parabolic, we get</p>
-<p>$$
-\mathbf{F} = m^* \frac{d\mathbf{v}}{dt}
-$$</p>
-<p>so they basically move classically in an applied field.</p>
-<p>More generally, away from the band extrema, it is possible to use the 2nd derivative of the energy as a generalised effective mass.</p>
+		</div>
+	      </div>
+	    </div>
+	</section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		    A crystal (lattice) plane is a plane containing at least 3 non-colinear points of  a lattice
+		    <br>
+		    A family of lattice (crystal) planes is an infinite set of equally spaced parallel planes, which all together contain every point of the lattice.
+		  </div><p><br></p>
+		  <p><div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px;">
+		      The families of lattice planes are in one-to-one correspondence with the possible directions of reciprocal vectors, to which they are normal. The lattice spacing between the lattice planes is 
+		      $$
+		      d = 2 \pi / |\mathbf{G_{min}}|
+		      $$</p>
+		  <p>where $\mathbf{G_{min}}$ is the minimum length reciprocal vector in this normal direction.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Back-to-Lecture-2---Drude-model-with-effective-mass">Back to Lecture 2 - Drude model with effective mass<a class="anchor-link" href="#Back-to-Lecture-2---Drude-model-with-effective-mass">&#182;</a></h3><p>Now if we take our original Drude model, and replace the mass of an electron with $m_e^*$ we get</p>
-<p>$$
-m_e^* \frac{d\mathbf{v}}{dt} = -e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_e^* \mathbf{v}/ \tau
-$$</p>
-<p>for electrons, or</p>
-<p>$$
-m_h^* \frac{d\mathbf{v}}{dt} = e(\mathbf{E} + \mathbf{v} \times \mathbf{B}) - m_h^* \mathbf{v}/ \tau
-$$</p>
-<p>for holes. So they move the opposite direction under the influence of an electric field!</p>
-<p>This can explain the anamolous results of the Hall effect for some materials.</p>
+		  </div>
+		</div>
+	      </div>    
+	</section></section>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Doping">Doping<a class="anchor-link" href="#Doping">&#182;</a></h3><p>doping is used to enhance performance,</p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2>Proof of last statement</h2>
+		  <p>Consider a set of points $\mathbf{r}$ such that for some integer $m$</p>
+		  $$
+		  \mathbf{G} \cdot \mathbf{r} = 2 \pi m
+		  $$<p>Which defines an infinite series of planes perpendicular to $\mathbf{G}$.</p>
+		  <p>Since $e^{i \mathbf{G} \cdot \mathbf{r}} = 1$ we know that every lattice point will be a member of one of these planes, <a href='https://mattatlincoln.github.io/teaching/condensed_matter/lecture_4/#/12'>from our definition of $\mathbf{G}$</a>.</p>
 
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>in sports</p>
-<p><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQganQRc2lvsvR1Y0l5DnMS-ToJ-B_Y2A_mQYiUJUI8SyjeaAbs1Q" alt=""></p>
-<p>and as the basis of semiconductor engineering</p>
+		</div>
+	      </div>
+	    </div>    
+	  </section>
 
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Defect-levels">Defect levels<a class="anchor-link" href="#Defect-levels">&#182;</a></h3><p>Defects with energy levels within the band gap of the host effectively reduce the band gap and increase the concentration of electrons and holes.</p>
-<p><img src=http://www.globalsino.com/micro/1/images/1micro9974%20Atomic%20models%20of%20Silicon,%20Boron%20and%20Phosphorus2.jpg alt="Smiley face" height="250" width="250"></p>
-<p>A better way to imagine this for the phosphorus atom - is an added proton and an added electron, or a screened hydrogen atom.</p>
-<ul>
-<li>n-type dopants add electrons to the system</li>
-<li>p-type dopants add holes to the system</li>
-</ul>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Impurity-states">Impurity states<a class="anchor-link" href="#Impurity-states">&#182;</a></h3><p>Considering the phosphorus doping, we can extend the hydrogen atom analogy a little, if we take the formulae for the radius of the first electron 'orbit' in a hydrogen atom and replace $\epsilon_0$ with $\epsilon_0 \epsilon_r$ and the electron mass $m_e$ with the effective electron mass $m_e^*$ we go from a Bohr radius of</p>
-<p>$$
-a_0 = \frac{4 \pi \epsilon_0}{me^2} \approx 0.51 \times 10^{-10} \text{ m} 
-$$</p>
-<p>to</p>
-<p>$$
-a_0^{eff} = a_0(\epsilon_r \frac{m_e}{m_e^*}) &gt; 30 \times 10^{-10} \text{ m} 
-$$</p>
-<p>where the inequality is for silicon ($\epsilon_r \approx 11$) and an effective mass about a third of a free electron.</p>
+		  <p>Now the spacing between two of these planes will be given by</p>
+		  $$
+		  \mathbf{G} \cdot (\mathbf{r}_{m+1} - \mathbf{r}_m) = 2 \pi  
+		  $$<p>so in the direction parallel to $\mathbf{G}$ the spacing, $d$, is given by</p>
+		  $$
+		  d = \frac{2 \pi}{|\mathbf{G} |}
+		  $$<p>you can argue that taking the minimum length $\mathbf{G}$ will then still contain all the lattice points and no extra planes that do not cut lattice points. Then</p>
+		  $$
+		  d = \frac{2 \pi}{|\mathbf{G}_{min} |}
+		  $$<p>gives the spacing of these lattice planes.</p>
+		  <p>As a reciprocal lattice vector is an integer multiple of the reciprocal lattice vectors, we can label them by the integers, which then will also index the planes.</p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This also means that the binding energy of the electron to the additional proton is reduced from</p>
-<p>$$
-E_{\text{e-proton}} = \frac{me^2}{8 \epsilon_0^2\hbar^2} \approx 13.6 \text{eV} 
-$$</p>
-<p>to</p>
-<p>$$
-E_{\text{e-to P in Si}} = \Bigg(\frac{me^2}{8 \epsilon_0^2\hbar^2}\Bigg)\times \Bigg(\frac{m_e^*}{m\epsilon_r^2}\Bigg) &lt;&lt; 0.1 \text{eV} 
-$$</p>
-<p>for Silicon.</p>
-<p>So the impurity energy level is just below the conduction band of Silicon.</p>
-<p>They can be thermally excited into the conduction band.</p>
+	</section></section>
+	
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Miller-Indices">Miller Indices<a class="anchor-link" href="#Miller-Indices">&#182;</a></h2><p>A family of lattice planes is determined by three integers h, k, and ℓ, the Miller indices. They are written $(hkl)$, and denote the family of planes orthogonal to $h \mathbf {b_{1}} +k\mathbf {b_{2}} + l \mathbf {b_{3}}  $, where $ \mathbf {b_{i}} $ are the basis of the reciprocal lattice vectors.</p>
+		  <p>By convention, negative integers are written with a bar, as in 3 for −3. The integers are usually written in lowest terms, i.e. their greatest common divisor should be 1.</p>
+		  <p>Miller indices were introduced in 1839 by the British mineralogist William Hallowes Miller. The method was also historically known as the Millerian system, and the indices as Millerian,[2] although this is now rare.</p>
+		  <p>The Miller indices are defined with respect to any choice of unit cell and not only with respect to primitive basis vectors, as is sometimes stated.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Optical-effects-of-impurities">Optical effects of impurities<a class="anchor-link" href="#Optical-effects-of-impurities">&#182;</a></h3><p>Additional states in the band gap will allow extra optical transitions. If they are in the visible range, and the defect concentration is high enough, they will effect the colour of the material.</p>
-<p><img src="http://diamondsellersguide.com/wp-content/uploads/2014/07/colored-diamonds.gif" alt=""></p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Miller_Indices_Felix_Kling.svg/600px-Miller_Indices_Felix_Kling.svg.png" style='height:450px'></p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For instance Sapphire is $\text{Al$_2$O$_3$}$, or pretty much cement, but ordered and with some defects.</p>
-<p>Either shiny or</p>
-<p><img src='https://upload.wikimedia.org/wikipedia/en/f/f7/Sapphire.png' alt="Smiley face" height="250" width="250"></p>
-<p>Note these are grown ... and how you grow them effects the colours</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>There are also several related notations:</p>
+		  <p>the notation {hkl} denotes the set of all planes that are equivalent to (hkl) by the symmetry of the lattice.</p>
+		  <p>In the context of crystal directions (not planes), the corresponding notations are:
+		    [hkl], with square instead of round brackets, denotes a direction in the basis of the direct lattice vectors instead of the reciprocal lattice;  and similarly, the notation <hkl> denotes the set of all directions that are equivalent to [hkl] by symmetry.</p>
+		  <p>Another way to look at it is that the planes cut the axes at $[a/h, 0, 0], [0, a/k, 0],  [0,0,a/l]$</p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>technologically useful</p>
-<p><img src=http://www.patentlyapple.com/.a/6a0120a5580826970c01bb07896e86970d-800wi alt="Smiley face" height="250" width="250"></p>
-<p><a href="http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html">http://www.patentlyapple.com/patently-apple/2014/09/apple-invents-a-second-sapphire-glass-strengthening-process.html</a></p>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Fermi's-Golden-rule">Fermi's Golden rule<a class="anchor-link" href="#Fermi's-Golden-rule">&#182;</a></h2><p>OK, but how will we make a quantitative estimate of scattering factors? Quantum mechanics...</p>
+		  <p>We can consider a particle (xray, electron, neutron) characterised by its wavevector</p>
+		  <p>$$
+		    \mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} 
+		    $$</p>
+		  <p>where $\mathbf{\hat{k}} _{i}$ is the unit vector pointing along $\mathbf{k}$.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Thermodynamics">Thermodynamics<a class="anchor-link" href="#Thermodynamics">&#182;</a></h3><p>the DOS of a free electron gas is given by</p>
-<p>$$
-D(E \gg 0) = \frac{(2m)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E}
-$$</p>
-<p>as we saw, electrons and holes near the bottom or top of a band obey the same dispersion law, so should have a similar density of states.</p>
-<p>$$
-D_e(E \gg E_{CBM}) = \frac{(2m_e^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E-E_{CBM}}
-$$</p>
-<p>and similarly for holes</p>
-<p>$$
-D_h(E \ll E_{VBM}) = \frac{(2m_h^*)^{\frac{3}{2}}}{2\pi\hbar^3}\sqrt{E_{VBM}-E}
-$$</p>
-<p>and to get the density of electrons, we convolute our DOS with the Fermi function</p>
-<p>$$
-n_e(T) = \int_{E_{CBM}}^{-\infty}D_e(E)n_F(\beta(E-\mu))dE =  \int_{E_{CBM}}^{-\infty} \frac{D_e(E)}{e^{\beta(E-\mu)}+1}dE 
-$$</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The transition rate per unit time of a particle scattering from the state $\mathbf{k}$ to $\mathbf{k'}$ is given by</p>
+		  <p>$$
+		    \begin{align}
+		    \Gamma(\mathbf{k}, \mathbf{k'}) &amp; = \frac{2 \pi}{\hbar} \Big| \int d\mathbf{r} \frac{e^{-i\mathbf{k'.r}}}{\sqrt{L^3}} V(\mathbf{r}) \frac{e^{i\mathbf{k.r}}}{\sqrt{L^3}}\Big| ^2 \delta(E_{\mathbf{k}'}-E_{\mathbf{k}}) \\
+                    &amp; = \frac{2 \pi}{\hbar} \Big| \int d\mathbf{r} \frac{e^{-i\mathbf{(k - k').r}}}{L^3} V(\mathbf{r})\Big| ^2 \delta(E_{\mathbf{k}'}-E_{\mathbf{k}})
+		    \end{align}
+		    $$</p>
+		  <p>where $ \frac{e^{-i\mathbf{k.r}}}{\sqrt{L^3}}$ is the wavefunction of a free particle with wavevector $\mathbf{k}$, and $ \frac{e^{-i\mathbf{k'.r}}}{\sqrt{L^3}}$ of the particle with wavevector $\mathbf{k'}$.</p>
+		  <p>This looks a bit terrifying, but it isn't as bad as all that, and we won't need to explicitly evaluate these integrals. The equation is called Fermi's Golden rule. It gives a recipe for how quickly transitions occur (on average) beween an intitial and final state.</p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If $\mu$ is well below the CBM, then $\beta(E-\mu) \gg 1$ and we can approximate</p>
-<p>$$
-\frac{D_e(E)}{e^{\beta(E-\mu)}+1} \approx D_e(E)e^{-\beta(E-\mu)}
-$$</p>
-<p>the integral is then doable (Simon p192), and we get</p>
-<p>$$
-n(T) = \frac{1}{4}\Bigg( \frac{2m_e^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(E_{CBM}-\mu)}
-$$</p>
-<p>Mainly the number of conduction electrons increases exponenentially with temperature (exponential is more important than the linear $T$ term).</p>
-<p>A similar expression holds for the density of holes</p>
-<p>$$
-p(T) = \frac{1}{4}\Bigg( \frac{2m_h^* k_B T}{\pi \hbar^2} \Bigg) e^{-\beta(\mu-E_{VBM})}
-$$</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Ignore the rest for now and look at the integral (matrix element)</p>
+		  <p>$$
+		    \frac{1}{L^3}\int d\mathbf{r} e^{-i\mathbf{(k - k').r}}V(\mathbf{r})
+		    $$</p>
+		  <p>where the integral is over all of the crystal. It looks more or less like our hopping integral we encountered when doing tight binding - it gives the chance of hopping from state $\mathbf{k}$ to $\mathbf{k'}$. (Also note that this is a fourier transform).</p>
+		  <p>We know that we can write any location in the crystal as $\mathbf{r} = \mathbf{R + x}$ - where $\mathbf{R}$ is a real space lattice vector and $\mathbf{x}$ is a position in the cell.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Law-of-Mass-Action">Law of Mass Action<a class="anchor-link" href="#Law-of-Mass-Action">&#182;</a></h3><p>Combining our last two equations we get</p>
-<p>$$
-\begin{align}
-n(T)p(T) &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{CBM}-E_{VBM})} \\
-         &amp;= \frac{1}{2} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^3 (m_e^* m_h^*)^{\frac{3}{2}} e^{-\beta(E_{gap})}
-\end{align}
-$$
-where the band gap is $E_{gap} = E_{CBM}-E_{VBM}$</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Then 
+		    $$
+		    \begin{align}
+		    \frac{1}{L^3} \int d\mathbf{r} e^{-i\mathbf{(k - k').r}} V(\mathbf{r})\\
+		    = \frac{1}{L^3} \sum_{\mathbf{R}} \int_{\text{unit-cell}} d \mathbf{x} e^{-i\mathbf{(k - k').(\mathbf{x + R})}}V(\mathbf{x + R}) \\
+		    \end{align}
+		    $$</p>
+		  <p>and now the trick, because our crystal is periodic we have $V(\mathbf{x + R}) = V(\mathbf{x})$ and we can split our integral into two bits</p>
+		  <p>$$
+		    \frac{1}{L^3} \sum_{\mathbf{R}} \big[ e^{-i\mathbf{(k - k').\mathbf{R}}} \big] \int_{\text{unit-cell}} d \mathbf{x} e^{-i\mathbf{(k - k').\mathbf{x}}}V(\mathbf{x})
+		    $$</p>
+		  <p>However, the sum will be zero unless $\mathbf{(k - k')} = \mathbf{G}$, when each term in the sum will be 1. Otherwise the terms in the sum will oscillate and overall sum to zero on average.</p>
+		  <p>The first sum then just gives us some constant, with the condition that the change in wavevector is a reciprocal lattice vector. This is known as the Laue condition. It is a statement of the conservation of momentum.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Intrinsic-semiconductors">Intrinsic semiconductors<a class="anchor-link" href="#Intrinsic-semiconductors">&#182;</a></h3><p>In an intrinsic semiconductor, $n = p$, we can only make electron hole pairs, as the whole system is electrically neutral.</p>
-<p>With this restraint we can solve for $n=p$ in the law of mass action</p>
-<p>$$
-n_{\text{intrinsic}} = p_{\text{intrinsic}} = \sqrt{np} = \frac{1}{4} \Bigg( \frac{k_B T}{\pi \hbar^2} \Bigg)^{3/2} (m_e^* m_h^*)^{\frac{3}{4}} e^{-\beta E_{gap} /2} 
-$$</p>
-<p>You can also solve for the chemical potential $\mu$, which turns out to be mid gap.</p>
+		</div>
+	      </div>
+	</div></section></section>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Doped-(extrinsic)-semiconductors">Doped (extrinsic) semiconductors<a class="anchor-link" href="#Doped-(extrinsic)-semiconductors">&#182;</a></h3><p>if the semiconductor is doped, and assuming the temperature is high enough that all donor or acceptor states are added into the bands</p>
-<p>$$
-n-p = \text{(density of donors)} - \text{(density of acceptors)}
-$$</p>
-<p>and combined with the law of mass action can be solved to obtain $n$ and $p$.</p>
-<p>If the dopant concentration is larger than the number intrinsic carriers, the chemical potential moves to just below the CBM or just above the VBM.</p>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Laue-Condition">Laue Condition<a class="anchor-link" href="#Laue-Condition">&#182;</a></h2><p>If 
+		    $$ \mathbf {G} =h\mathbf {A} +k\mathbf {B} +l\mathbf {C} $$ 
+		    is the reciprocal lattice vector, we know 
+		    $$ \mathbf {G} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$.</p>
+		  <p>The Laue equations specify 
+		    $$ \mathbf {\Delta k} \cdot (\mathbf {a} +\mathbf {b} +\mathbf {c} )=2\pi (h+k+l)$$</p>
+		  <p>Hence we have $ {\Delta k} =\mathbf {G} $ or $ \mathbf {k} _{o}-\mathbf {k} _{i}=\mathbf {G} $.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Semiconductor-Devices">Semiconductor Devices<a class="anchor-link" href="#Semiconductor-Devices">&#182;</a></h3><p>It is not immediately obvious that this bit of physics was completely revolutionary.</p>
-<p>But it was.</p>
+		</div>
+	      </div>
+	    </div>    
+	  </section>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$p-n$-Junction">$p-n$ Junction<a class="anchor-link" href="#$p-n$-Junction">&#182;</a></h2><p>this is a junction of a p-doped semiconductor and an n-doped semiconductor.  Before they are in contact, they have two separate chemical potentials set by the doping levels of the material</p>
-<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSx-7S0CyoLisJ8GWXLWNX9Jm_6wfEm4I62YLgLxZNM5h68nIe6" alt=""></p>
-<p>when they are put into contact there is a transfer of electrons / holes to minimise the energy of the system.</p>
-<p>Electrons will flow into empty hole states, gaining an energy on the order of the band gap.</p>
+	  <section>
+	    <div class="cell border-box-sizing text_cell rendered">
+	      <div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>But this doesn't continue forever. Instead an opposing voltage builds up as more and more electrons transfer. Eventually an equilibrium is reached with a common fermi level for the whole system:</p>
-<p><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSYSAkhFUkEuiHEbFYuVibuHwgsOBwaWNPkwL8w4a5551qNSKJ_" alt=""></p>
-<p>The potential difference due to the charge separation cancels out the change in chemical potential to give a final balanced system.</p>
+		  <p>From this we get the diffraction condition:</p>
+		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
+		  <p>\begin{aligned}\mathbf {k} _{o}-\mathbf {k} _{i}&amp;=\mathbf {G} \\(\mathbf {k} _{i}+\mathbf {G} )^{2}&amp;=\mathbf {k} _{o}^{2}\\{k_{i}}^{2}+2\mathbf {k} _{i}\cdot \mathbf {G} +G^{2}&amp;={k_{o}}^{2}\end{aligned}</p>
+		  <p>Since $(\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2} (\mathbf {k} _{o})^{2}=(\mathbf {k} _{i})^{2}$ (considering elastic scattering) and  $\mathbf {G} =-\mathbf {G}$ (a negative reciprocal lattice vector is still a reciprocal lattice vector):</p>
+		  <p>$$ 2\mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$$ .</p>
+		  <p>The diffraction condition 
+		    $ \mathbf {k} _{i} \cdot \mathbf {G} =G^{2}$ can be reduced to the Bragg law $ 2d\sin \theta =n\lambda$ as follows.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="http://iamtechnical.com/sites/default/files/doide-structure-forward-reverse-bias-animation_0.gif" alt=""></p>
-<p>this junction acts as a diode, only conducting in one bias direction.</p>
-<p>Solar cells act in this way - formed electron-hole pairs are separated by the electric field and can then contribute to current generation.</p>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Firstly we can write  $\mathbf {k} _{i} = \frac{2 \pi }{ \lambda}  \mathbf{\hat{k}} _{i} $, where  $\mathbf{\hat{k}} _{i}$ is the unit vector pointing in the direction of the incident ray. Then</p>
+		  <p>$$ 
+		    \begin{align*}
+		    2\mathbf {k} _{i} \cdot \mathbf {G} &amp; =G^{2} \\
+		    \frac{4 \pi }{ \lambda } \mathbf{\hat{k}} _{i} \cdot \mathbf {G} &amp; = G^{2} \\
+		    \frac{4 \pi }{ \lambda }  G \sin \theta &amp; = G^{2} \\
+		    \implies \frac{2 \pi }{ G } 2 \sin \theta &amp; = \lambda
+		    \end{align*}
+		    $$ .</p>
+		  <p>And comparing to Braggs' Law we see that $\frac{2 \pi}{G}$ must be equal to $d$.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>There are four possible processes allowing conduction:</p>
-<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
-<p>Electrons or holes can be thermally excited across the gap, they then flow rapidly away. The number of  carriers in these regimes will be of the form $e^{-E_{gap}/k_BT}$, independent of applied bias.</p>
+		</div>
+	      </div>
+	</div></section></section>
+	
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Structure-factor">Structure factor<a class="anchor-link" href="#Structure-factor">&#182;</a></h2><p>we saw that the intensity of scattering (related to the rate) can be deduced from</p>
+		  <p>$$
+		    \frac{1}{L^3} \sum_{\mathbf{R}} \big[ e^{-i\mathbf{(k - k') \cdot \mathbf{R}}} \big] \int_{\text{unit-cell}} d \mathbf{x} e^{i\mathbf{G \cdot \mathbf{x}}}V(\mathbf{x})
+		    $$</p>
+		  <p>the summation reduces to the number of unit cells in the crystal, and is divided by the volume of the crystal, so gives a density.</p>
+		  <p>The term in the integral is called the structure factor - it is a factor that depends on the structure</p>
+		  <p>$$
+		    S(\mathbf{G}) = \int_{\text{unit-cell}} d \mathbf{x} e^{i\mathbf{G \cdot \mathbf{x}}}V(\mathbf{x})
+		    $$</p>
+		  <p>it is often possible to approximate the potential $V(\mathbf{x})$ as the sum of scattering potentials of the atoms in the crystal</p>
+		  <p>$$
+		    V(\mathbf{x}) = \sum_{\text{ atoms } j} V_j(\mathbf{x} - \mathbf{x}_j)
+		    $$</p>
+		  <p>the form of $\mathbf{V}_j$ will depend on whether we are using X-rays, neutrons, electrons etc to perform the experiment.</p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://ecee.colorado.edu/~bart/book/book/chapter4/gif/fig4_2_4.gif" alt=""></p>
-<p>The other two processes require the electrons/holes to climb the potential barrier. As a bias voltage is applied, the barrier height will shift from $E_{gap}$ to $E_{gap + eV}$, and the number of carriers would then be proportional to  $e^{-(E_{gap}+eV)/k_BT}$. Depending on the sign of the bias, the current will be very different.</p>
-<p>Light Emitting Diodes are essentially the same, though their material properties took a lot of tuning.</p>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="X-rays">X-rays<a class="anchor-link" href="#X-rays">&#182;</a></h3><p>x-rays interact with the electron density. We expect the scattering potential to be proportional to the electron density</p>
+		  <p>$$
+		    V_j (\mathbf{x} - \mathbf{x}_j) = Z_j g_j (\mathbf{x} - \mathbf{x}_j)
+		    $$</p>
+		  <p>where $Z_j$ is the number of electrons in the atom. And $g_j$ is some short ranged function. And we get</p>
+		  <p>$$
+		    S(\mathbf{G}) = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{i\mathbf{G \cdot x}_j}
+		    $$</p>
+		  <p>and $f_j$, called the form factor of atom $j$ is approximately proportional to $Z_j$. This approximation is better at small angles.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Transistor">Transistor<a class="anchor-link" href="#Transistor">&#182;</a></h3><p>by forming an $n-p-n$ (or $p-n-p$) sandwich, and adding a 'gate', it is possible to build a very efficient switch.</p>
-<p><img src="https://sub.allaboutcircuits.com/images/03423.png" alt=""></p>
-<p>Real geometries are now very complicated.</p>
-<p>As transitiors shrink, individual atomic defects can actually dominate, especially in determining the reliability of devices.</p>
-<p>Much work goes into improving materials for these devices - the atomistic details are fascinating too - these cartoons do not give a real indication of the complexity</p>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Photophysics">Photophysics<a class="anchor-link" href="#Photophysics">&#182;</a></h3><p>Many devices combine absorbtion or emission of light with semiconductor physics.</p>
-<p>We've met one - solar cell. Which is basically a photodiode.</p>
-<p>Also Light Emitting Diodes (kind of reverse of a photodiode), photocathodes (electron sources), artificial photosynthesis, variety of sensors, and many more.</p>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>Semiconductor physics can work with the simple band model, analogy with Drude model and some thermodynamics.</p>
+		  <h3 id="Neutrons">Neutrons<a class="anchor-link" href="#Neutrons">&#182;</a></h3><p>neutrons, being neutral do not interact with electronic density to any appreciable degree, instead the neutron interacts only with the nuclear core, which can be considered as a point particle at the atomic position</p>
+		  <p>$$
+		    V_j (\mathbf{x} - \mathbf{x}_j) = f_j \delta (\mathbf{x} - \mathbf{x}_j)
+		    $$</p>
+		  <p>and $f_j$ is an essentially atomic dependent quantity that determines how strongly atoms of a given type scatter neutrons.</p>
 
-</div>
-</div>
-</div></section></section>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>Caesium Chloride, which has a primitive cubic lattice, and a basis</p>
+		  <p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
+		  <p>$$
+		    \begin{align}
+		    &amp;\text{Cs at } [0.0,0.0,0.0]\\
+		    &amp;\text{Cl at } [0.5a,0.5a,0.5a]
+		    \end{align}
+		    $$
+		    Now in this case the reciprocal lattices vectors are given by</p>
+		  <p>$$
+		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
+		    $$</p>
+		  <p>and</p>
+		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
 
-</div>
-</div>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The general form of the structure factor will then be</p>
+		  <p>$$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
+		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)}
+		    \end{align}
+		    $$</p>
+		  <p>and for our particular case we get
+		    $$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
+		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
+		    &amp; = f_{\text{Cs}} + f_{\text{Cl}}(-1)^{h + k + l} 
+		    \end{align}
+		    $$</p>
+		  <p>And the scattered wave intensity $I_{hkl} \sim |S_{hkl}|^2$</p>
 
-<script>
-  
-  require(
-  {
-  // it makes sense to wait a little bit when you are loading
-  // reveal from a cdn in a slow connection environment
-  waitSeconds: 15
-  },
-  [
-  "../../../revealjs//lib/js/head.min.js",
-  "../../../revealjs//js/reveal.js"
-  ],
-  
-  function(head, Reveal){
-  
-  // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-  Reveal.initialize({
-  controls: true,
-  progress: true,
-  history: true,
-  mouseWheel: false,
-  center: false,
-  scroll: true,
-  //width: "80%",
-  //height: "80%",
-  //margin: 10,
-  //minScale: 0.2,
-  //maxScale: 1.5,
-  // Parallax background image
-  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Polaron_scheme1.svg',
-  // Parallax background size
-  parallaxBackgroundSize: '408px 511px', // CSS syntax, e.g. "2100px 900px
-  
-  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-  
-  // Optional libraries used to extend on reveal.js
-  dependencies: [
-  { src: "../../../revealjs//lib/js/classList.js",
-  condition: function() { return !document.body.classList; } },
-  { src: "../../../revealjs//plugin/notes/notes.js",
-  async: true,
-  condition: function() { return !!document.body.classList; } }
-  ]
-  });
-  
-  var update = function(event){
-  if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-  MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-  }
-  };
-  
-  Reveal.addEventListener('slidechanged', update);
-  
-  var update_scroll = function(event){
-  $(".reveal").scrollTop(0);
-  };
-  
-  Reveal.addEventListener('slidechanged', update_scroll);
-  
-  }
-  );
-</script>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Systematic-absences">Systematic absences<a class="anchor-link" href="#Systematic-absences">&#182;</a></h2><h4 id="Caesium-bcc-metal.">Caesium bcc metal.<a class="anchor-link" href="#Caesium-bcc-metal.">&#182;</a></h4><p>Caesium metal can crystallise in the BCC structure. If we work with the conventional unit cell, then the scattering will be described in a very similar way to the previous example.</p>
+		  <p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
+		  <p>$$
+		    \begin{align}
+		    &amp;\text{Cs at } [0.0,0.0,0.0]\\
+		    &amp;\text{Cs at } [0.5a,0.5a,0.5a]
+		    \end{align}
+		    $$
+		    Now in this case the reciprocal lattices vectors are given by</p>
+		  <p>$$
+		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
+		    $$</p>
+		  <p>and</p>
+		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
 
-</body>
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>and now the structure factor will be given by
+		    $$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
+		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
+		    &amp; = f_{\text{Cs}}(1 + (-1)^{h + k + l}) 
+		    \end{align}
+		    $$</p>
+		  <p>This means that all the odd reflections are missing for a BCC crystal! By describing the BCC as a primitive cubic with a basis, we ignored some of the symmetry - the layer of atoms at the centre of the unit cells leads to destructive interference with some reflections.</p>
+		  <p>And the scattered wave intensity $I_{hkl} \sim |S_{hkl}|^2$</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Copper-fcc-metal">Copper fcc metal<a class="anchor-link" href="#Copper-fcc-metal">&#182;</a></h4><p>$\mathbf{a}_1 = [a,0,0], \mathbf{a}_2 = [0,a,0], \mathbf{a}_3 = [0,0,a]$</p>
+		  <p>$$
+		    \begin{align}
+		    &amp;\text{Cu at } [0.0,0.0,0.0]\\
+		    &amp;\text{Cu at } [0.0,0.5a,0.5a] \\
+		    &amp;\text{Cu at } [0.5a,0.0,0.5a] \\
+		    &amp;\text{Cu at } [0.5a,0.5a,0.0] \\
+		    \end{align}
+		    $$
+		    Now in this case the reciprocal lattices vectors are given by</p>
+		  <p>$$
+		    \mathbf{G}_{hkl} = h \mathbf{b}_1 + k \mathbf{b}_2 + l \mathbf{b}_3
+		    $$</p>
+		  <p>and</p>
+		  <p>$\mathbf{b}_1 = [2 \pi / a,0,0], \mathbf{b}_2 = [0,2 \pi / a,0], \mathbf{b}_3 = [0,0,2 \pi / a]$</p>
+		  <p>$$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{-i\mathbf{G \cdot x}_j} \\
+		    &amp; = \sum_{\text{ atom } j \text{ in the unit cell} } f_j(\mathbf{G}) e^{2 \pi i (h x_j + k y_j + l z_j)} \\
+		    &amp; = f_{\text{Cu}}\Big(1 + e^{i \pi(h + k)} + e^{i \pi(k + l)} + e^{i \pi(l + h)}\Big) 
+		    \end{align}
+		    $$</p>
+		  <p>and this is non zero only if $h,k,l$ are all odd or all even.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Stucture-factor-factorizes">Stucture factor factorizes<a class="anchor-link" href="#Stucture-factor-factorizes">&#182;</a></h4><p>Consider ZnS, Zinc Sulfide = FCC with a basis.</p>
+		  <p>We will use a conventional cubic cell for the FCC, and the ZnS, which is essentially a diamond structure has a basis</p>
+		  <p>$$
+		    \begin{align}
+		    \text{Zn at postiions:  } &amp;[0.00,0.00,0.00], [0.50,0.50,0.00], [0.50,0.00,0.50], [0.00, 0.50, 0.50]\\
+		    \text{S at postiions:  } &amp;[0.25,0.25,0.25], [0.75,0.75,0.25], [0.75,0.25,0.75], [0.25, 0.75, 0.75]
+		    \end{align}
+		    $$
+		    in units of $a$.</p>
+		  <p>The structure factor is given by</p>
+		  <p>$$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = f_{\text{Zn}}\Big(1 + e^{2i \pi(hkl)\cdot(0.5,0.5,0.0)} + e^{2i \pi(hkl)\cdot(0.5,0.0,0.5)} + e^{2i \pi(hkl)\cdot(0.0,0.5,0.5)}\Big) \\
+		    &amp; + f_{\text{S}}\Big(e^{2i \pi(hkl)\cdot(0.25,0.25,0.25)} + e^{2i \pi(hkl)\cdot(0.75,0.75,0.25)} + e^{2i \pi(hkl)\cdot(0.75,0.25,0.75)} + e^{2i \pi(hkl)\cdot(0.25,0.75,0.75)}\Big)
+		    \end{align}
+		    $$</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>but this can be factored into a lattice term, and a basis term</p>
+		  <p>$$
+		    \begin{align}
+		    S(\mathbf{G})_{hkl} &amp; = \Big(1 + e^{i \pi(h + k)} + e^{i \pi(k + l)} + e^{i \pi(l + h)}\Big) \\
+                    &amp; \times \Big(f_{\text{Zn}}  + f_{\text{S}}\Big(e^{2i \pi(hkl)\cdot(0.25,0.25,0.25)}\Big)
+		    \end{align}
+		    $$</p>
+		  <p>and the first term in the brackets is the same as for an ideal FCC crystal. The second term gives a structure associated specifically with ZnS.</p>
+		  <p>This follows from the fact that atomic positions are defined by $\mathbf{r_i} = \mathbf{R + x_i}$. The structure factor will always factorize into</p>
+		  <p>$$
+		    S(\mathbf{G})_{hkl} = S(\mathbf{G})_{hkl}^{\text{lattice}} \times S(\mathbf{G})_{hkl}^{\text{basis}}
+		    $$</p>
+		  <p>We will see that this factorization is very general in the solid state. In its most general form, it is known as Bloch's Theorem.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Powder-Diffraction-Analysis">Powder Diffraction Analysis<a class="anchor-link" href="#Powder-Diffraction-Analysis">&#182;</a></h4><p>See problem class 5, some notes from Elisa on Blackboard and pages 151 to 155 (and rather more advanced 264-266) of Simon.</p>
+		  <p>Also some quite nice notes <a href="http://pd.chem.ucl.ac.uk/pdnn/diff2/structf.htm">here</a>. They go into more detail on practical procedures than we have, but they look quite good.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+
+	
+	</div>
+	</div>
+
+	<script>
+	  
+	  require(
+	  {
+	  // it makes sense to wait a little bit when you are loading
+	  // reveal from a cdn in a slow connection environment
+	  waitSeconds: 15
+	  },
+	  [
+	  "../../../revealjs//lib/js/head.min.js",
+	  "../../../revealjs//js/reveal.js"
+	  ],
+	  
+	  function(head, Reveal){
+	  
+	  // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  mouseWheel: false,
+	  center: false,
+	  scroll: true,
+	  //width: "80%",
+	  //height: "80%",
+	  //margin: 10,
+	  //minScale: 0.2,
+	  //maxScale: 1.5,
+	  // Parallax background image
+	  parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/7/76/Diffusion_rayleigh_et_diffraction_svg.svg',
+	  // Parallax background size
+	  parallaxBackgroundSize: '799px 261px', // CSS syntax, e.g. "2100px 900px
+	  
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+	  
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: "../../../revealjs//lib/js/classList.js",
+	  condition: function() { return !document.body.classList; } },
+	  { src: "../../../revealjs//plugin/notes/notes.js",
+	  async: true,
+	  condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	  
+	  var update = function(event){
+	  if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+	  MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+	  }
+	  };
+	  
+	  Reveal.addEventListener('slidechanged', update);
+	  
+	  var update_scroll = function(event){
+	  $(".reveal").scrollTop(0);
+	  };
+	  
+	  Reveal.addEventListener('slidechanged', update_scroll);
+	  
+	  }
+	  );
+	</script>
+
+  </body>
 
 </html>
