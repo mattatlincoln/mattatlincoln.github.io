@@ -117,7 +117,349 @@ Hole - a (dressed) lack of an electron</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section></section>
+
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <h1 id="Electron-gas">Electron gas<a class="anchor-link" href="#Electron-gas">&#182;</a></h1>
+    <p>Let's look at the Sommerfeld model of an electron gas and use it to build an approximate quantum theory:) This is a bit long-winded, but it shows that this is just a special case of our standard QM method.</p>
+    <p>In our case the classical Hamiltonian, the sum of kinetic and potential energy, $T + U$, is just $\frac{\mathbf{p}^2}{2m}$ (i.e. $U$ = 0) so we get</p>
+    <p>\begin{align}
+      \hat{H} = \frac{\mathbf{p}^2}{2m} &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right).\left(\frac{\partial}{\partial x}\mathbf{i} + \frac{\partial}{\partial y}\mathbf{j} + \frac{\partial}{\partial z}\mathbf{k} \right)\\
+      &amp; = -\frac{\hbar^2}{2m} \left(\frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} + \frac{\partial ^2}{\partial z^2} \right)\\
+      &amp; = -\frac{\hbar^2}{2m} \nabla^2
+    \end{align}</p>
+    <p>this only makes sense if it operates on something, which we'll call $\psi$, our trial wavefunction.</p>    
+  </div>
+</div>
+</div></section></section>
+
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <p>Lets operate on the trial wavefunction</p>
+    <p>$$
+      \psi = \sum_\mathbf{k} c_\mathbf{k} \phi_\mathbf{k},\text{ where } \phi_\mathbf{k}(x,y,z) = \frac{1}{\sqrt{V}}e^{i\mathbf{k}.\mathbf{r}}= \frac{1}{\sqrt{V}}e^{i(k_x x + k_y y + k_z z)} = \frac{1}{\sqrt{V}}e^{ik_x x} e^{ik_y y} e^{ik_z z}
+    $$</p>
+    <p>a sum of <a href='https://en.wikipedia.org/wiki/Plane_wave'>plane waves</a>.
+      <img data-src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Linear_Polarization_Linearly_Polarized_Light_plane_wave.svg" style="max-width:40%">
+      <a href='https://en.wikipedia.org/wiki/Dispersion_relation#Plane_waves_in_vacuum'>Also see</a><br>
+      <a href='https://www.youtube.com/watch?v=xkG86pwaOH0'>lecture from Bucknell University, USA</a><br>
+      <a href='http://www.falstad.com/wavebox'>Animation</a>
+    </p>      
+  </div>
+</div>
+</div></section>
+<section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <p>To make the waves fit nicely in our box of dimension $L^3$ we insist that</p>
+    <p>$$
+      k_x = \frac{2 \pi p}{L}, k_y = \frac{2 \pi q}{L}, k_z = \frac{2 \pi r}{L}, p,q,r \in \mathbb{Z}
+    $$</p>    
+  </div>
+</div>
+</div></section></section>
+
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <p>Lets say for arguments sake that we just have 4 plane waves, so $\mathbf{k} = 2 \pi / L \{(0,0,0), (1,0,0), (0,1,0), (0,0,1)\}$. This is a set of linear equations for $c_\mathbf{k}$ we can write them out in matrix form</p>
+    <p>$$ 
+      \left( \begin{array}{cccx}
+      E &amp; 0 &amp; 0 &amp; 0\\
+      0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0 &amp; 0\\
+      0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E &amp; 0\\
+      0 &amp; 0 &amp; 0 &amp; \frac{\hbar^2 4 \pi^2}{2mL^2} + E
+      \end{array} \right) 
+      \left( \begin{array}{c}
+      c_{0,0,0}  \\
+      c_{1,0,0}  \\
+      c_{0,1,0}  \\
+      c_{0,0,1}
+      \end{array} \right) 
+      = 0
+    $$</p>
+    <p>The standard solution to a set of linear equations like this is that the determinant of the matrix must be zero for a set of non-trivial solutions to exist.</p>
+  </div>
+</div>
+</div></section></section>
+
+<section><section data-background-image="https://upload.wikimedia.org/wikipedia/commons/a/aa/Metalic_bond_model.svg">
+ <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+ </div>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+   <div class="text_cell_render border-box-sizing rendered_html">
+    <p>In this case, because the matrix is diagonal, we can just read the energies off that make the determinant equal to zero, in general they will be</p>
+    <p>$$
+      E_\mathbf{k} = -\frac{\hbar^2 k^2}{2m}
+    $$</p>
+    <p>We can see that adding in the extra values of $\mathbf{k}$ will just make the matrix bigger (infinite in fact, but we'll not worry about that).</p>
+    <p>We were lucky (;)) that our matrix was diagonal - this basically means that we guessed the exact wavefunctions!</p>
+  </div>
+</div>
+</div></section></section>
+
+
+<section>
+  <section>
+     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <p>The energy of the electrons is</p>
+      $$
+      \epsilon = \frac{\hbar^2 |\mathbf{k}|^2}{2m}
+      $$<div class="question">
+        <li>Show that this is the energy</li>
+      </div><p>To find the total number of electrons we add up the number of electrons in each state.</p>
+      $$
+      N = 2 \sum_{\mathbf{k}}n_F(\beta(\epsilon(\mathbf{k}-\mu))) = 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu)))
+      $$<p>the two comes from the number of spin states.</p>
+      <p><strong>If we know the number of electrons in the system, then this defines our chemical potential.</strong></p>
+
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <p><strong>The fermi energy is the chemical potential at T = 0</strong></p>
+      <p>What does this mean? At T=0 the Fermi function becomes a step function:</p>
+      <p><img src="../images/fermi_dirac_lowK.png" alt=""></p>
+
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <p>so our expression for the number of electrons in our periodically repeating box is given by</p>
+      \begin{align*}
+      N  & = &  2 \sum_{\mathbf{k}}n_F ( \beta(\epsilon(\mathbf{k}-\mu)) )\\
+      & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} n_F (\beta(\epsilon(\mathbf{k}-\mu))) \\
+      & = & 2 \frac{V}{2 \pi}^3 \int \mathbf{dk} \Theta(E_f -\epsilon(\mathbf{k} )) \\
+      & = & 2 \frac{V}{2 \pi}^3 \int_{0}^{|k| < k_F} \mathbf{dk}
+      \end{align*}
+
+      <p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
+    </div>
+  </section>
+  <section>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <div class="must_learn">
+        <p>The Fermi wavevector, $k_F$, defines a surface, called the Fermi surface.</p>
+        <p>The Fermi surface divides filled states from empty states.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Fermi_energy_momentum.svg" style="width:200px">
+      </div>
+    </div>
+  </section>
+  <section>
+     <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <p>where the fermi wavevector $k_F$ is the wavevector at the Fermi energy</p>
+      $$
+      E_F = \frac{\hbar^2 k_F^2}{2m}
+      $$
+      <p>the final integral is over a ball of radius $k_F$, so we get</p>
+      $$
+      N = 2 \left( \frac{1}{2 \pi} \right) ^3 (\frac{4 V}{3}\pi k_F^3)
+      $$
+    </div>
+  </section>
+
+  <section>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+
+      <p>The electron density is the number of electrons divided by the volume, $n = N/V$ which lead to</p>
+      $$
+      k_F = (3 \pi^2n)^{1/3}
+      $$<p>and</p>
+      $$
+      E_F = \frac{\hbar^2(3\pi^2n)^{2/3}}{2m}
+      $$<p>if we can estimate the electron density, we can estimate the Fermi energy and wavelength.</p>
+      <div class="question">
+        <li>Estimate the Fermi energy for copper</li>
+        <li>What is $k_B T$ at room temperature</li>
+        <li>What does this imply for the accessibility of electrons for mobility?</li>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section>
+ <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <h2 id="Heat-capacity">Heat capacity<a class="anchor-link" href="#Heat-capacity">&#182;</a></h2><p>all we need to do is take the derivative of $E_{total}$ with respect to temperature ... but this is non trivial.</p>
+      <p>A back of the envelope calculation goes as follows</p>
+      <ul>
+        <li>Assume that $\mu$ is $E_F$</li>
+        <li>Only molecules within $\approx k_B T$ can be excited, and they are excited by $\approx k_B T$, then</li>
+      </ul>
+      $$
+      E(T) \approx E(T=0) + (\text{some constant/2})[V g(E_F)(k_B T)](k_B T) + ...
+      $$<p>then $C_V = \frac{\partial E}{\partial T} \approx  \text{some constant})[V g(E_F)(k_B T)](k_B)$</p>
+      <p>and rearranging our expression for the density of states we get</p>
+      $$
+      C_V = (\text{some constant})(\frac{3N k_B}{2})\frac{T}{T_F}
+      $$<p>so the electronic $C_V$ is temperature dependent (linear), and greatly reduced from the classical $C_V = \frac{3N k_B}{2}$ if $T_F$ is larger than $T$.</p>
+
+    </div>
+  </section>
+</section>
+
+  <section>
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Electron Transport">Electron Transport<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
+      <p>Why do filled bands not conduct electricity?</p>
+      <p>Why do we still study the Drude model if quantum mechanics takes over?</p>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Effect on Band diagram">Effect on Band diagram - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
+      <p>The velocity of an electron is proportional to the $k$-vector</p>
+      <p>Without an electric field there are equal numbers of states with electrons moving to left and right.</p>
+      <img src='partialFillBand.jpg'>
+      <p>Net current is zero.</p>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Effect on Band diagram">Effect on Band diagram  - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
+      <p></p>
+      <p>With an electric field there are unequal numbers of states with electrons moving to left and right.</p>
+      <img src='partialFillBandField.jpg'>
+      <p>Net current flows. Any size of field will induce a current - metal.</p>
+    </div>
+        </div>
+      </div>
+    </section>
+
+
+       <section>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <h2 id="Effective-Mass">Effective Mass<a class="anchor-link" href="#Effective-Mass">&#182;</a></h2>
+      <p>We now show that near the top and bottom of the band, electrons behave similarly to free-electrons.</p>
+      <p>Taking our dispersion relation</p>
+      $$
+      E = (\epsilon + V_0) - 2t \cos(ka) 
+      $$<p>and making a small angle expansion of the cosine, ($\cos x \approx 1 - x^2/2$) we get</p>
+      $$
+      E = (\epsilon + V_0) - 2t + ta^2k^2
+      $$<p>if you remember, the dispersion relation for free electrons was similar</p>
+      $$
+      E_{\rm{free}} = \frac{\hbar^2 k^2}{2m_e}
+      $$
+    </div>
+    </section>
+    <section>
+      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <p>so our tight-binding dispersion relation near the bottom of the band would look similar to the free-electron model if we define an effective mass</p>
+      $$
+      m^* = \frac{\hbar^2}{2ta^2}
+      $$<p>then our dispersion relation near the bottom of the band looks like</p>
+      $$
+      E_{\rm{tight}} = \frac{\hbar^2 k^2}{2m^*}
+      $$<p>We can take the top of the band, and expand around $k = \pi/a$ instead of 0 to get a similar relation at the top of the band.</p>
+      <p>This gives a hint why the free-electron model is still useful - near the top and bottom of bands, electrons behave rather similarly to free electrons in many ways, but with a modified effective mass.</p>
+    </div>
+</section>
+</section>
+
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Effect on Band diagram">Effect on Band diagram - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
+      <p>The velocity of an electron is proportional to the $k$-vector</p>
+      <p>Without an electric field there are equal numbers of states with electrons moving to left and right.</p>
+      <img src='FullBand.jpg'>
+      <p>Net current is zero.</p>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Drude model">Drude model<a class="anchor-link" href="#Drude Model">&#182;</a></h1>
+      <p></p>
+      <p>With an electric field there are equal numbers of states with electrons moving to left and right, though the levels have shifted a little.</p>
+      <img src='FullBandField.jpg'>
+      <p>Still no net current flows.</p>
+    </div>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="prompt input_prompt">
+        </div>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h1 id="Effect on Band diagram">Effect on Band diagram  - half filled<a class="anchor-link" href="#Electron Transport">&#182;</a></h1>
+      <p>If there are just a very few electrons in the band, then they behave like Drude electrons - we'll discuss this in more detail when we talk about microelectronics in a few weeks.</p>
+    </div>
+        </div>
+      </div>
+    </section>
+    
+  </section>
+
+<section>
+  <section>
+        <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
+      <h2 id="Drude-vs-Somerfeld">Drude vs Somerfeld<a class="anchor-link" href="#Drude-vs-Somerfeld">&#182;</a></h2><p>Reduced availability of electrons explains several deficiencies in Drude's model, but still some unexplained things:</p>
+      <ul>
+        <li>variable sign of the Hall coefficient</li>
+        <li>dielectric function much too simple</li>
+      </ul>
+
+    </div>
+  </section>
+</section>
+
+
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
