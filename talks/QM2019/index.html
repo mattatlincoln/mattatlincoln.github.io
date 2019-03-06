@@ -654,78 +654,8 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 	</div>
 </div></section></section>
 
+
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Good-news!-Example---porphyrin-derivative-on-NaCl">Good news! Example - porphyrin derivative on NaCl<a class="anchor-link" href="#Good-news!-Example---porphyrin-derivative-on-NaCl">&#182;</a></h1><table>
-<tr>
-<td><img src='images/structure-HOMO.jpg' width=500></td>
-<td><img src='images/out.png' width=500></td>
-</tr>
-</table><ul>
-<li>960 atoms of NaCl</li>
-<li>1031 atoms total</li>
-<li>TZV2P basis on molecule</li>
-<li>DZVP basis on NaCl</li>
-<li>11790 Cartesian basis functions</li>
-<li>7898 electrons</li>
-<li>~2 hours on 192 cores to converge 10 lowest transition energies (12 iterations)</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TDDFPT:">TDDFPT:<a class="anchor-link" href="#TDDFPT:">&#182;</a></h2><ul>
-<li><p>experimental peaks according to the Philipda Luangprasert's Master Thesis:
-2.2 eV (small), 2.95 eV (broad, main), 3.3 eV (small);</p>
-</li>
-<li><p>PBE-D3: 2.37/2.40 (medium), 2.60 (medium), 3.22 (small);</p>
-</li>
-<li><p>B3LYP-D3 (using PBE-D3 optimal geometry): 2.19 eV (small), 3.23 eV (medium), 3.41 eV (medium), 3.78 (small).</p>
-</li>
-</ul>
-<p>The structure of the UV spectrum is well reproduced, but the last 3 excitation energies are overestimated by approximately 0.4 eV. This shift is probably due to unoptimised molecular structure (it was optimized using the PBE-D3 xc-functional, not B3LYP-D3) and/or the lack of diffuse basis functions.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Timings:">Timings:<a class="anchor-link" href="#Timings:">&#182;</a></h3><ul>
-<li>TDDFPT/PBE-D3:<ul>
-<li>CPU Time: 956957 s = 265.8 core*hours (4.0 kAU);</li>
-<li>MPI Wait:  45884 s =  12.7 core*hours (0.2 kAU);
-<br><br></li>
-</ul>
-</li>
-<li>TDDFPT/B3LYP-D3/ADMM [Zn] cFIT9, [H,C,N,O] cFIT3, [Na,Cl] cFIT3 with 2 the most diffuse functions removed:<ul>
-<li>CPU Time: 1517936 s = 421.6 core*hours (6.3 kAU);</li>
-<li>MPI Wait:  106947 s =  29.7 core*hours (0.4 kAU);
-<br><br></li>
-</ul>
-</li>
-<li>TDDFPT/B3LYP-D3/ADMM [Zn] cFIT9, [H,C,N,O,Na,Cl] cFIT3:<ul>
-<li>CPU Time: 3511819 s = 975.5 core*hours (14.6 kAU);</li>
-<li>MPI Wait:  185165 s =  51.4 core*hours ( 0.8 kAU);</li>
-</ul>
-</li>
-</ul>
-<p>maximum deviation in excitation energies with respect to the ones computed using the reduced auxillary basis set: 0.05 eV .</p>
-
-</div>
-</div>
-</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -740,7 +670,52 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section></section>
+
+<section>
+	<section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>aluminosilicate (AlSi) imogolite nanotubes (Imo-NTs)</h1>
+
+<table>
+<tr>
+<td><img src='images/defectSochiometry.png' width=400></td>
+<td><img src='images/defectRelax.png' width=400></td>
+</tr>
+</table>
+<p></p>
+
+</div>
+</div>
+</div></section>
+	<section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>aluminosilicate (AlSi) imogolite nanotubes (Imo-NTs)</h1>
+
+<table>
+<tr>
+<td><img src='images/DOS.png' width=300></td>
+<td><img src='images/HOMOs.png' width=300></td>
+<td><img src='images/transitions.png' width=300></td>
+</tr>
+</table>
+<p></p>
+
+</div>
+</div>
+</div></section>
+
+</section>
+
+<section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
