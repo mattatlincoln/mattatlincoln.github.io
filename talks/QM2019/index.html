@@ -84,7 +84,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	  </tr>
 	</table>
 	<div class="container" id="title">
-	  <h3 id="Matt-Watkins,">Matt Watkins,<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
+	  <h3 id="Matt-Watkins,">Sergey Chulkov, Matt Watkins<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
 	  <h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
 	</div>
       </section>
@@ -358,6 +358,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
     
     <section>
+    <section>
       <h2 id="Confined-Water">Confined Water<a class="anchor-link" href="#Confined-Water">&#182;</a></h2><p>over step edges, we need better simulation methods:</p>
       <p><img src='images/water_CaCO3.png' width=500></p>
       <p>Miyata, Kazuki, et al. "Dissolution Processes at Step Edges of Calcite in Water Investigated by High-Speed Frequency Modulation Atomic Force Microscopy and Simulation." Nano Letters (2017).</p>
@@ -373,7 +374,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
     
     <section>
-      <h1 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h1>$$    
+      <h2 id="Ornstein-Zernike-like-equations:">Ornstein-Zernike like equations:<a class="anchor-link" href="#Ornstein-Zernike-like-equations:">&#182;</a></h2>$$    
       g_\gamma (r) − 1 = \sum_\alpha \int dr′  c_\alpha(r − r′) \chi_{\alpha \gamma}(r′)
       $$<p>where the direct site correlation function $c_\gamma(r)$ and the site-site solvent susceptibility $\chi_{\alpha \gamma}(r′)$ have been introduced.</p>
       <p>$\chi_{\alpha \gamma}(r′)$ carries the required information of the solvent geometry (relative positions of sites) and total site-site correlation functions for the pure solvent liquid, which are obtained from 1D-RISM calculations.</p>
@@ -393,7 +394,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     </section>
 
     <section>
-      <h1 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h1><p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
+      <h2 id="KS-DFT-3D-RISM">KS-DFT-3D-RISM<a class="anchor-link" href="#KS-DFT-3D-RISM">&#182;</a></h2>
+      <p>if we have a water density we can include its effects within a KS matrix for DFT part of the system.</p>
       <p>Similarly we can couple the DFT density to the 3D-RISM calculation by adding the electrostatic potential or other terms as an external potential the contributes to the solvent site potential energy at (r).</p>
     </section>
     
@@ -407,64 +409,57 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	<li>Spectroscopy</li>
       </ul>
     </section>
-
-    <section>
-      <h2>Electron Transport - NEGF</h2>
-      <h3>Electron density of states (DOS)</h3>
-      <p>Straightforward approach:
-	$$
-	\textbf{H}\textbf{C} = \textbf{E}\textbf{S}\textbf{C} \\
-	\mathrm{DOS}(\omega) = \frac{dN/d\omega}{\Omega} \\
-	$$
-	</p>
-      <p>Green's function method
-	$$
-        \textbf{G}^\mathrm{r}(\omega) =  \left(\omega \textbf{S} - \textbf{H}\right)^{-1}\\
-        \begin{gather*}
-        \mathrm{DOS}(\omega) = -\frac{1}{\pi}\lim_{\eta \to 0^+}\mathrm{Tr}\left\{ \right.
-	\left. \mathrm{Im}\left[ \textbf{G}^\mathrm{r}(\omega+i\eta)\textbf{S}\right]\right\}
-        \end{gather*}
-	$$
-      </p>
     </section>
 
-    <section>
-      <div>
-	<h2>Implemented in CP2K code</h2>
-	<table cellspacing="0" cellpadding="0">
-	  <tr>
-	    <td>
-	      <img src='images/Au_c4h4s.png'>
-	    </td>
-	    <td>
-	      <img src='images/au_c4h4s_tip_dos_Ef.png'>
-	    </td>
-	  </tr>
-	</table>
-      </div>
-    </section>
-    
-    <section>
-      <h2>Calculation of retarded surface Green's function</h2>
-      <div>
-	<img src='images/sancho.png' height=500>
-      </div>
-    </section>
+<section>
+			<section>
+				<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+				</div>
+				<div class="inner_cell">
+					<div class="text_cell_render border-box-sizing rendered_html">
+						<h1 id="CP2K-overview">CP2K overview<a class="anchor-link" href="#CP2K-overview">&#182;</a></h1>
+						
+									<table>
+				<tr>
+					<td>
+						<ul>
+						<li>Many force models:</li>
+							<ul>
+								<li> Classical</li>
+								<li> DFT (GPW, GAPW + vDW)</li>
+								<li> LS-DFT</li>
+								<li> Hybrid Hartree-Fock</li>
+								<li> post-HF (MP2, RPA)</li>
+								<li> Combinations (QM/MM, mixed)</li>
+							</ul>
+						<li>Simulation tools:</li>
+							<ul>
+								<li> MD (various ensembles)</li>
+								<li> Monte Carlo, Global Optimisation</li>
+								<li> Minimisation (GEO/CELL_OPT)</li>
+								<li> Properties (Spectra, excitations ...)</li>
+								</ul>
+						<li>Open Source and development</li>
+							<ul>
+								<li> GPL, www.cp2k.org</li>
+								<li> 1m loc, ~2 commits per day</li>
+								<li> ~20 core developers</li>
+							</ul>
+						</ul>
+					</td>
+					<td><img src="images/swissKnife.jpeg">
+					<p>Swiss Army knife for molecular calculations.</p>
+					</td>
+				</tr>
+			</table>
 
-    <section>
-      <h2>Model system</h2>
-      <div>
-	<img src='images/model_system.png' height=500>
-      </div>
-    </section>
+					</div>
+				</div>
+			</div>
+			</section>
+</section>
 
-    <section>
-      <h2>Algorithm</h2>
-      <div>
-	<img src='images/algorithm.png' height=500>
-      </div>
-    </section>
-    
+<section>
     <section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -480,6 +475,7 @@ Christine Jamorski, Mark E. Casida and Dennis R. Salahub, J. Chem. Phys. 104, 51
 </div>
 </div>
     </div></section>
+</section>
 
     <section><section>
 <div class="cell border-box-sizing text_cell rendered">
@@ -692,6 +688,7 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 </div>
 </div>
 </div></section>
+	
 	<section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -702,9 +699,8 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 
 <table>
 <tr>
-<td><img src='images/DOS.png' width=300></td>
-<td><img src='images/HOMOs.png' width=300></td>
-<td><img src='images/transitions.png' width=300></td>
+<td><img src='images/DOS.png' width=400></td>
+<td><img src='images/HOMOs.png' width=400></td>
 </tr>
 </table>
 <p></p>
@@ -712,6 +708,26 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 </div>
 </div>
 </div></section>
+
+	<section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>aluminosilicate (AlSi) imogolite nanotubes (Imo-NTs)</h1>
+
+<table>
+<tr>
+<td><img src='images/transitions.png' width=600></td>
+</tr>
+</table>
+<p>Upper independent particle spectrum, lower TDDFT</p>
+
+</div>
+</div>
+</div></section>
+
 
 </section>
 
@@ -721,7 +737,7 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-response-summary">Linear response summary<a class="anchor-link" href="#Linear-response-summary">&#182;</a></h2><ul>
+<h2 id="Linear-response-summary">TDDFT Linear response summary<a class="anchor-link" href="#Linear-response-summary">&#182;</a></h2><ul>
 <li>gives electron transitions and detailed information on the types of transition</li>
 <li>cost will depend on system size, but increase linearly with the number of excited states that you want to calculate</li>
 <li>supports calculations using hybrid functionals and the ADMM approximation</li>
@@ -731,17 +747,77 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 </div>
 </div></section></section>
     
+
+<section>    
+	<section>
+      <h1>Electron Transport - NEGF</h1>
+      <h3>Electron density of states (DOS)</h3>
+      <p>Straightforward approach:
+	$$
+	\textbf{H}\textbf{C} = \textbf{E}\textbf{S}\textbf{C} \\
+	\mathrm{DOS}(\omega) = \frac{dN/d\omega}{\Omega} \\
+	$$
+	</p>
+      <p>Green's function method
+	$$
+        \textbf{G}^\mathrm{r}(\omega) =  \left(\omega \textbf{S} - \textbf{H}\right)^{-1}\\
+        \begin{gather*}
+        \mathrm{DOS}(\omega) = -\frac{1}{\pi}\lim_{\eta \to 0^+}\mathrm{Tr}\left\{ \right.
+	\left. \mathrm{Im}\left[ \textbf{G}^\mathrm{r}(\omega+i\eta)\textbf{S}\right]\right\}
+        \end{gather*}
+	$$
+      </p>
+    </section>
+
+    <section>
+      <div>
+	<h2>Implemented in CP2K code</h2>
+	<table cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td>
+	      <img src='images/Au_c4h4s.png'>
+	    </td>
+	    <td>
+	      <img src='images/au_c4h4s_tip_dos_Ef.png'>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Calculation of retarded surface Green's function</h2>
+      <div>
+	<img src='images/sancho.png' height=500>
+      </div>
+    </section>
+
+    <section>
+      <h2>Model system</h2>
+      <div>
+	<img src='images/model_system.png' height=500>
+      </div>
+    </section>
+
+    <section>
+      <h2>Algorithm</h2>
+      <div>
+	<img src='images/algorithm.png' height=500>
+      </div>
+    </section>
+</section>
+
     <section>
       <section>
 	<h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
 	<ul>
-	  <li>EPSRC for funding two eCSE software development projects</li>
-	  <li>Alex Shluger, University College London</li>
-	  <li>Lev Kantorovitch, King's College London</li>
-	  <li>Iain Bethune, STFC, Daresbury</li>
-	  <li>Takeshi Fukuma, Kanazawa University</li>
-	  <li>Adam Foster, Aalto</li>
-	  <li>Andrew Rohl, Julian, Bernhard Reischl, Curtin University</li>
+	  <li>EPSRC for funding three eCSE software development projects and the SAINT software development flagship project</li>
+	  <li>Materials Chemistry Consortium for computer time</li>
+	  <li>AFM + MgO defects - Alex Shluger, University College London</li>
+	  <li>NEGF - Lev Kantorovitch, King's College London</li>
+	  <li>software development - Iain Bethune, STFC, Daresbury</li>
+	  <li>AFM - Takeshi Fukuma, Kanazawa University</li>
+	  <li>AFM modelling  + free energy methods - Andrew Rohl, Julian, Bernhard Reischl, Curtin University</li>
 	</ul>
 	<h3 id="Lincoln-is-here">Lincoln is here<a class="anchor-link" href="#Lincoln-is-here">&#182;</a></h3><table>
 	  <tr>
@@ -752,6 +828,9 @@ $$<p><strong>Note this is like a coloumb interaction screened by an effective di
 	</table>
       </section>
     </section>
+
+</div>
+</div>
 
 <script>
 
