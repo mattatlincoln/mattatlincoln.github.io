@@ -38,7 +38,7 @@
     <!-- Load mathjax -->
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script-->
     <!-- MathJax configuration -->
-	<script src="../../libs/MathJax-master/MathJax.js?config=TeX-AMS_HTML"></script>
+	<!--script src="../../libs/MathJax-master/MathJax.js?config=TeX-AMS_HTML"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
       tex2jax: {
@@ -55,7 +55,7 @@
       linebreaks: { automatic: true }
       }
       });
-    </script>
+    </script-->
     <!-- End of mathjax configuration -->
 
     <!-- Get Font-awesome from cdn -->
@@ -1065,7 +1065,11 @@
   condition: function() { return !document.body.classList; } },
   { src: "../../revealjs//plugin/notes/notes.js",
   async: true,
-  condition: function() { return !!document.body.classList; } }
+  condition: function() { return !!document.body.classList; } },
+  // Syntax highlight for <code> elements
+  { src: '../../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+  // MathJax
+  { src: '../../revealjs/plugin/math/math.js', async: true }
   ]
   });
 
