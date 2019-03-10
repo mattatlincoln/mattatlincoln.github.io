@@ -36,26 +36,26 @@
 
     <!-- Loading the mathjax macro -->
     <!-- Load mathjax -->
-    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script-->
-    <!-- MathJax configuration -->
-	<!--script src="../../libs/MathJax-master/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      processEnvironments: true
-      },
-      // Center justify equations in code and markdown cells. Elsewhere
-      // we use CSS to left justify single line equations in code cells.
-      displayAlign: 'center',
-      "HTML-CSS": {
-      styles: {'.MathJax_Display': {"margin": 0}},
-      linebreaks: { automatic: true }
-      }
-      });
-    </script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+	<!-- MathJax configuration -->
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		tex2jax: {
+		inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		processEscapes: true,
+		processEnvironments: true
+	},
+	// Center justify equations in code and markdown cells. Elsewhere
+	// we use CSS to left justify single line equations in code cells.
+	displayAlign: 'center',
+	"HTML-CSS": {
+	styles: {'.MathJax_Display': {"margin": 0}},
+	linebreaks: { automatic: true }
+	}
+	});
+	</script>
     <!-- End of mathjax configuration -->
 
     <!-- Get Font-awesome from cdn -->
@@ -829,8 +829,9 @@
 		    width: 450px;
 		    }
 		  </style>
-		  <h1 id="PBE0-vs-HSE">PBE0 vs HSE<a class="anchor-link" href="#PBE0-vs-HSE">&#182;</a></h1>
-		  <p>Input structure</p>
+		  <h2 id="PBE0-vs-HSE">PBE0 vs HSE<a class="anchor-link" href="#PBE0-vs-HSE">&#182;</a></h2>
+		  <p>Input structure (see examples in $CP2K/cp2k/tests/QS/regtest-admm-1/2/3/4)</p>		    
+
 		  <div class="row">
 		    <div class="column clearfix content">
 		      <pre>
@@ -902,8 +903,6 @@
 		    </div>
 		  </div>
 		  
-		  <p>(see examples in $CP2K/cp2k/tests/QS/regtest-admm-1/2/3/4)</p>		    
-
 		</div>
 	      </div>
 </section></section><section><section>
@@ -1046,7 +1045,7 @@
   progress: true,
   history: true,
   width: "100%",
-  height: "100%",
+  //height: "100%",
   margin: 0.1,
   minScale: 1,
   maxScale: 1,
@@ -1069,7 +1068,7 @@
   // Syntax highlight for <code> elements
   { src: '../../revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
   // MathJax
-  { src: '../../revealjs/plugin/math/math.js', async: true }
+  //{ src: '../../revealjs/plugin/math/math.js', async: true }
   ]
   });
 
