@@ -81,18 +81,20 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h1 id="06---Waves-in-Crystals,-Electronic-Band-Structure">06 - Electronic Band Structure, Quasiparticles, Magnetism<a class="anchor-link" href="#06---Waves-in-Crystals,-Electronic-Band-Structure">&#182;</a></h1>
+		  <h1 id="Magnetism">Quasiparticles, Magnetism<a class="anchor-link" href="#Magnetism">&#182;</a></h1>
 		</div>
 	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+  <section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Waves-in-Crystals">Waves in Crystals<a class="anchor-link" href="#Waves-in-Crystals">&#182;</a></h2><p>Look back at our investigation of vibrations and electronic bands in 1D.</p>
-		  <p>First, lets look at the diatomic chain.</p>
-		  <p>We found, by solving Newton's equations of motion, that the solutions were running waves - and for each allowed wavevector there were two allowed frequencies of oscillation:</p>
+		  <h2 id="Waves-in-Crystals">Waves in Crystals<a class="anchor-link" href="#Waves-in-Crystals">&#182;</a></h2>
+      <p>Look back at our investigation of vibrations and electronic bands in 1D.</p>
+		  <p>We found, by solving Newton's equations of motion for $N$ atoms in a cell, that the solutions were running waves - and for each allowed wavevector there will $N$ allowed frequencies of oscillation:</p>
 		  $$
 		  \omega_{\pm}^2 = \frac{\kappa_1 + \kappa_2}{m} \pm \frac{1}{m}\sqrt{(\kappa_1 + \kappa_2)^2 - 4 \kappa_1 \kappa_2 \text{sin}^2 (ka/2)}
 		  $$<p>if we plot these 'dispersion relations' we get something like this:</p>
@@ -100,76 +102,9 @@
 
 		</div>
 	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we plot out the same functions over a wider range of $k$, we get something like</p>
-		  <p><img src='phononDispAll.jpg'></p>
+	  </div></section>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Solutions with $k \to k + 2 \pi / a$ are physically identical. We can dispose of the duplicates and instead look at a so called extended zone scheme view</p>
-		  <p><img src='phononDispExtended.jpg'></p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Number-of-states">Number of states<a class="anchor-link" href="#Number-of-states">&#182;</a></h2><p>If we go back to the diatomic chain and look at the two branches within the range $-\pi/a \leq k \lt \pi/a$</p>
-		  <p><img src='phononDisp.jpg'></p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>we found that there would be $N$ states in each branch, when our chain was made of $N$ unit cells, so $2N$ atoms.</p>
-		  <p>This quantization of levels comes about because of the periodic boundary conditions.</p>
-		  <p>Now, because of the periodic symmetry of our system (all the atoms are the same), we can argue that</p>
-		  \begin{align}
-		  k \to k + 2 \pi / a 
-		  \end{align}<p>should give a physically identical system.</p>
-
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>If we remember that we took as our vibrational modes the guess</p>
-		  $$
-		  \delta x_n = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  $$<p>we can see that this is true. If we look at this and argue that $\delta x_n = \delta x_{n+N}$ we get</p>
-		  $$
-		  \begin{align}
-		  \delta x_n  = Ae^{i \omega t - ikx_n^{eq}} = Ae^{i \omega t - ikna}
-		  & = \delta x_{N+n} = Ae^{i \omega t - ikx_{n+N}^{eq}} = Ae^{i \omega t - ik(n+N)a}
-		  \end{align}
-		  $$<p>Further, as we have $N$ sites, to get physically identical solutions we require that $k = \frac{2 \pi m} { N a }, m = 0, \pm 1, \pm 2 \ldots, \pm\frac{N-1}{2}, -\frac{N}{2}$.</p>
-		  <p>With this restriction we have $2N$ normal modes from our $2N$ atoms that each have 1 degree of freedom.</p>
-		  <p>If we had $N_{\rm{atom}}$ atoms in our unit cell, we would actually get $N_{\rm{atom}}$ normal modes, and in 3D, $3 N_{\rm{atom}}$</p>
-
-		</div>
-	      </div>
-	</div></section></section><section><section>
+    <section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -196,7 +131,7 @@
 		<div class="text_cell_render border-box-sizing rendered_html">
 		  <h3 id="Thermal-Expansion">Thermal Expansion<a class="anchor-link" href="#Thermal-Expansion">&#182;</a></h3>
 		  <p>To understand thermal expansion this is not adequate, to appreciate this we need to look at out potential energy curve, and how it compares to a harmonic one.
-		  <img src='../lecture_1/binding_curve.png' style='width:400px'></p>
+		  <img src='binding_curve.png' style='width:400px'></p>
 		  <p>The curve is assymmetric. As temperature increases, the atoms will wander further to the right (long distance between atoms) than to the left (where repulsive interactions become very strong).This means that the average position of an atom $\left< x_n \right>$ will get larger, as temperature increases.</p><p> If we replace $k$ in 1D with $\textbf{k}$ in 3D, there will be different expansions and elasticity in different directions for some materials.</p>
 
 		</div>
@@ -281,49 +216,11 @@
 
 		</div>
 	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Effective-Mass">Effective Mass<a class="anchor-link" href="#Effective-Mass">&#182;</a></h2><p>The dispersion relation for electrons in an s-type band
-		    $$
-		    E = (\epsilon + V_0) - 2t \textrm{cos}(ka) 
-		    $$
-		    can be approximately written as
-		    $$
-		    E = E_0 + \frac{\hbar^2 k^2}{2m^*}
-		    $$
-		    at both the bottom of the band, and at the top of the band.</p>
-		  <p>For small angles $\cos(ka) \approx 1 - \frac{(ka)^2}{2}$ so</p>
-		  $$
-		  E \approx (\epsilon + V_0 - 2t ) + t(ka)^2
-		  $$<p>which is of the form required if $m^* = \frac{\hbar^2}{2ta^2}$.</p>
+	  </div></section>
 
-		</div>
-	      </div>
-	  </div></section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <p>Or around $k = \pi/a$ we expand the cosine around $\pi$ to get
-		    $$ 
-		    -1 + \frac{(ka - \pi)^2}{2} 
-		    $$
-		    to get a similar result - quadratic in the shift of $k$ from $\pi/a$.</p>
-		  <p>Free electron gas is simply 
-		    $$
-		    E = E_0 + \frac{\hbar^2 k^2}{2m}
-		    $$
-		    so all expressions transfer, but with $m^*$ instead.</p>
-		  <p>We'll see next week that we can deal with electrons and holes in semiconductors using this terminology, and even bolt in the Drude model to get a reasonable model of processes in devices.</p>
+  </section>
 
-		</div>
-	      </div>
-	</div></section></section><section><section>
+  <section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -414,30 +311,9 @@
 		  </table>
 		</div>
 	      </div>
-	</div></section></section><section><section>
-	    <div class="cell border-box-sizing text_cell rendered">
-	      <div class="prompt input_prompt">
-	      </div>
-	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
-		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h3 id="Aside---Surfaces-Scanning-Tunnelling-microscope">Aside - Surfaces Scanning Tunnelling microscope<a class="anchor-link" href="#Aside---Surfaces-Scanning-Tunnelling-microscope">&#182;</a></h3><p>This instrument was invented in the mid 80s and revolutionised surface science. It uses the tunnelling current between a biased metal tip and a substrate to create a mock image of the surface, with subatomic detail.</p>
-		  <p>Because the tunnelling current drops off exponentially with the separation of the tip and surface (basically a hopping integral), this is an extremely sensitive tool</p>
-		  <table>
-		    <tr>
-		      <td>
-			<img src='http://www.tut.fi/cs/groups/public/@l102/@web/@p/documents/kuva/mdbw/mdex/~edisp/p011505.jpg'>
-		      </td>
-		      <td>
-			<img src='http://www.ieap.uni-kiel.de/surface/ag-kipp/stm/images/stm.jpg'>
-		      </td>
-		      <td>
-			<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgp9PxK89KMve2FOfCe_PQHJuqcSAKhol2RRAfnB9pXEjLlBH0'>
-		      </td>
-		    </tr>
-		  </table>
-		</div>
-	      </div>
-	</div></section></section><section><section>
+	</div></section></section>
+
+  <section><section>
 	    <div class="cell border-box-sizing text_cell rendered">
 	      <div class="prompt input_prompt">
 	      </div>
@@ -572,19 +448,17 @@
 	      </div>
 	      <div class="inner_cell" style='background:rgba(255,255,255,0.95)'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-		  <h2 id="Amorphous-Materials">Amorphous Materials<a class="anchor-link" href="#Amorphous-Materials">&#182;</a></h2><p>not all materials are crystalline with order. One large category is glasses, which are intrinsically disordered.</p>
-		  <p>Take SiO$_\text{2}$ quartz,</p>
+		  <h2 id="Amorphous-Materials">Amorphous Materials<a class="anchor-link" href="#Amorphous-Materials">&#182;</a></h2><p>not all materials are crystalline with order. One large category is glasses, which are intrinsically disordered: Take SiO$_\text{2}$ quartz,</p>
 		  <table>
 		    <tr>
 		      <td>
-			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/5/medium'>
+			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/5/medium' width='400'>
 		      </td>
 		      <td>
-			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/6/medium'>
+			<img src='http://journals.aps.org/prb/article/10.1103/PhysRevB.89.125201/figures/6/medium' width='350'>
 		      </td>
 		    </tr>
-		  </table><p>This will result in properties intermediate between crystals and molecules.</p>
-		  <p>It is also possible to perform diffraction measurements on amorphous materials (or liquids). What is measured is then a distribtution function of the likely distances between atoms.</p>
+		  </table><p>This will result in properties intermediate between crystals and molecules. It is also possible to perform diffraction measurements on amorphous materials (or liquids). What is measured is then a distribtution function of the likely distances between atoms.</p>
 
 		</div>
 	      </div>
