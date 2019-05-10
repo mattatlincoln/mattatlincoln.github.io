@@ -16,20 +16,24 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
+
       <a id="logo-container" href="#home" class="brand-logo"> Matt Watkins </a>
+      
       <ul class="right hide-on-med-and-down">
         <li><a href="#Projects">Projects</a></li>
         <li><a href="#People">People</a></li>
         <li><a href="#Talks">Talks</a></li>
         <li><a href="#Publications">Publications</a></li>
       </ul>
-      <ul id="nav-mobile" class="side-nav">
+
+      <ul id="nav-mobile" class="sidenav">
         <li><a href="#Projects">Projects</a></li>
         <li><a href="#People">People</a></li>
         <li><a href="#Talks">Talks</a></li>
         <li><a href="#Publications">Publications</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+      <a href="#" data-activates="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
@@ -50,7 +54,6 @@
     </div>
     <div class="parallax"><img src="images/CaF2_zoom.jpg" alt="Simple model"></div>
   </div>
-
 
   <!-- About Section -->
   <div class="container" id="about">
@@ -259,11 +262,16 @@ Current interests are characterisation of solid-liquid interfaces: We are develo
 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
 <script>
-$(document).ready(function(){
-  $('.parallax').parallax();
-  $(".button-collapse").sideNav();
-});
+(function($){
+  $(function(){
+
+    $('.sidenav').sidenav();
+    $('.parallax').parallax();
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
 </script>
+
 
 </body>
 </html>
