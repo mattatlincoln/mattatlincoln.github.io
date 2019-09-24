@@ -24,225 +24,225 @@
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
-  if( window.location.search.match( /print-pdf/gi ) ) {
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../../revealjs/css/print/pdf.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  }
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 
   </script>
 
   <!--[if lt IE 9]>
   <script src="../../../revealjs//lib/js/html5shiv.js"></script>
-  <![endif]-->
+<![endif]-->
 
-  <!-- Loading the mathjax macro -->
+<!-- Loading the mathjax macro -->
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-  <!-- Load mathjax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-  <!-- MathJax configuration -->
-  <script type="text/x-mathjax-config">
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    // Center justify equations in code and markdown cells. Elsewhere
-    // we use CSS to left justify single line equations in code cells.
-    displayAlign: 'center',
-    "HTML-CSS": {
-      styles: {'.MathJax_Display': {"margin": 0}},
-      linebreaks: { automatic: true }
-    }
-  });
-  </script>
-  <!-- End of mathjax configuration -->
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
 
-  <!-- Get Font-awesome from cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
-  <!-- Custom stylesheet, it must be in the same directory as the html file -->
-  <link rel="stylesheet" href="../custom.css">
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
 
 </head>
 <body>
 
-<div class="reveal">
-  <div class="slides">
+  <div class="reveal">
+    <div class="slides">
 
-    <section>
-      <h2 style="color:white;" id="Numerical Methods Week 1">Numerical Methods Week 1<a class="anchor-link" href="#Numerical Methods Week 1">&#182;</a></h2>
-      <h1 style="color:white;" id="Curve Fitting 0">Curve Fitting 0<a class="anchor-link" href="#Curve Fitting 0">&#182;</a></h1>
-      <h2 style="color:white;" id="Curve Fitting 0">Or scientific computing refresher<a class="anchor-link" href="#Curve Fitting 0">&#182;</a></h2>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-	
-	<p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
-	<p>Learning outcomes:</p>
+      <section>
+        <h2 style="color:white;" id="Numerical Methods Week 1">Numerical Methods Week 1<a class="anchor-link" href="#Numerical Methods Week 1">&#182;</a></h2>
+        <h1 style="color:white;" id="Curve Fitting 0">Curve Fitting 0<a class="anchor-link" href="#Curve Fitting 0">&#182;</a></h1>
+        <h2 style="color:white;" id="Curve Fitting 0">Or scientific computing refresher<a class="anchor-link" href="#Curve Fitting 0">&#182;</a></h2>
+        <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+        <p>This introduces the ideas of curve fitting - this week the simplest case of fitting a line to data we expect to be linearly related.</p>
+        <p>Learning outcomes:</p>
       </div>
       <br>
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> Revise some material from Scientific Computing last year.</li>
-        <li> Code a working version of linear regression using C++.</li>
-        <li> Check your code works correctly, via an external reference.</li>	
-      </div>
-      <br>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- 
-       <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
-      </div>
-    </section>
-
-    <section>
-      <div class="inner_cell">
-        <h3>What is Numerical Methods?</h3>
-        <div class="fragment">
-          <p>Using computers to solve numerical problems in applied mathematics and physics.</p>
-        </div>
-        <div class="fragment">
-          <h3>What is Numerical Methods not?</h3>
-        </div>
-        <div class="fragment">
-          <p>More programming training.</p>
-        </div>
-        <div class="fragment">
-          <h3>Why am I learning this?</h3>
-        </div>
-        <div class="fragment">
-          <p>Numerical competency will be one of the major skills you can bring to the market place alongside soft and professional skills.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="inner_cell">
-        <h3>Philosophy</h3>
-        <div class="fragment">
-          <p>Break down problems into small chunks.</p>
-        </div>
-        <div class="fragment">
-          <p>Use pen and paper and plan your work before attacking the keyboard.</p>
-        </div>
-        <div class="fragment">
-          <p>Test, test and test again.</p>
-        </div>
-        <div class="fragment">
-          <h3>No really - try and test after every single line you add.</h3>
-        </div>
-        <div class="fragment">
-          <h3>Save - on OneDrive it will keep backups too.</h3>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="inner_cell">
-      <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
-      <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
-      $$
-      y_i = a_0 + a_1 x_i + e
-      $$
-      <p>where $e$ is the error, or residual, between the model and the observations.</p>
-      <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
+      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+      <li> Revise some material from Scientific Computing last year.</li>
+      <li> Code a working version of linear regression using C++.</li>
+      <li> Check your code works correctly, via an external reference.</li>	
     </div>
-    </section>
+    <br>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 
-    <section>
-      <section>
-              <div class="inner_cell">
+    <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+  </div>
+</section>
 
-	<h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
-	<p> given our assumption of a straightline</p>
-	$$
-	y_i = a_0 + a_1 x_i + e_i
-	$$
-	<p>the error at each point is given by</p>
-	$$
-	e_i  = y_i - a_0 - a_1 x_i
-	$$
-	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
-	  $$
-	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-	  $$
-	  as our error criterion.
-	</p></div>
-      </section>
+<section>
+  <div class="inner_cell">
+    <h3>What is Numerical Methods?</h3>
+    <div class="fragment">
+      <p>Using computers to solve numerical problems in applied mathematics and physics.</p>
+    </div>
+    <div class="fragment">
+      <h3>What is Numerical Methods not?</h3>
+    </div>
+    <div class="fragment">
+      <p>More programming training.</p>
+    </div>
+    <div class="fragment">
+      <h3>Why am I learning this?</h3>
+    </div>
+    <div class="fragment">
+      <p>Numerical competency will be one of the major skills you can bring to the market place alongside soft and professional skills.</p>
+    </div>
 
-      <section>
-              <div class="inner_cell">
+  </div>
+</section>
 
-	<p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
-	  $$
-	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-	  $$
-	  as our error criterion.
-	</p>
-	<img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" style="height:300px;">
-</div>
-      </section>
-      
-      <section>
-              <div class="inner_cell">
-	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
-	<p>If we look at our model
-	  $$
-	  S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
-	  $$
-	  we see that there are 2 parameters, $a_0$ and $a_1$ that control the slope and intercept of our model.</p>
-	<p class="fragment">It is a model, we are assuming that there is a linear relationship between $x$ and $y$.</p>  
-	<p  class="fragment">We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
-	  $$
-	  \begin{align}
-	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
-	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i]
-	  \end{align}
-	  $$
-	  where the summations go from $0$ to $n-1$ (this is to agree with C style arrays).
-	</p>
-	<p  class="fragment">Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
-	<p  class="fragment">For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
-</div>
-      </section>
-      <section>
-              <div class="inner_cell">
+<section>
+  <div class="inner_cell">
+    <h3>Philosophy</h3>
+    <div class="fragment">
+      <p>Break down problems into small chunks.</p>
+    </div>
+    <div class="fragment">
+      <p>Use pen and paper and plan your work before attacking the keyboard.</p>
+    </div>
+    <div class="fragment">
+      <p>Test, test and test again.</p>
+    </div>
+    <div class="fragment">
+      <h3>No really - try and test after every single line you add.</h3>
+    </div>
+    <div class="fragment">
+      <h3>Save - on OneDrive it will keep backups too.</h3>
+    </div>
 
-	<h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
-	<p>We want to minimize the value of $S-r$, so we differentiate with respect to our parameters
-	  $$
-	  \begin{align}
-	  \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) = 0 \\	  
-	  \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i] = 0
-	  \end{align}
-	  $$
-	  This gives us a pair of simultaneous linear equations, sometimes called the normal equations.</p>
-	<p> We can solve these for $a_1$ and $a_0$.
-	  $$
-	  a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
-	  $$
-	  and plug this into the first equation to get
-	  $$
-	  a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
-	  $$
-	  where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
-	</p></div>
-      </section>
-    </section>
-    
-    <section>
-      <section>
-            <div class="inner_cell">
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Least-squares Regression">Least Squares Regression<a class="anchor-link" href="#Least Squares Regression">&#182;</a></h2>
+    <p> suppose that you think a set of paired observations $(x_0,y_0), (x_1,y_1), \ldots ,(x_{n-1},y_{n-1})$  are related as</p>
+    $$
+    y_i = a_0 + a_1 x_i + e
+    $$
+    <p>where $e$ is the error, or residual, between the model and the observations.</p>
+    <p> We think there is a linear relationship between $x$ and $y$, but there is some error in the measurements.</p>
+  </div>
+</section>
+
+<section>
+  <section>
+    <div class="inner_cell">
+
+     <h3 id="Best fit">Best fit<a class="anchor-link" href="#Best fit">&#182;</a></h3>
+     <p> given our assumption of a straightline</p>
+     $$
+     y_i = a_0 + a_1 x_i + e_i
+     $$
+     <p>the error at each point is given by</p>
+     $$
+     e_i  = y_i - a_0 - a_1 x_i
+     $$
+     <p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+       $$
+       S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+       $$
+       as our error criterion.
+     </p></div>
+   </section>
+
+   <section>
+    <div class="inner_cell">
+
+     <p> So in some sense the some of the total errors would be given by the sum of the errors. We will take the sum of the squares of the errors
+       $$
+       S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+       $$
+       as our error criterion.
+     </p>
+     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" style="width:50%;">
+   </div>
+ </section>
+
+ <section>
+  <div class="inner_cell">
+   <h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+   <p>If we look at our model
+     $$
+     S_r = \sum_{i=0}^{n-1} e_i^2 = \sum_{i=0}^{n-1}(y_i - a_0 - a_1 x_i)^2
+     $$
+   we see that there are 2 parameters, $a_0$ and $a_1$ that control the slope and intercept of our model.</p>
+   <p class="fragment">It is a model, we are assuming that there is a linear relationship between $x$ and $y$.</p>  
+   <p  class="fragment">We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
+     $$
+     \begin{align*}
+     \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) \\	  
+     \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i]
+     \end{align*}
+     $$
+     where the summations go from $0$ to $n-1$ (this is to agree with C style arrays).
+   </p>
+   <p  class="fragment">Note that the points $(x_i, y_i)$ are not variables, they are things we have measured. What we can vary is the parameters of our model. So $S_r$ is a function of the two parameters $a_0$ and $a_1$.</p>
+   <p  class="fragment">For more general models we will have more parameters and a more complex relations ship than the straight line assumed here.</p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+
+   <h3 id="Optimal parameters">Optimal parameters<a class="anchor-link" href="#Optimal parameters">&#182;</a></h3>
+   <p>We want to minimize the value of $S_r$, so we differentiate with respect to our parameters
+     $$
+     \begin{align*}
+     \frac{\partial S_r}{\partial a_0} & = -2 \sum (y_i - a_0 - a_1 x_i) = 0 \\	  
+     \frac{\partial S_r}{\partial a_1} & = -2 \sum [(y_i - a_0 - a_1 x_i) x_i] = 0
+     \end{align*}
+     $$
+   This gives us a pair of simultaneous linear equations, sometimes called the normal equations.</p>
+   <p> We can solve these for $a_1$ and $a_0$.
+     $$\begin{equation}
+     a_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+     \end{equation}$$
+     and plug this into the first equation to get
+     $$\begin{equation}
+     a_0 = \frac{\sum y_i}{n} - a_1 \frac{\sum x_i}{n} = \bar{y} - a_1 \bar{x}
+     \end{equation}$$
+     where $\bar{y}$ and $\bar{x}$ are the means of the $x$ and $y$ values.
+   </p></div>
+ </section>
+</section>
+
+<section>
+  <section>
+    <div class="inner_cell">
       <h3 id="Coding up linear regression">Coding up linear regression<a class="anchor-link" href="#Coding up linear regression">&#182;</a></h3>
       <p>You will want to use arrays to store data. Remember arrays are like a list, or ordered set, of numbers. The type of number is defined in the normal way.</p>
       <p>Here is some code to allocate an array of size 100, place the numbers 0 to 99, in that order, into the array.</p>
@@ -250,8 +250,8 @@ MathJax.Hub.Config({
     </div></section>
     <section>
       <div class="inner_cell">
-      <pre data-lang="c++">
-	     <code class='c++'>
+        <pre data-lang="c++">
+          <code class='c++'>
 /* C++ code*/
 #include "stdafx.h"
 #include &ltiostream>
@@ -259,91 +259,82 @@ using namespace std;
 
 int main()
 {
-    double x[100] ;
-    for (int i = 0; i < 100; i++) {
-        x[i] = i;
-    }
+  double x[100] ;
+  for (int i = 0; i < 100; i++) {
+    x[i] = i;
+  }
 
-    double sumx = 0.0;
-    for (int i = 0; i < 100; i++) {
-	    sumx += x[i];
-    }
-    cout << "The sum of the numbers 0 to 99 is " << sumx <<"\n";
+  double sumx = 0.0;
+  for (int i = 0; i < 100; i++) {
+    sumx += x[i];
+  }
+  cout << "The sum of the numbers 0 to 99 is " << sumx <<"\n";
 }
-        </code>
-      </pre>
-    </div>
-    </section>
-    <section>
-      <div class="inner_cell">
-      <pre data-lang="python">
-       <code class='python'>
-#python code
+      </code>
+    </pre>
+  </div>
+</section>
+<section>
+  <div class="inner_cell">
+    <pre data-lang="python">
+     <code class='python'>
+# python code
+# create an empty array
 x = []
 
 for i in range(100):
-    x.append(i)
+  x.append(i)
 
 sumx = 0    
-for i in range(len(x)):
-    sumx += i
-    print(i)
-    
-print(sumx)
-        </code>
-      </pre>
-      </div>
-    </section>
-  </section>
+for i in range(len(x)): # range(n) command creates a list of values from 0 to n-1
+  sumx += i
+  # print(i)
 
-    <section>
-            <div class="inner_cell">
+print("the sum of the numbers 0 to 99 is " + str(sumx)) # str(sumx) converts sumx into a string
+    </code>
+  </pre>
+</div>
+</section>
+</section>
 
-      <h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2>
-      <p>Alter the previous code to answer the following questions:</p>
-      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-		  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <li> What is $\sum_{n=1}^{100} n$</li>	
-        <li> What is $\sum_{n=2}^{200} 2n$</li>	
-        <li> What is $\sum_{n=0}^{99} 2n^2$</li>
-      </div>
+<section>
+  <div class="inner_cell">
 
-    </section>
-
-    <section>
-      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/jvbgsuMqd91tsTg?controls=none&short_poll=true" width="100%" height="500px" frameBorder="0"></iframe>
-    </section>
-
-    <section>
-      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/oF57qo4dXVI3kn5?controls=none&short_poll=true" width="100%" height="500px" frameBorder="0"></iframe>
-    </section>
-
-    <section>      
-      <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/YPCLA9NHwShIxj0?controls=none&short_poll=true" width="100%" height="500px" frameBorder="0"></iframe>
-    </section>
-
-     <section>
-              <div class="inner_cell">
-  <h2 id="Test yourself">Test yourself<a class="anchor-link" href="#Test yourself">&#182;</a></h2>
-  <p>Now try the test questions in the Assessments tab on Blackboard.
-  </p>
+    <h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2>
+    <p>Alter the previous code to answer the following questions:</p>
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+    <li> What is $\sum_{n=0}^{99} 2n^2$</li><br>
+    <li> What is $\sum_{n=1}^{100} n$</li><br>	
+    <li> What is $\sum_{n=2}^{200} 2n$</li><br>
+    <li> What is $\sum_{n=0}^{99} 2n^2$</li>
   </div>
-      </section>
-    
-    </div> <!-- slides -->
-  </div> <!-- reveal -->
+  <br>
 
-  <script>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Test yourself">Test yourself<a class="anchor-link" href="#Test yourself">&#182;</a></h2>
+    <p>Now try the test questions in the Assessments tab on Blackboard.
+    </p>
+  </div>
+</section>
+
+</div> <!-- slides -->
+</div> <!-- reveal -->
+
+<script>
 
   require(
-    {
+  {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
     },
     [
-      "../../../revealjs//lib/js/head.min.js",
-      "../../../revealjs//js/reveal.js"
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -367,11 +358,11 @@ print(sumx)
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: "../../../revealjs//lib/js/classList.js",
-          condition: function() { return !document.body.classList; } },
-          { src: "../../../revealjs//plugin/notes/notes.js",
-          async: true,
-          condition: function() { return !!document.body.classList; } }
+        { src: "../../../revealjs//lib/js/classList.js",
+        condition: function() { return !document.body.classList; } },
+        { src: "../../../revealjs//plugin/notes/notes.js",
+        async: true,
+        condition: function() { return !!document.body.classList; } }
         ]
       });
 
@@ -390,7 +381,7 @@ print(sumx)
       Reveal.addEventListener('slidechanged', update_scroll);
 
     }
-  );
+    );
   </script>
 
 </body>
