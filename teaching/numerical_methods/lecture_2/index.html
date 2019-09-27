@@ -110,8 +110,8 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">
   <h2 id="Solving a system of Equations">Solving a system of Equations<a class="anchor-link" href="#Solving a system of Equations">&#182;</a></h2>
-  <p>Suppose we want to solve a system of equations $\textbf{A}x = b$</p>
-  <p>$\textbf{A}$ is a matrix of coefficients of our unknowns, $x$, and $b$ is a vector of constants.</p>
+  <p>$\newcommand{\vect}[1]{\boldsymbol{#1}}​$ Suppose we want to solve a system of equations $\vect{A} \vect{x} = \vect{b}$</p>
+  <p>$\vect{A}$ is a matrix of coefficients of our unknowns, $\vect{x}$. $\vect{b}$ is a vector of constants.</p>
   <p>Explicitly this can be written (for a set of 4 equations with 4 unknowns) as:<br> 
    \[ \left( \begin{array}{cccc}
    a_{00} & a_{01} & a_{02} & a_{03}\\ 
@@ -205,7 +205,7 @@ linebreaks: { automatic: true }
   <div class="inner_cell">  
   <h2 id="Gaussian Elimination">Gaussian Elimination<a class="anchor-link" href="#Gaussian Elimination">&#182;</a></h2>    
   <h3 id="Back substitution">Back substitution<a class="anchor-link" href="#Back substitution">&#182;</a></h3>
-  <p> From the triangularized augmented matrix we can then solve for $x$
+  <p> From the triangularized augmented matrix we can then solve for $\vect{x}$
    \[ \left( \begin{array}{cccc|c}
    2 & 2 & 4 & -2 & 10\\ 
    0 & 2 & 0 & 5 & 12\\ 
@@ -246,13 +246,12 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">  
   <h2 id="Gaussian Elimination: Code">Gaussian Elimination: Code<a class="anchor-link" href="#Gaussian Elimination: Code">&#182;</a></h2>
-  <p>Here is the main bit of code to carry out Gaussian elimination on a system of equations$\textbf{A}x =b$</p>
+  <p>Here is the main bit of code to carry out Gaussian elimination on a system of equations$\vect{A}\vect{x} =\vect{b}$</p>
   <pre>
    <code class="c++">
 // routine for performing gauss elimination
-double gauss_elim( double *a[], int N) {
+double gauss_elim( double *a[], double *x[], int N) {
     double coeff;
-    double x[N];
     // eliminating
     for (int i =0; i < N-1; i++) {
         for (int j = i+1; j < N; j++) {
@@ -263,16 +262,13 @@ double gauss_elim( double *a[], int N) {
         }
     }
     // now back substitute
-    cout << "Back substituting to find $x$:\n\n";
     for (int i=N-1;i>=0;i--) {
         x[i] = a[i][N+1-1];
         for (int j=i+1; j< N+1-1; j++) {
             x[i] -= a[i][j]*x[j];
         }
         x[i] /= a[i][i];
-        cout << "solution " << N-i << " is "<< x[i] << endl;
     }
-    cout << "\n";
 }    
    </code>
  </pre>
@@ -345,7 +341,8 @@ import numpy as np
 
 def gauss_elim(a, N):
     """solves a set of linear equations
-    N must be the number of rows.    
+    N must be the number of rows. 
+    On exit the original matrix is changed to row echelon form.
     """
     x = np.zeros(N);
     # eliminating
@@ -363,8 +360,9 @@ def gauss_elim(a, N):
     return x
 
 # build a random 2d 3x4 augmented matrix
-a = np.random.uniform(1,10,12).reshape(3,4)
+a = np.random.uniform(1,10,(3,4))
 x =gauss_elim(a,3)      
+print(x)
      </code>
    </pre>
 </div>
@@ -387,7 +385,7 @@ x =gauss_elim(a,3)
    \end{align*}
    \]
  </p>
- <p>Can you find the solutions of
+ <p>Can you find the solutions to this system of equations? Why not?
    \[
    \begin{align*}
    1x_0 + 2x_1 + 3x_2 & = 1\\
@@ -470,7 +468,7 @@ x =gauss_elim(a,3)
        -0 & -0 & 1 & -0 & 10\\ 
        0 & 0 & 0 & 1 & 5\\ 
        \end{array} \right) \]
-       And we can just read the solutions for $x$ off.
+       And we can just read the solutions for $\vect{x}$ off.
      </p>
    </div>
    </section>
@@ -480,7 +478,7 @@ x =gauss_elim(a,3)
   <section>
   <div class="inner_cell">    
    <h2 id="Gauss-Jordan Elimination for Matrix Inversion">Gauss-Jordan Elimination for Matrix Inversion<a class="anchor-link" href="#Gauss-Jordan Elimination for Matrix Inversion">&#182;</a></h2>
-   <p>We can solve the equation $\textbf{AX} = \textbf{I}$ using exactly the same method:
+   <p>We can solve the equation $\vect{AX} = \vect{I}$ using exactly the same method:
      \[ \left( \begin{array}{ccc|ccc}
      2 & 1 & 1 & 1 & 0 & 0\\ 
      1 & 0 & -1 & 0 & 1 & 0\\ 
@@ -523,7 +521,7 @@ x =gauss_elim(a,3)
      0 & 0 & 1 & 0.142857 & -0.571429 & 0.142857\\ 
      \end{array} \right) \]
    </p>
-   <p> The RHS of the augmented matrix is $\textbf{A}^{-1}$
+   <p> The RHS of the augmented matrix is $\vect{A}^{-1}$
    </p>
  </div>
  </section>
@@ -537,7 +535,7 @@ x =gauss_elim(a,3)
    - I suggest copying your file for now, renaming rather than altering the previous code directly.
    - You should change the second loop so that it goes over all rows.<br>
    - You should add an `if` statement to skip the row with the same index as the column you are working on.<br>
-   - When the matrix is diagonal, divide each row by the value of the remaining diagonal element to get the identity matrix and $x$.<br>
+   - When the matrix is diagonal, divide each row by the value of the remaining diagonal element to get the identity matrix and $\vect{x}$.<br>
    - Test regularly as you make the alterations.
  </p>
   <p> Solve the same matrix problems as before and check the result is the same.</p>
