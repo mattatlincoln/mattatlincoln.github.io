@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>System of Linear Equations 1</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+  <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <section>
+        <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <h2 style="color:white;" id="Numerical Methods Week 2">Numerical Methods Week 2<a class="anchor-link" href="#Numerical Methods Week 5">&#182;</a></h2>
+        <h1 style="color:#F433FF" id="Feedback on Week 1">Feedback on Week 1<a class="anchor-link" href="#Feedback on Week 1">&#182;</a></h1>
+      </div>
+      <br>
+      <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+      <p>Feedback topics:</p>
+      <li> Array bounds.</li>
+      <li> Upload working as pdf document, please.</li>
+    </div>
+    <br>
+
+    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+      <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+  </div>  
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Array bounds">Array bounds<a class="anchor-link" href="#Array bounds">&#182;</a></h2>
+    <p> This code example goes wrong because it tries to access x[10].<br>
+    C arrays start from element [0] and go up to [n-1].<br>
+    So in the code below x[0], x[1], ... x[9] are assigned. <br>
+    But in the loop, x[10] just prints whatever happens to exist in that memory location. <br>
+    There will be a complaint from the compiler.</p>
+    <pre data-lang="c++">
+     <code class='c++'>
+      // Be careful of array bounds
+#include&ltiostream>
+
+int main()
+{
+  // assign an array of length 10
+  double x[10] = {0,1,2,3,4,5,6,7,8,9};
+
+  // loop over array elements, be very careful!
+  // array elements not assigned will contain random data
+  // visual studio may complain (depends on version, it seems)
+  for (int i = 0; i < 11; i++) {
+    std::cout << "i = " << i << ", x[" << i << "] = " << x[i] << "\n";
+  }
+}   
+      </code>
+    </pre>
+  </div>
+</section>
+
+
+</div> <!-- slides -->
+</div> <!-- reveal -->
+
+<script>
+
+  require(
+  {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        mouseWheel: false,
+        center: false,
+        scroll: true,
+
+        // Parallax background image
+        parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Mona_Lisa_eigenvector_grid.png',
+        // Parallax background size
+        parallaxBackgroundSize: '1000px 697px', // CSS syntax, e.g. "2100px 900px
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+        { src: "../../../revealjs//lib/js/classList.js",
+        condition: function() { return !document.body.classList; } },
+        { src: "../../../revealjs//plugin/notes/notes.js",
+        async: true,
+        condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      var update = function(event){
+        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+        $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+    );
+  </script>
+
+</body>
+
+</html>
