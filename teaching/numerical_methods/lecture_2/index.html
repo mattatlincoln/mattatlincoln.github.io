@@ -283,22 +283,22 @@ double gauss_elim( double *a[], double *x[], int N) {
   <section>
   <div class="inner_cell">    
     <h2 id="Gaussian Elimination: Code">Gaussian Elimination: Code<a class="anchor-link" href="#Gaussian Elimination: Code">&#182;</a></h2>
-     <p>The full code reads the size of the augmented matrix from a file:</p>
+     <p>The full code reads the size of the augmented matrix from a csv file:</p>
     <pre>
      <code class="c++">
-      string nfile;
-      std::ifstream myFile;
-      int N;
-
-      std::cout << "Insert the name of the file containing the coefficient and the constant terms" << std::endl;
-      std::cin >> nfile;
-      myFile.open(nfile.c_str(), std::ios::in);
-      cout << "\nopened file\n\n";
-      // Read the size of the matrix
-      if (myFile.is_open()) {
-          myFile >> N;
-          cout << "found file: N = " << N << "\n\n";
-      }   
+    string nfile, temp;
+    int N;
+    cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
+    cin >> nfile;
+    ifstream myFile (nfile);
+    // Read the size of the matrix
+    if (myFile.is_open()) {
+            cout << "\nopened file\n\n";
+        getline(myFile, temp, ',');
+        N = stoi(temp);
+        cout << "found file: N = " << N << "\n\n";
+        getline(myFile, temp, '\n');
+    }
     </code>
   </pre>
 </div>
@@ -321,10 +321,15 @@ double gauss_elim( double *a[], double *x[], int N) {
      <code class="c++">
     // Read the array
     for (int i=0; i < N; ++i){
-        for (int j=0; j < N+1; ++j){
-            myFile >> a[i][j];
+        for (int j=0; j < N; ++j){
+                getline(myFile, temp, ',');
+            a[i][j] = stoi(temp);
+                cout << a[i][j] << ", ";
         }
-    } 
+        getline(myFile, temp, '\n');
+        a[i][N] = stoi(temp);
+        cout << a[i][N] << "\n";
+    }
      </code>
    </pre>
    </div>
