@@ -245,7 +245,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section>
       <h3 id="build a model of an AFM">build a model of an AFM<a class="anchor-link" href="#build a model of an AFM">&#182;</a></h3>
       <p>
-	Model the cantilever oscilations using $\textbf{differential equations}$:
+	Model the cantilever oscilations using <b>differential equations</b>:
 	$$
 	\ddot{z} + \omega_{0}^{2} \alpha \dot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = \frac{\omega_0^2}{k}F_{ext}
 	$$
@@ -258,9 +258,9 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	$$
       </p>
       <p class='fragment'>
-	motion is periodic, we can find a solution of the form
+	motion is periodic, we can find a solution of the form using a <b>truncated Fourier Series</b>
 	$$
-	\frac{\omega}{\omega_0}^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) cos (\tau) d\tau
+	\big(\frac{\omega}{\omega_0}\big)^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) \cos (\tau) d\tau
 	$$
       </p>
       <h5 class='fragment'>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
@@ -318,33 +318,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
      <p class='fragment'>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
      <p class='fragment'>Or use Quantum Mechanical calculations (Density Functional Theory (~1000x slower) than forcefield)</p>
      <p class='fragment'>For AFM we need the to calculate the force on a tip model on a 3D grid (1000s of calculations)</p>
-     <p class='fragment'>The calculations are large - we use lots of $\textbf{linear algebra}$. We need to diagonalize matrices of order 10,000 using a variety of techniques.</p>
-     <p class='fragment'>We use $\textbf{scientific high performance computing techniques}$.</p>
+     <p class='fragment'>The calculations are large - we use lots of <b>linear algebra</b>. We need to diagonalize matrices of order 10,000 using a variety of techniques.</p>
+     <p class='fragment'>We use <b>scientific high performance computing techniques</b>.</p>
      <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
 
-   </section>
-
-   <section>
-     <section>
-     <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
-     <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
-     <table>
-       <tr>
-	 <td>
-	   <video width="520" height="400" controls>
-	     <source src="images/CDB.mp4" type="video/mp4">
-	   </video>
-	 </td>
-	 <td>
-	   <video width="520" height="400" controls>
-	     <source src="images/TCB.mp4" type="video/mp4">
-	   </video>
-	 </td>
-       </tr>
-     </table>
-     <p>Using classical potentials to 'pull' molecules onto a KCl surface.</p>
-     <h5>Gaberle, J., Gao, D. Z., Watkins, M. B., & Shluger, A. L. (2016). Calculating the entropy loss on adsorption of organic molecules at insulating surfaces. The Journal of Physical Chemistry C, 120(7), 3913-3921.</h5>
-     </section>
    </section>
 
     <section>
@@ -373,7 +350,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 	<img class='fragment' src='http://www.relatably.com/q/img/robert-anton-wilson-quotes/quote-Robert-Anton-Wilson-the-totally-convinced-and-the-totally-stupid-100166.png' style='height:60%;width:60%'>
 	<p class='fragment'>The experimental signals are in very good agreement with our model expectations in many cases.</p>
 	<p class='fragment'>We can't 'see' atoms, but we can produce signals that can be measured by extensions of our senses that are exactly what we expect atoms to produce.</p>
-	<p class='fragment'>For some value of 'see' we can see atoms, and move them.<br>But note an atom is only a model - quantum mechanics says there is no such thing as 'an atom'!!</p>
+	<p class='fragment'>For some value of 'see' we can see atoms, and move them.</p>
     </section>
        
     <section>
