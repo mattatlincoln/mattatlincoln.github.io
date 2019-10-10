@@ -198,18 +198,18 @@ linebreaks: { automatic: true }
     <h3 id="Fitting a Quadratic function">Fitting a Quadratic function<a class="anchor-link" href="#Fitting a Quadratic function">&#182;</a></h3>
     <p>In the case that the largest power of $x$ is $x^2$ we have
      $$
-     y_i = a_0 + a_1 x_i + a_2 x_i^2 + e_i
+     y_i = a_0 x_i^0 + a_1 x_i^1 + a_2 x_i^2 + e_i
      $$
      and an overall error function
      $$
-     S_r = \sum_{i=0}^{N-1} (y_i - a_0 - a_1 x_i - a_2 x_i^2)^2
+     S_r = \sum_{i=0}^{N-1} (y_i - a_0 x_i^0 - a_1 x_i^1 - a_2 x_i^2)^2
      $$
    </p>
    <p>This leads to a set of equations
      \begin{align*}
-     \left(n\right)a_0 + \left(\sum x_i\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum y_i \\
-     \left(\sum x_i\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i y_i \\
-     \left(\sum x_i^2\right) a_0  + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
+     \left(\sum x_i^0\right) a_0 + \left(\sum x_i^1\right) a_1 + \left(\sum x_i^2\right) a_2 & = \sum x_i^0 y_i \\
+     \left(\sum x_i^1\right) a_0 + \left(\sum x_i^2\right) a_1 + \left(\sum x_i^3\right) a_2 & = \sum x_i^1 y_i \\
+     \left(\sum x_i^2\right) a_0 + \left(\sum x_i^3\right) a_1 + \left(\sum x_i^4\right) a_2 & = \sum x_i^2 y_i \\
      \end{align*}
    </p>
 
@@ -217,9 +217,10 @@ linebreaks: { automatic: true }
    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
    <li> Derive the above equations by differentiating $S_r$ with respect to each of the $a_i$ in turn.</li>	
    <li> Write the equations in matrix form $\textbf{A}x = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ and $b$ is a column matrix with terms that do not depend on the fitting parameters, $a_0$, $a_1$  and  $a_2$. </li>
-   <p>using the data you can find on Blackboard for today's session under the assessments tab."</p>
+   <li>using the data you can find on Blackboard for today's session under the assessments tab.</li>
    <li> Solve for $a_0$, $a_1$  and  $a_2$.</li>
    <li> Plot your fitted parabola against the data to check the fit.</li>
+   <li> Extend the derivation to fitting a cubic polynomial and fit to the data on Bb.</li>
  </div>      
 </div>           
 </section>
