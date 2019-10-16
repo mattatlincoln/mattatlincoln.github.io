@@ -103,6 +103,138 @@ linebreaks: { automatic: true }
 </section>
 
 <section>
+  <section>
+    <div class="inner_cell">
+     <h2>Reusing code</h2>
+     <p>You may dislike having lots of code / routines copied around everytime we reuse something</p>
+     <p>The solution is to $\textbf{include}$ other files or, generally, libraries.</p>
+     <p>We can make our own library file by copying functions other than <span style='font-family: monospace'>main</span> into a file called <span style='font-family: monospace'>'my_library.h'</span></p>
+     <table>
+       <tr>
+         <td>
+           <img src='../images/include_dir_0.png'>
+         </td>
+       </tr>
+     </table>
+   </div>
+ </section>
+ <section>
+  <div class="inner_cell">
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_1.png'>
+       </td>
+     </tr>
+   </table>
+   <p>This is my example project. Right click on the $\textbf{bolded}$ project name in the pane to right.</p>
+   <p>Then select  <span style='font-family: monospace'>properties</span>.</p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>A new window should have appeared, like this:</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_2.png'>
+       </td>
+     </tr>
+   </table>
+   <p>Open the <span style='font-family: monospace'>C/C++</span> then the   <span style='font-family: monospace'>General</span> tab</p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>Then click on drop down button in the second column of the the 'Additional Include Directories' row and select edit</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_3.png'>
+       </td>
+     </tr>
+   </table>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>You should see something like this:</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_4.png'>
+       </td>
+     </tr>
+   </table>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>Click on the folder icon, and select the directory where you saved your 'my_library.h' file in</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_5.png'>
+       </td>
+     </tr>
+   </table>
+   <div class="inner_cell">
+   </section>
+   <section>
+    <div class="inner_cell">
+     <table>
+       <tr>
+         <td>
+           <img src='../images/include_dir_6.png'>
+         </td>
+       </tr>
+     </table>
+     <p>Now I can add a #include line in the file and use any functions in the library .</p>
+   </div>
+ </section>
+</section>
+
+<section>
+  <div class="inner_cell">
+   <p>To include the Eigen library, 
+    <li>save and extract the library (you can find it on the front page of the learning resources tab) </li>
+    <li> add the directory containing the extracted Eigen folder to the include path.</li>
+    <li> here is an example.</li>
+   <pre><code>
+#include &ltiostream&gt
+#include &ltEigen/Dense&gt
+using Eigen::MatrixXd;
+int main()
+{
+  MatrixXd m(2, 2);
+  m(0, 0) = 3;
+  m(1, 0) = 2.5;
+  m(0, 1) = -1;
+  m(1, 1) = m(1, 0) + m(0, 1);
+  std::cout << m << std::endl << std::endl;
+
+  MatrixXd n(2, 2);
+  n(0, 0) = 1;
+  n(1, 0) = 0;
+  n(0, 1) = 0;
+  n(1, 1) = 1;
+  std::cout << n << std::endl << std::endl;
+
+  MatrixXd p(2, 2);
+  p = m * n;
+  std::cout << p << std::endl << std::endl;
+
+  MatrixXd q(2, 2);
+  q = p.transpose();
+  std::cout << q << std::endl;
+  return 0;
+}    
+   </code></pre></p>
+   </div>
+ </section>
+</section>
+
+<section>
   <div class="inner_cell">
     <h3 id="Feedback: Fitting a Quadratic function">Fitting a Quadratic function<a class="anchor-link" href="#Fitting a Quadratic function">&#182;</a></h3>
     <p>In the case that the largest power of $x$ is $x^2$ we have
