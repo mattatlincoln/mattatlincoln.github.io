@@ -203,35 +203,79 @@ linebreaks: { automatic: true }
    <pre><code>
 #include &ltiostream&gt
 #include &ltEigen/Dense&gt
-using Eigen::MatrixXd;
+using Eigen::Matrix2d;
+using namespace std;
+
 int main()
 {
-  MatrixXd m(2, 2);
-  m(0, 0) = 3;
-  m(1, 0) = 2.5;
-  m(0, 1) = -1;
-  m(1, 1) = m(1, 0) + m(0, 1);
-  std::cout << m << std::endl << std::endl;
-
-  MatrixXd n(2, 2);
-  n(0, 0) = 1;
-  n(1, 0) = 0;
-  n(0, 1) = 0;
-  n(1, 1) = 1;
-  std::cout << n << std::endl << std::endl;
-
-  MatrixXd p(2, 2);
-  p = m * n;
-  std::cout << p << std::endl << std::endl;
-
-  MatrixXd q(2, 2);
-  q = p.transpose();
-  std::cout << q << std::endl;
-  return 0;
-}    
+  Matrix2d A, b;
+  A << 2, -1, -1, 3;
+  b << 1, 0, 0, 1;
+  cout << "Here is the matrix A:\n" << A << endl;
+  cout << "Here is the right hand side b:\n" << b << endl;
+  Matrix2d x = A.ldlt().solve(b);
+  cout << "The solution is:\n" << x << endl;
+  cout << A * x;
+}
    </code></pre></p>
    </div>
  </section>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p>Here is some code to read in a matrix from a csv file. Assumes the header contains the number of rows then number of columns.</p>
+    <pre><code>
+#include &ltiostream&gt
+#include &ltEigen/Dense&gt
+#include &ltfstream&gt
+#include &ltstring&gt
+using Eigen::MatrixXd;
+using namespace std;
+
+MatrixXd slurpData()
+{
+  string nfile, temp;
+  int Ncol, Nrow;
+  cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
+  cin >> nfile;
+  ifstream myFile(nfile);
+  // Read the size of the matrix
+  if (myFile.is_open()) {
+    cout << "\nopened file\n\n";
+    getline(myFile, temp, ',');
+    Nrow = stoi(temp);
+    cout << "found file: Nrows = " << Nrow << "\n\n";
+    getline(myFile, temp, '\n');
+    Ncol = stoi(temp);
+    cout << "found file: Ncols = " << Ncol << "\n\n";
+  }
+
+  MatrixXd a(Nrow, Ncol);
+
+  // Read the array
+  for (int i = 0; i < Nrow; ++i) {
+    for (int j = 0; j < Ncol - 1; ++j) {
+      getline(myFile, temp, ',');
+      a(i, j) = stod(temp);
+      cout << a(i, j) << ", ";
+    }
+    getline(myFile, temp, '\n');
+    a(i, Ncol - 1) = stod(temp);
+    cout << a(i, Ncol - 1) << "\n";
+  }
+
+  return a;
+}
+
+int main()
+{
+  MatrixXd a;
+  a = slurpData();
+  cout << a.rows() << " " << a.cols();
+}
+    </code></pre>
+  </div>  
 </section>
 
 <section>
@@ -298,40 +342,13 @@ int main()
 </div>      
 </section>
 
-
 <section>
   <div class="inner_cell">
-    <h2 id="Multiple Linear Regression">Multiple Linear Regression<a class="anchor-link" href="#Multiple Linear Regression">&#182;</a></h2>
-    <p>Instead of powers of a single variable, our model for $y_i$ could be that it is a function of several independent variables:
-     $$
-     y_i(a_0, a_1, a_2, a_3 \ldots a_n; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 + a_1 x_{1i} + a_2 x_{2i} + a_3 x_{3i} + \ldots + a_n x_{ni}
-     $$
-   </p>
-
-   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
-   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-   <li> Derive the a set of equations for the case of two independent variables</li>	
-   <li> Write the equations in matrix form $Ax = b$, where $x$ is a column matrix with entries $a_0, a_1, a_2$ </li>
-   <p>Using the following data
-     $$
-     \begin{array} {ccc}
-     x_1 & x_2 & y \\
-     \hline
-     0 & 0 & 5 \\
-     2 & 1 & 10 \\
-     2.5 & 2 & 9 \\
-     1 & 3 & 0 \\
-     4 & 6 & 3 \\
-     7 & 2 & 27 \\
-     \hline
-     \end{array}
-     $$
-   </p>
-
-   <li> Solve for $a_0$, $a_1$  and  $a_2$</li>
-   <li> Plot your fitted function against the data to check the fit</li>
- </div>                 
-</div>
+    <h2>Worked example of polynomial fit - using new fancy matrices</h2>
+    <p>
+      <li> Get the data into a readable form - I suggest using Excel and the 'Text to Columns' function under the 'DATA' tab</li>
+    </p>
+  </div>
 </section>
 
 <section>
