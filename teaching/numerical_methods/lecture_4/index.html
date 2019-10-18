@@ -450,21 +450,18 @@ int main()
 <section>
   <div class="inner_cell">
     <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
-    <p>Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
+    <p>$\newcommand{\vect}[1]{\boldsymbol{#1}}​$Simple linear, polynomial and multiple linear regression can be generalised to the following linear least-squares model
      $$
-     y_i (a_0, a_1, a_2, a_3 \ldots a_n; x_0, x_1, x_2, x_3 \ldots x_n) = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+     y_i = a_0 z_0 (x_i) + a_1 z_1 (x_i) + a_2 z_2 (x_i) + \cdots + a_{m-1} z_{m-1} (x_i) + e_i
      $$
-     are now not just coordinates $x_i$ but some <em>predefined</em> functions of those positions $z_0(x_0, x_1, x_2, x_3 \ldots x_n), z_1( x_0, x_1, x_2, x_3 \ldots x_n), \ldots , z_m( x_0, x_1, x_2, x_3 \ldots x_n)$ are $m+1$ $\textbf{basis functions}$.
-   </p>
-
-   <p>The linear refers to the parameters $a_0, a_1, \ldots, a_m$, the $z$s can be highly non-linear</p>
+     can now not polynomials in $x$ but some <em>predefined</em> functions of those positions</p>
+     <p>  $z_0(x), z_1( x), \ldots , z_{m-1}( x )$ are $m$ $\textbf{basis functions}$. The predefined basis functions define the model, only depend on the $x$ coordinate.
+    I is called linear least squares as the parameters $a_0, a_1, \ldots, a_{m-1}$ appear linearly. The $z$s can be highly non-linear in $x$.</p>
    <p>For instance.
      $$
-     y(a_0, a_1, a_2; x_0) = a_0 + a_1 \cos (\omega x_0) + a_2 \sin (\omega x_0)
+     y_i = a_0 \cdot 1 + a_1 \cos (\omega x_i) + a_2 \sin (\omega x_i)
      $$
-     fits this model with $z_0 = 1, z_1 = \cos(\omega x_0)$ and $z_2 = \sin(\omega x_0)$. Where $\omega$ is a single independent variable and $\omega$ is a predefined constant.</p>
-     <p> I'll supress the functional dependence notation as it gets too much. Remember the $z$s are predefined - only the $a$s are optimized.
-   </p>
+     fits this model with $z_0 = 1, z_1 = \cos(\omega x_0)$ and $z_2 = \sin(\omega x_0)$. Where $x$ is a single independent variable and $\omega$ is a predefined constant.</p>
  </div>
 </section>
 
@@ -473,39 +470,39 @@ int main()
     <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
     <p>We can rewrite
      $$
-     y = a_0 z_0 + a_1 z_1 + a_2 z_2 + \cdots + a_m z_m + e
+     y_i = a_0 z_0 (x_i) + a_1 z_1 (x_i) + a_2 z_2 (x_i) + \cdots + a_{m-1} z_{m-1} (x_i) + e_i
      $$
      in matrix notation as
      $$
-     \{Y\} = [Z]\{A\} + \{E\}
+     \vect{y} = \vect{Z} \vect{a} + \vect{e}
      $$
-     where $\{\}$ indicates a column vector, for clarity, and $[]$ indicates a matrix.
-     $[Z]$ contains the calculated values of the $m+1$ basis functions at the $n+1$ measured values of the independent variables:
+     where bold lower case indicates a column vector, and bold uppercase indicates a matrix.
+     $\vect{Z}$ contains the calculated values of the $m$ basis functions at the $n$ measured values of the independent variables:
      $$
-     [Z] =
+     \vect{Z} =
      \left[
      \begin{matrix}
-     z_{00} & z_{10} & \cdots & z_{m0} \\
-     z_{01} & z_{11} & \cdots & z_{m1} \\
+     z_0 (x_0) & z_1 (x_0) & \cdots & z_{m-1} (x_0) \\
+     z_0 (x_1) & z_1 (x_1) & \cdots & z_{m-1} (x_1) \\
      \vdots & \vdots & \ddots & \vdots \\
-     z_{0n} & z_{1n} & \cdots & z_{mn} \\
+     z_0 (x_{n-1}) & z_1 (x_{n-1}) & \cdots & z_{m-1} (x_{n-1}) \\
      \end{matrix}
      \right]
      $$
    </p>
 
    <p>
-    The column vector $\{Y\}$ contains the $n+1$ observed values of the dependent variable
+    The column vector $\vect{y}$ contains the $n+1$ observed values of the dependent variable
     $$
-    \{Y\}^T = \left[y_0, y_1, y_2, y_3, \ldots, y_n  \right]
+    \vect{y}^T = \left[y_0, y_1, y_2, y_3, \ldots, y_{n-1}  \right]
     $$
-    The column vector $\{A\}$ contains the $m+1$ unknown parameters of the model
+    The column vector $\vect{a}$ contains the $m+1$ unknown parameters of the model
     $$
-    \{A\}^T = \left[a_0, a_1, a_2, \ldots, a_{m}  \right]
+    \vect{a}^T = \left[a_0, a_1, a_2, \ldots, a_{m-1}  \right]
     $$
-    The column vector $\{E\}$ contains the $n+1$ observed residuals (errors)
+    The column vector $\vect{e}$ contains the $n+1$ observed residuals (errors)
     $$
-    \{E\}^T = \left[e_0, e_1, e_2, e_3, \ldots, e_n  \right]
+    \vect{e}^T = \left[e_0, e_1, e_2, e_3, \ldots, e_{n-1}  \right]
     $$
 
   </p>
@@ -516,20 +513,19 @@ int main()
   <div class="inner_cell">
     <h2 id="General Linear Least Squares">General Linear Least Squares<a class="anchor-link" href="#General Linear Least Squares">&#182;</a></h2>
     <p>We can also express error in our model as a sum of the squares much like before:
+     $$\begin{align*}
+     S_r & = \sum_{i=0}^{n}\left(y_i - \sum_{j=0}^{m} a_j z_{ji}  \right)^2 \\
+        & = \sum e_i^2 = \vect{e}^T \vect{e} = (\vect{y} - \vect{Z} \vect{a})^T (\vect{y} - \vect{Z} \vect{a})
+     \end{align*}$$
+     $S_r$ is minimised by taking partial derivatives wrt $\vect{a}$, which yields
      $$
-     S_r = \sum_{i=0}^{n}\left(y_i - \sum_{j=0}^{m} a_j z_{ji}  \right)^2
+     \vect{Z}^T \vect{Z} \vect{a} = \vect{Z}^T \vect{y}
      $$
-     Again, $S_r$ is minimised by taking partial derivatives wrt $a_i$, and yields
-     $$
-     [[Z]^T[Z]]\{A\} = \{[Z^T]\{Y\}\}
-     $$
-     which is equivalent to the normal equations (set of simultaneous equations for $a_i$ we found previously).
+     which is exactly equivalent to the set of simultaneous equations for $a_i$ we found previously when fitting polynomials.
      More details can of the derivation can be found <a href="http://fourier.eng.hmc.edu/e176/lectures/NM/node35.html">here</a>, though the notation is a little different.
    </p>
    <p>
-     This set of equations can be solved using the methods of solving linear equations.
-   </p><p>
-     For now, it can be done brute force by calculating the matrix inverse of $[[Z]^T[Z]]$ or using Gauss elimination.
+     This set of equations is of the form $\vect{A} \vect{x} = \vect{b}$ and can be solved using gauss elimination or similar method.
    </p>
    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
    8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
@@ -545,20 +541,20 @@ int main()
     <p>
       Suppose we have 11 measurements at 
       $$
-      x^T = -3. , -2.3, -1.6, -0.9, -0.2,  0.5,  1.2,  1.9,  2.6,  3.3,  4.
+      x^T = [-3. , -2.3, -1.6, -0.9, -0.2,  0.5,  1.2,  1.9,  2.6,  3.3,  4.0]
       $$
-      with values
+      with measured values
       $$
-      y^T = 8.26383742,  6.44045188,  4.74903073,  4.5656476 ,  3.61011683,
+      y^T = [8.26383742,  6.44045188,  4.74903073,  4.5656476 ,  3.61011683,
       3.32743918,  2.9643915 ,  1.02239181,  1.09485138,  1.84053372,
-      1.49110572
+      1.49110572]
       $$
       <img src='../images/genRegData.png' width="400px">
     </p>
-    <p>Let us fit it to a function of the form $y_i = a_0 + a_1 e^{-x} + a_2 e^{-2x} $</p>
+    <p>Let us fit it to a model of the form $y_i = a_0 \cdot 1 + a_1 e^{-x_i} + a_2 e^{-2x_i} $</p>
   </div></section>
   <section><div class='inner_cell'>
-    <p>Our $Z$ matrix has 3 columns - for the basis function corresponding to $a_0$, then $a_1$ ($e^{-x}$) and then the term corresponding to $a_2$ $e^{-2x}$. It will have 11 rows corresponding to the 11 measurements.
+    <p>Our $\vect{Z}$ matrix has 3 columns for the basis functions $z_0 (x_i) = 1$, $z_1 (x_i) = e^{-x_i}$ and finally $z_2 = e^{-2x_i}$. It will have 11 rows corresponding to the 11 measurements.
       <pre>
         Z = 
         [[  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
@@ -575,7 +571,7 @@ int main()
       </pre>
     </p>
     <p>
-      Then we set up the linear equation problem by forming \([Z]^T[Z]\) and $[Z]^T\{y\}$ and combine them to form the following augmented matrix
+      Then we set up the linear equation problem by forming $\vect{Z}^T \vect{Z}$ and $\vect{Z}^T \vect{y}$ shown here as the following augmented matrix
       <pre>
         [[  1.10000000e+01,   3.98805235e+01,   5.35475292e+02, 3.86526046e+01],
         [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03, 2.57093542e+02],
@@ -607,17 +603,17 @@ int main()
 <section>
   <div class="inner_cell">
     <h2 id="Statistical interpretation of least squares">Statistical interpretation of least squares<a class="anchor-link" href="#Statistical interpretation of least squares">&#182;</a></h2>
-    <p>The matrix $[[Z]^T[Z]]^{-1}$ contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
-    <p>We can use the Gauss Jordan method to find $[[Z]^T[Z]]^{-1}$.</p>
-    <p>The diagonal elements of $[[Z]^T[Z]]^{-1}$ can be designated as $z_{i,i}^{-1}$</p>
-    <p>We will call the standard error of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-(m+1)}}\sqrt{\sum_{i=0}^{i=n-1} (y_i -  a_0 z_{0i} + a_1 z_{1i} + a_2 z_{2i} + \cdots + a_m z_{mi} )^2}$</p>
+    <p>The matrix $(\vect{Z}^T \vect{Z})^{-1}$ contains the variance (diagonal elements) and covariances (off-diagonal elements) of the $a_i$ so can be used to estimate the accuracy of the parameter estimation.</p>
+    <p>We can use the Gauss Jordan method to find $(\vect{Z}^T \vect{Z})^{-1}$.</p>
+    <p>The diagonal elements of $(\vect{Z}^T \vect{Z})^{-1}$ can be designated as $z_{i,i}^{-1}$</p>
+    <p>We will call the standard error of our fitted model to the data $s_{y/x} = \frac{1}{\sqrt{n-m}}\sqrt{\sum_{i=0}^{i=n-1} [ y_i -  a_0 z_0 (x_i) + a_1 z_1 (x_i) + a_2 z_2 (x_i) + \cdots + a_{m-1} z_{m-1} (x_i) ] ^2}$</p>
     <p>The variances of our parameters are given by $\text{var}(a_i) = s^2(a_i)= z_{i,i}^{-1} s_{y/x}^2$</p>
   </div>
 </section>
 
 <section>
   <div class='inner_cell'>
-    <p>We can now place error limits on our optimal parameters, $a_0, ... a_m$.</p>
+    <p>We can now place error limits on our optimal parameters, $a_0, ... a_{m-1}$.</p>
     <p>If our model is good, the real data should be approximately normally distributed around our model</p><p> You can then show that the parameters should have a <a href="https://mattatlincoln.github.io/teaching/statistics/lecture_9/#/6/2">t-distribution</a> with $n-2$ degrees of freedom.</p>
     <p>We can put confidence limits on the parameters using $P(\text{true value of the ith parameter is in the interval } (a_i - t_{c/2,n-2} s(a_i) , a_i + t_{c/2,n-2} s(a_i) ) = c$ where $c$ is our confidence, for instance 0.95 to be 95% certain the parameter lies within those bounds and $t_c$ are the <a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3672.htm"> critical values for the appropriate t distribution</a>.</p>
   </div>
@@ -676,11 +672,11 @@ int main()
         </td>
       </tr>
     </table>
-    you can assume that $y_i = a_0 + a_1 x_i + e_i$
+    use the model form $y_i = a_0 \cdot 1 + a_1 x_i + e_i$
    </p>
    <li>
      Calculate an error estimate for the optimal parameters.
-     Note, you can perform the matrix inversion required using <a href="https://mattatlincoln.github.io/teaching/numerical_methods/lecture_2/#/7">Gauss Jordan elimination</a>, by hand, or other means for now.
+     Note, you can perform the matrix inversion required using <a href="https://mattatlincoln.github.io/teaching/numerical_methods/lecture_2/#/7">Gauss Jordan elimination</a>, by by using a solver in Eigen and setting the right hand side equal to the unit matrix.
    </li> 
    <li>Upload your solutions and answers to related questions onto <a href="https://blackboard.lincoln.ac.uk/webapps/bbgs-acxiom-bb_bb60/execute/acxiomGateway?course_id=_127603_1&content_id=_2238111_1&mode=view">Blackboard</a> .</li>
  </div><br><br>
@@ -693,10 +689,9 @@ int main()
        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
 
   <p>Remember to break the problem down into smaller ones:
-    <li>Can you set up the z matrix?</li>
-    <li>Can you find the transpose of the z matrix?</li>
+    <li>Can you set up the $\vect{Z}$ matrix?</li>
+    <li>Can you find the transpose of the $\vect{Z}$ matrix?</li>
     <li>Can you multiply the transposed and non-transposed matrices together?</li>
-    <li>Can you use form the augmented matrix?</li>
     <li>Can you solve the system of linear equations?</li>
   </p>
 </div>
