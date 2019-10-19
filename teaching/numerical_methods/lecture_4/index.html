@@ -557,7 +557,8 @@ int main()
     <p>Our $\vect{Z}$ matrix has 3 columns for the basis functions $z_0 (x_i) = 1$, $z_1 (x_i) = e^{-x_i}$ and finally $z_2 = e^{-2x_i}$. It will have 11 rows corresponding to the 11 measurements.
       <pre>
         Z = 
-        [[  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
+        [
+        [  1.00000000e+00,   2.00855369e+01,   4.03428793e+02],
         [  1.00000000e+00,   9.97418245e+00,   9.94843156e+01],
         [  1.00000000e+00,   4.95303242e+00,   2.45325302e+01],
         [  1.00000000e+00,   2.45960311e+00,   6.04964746e+00],
@@ -571,11 +572,18 @@ int main()
       </pre>
     </p>
     <p>
-      Then we set up the linear equation problem by forming $\vect{Z}^T \vect{Z}$ and $\vect{Z}^T \vect{y}$ shown here as the following augmented matrix
+      Then we set up the linear equation problem by forming $\vect{Z}^T \vect{Z}$ 
       <pre>
-        [[  1.10000000e+01,   3.98805235e+01,   5.35475292e+02, 3.86526046e+01],
-        [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03, 2.57093542e+02],
-        [  5.35475292e+02,   9.23382518e+03,   1.73292733e+05, 3.89173010e+03]]        
+        ZTZ =
+        [
+        [  1.10000000e+01,   3.98805235e+01,   5.35475292e+02],
+        [  3.98805235e+01,   5.35475292e+02,   9.23382518e+03],
+        [  5.35475292e+02,   9.23382518e+03,   1.73292733e+05]]        
+      </pre>
+      and $\vect{Z}^T \vect{y}$ 
+      <pre>
+        ZTy = 
+        [   39.36979777,   272.62352738,  4125.63079852]
       </pre>
     </p>
   </div>
