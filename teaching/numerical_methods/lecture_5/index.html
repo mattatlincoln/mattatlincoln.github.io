@@ -324,6 +324,7 @@ linebreaks: { automatic: true }
       <li>For cubic functions, neighbouring polynomials have the same curvature at the points that they overlap - provides $n-1$ equations</li>
       <li>For quadratic or cubic splines add 1 or 2 boundary conditions - typically curvatures = 0 at starting points</li>
       </p><p> These provide sufficient conditions to determine the coefficients of the $n$ polynomials - another linear system of equations to solve.</p>
+      <p>Excel uses cubic spline interpolation for smooth graphs.</p>
     </div>
   </section>
   <section>
@@ -332,7 +333,7 @@ linebreaks: { automatic: true }
       <p>
         Linear spline interpolation on a set of data points $(x_0, y_0), (x_1, y_1), ..., (x_n, y_n)$ is defined as the concatenation of linear interpolants between each pair of data points. This results in a continuous curve, with a discontinuous derivative.<br>
         <img src='https://upload.wikimedia.org/wikipedia/commons/6/67/Interpolation_example_linear.svg' height='200'>
-        <br>The spline has a separate linear equation between each pair of points.
+        <br>The spline has a separate linear equation between each pair of points - like Excel straightline plot.
       </p>
     </div>
   </section>
