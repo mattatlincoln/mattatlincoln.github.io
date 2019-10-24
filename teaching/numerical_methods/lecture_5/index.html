@@ -343,7 +343,7 @@ linebreaks: { automatic: true }
     <h2 id="Trigonometric interpolation">Trigonometric interpolation<a class="anchor-link" href="#Trigonometric interpolation">&#182;</a></h2>    
     <p>We can use our general least squared fitting to fit a set of basis functions to our data.</p>
     <p>This provides an approximate analytical form for the data over the whole range of the data.</p>
-    <p>Best example uses trigonometric functions $$y_i = a_0 + \sum_1^{N} b_N \sin{ (N \omega x_i)} + \sum_1^{N} b_N \cos{ (N \omega x_i)} $$
+    <p>Best example uses trigonometric functions $$y_i = a_0 + \sum_{n=1}^{n=N} b_n \sin{ (n \omega x_i)} + \sum_{n=1}^{n=N} b_n \cos{ (n \omega x_i)} $$
       where $\omega$ is $2 \pi / (\text{range of } x)$. So, if fitting data given between -10 and 10, $\omega$ would equal $2 \pi / 20$. 
     </p>
     <p>Works best for continuous functions that have the same values and gradients at either end of the range fitted.</p>
