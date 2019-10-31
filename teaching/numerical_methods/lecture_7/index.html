@@ -272,7 +272,7 @@ linebreaks: { automatic: true }
 
  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- <li>Derive Newton's Method for opimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
+ <li>Derive Newton's Method for optimization by finding the value of $x$ (call it $x^{(k+1)}$) that minimizes $q(x)$</li>
  <ul>
    <li>Implement Newton's Method for optimization and use it to find minima of the following functions.
    <ul>
@@ -397,42 +397,6 @@ linebreaks: { automatic: true }
     -\frac{ \delta f     (\textbf{x})}{\delta x_{k-1}} \\
     \end{pmatrix}
   $$  
-</p>
-<h4>Example</h4>
-<p>
-  So if $f(x_0, x_1) = 2x_0^2 + 3x_1 ^2$ we have 
-  $$
-  \begin{pmatrix}
-      4 & 0 \\
-      0 & 6
-  \end{pmatrix}
-  \begin{pmatrix}
-    \Delta x_0  \\
-    \Delta x_1 \\
-  \end{pmatrix}
-  =
-  \begin{pmatrix}
-    -4 x_0  \\
-    -6 x_1 \\
-  \end{pmatrix}
-  $$ 
-  if we start from $\textbf{x} = (1,1)^T$ then we get
-  $$
-  \begin{pmatrix}
-      4 & 0 \\
-      0 & 6
-  \end{pmatrix}
-  \begin{pmatrix}
-    \Delta x_0  \\
-    \Delta x_1 \\
-  \end{pmatrix}
-  =
-  \begin{pmatrix}
-    -4 \\
-    -6 \\
-  \end{pmatrix}
-  $$ 
-  or $\Delta \textbf{x} = (-1, -1)^T$.</p><p> Our new guess vector for the minimum is $ \textbf{x} + \Delta \textbf{x} =(1,1)^T + (-1, -1)^T = (0,0)^T$
 </p>
 </div></section>
 
