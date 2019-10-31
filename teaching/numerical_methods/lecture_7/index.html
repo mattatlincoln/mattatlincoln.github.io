@@ -265,9 +265,9 @@ linebreaks: { automatic: true }
   <h2>Optimization</h2>
   <p>Newton's method for optimization is found by minimizing the quadratic approximation
    $$
-   q(x) = f(x^{(k)}) + f'(x^{(k)})(x - x^{(k)}) + \frac{1}{2}f''(x^{(k)})(x - x^{(k)})^2 
+   q(x_{k+1}) = f(x_{k}) + f'(x_{k}) \cdot (x_{k+1} - x_{k}) + \frac{1}{2}f''(x_{k}) \cdot (x_{k+1} - x_{k})^2 
    $$
-   where $q(x)$ is the estimated value of $f(x)$ and we are currently at $x^{(k)}$.
+   where $q(x_{k+1})$ is the estimated value of $f(x_{k+1})$ and we are currently at $x_{k}$.
  </p>
 
  <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
