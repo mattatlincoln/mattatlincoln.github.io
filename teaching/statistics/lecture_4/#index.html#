@@ -1,0 +1,688 @@
+<h1 id="Conditional-probability-and-independence">Conditional probability and independence<a class="anchor-link" href="#Conditional-probability-and-independence">&#182;</a></h1><p>Learning outcomes:</p>
+                  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 
+                              8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    <li> conditional probability</li>
+		                        <li> definition of independence of events </li>
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>04 - Expectation and Variance part 1 slides</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- General and theme style sheets -->
+    <link rel="stylesheet" href="../../../revealjs//css/reveal.css">
+    <link rel="stylesheet" href="../../../revealjs//css/theme/beige.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs//css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+
+    </script>
+
+    <!--[if lt IE 9]>
+	<script src="../../../revealjs//lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <!-- Loading the mathjax macro -->
+    <!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      processEnvironments: true
+      },
+      // Center justify equations in code and markdown cells. Elsewhere
+      // we use CSS to left justify single line equations in code cells.
+      displayAlign: 'center',
+      "HTML-CSS": {
+      styles: {'.MathJax_Display': {"margin": 0}},
+      linebreaks: { automatic: true }
+      }
+      });
+    </script>
+    <!-- End of mathjax configuration -->
+
+    <!-- Get Font-awesome from cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+    <!-- Custom stylesheet, it must be in the same directory as the html file -->
+    <link rel="stylesheet" href="../custom.css">
+
+  </head>
+
+
+  <body>
+
+
+    <div class="reveal">
+      <div class="slides">
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Expectation-and-Variance">Expectation and Variance<a class="anchor-link" href="#Expectation-and-Variance">&#182;</a></h1><p>In these lectures we will define the expectation and variance of a random variable.</p>
+		  <p>This is a further step in connecting abstract probability distribututions to statistical measures, and the real world, if required.</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    By the end of the lecture you should know 
+		    <li> how to calculate the expectation value of a random variable (this is some measure of where the centre of a distribution is) </li>
+		    <li> how to calculate the variance of a random variable (this is a measure of how widely spread a distribution is).</li>
+		    <li> how to calculate expectation values of a function of a random variable.</li>
+		  </div><p>Later we'll study particular probability distributions and understanding their expectation values will allow us to model and predict the results of measurements made on objects that can be modelled as random variables.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Revision">Revision<a class="anchor-link" href="#Revision">&#182;</a></h1><h2 id="Discrete-random-variables">Discrete random variables<a class="anchor-link" href="#Discrete-random-variables">&#182;</a></h2><p><strong>Definition</strong>
+		    Consider an experiment, with outcome set $S$, split into $n$ mutually exclusive and exhaustive events $E_1,E_2,E_3,\ldots,E_n$. A variable, $X$ say, which can assume exactly $n$ numerical values each of which corresponds to one and only one of the given events is called a random variable.</p>
+		  <p>Schematically the mutually exclusive and exhaustive events look like</p>
+		  <p><img src="../Images/Exclusive_and_exhaustive.jpg" alt="Exhaustive" height="200" width="200"></p>
+		  <p>Here our outcome set is split into 4 mutually exclusive events (no overlap) and exhaustive (all of $S$ is covered by them).</p>
+		  <p>So to associate a random variable (call it $X$) with this sample space we could have something like where to each mutually exclusive event we associate a value of $X = x$ and a probability $p_X(x)$.</p>
+		  <table>
+		    <thead><tr>
+			<th>$X$</th>
+			<th>event</th>
+			<th>$p_X(x)$</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+			<td>1</td>
+			<td>$E_1$</td>
+			<td>$p_X(1) = 0.1$</td>
+		      </tr>
+		      <tr>
+			<td>2</td>
+			<td>$E_2$</td>
+			<td>$p_X(2) = 0.2$</td>
+		      </tr>
+		      <tr>
+			<td>3</td>
+			<td>$E_3$</td>
+			<td>$p_X(3) = 0.3$</td>
+		      </tr>
+		      <tr>
+			<td>4</td>
+			<td>$E_4$</td>
+			<td>$p_X(4) = 0.4$</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		  <p>Check list</p>
+		  <ul>
+		    <li>is the sample space well defined?</li>
+		    <li>are the events mutually exclusive?</li>
+		    <li>do the events cover all the sample space?</li>
+		    <li>are values of the variable clearly assigned one-to-one to the possible events?</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Expectation-of-a-Random-variable">Expectation of a Random variable<a class="anchor-link" href="#Expectation-of-a-Random-variable">&#182;</a></h3><p><strong>Definition</strong></p>
+		  <p>Given a random variable $X$ with a probability mass function $p(x)$  we define the expectation of $X$, written as $\text{E}[X]$ as</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    $$
+		    \text{E}[X] = \sum_{x\in X} x \cdot p(x)
+		    $$
+		  </div><p>The equivalent for a continuous random variable $Z$ is</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    $$
+		    \text{E}[Z] = \int_{-\infty}^{\infty} z\cdot f(z) \mathrm{d}z
+		    $$
+		  </div><p>We see that the relationship is very close between discrete and continuous cases - we replace a sum with an integral.</p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+		    We also call $\text{E}[X]$ the mean of $X$ and write it as $\mu_X$
+		  </div>
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Example---discrete-random-variable">Example - discrete random variable<a class="anchor-link" href="#Example---discrete-random-variable">&#182;</a></h3><p>In a game 3 dice are rolled. The player bets £1.  They get back £1 if they roll a single 5, £2 if 2 fives come up, and £3 if 3 fives come up. If no 5s come up they lose their £1 stake.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Let us set up a random variable $W$ for the winnings of the player.</p>
+		  <p>The sample space is the cartesian product of rolling a die:</p>
+		  <p>$S = \{(x_1,x_2,x_3): x_i = 1,2, \ldots, 6; i = 1,2,3\}$</p>
+		  <p>Now, we'll define $W$ as the amount the player wins - this can be $-1,1,2,3$ corresponding to 0,1,2, or 3 fives showing:</p>
+		  $$
+		  V = 
+		  \begin{cases} 
+		  \hfill -1   \hfill &amp; \text{if '0 dice lands with 5 spots on the top face'} \\
+		  \hfill 1   \hfill &amp; \text{if '1 dice lands with 5 spots on the top face'} \\
+		  \hfill 2   \hfill &amp; \text{if '2 dice land with 5 spots on the top face'} \\
+		  \hfill 3   \hfill &amp; \text{if '3 dice land with 5 spots on the top face'} 
+		  \end{cases}
+		  $$<p></p>
+		  <p>and our probability mass function will be</p>
+		  $$
+		  p_V(v) = 
+		  \begin{cases} 
+		  \hfill \frac{125}{216}   \hfill &amp; \text{ for } v = -1 \\
+		  \hfill \frac{75}{216}   \hfill &amp; \text{ for } v = 1 \\
+		  \hfill \frac{15}{216}   \hfill &amp; \text{ for } v = 2 \\
+		  \hfill \frac{1}{216}   \hfill &amp; \text{ for } v = 3 \\
+		  \end{cases}
+		  $$<p>note that $p_V(0) &gt; 0.5$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Now, suppose the player plays the game $n &gt;&gt; 1$ times.</p>
+		  <p>They win $v_1$ pounds the first time, $v_2$ the second time, $\ldots$ ,$v_n$ pounds the $n^{th}$ time. The average amount one would then be a standard average</p>
+		  $$
+		  \bar{v} = \frac{1}{n}\sum_{i=1}^{n} v_i
+		  $$<p>Now each of the $v_i$ can only be $-1,1,2,3$.</p>
+		  <p>Lets reorganise our results and say that $k_{-1}$ times they got $v_i = -1$, $k_1$ times $v_i = 1$, $k_2$ times $v_i = 2$ and $k_3$ times $v_i = 3$. Where $k_{-1} + k_1 + k_2 + k_3$ will be equal to $n$ because we are just placing our $n$ values into these boxes, then</p>
+		  $$
+		  \bar{v} = \frac{1}{n}\sum_{i=1}^{n} v_i = (-1) \frac{k_{-1}}{n} + (1) \frac{k_{1}}{n} + (2) \frac{k_{2}}{n} + (3) \frac{k_{3}}{n}  
+		  $$
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  $$
+		  \bar{v} = \frac{1}{n}\sum_{i=1}^{n} v_i = (-1) \frac{k_{-1}}{n} + (1) \frac{k_{1}}{n} + (2) \frac{k_{2}}{n} + (3) \frac{k_{3}}{n}  
+		  $$<p>is our average value - but as $n \to \infty$ the ratios $\frac{k_i}{n}$ tend to our original frequentist definition of probabilities - the number of times something occurs out of the total number of attempts.</p>
+		  $$
+		  \frac{k_{-1}}{n} = p_V(-1), \frac{k_{1}}{n} = p_V(1), \frac{k_{2}}{n} = p_V(2), \frac{k_{3}}{n} = p_V(3)
+		  $$<p>and finally we get</p>
+		  $$
+		  \bar{v} = \mu_V = \sum_{i=1}^{n} v_i p_V(i) = \sum_{v \in R_V } v p_V(v) 
+		  $$<p>in this case</p>
+		  $$
+		  \text{E} = \mu_V = \sum_{v \in R_V } v p_V(v) = (-1) \frac{125}{216} + (1) \frac{75}{216} + (2) \frac{15}{216} + (3) \frac{1}{216} = \frac{-17}{216} = -0.08
+		  $$<p>On average the player loses 8p every time they play.</p>
+		  <p>Note that the average in <em>not</em> in general a value the $V$ can take on.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Example---continuous-random-variable">Example - continuous random variable<a class="anchor-link" href="#Example---continuous-random-variable">&#182;</a></h3><p>Suppose you meet that friend of yours that is always late. You, of course, arrive on time ($T=0$), your friend shows up at a random time $T &gt; 0$ with probability density function</p>
+		  $$
+		  f_T(t) = \frac{2}{15} - \frac{2t}{225}, 0 &lt; t &lt; 15
+		  $$<p>We'll ignore other times, where $f_T(t) = 0$</p>
+		  <p>We could break this interval up into a large number, $n$, of small pieces with length $\Delta t = 15/n$ and let $t_1, t_2, t_3, \ldots , t_n$ be the midpoints of these small intervals.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>The probability of your friend arriving between at time $t_i$ is approximately $P( t_i - \Delta t/2 &lt; T &lt; t_i + \Delta t/2 ) \approx f_T(t_i) \Delta t$.</p>
+		  <p>We'd expect our average waiting time to be about $\sum_{i=1}^n t_i f_T(t_i) \Delta t$ - the sum of the product of length of wait, $t_i$, times the probability of waiting that long, $f_T(t_i) \Delta t$. The same as for the discrete random variable case.</p>
+		  <p>If we now take $n$ larger and large towards infinity, we get</p>
+		  $$
+		  \int_{0}^{15} tf_T(t) \text{d}t = \int_{0}^{15} t\Big(\frac{2}{15} - \frac{2t}{225}\Big) \text{d}t = 5 \text{ (minutes)}
+		  $$<p>This is the length of time you expect to wait for your friend.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Expectation-of-a-function-of-a-random-variable">Expectation of a function of a random variable<a class="anchor-link" href="#Expectation-of-a-function-of-a-random-variable">&#182;</a></h3><p><strong>Definition</strong></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+		    Let $g(X)$ be any function of a discrete random variable $X$. 
+
+		    Then
+
+		    $$
+		    \text{E}[g(X)] = \sum_{x \in X}g(x) \cdot p(x)
+		    $$
+
+		  </div>
+		  <br>
+
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+		    Let $h(Z)$ be any function of  the continuous random variable $Z$
+
+		    $$
+		    \text{E}[h(Z)] = \int_{-\infty}^{\infty} h(z)\cdot f(z) \mathrm{d}z
+		    $$
+		  </div><p>these can be understood in the same way as $\text{E}[X]$, it is the value of $g(X)$ times the probability of getting that value $X=x$, and hence $g(x)$.</p>
+		  <p>The derivation using repetitions of experiments can be repeated, but replacing $v_i$ with $g(v_i)$.</p>
+
+		</div>
+	      </div>
+	  </div></section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p><strong>Example</strong></p>
+		  <p>Find $\text{E}[X^2]$ for the continuous random variable $X$ with probability density function</p>
+		  $$
+		  \begin{align}
+		  f_X(x) &amp; = \frac{3}{4}x(2-x): 0 \leq x \leq 2 \\ 
+		  &amp; = 0 \text{   otherwise}
+		  \end{align}     
+		  $$
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>taking our general formula</p>
+		    $$
+		    \text{E}[h(Z)] = \int_{-\infty}^{\infty} h(z)\cdot f(z) \mathrm{d}z
+		    $$<p>we fill in for our particular $f_X(x)$</p>
+		    $$
+		    \text{E}[X^2] = \int_0^2 x^2 \cdot \frac{3}{4} x(2-x) \mathrm{d}x = \frac{6}{5}
+		    $$<p>where we ignored the parts of the improper integral $\int_{-\infty}^{\infty} x^2 \cdot f(x) \mathrm{d}x$ where $f(x)$ is zero.</p>
+
+		  </div>
+		</div>
+	    </div></div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>$\text{E}[g(X)]$ can be interpreted as the 'average' (mean) value of the $g(X)$.</p>
+		    <p><strong>It is a number not a function.</strong></p>
+
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h4 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h4><p>$\text{E}[a] = a$, where $a$ is a constant for any random variable.</p>
+
+		</div>
+	      </div>
+	    </div><div class="fragment">
+	      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+		</div>
+		<div class="inner_cell">
+		  <div class="text_cell_render border-box-sizing rendered_html">
+		    <p>this is a special case of 
+		      $$
+		      \text{E}[g(X)] = \sum_{x \in X}g(x) \cdot p(x)
+		      $$
+		      with $g(X) = a$. So</p>
+		    $$
+		    \begin{align}
+		    \text{E}[a] &amp; = \sum_{x \in R_X} g(x) \cdot p_X(x) \\
+		    &amp; = \sum_{x \in R_X} a \cdot p_X(x) \\
+		    &amp; = a \sum_{x \in R_X}  p_X(x) \\
+		    &amp; = a
+		    \end{align}
+		    $$<p>because the sum of all the $p_X(x)$ must be 1 for a valid probability mass function.</p>
+
+		  </div>
+		</div>
+	</div></div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary-of-part-1">Summary of part 1<a class="anchor-link" href="#Summary-of-part-1">&#182;</a></h1><p>we have given the definitions of</p>
+		  <ul>
+		    <li>expectation of random variables</li>
+		    <li>expectation of functions of a random variable</li>
+		  </ul>
+
+		</div>
+	      </div>
+	</div></section></section>
+	<section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary-of-relations-given-in-part-1">Summary of relations given in part 1<a class="anchor-link" href="#Summary-of-relations-given-in-part-1">&#182;</a></h1><p><strong>Definition</strong></p>
+		  <p>Given a random variable $X$ with a probability mass function $p(x)$  we define the expectation of $X$, written as $\text{E}[X]$ as</p>
+		  $$
+		  \text{E}[X] = \sum_{x \in R_X} x\cdot p(x)
+		  $$<p>The expectation of a discrete random variable $X$ is just the arithmetic mean of the values it takes on.</p>
+		  <p>The equivalent for a continuous random variable $Z$ is</p>
+		  $$
+		  \text{E}[Z] =  \int_{-\infty}^{\infty} z\cdot f(z) \mathrm{d}z
+		  $$<p>again we see that the relationship is very close between discrete and continuous cases.</p>
+		  <hr>
+		  <p><strong>Definition</strong></p>
+		  <p>Let $g(X)$ be any function of a random variable $X$. Then</p>
+		  $$
+		  \text{E}[g(X)] = \sum_{x \in R_X}g(x) \cdot p(x)
+		  $$<p>or for the continuous random variable $Z$</p>
+		  $$
+		  \text{E}[g(Z)] = \int_{-\infty}^{\infty} g(z)\cdot f(z) \mathrm{d}z
+		  $$<hr>
+		  <p>if $X$ is a random variable, then</p>
+		  <ul>
+		    <li>$\text{E}[a] = a$</li>
+		    <li>$\text{E}[aX] = a\text{E}[X]$</li>
+		    <li>$\text{E}[g_1(X) + g_2(X)] = \text{E}[g_1(X)] + \text{E}[g_2(X)]$, where $g_1(X)$ and $g_2(X)$ are any functions of X. </li>
+		  </ul>
+		  <p>these define the properties of a linear operator.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Variance-of-a-random-variable">Variance of a random variable<a class="anchor-link" href="#Variance-of-a-random-variable">&#182;</a></h3><p>The mean describes where a distribution is centred - expected value.</p>
+		  <p>The variance describes how widely the values of the distribution are spread around the mean.</p>
+		  <p><strong>Definition</strong></p>
+		  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left: 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+		    If $X$ is a random variable with mean $\mu$, then the variance of $X$, denoted by $\text{Var}(X)$ or $\sigma_X^2$, is defined by
+
+		    $$
+		    \sigma_X^2 = \text{Var}(X) = \text{E}[(X-\mu)^2]
+		    $$
+
+		    this can also be written
+
+		    $$
+		    \sigma_X^2 = \text{Var}(X) = \text{E}[X^2] - (\text{E}[X])^2 
+		    $$
+		  </div><p>It is the expected squared distance of a value from the centre of the distribution.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Standard-Deviation">Standard Deviation<a class="anchor-link" href="#Standard-Deviation">&#182;</a></h2><p>the standard deviation of a random variable $X$ is the square root of its variance.</p>
+		  $$
+		  \sigma_X = \sqrt{\text{Var}(X)} = \sqrt{\text{E}[X^2] - (\text{E}[X])^2 } = \sqrt{\text{E}[(X-\mu)^2]}
+		  $$<p>a major advantage of the standard deviation is that it has the same units, if any, as the variable itself.</p>
+		  <p>It gives the expected root mean squared distance of a data point from the centre of the distribution.</p>
+		  <p>The smaller the variance or standard deviation, the more well defined a distribution is.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>show how the two formulae for the variance are equivalent</p>
+		  $$
+		  \sigma_X^2 = \text{Var}(X) = \text{E}[(X-\mu)^2] =  \text{E}[X^2] - (\text{E}[X])^2 
+		  $$<p>we can expand the bracket in $\text{E}[(X-\mu)^2]$ to get</p>
+		  $$
+		  \text{E}[(X-\mu)^2] = \text{E}[X^2 - 2\mu X + \mu^2]
+		  $$<p>and we use the fact that it is a linear operator to write this as</p>
+		  $$
+		  \text{E}[X^2 - 2\mu X + \mu^2] = \text{E}[X^2] - \text{E}[2\mu X] + \text{E}[\mu^2]
+		  $$<p>and then that $\text{E}[a] = a$ and $\text{E}[aX] = a \text{E}[X]$ to write</p>
+		  $$
+		  \begin{align}
+		  \text{E}[X^2 - 2\mu X + \mu^2] &amp; = \text{E}[X^2] - \text{E}[2\mu X] + \text{E}[\mu^2] \\
+                  &amp; = \text{E}[X^2] - 2\mu\text{E}[X] + \mu^2 \\
+                  &amp; = \text{E}[X^2] - 2\mu \mu + \mu^2 \\
+                  &amp; = \text{E}[X^2] - (\text{E}[X])^2 
+		  \end{align}
+		  $$<p>because by definition $\mu = \text{E}[X]$.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Useful-identity-of-the-variance">Useful identity of the variance<a class="anchor-link" href="#Useful-identity-of-the-variance">&#182;</a></h3>$$
+		  \text{Var}(aX + b) = a^2 \text{Var}(X)
+		  $$<p>a shift of the distribution doesn't change its spread.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Moments-of-a-random-variable">Moments of a random variable<a class="anchor-link" href="#Moments-of-a-random-variable">&#182;</a></h2><p>The mean and variance describe a probability law for a random variable to some extent - the centre of the distribution $\mu_X = \text{E}[X]$ and how far points stray from the centre $\sigma_X^2$.</p>
+		  <p>The $k^{th}$ moment of a random variable $X$ is defined as</p>
+		  <p>$m_k = \text{E}[X^k]$</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>so 
+		    $$
+		    m_1 = \text{E}[X] = \mu_X
+		    $$</p>
+		  <p>the second moment is</p>
+		  $$
+		  m_2 = \text{E}[X^2] = \sigma_X^2 + \mu_X^2
+		  $$<p>so the mean and variance can be defined in terms of the first two moments of the distribution.</p>
+		  <p>Higher moments define skewedness ($m_3$) - how wonky a distribution is (zero for a symmetric distribution) - and other details of the shape of the distribution.</p>
+		  <p>A full set of moments fully defines a distribution (though sometimes not all moments will be well defined).</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h3 id="Moment-generating-function">Moment generating function<a class="anchor-link" href="#Moment-generating-function">&#182;</a></h3><p>There are some short cuts to calculating the moments of a distribution</p>
+		  <p>The moment generating function of a random variable $X$ is</p>
+		  <p>$m_X(t) = \text{E}[e^{tX}], -\infty &lt; t &lt; \infty$</p>
+		  <p>This function can be used to generate (hence the name) the moments of a distribution.</p>
+		  <p>Remember that</p>
+		  $$
+		  e^{tx} = 1 + tx + \frac{(tx)^2}{2!} + \frac{(tx)^3}{3!} + \cdots
+		  $$<p>the Taylor series of $e^{tx}$ about $x = 0$.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>Then</p>
+		  $$
+		  \begin{align}
+		  m_X(t) &amp; = \text{E}[e^{tX}] \\
+		  &amp; = \text{E}\Bigg[1 + tX + \frac{(tX)^2}{2!} + \frac{(tX)^3}{3!} + \cdots \Bigg]
+		  \end{align}
+		  $$<p>and again using the linear properties of $\text{E}[]$ we get</p>
+		  $$
+		  \begin{align}
+		  m_X(t) &amp; =  1 + \text{E}[tX] + \frac{t^2}{2!}\text{E}[X^2] + \frac{t^3}{3!}\text{E}[X^3] + \cdots \\
+		  &amp; = 1 + t m_1 + \frac{t^2}{2!} m_2 +  \frac{t^3}{3!} m_3 + \cdots
+		  \end{align}
+		  $$
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <p>If we now take derivatives wrt (with respect to) $t$ we get</p>
+		  $$
+		  \frac{\text{d}m_X(t)}{\text{d}t}= m_1 +  t m_2 + \frac{t^2}{2!} m_3 + \cdots
+		  $$$$
+		  \frac{\text{d}^2m_X(t)}{\text{d}t^2}= m_2 +  t m_3 + \frac{t^2}{2!} m_4 + \cdots
+		  $$<p>finally setting $t = 0$ all terms in the series will be equal to zero except the first</p>
+		  $$
+		  \frac{\text{d}m_X(t)}{\text{d}t} \Bigg|_{t=0} = m_1 
+		  $$$$
+		  \frac{\text{d}^2m_X(t)}{\text{d}t^2} \Bigg|_{t=0} = m_2 
+		  $$<p>etc.</p>
+
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>The length of time a transistor will work is a random variable $Y$ with density function</p>
+		  $$
+		  \begin{align}
+		  f_Y(y) &amp; = 0.001e^{-0.001y}, \hfill y &gt; 0 \\
+		  &amp; = 0 \text{ otherwise:}
+		  \end{align}
+		  $$<p>the moment generating function of $Y$ is 
+		    $$
+		    \begin{align}
+		    m_Y(t) &amp; = \text{E}[e^{tY}]\\
+		    &amp; = \int_0^{\infty} e^{ty} 0.001e^{-0.001y} \text{d}y\\
+		    &amp; = \int_0^{\infty} 0.001e^{-y(0.001-t)} \text{d}y\\
+		    &amp; = \frac{0.001}{0.001-t}
+		    \end{align}
+		    $$</p>
+		  <p>to find the moments we take the derivative with respect to $t$ then set $t = 0$</p>
+		  $$
+		  \mu = m^{(1)}(0) = 1000
+		  $$$$
+		  m_2 = m^{(2)}(0) = 2(1000)^2
+		  $$<p>so</p>
+		  $$
+		  \sigma^2 = m_2 - \mu^2 = (1000)^2
+		  $$
+		</div>
+	      </div>
+	</div></section></section><section><section>
+	    <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+	      </div>
+	      <div class="inner_cell">
+		<div class="text_cell_render border-box-sizing rendered_html">
+		  <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>we have given the definitions of</p>
+		  <ul>
+		    <li>expectation of random variables</li>
+		    <li>variance of random variables</li>
+		    <li>expectation of sums of random variables.</li>
+		  </ul>
+		  <p>next we will look at more examples and the expectations of joint random variables.</p>
+
+		</div>
+	      </div>
+	</div></section></section>
+
+      </div>
+    </div>
+
+    <script>
+
+      require(
+      {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+      },
+      [
+      "../../../revealjs//lib/js/head.min.js",
+      "../../../revealjs//js/reveal.js"
+      ],
+
+      function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      // Parallax background image
+      parallaxBackgroundImage: '../Images/dice.jpg',
+      //Parallax background size
+      parallaxBackgroundSize: '1920px 1280px', // CSS syntax, e.g. "2100px 900px
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: "../../../revealjs//lib/js/classList.js",
+      condition: function() { return !document.body.classList; } },
+      { src: "../../../revealjs//plugin/notes/notes.js",
+      async: true,
+      condition: function() { return !!document.body.classList; } }
+      ]
+      });
+
+      var update = function(event){
+      if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+      MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+      }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+      $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+      }
+      );
+    </script>
+
+  </body>
+
+
+</html>

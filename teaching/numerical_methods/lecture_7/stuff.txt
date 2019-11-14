@@ -1,0 +1,38 @@
+<!-->
+<h4>Example</h4>
+<p>
+  So if $f(x_0, x_1) = 3x_0^2 + 2x_1 ^2$ we have 
+  $$
+  \begin{pmatrix}
+      6 & 0 \\
+      0 & 4 
+  \end{pmatrix}
+  \begin{pmatrix}
+    \Delta x_0  \\
+    \Delta x_1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -4 x_0  \\
+    -6 x_1 \\
+  \end{pmatrix}
+  $$ 
+  if we start from $\textbf{x} = (1,1)^T$ then we get
+  $$
+  \begin{pmatrix}
+      4 & 0 \\
+      0 & 6
+  \end{pmatrix}
+  \begin{pmatrix}
+    \Delta x_0  \\
+    \Delta x_1 \\
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -4 \\
+    -6 \\
+  \end{pmatrix}
+  $$ 
+  or $\Delta \textbf{x} = (-1, -1)^T$.</p><p> Our new guess vector for the minimum is $ \textbf{x} + \Delta \textbf{x} =(1,1)^T + (-1, -1)^T = (0,0)^T$
+</p><-->
+
