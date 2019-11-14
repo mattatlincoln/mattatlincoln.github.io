@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Questions and applications</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+  <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../../revealjs/css/theme/beige.css" id="theme">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '../../../revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="../../../revealjs//lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- Load mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="../custom.css">
+
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg">
+        <div class="inner_cell">
+          <h2 style="color:black;" id="Numerical Methods Week 8">Numerical Methods Week 6<a class="anchor-link" href="#Questions Week 6">&#182;</a></h2>
+          <h1 style="color:black;" id=Recap">Recap<a class="anchor-link" href="#Recap">&#182;</a></h1>
+          <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+          8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
+          <p>Learning outcomes:</p>
+        </div>
+        <br>
+        <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+        8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+        <li> Practice using some of the methods we have covered so far.</li>
+      </div>
+      <br>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+      8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+
+      <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+<h3>general</h3>
+
+With one independent variable we have
+
+$$
+f(x) \approx f(x_0) + \frac{d f(x_0)}{dx}(x-x_0) + \frac{1}{2} \frac{d^2 f(x_0)}{dx^2}(x-x_0)^2
+$$
+
+to find the minima we locate the values where $\frac{df(x)}{dx} = 0$. Doing the differentiation we get
+
+\begin{array}{}
+\frac{df(x_{min})}{dx} = 0 & \approx & \frac{1}{dx} \left[f(x_0) + \frac{d f(x_0)}{dx}(x-x_0) + \frac{1}{2} \frac{d^2 f(x_0)}{dx^2}(x-x_0)^2\right] \\
+& = & \frac{d f(x_0)}{dx} + \frac{d^2 f(x_0)}{dx^2} (x - x_0)
+\end{array}
+</p><p>
+in multiple dimensions using vector notation we have
+
+$$
+f(\mathbf{x}) \approx f(\mathbf{x_0}) + \nabla f(\mathbf{x_0})^T (\mathbf{x}-\mathbf{x_0}) + \frac{1}{2}  (\mathbf{x}-\mathbf{x_0})^T \nabla^2 f(\mathbf{x_0})(\mathbf{x}-\mathbf{x_0})
+$$
+
+differentiating with respect to $\mathbf{x}$ as before gives
+
+$$
+\frac{d f(\mathbf{x_{min}})}{d\mathbf{x}} = \mathbf{0} \approx \left( \frac{d f(\mathbf{x_0})}{d\mathbf{x}}\right) + \nabla^2 f (\mathbf{x_0})(\mathbf{x}-\mathbf{x_0})
+$$
+
+where $ \nabla f({\mathbf{x_0}})$ and $\nabla^2 f(\mathbf{x_0})$ are the gradient vector and the Hessian matrix of the scalar field $f(\mathbf{x})$ evaluated at the current point.
+</p>
+</div></section>
+<section>
+  <div class="inner_cell">
+<h3>Q3 particular case</h3>
+<p>
+
+In our case the scalar field $f(\mathbf{x}) = 2x_1^2 + 3x_2 ^2$ is over a 2D vector space $\mathbf{x} = (x_1, x_2)^T$. 
+
+The gradient vector will be
+
+$$
+\begin{array}{}
+\nabla f(\mathbf{x_0}) = \left(\frac{\delta f(\mathbf{x_0})}{\delta x_1}, \frac{\delta f(\mathbf{x_0})}{\delta x_2}\right)^T\\
+= (4 x_0, 6 x_0)^T = (4, 6)^T
+\end{array}
+$$
+
+the hessian matrix will be
+$$
+\begin{pmatrix}
+\frac{\delta^2 f(\mathbf{x_0})}{\delta x_1 \delta x_1} & \frac{\delta^2 f(\mathbf{x_0})}{\delta x_2 \delta x_1} \\
+\frac{\delta^2 f(\mathbf{x_0})}{\delta x_1 \delta x_2} & \frac{\delta^2 f(\mathbf{x_0})}{\delta x_2 \delta x_2}
+\end{pmatrix} = 
+\begin{pmatrix}
+4 & 0 \\
+0 & 6
+\end{pmatrix} 
+$$
+</p>
+<p>
+then we solve for \((\mathbf{x} - \mathbf{x_0})\), or $\Delta \mathbf{x}$, the change in $\mathbf{x}$
+
+$$
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix} = 
+\begin{pmatrix}
+4 \\
+6
+\end{pmatrix} +
+\begin{pmatrix}
+4 & 0 \\
+0 & 6
+\end{pmatrix}
+\begin{pmatrix}
+\Delta x_1 \\
+\Delta x_2
+\end{pmatrix}
+$$
+
+so $\Delta \mathbf{x} = (-1,-1)^T$ and the new $\mathbf{x} = \mathbf{x_0} + \mathbf{\Delta x} =  (1,1)^T + (-1,-1)^T = (0,0)^T$.    
+</p>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2>Power method</h2>
+    <p>This is a way of finding the eigenvector with the largest eigenvector
+    </p>
+    <p>
+     <li>Start with a guess $\textbf{x}_0$ at the eigenvector (it must not be orthogonal to the true eigenvector).</li>
+     <li>Update the eigenvector $\textbf{x}_i = \frac{\textbf{A} \textbf{x}_{n-1}}{||\textbf{A} \textbf{x}_{n-1}||}$</li>
+   </p>
+
+   <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+   <p>
+     Find the largest eigenvector of 
+     $$ \textbf{A} = \begin{pmatrix}
+     1 & -1 & -1 & -1\\
+     -1 &  2 &  0 &  0\\
+     -1 &  0 &  3 &  1\\
+     -1 &  0 &  1 &  4
+     \end{pmatrix}.$$
+     using the power method.
+   </p>
+ </div>
+ <p>
+  We basically used this when studying Markov Chains in year 1. 
+</p>
+</div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h3>Power method, why does it work?</h3>
+    <p>If our matrix is diagonalizable it has a set of orthogonal eigenvectors $\nu_1, \nu_2, \ldots, \nu_n $with eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$ with  $|\lambda _{1}|>|\lambda _{j}|$ for $j>1$.</p>
+    <p>Any vector can be expanded as a linear combination the $\nu_i$:
+      $$
+      b_{0}=c_{{1}}v_{{1}}+c_{{2}}v_{{2}}+\cdots +c_{{m}}v_{{m}}.
+      $$
+    </p>
+    <p>
+      If we apply our matrix $\textbf{A}$ to $b_0$ $k$ times we get
+      $$
+      {\begin{array}{lcl}A^{{k}}b_{0}&=&c_{{1}}A^{{k}}v_{{1}}+c_{{2}}A^{{k}}v_{{2}}+\cdots +c_{{m}}A^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}v_{{1}}+c_{{2}}\lambda _{{2}}^{{k}}v_{{2}}+\cdots +c_{{m}}\lambda _{{m}}^{{k}}v_{{m}}\\&=&c_{{1}}\lambda _{{1}}^{{k}}\left(v_{{1}}+{\frac  {c_{{2}}}{c_{{1}}}}\left({\frac  {\lambda _{{2}}}{\lambda _{{1}}}}\right)^{{k}}v_{{2}}+\cdots +{\frac  {c_{{m}}}{c_{{1}}}}\left({\frac  {\lambda _{{m}}}{\lambda _{{1}}}}\right)^{{k}}v_{{m}}\right).\end{array}}
+      $$
+      using the fact that for the eigenvectors $\textbf{A} \nu_i = \lambda_i \nu_i$. 
+    </p>
+    <p>Because $\lambda_1$ is larger than any other $\lambda$, all the terms except the first in the bracket tend to zero as $k$ gets larger.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
+    <p>Ensure that you can do the material tested today - make and multiply matrices, solve linear equations - we will be using these repeatedly in the coming weeks.</p>
+    <p>You should be reading additional material to provide a solid background to what we do in class</p>
+    <p>I suggest starting with Chapra and Canale, but there are many other text books in the library - find the one that works for you.</p>
+  </div>
+</section>
+
+<section>
+  <h2 id="Snake">Snake<a class="anchor-link" href="#Snake">&#182;</a></h2>
+  <p>Use the arrow keys</p>
+  <form><input type="button" onClick="startGame()" value="start game"></form>
+  <div id="snakebox" class="jxgbox" style="width:500px; height:500px; overflow:hidden; "></div>
+  <script>
+    var snakeBoard = JXG.JSXGraph.initBoard('snakebox',{boundingbox: [0, 20, 20, 0],grid:true});
+    var snake = {
+      points : [[10,11],[10,10]],
+      dir : [1,0],
+      size: 2,
+      newSize: 2,
+      speed: 50,
+      hitSelf: function(x,y) {
+        for (var i=0;i<this.size-1;i++) {
+          if (x==this.points[0][i]) if (y==this.points[1][i]) { return true; }
+        }
+        return false;
+      }
+    }
+    var curve = snakeBoard.create('curve', snake.points , {strokeWidth:20,strokeOpacity:0.5});
+    var point = snakeBoard.create('point', [
+      Math.round(Math.random()*18)+1,Math.round(Math.random()*18)+1], 
+      {strokeColor:'#4CADD4',fillColor:'#4CADD4',strokeWidth:10,name:' '});
+    var t = snakeBoard.create('text', [2,1,function() { return snake.size; }], {fontSize:28});
+
+    var setRandomPosition = function()  {
+      point.setPositionDirectly(JXG.COORDS_BY_USER,
+        [Math.round(Math.random()*18)+1,
+        Math.round(Math.random()*18)+1]);
+    }
+    var keyDown = function (Evt) {
+      var code;
+      if (!Evt) Evt = window.event;
+      if (Evt.which) {
+        code = Evt.which;
+      } else if (Evt.keyCode) {
+        code = Evt.keyCode;
+      }
+        // 37: left,  38: up,  39: right,  40: down
+        if (code==37) { snake.dir = [-1,0]; return false;}
+        else if (code==38) { snake.dir = [0,1]; return false;}
+        else if (code==39) { snake.dir = [1,0]; return false;}
+        else if (code==40) { snake.dir = [0,-1]; return false;}
+        return true;
+      }
+      document.onkeydown = keyDown;
+
+      var crawl = function() {
+        if (snake.size>=snake.newSize) {
+          snake.points[0].shift();
+          snake.points[1].shift();
+        }
+        var x = snake.points[0][snake.points[0].length-1]+snake.dir[0];
+        snake.points[0].push(x);
+        var y = snake.points[1][snake.points[1].length-1]+snake.dir[1];
+        snake.points[1].push(y);
+        snake.size = snake.points[0].length;
+        snakeBoard.update();
+        if (x>=20 || x<=0 || y>=20 || y<=0 || snake.hitSelf(x,y)) {
+          alert('Game over');
+        } else {
+          if (x==point.X()) if (y==point.Y()) {
+            snake.newSize += 5;
+            snake.speed -= 10;
+            setRandomPosition();
+            snakeBoard.update();
+          }
+          setTimeout(crawl,snake.speed);
+        }
+      }
+
+      var startGame = function () {
+        snake.points[0].splice(0,snake.size,10,11);
+        snake.points[1].splice(0,snake.size,10,10);
+        snake.dir = [1,0];
+        snake.size = 2;
+        snake.newSize = 2;
+        snake.speed = 200;
+        setRandomPosition();
+        crawl();
+      } 
+    </script>
+  </section>
+
+</div> <!-- slides -->
+</div> <!-- reveal -->
+
+<script>
+
+  require(
+  {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+    "../../../revealjs//lib/js/head.min.js",
+    "../../../revealjs//js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+      // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        mouseWheel: false,
+        center: false,
+        scroll: true,
+
+        // Parallax background image
+        //parallaxBackgroundImage: 'https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg',
+        // Parallax background size
+        //parallaxBackgroundSize: '2000px 1691px', // CSS syntax, e.g. "2100px 900px
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+        { src: "../../../revealjs//lib/js/classList.js",
+        condition: function() { return !document.body.classList; } },
+        { src: "../../../revealjs//plugin/notes/notes.js",
+        async: true,
+        condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      var update = function(event){
+        if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+          MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        }
+      };
+
+      Reveal.addEventListener('slidechanged', update);
+
+      var update_scroll = function(event){
+        $(".reveal").scrollTop(0);
+      };
+
+      Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+    );
+  </script>
+
+</body>
+
+</html>
