@@ -83,7 +83,7 @@ linebreaks: { automatic: true }
 
       <section data-background-image="https://upload.wikimedia.org/wikipedia/commons/d/db/LIGO_measurement_of_gravitational_waves.svg">
         <h2 style="color:black;" id="Numerical Methods Week 9">Numerical Methods Week 9<a class="anchor-link" href="#Numerical Methods Week 9">&#182;</a></h2>
-        <h1 style="color:black;" id="Questions">Questions<a class="anchor-link" href="#Questions">&#182;</a></h1>
+        <h1 style="color:black;" id="ODEs">ODEs and decompositions<a class="anchor-link" href="#ODEs">&#182;</a></h1>
         <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
         8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">	
         <p>Learning outcomes:</p>
@@ -92,6 +92,7 @@ linebreaks: { automatic: true }
       <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
       <li> Practice using finite differences to solve end point differential equations.</li>
+      <li> Look at decompositions of matrix eqautions and how they can be used to solve linear equations.</li>
     </div>
     <br>
     <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
@@ -102,7 +103,7 @@ linebreaks: { automatic: true }
 </section>
 
 <section>
-  <h2>differential equations</h2>
+  <h2>Differential equations</h2>
   <p>Some differential equations can be solved numerically as follows (more details next term).</p>
   <p>We can approximate a function $y = f(x)$ on a grid of $n$ points that are spaced by $\Delta x$.</p>
   <p>We can approximate derivatives of $y$ by finite differences
@@ -140,12 +141,12 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">
     <h2 id="Finite differences">Finite differences<a class="anchor-link" href="#Finite differences">&#182;</a></h2>
-    <p>We can cut our independent variable into a set of equally spaced points</p>
+    <p>We change our continuous independent variable $x$ into a discrete set of $n$ equally spaced points</p>
     <form>
      <input type="button" value="Add point" onclick="addPoint()">
    </form>
     <div id="box1" class="jxgbox" style="width:800px; height:350px;"></div>
-    <p>The gap between the points, $\Delta x$, is given by the range of the interval divided by the number of points -1.</p>
+    <p>The gap between the points, $\Delta x$, is given by the range of the interval divided by the number of points -1, i.e. $$x_i = x_{min} + \frac{i(x_{max} - x_{min})}{(n-1)}$$</p>
     <script>
      var board = JXG.JSXGraph.initBoard('box1', {boundingbox: [-1, 3, 4, -3], axis: true});
      var N = 10;
@@ -160,7 +161,7 @@ linebreaks: { automatic: true }
     }
 
      p[0] = board.create('point', [0,0], {name:'x_0',style:4, size:4});
-     last = board.create('point', [3,0], {name:'x_{N-1}',style:4, size:4});
+     last = board.create('point', [3,0], {name:'x_{n-1}',style:4, size:4});
 
       board.on('move', function(){
               last.moveTo([last.X(), 0]);
@@ -276,6 +277,7 @@ $$
    where $y_L$ and $y_R$ are the values of $y$ at the left and right boundaries.
  </p>
  <p>This is a set of linear equations that can be solved using Gauss Elimination, or other methods such as LU decomposition (see later).</p>
+ <p>Note we multiplied through by $\Delta x^2$ to avoid dividing by a very small number.</p>
 </section>
 
 <section>
@@ -310,7 +312,7 @@ $$
    -2 y_R\\
    \end{pmatrix}
    $$
-   Multiplying out the 2nd row (and dividing by $\Delta x^2$) we get
+   Multiplying out the 2nd row and dividing by $\Delta x^2$ we get
    $$
    \frac{1}{\Delta x^2}(y_0 - 2y_1 + y_2) \approx \frac{d^2y(x_1)}{dx^2} = g(x_1)
    $$
@@ -320,7 +322,7 @@ $$
    $$
    the same for other rows.</p>
    <p>
-   Notice I multiplied through by $\Delta x^2$ because this will be small and can cause numerical problems if you divide numbers by it.
+   Again, I multiplied through by $\Delta x^2$ because this will be small and can cause numerical problems if you divide numbers by it.
   </p>
 
 </section>
@@ -340,6 +342,7 @@ $$
     $$
     i.e. that the boundary conditions are satisfied at the edges of the range we are solving over.
   </p>
+  <p>The convention of putting -2 on the LHS is only to keep the matrix looking pretty, you could put 1s and just yL  and yR on the RHS.</p>
   <p> The boundary values are fixed, but they effect the other points because they appear in other rows
   $$
    \frac{1}{\Delta x^2}(y_L - 2y_1 + y_2) \approx \frac{d^2y(x_1)}{dx^2} = g(x_1)
@@ -476,7 +479,7 @@ $$
   <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
   <h3>Task Solve the question in the Week 9 online test.</h3>
-  <h3>Note, you will need to think how to include the first derivative of y into the LHS too.</h3>
+  <p>Note, you will need to think how to include the first derivative of y into the LHS too.</p>
 </div>
 </section>
 
@@ -764,6 +767,28 @@ $$
       </p>
     </section>
     
+    <section>
+      <p>This is what the following call does in Eigen
+        <pre><code>
+#include <iostream>
+#include <Eigen/Dense>
+using namespace std;
+using namespace Eigen;
+int main()
+{
+   Matrix3f A;
+   Vector3f b;
+   A << 1,2,3,  4,5,6,  7,8,10;
+   b << 3, 3, 4;
+   cout << "Here is the matrix A:\n" << A << endl;
+   cout << "Here is the vector b:\n" << b << endl;
+   Vector3f x = A.fullPivLu().solve(b);
+   cout << "The solution is:\n" << x << endl;
+}          
+        </code></pre>
+      </p>
+    </section>
+
     <section>
       <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
       <p> We can use LU decomposition to find the inverse of a matrix, by setting $b$ to the columns of the identity matrix, $I$.
