@@ -196,7 +196,7 @@ linebreaks: { automatic: true }
    $$
 
  </p>
- <p>This is know as central differences - you can also work with forward or backward differences to get different approximations.
+ <p>This is known as central differences - you can also work with forward or backward differences to get different approximations.
 </p>
 </section>
 <section>
@@ -275,7 +275,7 @@ $$
    $$
    where $y_L$ and $y_R$ are the values of $y$ at the left and right boundaries.
  </p>
- <p>This is a set of linear equations that can be solved using Gauss Elimination, or other methods.</p>
+ <p>This is a set of linear equations that can be solved using Gauss Elimination, or other methods such as LU decomposition (see later).</p>
 </section>
 
 <section>
@@ -358,7 +358,7 @@ $$
  <p></p>
  <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
- If we discretize into $n$ points we get get our points $x_i = 0 + 1/(n-1)$.<br>
+ If we discretize into $n$ points we get get our points $x_i = 0 + \frac{i (1-0)}{(n-1)}$.<br>
  We can write our equations at each point as:
  $$
  \begin{pmatrix}
@@ -403,7 +403,7 @@ $$
 <p></p>
 <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-If we discretize into $n$ points we get get our points $x_i = -5 + (5--5)/(n-1)$.<br>
+If we discretize into $n$ points we get get our points $x_i = -5 + \frac{i (5--5)}{(n-1)}$.<br>
 We can write our equations at each point as:
 $$
 \begin{pmatrix}
@@ -448,7 +448,7 @@ $$
 <p></p>
 <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
 8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-To get our linear equation we must have $\textbf{D(x)} y(x) = g(x)$, in this case $\textbf{D(x)}y = (\frac{\text{d}^2 }{\text{d} x^2} + k) y$
+To get our linear equation we must have $\textbf{D(x)} y(x) = g(x)$, in this case the LHS must approximate $ (\frac{\text{d}^2 }{\text{d} x^2} + k) y$
 $$
 \begin{pmatrix}
 -2 &  0 &  0 &  0 & 0 & 0 & 0 & 0 \\
@@ -468,66 +468,552 @@ y_i\\
 y_{n-2}\\
 y_{n-1}\\
 \end{pmatrix}
-=
-\begin{pmatrix}
--2 \times 5\\
-C \Delta x^2\\
-\vdots\\
-C \Delta x^2\\
-\vdots\\
-C \Delta x^2\\
--2 \times 0\\
-\end{pmatrix}
 $$
 </div>
-</section>
-
-<section>
-  <h2>Building the augmented matrix for $\frac{\text{d}^2 y}{\text{d} x^2} = g(x)$ </h2>
-  <pre>
-   <code>
-//allocate space for our augmented matrix
-int N = 31;
-int M = N+1;
-double** D = new double*[N];
-for (int i = 0; i < N; ++i) {
-  D[i] = new double[M];
-}
-// fill the array with zeros
-for (int i = 0; i< N; i++) {
-  for (int j = 0; j< N + 1; j++) {
-    D[i][j] = 0;
-  }
-}
-
-//fill the stencil	  
-D[0][0] = -2; //top row
-D[n - 1][n - 1] = -2; // bottom row
-// loop over other rows - we miss the top and bottom ones
-for (int i = 1; i< N - 1; i++) {
-  D[i][i - 1] = 1;
-  D[i][i] = -2;
-  D[i][i + 1] = 1;
-}	  
-
-// add the RHS
-for (int i = 1; i< N - 1; i++) {
-  D[i][N] = 0 // this should be g(x_i) * deltax ^2;
-}   
-\\remember to add boundary conditions
-</code>
-</pre>
-<p>This is just a section of code to build an augmented matrix ready for solving.</p>
-<p>Currently it has $g(x) = 0$ and $y_L = y_R = 0$. 
 </section>
 
 <section>
   <div style="background-color:Gold; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
   8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
   <h3>Task Solve the question in the Week 9 online test.</h3>
+  <h3>Note, you will need to think how to include the first derivative of y into the LHS too.</h3>
 </div>
 </section>
 
+   <section>
+      <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
+      <p>Again we want to solve $\textbf{Ax - b} = 0$</p>
+      <p class='fragment'> Suppose we can rewrite this as 
+  \[
+  \left( \begin{array}{ccc}
+  u_{00} & u_{01} & u_{02} \\ 
+  0 & u_{11} & u_{12} \\ 
+  0 & 0 & u_{22} \\ 
+  \end{array} \right)
+  \left( \begin{array}{c}
+  x_{0} \\ 
+  x_{1} \\ 
+  x_{2} \\ 
+  \end{array} \right) - 
+  \left( \begin{array}{c}
+  d_{0} \\ 
+  d_{1} \\ 
+  d_{2} \\ 
+  \end{array} \right)
+        = 0
+  \]
+  which looks similar to Gauss elmination. In matrix notation $$\textbf{Ux - d = 0}$$.
+      </p>
+      <p class='fragment'>Now, assume there is a lower diagonal matrix $\textbf{L}$ with '1's on the diagonal
+  \[
+  \left( \begin{array}{ccc}
+  1 & 0 & 0 \\ 
+  l_{10} & 1 & 0 \\ 
+  l_{20} & l_{21} & 1 \\ 
+  \end{array} \right)
+  \]
+      </p>
+      <p class='fragment'>that has the property that, premultiplying by $\textbf{L}$ we get
+  $$
+  \textbf{LUx} - \textbf{Ld} = \textbf{Ax} - \textbf{b}  
+  $$
+      </p>
+    </section>
+    
+    <section>
+      <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
+      <p> To ensure that
+  $$
+  \textbf{LUx} - \textbf{Ld} = \textbf{Ax} - \textbf{b}  
+  $$
+  we require that
+      </p>
+      <p class='fragment'>
+  $$
+  \textbf{LU = A}
+  $$
+  and
+  $$
+  \textbf{Ld = b}
+  $$
+      </p>
+    </section>
+
+    <section>
+      <section>
+  <h2 id="Gaussian Elimination">Gaussian Elimination<a class="anchor-link" href="#Gaussian Elimination">&#182;</a></h2>    
+  <h3 id="Triangularization">Triangularization<a class="anchor-link" href="#Triangularization">&#182;</a></h3>      
+  <p>When we do the Gauss elimination method, we actually find all the elements of $\textbf{L}$, we just need to store them. <br> It is the inverse of the matrix we would need to multiply $\textbf{b}$ by to get the correct RHS in the Gauss elmination method. </p>
+  <p>Let us take an initial augmented matrix, and record the values that we would scale the $\textbf{b}$ matrix by if it were there: 
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    a_{10} & a_{11} & a_{12} & a_{13}\\ 
+    a_{20} & a_{21} & a_{22} & a_{23}\\ 
+    a_{30} & a_{31} & a_{32} & a_{33}\\ 
+    \end{array} \right) \]
+  </p>
+  <p class=fragment>
+    pivoting around row 0, we remove all entries below the diagonal entry in column 0, doing this we scaled the $\textbf{b}$ matrix by the ratios shown on the right
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & a'_{21} & a'_{22} & a'_{23}\\ 
+    0      & a'_{31} & a'_{32} & a'_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\ 
+    \frac{a_{10}}{a_{00}} &  &  &  & \\ 
+    \frac{a_{20}}{a_{00}} &  &  &  & \\ 
+    \frac{a_{30}}{a_{00}} &  &  &  & \\ 
+    \end{array} \right) \]
+  </p>
+      </section>
+      <section>
+  <p>
+    Matrix after pivoting around row 0
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & a'_{21} & a'_{22} & a'_{23}\\ 
+    0      & a'_{31} & a'_{32} & a'_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\ 
+    \frac{a_{10}}{a_{00}} &  &  &  & \\ 
+    \frac{a_{20}}{a_{00}} &  &  &  & \\ 
+    \frac{a_{30}}{a_{00}} &  &  &  & \\ 
+    \end{array} \right) \]
+  </p><p class=fragment>
+    Then pivoting around row 1 we remove elements below the diagonal in column 1, and subtract multiples of the 2nd row of $\textbf{b}$ as shown in the right hand matrix
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & 0       & a''_{22} & a''_{23}\\ 
+    0      & 0       & a''_{32} & a''_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 &  &  & \\ 
+    \frac{a_{10}}{a_{00}} & 1  &  &  & \\ 
+    \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{10}} &  &  & \\ 
+    \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{10}} &  &  & \\ 
+    \end{array} \right) \]
+  </p><p class=fragment>    
+    pivoting around row 2
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & 0       & a''_{22} & a''_{23}\\ 
+    0      & 0       & 0        & a'''_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 &  &  & \\ 
+    \frac{a_{10}}{a_{00}} & 1  &  &  & \\ 
+    \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 &  & \\ 
+    \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} &  & \\ 
+    \end{array} \right) \]
+  </p>
+      </section>
+      <section>
+        <p>   
+    we had got to
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & 0       & a''_{22} & a''_{23}\\ 
+    0      & 0       & 0        & a'''_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 &  &  & \\ 
+    \frac{a_{10}}{a_{00}} & 1  &  &  & \\ 
+    \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 &  & \\ 
+    \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} &  & \\ 
+    \end{array} \right) \]
+  </p>
+      <p class='fragment'>    
+    if we fill in the rest of the matrix on the right we have
+    \[ \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & 0       & a''_{22} & a''_{23}\\ 
+    0      & 0       & 0        & a'''_{33}\\ 
+    \end{array} \right)
+    \qquad
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\ 
+    \frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+    \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+    \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+    \end{array} \right) \]
+  </p>
+      </section>
+      <section>
+  <p'>
+    We can show for a real system that this new matrix is $\textbf{L}$
+    \[ \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\ 
+    \frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+    \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+    \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    0      & a'_{11} & a'_{12} & a'_{13}\\ 
+    0      & 0       & a''_{22} & a''_{23}\\ 
+    0      & 0       & 0        & a'''_{33}\\ 
+    \end{array} \right)
+    =
+    \left( \begin{array}{cccc}
+    a_{00} & a_{01} & a_{02} & a_{03}\\ 
+    a_{10} & a_{11} & a_{12} & a_{13}\\ 
+    a_{20} & a_{21} & a_{22} & a_{23}\\ 
+    a_{30} & a_{31} & a_{32} & a_{33}\\ 
+    \end{array} \right) \]
+  </p>
+  <p'>
+  $$
+  \textbf{LU = A}
+  $$
+  and
+  $$
+  \textbf{Ld = b}
+  $$
+  </p>
+  <pre>
+  <code>void gauss_elim(std::ofstream &myout, double (&a)[rows][cols]) {
+    double coeff;
+    double x[rows];
+    for (int i =0; i &lt rows-1; i++) {
+        for (int j = i+1; j &lt rows; j++) {
+            coeff = a[j][i]/a[i][i];
+            for (int k = i; k &lt cols; k++) {
+                a[j][k] -= a[i][k]*coeff;
+            }
+        }
+        myout &lt&lt "\n pivoting around row " &lt&lt i &lt&lt "\n\n";
+        output_matrix(myout,a);
+    }
+}
+        </code>
+  </pre>
+      </section>
+      <section>
+  <p>The entries in $\textbf{L}$ are just what I called `coeff` in the code</p>
+  <pre>
+  <code>void gauss_elim(std::ofstream &myout, double (&a)[rows][cols]) {
+    double coeff;
+    double x[rows];
+    for (int i =0; i &lt rows-1; i++) {
+        for (int j = i+1; j &lt rows; j++) {
+            coeff = a[j][i]/a[i][i];
+      a[j][i] = coeff;
+            for (int k = i+1; k &lt cols; k++) {
+                a[j][k] -= a[i][k]*coeff;
+            }
+        }
+    }
+}
+        </code>
+  </pre>
+  <p>
+    So only very minor changes in the Gauss elimination code are needed. <br>
+    Note, I have stored the nondiagonal elements of $\textbf{L}$ in what would be the zero elements of the row echelon matrix.
+  </p>
+      </section>
+
+    </section>
+    
+    <section>
+      <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
+      <p>The major advantage of LU decompostion is we calculate $\textbf{L}$ and $\textbf{U}$ once, then we can easily find $\textbf{x}$ for any $\textbf{b}$</p>
+      <p>Having $\textbf{L}$ we can solve $\textbf{Ld} = \textbf{b}$ for $\textbf{d}$ by forward substitution
+  \[ \left( \begin{array}{cccc}
+  1 & 0 & 0 & 0\\ 
+  \frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+  \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+  \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+  \end{array} \right)
+  \left( \begin{array}{c}
+  d_0 \\ d_1 \\ d_2 \\ d_3 \\
+  \end{array} \right)
+  =
+  \left( \begin{array}{c}
+  b_0 \\ b_1 \\ b_2 \\ b_3 \\
+  \end{array} \right)\]
+  i.e. multiplying out the equations starting from the top row.
+      </p>
+      <p> Then, having constructed $\textbf{d}$ for the given $\textbf{b}$ we continue exactly like in Gauss Elimination using back substitution to find $\textbf{x}$
+  \[\left( \begin{array}{cccc}
+  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+  0      & 0       & a''_{22} & a''_{23}\\ 
+  0      & 0       & 0        & a'''_{33}\\ 
+  \end{array} \right)
+  \left( \begin{array}{c}
+  x_0 \\ x_1 \\ x_2 \\ x_3 \\
+  \end{array} \right)
+  =
+  \left( \begin{array}{c}
+  d_0 \\ d_1 \\ d_2 \\ d_3 \\
+  \end{array} \right)\]
+
+      </p>
+    </section>
+    
+    <section>
+      <h2 id="LU decomposition">LU decomposition<a class="anchor-link" href="#LU decomposition">&#182;</a></h2>
+      <p> We can use LU decomposition to find the inverse of a matrix, by setting $b$ to the columns of the identity matrix, $I$.
+      </p>
+      <p>For example we get the first column of $\textbf{A}^{-1}$ by using $\textbf{b}^T = (1,0,0,0)$
+  \[ \left( \begin{array}{cccc}
+  1 & 0 & 0 & 0\\ 
+  \frac{a_{10}}{a_{00}} & 1  & 0 & 0 & \\ 
+  \frac{a_{20}}{a_{00}} & \frac{a'_{21}}{a'_{11}} &  1 & 0 & \\ 
+  \frac{a_{30}}{a_{00}} & \frac{a'_{31}}{a'_{11}} & \frac{a''_{32}}{a''_{22}} & 1 & \\ 
+  \end{array} \right)
+  \left( \begin{array}{c}
+  d_0 \\ d_1 \\ d_2 \\ d_3 \\
+  \end{array} \right)
+  =
+  \left( \begin{array}{c}
+  1 \\ 0 \\ 0 \\ 0 \\
+  \end{array} \right)\]
+  i.e. multiplying out the equations starting from the top row.
+      </p>
+      <p> Then, having constructed $\textbf{d}$ for the given $\textbf{b}$ we continue exactly like in Gauss Elimination using back substitution to find $\textbf{x}$
+  \[\left( \begin{array}{cccc}
+  a_{00} & a_{01} & a_{02} & a_{03}\\ 
+  0      & a'_{11} & a'_{12} & a'_{13}\\ 
+  0      & 0       & a''_{22} & a''_{23}\\ 
+  0      & 0       & 0        & a'''_{33}\\ 
+  \end{array} \right)
+  \left( \begin{array}{c}
+  A^{-1}_{00} \\ A^{-1}_{10} \\ A^{-1}_{20} \\ A^{-1}_{30} \\
+  \end{array} \right)
+  =
+  \left( \begin{array}{c}
+  d_0 \\ d_1 \\ d_2 \\ d_3 \\
+  \end{array} \right)\]
+  The we build the other columns of $\textbf{A}^{-1}$ from the other unit vectors.
+      </p>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+  <p>If you want to understand the LU decomposition clearly, adapt a gauss-elim type code to also perform LU decomposition</p>
+  <p> - Find the inverse of the matrix using LU decomposition 
+    \[ \left( \begin{array}{cccc}
+    2 & 2 & 4 & -2 \\ 
+    1 & 3 & 2 & 4 \\ 
+    3 & 1 & 3 & 1\\ 
+    1 & 3 & 4 & 2 \\ 
+    \end{array} \right) \]
+    <br>
+    Check your solution is correct by comparison to Gauss-Jordan or Eigen / numpy libraries.
+    Note you can also get the determinant from LU decomposition.
+  </p>      
+  
+      </div>
+    </section>
+    
+    <section>
+      <h2 id="QR decomposition">QR decomposition<a class="anchor-link" href="#QR decomposition">&#182;</a></h2>
+      <h4>Why another decomposition???</h4>
+      <p>This decomposition is part of the 'QR' algorithm to find the eigenvalues and vectors of a matrix.</p>
+      <p>Any real square matrix A may be decomposed as
+  $$
+  \textbf{A} = \textbf{QR},
+  $$
+  where
+  <li>$\textbf{Q}$ is an orthogonal matrix (its columns are orthogonal unit vectors meaning $\textbf{Q}^t\textbf{Q} = I$)</li>
+  <li>$\textbf{R}$ is an upper triangular matrix (also called right triangular matrix).</li></p>
+      <p>If $\textbf{A}$ is invertible, then the factorization is unique if we require the diagonal elements of $\textbf{R}$ to be positive.</p>
+    </section>
+
+    <section>
+      <h2 id="QR decomposition">QR decomposition<a class="anchor-link" href="#QR decomposition">&#182;</a></h2>
+      <h4>Gram–Schmidt orthogonalisation.</h4>
+      <p>You may remember this from linear algebra - we build an orthogonal basis by sucessively projecting out previous basis vectors</p>
+      <p>We can scan across the columns of our matrix $\textbf{A}$ and remove the components of any previous column by subtracting the dot product.</p>
+      <p>Take an initial matrix $\textbf{A}$
+  $$
+  \textbf{A} = 
+\begin{pmatrix}
+12 & -51 & 4 \\
+6 & 167 & -68 \\
+-4 & 24 & -41
+\end{pmatrix}
+  $$
+      </p>
+      <p>First we'll make an orthogonal matrix $\textbf{U}$, we'll keep the first column.</p>
+        $$
+  \textbf{U} = 
+\begin{pmatrix}
+12 & ? & ? \\
+ 6 & ? & ? \\
+-4 & ? & ?
+\end{pmatrix}
+  $$
+      <p>To get the 2nd column orthogonal, we subtract the projection of the second column onto the first column from the 2nd column.</p>
+    </section>
+    <section>
+      <p>To get the 2nd column orthogonal, we subtract the projection of the second column onto the first column from the 2nd column.
+  $$
+  \textbf{U} = 
+  \begin{pmatrix}
+  12 & -51 - \text{proj}_{col_1} & ? \\
+   6 & 167 - \text{proj}_{col_1} & ? \\
+  -4 &  24 - \text{proj}_{col_1} & ?
+  \end{pmatrix}
+  $$
+  where the projection onto the first column is given by
+  $$
+  \begin{array}
+  \text{proj}_{col_1} & = \left \lt \textbf{col}_2 \cdot \frac{\textbf{col}_1}{||col_1||} \right\gt \frac{\textbf{col_1}}{||col_1||} \\
+  & = \left \lt (-51, 167, 24)\cdot \begin{pmatrix}12\\6\\4 \end{pmatrix} \right \gt (12, 6, 4) \frac{1 }{(12^2 + 6^2 + 4^2)}  \\
+  & = \frac{294}{196} (12 ,6, 4) = (18, 9, -6)
+  \end{array}
+  $$
+  so
+  $$
+  \textbf{U} = 
+  \begin{pmatrix}
+  12 & -51 - 18 & ? \\
+   6 & 167 - 9 & ? \\
+  -4 &  24 - -6 & ?
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  12 & -69 & ?\\
+   6 & 158 & ? \\
+  -4 &  30 & ?
+  \end{pmatrix}
+  $$  
+      </p>
+    </section>
+    <section>
+      <p>Two get the 3rd column orthogonal, we subtract the projection of the third column onto the first two columns.
+  \begin{align*}
+  \textbf{U} & = 
+  \begin{pmatrix}
+  12 & -69 & 4 - ( \text{proj}_{col_1} + \text{proj}_{col_2}) \\
+   6 & 158 & -68 - (\text{proj}_{col_1} + \text{proj}_{col_2}) \\
+  -4 &  30 & -41 - (\text{proj}_{col_1} + \text{proj}_{col_2}) \\
+  \end{pmatrix}\\
+  & =
+  \begin{pmatrix}
+  12 & -69 & -58/5 \\
+   6 & 158 & 6/5 \\
+  -4 &  30 & -33 \\
+  \end{pmatrix}\\
+  \end{align*}
+  Now we make each column a unit vector to get the orthogonal matrix $\textbf{Q}$<br>
+  $$\textbf{Q} = 
+\begin{pmatrix}
+\frac{\mathbf u_1}{\|\mathbf u_1\|} &
+\frac{\mathbf u_2}{\|\mathbf u_2\|} &
+\frac{\mathbf u_3}{\|\mathbf u_3\|}
+\end{pmatrix}
+=
+\begin{pmatrix}
+     6/7    &    -69/175   &   -58/175   \\
+     3/7    &    158/175   &     6/175   \\
+    -2/7    &      6/35    &   -33/35
+\end{pmatrix}.
+  $$
+      </p>
+    </section>
+    <section>
+      <p>Remember, we wanted
+  $$
+  \textbf{A} = \textbf{QR},
+  $$
+      </p>
+      <p class='fragment'>
+  if we premultiply by $\textbf{Q}^T$ we get
+  $$
+  \textbf{Q}^T\textbf{A} = \textbf{Q}^T\textbf{QR},
+  $$
+      </p>
+      <p class='fragment'>
+  but for an orthogonal matrix $\textbf{Q}^T\textbf{Q} = \textbf{I}$ so we have
+  $$
+  \textbf{Q}^T\textbf{A} = \textbf{R},
+  $$
+  and we can find $\textbf{R}$ my mulitplying our original matrix $\textbf{A}$ and the (transposed) orthogonal matrix  we just found.
+  $$
+  \begin{matrix}
+  R=Q^{T}A=
+  \end{matrix}
+  \begin{pmatrix}
+  14&21&-14\\
+  0&175&-70\\
+  0&0&35
+  \end{pmatrix}.
+  $$
+      </p>
+    </section>
+
+    <section>
+      <h2 id="QR algorithm">QR algorithm<a class="anchor-link" href="#QR algorithm">&#182;</a></h2>
+      <p>It can be shown that the sequence
+  $$
+  \begin{align*}
+  \textbf{A}^{0} & = \textbf{A} \\
+  \textbf{A}^{k+1} & = \textbf{R}^{k} \textbf{Q}^{k}
+  \end{align*}
+  $$
+  converges to a upper triangular matrix with the eigenvalues of $\textbf{A}$ as its diagonal entries.
+      </p>
+      <p>
+  In the sequence $\textbf{Q}^{k}$ and  $\textbf{R}^{k}$ are formed by the QR decomposition of $\textbf{A}^{k}$
+  $$\textbf{A}^{k} = \textbf{Q}^{k} \textbf{R}^{k}$$
+      </p>
+      <p>
+  This algorithm needs modifications to be generally efficient, but gives the general shape of real eigenvalue finding routines.
+      </p>
+      <p>
+  If we have an eigenvalue we can find the corresponding eigenvector using Gauss Elimination.
+      </p>
+    </section>
+
+    <section>
+      <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
+                  8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
+  <p>Find the eigenvalues of the following matrices using the QR decomposition code on Bb (or write your own of course):
+  <p>
+    \begin{pmatrix}
+     1 & -1 & -1 & -1\\
+    -1 &  2 &  0 &  0\\
+    -1 &  0 &  3 &  1\\
+    -1 &  0 &  1 &  4
+  \end{pmatrix}.
+  </p>
+  <p>
+    \begin{pmatrix}
+    1 & 0 & 0 & 1\\
+    0 &  1 &  0 & 1/2\\
+    0 &  0 &  1 & 1/4\\
+    1 &  1/2 &  1/4 &  1
+    \end{pmatrix}.
+  </p>
+  <p>
+    Check that your eigenvalues are eigenvalues by running Gauss elimination on the equation $(\textbf{A} - \lambda_i \textbf{I}) \textbf{x} = 0 $.
+    The augmented matrix should be of reduced rank, and you can deduce the eigenvectors from the output.
+  </p>
+  <p>
+    Check that an eigenvector you found is an eigenvector with eigenvalue $\lambda_i$ by direct multiplication.
+  </p>
+  <p>
+    Modify the code to output the condition number of a matrix. The condition number is the ratio of the largest to smallest eigenvalue. This controls how numerically stable inversion of the matrix is.
+  </p>
+    </section>
+ 
 <section>
   <h2 id="Summary and Further Reading">Summary and Further Reading<a class="anchor-link" href="#Summary and Further Reading">&#182;</a></h2>
   <p>You should be reading additional material to provide a solid background to what we do in class</p>
