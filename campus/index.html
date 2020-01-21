@@ -1,0 +1,72 @@
+<head>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/marker_controller/latest/marker_controller.js"></script>    
+</head>
+<body>
+  <div style="position: relative">    
+    <div id="widget-container" class="wrld-widget-container"></div>
+    <div id="map" style="height: 100%"></div>
+    <script>
+        var map = L.Wrld.map("map", "d6eb15d4dc5e3a9d57f268081e073496", {
+            center: [53.228123, -0.549501],
+            zoom: 16,
+            indoorsEnabled: true,
+            //coverageTreeManifest: "https://webgl-cdn1.wrld3d.com/chunk/indoor_maps/api_requests/EIM-e4d4c827-729d-4778-a322-648994092004_2020_01_10_15_20_03/webgl_manifest.bin.gz",
+            //coverageTreeManifest: "https://webgl-cdn1.wrld3d.com/chunk/indoor_maps/api_requests/EIM-e4dac9d9-58f1-4ff9-aa34-8a9cb815f5b8_2020_01_13_12_11_22/webgl_manifest.bin.gz"
+        });
+
+        var indoorControl = new WrldIndoorControl("widget-container", map);
+
+        var times = [L.Wrld.themes.time.Dawn, L.Wrld.themes.time.Day, L.Wrld.themes.time.Dusk, L.Wrld.themes.time.Night];
+        var timeIndex = 0;
+        setInterval(function() {
+            map.themes.setTime(times[timeIndex]);
+            timeIndex = (timeIndex + 1) % times.length;
+        }, 5000);
+
+        function onEnter(event) {
+            console.log("Entered indoor map: " + event.indoorMap.getIndoorMapName());
+            var circle = L.circle([53.228153, -0.549519], {
+                radius: 10.0,
+                indoorMapId: event.indoorMap.getIndoorMapName(),
+                indoorMapFloorId: 1
+            }).addTo(map);
+        }
+
+        function onIndoorMapEntered(event) {        
+            var latLng = map.getCenter();        
+            var indoorMapId = event.indoorMap.getIndoorMapId();
+            var buildingName = event.indoorMap.getIndoorMapName();
+        
+            var markerController = new WrldMarkerController(map, { poiViewsEnabled: true });
+
+            var markerId = 0;
+            var markerOptions = {
+                poiView: {
+                  title: "AHU1",
+                  customView: "https://snapshot.raintank.io/dashboard/snapshot/gGdxJwY1rTFmA45j3gAJ0bWEt4W90dVz",
+                  customViewHeight: 500,
+                },
+                iconKey: "temperature_sensor",
+                indoorMapId: indoorMapId,
+                floorIndex: 3
+            };
+
+            var marker = markerController.addMarker(markerId, [53.228154, -0.549691], markerOptions);
+        }
+
+        function onExit(event) {
+            console.log("Exited indoor map");
+        }
+   
+        map.indoors.on("indoormapenter", onIndoorMapEntered);
+        map.indoors.on("indoormapexit", onExit)
+
+  </script>
+</div>
+</body>
