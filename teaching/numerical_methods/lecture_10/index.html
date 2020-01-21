@@ -122,6 +122,7 @@ linebreaks: { automatic: true }
      $$
      \phi_n(x) = \cos \left( \frac{n \pi x}{l} \right) \text{ and } \psi_n(x) = \sin \left( \frac{n \pi x}{l} \right)
      $$
+     where $n \in \mathbb{Z}$.
    </p>
 
    <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
@@ -129,6 +130,10 @@ linebreaks: { automatic: true }
    <p>Check that all the $\phi_n(x)$ and $\psi_n(x)$ have periodicity $T$ (by considering the functions at $x$ and $x+T$).</p>
  </div>
  <p></p>
+    <p>Note that this notation for $
+     \phi_n(x) = \cos \left( \frac{n \pi x}{l} \right)$  and $\psi_n(x) = \sin \left( \frac{n \pi x}{l} \right)
+     $ will be used throughout this lecture.</p>
+
  <br>
 </div>
 </section>
@@ -141,11 +146,20 @@ linebreaks: { automatic: true }
      $$
      \int_{-l}^{l} \phi_n(x) \phi_m(x) \text{d}x = l \delta_{nm} \text{and} \int_{-l}^{l} \psi_n(x) \psi_m(x) \text{d}x = l \delta_{nm}
      $$
-   where $\delta_{nm}$ is the Kronecker delta.</p>
+   where $\delta_{nm}$ is the Kronecker delta.
+   $$
+   \delta_{nm} =
+   \begin{cases}
+1 \text{ for } n = m \\
+0 \text{ for } n \neq m
+   \end{cases}
+   $$
+ </p>
    <p>Also
      $$
      \int_{-l}^{l} \phi_n(x) \psi_m(x) \text{d}x = 0
      $$
+     for all $n,m$
    </p>
  </div>
 </section>
@@ -154,7 +168,7 @@ linebreaks: { automatic: true }
 <section>
   <div class="inner_cell">
     <h2>Fourier Series</h2>
-    <p>Assume that we can expand our function in the interval $(-l,l]$ as
+    <p>Assume that we can expand our function on the interval $[-l,l)$ as
      $$
      \begin{align*}
      f(x) & = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)]\\
@@ -163,14 +177,15 @@ linebreaks: { automatic: true }
      $$
      This isn't actually true for all $x$, but it is good enough for now.
    </p>
-   <p>Note this will repeat over $(l,3l]$ and other $(il,(i+2)l]$ where $i \in \mathbb{Z}$ </p>
+   <p>Note this will repeat over $[l,3l)$ and other $[il,(i+2)l)$ where $i \in \mathbb{Z}$ </p>
+   <p>We exclude $x = l$  as this point is identical to $x = -l$.</p>
  </div>
 </section>
 
 <section>
   <div class="inner_cell">
-    <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function who's coefficient we wish to find, and integrate over $T$.</p>
-    <p> For instance, to find $a_m$ we multiply by $\phi_m$ and integrate over the period:
+    <p>We can use the orthogonality of the functions to calculate the coefficients, $a_m$ and $b_m$. To do this we multiply by the function whose coefficient we wish to find, and integrate over $T$.</p>
+    <p> For instance, to find $a_m$ the coefficient of $\cos \left( \frac{m \pi x}{l} \right)$ we multiply by $\phi_m = \cos \left( \frac{m \pi x}{l} \right)$ and integrate over the period:
       $$
       \begin{align*}
       \int_{-l}^{l}\phi_m(x) f(x) \text{d}x & = \int_{-l}^{l}\phi_m(x) \frac{a_0}{2} \text{d}x + \int_{-l}^{l}\phi_m(x) \sum_{n=1}^{\infty} [a_n \phi_n(x) + b_n \psi_n(x)] \text{d}x \\
@@ -203,7 +218,6 @@ linebreaks: { automatic: true }
     <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
     8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
     <li>Check that $a_m = \frac{1}{l}\int_{-l}^{l}\phi_m(x) f(x) \text{d}x$ and $b_m = \frac{1}{l}\int_{-l}^{l}\psi_m(x) f(x) \text{d}x$</li>
-    <li>the first term is a bit special: $\frac{a_0}{2} =  \frac{1}{l}\int_{-l}^{l} f(x) \text{d}x$</li>
   </div>
   <p></p>
 </div>
