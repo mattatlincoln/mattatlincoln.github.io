@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>Advanced Methods of Mathematics 2017/18 - Matt Watkins</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../../revealjs/css/reveal.css">
+<link rel="stylesheet" href="../../revealjs/css/theme/sky.css" id="theme">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'revealjs/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="revealjs/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {
+  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+  displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  processEscapes: true,
+  processEnvironments: true
+  },
+  // Center justify equations in code and markdown cells. Elsewhere
+  // we use CSS to left justify single line equations in code cells.
+  displayAlign: 'center',
+  "HTML-CSS": {
+  styles: {'.MathJax_Display': {"margin": 0}},
+  linebreaks: { automatic: true }
+  }
+  });
+</script>
+<!-- End of mathjax configuration -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh3u" crossorigin="anonymous">
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+</head>
+
+<body>
+
+<div class="reveal">
+  <div class="slides">
+    <section data-background="../../images/CaF2_zoom3.jpg">
+      <section>
+	<div class="container" id="title">
+	  <h3  id="Murky Materials Modelling">Murky Materials Modelling<a class="anchor-link" href="#Murky Materials Modelling">&#182;</a></h3>
+	</div>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td><img src='images/caco3.png' width=400></td>
+	    <td><img src='images/lincoln_crest.png' width=250></td>
+	  </tr>
+	</table>
+	<div class="container" id="title">
+	  <h3 id="Matt-Watkins,">Matt Watkins,<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
+	  <h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
+	</div>
+      </section>
+    </section>
+
+    <section>
+	<h3 id="What is objective reality?">What is objective reality?<a class="anchor-link" href="#What is objective reality?">&#182;</a></h3>
+	<h4 id="Or What is a Scientific measurement?">Or What is a Scientific measurement?<a class="anchor-link" href="#Or What is a Scientific measurement?">&#182;</a></h4>
+	<p class='fragment'>Can we 'see' atoms?</p>
+	<img class='fragment' src='http://www.relatably.com/q/img/robert-anton-wilson-quotes/1ec1eeb053c66b19e8fa89a2cc8286fc.jpg' style='height:50%;width:50%'>
+	<p class='fragment'>Is mathematics produced by people, or found?</p>
+    </section>
+
+    <section>
+      <h4 id="Or What is a Scientific measurement?">Or What is a Scientific measurement?<a class="anchor-link" href="#Or What is a Scientific measurement?">&#182;</a></h4>
+      <p>We build a model with applied mathematics and use the model to predict / interpret what we observe in an experiment.</p>
+      <img class='fragment' src='https://butterflylanguagecom.files.wordpress.com/2016/08/quotation-robert-anton-wilson-theory-meetville-quotes-199333.jpg?w=640' style='height:50%;width:50%'>
+      <p class='fragment'>The model only gives us information within the area we expect it to work.</p>
+      <p class='fragment'>Whilst the model is useful in explaining / predicting data we use it. We do not believe in it, we just expect it will give sensible results where it has been tested.</p>
+    </section>
+    
+    
+    <section>
+      <h3 id="Can we see atoms?">Can we see atoms?<a class="anchor-link" href="#Can we see atoms?">&#182;</a></h3>
+      <h4 id="Scanning probe microscopes">Scanning probe microscopes<a class="anchor-link" href="#Scanning-probe microscopes">&#182;</a></h4>
+      <table>
+	<tr>
+	  <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
+	  <td width='300' style="vertical-align:middle">
+	    <p>Atomic force microscopy (left) </p>
+	    <p> and Scanning Tunnelling microscopy (right)</p>
+	  </td>
+	  <td><img src='images/ani_stm.gif' style='height:100%;width:100%'></td>
+	</tr>
+      </table>
+      <ul style="text-align=center">
+	<li>Local measurements.</li>
+	<li>Resolution of picometers ($10^{-12}$ m)</li>
+	<li>Size of an atom is of the order 10 nanometers ($10^{-9}$ m)</li>
+	<li>We look at a flat surface of a material - what is a surface at the atomic scale?</li>	
+      </ul>
+    </section>
+
+    <section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<h4>Start with a perfect crystal - use symmetry (and simple group theory) to build models</h4>
+	<img src="images/unit_cell.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<h4>Start with a perfect crystal - use symmetry (and simple group theory) to build models</h4>
+	<img src="images/unit_cell_expand_1.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<h4>Start with a perfect crystal - use symmetry (and simple group theory) to build models</h4>
+	<img src="images/unit_cell_expand_2.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<h4>Start with a perfect crystal - use symmetry (and simple group theory) to build models</h4>
+	<img src="images/unit_cell_expand_3.png" height="450px">
+      </section>
+    </section>
+
+    <section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<img src="images/cube_rotate_111.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<img src="images/cube_rotate_111_cut.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<img src="images/cube_rotate_111_cleaved.png" height="450px">
+      </section>
+      <section data-transition="none">
+	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+	<img src="images/111_surf.png" height="450px">
+	<p class='fragment'>When a surface is cut, it is 'unhappy' and atoms move to find 'peace'.
+	  <img src='https://c1.staticflickr.com/5/4032/4718717523_b081ce0472_b.jpg' style='float: right; width:200px'>
+	</p>
+      </section>
+    </section>
+
+    <section>
+      <section >
+	<h3 id="Aside: Crystal Shape?">Aside: Crystal Shape?<a class="anchor-link" href="#Aside: Crystal Shape?">&#182;</a></h3>
+	<p>This is why crystals have different shapes - they expose the most stable surfaces most often.</p>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Apatite-Rhodochrosite-Fluorite-169799.jpg" height="250px"></td>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Monokristalines_Silizium_f%C3%BCr_die_Waferherstellung.jpg"</td>
+	    <td><img src="https://www.technobyte.org/wp-content/uploads/2016/11/Scanning-electron-microscope-applications-tb-e1479895383328.jpg"</td>		     
+	  </tr>
+	</table>
+      </section>
+    </section>
+
+    <section>
+      <section >
+	<h3 id="Microscopes?">Microscopes?<a class="anchor-link" href="#Microscopes?">&#182;</a></h3>
+	<p>Optical microscopes can magnify by up to ~ x1000</p>
+	<p>After that Scanning Electron Microscopes (SEM) can go further: Here are some SEM images</p>
+	<td><img src="images/staple.png" class='fragment' style='width: 500'>
+	  <p class='fragment'>A staple, x35</p>
+	</td>
+      </section>
+      <section>
+	<table cellspacing="0" cellpadding="0" border="0">
+	  <tr>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Burdock_in_Scanning_Electron_Microscope%2C_magnification_100x.GIF" class='fragment'>
+	      <p class='fragment'>Dandelion x100</p>
+	    </td>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Misc_pollen.jpg" class='fragment'>
+	      <p class='fragment'>Some pollen x500</p>
+	    </td>
+	    <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/00/AFM_%28used%29_cantilever_in_Scanning_Electron_Microscope%2C_magnification_3000x.JPG" class='fragment'>
+	      <p class='fragment'>AFM cantilever tip, x3000</p>
+	    </td>		     
+	  </tr>	  
+	</table>
+	<a class='fragment' href='./snowflake.html' target="_blank">Zoom in of a snowflake</a>
+      </section>
+    </section>
+
+    <section>
+      <h3 id="Can we see atoms?">Can we see atoms?<a class="anchor-link" href="#Can we see atoms?">&#182;</a></h3>
+      <h4 id="Scanning probe microscopes">Scanning probe microscopes<a class="anchor-link" href="#Scanning-probe microscopes">&#182;</a></h4>
+      <table>
+	<tr>
+	  <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
+	  <td width='300' style="vertical-align:middle">
+	    <p>Atomic force microscopy (left) </p>
+	    <p> and Scanning Tunnelling microscopy (right)</p>
+	  </td>
+	  <td><img src='images/ani_stm.gif' style='height:100%;width:100%'></td>
+	</tr>
+      </table>
+      <ul style="text-align=center">
+	<li>Local measurements.</li>
+	<li>Resolution of picometers ($10^{-12}$ m)</li>
+	<li>Size of an atom is of the order 10 nanometers ($10^{-9}$ m)</li>
+	<li>We look at a flat surface of a material - what is a surface at the atomic scale?</li>	
+      </ul>
+    </section>
+    
+    <section>
+      <div style="position:relative;height:0;padding-bottom:87.76%">
+	<iframe src="https://www.youtube.com/embed/8WmCn5xGebs?ecver=2" style="position:absolute;width:80%;height:80%;left:0" height="350px" frameborder="0" allowfullscreen>
+	</iframe>
+      </div>
+    </section>
+
+    <section>
+      <h3 id="build a model of an AFM">build a model of an AFM<a class="anchor-link" href="#build a model of an AFM">&#182;</a></h3>
+      <p>
+	Model the cantilever oscilations using <b>differential equations</b>:
+	$$
+	\ddot{z} + \omega_{0}^{2} \alpha \dot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = \frac{\omega_0^2}{k}F_{ext}
+	$$
+	Complicated because $F(z)$ depends on the position. $F(z)$ is the interaction of the microscope with the sample.
+      </p>
+      <p class='fragment'>
+	We can work in constant amplitude and frequency change
+	$$
+	\ddot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = 0
+	$$
+      </p>
+      <p class='fragment'>
+	motion is periodic, we can find a solution of the form using a <b>truncated Fourier Series</b>
+	$$
+	\big(\frac{\omega}{\omega_0}\big)^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) \cos (\tau) d\tau
+	$$
+      </p>
+      <h5 class='fragment'>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
+    </section>
+
+    <section>
+      <section>
+	<h3 id="Macro-vs-Nano">Macro vs Nano<a class="anchor-link" href="#Macro-vs-Nano">&#182;</a></h3>
+	<table>
+	  <tr>
+	    <td>
+	      <img src='images/dyn_an16.gif'>
+	    </td>
+	    <td>
+	      <img src="images/caco3.png"  width="300">
+	    </td>
+	  </tr>
+	</table>
+	<p>cantilever is macroscopic, tip apex is nanoscopic
+	  <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/AFM_%28used%29_cantilever_in_Scanning_Electron_Microscope%2C_magnification_3000x.JPG" style='float: left' height='200'>		     
+	</p>
+	<p>experiment measures frequency change due to all interactions - macro + nano</p>
+	<p>This is cool - a macroscopic object is 'seeing' atoms.</p>
+      </section>
+    </section>
+
+    <section>
+      <h3 id="Map is not the territory">Map is not the territory<a class="anchor-link" href="#Map is not the territory">&#182;</a></h3>
+      <div style="position:relative;height:0;padding-bottom:56.21%">
+	<iframe src="https://www.youtube.com/embed/Ehw8PTA4QkE?ecver=2" style="position:absolute;width:80%;height:80%;left:0" width="641" height="360" frameborder="0" allowfullscreen>
+	</iframe>
+      </div>
+      <p class='fragment'>Nottingham Nanoscience group's papers as <a href='http://bit.ly/NottinghamNano'> PDFs</a> (Phil is an extremely good guitarist;)</p>
+    </section>
+
+    <section>
+      <table>
+	<tr>
+	  <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
+	  <td width=300 style="vertical-align:middle">
+	    <h3>2 sided strategy:</h3>
+	    <p> Compare experiment and simulation data.</p>
+	    <p> If they agree, we can think that our model gives a reasonable description of the experiment, until we find where it breaks down.</p>
+	    <img class='fragment' src='https://butterflylanguagecom.files.wordpress.com/2016/08/quotation-robert-anton-wilson-theory-meetville-quotes-199333.jpg?w=640' style='height:50%;width:50%'>
+	    <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+	  </td>
+	  <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
+	</tr>
+      </table>	
+    </section>
+
+   <section>
+     <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
+     <p class='fragment'>To model our AFM we need to calculate $F(x,y,z)$ as the tip is located at different locations over the surface</p>
+     <p class='fragment'>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
+     <p class='fragment'>Or use Quantum Mechanical calculations (Density Functional Theory (~1000x slower) than forcefield)</p>
+     <p class='fragment'>For AFM we need the to calculate the force on a tip model on a 3D grid (1000s of calculations)</p>
+     <p class='fragment'>The calculations are large - we use lots of <b>linear algebra</b>. We need to diagonalize matrices of order 10,000 using a variety of techniques.</p>
+     <p class='fragment'>We use <b>scientific high performance computing techniques</b>.</p>
+     <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
+
+   </section>
+
+    <section>
+      <section>
+	<h3 id="Qualitative-comparison-of-data">Qualitative comparison of data<a class="anchor-link" href="#Qualitative-comparison-of-data">&#182;</a></h3>
+	<table cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td>
+	      <img src='images/nanoscale1.gif' width=200>
+	    </td>
+	    <td>#<img src='images/nanoscale3.gif' width=600>
+	    </td>
+	  </tr>
+	</table>
+	<p>
+	  <font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)
+	  </font>
+	</p>
+      </section>
+    </section>
+   
+    <section>
+	<h3 id="What is objective reality?">What is objective reality?<a class="anchor-link" href="#What is objective reality?">&#182;</a></h3>
+	<h4 id="Or What is a Scientific measurement?">Or What is a Scientific measurement?<a class="anchor-link" href="#Or What is a Scientific measurement?">&#182;</a></h4>
+	<p class='fragment'>Can we 'see' atoms?</p>
+	<img class='fragment' src='http://www.relatably.com/q/img/robert-anton-wilson-quotes/quote-Robert-Anton-Wilson-the-totally-convinced-and-the-totally-stupid-100166.png' style='height:60%;width:60%'>
+	<p class='fragment'>The experimental signals are in very good agreement with our model expectations in many cases.</p>
+	<p class='fragment'>We can't 'see' atoms, but we can produce signals that can be measured by extensions of our senses that are exactly what we expect atoms to produce.</p>
+	<p class='fragment'>For some value of 'see' we can see atoms, and move them.</p>
+    </section>
+       
+    <section>
+      <section>
+	<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
+	<p>Many microscopes, much data, lots of ways of operating</p>
+	<p>Very successful collaborations between theory, computational and experimental groups to unravel the physics of systems.</p>
+      </section>
+    </section>
+    
+    <section>
+      <section>
+	<h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
+	<ul>
+	  <li>Leverhulme Trust and EU for funding</li>
+	  <li>Alex Shluger, University College London</li>
+	  <li>Takeshi Fukuma, Kanazawa University</li>
+	  <li>Adam Foster, Aalto</li>
+	  <li>Bernhard Reischl, Curtin University</li>
+	</ul>
+      </section>
+    </section>
+    
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "../../revealjs/lib/js/head.min.js",
+      "../../revealjs/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "../../revealjs/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "../../revealjs/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        var update_scroll = function(event){
+          $(".reveal").scrollTop(0);
+        };
+
+        Reveal.addEventListener('slidechanged', update_scroll);
+
+    }
+);
+</script>
+
+</body>
+
+
+</html>
