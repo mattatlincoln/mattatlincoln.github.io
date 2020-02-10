@@ -3,32 +3,32 @@
 <html>
 <head>
 
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Advanced Methods of Physics 2017/18 - Matt Watkins</title>
+  <title>Advanced Methods of Physics 2017/18 - Matt Watkins</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="../../revealjs/css/reveal.css">
-<link rel="stylesheet" href="../../revealjs/css/theme/sky.css" id="theme">
+  <!-- General and theme style sheets -->
+  <link rel="stylesheet" href="../../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../../revealjs/css/theme/sky.css" id="theme">
 
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'revealjs/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'revealjs/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 
-</script>
+  </script>
 
 <!--[if lt IE 9]>
 <script src="revealjs/lib/js/html5shiv.js"></script>
@@ -45,15 +45,15 @@ if( window.location.search.match( /print-pdf/gi ) ) {
   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
   processEscapes: true,
   processEnvironments: true
-  },
-  // Center justify equations in code and markdown cells. Elsewhere
-  // we use CSS to left justify single line equations in code cells.
-  displayAlign: 'center',
-  "HTML-CSS": {
-  styles: {'.MathJax_Display': {"margin": 0}},
-  linebreaks: { automatic: true }
-  }
-  });
+},
+// Center justify equations in code and markdown cells. Elsewhere
+// we use CSS to left justify single line equations in code cells.
+displayAlign: 'center',
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}},
+linebreaks: { automatic: true }
+}
+});
 </script>
 <!-- End of mathjax configuration -->
 
@@ -70,475 +70,477 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <body>
 
-<div class="reveal">
-  <div class="slides">
-    <section data-background="../../images/CaF2_zoom3.jpg">
+  <div class="reveal">
+    <div class="slides">
+      <section data-background="../../images/CaF2_zoom3.jpg">
+        <section>
+         <div class="container" id="title">
+           <h3  id="Seeing surfaces: how scanning probe microscopes work.">Seeing surfaces: how scanning probe microscopes work.<a class="anchor-link" href="#Seeing surfaces: how scanning probe microscopes work.">&#182;</a></h3>
+         </div>
+         <table cellspacing="0" cellpadding="0" border="0">
+           <tr>
+             <td><img src='images/caco3.png' width=400></td>
+             <td><img src='images/lincoln_crest.png' width=250></td>
+           </tr>
+         </table>
+         <div class="container" id="title">
+           <h3 id="Matt-Watkins,">Matt Watkins,<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
+           <h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
+         </div>
+       </section>
+     </section>
+
+     <section>
       <section>
-	<div class="container" id="title">
-	  <h3  id="Seeing surfaces: how scanning probe microscopes work.">Seeing surfaces: how scanning probe microscopes work.<a class="anchor-link" href="#Seeing surfaces: how scanning probe microscopes work.">&#182;</a></h3>
-	</div>
-	<table cellspacing="0" cellpadding="0" border="0">
-	  <tr>
-	    <td><img src='images/caco3.png' width=400></td>
-	    <td><img src='images/lincoln_crest.png' width=250></td>
-	  </tr>
-	</table>
-	<div class="container" id="title">
-	  <h3 id="Matt-Watkins,">Matt Watkins,<a class="anchor-link" href="#Matt-Watkins,">&#182;</a></h3>
-	  <h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
-	</div>
-      </section>
-    </section>
+       <h3 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h3>
+       <table>
+         <tr>
+           <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
+           <td width='300' style="vertical-align:middle">
+             <p>Atomic force microscopy (left) </p>
+             <p> and Scanning Tunnelling microscopy (right)</p>
+           </td>
+           <td><img src='images/ani_stm.gif' style='height:100%;width:100%'></td>
+         </tr>
+       </table>
+       <ul style="text-align=center">
+         <li>Local measurements.</li>
+         <li>Invasive?</li>
+         <li>Ambient or liquid conditions?</li>
+       </ul>
+     </section>
+   </section>
 
-    <section>
-      <section>
-	<h3 id="Scanning-probes">Scanning probes<a class="anchor-link" href="#Scanning-probes">&#182;</a></h3>
-	<table>
-	  <tr>
-	    <td><img src='images/dyn_an16.gif' style='height:100%;width:100%'></td>
-	    <td width='300' style="vertical-align:middle">
-	      <p>Atomic force microscopy (left) </p>
-	      <p> and Scanning Tunnelling microscopy (right)</p>
-	    </td>
-	    <td><img src='images/ani_stm.gif' style='height:100%;width:100%'></td>
-	  </tr>
-	</table>
-	<ul style="text-align=center">
-	  <li>Local measurements.</li>
-	  <li>Invasive?</li>
-	  <li>Ambient or liquid conditions?</li>
-	</ul>
-      </section>
-    </section>
+   <section>
+    <section data-transition="none">
+     <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+     <img src="images/unit_cell.png" height="450px">
+   </section>
+   <section data-transition="none">
+     <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+     <img src="images/unit_cell_expand_1.png" height="450px">
+   </section>
+   <section data-transition="none">
+     <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+     <img src="images/unit_cell_expand_2.png" height="450px">
+   </section>
+   <section data-transition="none">
+     <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+     <img src="images/unit_cell_expand_3.png" height="450px">
+   </section>
+ </section>
 
-    <section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/unit_cell.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/unit_cell_expand_1.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/unit_cell_expand_2.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/unit_cell_expand_3.png" height="450px">
-      </section>
-    </section>
+ <section>
+  <section data-transition="none">
+   <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+   <img src="images/cube_rotate_111.png" height="450px">
+ </section>
+ <section data-transition="none">
+   <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+   <img src="images/cube_rotate_111_cut.png" height="450px">
+ </section>
+ <section data-transition="none">
+   <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+   <img src="images/cube_rotate_111_cleaved.png" height="450px">
+ </section>
+ <section data-transition="none">
+   <h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
+   <img src="images/111_surf.png" height="450px">
+   <p class='fragment'>Energy of a surface depends on:</p>
+   <p class='fragment'> - the number of bonds cut</p>
+   <p class='fragment'> - is there a dipole moment</p>
+ </section>
+</section>
 
-    <section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/cube_rotate_111.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/cube_rotate_111_cut.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/cube_rotate_111_cleaved.png" height="450px">
-      </section>
-      <section data-transition="none">
-	<h3 id="What is a surface?">What is a surface?<a class="anchor-link" href="#What is a surface?">&#182;</a></h3>
-	<img src="images/111_surf.png" height="450px">
-	<p class='fragment'>Energy of a surface depends on:</p>
-	<p class='fragment'> - the number of bonds cut</p>
-	<p class='fragment'> - is there a dipole moment</p>
-      </section>
-    </section>
+<section>
+  <div class="cell border-box-sizing text_cell rendered">
+    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+      <div class="text_cell_render border-box-sizing rendered_html">
+        <div style="position:relative;height:0;padding-bottom:56.21%">
+          <div style="position:relative;height:0;padding-bottom:87.76%">
+           <iframe src="https://www.youtube.com/embed/8WmCn5xGebs?ecver=2" style="position:absolute;width:80%;height:80%;left:0" height="350px" frameborder="0" allowfullscreen>
+           </iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
 
-    <section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <div style="position:relative;height:0;padding-bottom:56.21%">
+ <section>
+  <div class="cell border-box-sizing text_cell rendered">
+    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+      <div class="text_cell_render border-box-sizing rendered_html">
+        <div style="position:relative;height:0;padding-bottom:56.21%">
 
-      <div style="position:relative;height:0;padding-bottom:87.76%">
-	<iframe src="https://www.youtube.com/embed/8WmCn5xGebs?ecver=2" style="position:absolute;width:80%;height:80%;left:0" height="350px" frameborder="0" allowfullscreen>
-	</iframe>
-      </div>
-  </div></div></div>
-    </section>
-
-    <section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <div style="position:relative;height:0;padding-bottom:56.21%">
-
-      <h3 id="Science bit">Science bit<a class="anchor-link" href="#Science bit">&#182;</a></h3>
-      <p>How do SPMs get such high resolution imaging?</p>
-      <p class='fragment'>The trick is a highly non-linear signal</p>
-      <p class='fragment'> - STM the signal drops off exponentially (why?)</p>
-      <p class='fragment'> - AFM in attractive regime the signal drops off with large power of distance ($r^{-3}$ to $r^{-6}$)</p>
-      <p class='fragment'> - AFM in repulsive regime the signal drops off exponentially (why?)</p>
-    </div></div></div>
-    </section>
-
-    <section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <div style="position:relative;height:0;padding-bottom:56.21%">
-
-      <h3 id="AFM">AFM<a class="anchor-link" href="#AFM">&#182;</a></h3>
-      <p>
-	Model the cantilever oscilations:
-	$$
-	\ddot{z} + \omega_{0}^{2} \alpha \dot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = \frac{\omega_0^2}{k}F_{ext}
-	$$
-      </p>
-      <p class='fragment'>
-	work in constant amplitude and frequency change
-	$$
-	\ddot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = 0
-	$$
-      </p>
-      <p class='fragment'>
-	motion is periodic, we can find a solution of the form
-	$$
-	\frac{\omega}{\omega_0}^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) cos (\tau) d\tau
-	$$
-      </p>
-      <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
-  </div></div></div>
-    </section>
-
-    <section><section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <div style="position:relative;height:0;padding-bottom:56.21%">
-
-	<h3 id="Macro-vs-Nano">Macro vs Nano<a class="anchor-link" href="#Macro-vs-Nano">&#182;</a></h3>
-	<table>
-	  <tr>
-	    <td>
-	      <img src='images/dyn_an16.gif'>
-	    </td>
-	    <td>
-	      <img src="images/caco3.png"  width="300">
-	    </td>
-	  </tr>
-	</table>
-	<p>cantilever is macroscopic, tip apex is nanoscopic</p>
-	<p>experiment measures frequency change due to all interactions - macro + nano</p>
-</div></div></div>
-      </section>
-    </section>
-
-    <section>
-      <section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-
-	<h3 id="Experiment:-Macroscopic-effects">Experiment: Macroscopic effects<a class="anchor-link" href="#Experiment:-Macroscopic-effects">&#182;</a></h3>
-	<p>removed empirically by subtracting force from averaged long range scan data over several surface locations</p>
-	<table cellspacing="0" cellpadding="0">
-	  <tr>
-	    <td>
-	      <img src='images/long_range.png' width=600>
-	    </td>
-	  </tr>
-	</table>
-	<p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
-</div></div></div>
-      </section>
-    </section>
-
-    <section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-            <div class="text_cell_render border-box-sizing rendered_html">
-              <div style="position:relative;height:0;padding-bottom:56.21%">
-               <iframe src="https://www.youtube.com/embed/Ehw8PTA4QkE?ecver=2" style="position:absolute;width:80%;height:80%;left:0" width="641" height="360" frameborder="0" allowfullscreen>
-               </iframe>
-            </div>
-            <p class='fragment'>Nottingham Nanoscience group's papers as <a href='http://bit.ly/NottinghamNano'> PDFs</a></p>
-            <p class='fragment'>Phil is an extremely good guitarist;)</p>
-            </div>
+          <h3 id="Science bit">Science bit<a class="anchor-link" href="#Science bit">&#182;</a></h3>
+          <p>How do SPMs get such high resolution imaging?</p>
+          <p class='fragment'>The trick is a highly non-linear signal</p>
+          <p class='fragment'> - STM the signal drops off exponentially (why?)</p>
+          <p class='fragment'> - AFM in attractive regime the signal drops off with large power of distance ($r^{-3}$ to $r^{-6}$)</p>
+          <p class='fragment'> - AFM in repulsive regime the signal drops off exponentially (why?)</p>
         </div>
+      </div>
     </div>
+  </section>
+
+  <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <div style="position:relative;height:0;padding-bottom:56.21%">
+
+            <h3 id="AFM">AFM<a class="anchor-link" href="#AFM">&#182;</a></h3>
+            <p>
+             Model the cantilever oscilations:
+             $$
+             \ddot{z} + \omega_{0}^{2} \alpha \dot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = \frac{\omega_0^2}{k}F_{ext}
+             $$
+           </p>
+           <p class='fragment'>
+             work in constant amplitude and frequency change
+             $$
+             \ddot{z} + \omega_0^2 z - \frac{\omega_0^2}{k}F(z) = 0
+             $$
+           </p>
+           <p class='fragment'>
+             motion is periodic, we can find a solution of the form
+             $$
+             \frac{\omega}{\omega_0}^2 = \frac{1}{\pi k A_1} \int_0^{2 \pi} F(z) cos (\tau) d\tau
+             $$
+           </p>
+           <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.
+           </h5>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <section><section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+        <div class="text_cell_render border-box-sizing rendered_html">
+          
+           <h3 id="Macro-vs-Nano">Macro vs Nano<a class="anchor-link" href="#Macro-vs-Nano">&#182;</a></h3>
+           <table>
+             <tr>
+               <td>
+                 <img src='images/dyn_an16.gif'>
+               </td>
+               <td>
+                 <img src="images/caco3.png"  width="300">
+               </td>
+             </tr>
+           </table>
+           <p>cantilever is macroscopic, tip apex is nanoscopic</p>
+           <p>experiment measures frequency change due to all interactions - macro + nano</p>
+           <p>macroscopic forces include
+            <ul><li>van de Waals interactions</li>
+              <li>electostatic interactions</li>
+              <li>hydrodynamic forces (if in solution)</li>
+            </ul>
+         </div></div></div>
+       </section>
+   </section>
+
+   <section>
+  <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+        <div class="text_cell_render border-box-sizing rendered_html">
+
+         <h3 id="Experiment:-Macroscopic-effects">Experiment: Macroscopic effects<a class="anchor-link" href="#Experiment:-Macroscopic-effects">&#182;</a></h3>
+         <p>removed empirically by subtracting force from averaged long range scan data over several surface locations</p>
+         <table cellspacing="0" cellpadding="0">
+           <tr>
+             <td>
+               <img src='images/long_range.png' width=600>
+             </td>
+           </tr>
+         </table>
+         <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+       </div></div></div>
+     </section>
    </section>
 
    <section>
     <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
         <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="STM">STM<a class="anchor-link" href="#STM">&#182;</a></h3>
-      <p>
-	$$
-	I(z) \propto \exp^{-k \sqrt{2 \phi}z}
-	$$
-	where, $k$ is a constant, $\phi$ is the work function of the surface and $z$ is the distance from the surface.
-      </p>
-      <p>
-	Using <a href='https://en.wikipedia.org/wiki/Ballistic_conduction'>Landau-Buttiker</a> formalism + a lot of simplifications, we can approximate the current through a tip as
-	$$
-	I(z,E) \propto \text{LDOS}(z, E)
-	$$
-	where $\text{LDOS}$ is a local density of states - the amplitude of electron states of the surface that have an energy within $dE$ of $E$ at the location $z$.<br>
-	Again this gives exponential decay.
-      </p>
-  </div></div></div>
-    </section>
+          <div style="position:relative;height:0;padding-bottom:56.21%">
+           <iframe src="https://www.youtube.com/embed/Ehw8PTA4QkE?ecver=2" style="position:absolute;width:80%;height:80%;left:0" width="641" height="360" frameborder="0" allowfullscreen>
+           </iframe>
+          </div>
+          <p class='fragment'>Nottingham Nanoscience group's papers as <a href='http://bit.ly/NottinghamNano'> PDFs</a></p>
+          <p class='fragment'>Phil is an extremely good guitarist;)</p>
+        </div>
+      </div>
+    </div>
+   </section>
 
+   <section>
     <section>
-      <section>
-                <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-	<!--<h3 id="2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">2 sided strategy: manipulate both experiment and simulation data for comparison<a class="anchor-link" href="#2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">&#182;</a></h3>-->
-	<table>
-	  <tr>
-	    <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
-	    <td width=300 style="vertical-align:middle">
-	      <h3>2 sided strategy:</h3>
-	      <p> manipulate both experiment and simulation data for comparison</p>
-	      <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
-	    </td>
-	    <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
-	  </tr>
-	</table>	
-</div></div></div>
-      </section>
-    </section>
-    
-   <section>
-            <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-     <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
-     <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
-     <p>Or use Quantum Mechanical calculations (Density Functional Theory (~1000x slower) than forcefield)</p>
-     <p>For STM we need the electron density (LDOS), we need Quantum Mechanics</p>
-     <p>For AFM we need the to calculate the force on a tip model on a 3D grid (1000s of calculations)</p><br>
-     <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
-</div></div></div>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+          <div class="text_cell_render border-box-sizing rendered_html">
+           <!--<h3 id="2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">2 sided strategy: manipulate both experiment and simulation data for comparison<a class="anchor-link" href="#2-sided-strategy:-manipulate-both-experiment-and-simulation-data-for-comparison">&#182;</a></h3>-->
+           <table>
+             <tr>
+               <td valign='middle'><img class='img-rounded' src='images/simulation.png' height='600'></td>
+               <td width=300 style="vertical-align:middle">
+                 <h3>2 sided strategy:</h3>
+                 <p> manipulate both experiment and simulation data for comparison</p>
+                 <p><font size="2">K Miyazawa, N Kobayashi, MW, AL Shluger, K Amano, T Fukuma, Nanoscale 8, 7334 (2016)</font></p>
+               </td>
+               <td valign='middle'><img class='img-rounded' src='images/experiment.png' height='600'></td>
+             </tr>
+           </table>	
+         </div></div></div>
+       </section>
    </section>
 
    <section>
-            <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+    <section>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+          <div class="text_cell_render border-box-sizing rendered_html">
+            <h2>Experimental data</h2>
+            <p>Let's looks at some real data provided by some experimentalists.</p>
+            <p>Christian Loppacher, Laurent Nony and co-workers at the University of Marseille.</p>
+         </div></div></div>
+       </section>
+   </section>
+
+   <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
         <div class="text_cell_render border-box-sizing rendered_html">
-     <section>
-     <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
-     <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
-     <table>
-       <tr>
-	 <td>
-	   <video width="520" height="400" controls>
-	     <source src="../advanced_topics/images/CDB.mp4" type="video/mp4">
-	   </video>
-	 </td>
-	 <td>
-	   <video width="520" height="400" controls>
-	     <source src="../advanced_topics/images/TCB.mp4" type="video/mp4">
-	   </video>
-	 </td>
-       </tr>
-     </table>
-     <p>Using classical potentials to 'pull' molecules onto a KCl surface.</p>
-     <h5>Gaberle, J., Gao, D. Z., Watkins, M. B., & Shluger, A. L. (2016). Calculating the entropy loss on adsorption of organic molecules at insulating surfaces. The Journal of Physical Chemistry C, 120(7), 3913-3921.</h5>
+         <h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
+         <p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
+         <p>Or use Quantum Mechanical calculations (Density Functional Theory (~1000x slower) than forcefield)</p>
+         <p>For STM we need the electron density (LDOS), we need Quantum Mechanics</p>
+         <p>For AFM we need the to calculate the force on a tip model on a 3D grid (1000s of calculations)</p><br>
+         <h5>Hofer, Werner A., Adam S. Foster, and Alexander L. Shluger. "Theories of scanning probe microscopes at the atomic scale." Reviews of Modern Physics 75.4 (2003): 1287.</h5>
+       </div></div></div>
      </section>
- </div></div></div>
-   </section>
-   
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h1 id="DFT">DFT<a class="anchor-link" href="#DFT">&#182;</a></h1><p>Why DFT?</p>
-          <ul>
-            <li>Explicit inclusion of electronic structure</li>
-            <li>predictable accuracy (at least when benchmarked for related systems)</li>
-            <li>many observables available (spectroscopy)</li>
-            <li>cheaper (better scaling) than many wavefunction based approaches</li>
-            <li><em>ab initio</em> molecular dynamics / Monte Carlo</li>
-          </ul>
 
-        </div>
-          </div>
-    </div></section></section>
+<section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<section>
+<h3 id="Modelling SPMs">Modelling SPMs<a class="anchor-link" href="#Modelling SPMs">&#182;</a></h3>
+<p>Need a forcefield for classical calculations - bonds, angles, torsions, charges etc for all atoms</p>
+<table>
+<tr>
+<td>
+<video width="520" height="400" controls>
+<source src="../advanced_topics/images/CDB.mp4" type="video/mp4">
+</video>
+</td>
+<td>
+<video width="520" height="400" controls>
+<source src="../advanced_topics/images/TCB.mp4" type="video/mp4">
+</video>
+</td>
+</tr>
+</table>
+<p>Using classical potentials to 'pull' molecules onto a KCl surface.</p>
+<h5>Gaberle, J., Gao, D. Z., Watkins, M. B., & Shluger, A. L. (2016). Calculating the entropy loss on adsorption of organic molecules at insulating surfaces. The Journal of Physical Chemistry C, 120(7), 3913-3921.</h5>
+</section>
+</div>
+</div>
+</div>
+</section>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="Hohenberg-Kohn-Theorems">Hohenberg-Kohn Theorems<a class="anchor-link" href="#Hohenberg-Kohn-Theorems">&#182;</a></h2><p><strong>Theorem 1</strong></p>
-          <ul>
-            <li>the potential and hence the total energy are a unique functional of the electronic density, $n(\mathbf{r})$<ul>
-            <li>$n(\mathbf{r}) \leftrightarrow V_{ext}(\mathbf{r},\mathbf{R})$</li>
-              </ul>
-            </li>
-          </ul>
-          <p><strong>Theorem 2</strong></p>
-          <ul>
-            <li>the total energy is variational<ul>
-            <li>$E[n] \geq E[n_{GS}]$</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-          </div>
-    </div></section></section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="DFT">DFT<a class="anchor-link" href="#DFT">&#182;</a></h1><p>Why DFT?</p>
+<ul>
+<li>Explicit inclusion of electronic structure</li>
+<li>predictable accuracy (at least when benchmarked for related systems)</li>
+<li>many observables available (spectroscopy)</li>
+<li>cheaper (better scaling) than many wavefunction based approaches - only depends on density - not positions of individual electrons</li>
+<li><em>ab initio</em> molecular dynamics / Monte Carlo</li>
+</ul>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="Kohn-Sham:-non-interacting-electrons">Kohn-Sham: non-interacting electrons<a class="anchor-link" href="#Kohn-Sham:-non-interacting-electrons">&#182;</a></h2><p>We map the problem of interacting electrons onto an equivalent one with non-interacting electrons with an altered external potential (xc).</p>
-          <p>We expand the electron <em>density</em>, $n$,  as a sum of one electron orbital contributions</p>
+</div>
+</div>
+</div></section></section>
 
-          <p>the energy has several components:</p>
-          <p>$E_{tot}[n] = E_{kin}[n] + E_{ext}[n] + E_{H}[n] + E_{XC}[n]$</p>
-          <ul>
-            <li>$E_{kin}$ - kinetic energy of electrons</li>
-            <li>$E_{ext}$ - energy due to external potential (pseudo potentials, external bias or electric fields ... )</li>
-            <li>$E_{H}$ - Hartree energy, classical electrostatic interactions</li>
-            <li>$E_{xc}$ - non-classical Coulomb energy: electron correlation</li>
-          </ul>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hohenberg-Kohn-Theorems">Hohenberg-Kohn Theorems<a class="anchor-link" href="#Hohenberg-Kohn-Theorems">&#182;</a></h2><p><strong>Theorem 1</strong></p>
+<ul>
+<li>the potential and hence the total energy are a unique functional of the electronic density, $n(\mathbf{r})$<ul>
+  <li>$n(\mathbf{r}) \leftrightarrow V_{ext}(\mathbf{r},\mathbf{R})$</li>
+</ul>
+</li>
+</ul>
+<p><strong>Theorem 2</strong></p>
+<ul>
+<li>the total energy is variational<ul>
+<li>$E[n] \geq E[n_{GS}]$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div></section></section>
 
-        </div>
-          </div>
-    </div></section></section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kohn-Sham:-non-interacting-electrons">Kohn-Sham: non-interacting electrons<a class="anchor-link" href="#Kohn-Sham:-non-interacting-electrons">&#182;</a></h2><p>We map the problem of interacting electrons onto an equivalent one with non-interacting electrons with an altered external potential (xc).</p>
+<p>We expand the electron <em>density</em>, $n$,  as a sum of one electron orbital contributions</p>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          
-          <p><strong>Electronic density</strong></p>
-          $$
-          n(\mathbf{r}) = \sum_i f_i \mid \psi_i (\mathbf{r}) \mid ^2
-          $$<p>where $f_i$ is the occupation number of the $i$th orbital</p>
-          <p><strong>Kinetic energy of non-interacting electrons</strong></p>
-          $$
-          T_s[n] = \sum_i f_i \big{<} \psi_i (\mathbf{r}) \mid -\frac{1}{2} \nabla^2 \mid \psi_i (\mathbf{r}) \big{>}
-            $$<p><strong>Electronic interaction with the external potential</strong></p>
-            $$
-            E_{ext} [n] = \int_r n(\mathbf{r}) V_{ext} (\mathbf{r}) \text{d}\mathbf{r}, 
-            V_{ext} = \sum_I -\frac{Z_I}{\mid \mathbf{r} - \mathbf{R}_I \mid}
-            $$<p>with the exact solution as a Slater determinant of the lowest $N$ orbitals</p>
-            $$
-            \Psi = \frac{1}{\sqrt{N!}} \text{det} [\psi_1 \psi_2 \psi_3 \cdots \psi_N]
-            $$
-        </div>
-          </div>
-    </div></section></section>
+<p>the energy has several components:</p>
+<p>$E_{tot}[n] = E_{kin}[n] + E_{ext}[n] + E_{H}[n] + E_{XC}[n]$</p>
+<ul>
+<li>$E_{kin}$ - kinetic energy of electrons</li>
+<li>$E_{ext}$ - energy due to external potential (pseudo potentials, external bias or electric fields ... )</li>
+<li>$E_{H}$ - Hartree energy, classical electrostatic interactions</li>
+<li>$E_{xc}$ - non-classical Coulomb energy: electron correlation</li>
+</ul>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="KS-energy-functional">KS energy functional<a class="anchor-link" href="#KS-energy-functional">&#182;</a></h2><p>We correct the non-interacting electron model by adding in an (in principle unknown) XC potential that accounts for <em>all</em> quantum mechanical many-body interactions (electron-electron repulsion)</p>
-          <p><strong>Classical election-electron repulsion</strong></p>
-          $$
-          J[n] = \frac{1}{2} \int_r \int_{r'} \frac{n(\mathbf{r})n(\mathbf{r'})}{\mid \mathbf{r} - \mathbf{r'}} = 
-          \frac{1}{2} \int_r n(\mathbf{r}) V_H(\mathbf{r}) \text{d} \mathbf{r}
-          $$<p><strong>Kohn-Sham functional</strong></p>
-          $$
-          E_{KS}[n] = T_s[n] + E_{ext}[n] + J[n] + E_{XC}[n]
-          $$$$
-          E_{XC}[n] = E_{kin}[n] - T_s[n] + E_{ee}[n] - J[n]
-          $$<p>The exact functional form for the electron-electron repulsion is not known, but various levels of approximation are available (Jacob's Ladder). The existence of this functional is guarenteed by the 1st Hohenberg-Kohn Theroem.</p>
-          <p>This maps mathematically onto the familiar Hartree-Fock model of electronic structure.</p>
+</div>
+</div>
+</div></section></section>
 
-        </div>
-          </div>
-    </div></section></section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <p>Using the 2nd Hohenberg-Kohn theorem, we find the electron density that minimises the energy of the system. But, like in Hartree-Fock theory, we have to ensure that the electron orbitals are orthonormal to prevent the system imploding.</p>
-          <p><strong>Orthogonality constraint</strong></p>
-          $$
-          \Omega_{KS} [\psi_i] = E_{KS}[n] - \sum_{ij} \epsilon_{ij} \int \psi_i^*(\mathbf{r})\psi_j(\mathbf{r})\text{d} \mathbf{r}
-          $$<p><strong>Variational search in the space of the orbitals</strong></p>
-          <p>By finding the minimum (extremum) of the $\Omega$ functional $\partial \frac{\Omega_{KS} [\psi_i]}{\partial \psi_i}$ we get the KS equations</p>
-          $$
-          H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
-          $$<p>where $V_{KS}$ is given by</p>
-          $$
-          V_{KS}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_{H}(\mathbf{r}) + V_{XC}(\mathbf{r})
-          $$
-          <p>and, again, all the magic is in $V_{XC}$. The <em>Lagrangian multipliers</em>, $\epsilon_{ij}$ ensure that the orbitals stay orthonormal.</p>
+<p><strong>Electronic density</strong></p>
+$$
+n(\mathbf{r}) = \sum_i f_i \mid \psi_i (\mathbf{r}) \mid ^2
+$$<p>where $f_i$ is the occupation number of the $i$th orbital</p>
+<p><strong>Kinetic energy of non-interacting electrons</strong></p>
+$$
+T_s[n] = \sum_i f_i \big{<} \psi_i (\mathbf{r}) \mid -\frac{1}{2} \nabla^2 \mid \psi_i (\mathbf{r}) \big{>}
+$$<p><strong>Electronic interaction with the external potential</strong></p>
+$$
+E_{ext} [n] = \int_r n(\mathbf{r}) V_{ext} (\mathbf{r}) \text{d}\mathbf{r}, 
+V_{ext} = \sum_I -\frac{Z_I}{\mid \mathbf{r} - \mathbf{R}_I \mid}
+$$<p>with the exact solution as a Slater determinant of the lowest $N$ orbitals</p>
+$$
+\Psi = \frac{1}{\sqrt{N!}} \text{det} [\psi_1 \psi_2 \psi_3 \cdots \psi_N]
+$$
+</div>
+</div>
+</div></section></section>
 
-        </div>
-          </div>
-      </div></section>
-      <section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="KS-equations">KS equations<a class="anchor-link" href="#KS-equations">&#182;</a></h2>$$
-          H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
-          $$<p>We can transform the generalised eigenvalue problem given by the KS equations above, to get rid of the nasty sum on the right hand side. In this case $\epsilon_{ij}$ is diagonal, and we get an eigenvalue problem:</p>
-          $$\big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \epsilon_i \psi_i$$<ul>
-            <li>KS equations look like the Schr$\ddot{o}$dinger equations</li>
-            <li>coupled and highly non-linear ($V_{KS}$ depends on the orbitals!)</li>
-            <li>self consistent solution (Self Consistent Field - the $V_{KS}$ is consistent with the orbitals)</li>
-            <li>KS scheme is, in principle, exact (if we knew the exact $E_{XC}$)</li>
-          </ul>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="KS-energy-functional">KS energy functional<a class="anchor-link" href="#KS-energy-functional">&#182;</a></h2><p>We correct the non-interacting electron model by adding in an (in principle unknown) XC potential that accounts for <em>all</em> quantum mechanical many-body interactions (electron-electron repulsion)</p>
+<p><strong>Classical election-electron repulsion</strong></p>
+$$
+J[n] = \frac{1}{2} \int_r \int_{r'} \frac{n(\mathbf{r})n(\mathbf{r'})}{\mid \mathbf{r} - \mathbf{r'}} = 
+\frac{1}{2} \int_r n(\mathbf{r}) V_H(\mathbf{r}) \text{d} \mathbf{r}
+$$<p><strong>Kohn-Sham functional</strong></p>
+$$
+E_{KS}[n] = T_s[n] + E_{ext}[n] + J[n] + E_{XC}[n]
+$$$$
+E_{XC}[n] = E_{kin}[n] - T_s[n] + E_{ee}[n] - J[n]
+$$<p>The exact functional form for the electron-electron repulsion is not known, but various levels of approximation are available (Jacob's Ladder). The existence of this functional is guarenteed by the 1st Hohenberg-Kohn Theroem.</p>
+<p>This maps mathematically onto the familiar Hartree-Fock model of electronic structure.</p>
 
-        </div>
-          </div>
-    </div></section></section>
+</div>
+</div>
+</div></section></section>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="Self-consistency">Self-consistency<a class="anchor-link" href="#Self-consistency">&#182;</a></h2><p><code>generate an initial guess, from a superposition of atomic densities (typical PW code) or atomic block diagonal density matrix (CP2K)</code></p>
-          <ul>
-            <li>generate a starting density $\Rightarrow n^{init}$</li>
-            <li>generate the KS potential   $\Rightarrow V_{KS}^{init}$</li>
-            <li>solve the KS equations  $\Rightarrow \epsilon, \psi$</li>
-          </ul>
-          <p><code>then repeat until convergence</code></p>
-          <ul>
-            <li>calculate the new density $\Rightarrow n^{1}$ </li>
-            <li>calculate the new KS potential $\Rightarrow V_{KS}^{1}$ </li>
-            <li>new orbitals and energies $\Rightarrow \epsilon^1, \psi^1$</li>
-          </ul>
-          <p><code>calculate properties from final density and orbitals</code></p>
-          <p>Stopping criteria in CP2K are either that the largest derivative of the in energy wrt a MO coefficient ($\frac{\delta E(C)}{\delta C}$) is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+<div class="text_cell_render border-box-sizing rendered_html">
+  <p>Using the 2nd Hohenberg-Kohn theorem, we find the electron density that minimises the energy of the system. But, like in Hartree-Fock theory, we have to ensure that the electron orbitals are orthonormal to prevent the system imploding.</p>
+  <p><strong>Orthogonality constraint</strong></p>
+  $$
+  \Omega_{KS} [\psi_i] = E_{KS}[n] - \sum_{ij} \epsilon_{ij} \int \psi_i^*(\mathbf{r})\psi_j(\mathbf{r})\text{d} \mathbf{r}
+  $$<p><strong>Variational search in the space of the orbitals</strong></p>
+  <p>By finding the minimum (extremum) of the $\Omega$ functional $\partial \frac{\Omega_{KS} [\psi_i]}{\partial \psi_i}$ we get the KS equations</p>
+  $$
+  H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
+  $$<p>where $V_{KS}$ is given by</p>
+  $$
+  V_{KS}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_{H}(\mathbf{r}) + V_{XC}(\mathbf{r})
+  $$
+  <p>and, again, all the magic is in $V_{XC}$. The <em>Lagrangian multipliers</em>, $\epsilon_{ij}$ ensure that the orbitals stay orthonormal.</p>
 
-        </div>
-          </div>
-    </div></section></section>
+</div>
+</div>
+</div></section>
+<section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+  <div class="text_cell_render border-box-sizing rendered_html">
+    <h2 id="KS-equations">KS equations<a class="anchor-link" href="#KS-equations">&#182;</a></h2>$$
+    H_{KS} \psi_i = \big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \sum_{ij} \epsilon_{ij} \psi_j
+    $$<p>We can transform the generalised eigenvalue problem given by the KS equations above, to get rid of the nasty sum on the right hand side. In this case $\epsilon_{ij}$ is diagonal, and we get an eigenvalue problem:</p>
+    $$\big{[} -\frac{1}{2} \nabla^2 + V_{KS} \big{]} \psi_i = \epsilon_i \psi_i$$<ul>
+      <li>KS equations look like the Schr$\ddot{o}$dinger equations</li>
+      <li>coupled and highly non-linear ($V_{KS}$ depends on the orbitals!)</li>
+      <li>self consistent solution (Self Consistent Field - the $V_{KS}$ is consistent with the orbitals)</li>
+      <li>KS scheme is, in principle, exact (if we knew the exact $E_{XC}$)</li>
+    </ul>
 
-    <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="Basis-Set-Representation(s)">Basis Set Representation(s)<a class="anchor-link" href="#Basis-Set-Representation(s)">&#182;</a></h2><p>to actually do calculations we need to expand the KS equations into a basis. In CP2K we use Gaussian functions, as the primary basis set:</p>
-          <p>the KS orbitals are then represented as</p>
-          $$
-          \psi_i (\mathbf{r}) = \sum_{\alpha} C_{\alpha i} \phi_{\alpha} (\mathbf{r})
-          $$<p>the density as</p>
-          $$
-          n (\mathbf{r}) =  \sum_i \sum_{\alpha \beta} f_i C_{\alpha i} C_{\beta i} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) =
-          P_{\alpha \beta} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r})
-          $$<p>where the density matrix $\mathbf{P}$ is defined.</p>
-          <p>There is a complication - the basis functions are <strong>not</strong> orthogonal. We have an <em>overlap matrix</em>, $\mathbf{S}$,</p>
-          $$
-          S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
-          $$
-        </div>
-          </div>
-      </div></section>
-      <section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+  </div>
+</div>
+</div></section></section>
+
+<section><section>
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+    <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Self-consistency">Self-consistency<a class="anchor-link" href="#Self-consistency">&#182;</a></h2><p><code>generate an initial guess, from a superposition of atomic densities (typical PW code) or atomic block diagonal density matrix (CP2K)</code></p>
+      <ul>
+        <li>generate a starting density $\Rightarrow n^{init}$</li>
+        <li>generate the KS potential   $\Rightarrow V_{KS}^{init}$</li>
+        <li>solve the KS equations  $\Rightarrow \epsilon, \psi$</li>
+      </ul>
+      <p><code>then repeat until convergence</code></p>
+      <ul>
+        <li>calculate the new density $\Rightarrow n^{1}$ </li>
+        <li>calculate the new KS potential $\Rightarrow V_{KS}^{1}$ </li>
+        <li>new orbitals and energies $\Rightarrow \epsilon^1, \psi^1$</li>
+      </ul>
+      <p><code>calculate properties from final density and orbitals</code></p>
+      <p>Stopping criteria in CP2K are either that the largest derivative of the in energy wrt a MO coefficient ($\frac{\delta E(C)}{\delta C}$) is smaller than <code>EPS_SCF</code> (OT), or the largest change in the density matrix ($P$) is smaller than <code>EPS_SCF</code> (traditional diagonalization).</p>
+
+    </div>
+  </div>
+</div></section></section>
+
+<section><section>
+  <div class="cell border-box-sizing text_cell rendered">
+    <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+      <div class="text_cell_render border-box-sizing rendered_html">
+        <h2 id="Basis-Set-Representation(s)">Basis Set Representation(s)<a class="anchor-link" href="#Basis-Set-Representation(s)">&#182;</a></h2><p>to actually do calculations we need to expand the KS equations into a basis. In CP2K we use Gaussian functions, as the primary basis set:</p>
+        <p>the KS orbitals are then represented as</p>
+        $$
+        \psi_i (\mathbf{r}) = \sum_{\alpha} C_{\alpha i} \phi_{\alpha} (\mathbf{r})
+        $$<p>the density as</p>
+        $$
+        n (\mathbf{r}) =  \sum_i \sum_{\alpha \beta} f_i C_{\alpha i} C_{\beta i} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) =
+        P_{\alpha \beta} \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r})
+        $$<p>where the density matrix $\mathbf{P}$ is defined.</p>
+        <p>There is a complication - the basis functions are <strong>not</strong> orthogonal. We have an <em>overlap matrix</em>, $\mathbf{S}$,</p>
+        $$
+        S_{\alpha \beta} = \int_r \phi_{\alpha} (\mathbf{r})\phi_{\beta} (\mathbf{r}) \text{d}\mathbf{r}
+        $$
+      </div>
+    </div>
+  </div></section>
+  <section>
+    <div class="cell border-box-sizing text_cell rendered">
+      <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
         <div class="text_cell_render border-box-sizing rendered_html">
           <p><strong>KS total energy</strong></p>
           $$
@@ -557,19 +559,19 @@ if( window.location.search.match( /print-pdf/gi ) ) {
           \mathbf{K}(C) = \mathbf{T} + \mathbf{V}_{ext} + \mathbf{V}_H(C) + \mathbf{V}_{XC}(C)
           $$
         </div>
-          </div>
+      </div>
     </div></section></section>
 
     <section><section>
-        <div class="cell border-box-sizing text_cell rendered">
-          <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
-        <div class="text_cell_render border-box-sizing rendered_html">
-          <h2 id="Algorithmic-challenges">Algorithmic challenges<a class="anchor-link" href="#Algorithmic-challenges">&#182;</a></h2><ul>
-            <li>construct the Kohn-Sham matrix<ul>
-            <li>Hartree potential</li>
-            <li>XC potential</li>
-            <li>HF/exact exchange</li>
-            <li>core/pseudopotential terms</li>
+      <div class="cell border-box-sizing text_cell rendered">
+        <div class="inner_cell" style='background:rgba(255,235,204,0.99)'>
+          <div class="text_cell_render border-box-sizing rendered_html">
+            <h2 id="Algorithmic-challenges">Algorithmic challenges<a class="anchor-link" href="#Algorithmic-challenges">&#182;</a></h2><ul>
+              <li>construct the Kohn-Sham matrix<ul>
+                <li>Hartree potential</li>
+                <li>XC potential</li>
+                <li>HF/exact exchange</li>
+                <li>core/pseudopotential terms</li>
               </ul>
             </li>
             <li>fast and efficient minimization of the energy functional</li>
@@ -579,64 +581,64 @@ if( window.location.search.match( /print-pdf/gi ) ) {
           <h3>We help to develop the CP2K code. Some usage examples <a href='https://www.cp2k.org/science'>here</a>.</h3>
 
         </div>
-          </div>
+      </div>
     </div></section></section>
 
     <section>
       <section>
-	<h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
-	<p>Many microscopes, much data, lots of ways of operating</p>
-	<p>Very successful collaborations between theory, computational and experimental groups to unravel the physics of systems.</p>
-      </section>
-    </section>
-    
+       <h3 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h3>
+       <p>Many microscopes, much data, lots of ways of operating</p>
+       <p>Very successful collaborations between theory, computational and experimental groups to unravel the physics of systems.</p>
+     </section>
+   </section>
+
+   <section>
     <section>
-      <section>
-	<h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
-	<ul>
-	  <li>EPSRC and ARCHER (national super computer) for funding</li>
-	  <li>Alex Shluger, University College London</li>
-      <li>Lev Kantorovich, King's College London</li>
-	  <li>Takeshi Fukuma, Kanazawa University</li>
-	  <li>Adam Foster, Aalto</li>
-	  <li>Bernhard Reischl, Curtin University</li>
-	</ul>
-      </section>
-    </section>
+     <h3 id="Thanks-to">Thanks to<a class="anchor-link" href="#Thanks-to">&#182;</a></h3>
+     <ul>
+       <li>EPSRC and ARCHER (national super computer) for funding</li>
+       <li>Alex Shluger, University College London</li>
+       <li>Lev Kantorovich, King's College London</li>
+       <li>Takeshi Fukuma, Kanazawa University</li>
+       <li>Adam Foster, Aalto</li>
+       <li>Bernhard Reischl, Curtin University</li>
+     </ul>
+   </section>
+ </section>
 
-<script>
+ <script>
 
-require(
-    {
+  require(
+  {
       // it makes sense to wait a little bit when you are loading
       // reveal from a cdn in a slow connection environment
       waitSeconds: 15
     },
     [
-      "../../revealjs/lib/js/head.min.js",
-      "../../revealjs/js/reveal.js"
+    "../../revealjs/lib/js/head.min.js",
+    "../../revealjs/js/reveal.js"
     ],
 
     function(head, Reveal){
 
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
+          controls: true,
+          progress: true,
+          history: true,
 
             theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
             transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "../../revealjs/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "../../revealjs/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
+            { src: "../../revealjs/lib/js/classList.js",
+            condition: function() { return !document.body.classList; } },
+            { src: "../../revealjs/plugin/notes/notes.js",
+            async: true,
+            condition: function() { return !!document.body.classList; } }
             ]
-        });
+          });
 
         var update = function(event){
           if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
@@ -652,11 +654,11 @@ require(
 
         Reveal.addEventListener('slidechanged', update_scroll);
 
-    }
-);
-</script>
+      }
+      );
+    </script>
 
-</body>
+  </body>
 
 
-</html>
+  </html>
