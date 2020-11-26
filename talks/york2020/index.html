@@ -9,7 +9,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<title>TDDFPT in CP2K</title>
+	<title>towards conductivity in CP2K</title>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -75,20 +75,80 @@ linebreaks: { automatic: true }
 	</div>
 	<div class="inner_cell" style='background:rgba(0,0,0,0.40);'>
 		<div class="text_cell_render border-box-sizing rendered_html">
-			<h1 id="Excited-states in CP2K">TDDFT in CP2K. Update on SAINT v2b<a class="anchor-link" href="#Excited-states">&#182;</a></h1>
-			<h1 id="Excited-states in CP2K">CP2K Update<a class="anchor-link" href="#Excited-states">&#182;</a></h1>
+			<h1 id="Excited-states in CP2K">Suff related to conductivity in CP2K<a class="anchor-link" href="#Excited-states">&#182;</a></h1>
 			<h2 id="Sergey-Chulkov,-Matt-Watkins">Sergey Chulkov, Matt Watkins<a class="anchor-link" href="#Sergey-Chulkov,-Matt-Watkins">&#182;</a></h2>
 			<h3 id="School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">School of Mathematics and Physics, University of Lincoln, UK<a class="anchor-link" href="#School-of-Mathematics-and-Physics,-University-of-Lincoln,-UK">&#182;</a></h3>
-			<h2 id="Jack-Strand,-Alex-Shluger">MgO and HfO<sub>2</sub> data calculated by Jack Strand, Alex Shluger's group<a class="anchor-link" href="#Jack-Strand,-Alex-Shluger">&#182;</a>
-			</h2>
-			<h3 id="University-College-London">University College London<a class="anchor-link" href="#University-College-London">&#182;</a>
-			</h3>
-
 		</div>
 	</div>
 </div></section></section>
 
+<section>
 	<section>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h1>Defect levels - band like or localized?</h1>
+            	<div style='background:rgba(0,0,0,0.4);'>
+					<img src='images/abstract_JCTC.gif'>
+					<img src='images/dEbydN.png' width=30%>
+					<p style='font-size: 10px;'>'First-Principles Modeling of Polaron Formation in TiO2 Polymorphs' A. R. Elmaslmane, M. B. Watkins, and K. P. McKenna, Journal of Chemical Theory and Computation 2018 14 (7), 3740-3751</p>
+      			</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h1>Generalized Koopman's condition</h1>
+            	<div style='background:rgba(0,0,0,0.4);'>
+					<img src='images/GKC.png'>
+					<img src='images/dEbydN.png' width=60%>
+					<p style='font-size: 10px;'>'First-Principles Modeling of Polaron Formation in TiO2 Polymorphs' A. R. Elmaslmane, M. B. Watkins, and K. P. McKenna, Journal of Chemical Theory and Computation 2018 14 (7), 3740-3751</p>
+      			</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h1>Generalized Koopman's condition</h1>
+            	<div style='background:rgba(0,0,0,0.4);'>
+					<img src='images/Koopmans_theorem.gif'>
+      			</div>
+      			<p>Parameterize density functionals to satisfy these conditions.</p>
+      			<p>Allows a priori assessment of whether electrons are atom-like or free-electron like.</p>
+					<p style='font-size: 10px;'>'First-Principles Modeling of Polaron Formation in TiO2 Polymorphs' A. R. Elmaslmane, M. B. Watkins, and K. P. McKenna, Journal of Chemical Theory and Computation 2018 14 (7), 3740-3751</p>
+
+			</div>
+		</div>
+	</section>
+		<section>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h1>Transferability</h1>
+            	<div style='background:rgba(0,0,0,0.4);'>
+					<img src='images/Koopmans_defects.gif'>
+      			</div>
+      			<p>Parameter seem to be OK across polymorphs</p>
+			</div>
+		</div>
+	</section>
+		<section>
+		<div class="inner_cell">
+			<div class="text_cell_render border-box-sizing rendered_html">
+				<h1>Band gaps and defects</h1>
+            	<div style='background:rgba(0,0,0,0.4);'>
+					<img src='images/defects_bandgaps.gif'>
+      			</div>
+      			<p>Position levels with band gaps and align with external levels (electrodes).</p>
+					<p style='font-size: 10px;'>'First-Principles Modeling of Polaron Formation in TiO2 Polymorphs' A. R. Elmaslmane, M. B. Watkins, and K. P. McKenna, Journal of Chemical Theory and Computation 2018 14 (7), 3740-3751</p>
+			</div>
+		</div>
+	</section>
+
+
+</section>
+
+<section>
 	<section>
 		<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 		</div>
@@ -102,7 +162,7 @@ linebreaks: { automatic: true }
 				</ul>
 				<p>both methods are available in CP2K.</p>
 				<p>We have been working on the Linear Response implementation.</p>
-				<h2>Aim within SAINT is to enable routine calculation of band gaps and exciton binding energies of surfaces and interfaces.</h2>
+				<h2>Aim is to enable routine calculation of band gaps and exciton binding energies of surfaces and interfaces.</h2>
 			</div>
 		</div>
 	</div></section></section>
@@ -423,50 +483,14 @@ linebreaks: { automatic: true }
   </div>
     </section>
 
-
-<section><section>
-	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	</div>
-	<div class="inner_cell">
-		<div class="text_cell_render border-box-sizing rendered_html">
-			<h1 id="CP2kdev">CP2k dev<a class="anchor-link" href="#CP2kdev">&#182;</a></h1>
-			<ul>
-				<li>CP2K 7.1 released on 24th Dec 2019 (annual update)
-				<ul>
-					<li>SIRIUS: Plane Wave module with GPU support, see also this tutorial for Quantum ESPRESSO users.</li>
-					<li>xTB: Tight-binding module based on doi:10.1021/acs.jctc.7b00118.</li>
-					<li>RPA / GW / MP2: migrated to DBCSR tensors.</li>
-					<li>HELIUM: New canonical worm algorithm based on doi:10.1103/PhysRevE.74.036701.</li>
-					<li>XAS_TDP: X-ray absorption spectra simulations using linear-response TDDFT.</li>
-					<li>NEGF: Contact-specific temperature, correct shift and scale factors.</li>
-					<li>S-ALMO: Major refactoring, added wide variety of options.</li>
-					<li>CDFT: Cleanup and bug fixing.</li>
-					<li>FPGA interface for pw FFT.</li>
-					<li>Updated libraries: DBCSR, ELPA, libint, libxc, libxsmm.</li>
-					<li>Development moved from SVN to Git.</li>
-				</ul></li>
-			</ul>
-		</div>
-	</div>
-</div></section></section>
-
-<section><section>
-	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-	</div>
-	<div class="inner_cell">
-		<div class="text_cell_render border-box-sizing rendered_html">
-			<h1 id="CP2kdev">Advertorial: My group is currently working on<a class="anchor-link" href="#CP2kdev">&#182;</a></h1>
-			<ul>
-				<li>TDDFPT gradients</li>
-				<li>PAW pseudo potentials (frozen core GAPW)</li>
-				<li>GAPW / PAW + all ADMM functionality</li>
-			</ul>
-			<h2 id="CP2kdev">Advertorial: more widely<a class="anchor-link" href="#CP2kdev">&#182;</a></h2>
-			<p> complete rewrite of HFX type integrals is coming. Everything Resoltuion of the Identity + more advanced periodic methods for evaluation. Should give big speed up of hybrid functionals and make post-HF more accessible.</p>
-		</div>
-	</div>
-</div></section></section>
-
+    <section>
+		<div class="inner_cell">    	
+			<h2>Approximations</h2>
+			<p>Full NEGF can be very expensive and quite hard to interpret.</p>
+			<p>Various approximations possible neglecting explicit calculations of the coupling in the system to some extent or other.</p>
+			<p>Good for predicting trends.</p>
+    	</div>    	
+    </section>
 
 <section><section>
 	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -475,9 +499,10 @@ linebreaks: { automatic: true }
 		<div class="text_cell_render border-box-sizing rendered_html">
 			<h1 id="Thanks-To">Thanks To<a class="anchor-link" href="#Thanks-To">&#182;</a></h1><ul>
 				<li>ARCHER and EPSRC for funding.</li>
-				<li>Jurg Hutter and the CP2K developers group.</li>
+				<li>Jurg Hutter (UoZurich) and the CP2K developers group.</li>
 				<li>Iain Bethune, (ex) STFC.</li>
-				<li>Materials Chemistry Consortium!</li>
+				<li>Alex Shluger's Group (UCL) </li>
+				<li>Materials Chemistry Consortium</li>
 			</ul>
 		</div>
 	</div>
