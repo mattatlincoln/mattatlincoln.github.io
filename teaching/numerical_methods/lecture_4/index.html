@@ -83,7 +83,7 @@ linebreaks: { automatic: true }
         <h1 style="color:white;" id="Curve Fitting 2">Curve Fitting 2<a class="anchor-link" href="#Curve Fitting 2">&#182;</a></h1>
         <div style="background-color:Lavender; margin-left: 20px; margin-right: 20px; padding-bottom: 8px; padding-left:
         8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
-        <p>We continue with Curve Fitting. This week polynomial and multiple linear regression.</p>
+        <p>We continue with Curve Fitting. This week general linear regression.</p>
         <p>Reading: Capra and Canale, introduction to part 5 and chapter 17.</p>
       </div>
       <br>
@@ -91,7 +91,7 @@ linebreaks: { automatic: true }
       8px; padding-right: 8px; padding-top: 8px; border-radius: 25px;">
       <p>Learning outcomes:</p>
       <li> Extend the work on Linear Regression to polynomial and multiple variables.</li>
-      <li> Combine C++, python and analytical solutions or other platforms.</li>
+      <li> Combine Python and analytical solutions or other platforms.</li>
       <li> Check your code works correctly, via an external reference.</li>	
     </div>
     <br>
@@ -100,182 +100,6 @@ linebreaks: { automatic: true }
 
     <h3>Matt Watkins mwatkins@lincoln.ac.uk<a class="anchor-link" href="#Matt Watkins">&#182;</a></h3>
   </div>
-</section>
-
-<section>
-  <section>
-    <div class="inner_cell">
-     <h2>Reusing code</h2>
-     <p>You may dislike having lots of code / routines copied around everytime we reuse something</p>
-     <p>The solution is to $\textbf{include}$ other files or, generally, libraries.</p>
-     <p>We can make our own library file by copying functions other than <span style='font-family: monospace'>main</span> into a file called <span style='font-family: monospace'>'my_library.h'</span></p>
-     <table>
-       <tr>
-         <td>
-           <img src='../images/include_dir_0.png'>
-         </td>
-       </tr>
-     </table>
-   </div>
- </section>
- <section>
-  <div class="inner_cell">
-   <table>
-     <tr>
-       <td>
-         <img src='../images/include_dir_1.png'>
-       </td>
-     </tr>
-   </table>
-   <p>This is my example project. Right click on the $\textbf{bolded}$ project name in the pane to right.</p>
-   <p>Then select  <span style='font-family: monospace'>properties</span>.</p>
- </div>
-</section>
-<section>
-  <div class="inner_cell">
-   <p>A new window should have appeared, like this:</p>
-   <table>
-     <tr>
-       <td>
-         <img src='../images/include_dir_2.png'>
-       </td>
-     </tr>
-   </table>
-   <p>Open the <span style='font-family: monospace'>C/C++</span> then the   <span style='font-family: monospace'>General</span> tab</p>
- </div>
-</section>
-<section>
-  <div class="inner_cell">
-   <p>Then click on drop down button in the second column of the the 'Additional Include Directories' row and select edit</p>
-   <table>
-     <tr>
-       <td>
-         <img src='../images/include_dir_3.png'>
-       </td>
-     </tr>
-   </table>
- </div>
-</section>
-<section>
-  <div class="inner_cell">
-   <p>You should see something like this:</p>
-   <table>
-     <tr>
-       <td>
-         <img src='../images/include_dir_4.png'>
-       </td>
-     </tr>
-   </table>
- </div>
-</section>
-<section>
-  <div class="inner_cell">
-   <p>Click on the folder icon, and select the directory where you saved your 'my_library.h' file in</p>
-   <table>
-     <tr>
-       <td>
-         <img src='../images/include_dir_5.png'>
-       </td>
-     </tr>
-   </table>
-   <div class="inner_cell">
-   </section>
-   <section>
-    <div class="inner_cell">
-     <table>
-       <tr>
-         <td>
-           <img src='../images/include_dir_6.png'>
-         </td>
-       </tr>
-     </table>
-     <p>Now I can add a #include line in the file and use any functions in the library .</p>
-   </div>
- </section>
-</section>
-
-<section>
-  <div class="inner_cell">
-   <p>To include the Eigen library, 
-    <li>save and extract the library (you can find it on the front page of the learning resources tab) </li>
-    <li> add the directory containing the extracted Eigen folder to the include path.</li>
-    <li> here is an example.</li>
-   <pre><code>
-#include &ltiostream&gt
-#include &ltEigen/Dense&gt
-using Eigen::Matrix2d;
-using namespace std;
-
-int main()
-{
-  Matrix2d A, b;
-  A << 2, -1, -1, 3;
-  b << 1, 0, 0, 1;
-  cout << "Here is the matrix A:\n" << A << endl;
-  cout << "Here is the right hand side b:\n" << b << endl;
-  Matrix2d x = A.ldlt().solve(b);
-  cout << "The solution is:\n" << x << endl;
-  cout << A * x;
-}
-   </code></pre></p>
-   </div>
- </section>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <p>Here is some code to read in a matrix from a csv file. Assumes the header contains the number of rows then number of columns.</p>
-    <pre><code>
-#include &ltiostream&gt
-#include &ltEigen/Dense&gt
-#include &ltfstream&gt
-#include &ltstring&gt
-using Eigen::MatrixXd;
-using namespace std;
-
-MatrixXd slurpData()
-{
-  string nfile, temp;
-  int Ncol, Nrow;
-  cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
-  cin >> nfile;
-  ifstream myFile(nfile);
-  // Read the size of the matrix
-  if (myFile.is_open()) {
-    cout << "\nopened file\n\n";
-    getline(myFile, temp, ',');
-    Nrow = stoi(temp);
-    cout << "found file: Nrows = " << Nrow << "\n\n";
-    getline(myFile, temp, '\n');
-    Ncol = stoi(temp);
-    cout << "found file: Ncols = " << Ncol << "\n\n";
-  }
-
-  MatrixXd a(Nrow, Ncol);
-
-  // Read the array
-  for (int i = 0; i < Nrow; ++i) {
-    for (int j = 0; j < Ncol - 1; ++j) {
-      getline(myFile, temp, ',');
-      a(i, j) = stod(temp);
-      cout << a(i, j) << ", ";
-    }
-    getline(myFile, temp, '\n');
-    a(i, Ncol - 1) = stod(temp);
-    cout << a(i, Ncol - 1) << "\n";
-  }
-
-  return a;
-}
-
-int main()
-{
-  MatrixXd a;
-  a = slurpData();
-  cout << a.rows() << " " << a.cols();
-}
-    </code></pre>
-  </div>  
 </section>
 
 <section>
@@ -340,111 +164,6 @@ int main()
   </p>
   <p> Which is of the form $\textbf{A}x = b$</p>
 </div>      
-</section>
-
-<section>
-  <div class="inner_cell">
-    <h2>Worked example of polynomial fit - using new fancy matrices</h2>
-    <p>
-      <li> Get the data into a readable form - I suggest using Excel and the 'Text to Columns' function under the 'DATA' tab</li>
-      <li> The code to read from a csv file assumes that the first row contains the number of rows, then number of columns</li>
-      <li> Save as csv in the same directory as the project you are working on</li>
-      <li> Add in the Eigen library</li>
-      <li> Write routine(s) to calculate the required sums</li>
-      <li> Use Eigen to solve the system of linear equations. See <a href="http://eigen.tuxfamily.org/dox/group__TutorialLinearAlgebra.html">this tutorial</a> for examples. We'll discuss some of the solvers later.</li>
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="inner_cell">
-    <p>Full code here</p>
-    <pre><code>
-#include &ltiostream&gt
-#include &ltEigen/Dense&gt
-#include &ltfstream&gt
-#include &ltcmath&gt
-#include &ltstring&gt
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
-using namespace std;
-
-MatrixXd slurpData()
-{
-  string nfile, temp;
-  int Ncol, Nrow;
-  cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
-  cin >> nfile;
-  ifstream myFile(nfile);
-  // Read the size of the matrix
-  if (myFile.is_open()) {
-    cout << "\nopened file\n\n";
-    getline(myFile, temp, ',');
-    Nrow = stoi(temp);
-    cout << "found file: Nrows = " << Nrow << "\n\n";
-    getline(myFile, temp, '\n');
-    Ncol = stoi(temp);
-    cout << "found file: Ncols = " << Ncol << "\n\n";
-  }
-
-  MatrixXd a(Nrow, Ncol);
-
-  // Read the array
-  for (int i = 0; i < Nrow; ++i) {
-    for (int j = 0; j < Ncol - 1; ++j) {
-      getline(myFile, temp, ',');
-      a(i, j) = stod(temp);
-    //  cout << a(i, j) << ", ";
-    }
-    getline(myFile, temp, '\n');
-    a(i, Ncol - 1) = stod(temp);
-    //cout << a(i, Ncol - 1) << "\n";
-  }
-
-  return a;
-}
-
-double sumData(MatrixXd myData,int powX,int powY)
-{
-  double sum = 0;
-  for (int i = 0; i < myData.rows(); i++) {
-    sum += pow(myData(i, 0), powX) * pow(myData(i, 1), powY);
-  }
-  return sum;
-}
-
-int main()
-{
-  MatrixXd a;
-  a = slurpData();
-  //cout << a.rows() << " " << a.cols();
-
-  MatrixXd A(3, 3); 
-  A(0, 0) = sumData(a, 0, 0);
-  A(0, 1) = sumData(a, 1, 0);
-  A(0, 2) = sumData(a, 2, 0);
-  A(1, 0) = sumData(a, 1, 0);
-  A(1, 1) = sumData(a, 2, 0);
-  A(1, 2) = sumData(a, 3, 0);
-  A(2, 0) = sumData(a, 2, 0);
-  A(2, 1) = sumData(a, 3, 0);
-  A(2, 2) = sumData(a, 4, 0);
-
-  cout << A << "\n\n";
-
-  VectorXd b(3);
-  b(0) = sumData(a, 0, 1);
-  b(1) = sumData(a, 1, 1);
-  b(2) = sumData(a, 2, 1);
-
-  cout << b << "\n\n";
-
-  VectorXd x(3);
-  x = A.ldlt().solve(b);
-  cout << x << "\n\n";
-}      
-    </code></pre>
-  </div>
 </section>
 
 <section>
@@ -712,6 +431,287 @@ int main()
     <p>You should be reading additional material to provide a solid background to what we do in class</p>
     <p>Reading: Capra and Canale, introduction to part 5 and chapter 17.</p>
     <p>Lots of details inchapters 14 and 15 of <a href="http://apps.nrbook.com/c/index.html">Numerical Recipes</a>.</p>
+  </div>
+</section>
+
+<section>
+  <section>
+    <div class="inner_cell">
+     <h2>Reusing code</h2>
+     <p>You may dislike having lots of code / routines copied around everytime we reuse something</p>
+     <p>The solution is to $\textbf{include}$ other files or, generally, libraries.</p>
+     <p>We can make our own library file by copying functions other than <span style='font-family: monospace'>main</span> into a file called <span style='font-family: monospace'>'my_library.h'</span></p>
+     <table>
+       <tr>
+         <td>
+           <img src='../images/include_dir_0.png'>
+         </td>
+       </tr>
+     </table>
+   </div>
+ </section>
+ <section>
+  <div class="inner_cell">
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_1.png'>
+       </td>
+     </tr>
+   </table>
+   <p>This is my example project. Right click on the $\textbf{bolded}$ project name in the pane to right.</p>
+   <p>Then select  <span style='font-family: monospace'>properties</span>.</p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>A new window should have appeared, like this:</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_2.png'>
+       </td>
+     </tr>
+   </table>
+   <p>Open the <span style='font-family: monospace'>C/C++</span> then the   <span style='font-family: monospace'>General</span> tab</p>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>Then click on drop down button in the second column of the the 'Additional Include Directories' row and select edit</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_3.png'>
+       </td>
+     </tr>
+   </table>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>You should see something like this:</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_4.png'>
+       </td>
+     </tr>
+   </table>
+ </div>
+</section>
+<section>
+  <div class="inner_cell">
+   <p>Click on the folder icon, and select the directory where you saved your 'my_library.h' file in</p>
+   <table>
+     <tr>
+       <td>
+         <img src='../images/include_dir_5.png'>
+       </td>
+     </tr>
+   </table>
+   <div class="inner_cell">
+   </section>
+   <section>
+    <div class="inner_cell">
+     <table>
+       <tr>
+         <td>
+           <img src='../images/include_dir_6.png'>
+         </td>
+       </tr>
+     </table>
+     <p>Now I can add a #include line in the file and use any functions in the library .</p>
+   </div>
+ </section>
+</section>
+
+<section>
+  <div class="inner_cell">
+   <p>To include the Eigen library, 
+    <li>save and extract the library (you can find it on the front page of the learning resources tab) </li>
+    <li> add the directory containing the extracted Eigen folder to the include path.</li>
+    <li> here is an example.</li>
+   <pre><code>
+#include &ltiostream&gt
+#include &ltEigen/Dense&gt
+using Eigen::Matrix2d;
+using namespace std;
+
+int main()
+{
+  Matrix2d A, b;
+  A << 2, -1, -1, 3;
+  b << 1, 0, 0, 1;
+  cout << "Here is the matrix A:\n" << A << endl;
+  cout << "Here is the right hand side b:\n" << b << endl;
+  Matrix2d x = A.ldlt().solve(b);
+  cout << "The solution is:\n" << x << endl;
+  cout << A * x;
+}
+   </code></pre></p>
+   </div>
+ </section>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p>Here is some code to read in a matrix from a csv file. Assumes the header contains the number of rows then number of columns.</p>
+    <pre><code>
+#include &ltiostream&gt
+#include &ltEigen/Dense&gt
+#include &ltfstream&gt
+#include &ltstring&gt
+using Eigen::MatrixXd;
+using namespace std;
+
+MatrixXd slurpData()
+{
+  string nfile, temp;
+  int Ncol, Nrow;
+  cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
+  cin >> nfile;
+  ifstream myFile(nfile);
+  // Read the size of the matrix
+  if (myFile.is_open()) {
+    cout << "\nopened file\n\n";
+    getline(myFile, temp, ',');
+    Nrow = stoi(temp);
+    cout << "found file: Nrows = " << Nrow << "\n\n";
+    getline(myFile, temp, '\n');
+    Ncol = stoi(temp);
+    cout << "found file: Ncols = " << Ncol << "\n\n";
+  }
+
+  MatrixXd a(Nrow, Ncol);
+
+  // Read the array
+  for (int i = 0; i < Nrow; ++i) {
+    for (int j = 0; j < Ncol - 1; ++j) {
+      getline(myFile, temp, ',');
+      a(i, j) = stod(temp);
+      cout << a(i, j) << ", ";
+    }
+    getline(myFile, temp, '\n');
+    a(i, Ncol - 1) = stod(temp);
+    cout << a(i, Ncol - 1) << "\n";
+  }
+
+  return a;
+}
+
+int main()
+{
+  MatrixXd a;
+  a = slurpData();
+  cout << a.rows() << " " << a.cols();
+}
+    </code></pre>
+  </div>  
+</section>
+
+<section>
+  <div class="inner_cell">
+    <h2>Worked example of polynomial fit - using new fancy matrices</h2>
+    <p>
+      <li> Get the data into a readable form - I suggest using Excel and the 'Text to Columns' function under the 'DATA' tab</li>
+      <li> The code to read from a csv file assumes that the first row contains the number of rows, then number of columns</li>
+      <li> Save as csv in the same directory as the project you are working on</li>
+      <li> Add in the Eigen library</li>
+      <li> Write routine(s) to calculate the required sums</li>
+      <li> Use Eigen to solve the system of linear equations. See <a href="http://eigen.tuxfamily.org/dox/group__TutorialLinearAlgebra.html">this tutorial</a> for examples. We'll discuss some of the solvers later.</li>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="inner_cell">
+    <p>Full code here</p>
+    <pre><code>
+#include &ltiostream&gt
+#include &ltEigen/Dense&gt
+#include &ltfstream&gt
+#include &ltcmath&gt
+#include &ltstring&gt
+using Eigen::MatrixXd;
+using Eigen::VectorXd;
+using namespace std;
+
+MatrixXd slurpData()
+{
+  string nfile, temp;
+  int Ncol, Nrow;
+  cout << "Insert the name of the file containing the coefficient and the constant terms" << "\n";
+  cin >> nfile;
+  ifstream myFile(nfile);
+  // Read the size of the matrix
+  if (myFile.is_open()) {
+    cout << "\nopened file\n\n";
+    getline(myFile, temp, ',');
+    Nrow = stoi(temp);
+    cout << "found file: Nrows = " << Nrow << "\n\n";
+    getline(myFile, temp, '\n');
+    Ncol = stoi(temp);
+    cout << "found file: Ncols = " << Ncol << "\n\n";
+  }
+
+  MatrixXd a(Nrow, Ncol);
+
+  // Read the array
+  for (int i = 0; i < Nrow; ++i) {
+    for (int j = 0; j < Ncol - 1; ++j) {
+      getline(myFile, temp, ',');
+      a(i, j) = stod(temp);
+    //  cout << a(i, j) << ", ";
+    }
+    getline(myFile, temp, '\n');
+    a(i, Ncol - 1) = stod(temp);
+    //cout << a(i, Ncol - 1) << "\n";
+  }
+
+  return a;
+}
+
+double sumData(MatrixXd myData,int powX,int powY)
+{
+  double sum = 0;
+  for (int i = 0; i < myData.rows(); i++) {
+    sum += pow(myData(i, 0), powX) * pow(myData(i, 1), powY);
+  }
+  return sum;
+}
+
+int main()
+{
+  MatrixXd a;
+  a = slurpData();
+  //cout << a.rows() << " " << a.cols();
+
+  MatrixXd A(3, 3); 
+  A(0, 0) = sumData(a, 0, 0);
+  A(0, 1) = sumData(a, 1, 0);
+  A(0, 2) = sumData(a, 2, 0);
+  A(1, 0) = sumData(a, 1, 0);
+  A(1, 1) = sumData(a, 2, 0);
+  A(1, 2) = sumData(a, 3, 0);
+  A(2, 0) = sumData(a, 2, 0);
+  A(2, 1) = sumData(a, 3, 0);
+  A(2, 2) = sumData(a, 4, 0);
+
+  cout << A << "\n\n";
+
+  VectorXd b(3);
+  b(0) = sumData(a, 0, 1);
+  b(1) = sumData(a, 1, 1);
+  b(2) = sumData(a, 2, 1);
+
+  cout << b << "\n\n";
+
+  VectorXd x(3);
+  x = A.ldlt().solve(b);
+  cout << x << "\n\n";
+}      
+    </code></pre>
   </div>
 </section>
 
